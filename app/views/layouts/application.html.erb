@@ -2,13 +2,33 @@
 <html>
 <head>
   <title><%= full_title(yield(:title)) %></title>
+	<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+	<!--[if lt IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+		</script>
+	<![endif]-->
 </head>
 <body>
+	<header class="navbar navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<%= link_to(image_tag("portrait-icon.jpg", class: 'img-rounded', width: 50, height: 50) + " Paul Bogard’s Portfolio", '#', id: "logo") %>
+			<nav>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to "Projects", '#' %></li>
+					<li><%= link_to "Résumé", '#' %></li>
+					<li><%= link_to "About Paul", '#' %></li>
+					<li><%= link_to "<span class=\"glyphicon glyphicon-link\"></span> Blog".html_safe, 'http://onehundredairports.com/' %></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
 
-<%= yield %>
+	<div class="container">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

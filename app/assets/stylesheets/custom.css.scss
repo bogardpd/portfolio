@@ -1,0 +1,45 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$color-inverse-text: hsl(0, 0%, 95%);
+
+$font-stack-normal: 'Merriweather', serif;
+
+/* universal */
+
+body {
+	padding-top: 60px;
+	font-family: $font-stack-normal;
+}
+
+section {
+	overflow: auto;
+}
+
+textarea {
+	resize: vertical;
+}
+
+.center {
+	text-align: center;
+}
+
+/* header */
+
+header {
+	padding: 5px;
+}
+
+nav {
+	float: right;
+}
+
+#logo {
+	font-size: 2.2em;
+	color: $color-inverse-text;
+}
+
+#logo:hover {
+	text-decoration: none;
+	color: $color-inverse-text;
+}
