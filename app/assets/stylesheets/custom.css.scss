@@ -2,13 +2,14 @@
 @import "bootstrap";
 
 $color-inverse-text: hsl(0, 0%, 95%);
+$color-background-light: hsl(0, 0%, 90%);
+$color-border: hsl(0, 0%, 80%);
 
 $font-stack-normal: 'Merriweather', serif;
 
 /* universal */
 
 body {
-	padding-top: 60px;
 	font-family: $font-stack-normal;
 }
 
@@ -43,3 +44,40 @@ nav {
 	text-decoration: none;
 	color: $color-inverse-text;
 }
+
+/* projects */
+
+div.project-row {
+	a {
+		margin-bottom: 10px;
+	}
+	a:hover {
+		text-decoration: none;
+		background-color: $color-background-light;
+		border: 1px solid $color-border;
+		border-radius: 5px;
+	}
+}
+
+div.project {
+	text-align: center;
+	h2 {
+		margin-top: 10px;
+	}
+	p {
+		margin-top: 10px;
+	}
+}
+
+img.github-button {
+	width: 32px;
+	height: 32px;
+	margin-right: 10px;
+}
+
+img.project-icon {
+	width: 300px;
+	height: 225px;
+	border: 1px solid $color-border;
+}
+
