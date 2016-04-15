@@ -14,11 +14,17 @@ $color-primary-dark: hsl(0, 100%, 10%);
 $color-primary-extra-dark: (0, 100%, 4.5%);
 
 $font-stack-normal: 'Merriweather', serif;
+$font-stack-monospace: 'Source Code Pro', monospace;
+
+$font-size-default: 13pt;
+
+$line-height-default: 1.8em;
 
 /* universal */
 
 body {
 	font-family: $font-stack-normal;
+	font-size: $font-size-default;
 }
 
 section {
@@ -34,11 +40,51 @@ textarea {
 }
 
 a {
-	color: $color-primary-light;
+	color: $color-primary-extra-light;
 }
 a:hover {
-	color: $color-primary;
+	color: $color-primary-light;
 }
+
+div.image {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+
+h2 {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+li, td {
+	line-height: $line-height-default;
+}
+
+p {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	line-height: $line-height-default;
+}
+
+
+span.code {
+	font-family: $font-stack-monospace;
+	background: $color-background-light;
+	padding: 1px 5px;
+}
+
+strong {
+	font-weight: 700;
+}
+
+
 
 /* header */
 
@@ -46,9 +92,7 @@ header {
 	padding: 5px;
 }
 
-nav {
-	float: right;
-}
+
 
 /* navbar */
 /* Navbar overwrite CSS from https://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3# */
@@ -122,6 +166,11 @@ nav {
 
 /* projects */
 
+
+a.icon-button {
+	font-size: $font-size-default;
+}
+
 div.project-row {
 	a {
 		margin-bottom: 10px;
@@ -150,10 +199,19 @@ div.project {
 	}
 }
 
-img.github-button {
+div.button-row {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+img.icon-button {
 	width: 32px;
 	height: 32px;
 	margin-right: 10px;
+}
+
+img.project {
+	margin: 0 auto;
 }
 
 img.project-icon {
