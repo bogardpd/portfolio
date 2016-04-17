@@ -4,12 +4,15 @@
 
 <p><%= link_to(image_tag('computers/Desk 2014-07-31 - 800.jpg', class: 'img-responsive project bordered'), image_path('computers/Desk 2014-07-31.jpg')) %></p>
 
+<a name="homecomputers"></a>
+<h2>Home Computers</h2>
+
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<th></th>
-			<th>Pancake</th>
-			<th>Frites Liberté</th>
+			<th style="width: 20%"></th>
+			<th style="width: 40%">Pancake</th>
+			<th style="width: 40%">Frites Liberté</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -455,6 +458,109 @@
 						<p class="component">Brother HL-2170 Laser</p>
 						<p class="supplemental">Shared via home network</p>
 						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-05-02"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<a name="network"></a>
+<h2>Network</h2>
+
+<table class="table table-striped table-bordered">
+	<tbody>
+		<tr>
+			<th scope="row" style="width: 20%">Router</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Linksys E2500 Wireless Router</p>
+						<p class="supplemental">802.11n &middot; Simultaneous dual-band</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2013-07-14"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<a name="mobile"></a>
+<h2>Mobile</h2>
+
+<table class="table table-striped table-bordered">
+	<tbody>
+		<tr>
+			<th scope="row" style="width: 20%">Smartphone</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Apple iPhone 6s &middot; <span class="device_name">“Tator Tot V”</span></p>
+						<p class="supplemental">64 GB &middot; Gray</p><%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-11-10"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Tablet</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Apple iPad (4th Generation) &middot; <span class="device_name">“Latke”</span></p>
+						<p class="supplemental">64 GB &middot; Cellular &middot; Black</p><%= render :partial => "computers_purchased", :locals => {:purchase_date => "2013-01-04"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<a name="consoles"></a>
+<h2>Consoles</h2>
+
+<table class="table table-striped table-bordered">
+	<tbody>
+		
+		<tr>
+			<th scope="row" style="width: 20%">Consoles</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Xbox 360</p>
+						<p class="supplemental">Microsoft &middot; Elite</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2010-01-08"} %>
+					</li>
+					<li>
+						<p class="component">Wii</p>
+						<p class="supplemental">Nintendo &middot; White</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2007-09-07"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Display</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">47″ Visio VT470M LCD</p>
+						<p class="supplemental">1080p &middot; 120 Hz</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2009-12-30"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Sound</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Onkyo HT-S6200 Home Theater</p>
+						<p class="supplemental">7.1-channel</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2009-12-30"} %>
 					</li>
 				</ul>
 			</td>
