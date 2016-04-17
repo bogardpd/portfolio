@@ -1,8 +1,12 @@
 class StaticPagesController < ApplicationController
+  
   def home
   end
   
-  def flight_historian
-    
+  def computers
   end
+  
+  def flight_historian
+  end
+
 end
