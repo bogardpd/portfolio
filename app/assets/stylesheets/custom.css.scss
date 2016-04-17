@@ -1,6 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+$color-text: hsl(0, 10%, 20%);
+$color-text-light: hsl(0, 10%, 40%);
+
+$color-text-light-good: hsl(160, 80%, 40%);
+
 $color-inverse-text: hsl(0, 0%, 90%);
 $color-inverse-text-highlight: hsl(0, 0%, 80%);
 
@@ -25,6 +31,7 @@ $line-height-default: 1.8em;
 body {
 	font-family: $font-stack-normal;
 	font-size: $font-size-default;
+	color: $color-text;
 }
 
 section {
@@ -67,6 +74,10 @@ h1 {
 h2 {
 	margin-top: 30px;
 	margin-bottom: 20px;
+}
+
+img.bordered {
+	border: 1px solid $color-border;
 }
 
 li, td {
@@ -244,3 +255,35 @@ img.project-icon {
 	box-shadow: 1px 1px 2px $color-background-light;
 }
 
+/* Computers */
+
+ul.component {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	
+	li {
+		margin-bottom: 10px;
+	}
+	p {
+		margin: 0;
+		font-weight: normal;		
+	}
+	p.supplemental {
+		font-size: 80%;
+		margin: 0 0 0 15px;
+		color: $color-text-light;
+	}
+	p.purchased {
+		font-size: 70%;
+		margin: 0 0 0 15px;
+		color: $color-text-light;
+	}
+	p.recent {
+		font-weight: bold;
+		color: $color-text-light-good;
+	}
+	span.unpictured {
+		font-style: italic;
+	}
+}

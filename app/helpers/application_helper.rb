@@ -9,4 +9,9 @@ module ApplicationHelper
       page_title + " - " + base_title
     end
   end
+  
+  # Returns a formatted date.
+  def format_date(input_date)
+    input_date.strftime("%e %b %Y").strip
+  end
 end

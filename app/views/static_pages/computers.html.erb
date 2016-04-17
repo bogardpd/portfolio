@@ -1,3 +1,464 @@
 <% provide(:title, "Computers")%>
 
 <h1>Computers</h1>
+
+<p><%= link_to(image_tag('computers/Desk 2014-07-31 - 800.jpg', class: 'img-responsive project bordered'), image_path('computers/Desk 2014-07-31.jpg')) %></p>
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Pancake</th>
+			<th>Frites Liberté</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<tr>
+			<th scope="row">Model</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Home-Built PC</p>
+						<p class="supplemental">MicroATX Mini Tower</p>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Apple MacBook Pro</p>
+						<p class="supplemental">13″ Notebook &middot; Mid 2012 (9,2) &middot; <span class="unpictured">Not Pictured</span></p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Photo</th>
+			<td>
+				<%= link_to(image_tag('computers/Pancake 2014-07-31 - Thumbnail.jpg', class: 'img-responsive project bordered'), image_path('computers/Pancake 2014-07-31.jpg')) %>
+			</td>
+			<td></td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Operating System</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Microsoft Windows 10 Pro</p>
+						<p class="supplemental">64-bit</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-08-16"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Mac OS X El Capitan</p>
+						<p class="supplemental">10.11.3</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-11-13"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Processor</th>
+			<td>
+				<ul class="component">
+					<ul class="component">
+						<li>
+							<p class="component">Intel Core i5-4690</p>
+							<p class="supplemental">Haswell Refresh &middot; 3.5 GHz</p>
+							<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+						</li>
+					</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Intel Core i5</p>
+						<p class="supplemental">2.5 GHz &middot; Dual-Core</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Motherboard</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">ASRock H97M PRO4</p>
+						<p class="supplemental">MicroATX</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+					</li>
+				</ul>
+			</td>
+			<td></td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Wireless</th>
+			<td></td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">802.11n Wi-Fi</p>
+						<p class="supplemental">Built-in</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+					<li>
+						<p class="component">Bluetooth</p>
+						<p class="supplemental">Bluetooth 4.0</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Graphics Card</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">EVGA GeForce GTX670</p>
+						<p class="supplemental">2 GB GDDR5 256 bit</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2012-09-04"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Intel HD Graphics 4000</p>
+						<p class="supplemental">1 GB</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Memory</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">8 GB G.Skill Ares Series</p>
+						<p class="supplemental">DDR3-1600</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">4 GB</p>
+						<p class="supplemental">DDR3-1600</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Storage</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">1 TB Samsung 840 EVO</p>
+						<p class="supplemental">SSD</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+					</li>
+					<li>
+						<p class="component">1 TB Western Digital Caviar</p>
+						<p class="supplemental">HDD &middot; 7200 RPM</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2010-11-04"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">500 GB</p>
+						<p class="supplemental">HDD &middot; 5400 RPM</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+					<li>
+						<p class="component">2 TB Western Digital My Passport</p>
+						<p class="supplemental">External HDD (USB)</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2012-12-25"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Optical Disc</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Samsung DVD±R</p>
+						<p class="supplemental">20X</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-05-02"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">SuperDrive DVD±R DL</p>
+						<p class="supplemental">8X &middot; DVD±RW &middot; CD-RW</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Card Reader</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">nMediaPC 3.5″ Bay Card Reader</p>
+						<p class="supplemental">CF &middot; MS &middot; MD &middot; SD &middot; MMC &middot; XD &middot; SM &middot; USB</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-05-02"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">SDXC Card Slot</p>
+						<p class="supplemental">Built-in</p>						
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+							</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Power Supply</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">SeaSonic G Series</p>
+						<p class="supplemental">550 W &middot; Modular</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Case</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Silverstone TJ08B-E</p>
+						<p class="supplemental">Black &middot; MicroATX Mini Tower</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">CPU Cooler</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Cooler Master Hyper 212 EVO</p>
+						<p class="supplemental">120 mm &middot; PWM &middot; 9&ndash;36 dBA</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Displays</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">22″ Acer AL2216W LCD</p>
+						<p class="supplemental">1680×1050</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-01-11"} %>
+					</li>
+					<li>
+						<p class="component">22″ Acer AL2216W LCD</p>
+						<p class="supplemental">1680×1050</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-01-11"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">13.3″ Integrated LCD</p>
+						<p class="supplemental">LED backlight &middot; 1280×800</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+					<li>
+						<p class="component">20.1″ Viewsonic VX2035wm LCD</p>
+						<p class="supplemental">1680×1050</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2007-06-30"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Keyboard</th>
+			<td colspan="2">
+				<ul class="component">
+						<li>
+							<p class="component">CoolerMaster Storm QuickFire XT Mechanical</p>
+							<p class="supplemental">Full Size &middot; CHERRY MX Brown Switches &middot; Shared via <%= link_to("Synergy", "http://synergy-project.org/") %></p><%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-03-05"} %>
+						</li>
+						<li>
+							<p class="component">Logitech K400r Wireless</p>
+							<p class="supplemental">With Touchpad &middot; <span class="unpictured">Not Pictured</span></p><%= render :partial => "computers_purchased", :locals => {:purchase_date => "2013-10-26"} %>
+						</li>
+					</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Mouse</th>
+			<td colspan="2">
+				<ul class="component">
+					<li>
+						<p class="component">Logitech G400s</p>
+						<p class="supplemental">8-Button &middot; Shared via <%= link_to("Synergy", "http://synergy-project.org/") %></p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-02-14"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Game Controllers</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Microsoft Xbox 360 Controller</p>
+						<p class="supplemental">Wired</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2011-11-24"} %>
+					</li>
+					<li>
+						<p class="component">Saitek AV8R Joystick</p>
+						<p class="supplemental">Flight Stick</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2009-02-20"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Speakers</th>
+			<td colspan="2">
+				<ul class="component">
+					<li>
+						<p class="component">Philips FW-C35 Mini-HiFi System</p>
+						<p class="supplemental">Shared via mixer</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2001-07-08"} %>
+					</li>					
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Mixer</th>
+			<td colspan="2">
+				<ul class="component">
+					<li>
+						<p class="component">GemSound DMX-2071 Stereo Preamp Mixer</p>
+						<p class="supplemental">4-Channel</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2007-11-27"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Headset</th>
+			<td colspan="2">
+				<ul class="component">
+					<li>
+						<p class="component">Sennheiser PC 8 USB</p>
+						<p class="supplemental">Stereo USB Headset</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-10-18"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Webcam</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Logitech C260 Webcam</p>
+						<p class="supplemental">1280×760</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2012-03-12"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">FaceTime HD Camera</p>
+						<p class="supplemental">Built-in &middot; 720p</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2015-06-27"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Scanner</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Epson Perfection V200 Photo</p>
+						<p class="supplemental">Flatbed &middot; USB</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-01-07"} %>
+					</li>
+				</ul>
+			</td>
+			<td>
+			</td>
+		</tr>
+		
+		<tr>
+			<th scope="row">Printer</th>
+			<td colspan="2">
+				<ul class="component">
+					<li>
+						<p class="component">Brother HL-2170 Laser</p>
+						<p class="supplemental">Shared via home network</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-05-02"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		
+	</tbody>
+</table>
