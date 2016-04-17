@@ -99,72 +99,79 @@ header {
 }
 
 /* navbar */
-/* Navbar overwrite CSS from https://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3# */
+/* Navbar overwrite CSS modified from https://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3# */
 .navbar-default {
     background-color: $color-primary-dark;
     border-color: $color-primary-extra-light;
-}
-/* title */
-.navbar-default .navbar-brand {
-    color: $color-inverse-text;
+		
+		/* link */
+		
+		a {
+			text-decoration: none;
+		}
+		
+		.navbar-nav > li > a,
+		.navbar-nav > li > a:focus {
+		    color: $color-inverse-text;
+		}
+		.navbar-nav > li > a:hover {
+		    color: $color-inverse-text-highlight;
+		}
+		
+		.navbar-nav > .active > a, 
+		.navbar-nav > .active > a:hover, 
+		.navbar-nav > .active > a:focus {
+		    color: $color-inverse-text;
+		    background-color: $color-primary;
+		}
+		.navbar-nav > .open > a, 
+		.navbar-nav > .open > a:hover, 
+		.navbar-nav > .open > a:focus {
+		    color: $color-inverse-text;
+		    background-color: $color-primary-dark;
+		}
+		
+		/* caret */
+		.navbar-nav > .dropdown > a .caret {
+		    border-top-color: $color-inverse-text;
+		    border-bottom-color: $color-inverse-text;
+		}
+		.navbar-nav > .dropdown > a:hover .caret,
+		.navbar-nav > .dropdown > a:focus .caret {
+		    border-top-color: $color-inverse-text-highlight;
+		    border-bottom-color: $color-inverse-text-highlight;
+		}
+		.navbar-nav > .open > a .caret, 
+		.navbar-nav > .open > a:hover .caret, 
+		.navbar-nav > .open > a:focus .caret {
+		    border-top-color: $color-inverse-text;
+		    border-bottom-color: $color-inverse-text;
+		}
+		
+		/* mobile version */
+		.navbar-toggle {
+		    border-color: $color-primary-dark;
+		}
+		.navbar-toggle:hover,
+		.navbar-toggle:focus {
+		    background-color: $color-primary;
+		}
+		.navbar-toggle .icon-bar {
+		    background-color: $color-inverse-text;
+		}
 }
 
-/* link */
-.navbar-default .navbar-nav > li > a,
-.navbar-default .navbar-nav > li > a:focus {
-    color: $color-inverse-text;
-}
-.navbar-default .navbar-nav > li > a:hover {
-    color: $color-inverse-text-highlight;
-}
-
-.navbar-default .navbar-nav > .active > a, 
-.navbar-default .navbar-nav > .active > a:hover, 
-.navbar-default .navbar-nav > .active > a:focus {
-    color: $color-inverse-text;
-    background-color: $color-primary;
-}
-.navbar-default .navbar-nav > .open > a, 
-.navbar-default .navbar-nav > .open > a:hover, 
-.navbar-default .navbar-nav > .open > a:focus {
-    color: $color-inverse-text;
-    background-color: $color-primary-dark;
-}
-/* caret */
-.navbar-default .navbar-nav > .dropdown > a .caret {
-    border-top-color: $color-inverse-text;
-    border-bottom-color: $color-inverse-text;
-}
-.navbar-default .navbar-nav > .dropdown > a:hover .caret,
-.navbar-default .navbar-nav > .dropdown > a:focus .caret {
-    border-top-color: $color-inverse-text-highlight;
-    border-bottom-color: $color-inverse-text-highlight;
-}
-.navbar-default .navbar-nav > .open > a .caret, 
-.navbar-default .navbar-nav > .open > a:hover .caret, 
-.navbar-default .navbar-nav > .open > a:focus .caret {
-    border-top-color: $color-inverse-text;
-    border-bottom-color: $color-inverse-text;
-}
-/* mobile version */
-.navbar-default .navbar-toggle {
-    border-color: $color-primary-dark;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: $color-primary;
-}
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: $color-inverse-text;
-}
 @media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+	.navbar-default .navbar-nav .open {
+		.dropdown-menu > li > a {
         color: $color-inverse-text;
     }
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus {
         color: $color-inverse-text-highlight;
     }
+	}
+		
 }
 
 /* footer */
