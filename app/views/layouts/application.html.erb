@@ -6,6 +6,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
 	<!--[if lt IE 9]>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
@@ -25,7 +26,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				
-				<%= link_to(image_tag("Portfolio-Logo.png", width: "263px", height: "24px"), '#', id: "logo", class: "navbar-brand") %>
+				<%= link_to(image_tag("Portfolio-Logo.png", width: "263px", height: "24px"), root_path, id: "logo", class: "navbar-brand") %>
 				
 			</div>
 			
@@ -69,6 +70,6 @@
 	</div>
 	
 	
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	
 </body>
 </html>
