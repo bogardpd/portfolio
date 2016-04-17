@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'flight-historian' => 'static_pages#flight_historian'
   
   # About Pages
-  
+  get 'about' => 'static_pages#about'
   
   # Other Pages
   get 'computers' => 'static_pages#computers'

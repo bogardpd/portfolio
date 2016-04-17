@@ -41,9 +41,15 @@ textarea {
 
 a {
 	color: $color-primary-extra-light;
+	text-decoration: underline;
 }
+
 a:hover {
 	color: $color-primary-light;
+}
+
+a.btn {
+	text-decoration: none;
 }
 
 div.image {
@@ -91,8 +97,6 @@ strong {
 header {
 	padding: 5px;
 }
-
-
 
 /* navbar */
 /* Navbar overwrite CSS from https://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3# */
@@ -161,6 +165,17 @@ header {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
         color: $color-inverse-text-highlight;
     }
+}
+
+/* footer */
+
+footer {
+	text-align: center;
+	border-top: 1px solid $color-border;
+	padding: 15px;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	font-size: 75%;
 }
 
 
