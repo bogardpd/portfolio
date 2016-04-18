@@ -80,6 +80,16 @@ img.bordered {
 	border: 1px solid $color-border;
 }
 
+img.org-logo {
+	width: 200px;
+	height: 100px;
+	margin: 10px auto;
+}
+
+img.portrait {
+	margin: 20px auto;
+}
+
 li, td {
 	line-height: $line-height-default;
 }
