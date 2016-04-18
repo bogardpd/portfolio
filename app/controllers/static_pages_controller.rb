@@ -21,6 +21,12 @@ class StaticPagesController < ApplicationController
   def gps_logging
   end
   
+  def gps_logging_garmin
+  end
+  
+  def gps_logging_ios
+  end
+  
   def hotel_internet_quality
   end
   
