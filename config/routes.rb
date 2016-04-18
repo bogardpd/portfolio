@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   # About Pages
   get 'about' => 'static_pages#about'
+  get 'resume' => 'static_pages#resume'
   
   # Other Pages
   get 'computers' => 'static_pages#computers'

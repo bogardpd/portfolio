@@ -32,6 +32,13 @@ body {
 	font-family: $font-stack-normal;
 	font-size: $font-size-default;
 	color: $color-text;
+	
+	font-variant-ligatures: common-ligatures;
+	-moz-font-feature-settings: "liga=1, dlig=1";
+	-ms-font-feature-settings: "liga", "dlig";
+	-webkit-font-feature-settings: "liga", "dlig";
+	-o-font-feature-settings: "liga", "dlig";
+	font-feature-settings: "liga", "dlig";
 }
 
 section {
@@ -299,4 +306,15 @@ ul.component {
 	span.unpictured {
 		font-style: italic;
 	}
+}
+
+/* Resume */
+
+div.resume-job-title {
+	margin-bottom: 15px;
+	font-style: italic;
+}
+
+td.resume-date, td.resume-skill-category {
+	width: 25%;
 }

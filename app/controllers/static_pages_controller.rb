@@ -11,5 +11,8 @@ class StaticPagesController < ApplicationController
   
   def flight_historian
   end
+  
+  def resume
+  end
 
 end
