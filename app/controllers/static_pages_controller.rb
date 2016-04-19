@@ -30,6 +30,9 @@ class StaticPagesController < ApplicationController
   def hotel_internet_quality
   end
   
+  def ingress_murals
+  end
+  
   def resume
   end
   
