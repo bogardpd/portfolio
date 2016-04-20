@@ -4,7 +4,14 @@
 
 <p><%= link_to("Flights", flight_historian_path) %> aren’t the only things I like to map. I also often record GPS data while driving, bicycling, or walking, and create maps of the routes.</p>
 
-___TUTORIALS HERE____
+<div class="row button-row">
+	<div class="col-sm-6">
+		<%= link_to("How to create route maps with <strong>Garmin</strong>".html_safe, gps_logging_garmin_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+	<div class="col-sm-6">
+		<%= link_to("How to create route maps with <strong>iOS</strong>".html_safe, gps_logging_ios_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+</div>
 
 <h2>Driving</h2>
 
@@ -22,13 +29,20 @@ ___TUTORIALS HERE____
 
 <%= project_image("projects/gps-logging/30-Driving.png", "Google Earth map of driving tracks") %>
 
-<ul><li>Tutorial: <%= link_to "Garmin GPS Logging", gps_logging_garmin_path %></li></ul>
+<p>Learn how to create route maps with a Garmin GPS in my <%= link_to "Garmin GPS Logging tutorial", gps_logging_garmin_path %>.</p>
 
-<!--
+
 <h2>Walking and Biking</h2>
 
-<ul><li>Tutorial: <%= link_to "iPhone GPS Logging", gps_logging_ios_path %></li></ul>
--->
+<p>If I want to create a map while I'm not driving, I use my iPhone to record the location data.</p>
+
+<p>As an example, there are a lot of old rail lines in my area that have been converted to bicycle trails. I took a log of my bike riding over one summer and created the following map:</p>
+
+<%= project_image("projects/gps-logging/Bicycling.png", "OpenStreetMap of bicycling tracks") %>
+
+<p>In this case, I used <%= link_to "uMap", 'https://umap.openstreetmap.fr/en' %> with <%= link_to "OpenStreetMap", 'https://www.openstreetmap.org/' %> data. However, it would have been trivial to use the bicycling data in Google Earth instead.
+
+<p>Learn how to create route maps with an iOS device in my <%= link_to "iOS GPS Logging tutorial", gps_logging_garmin_path %>.</p>
 
 <h2>Ingress Mapping</h2>
 
@@ -38,4 +52,4 @@ ___TUTORIALS HERE____
 
 <%= link_to(project_image("ingress-murals/Tulsa Skyline.png", "Map of Tulsa Skyline Ingress Missions"), ingress_murals_path) %>
 
-<p class="center"><%= link_to("See more of my Ingress mural maps", ingress_murals_path) %></p>
+<p>See more of my <%= link_to("Ingress mural maps", ingress_murals_path) %>.</p>
