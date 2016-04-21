@@ -1,24 +1,23 @@
-<% provide(:title, "Garmin and Google Earth GPS Logging Tutorial")%>
+<% provide(:title, "iOS and Google Earth GPS Logging Tutorial")%>
 
-<h1>Garmin &amp; Google Earth GPS Logging Tutorial</h1>
+<h1>iOS &amp; Google Earth GPS Logging Tutorial</h1>
 
 <div class="byline">Part of the <%= link_to "GPS logging", gps_logging_path %> project</div>
 
-<p>While automotive GPS devices are useful for giving turn-by-turn directions, it’s not their only trick.  It’s easy to use the device to show other people where you’ve been in <%= link_to("Google Earth", 'http://www.google.com/earth/index.html') %>.</p>
+<p>iOS devices have plenty of apps that make use of location data, so it's not surprising that it’s easy to record that location data over time. You can then use that data to show other people where you’ve been in <%= link_to("Google Earth", 'http://www.google.com/earth/index.html') %>.</p>
 
 <h2>Overview</h2>
 
 <p>The general process of creating a GPS map is as follows:</p>
 
 <ul>
-	<li><%= link_to "Record GPS routes with your Garmin", '#record' %></li>
-	<li><%= link_to "Trim extra data", '#trim' %></li>
+	<li><%= link_to "Record GPS routes with your iOS device", '#record' %></li>
 	<li><%= link_to "Convert the GPX file to KML", '#convert' %></li>
 	<li><%= link_to "Import the location data into Google Earth", '#import' %></li>
 </ul>
 
-<%= render 'static_pages/gps_logging_tutorials/garmin_to_gpx', other_gps_path: 'gps_logging_ios_google_earth_path' %>
+<%= render 'static_pages/gps_logging_tutorials/ios_to_gpx', other_gps_path: 'gps_logging_garmin_google_earth_path' %>
 
-<%= render 'static_pages/gps_logging_tutorials/gpx_to_google_earth', other_map_path: 'gps_logging_garmin_umap_path' %>
+<%= render 'static_pages/gps_logging_tutorials/gpx_to_google_earth', other_map_path: 'gps_logging_ios_umap_path' %>
 
 <%= link_to("Return to GPS Logging".html_safe, gps_logging_path, class: "btn btn-default btn-block icon-button", role: "button") %>

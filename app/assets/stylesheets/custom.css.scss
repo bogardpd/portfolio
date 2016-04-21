@@ -277,6 +277,12 @@ img.project {
 	margin: 0 auto;
 }
 
+img.ios-screenshot {
+	max-width: 375px;
+	height: auto;
+	border: 1px solid $color-border;
+}
+
 img.project-icon {
 	width: 300px;
 	height: 225px;
