@@ -4,7 +4,7 @@
 
 <div class="byline">Part of the <%= link_to "GPS logging", gps_logging_path %> project</div>
 
-<p>iOS devices have plenty of apps that make use of location data, so it's not surprising that it’s easy to record that location data over time. You can then use that data to show other people where you’ve been in <%= link_to("Google Earth", 'http://www.google.com/earth/index.html') %>.</p>
+<p>iOS devices have plenty of apps that make use of location data, so it’s not surprising that it’s easy to record that location data over time. You can then use that data to show other people where you’ve been in <%= link_to("Google Earth", 'http://www.google.com/earth/index.html') %>.</p>
 
 <h2>Overview</h2>
 
@@ -18,6 +18,6 @@
 
 <%= render 'static_pages/gps_logging_tutorials/ios_to_gpx', other_gps_path: 'gps_logging_garmin_google_earth_path' %>
 
-<%= render 'static_pages/gps_logging_tutorials/gpx_to_google_earth', other_map_path: 'gps_logging_ios_umap_path' %>
+<%= render 'static_pages/gps_logging_tutorials/gpx_to_google_earth', other_map_path: 'gps_logging_ios_osm_path' %>
 
 <%= link_to("Return to GPS Logging".html_safe, gps_logging_path, class: "btn btn-default btn-block icon-button", role: "button") %>

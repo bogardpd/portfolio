@@ -24,13 +24,13 @@ class StaticPagesController < ApplicationController
   def gps_logging_garmin_google_earth
   end
   
-  def gps_logging_garmin_umap
+  def gps_logging_garmin_osm
   end
   
   def gps_logging_ios_google_earth
   end
   
-  def gps_logging_ios_umap
+  def gps_logging_ios_osm
   end
   
   def hotel_internet_quality

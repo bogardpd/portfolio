@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   
   get 'gps-logging', to: 'static_pages#gps_logging'
   get 'gps-logging/garmin-google-earth', to: 'static_pages#gps_logging_garmin_google_earth'
-  get 'gps-logging/garmin-umap', to: 'static_pages#gps_logging_garmin_umap'
+  get 'gps-logging/garmin-osm', to: 'static_pages#gps_logging_garmin_osm'
   get 'gps-logging/ios-google-earth', to: 'static_pages#gps_logging_ios_google_earth'
-  get 'gps-logging/ios-umap', to: 'static_pages#gps_logging_ios_umap'
+  get 'gps-logging/ios-osm', to: 'static_pages#gps_logging_ios_osm'
   
   get 'hotel-internet-quality' => 'static_pages#hotel_internet_quality'
   get 'terminal-silhouettes' => 'static_pages#terminal_silhouettes'
