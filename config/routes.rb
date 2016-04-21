@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   get 'earthbound-database' => 'static_pages#earthbound_database'
   get 'flight-historian' => 'static_pages#flight_historian'
   
-  get 'gps-logging' => 'static_pages#gps_logging'
-  get 'gps-logging/garmin' => 'static_pages#gps_logging_garmin'
-  get 'gps-logging/ios' => 'static_pages#gps_logging_ios'
+  get 'gps-logging', to: 'static_pages#gps_logging'
+  get 'gps-logging/garmin-google-earth', to: 'static_pages#gps_logging_garmin_google_earth'
+  get 'gps-logging/garmin-umap', to: 'static_pages#gps_logging_garmin_umap'
+  get 'gps-logging/ios-google-earth', to: 'static_pages#gps_logging_ios_google_earth'
+  get 'gps-logging/ios-umap', to: 'static_pages#gps_logging_ios_umap'
   
   get 'hotel-internet-quality' => 'static_pages#hotel_internet_quality'
   get 'terminal-silhouettes' => 'static_pages#terminal_silhouettes'

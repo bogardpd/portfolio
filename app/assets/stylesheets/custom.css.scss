@@ -66,6 +66,26 @@ a.btn {
 	text-decoration: none;
 }
 
+code, kbd {
+	font-family: $font-stack-monospace;
+}
+
+div.byline {
+	text-align: center;
+	color: $color-text-light;
+	font-style: italic;
+	margin-top: -5px;
+	margin-bottom: 35px;
+}
+
+div.byline::before {
+	content: '— ';
+}
+
+div.byline::after {
+	content: ' —';
+}
+
 div.image {
 	text-align: center;
 	margin-top: 20px;
@@ -105,13 +125,6 @@ p {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	line-height: $line-height-default;
-}
-
-
-span.code {
-	font-family: $font-stack-monospace;
-	background: $color-background-light;
-	padding: 1px 5px;
 }
 
 strong {

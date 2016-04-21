@@ -5,13 +5,21 @@
 <p><%= link_to("Flights", flight_historian_path) %> aren’t the only things I like to map. I also often record GPS data while driving, bicycling, or walking, and create maps of the routes.</p>
 
 <div class="row button-row">
-	<div class="col-sm-6">
-		<%= link_to("How to create route maps with <strong>Garmin</strong>".html_safe, gps_logging_garmin_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+	<div class="col-md-6">
+		<%= link_to("How to create route maps with<br/><strong>Garmin</strong> and <strong>Google Earth</strong>".html_safe, gps_logging_garmin_google_earth_path, class: "btn btn-default btn-block icon-button", role: "button") %>
 	</div>
-	<div class="col-sm-6">
-		<%= link_to("How to create route maps with <strong>iOS</strong>".html_safe, gps_logging_ios_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+	<div class="col-md-6">
+		<%= link_to("How to create route maps with<br/><strong>iOS</strong> and <strong>Google Earth</strong>".html_safe, gps_logging_ios_google_earth_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+	<div class="col-md-6">
+		<%= link_to("How to create route maps with<br/><strong>Garmin</strong> and <strong>OpenStreetMap</strong>".html_safe, gps_logging_garmin_umap_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+	<div class="col-md-6">
+		<%= link_to("How to create route maps with<br/><strong>iOS</strong> and <strong>OpenStreetMap</strong>".html_safe, gps_logging_ios_umap_path, class: "btn btn-default btn-block icon-button", role: "button") %>
 	</div>
 </div>
+
+
 
 <h2>Driving</h2>
 
@@ -29,7 +37,8 @@
 
 <%= project_image("projects/gps-logging/30-Driving.png", "Google Earth map of driving tracks") %>
 
-<p>Learn how to create route maps with a Garmin GPS in my <%= link_to "Garmin GPS Logging tutorial", gps_logging_garmin_path %>.</p>
+<p>Learn how to create Google Earth route maps with a Garmin GPS in my <%= link_to "Garmin/Google Earth GPS Logging tutorial", gps_logging_garmin_google_earth_path %>.</p>
+
 
 
 <h2>Walking and Biking</h2>
@@ -42,7 +51,7 @@
 
 <p>In this case, I used <%= link_to "uMap", 'https://umap.openstreetmap.fr/en' %> with <%= link_to "OpenStreetMap", 'https://www.openstreetmap.org/' %> data. However, it would have been trivial to use the bicycling data in Google Earth instead.
 
-<p>Learn how to create route maps with an iOS device in my <%= link_to "iOS GPS Logging tutorial", gps_logging_garmin_path %>.</p>
+<p>Learn how to create route maps with an iOS device in my <%= link_to "iOS GPS Logging tutorial", gps_logging_ios_umap_path %>.</p>
 
 <h2>Ingress Mapping</h2>
 

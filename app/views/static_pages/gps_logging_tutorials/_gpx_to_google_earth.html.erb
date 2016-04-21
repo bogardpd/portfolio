@@ -1,0 +1,23 @@
+<a name="convert"></a>
+<h2>Convert the GPX File to KML</h2>
+
+<p>You now have your map data in GPX format, but Google Earth uses <%= link_to("Keyhole Markup Language", 'http://en.wikipedia.org/wiki/Keyhole_Markup_Language') %> (.kml or .kmz files) to show map annotations; it can't use .gpx directly.  Fortunately, free converters exist; I use <%= link_to("GPS Visualizer", 'http://www.gpsvisualizer.com/') %>.</p>
+
+<%= project_image("projects/gps-logging/GPS-Visualizer-01.png", "Screenshot of GPS Visualizer") %>
+
+<p>On the right side of the page, click the <kbd>Google Earth KML</kbd> link. This brings you to the following form:</p>
+
+<%= project_image("projects/gps-logging/GPS-Visualizer-02.png", "Screenshot of GPS Visualizer") %>
+
+<p>On the upper right, browse to where you saved your <code>Current.gpx</code> file.  Generally, I change the <kbd>Colorize by:</kbd> option to <kbd>None</kbd> so that all tracks end up the same color.  The defaults for the rest of the options work well.</p>
+
+<p>When you’re done, click the <kbd>Create KML file</kbd> button. This will create a .kmz file which you can download to your computer.</p>
+
+<a name="import"></a>
+<h2>Import the Location Data into Google Earth</h2>
+
+<p class="alert alert-info">If you’d prefer to use uMap (OpenStreetMaps) to map your routes, you should <%= link_to "check out this tutorial", send(other_map_path) %>.</p>
+
+<p>Simply open the .kmz file with <%= link_to("Google Earth", 'http://www.google.com/earth/index.html') %>, and you’re ready to go!</p>
+
+<%= project_image("projects/gps-logging/Google-Earth.png", "Screenshot of GPS Visualizer") %>
