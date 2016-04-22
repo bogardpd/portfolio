@@ -12,4 +12,15 @@ module StaticPagesHelper
     html.html_safe
   end
   
+  def download_link(path)
+    extension = File.extname(path).delete('.')
+    image_location = "file-icons/" + extension + ".png"
+    if Rails.application.assets.find_asset(image_location)
+      image_html = image_tag(image_location, class: "icon-button") + " "
+    else
+      image_html = nil
+    end
+    link_to("#{image_html}<strong>#{File.basename(path)}</strong> (#{number_to_human_size(File.size?("public/"+path))})".html_safe, path, class: "btn btn-default btn-block icon-button", role: "button")
+  end
+  
 end

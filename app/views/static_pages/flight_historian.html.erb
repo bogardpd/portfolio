@@ -69,11 +69,11 @@
 
 <%= project_image('projects/flight-historian/Flight-Log-Excel.png', "Screenshot of Excel spreadsheet containing flight data") %>
 
-<p>All this extra data let me do some fancy things, like make maps of all my trips on a particular airline or type of airplane, but it was a lot of extra work. I'd have to use filters in Excel, type up the routes and put them in the Great Circle Mapper, all to get a series of maps that would only be good until I took my next flight. I had a lot of data to manage.</p>
+<p>All this extra data let me do some fancy things, like make maps of all my trips on a particular airline or type of airplane, but it was a lot of extra work. I’d have to use filters in Excel, type up the routes and put them in the Great Circle Mapper, all to get a series of maps that would only be good until I took my next flight. I had a lot of data to manage.</p>
 
-<p>At the same time, I'd been teaching myself Ruby on Rails by rewriting my old PHP website. Static pages weren't particularly difficult to write, so I needed something more complex to work on.</p>
+<p>At the same time, I’d been teaching myself Ruby on Rails by rewriting my old PHP website. Static pages weren't particularly difficult to write, so I needed something more complex to work on.</p>
 
-<p>Just as I'd used my <%= link_to "EBDB", earthbound_database_path %> project to teach myself PHP and MySQL back in 2004, I decided to create a flight log database website to teach myself Ruby on Rails. I started work on this flight log in 2012, and launched the site in April 2013.</p>
+<p>Just as I’d used my <%= link_to "EBDB", earthbound_database_path %> project to teach myself PHP and MySQL back in 2004, I decided to create a flight log database website to teach myself Ruby on Rails. I started work on this flight log in 2012, and launched the site in April 2013.</p>
 
 <h2>Change Log</h2>
 
@@ -118,10 +118,10 @@
 
 <div class="row button-row">
 	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/pdf.png", class: "icon-button") + "Functional Specification (2.0)".html_safe, "files/flight-historian/Flight Log Functional Specification.pdf", class: "btn btn-default btn-block icon-button", role: "button") %>
+		<%= download_link 'files/flight-historian/Flight Log Functional Specification.pdf' %>
 	</div>
 	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/pdf.png", class: "icon-button") + "Technical Specification (2.0)".html_safe, "files/flight-historian/Flight Log Technical Specification.pdf", class: "btn btn-default btn-block icon-button", role: "button") %>
+		<%= download_link 'files/flight-historian/Flight Log Technical Specification.pdf' %>
 	</div>
 </div>
 
