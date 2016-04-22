@@ -2,13 +2,45 @@
 
 <h1>Terminal Silhouettes</h1>
 
-<p>____WRITE COPY____</p>
+<div class="row button-row">
+
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/one-hundred-airports.png", class: "icon-button") + "Read silhouette blog posts".html_safe, "https://onehundredairports.com/category/projects/terminal-silhouettes/", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "GitHub repository".html_safe, "https://github.com/bogardpd/terminal_silhouettes", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+</div>
+
+<p>I wanted to teach myself how to create Scalable Vector Graphics (SVG) drawings, so I started drawing silhouettes of airport terminals and concourses that <%= link_to "I’ve visited", 'http://www.flighthistorian.com/airports' %>.</p>
+
+<h2>Tools</h2>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<th scope="row">Vector Graphics Editor</th>
+			<td><%= link_to("Inkscape", 'https://inkscape.org') %></td>
+		</tr>
+		<tr>
+			<th scope="row">Version Control</th>
+			<td><%= link_to("Git", 'https://git-scm.com') %></td>
+		</tr>
+		<tr>
+			<th scope="row">Project Management</th>
+			<td><%= link_to("Trello", 'https://trello.com/') %></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Gallery</h2>
 
 <div class="row">
 <% @terminals.each do |iata, name| %>
-	<div class="col-lg-6">
-		<h2><%= name %> &middot; <%= iata %></h2>
-		<div class="terminal-silhouette-preview"><%= image_tag("projects/terminal-silhouettes/#{iata}.png", class: "img-responsive terminal-silhouette-preview") %></div>
+	<div class="col-lg-6 terminal-silhouette-container">
+		<h3><%= name %>&emsp;<%= iata %></h3>
+		<div class="terminal-silhouette-preview"><%= link_to(image_tag("projects/terminal-silhouettes/#{iata}.png", alt: iata, class: "img-responsive terminal-silhouette-preview"), "files/terminal-silhouettes/png/#{iata}.png") %></div>
+		<div class="terminal-silhouette-links"><%= link_to "png", "files/terminal-silhouettes/png/#{iata}.png" %> &middot; <%= link_to "svg", "files/terminal-silhouettes/svg/#{iata}.svg" %></div>
 	</div>
 <% end %>
 </div>

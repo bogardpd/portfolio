@@ -61,8 +61,20 @@ class StaticPagesController < ApplicationController
     @terminals['IND'] = "Indianapolis"
     @terminals['ITO'] = "Hilo"
     @terminals['LAX'] = "Los Angeles"
-    
+    @terminals['LGA'] = "New York (LaGuardia)"
+    @terminals['LIT'] = "Little Rock"
+    @terminals['MCO'] = "Orlando (International)"
+    @terminals['MDW'] = "Chicago (Midway)"
+    @terminals['OKC'] = "Oklahoma City"
     @terminals['ORD'] = "Chicago (O’Hare)"
+    @terminals['PDX'] = "Portland, OR"
+    @terminals['PHX'] = "Phoenix"
+    @terminals['SAV'] = "Savannah"
+    @terminals['SEA'] = "Seattle/Tacoma"
+    @terminals['SLC'] = "Salt Lake City"
+    @terminals['STL'] = "St. Louis"
+    @terminals['TUL'] = "Tulsa"
+    @terminals['YYZ'] = "Toronto (Pearson)"
     
     @terminals = @terminals.sort_by { |iata, name| name }
   end

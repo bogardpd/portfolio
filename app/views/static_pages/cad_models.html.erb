@@ -4,9 +4,22 @@
 
 <p>I’ve used <abbr title="Computer-Aided Design">CAD</abbr> software to create a number of 3D models.</p>
 
-<p>My usual tool is the freeware <%= link_to "SketchUp", 'http://www.sketchup.com/download' %>. <strong>In order to open the .skp files below, you will need to <%= link_to "download SketchUp", 'http://www.sketchup.com/download' %>.</strong></p>
+<h2>Tools</h2>
 
-<h2 id="MediaRoom">Media Room</h2>
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<th scope="row">3D Modeling Software</th>
+			<td><%= link_to("SketchUp", 'http://www.sketchup.com') %></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Gallery</h2>
+
+<p class="alert alert-info"><span class="glyphicon glyphicon-download"></span> In order to open the .skp files below, you will need to <%= link_to "download SketchUp", 'http://www.sketchup.com/download' %>.</p>
+
+<h3 id="MediaRoom">Media Room</h3>
 
 <%= project_image("projects/cad-models/Media-Room.png", "SketchUp model of a basement room") %>
 <%= download_link 'files/cad-models/Media Room.skp' %>
@@ -27,28 +40,28 @@
 
 <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> The wallpapers rendered on the screens in the above models are from <%= link_to "MikeBonnell.com", 'http://mikebonnell.com/' %>.</p>
 
-<h2 id="Home">Home</h2>
+<h3 id="Home">Home</h3>
 
 <%= project_image("projects/cad-models/Home.png", "SketchUp model of an apartment layout") %>
 <%= download_link 'files/cad-models/Home.skp' %>
 
 <p>I originally created this model with no furniture to demonstrate the layout of my apartment in a photo gallery.  Later, I created furniture for the bedroom to play around with its layout.  Eventually, I plan to model the furniture in the remainder of the apartment.</p>
 
-<h2 id="TruckWeightFrame">Truck Weight Frame</h2>
+<h3 id="TruckWeightFrame">Truck Weight Frame</h3>
 
 <%= project_image("projects/cad-models/Truck-Weight-Frame.png", "SketchUp model of a wooden frame") %>
 <%= download_link 'files/cad-models/Truck Weight Frame.skp' %>
 
 <p>I used to drive a rear wheel drive pickup truck, so during the winter, it was useful to have some weight centered over the rear axle. I created this model to design a wooden frame to hold ten concrete blocks in place in the truck bed.</p>
 
-<h2 id="Westcott">Gingerbread Westcott House</h2>
+<h3 id="Westcott">Gingerbread Westcott House</h3>
 
 <%= project_image("projects/cad-models/Westcott-Gingerbread.png", "SketchUp model of a simplified Westcott House") %>
 <%= download_link 'files/cad-models/Westcott Gingerbread.skp' %>
 
 <p>This model was used to plan out a gingerbread house based on the Frank Lloyd Wright-designed <%= link_to("Westcott House", 'http://en.wikipedia.org/wiki/Westcott_House_%28Springfield,_Ohio%29')%>.</p>
 
-<h2 id="Pancake">Pancake (Desktop Computer)</h2>
+<h3 id="Pancake">Pancake (Desktop Computer)</h3>
 
 <%= project_image("projects/cad-models/Pancake (Both Cases).png", "SketchUp models of two desktop towers") %>
 
@@ -58,7 +71,7 @@
 
 
 
-<h2 id="ChiliDog">Chili Dog (MacBook Pro)</h2>
+<h3 id="ChiliDog">Chili Dog (MacBook Pro)</h3>
 
 <%= project_image("projects/cad-models/MBP-Chili-Dog.png", "SketchUp model of a MacBook Pro laptop") %>
 <%= download_link 'files/cad-models/Computer - Chili Dog.skp' %>
@@ -67,12 +80,12 @@
 
 <p class="alert alert-info"><span class="glyphicon glyphicon-info-sign"></span> The wallpaper rendered on the screen in the above model is from <%= link_to "MikeBonnell.com", 'http://mikebonnell.com/' %>.</p>
 
-<h2 id="Wii">Nintendo Wii</h2>
+<h3 id="Wii">Nintendo Wii</h3>
 
 <%= project_image("projects/cad-models/Nintendo-Wii.png", "SketchUp model of a Nintendo Wii") %>
 <%= download_link 'files/cad-models/Nintendo Wii.skp' %>
 
-<h2 id="BoatQuarters">Boat Quarters</h2>
+<h3 id="BoatQuarters">Boat Quarters</h3>
 
 <%= project_image("projects/cad-models/Boat-Quarters.png", "SketchUp model of living quarters on a boat") %>
 <%= download_link 'files/cad-models/Boat Quarters.skp' %>

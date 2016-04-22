@@ -341,6 +341,18 @@ td.resume-date, td.resume-skill-category {
 
 /* Terminal Silhouettes */
 
+div.terminal-silhouette-container {
+	h3 {
+		text-align: center;
+	}
+}
+
+div.terminal-silhouette-links {
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 40px;
+}
+
 div.terminal-silhouette-preview {
 	max-width: 500px;
 	padding: 0;
