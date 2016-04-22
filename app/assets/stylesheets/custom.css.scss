@@ -338,3 +338,15 @@ div.resume-job-title {
 td.resume-date, td.resume-skill-category {
 	width: 25%;
 }
+
+/* Terminal Silhouettes */
+
+div.terminal-silhouette-preview {
+	max-width: 500px;
+	padding: 0;
+	margin: 0 auto;
+}
+
+img.terminal-silhouette-preview {
+	border: 1px solid $color-border;
+}

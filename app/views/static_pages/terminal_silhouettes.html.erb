@@ -1,0 +1,14 @@
+<% provide(:title, "Terminal Silhouettes")%>
+
+<h1>Terminal Silhouettes</h1>
+
+<p>____WRITE COPY____</p>
+
+<div class="row">
+<% @terminals.each do |iata, name| %>
+	<div class="col-lg-6">
+		<h2><%= name %> &middot; <%= iata %></h2>
+		<div class="terminal-silhouette-preview"><%= image_tag("projects/terminal-silhouettes/#{iata}.png", class: "img-responsive terminal-silhouette-preview") %></div>
+	</div>
+<% end %>
+</div>

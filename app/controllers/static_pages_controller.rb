@@ -43,6 +43,28 @@ class StaticPagesController < ApplicationController
   end
   
   def terminal_silhouettes
+    @terminals = Hash.new()
+    @terminals['ABI'] = "Abilene"
+    @terminals['ATL'] = "Atlanta"
+    @terminals['BOS'] = "Boston"
+    @terminals['BWI'] = "Baltimore"
+    @terminals['CHS'] = "Charleston, SC"  
+    @terminals['CLT'] = "Charlotte"
+    @terminals['CMH'] = "Columbus, OH"
+    @terminals['CVG'] = "Cincinnati"
+    @terminals['DAY'] = "Dayton"
+    @terminals['DEN'] = "Denver"
+    @terminals['DFW'] = "Dallas/Fort Worth"
+    @terminals['EWR'] = "Newark"
+    @terminals['IAD'] = "Washington (Dulles)"
+    @terminals['ICT'] = "Wichita"
+    @terminals['IND'] = "Indianapolis"
+    @terminals['ITO'] = "Hilo"
+    @terminals['LAX'] = "Los Angeles"
+    
+    @terminals['ORD'] = "Chicago (O’Hare)"
+    
+    @terminals = @terminals.sort_by { |iata, name| name }
   end
   
   def turn_signal_counter
