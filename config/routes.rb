@@ -25,4 +25,34 @@ Rails.application.routes.draw do
   get 'computers' => 'static_pages#computers'
   get 'ingress-murals' => 'static_pages#ingress_murals'
   
+  # Permanently redirect legacy flight log routes to Flight Historian:
+
+  get '/flightlog',       :to => redirect('http://www.flighthistorian.com/', :status => 301)
+  get '/flightlog/*all',  :to => redirect('http://www.flighthistorian.com/', :status => 301)
+
+  get '/flights',         :to => redirect('http://www.flighthistorian.com/flights', :status => 301)
+  get '/flights/*all',    :to => redirect('http://www.flighthistorian.com/flights', :status => 301)
+
+  get '/trips',           :to => redirect('http://www.flighthistorian.com/trips', :status => 301)
+  get '/trips/*all',      :to => redirect('http://www.flighthistorian.com/trips', :status => 301)
+
+  get '/aircraft',        :to => redirect('http://www.flighthistorian.com/aircraft', :status => 301)
+  get '/aircraft/*all',   :to => redirect('http://www.flighthistorian.com/aircraft', :status => 301)
+
+  get '/airlines',        :to => redirect('http://www.flighthistorian.com/airlines', :status => 301)
+  get '/airlines/*all',   :to => redirect('http://www.flighthistorian.com/airlines', :status => 301)
+  get '/operators/*all',  :to => redirect('http://www.flighthistorian.com/airlines', :status => 301)
+
+  get '/airports',        :to => redirect('http://www.flighthistorian.com/airports', :status => 301)
+  get '/airports/*all',   :to => redirect('http://www.flighthistorian.com/airports', :status => 301)
+
+  get '/classes',         :to => redirect('http://www.flighthistorian.com/classes', :status => 301)
+  get '/classes/*all',    :to => redirect('http://www.flighthistorian.com/classes', :status => 301)
+
+  get '/tails',           :to => redirect('http://www.flighthistorian.com/tails', :status => 301)
+  get '/tails/*all',      :to => redirect('http://www.flighthistorian.com/tails', :status => 301)
+
+  get '/routes',          :to => redirect('http://www.flighthistorian.com/routes', :status => 301)
+  get '/routes/*all',     :to => redirect('http://www.flighthistorian.com/routes', :status => 301)
+
 end
