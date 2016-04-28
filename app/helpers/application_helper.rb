@@ -24,4 +24,14 @@ module ApplicationHelper
     end
   end
   
+  # Return a div if this link is the current page, and a link otherwise
+  def nav_link(text, path)
+     if current_page?(path)
+       html = "<li>#{link_to(text, path, class: 'selected')}</li>"
+     else
+       html = "<li>#{link_to(text, path)}</li>"
+     end
+     html.html_safe
+  end
+  
 end

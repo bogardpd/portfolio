@@ -163,8 +163,14 @@ header {
 		.navbar-nav > .active > a:hover, 
 		.navbar-nav > .active > a:focus {
 		    color: $color-inverse-text;
-		    background-color: $color-primary;
+		    background-color: $color-primary-extra-light;
 		}
+		
+		.selected {
+			font-weight: bold;
+		}
+		
+				
 		.navbar-nav > .open > a, 
 		.navbar-nav > .open > a:hover, 
 		.navbar-nav > .open > a:focus {
