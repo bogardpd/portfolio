@@ -1,5 +1,16 @@
 <% provide(:meta_description, "Paul Bogard’s portfolio of programming, engineering, mapping, and other projects.")%>
 
+<div class="row button-row">
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/resume.png", class: "icon-button") + "Paul’s <strong>Résumé</strong>".html_safe, resume_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "Paul’s <strong>GitHub</strong> repositories".html_safe, "https://github.com/bogardpd", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+</div>
+
+
+
 <div class="row project-row">
 	
 	<div class="col-lg-4 col-sm-6 project">
@@ -77,4 +88,3 @@
 </div>
 
 
-<div class="text-center"><%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "See Paulʼs programming projects on GitHub", "https://github.com/bogardpd", class: "btn btn-default btn-block icon-button", role: "button") %></div>
