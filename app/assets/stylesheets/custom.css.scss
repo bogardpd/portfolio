@@ -339,6 +339,10 @@ ul.component {
 td.reading-title {
 	width: 50%;
 	font-style: italic;
+	span {
+		font-size: 80%;
+		font-weight: 300;
+	}
 }
 
 td.reading-author {
