@@ -58,7 +58,16 @@ a {
 	text-decoration: underline;
 }
 
+a:visited {
+	color: $color-primary-extra-light;
+	text-decoration: underline;
+}
+
 a:hover {
+	color: $color-primary-light;
+}
+
+a:active {
 	color: $color-primary-light;
 }
 
