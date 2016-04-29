@@ -1,7 +1,9 @@
 <% provide(:title, "Reading List")%>
 <% provide(:meta_description, "Books that Paul Bogard is reading or has completed reading.")%>
 
-<h2>Currently Reading</h2>
+<h1>Reading List</h1>
+
+<h2 id="current">Currently Reading</h2>
 
 <table class="table table-striped">
 	<thead>
@@ -11,14 +13,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td class="reading-title"><%= link_to "Flow", 'http://www.amazon.com/Flow-Harper-Perennial-Modern-Classics-ebook/dp/B000W94FE6' %><br/><span>The Psychology of Optimal Experience</span></td>
-			<td class="reading-author">Mihaly Csikszentmihalyi</td>
-		</tr>
+		
+		<%= render 'reading_list_book', title: "Flow", subtitle: "The Psychology of Optimal Experience", author: "Mihaly Csikszentmihalyi", amazon: "B000W94FE6" %>
+		
 	</tbody>
 </table>
 
-<h2>Completed in 2016</h2>
+<h2 id="2016">Completed in 2016</h2>
 
 <table class="table table-striped">
 	<thead>
@@ -28,30 +29,23 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td class="reading-title"><%= link_to "Disrupted", 'http://www.amazon.com/Disrupted-My-Misadventure-Start-Up-Bubble-ebook/dp/B013CATZIC' %><br/><span>My Misadventure in the Start-Up Bubble</span></td>
-			<td class="reading-author">Dan Lyons</td>
-		</tr>
-		<tr>
-			<td class="reading-title"><%= link_to "Bait and Switch", 'http://www.amazon.com/Bait-Switch-Futile-Pursuit-American-ebook/dp/B003G83UL4' %><br/><span>The (Futile) Pursuit of the American Dream</span></td>
-			<td class="reading-author">Barbara Ehrenreich</td>
-		</tr>
-		<tr>
-			<td class="reading-title"><%= link_to "Misbehaving", 'http://www.amazon.com/Misbehaving-Behavioral-Economics-Richard-Thaler-ebook/dp/B00NUB4GFQ' %><br/><span>The Making of Behavioral Economics</span></td>
-			<td class="reading-author">Richard H. Thaler</td>
-		</tr>
-		<tr>
-			<td class="reading-title"><%= link_to "Donʼt Get Too Comfortable", 'http://www.amazon.com/Dont-Get-Too-Comfortable-Indignities-ebook/dp/B000FCKD0U' %><br/><span>The Indignities of Coach Class, The Torments of Low Thread Count, The Never-Ending Quest for Artisanal Olive Oil, and Other First World Problems</span></td>
-			<td class="reading-author">David Rakoff</td>
-		</tr>
-		<tr>
-			<td class="reading-title"><%= link_to "Nickel and Dimed", 'http://www.amazon.com/Nickel-Dimed-Not-Getting-America-ebook/dp/B001BAJ25W' %><br/><span>On (Not) Getting By in America</span></td>
-			<td class="reading-author">Barbara Ehrenreich</td>
-		</tr>
+		
+		<%= render 'reading_list_book', title: "Disrupted", subtitle: "My Misadventure in the Start-Up Bubble", author: "Dan Lyons", amazon: "B013CATZIC" %>
+		
+		<%= render 'reading_list_book', title: "Bait and Switch", subtitle: "The (Futile) Pursuit of the American Dream", author: "Barbara Ehrenreich", amazon: "B003G83UL4" %>
+		
+		<%= render 'reading_list_book', title: "Misbehaving", subtitle: "The Making of Behavioral Economics", author: "Richard H. Thaler", amazon: "B00NUB4GFQ" %>
+		
+		<%= render 'reading_list_book', title: "Don’t Get Too Comfortable", subtitle: "The Indignities of Coach Class, The Torments of Low Thread Count, The Never-Ending Quest for Artisanal Olive Oil, and Other First World Problems", author: "David Rakoff", amazon: "B000FCKD0U" %>
+		
+		<%= render 'reading_list_book', title: "Nickel and Dimed", subtitle: "On (Not) Getting By in America", author: "Barbara Ehrenreich", amazon: "B001BAJ25W" %>
+		
+		<%= render 'reading_list_book', title: "Antifragile", subtitle: "Things That Gain from Disorder", author: "Nassim Nicholas Taleb", amazon: "B0083DJWGO" %>
+		
 	</tbody>
 </table>
 
-<h2>Completed in 2015</h2>
+<h2 id="2015">Completed in 2015</h2>
 
 <table class="table table-striped">
 	<thead>
@@ -61,22 +55,26 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td class="reading-title"><%= link_to "Antifragile", 'http://www.amazon.com/Antifragile-Things-That-Disorder-Incerto-ebook/dp/B0083DJWGO' %><br/><span>Things That Gain from Disorder</span></td>
-			<td class="reading-author">Nassim Nicholas Taleb</td>
-		</tr>
-		<tr>
-			<td class="reading-title"><%= link_to "The Geography of Nowhere", 'http://www.amazon.com/Antifragile-Things-That-Disorder-Incerto-ebook/dp/B0083DJWGO' %><br/><span>The Rise and Decline of Americaʼs Man-made Landscape</span></td>
-			<td class="reading-author">James Howard Kunstler</td>
-		</tr>
-		<tr>
-			<td class="reading-title"><%= link_to "First, Break All the Rules", 'http://www.amazon.com/First-Break-All-Rules-Differently-ebook/dp/B00HL2S4LW' %><br/><span>What the Worldʼs Greatest Managers Do Differently</span></td>
-			<td class="reading-author">Marcus Buckingham<br/>Curt Coffman</td>
-		</tr>
-		<tr>
-			<td class="reading-title"><%= link_to "Walkable City", 'http://www.amazon.com/Walkable-City-Downtown-Save-America-ebook/dp/B008423170' %><br/><span>How Downtown Can Save America, One Step at a Time</span></td>
-			<td class="reading-author">Jeff Speck</td>
-		</tr>
+		
+		<%= render 'reading_list_book', title: "The Geography of Nowhere", subtitle: "The Rise and Decline of America’s Man-made Landscape", author: "James Howard Kunstler", amazon: "B00F7OM1HE" %>
+		
+		<%= render 'reading_list_book', title: "First, Break All the Rules", subtitle: "What the World’s Greatest Managers Do Differently", author: "Marcus Buckingham<br/>Curt Coffman", amazon: "B00HL2S4LW" %>
+		
+		<%= render 'reading_list_book', title: "Walkable City", subtitle: "How Downtown Can Save America, One Step at a Time", author: "Jeff Speck", amazon: "B008423170" %>
+		
+		<%= render 'reading_list_book', title: "Mostly Harmless", author: "Douglas Adams" %>
+		
+		<%= render 'reading_list_book', title: "So Long, and Thanks for All the Fish", author: "Douglas Adams" %>
+		
+		<%= render 'reading_list_book', title: "Life, the Universe and Everything", author: "Douglas Adams" %>
+		
+		<%= render 'reading_list_book', title: "The Restaurant at the End of the Universe", author: "Douglas Adams" %>
+		
+		<%= render 'reading_list_book', title: "The Hitchhiker’s Guide to the Galaxy", author: "Douglas Adams" %>
+		
+		<%= render 'reading_list_book', title: "Stuffocation", subtitle: "Why We’ve Had Enough of Stuff and Need Experience More Than Ever", author: "James Wallman", amazon: "B00N6PEP7A" %>
+		
+		<%= render 'reading_list_book', title: "The Martian", author: "Andy Weir", amazon: "B00EMXBDMA" %>
 		
 	</tbody>
 </table>

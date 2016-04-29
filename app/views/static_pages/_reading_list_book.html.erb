@@ -1,0 +1,13 @@
+<tr>
+	<td class="reading-title">
+		<% if defined? amazon %>
+			<%= link_to title, "https://www.amazon.com/gp/product/#{amazon}" %>
+		<% else %>
+			<%= title %>
+		<% end %>
+		<% if defined? subtitle %>
+			<br/><span><%= subtitle %></span>
+		<% end %>
+	</td>
+	<td class="reading-author"><%= author.html_safe %></td>
+</tr>
