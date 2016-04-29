@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   get 'computers' => 'static_pages#computers'
   get 'ingress-murals' => 'static_pages#ingress_murals'
   
+  # Non-linked Pages
+  get 'reading-list' => 'static_pages#reading_list'
+  
   # Permanently redirect legacy flight log routes to Flight Historian:
 
   get '/flightlog',       :to => redirect('http://www.flighthistorian.com/', :status => 301)

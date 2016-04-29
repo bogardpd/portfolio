@@ -39,6 +39,9 @@ class StaticPagesController < ApplicationController
   def ingress_murals
   end
   
+  def reading_list
+  end
+  
   def resume
   end
   
