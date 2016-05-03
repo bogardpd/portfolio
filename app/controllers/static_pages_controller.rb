@@ -45,6 +45,10 @@ class StaticPagesController < ApplicationController
   def resume
   end
   
+  def stephenvlog
+    @vlogs = Array.new
+  end
+  
   def terminal_silhouettes
     @terminals = Hash.new()
     @terminals['ABI'] = "Abilene"

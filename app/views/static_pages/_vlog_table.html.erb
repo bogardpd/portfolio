@@ -1,0 +1,18 @@
+<div class="row"><div class="col-md-8 col-md-offset-2">
+<table class="table table-striped">
+	<% @vlogs.each do |vlog| %>
+		<tr>
+			<td class="video-thumbnail"><%= link_to(image_tag("http://img.youtube.com/vi/#{vlog[1]}/mqdefault.jpg", :class => "video_gallery", :width => 160, :height => 90, :title => vlog[0]), "http://www.youtube.com/watch?v=#{vlog[1]}")%></td>
+			<td class="video-title">
+				<%= link_to(vlog[0], "http://www.youtube.com/watch?v=#{vlog[1]}") %>
+				<p class="supplemental">Day <%= vlog[2] %> &middot; <%= format_date(Date.parse(vlog[3])) %></p>
+			</td>
+			<td class="video-trip-link">
+				<% if vlog[4] %>
+				<%= link_to("✈", "http://www.flighthistorian.com/trips/#{vlog[4]}", :title => "View this trip on Paul Bogard’s Flight Historian")%>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+</div></div>

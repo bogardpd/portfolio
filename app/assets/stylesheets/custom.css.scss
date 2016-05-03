@@ -322,16 +322,7 @@ ul.component {
 		margin: 0;
 		font-weight: normal;		
 	}
-	p.supplemental {
-		font-size: 80%;
-		margin: 0 0 0 15px;
-		color: $color-text-light;
-	}
-	p.purchased {
-		font-size: 70%;
-		margin: 0 0 0 15px;
-		color: $color-text-light;
-	}
+
 	p.recent {
 		font-weight: bold;
 		color: $color-text-light-good;
@@ -342,6 +333,18 @@ ul.component {
 	span.unpictured {
 		font-style: italic;
 	}
+}
+
+p.supplemental {
+	font-size: 80%;
+	margin: 0 0 0 15px;
+	color: $color-text-light;
+}
+
+p.purchased, p.date {
+	font-size: 70%;
+	margin: 0 0 0 15px;
+	color: $color-text-light;
 }
 
 /* Reading List */
@@ -392,4 +395,14 @@ div.terminal-silhouette-preview {
 
 img.terminal-silhouette-preview {
 	border: 1px solid $color-border;
+}
+
+/* Stephenvlog */
+
+td.video-thumbnail {
+	width: 170px;
+}
+
+td.video-trip-link {
+	width: 50px;
 }

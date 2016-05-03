@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   
   # Non-linked Pages
   get 'reading-list' => 'static_pages#reading_list'
+  get 'stephenvlog' => 'static_pages#stephenvlog'
   
   # Permanently redirect legacy flight log routes to Flight Historian:
 
