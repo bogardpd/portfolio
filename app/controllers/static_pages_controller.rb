@@ -75,6 +75,7 @@ class StaticPagesController < ApplicationController
     @terminals['MCO'] = "Orlando (International)"
     @terminals['MDW'] = "Chicago (Midway)"
     @terminals['MHT'] = "Manchester, NH"
+    @terminals['MKE'] = "Milwaukee"
     @terminals['OKC'] = "Oklahoma City"
     @terminals['ORD'] = "Chicago (O’Hare)"
     @terminals['PDX'] = "Portland, OR"
