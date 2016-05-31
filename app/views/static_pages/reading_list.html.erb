@@ -2,7 +2,7 @@
 <% provide(:meta_description, "Books that Paul Bogard is reading or has completed reading.")%>
 
 <h1>Reading List</h1>
-
+<!-->
 <h2 id="current">Currently Reading</h2>
 
 <table class="table table-striped">
@@ -14,13 +14,11 @@
 	</thead>
 	<tbody>
 		
-		<%= render 'reading_list_book', title: "The Visual Display of Quantitative Information", author: "Edward R. Tufte" %>
 		
-		<%= render 'reading_list_book', title: "Digital Gold", subtitle: "Bitcoin and the Inside Story of the Misfits and Millionaires Trying to Reinvent Money", author: "Nathaniel Popper", amazon: "B00P6TZLOU" %>
 		
 	</tbody>
 </table>
-
+-->
 <h2 id="2016">Completed in 2016</h2>
 
 <table class="table table-striped">
@@ -31,6 +29,10 @@
 		</tr>
 	</thead>
 	<tbody>
+		
+		<%= render 'reading_list_book', title: "Digital Gold", subtitle: "Bitcoin and the Inside Story of the Misfits and Millionaires Trying to Reinvent Money", author: "Nathaniel Popper", amazon: "B00P6TZLOU" %> <!-- 23 May 2016 -->
+		
+		<%= render 'reading_list_book', title: "The Visual Display of Quantitative Information", author: "Edward R. Tufte" %>
 		
 		<%= render 'reading_list_book', title: "Flow", subtitle: "The Psychology of Optimal Experience", author: "Mihaly Csikszentmihalyi", amazon: "B000W94FE6" %>
 		
