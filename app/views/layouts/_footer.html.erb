@@ -1,3 +1,7 @@
 <footer>
-	<%= link_to("Paul Bogard", about_path) %> created this portfolio, which is licensed under a <%= link_to("CC BY-SA 4.0 License", 'https://creativecommons.org/licenses/by-sa/4.0/', rel: "license") %>.
+	<p><%= link_to("Paul Bogard", about_path) %> created this portfolio, which is licensed under a <%= link_to("CC BY-SA 4.0 License", 'https://creativecommons.org/licenses/by-sa/4.0/', rel: "license") %>.</p>
+  
+  <% if logged_in? %>
+    <p>Logged in as <span class="username"><%= current_user.username %></span>  (<%= link_to "log out", logout_path, method: "delete" %>)</p>
+  <% end %>
 </footer>

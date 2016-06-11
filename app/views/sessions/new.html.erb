@@ -1,0 +1,27 @@
+<% provide(:title, "Log In")%>
+<% provide(:meta_description, "Log In to Paul Bogard’s Portfolio.")%>
+
+<h1>Log In</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+      
+      <p>
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control' %>
+      </p>
+      
+      <p>
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </p>
+      
+      <p>
+        <%= f.submit "Log in", class: 'btn btn-primary' %>
+      </p>
+
+    <% end %>
+
+  </div>
+</div>
