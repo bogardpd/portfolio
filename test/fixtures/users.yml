@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
+  username: userone
+  password_digest: <%= User.digest('password') %>
 
 two:
-  username: MyString2
+  username: usertwo
+  password_digest: <%= User.digest('password') %>

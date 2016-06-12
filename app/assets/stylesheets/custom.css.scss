@@ -53,12 +53,12 @@ textarea {
 	text-align: center;
 }
 
-a {
+a:not(.btn) {
 	color: $color-primary-extra-light;
 	text-decoration: underline;
 }
 
-a:visited {
+a:not(.btn):visited {
 	color: $color-primary-extra-light;
 	text-decoration: underline;
 }
@@ -74,6 +74,8 @@ a:active {
 a.btn {
 	text-decoration: none;
 }
+
+
 
 code, kbd {
 	font-family: $font-stack-monospace;
@@ -317,6 +319,12 @@ img.project-icon {
 	box-shadow: 1px 1px 2px $color-background-light;
 }
 
+/* Forms */
+
+input.date-field {
+  width: 175px;
+}
+
 /* Computers */
 
 ul.component {
@@ -359,7 +367,7 @@ p.purchased, p.date {
 /* Reading List */
 
 td.reading-title {
-	width: 50%;
+	width: 60%;
 	font-style: italic;
 	span {
 		font-size: 80%;
@@ -368,7 +376,11 @@ td.reading-title {
 }
 
 td.reading-author {
-	width: 50%;
+}
+
+td.reading-edit {
+  width: 20px;
+  text-align: right;
 }
 
 /* Resume */

@@ -30,8 +30,9 @@ Rails.application.routes.draw do
   get 'ingress-murals' => 'static_pages#ingress_murals'
   
   # Non-linked Pages
-  get 'reading-list' => 'static_pages#reading_list'
   get 'stephenvlog'  => 'static_pages#stephenvlog'
+  
+  resources :books
   
   # Permanently redirect legacy flight log routes to Flight Historian:
 
