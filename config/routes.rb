@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get 'stephenvlog'  => 'static_pages#stephenvlog'
   
   resources :books
+  get '/reading-list', :to => redirect('/books', :status => 301)
   
   # Permanently redirect legacy flight log routes to Flight Historian:
 
