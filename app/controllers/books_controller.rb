@@ -2,8 +2,8 @@ class BooksController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @books = Book.all.order(completion_date: :desc)
-    # Split books up by year (and by currently reading)
+    @currently_reading = Book.currently_reading
+    @books_by_year = Book.books_by_year
   end
   
   def new
