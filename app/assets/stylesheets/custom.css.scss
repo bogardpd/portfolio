@@ -58,11 +58,6 @@ a:not(.btn) {
 	text-decoration: underline;
 }
 
-a:not(.btn):visited {
-	color: $color-primary-extra-light;
-	text-decoration: underline;
-}
-
 a:hover {
 	color: $color-primary-light;
 }
