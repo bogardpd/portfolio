@@ -26,8 +26,9 @@ Rails.application.routes.draw do
   get 'resume' => 'static_pages#resume'
   
   # Other Pages
-  get 'computers'      => 'static_pages#computers'
-  get 'ingress-murals' => 'static_pages#ingress_murals'
+  get 'computers'       => 'static_pages#computers'
+  get 'ingress-mosaics' => 'static_pages#ingress_mosaics'
+  get 'ingress-murals', :to => redirect('/ingress-mosaics', :status => 301)
   
   # Non-linked Pages
   get 'stephenvlog'  => 'static_pages#stephenvlog'
