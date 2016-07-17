@@ -1,0 +1,87 @@
+<% provide(:title, "Group Itinerary")%>
+<% provide(:meta_description, "How Paul Bogard created his Group Itinerary web application.")%>
+
+<h1>Group Itinerary</h1>
+
+<div class="row button-row">
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/group-itinerary.png", class: "icon-button") + "Visit <strong>Group Itinerary</strong>".html_safe, "https://group-itinerary.herokuapp.com/", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "<strong>GitHub</strong> repository".html_safe, "https://github.com/bogardpd/group_itinerary", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+</div>
+
+<p>I’ve been to a lot of conferences, conventions, and trips where a group of people are coming on several different flights, yet trying to share cars from the airport. Traditionally, this has been a bit of an organizational challenge, usually involving having everyone post their flights to a shared spreadsheet. I created Group Itinerary to show everyone’s flights visually, so you can easily see who’s arriving and departing at similar times.</p>
+
+<h2>Tools</h2>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<th scope="row">Languages &amp; Frameworks</th>
+			<td>
+				Ruby on Rails (2.2.4, 4.2.3)<br/>
+				HTML<br/>
+				CSS<br/>
+        SVG<br/>
+				JavaScript
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Database</th>
+			<td>PostgreSQL</td>
+		</tr>
+		<tr>
+			<th scope="row">Version Control</th>
+			<td><%= link_to("Git", 'https://git-scm.com') %></td>
+		</tr>
+		<tr>
+			<th scope="row">Hosting</th>
+			<td><%= link_to("Heroku", 'https://www.heroku.com/') %></td>
+		</tr>
+		<tr>
+			<th scope="row">Project Management</th>
+			<td><%= link_to("Trello", 'https://trello.com/') %></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>History</h2>
+
+<p>Since I’m such a fan of <%= link_to "tracking travel", flight_historian_path %>, I’ve often ended up being the person tabulating friends’ flight arrivals and departures for conventions.</p>
+
+<p>In early 2015, a group of friends had started posting their flights for a summer convention we’d all be attending.</p>
+
+<p>I’d recently been looking up flights on <%= link_to "ITA Matrix Airfare Search", 'http://matrix.itasoftware.com/' %>, which has a time bar view that visually shows the times and durations of a large number of flights:</p>
+
+<%= project_image('projects/group-itinerary/time-bar.png') %>
+
+<p>In this case, Matrix is showing a different flight option in each row, and you can easily see at a glance what flights depart around the same times. I realized that something similar to these time bars could work great to graphically show different travelers’ flight times, too, and began sketching out a prototype layout.</p>
+
+<p>In order for this to work, I needed to be able to generate an image automatically from a collection of data. I’d had some experience with using both ASP and PHP to generate bar graphs. However, I’d wanted to learn how to generate Scalable Vector Graphics (SVG) images for a while. Since SVG could be embedded inline in HTML, it would be relatively easy to generate them in a Ruby on Rails application.</p>
+
+<p>My initial prototype worked very well; I could provide a nested array of flight data and it would create time bar inspired charts of the flight times. However, an array wasn’t a good long term solution for flight data storage; I would be required to edit my code every time I wanted to add a new flight, and it wouldn’t allow me to let other people create their own group itineraries.</p>
+
+<p>I created a simple database backend for the Group Itinerary, with the following structure:</p>
+
+<%= project_image('projects/group-itinerary/class-diagram.png') %>
+
+<h2>Change Log</h2>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Release</th>
+			<th>Changes</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>19 June 2016</th>
+			<td>0.1</td>
+			<td>Beta</td>
+		</tr>
+	</tbody>
+</table>

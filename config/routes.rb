@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # Projects
   get 'cad-models'             => 'static_pages#cad_models'
   get 'earthbound-database'    => 'static_pages#earthbound_database'
+  get 'group-itinerary'        => 'static_pages#group_itinerary'
   get 'flight-historian'       => 'static_pages#flight_historian'
   get 'hotel-internet-quality' => 'static_pages#hotel_internet_quality'
   get 'terminal-silhouettes'   => 'static_pages#terminal_silhouettes'

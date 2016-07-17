@@ -33,6 +33,9 @@ class StaticPagesController < ApplicationController
   def gps_logging_ios_osm
   end
   
+  def group_itinerary
+  end
+  
   def hotel_internet_quality
   end
   
