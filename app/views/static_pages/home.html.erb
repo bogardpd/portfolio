@@ -23,6 +23,15 @@
 	</div>
 	
 	<div class="col-lg-4 col-sm-6 project">
+		<%= link_to(("<h2>Group Itinerary</h2>"	+
+		image_tag("projects/covers/group-itinerary.png", class: "project-icon", alt: "GPS Logging") +
+		"<p>Flight time charts for multiple travelers</p>").html_safe,
+		group_itinerary_path,
+		class: "btn btn-link btn-block" )
+		%>
+	</div>
+	
+	<div class="col-lg-4 col-sm-6 project">
 		<%= link_to(("<h2>GPS Logging</h2>"	+
 		image_tag("projects/covers/gps-logging.png", class: "project-icon", alt: "GPS Logging") +
 		"<p>Maps of travel paths</p>").html_safe,
