@@ -155,13 +155,20 @@
 		<tr>
 			<th scope="row">Storage</th>
 			<td>
-				<ul class="component">
-					<li>
-						<p class="component">1 TB Samsung 840 EVO</p>
-						<p class="supplemental">SSD &middot; SATA</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
-					</li>
-				</ul>
+        <ul class="component">
+          <li>
+            <p class="component">1 TB Samsung 840 EVO</p>
+            <p class="supplemental">SSD &middot; SATA</p>
+            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+          </li>
+        </ul>
+        <ul class="component">
+          <li>
+            <p class="component">3 TB Western Digital Blue</p>
+            <p class="supplemental">HDD in hot swap rack &middot; 5400 RPM &middot; SATA</p>
+            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-18"} %>
+          </li>
+        </ul>
 			</td>
 			<td>
 				<ul class="component">
@@ -186,21 +193,6 @@
 					<li>
 						<p class="component">Samsung DVD±R</p>
 						<p class="supplemental">20×</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-05-02"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-			</td>
-		</tr>
-		
-		<tr>
-			<th scope="row">Card Reader</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">nMediaPC 3.5″ Bay Card Reader</p>
-						<p class="supplemental">CF &middot; MS &middot; MD &middot; SD &middot; MMC &middot; XD &middot; SM &middot; USB</p>
 						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-05-02"} %>
 					</li>
 				</ul>
@@ -252,22 +244,38 @@
 			</td>
 		</tr>
 		
-		<tr>
-			<th scope="row">Case</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Silverstone TJ08B-E</p>
-						<p class="supplemental">Black &middot; MicroATX mini tower</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-				
-			</td>
-		</tr>
-		
+		    <tr>
+		      <th scope="row">Case</th>
+		      <td>
+		        <ul class="component">
+		          <li>
+		            <p class="component">Silverstone TJ08B-E</p>
+		            <p class="supplemental">Black &middot; MicroATX mini tower</p>
+		            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+		          </li>
+		        </ul>
+		      </td>
+		      <td>
+		        
+		      </td>
+		    </tr>
+		    
+		    <tr>
+		      <th scope="row">Disk Mobile Rack</th>
+		      <td>
+		        <ul class="component">
+		          <li>
+		            <p class="component">StarTech 5.25″ Trayless Hot Swap Mobile Rack</p>
+		            <p class="supplemental">3.5″ disk &middot; SATA</p>
+		            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-18"} %>
+		          </li>
+		        </ul>
+		      </td>
+		      <td>
+		        
+		      </td>
+		    </tr>
+		    
 		<tr>
 			<th scope="row">CPU Cooler</th>
 			<td>
