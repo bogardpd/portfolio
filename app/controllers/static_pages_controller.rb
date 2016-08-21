@@ -42,6 +42,10 @@ class StaticPagesController < ApplicationController
   def ingress_mosaics
   end
   
+  def letsencrypt
+    render text: "jKHQQ6hxSowoAemiP2u4utT0LOEMUQELlhVLG8v5fWI.CVdYVvLUZrSKMaO47kARZTGMHyRaz5zQgRNMa7gtC_A"
+  end
+  
   def reading_list
   end
   

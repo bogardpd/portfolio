@@ -37,6 +37,9 @@ Rails.application.routes.draw do
   resources :books
   get '/reading-list', :to => redirect('/books', :status => 301)
   
+  # Certbot
+  get '/.well-known/acme-challenge/:id' => 'static_pages#letsencrypt'
+  
   # Permanently redirect legacy flight log routes to Flight Historian:
 
   get '/flightlog',       :to => redirect('http://www.flighthistorian.com/', :status => 301)
