@@ -33,9 +33,6 @@ class StaticPagesController < ApplicationController
   def gps_logging_ios_osm
   end
   
-  def group_itinerary
-  end
-  
   def hotel_internet_quality
   end
   
@@ -43,13 +40,16 @@ class StaticPagesController < ApplicationController
   end
   
   def letsencrypt
-    render text: "jKHQQ6hxSowoAemiP2u4utT0LOEMUQELlhVLG8v5fWI.CVdYVvLUZrSKMaO47kARZTGMHyRaz5zQgRNMa7gtC_A"
+    render text: ""
   end
   
   def reading_list
   end
   
   def resume
+  end
+  
+  def shared_itinerary
   end
   
   def stephenvlog

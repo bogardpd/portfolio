@@ -1,18 +1,18 @@
-<% provide(:title, "Group Itinerary")%>
-<% provide(:meta_description, "How Paul Bogard created his Group Itinerary web application.")%>
+<% provide(:title, "Shared Itinerary")%>
+<% provide(:meta_description, "How Paul Bogard created his Shared Itinerary web application.")%>
 
-<h1>Group Itinerary</h1>
+<h1>Shared Itinerary</h1>
 
 <div class="row button-row">
 	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/group-itinerary.png", class: "icon-button") + "Visit <strong>Group Itinerary</strong>".html_safe, "https://group-itinerary.herokuapp.com/", class: "btn btn-default btn-block icon-button", role: "button") %>
+		<%= link_to(image_tag("projects/icons/shared-itinerary.png", class: "icon-button") + "Visit <strong>Shared Itinerary</strong>".html_safe, "https://www.shareditinerary.com/", class: "btn btn-default btn-block icon-button", role: "button") %>
 	</div>
 	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "<strong>GitHub</strong> repository".html_safe, "https://github.com/bogardpd/group_itinerary", class: "btn btn-default btn-block icon-button", role: "button") %>
+		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "<strong>GitHub</strong> repository".html_safe, "https://github.com/bogardpd/shared_itinerary", class: "btn btn-default btn-block icon-button", role: "button") %>
 	</div>
 </div>
 
-<p>I’ve been to a lot of conferences, conventions, and trips where a group of people are coming on several different flights, yet trying to share cars from the airport. Traditionally, this has been a bit of an organizational challenge, usually involving having everyone post their flights to a shared spreadsheet. I created Group Itinerary to show everyone’s flights visually, so you can easily see who’s arriving and departing at similar times.</p>
+<p>I’ve been to a lot of conferences, conventions, and trips where a group of people are coming on several different flights, yet trying to share cars from the airport. Traditionally, this has been a bit of an organizational challenge, usually involving having everyone post their flights to a shared spreadsheet. I created Shared Itinerary to show everyone’s flights visually, so you can easily see who’s arriving and departing at similar times.</p>
 
 <h2>Tools</h2>
 
@@ -47,25 +47,25 @@
 	</tbody>
 </table>
 
-<h2>Group Itinerary</h2>
+<h2>Shared Itinerary</h2>
 
 <div class="row button-row">
 	<div class="col-sm-12">
-		<%= link_to(image_tag("projects/icons/group-itinerary.png", class: "icon-button") + "See the sample <strong>Group Itinerary</strong> event".html_safe, "https://group-itinerary.herokuapp.com/events/1/share/089f040a3616898d", class: "btn btn-default btn-block icon-button", role: "button") %>
+		<%= link_to(image_tag("projects/icons/shared-itinerary.png", class: "icon-button") + "See the sample <strong>Shared Itinerary</strong> event".html_safe, "https://www.shareditinerary.com/events/1/share/089f040a3616898d", class: "btn btn-default btn-block icon-button", role: "button") %>
 	</div>
 </div>
 
-<p>Flight charts are the primary purpose of the Group Itinerary. These charts show flights and layovers on each day for each attendee.</p>
+<p>Flight charts are the primary purpose of the Shared Itinerary. These charts show flights and layovers on each day for each attendee.</p>
 
-<%= project_image('projects/group-itinerary/screenshot-charts.png') %>
+<%= project_image('projects/shared-itinerary/screenshot-charts.png') %>
 
 <p>For arrivals, the attendees are sorted by arrival airport and arrival time. For departures, the attendees are sorted by departure airport and departure time. This makes it easy for any given attendee to see if they’re arriving at or departing from the event at around the same time.</p>
 
 <p>Below the charts are tables showing details for all of the travelers’ flights.</p>
 
-<%= project_image('projects/group-itinerary/screenshot-tables.png') %>
+<%= project_image('projects/shared-itinerary/screenshot-tables.png') %>
 
-<p>The Group Itinerary is designed to keep travelers’ flight information private. The creator of an event must give out a share link to allow anybody else access.</p>
+<p>The Shared Itinerary is designed to keep travelers’ flight information private. The creator of an event must give out a share link to allow anybody else access.</p>
 
 <h2>History</h2>
 
@@ -75,7 +75,7 @@
 
 <p>I’d recently been looking up flights on <%= link_to "ITA Matrix Airfare Search", 'http://matrix.itasoftware.com/' %>, which has a time bar view that visually shows the times and durations of a large number of flights:</p>
 
-<%= project_image('projects/group-itinerary/time-bar.png') %>
+<%= project_image('projects/shared-itinerary/time-bar.png') %>
 
 <p>In this case, Matrix is showing a different flight option in each row, and you can easily see at a glance what flights depart around the same times. I realized that something similar to these time bars could work great to graphically show different travelers’ flight times, too, and began sketching out a prototype layout.</p>
 
@@ -83,9 +83,9 @@
 
 <p>My initial prototype worked very well; I could provide a nested array of flight data and it would create time bar inspired charts of the flight times. However, an array wasn’t a good long term solution for flight data storage; I would be required to edit my code every time I wanted to add a new flight, and it wouldn’t allow me to let other people create their own group itineraries.</p>
 
-<p>I created a simple database backend for the Group Itinerary, with the following structure:</p>
+<p>I created a simple database backend for the Shared Itinerary, with the following structure:</p>
 
-<%= project_image('projects/group-itinerary/class-diagram.png') %>
+<%= project_image('projects/shared-itinerary/class-diagram.png') %>
 
 <p>From this structure, I could easily look up all flights associated with a given event and create the appropriate SVG charts.</p>
 
