@@ -58,7 +58,7 @@
 	
 <p>I began to search for software that would generate a colored map of the states from an array of state colors. Before I found any, though, I discovered the <%= link_to "Great Circle Mapper", 'http://gcmap.com/' %>.</p>
 
-<%= project_image('http://www.gcmap.com/map?P=ind-sea,sea-ind,ord-cle-jfk,lga-mke,mke-atl-day,day-stl-dfw,dfw-day,day-clt,clt-day,day-dfw,dfw-day,day-stl,stl-atl-phf,phf-clt-day,day-dfw,dfw-day,cmh-dfw-sjc,sfo-dfw,dfw-day,day-dfw,dfw-day,cmh-ord-fra,fra-ord-cmh,day-dfw,dfw-day,day-dfw,dfw-day,cvg-clt-sav,sav-clt-cvg,day-dfw,dfw-day,day-atl-mco,mco-atl-day,day-clt,clt-day,day-dfw,dfw-day,day-dfw-slc,slc-dfw-day,cmh-dfw-fra,fra-dfw-cmh,cmh-ord-las,las-dfw-cmh,day-dfw,dfw-day,day-ord-dfw,dfw-day,day-dfw-slc,slc-dfw-day,day-dfw,dfw-day,cvg-dfw-phx,phx-ord-cvg,day-ord-sea,sea-ord-day,day-iad,iad-day,day-iad,iad-day,ind-iad,iad-ind,day-atl-mco,mco-bwi-day&MS=wls2&MP=rect&MR=900&MX=720x360&PM=b:disc5:black') %>
+<%= project_image('projects/flight-historian/map.gif') %>
 
 <p>The Great Circle mapper allows the user to put in a string of airport pairs, and generates a map of <%= link_to "great circle", 'http://en.wikipedia.org/wiki/Great_circle' %> routes. (For example, <code>DAY-DFW-PHX,PHX-ORD-DAY</code> generates <%= link_to "this map", 'http://www.gcmap.com/mapui?P=DAY-DFW-PHX,PHX-ORD-DAY' %>.) Tracking flights was more interesting to me than tracking states, so I went back through my travel receipts, wrote up a string of all of my flights, and saved it in a text file. Updating was relatively simple; I just had to type some more text at the end of my text file and copy and paste it into the Great Circle Mapper.</p>
 
