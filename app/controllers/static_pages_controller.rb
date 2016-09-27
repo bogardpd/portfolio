@@ -59,6 +59,7 @@ class StaticPagesController < ApplicationController
   def terminal_silhouettes
     @terminals = Hash.new()
     @terminals['ABI'] = "Abilene"
+    @terminals['AMA'] = "Amarillo"
     @terminals['ATL'] = "Atlanta"
     @terminals['BOS'] = "Boston"
     @terminals['BWI'] = "Baltimore"
