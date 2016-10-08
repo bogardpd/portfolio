@@ -43,6 +43,9 @@ class StaticPagesController < ApplicationController
     render text: ""
   end
   
+  def oreo
+  end
+  
   def reading_list
   end
   

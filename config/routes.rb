@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   
   # Non-linked Pages
   get 'stephenvlog'  => 'static_pages#stephenvlog'
+  get 'oreo' => 'static_pages#oreo'
   
   resources :books
   get '/reading-list', :to => redirect('/books', :status => 301)
@@ -40,11 +41,7 @@ Rails.application.routes.draw do
   # Certbot
   get '/.well-known/acme-challenge/:id' => 'static_pages#letsencrypt'
   
-  # Redirects
-  
-  get '/oreo', :to => redirect('http://imgur.com/a/DZpZb')
-  
-  # Permanently redirect legacy flight log routes to Flight Historian:
+   # Permanently redirect legacy flight log routes to Flight Historian:
 
   get '/flightlog',       :to => redirect('http://www.flighthistorian.com/', :status => 301)
   get '/flightlog/*all',  :to => redirect('http://www.flighthistorian.com/', :status => 301)
