@@ -73,6 +73,7 @@ class StaticPagesController < ApplicationController
     @terminals['CVG'] = "Cincinnati"
     @terminals['DAY'] = "Dayton"
     @terminals['DEN'] = "Denver"
+    @terminals['DSM'] = "Des Moines"
     @terminals['DFW'] = "Dallas/Fort Worth"
     @terminals['EWR'] = "Newark"
     @terminals['HNL'] = "Honolulu"
