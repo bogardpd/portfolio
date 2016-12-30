@@ -67,6 +67,7 @@ class StaticPagesController < ApplicationController
     @terminals['BOS'] = "Boston"
     @terminals['BWI'] = "Baltimore"
     @terminals['BUR'] = "Burbank"
+    @terminals['CDG'] = "Paris (Charles de Gaulle)"  
     @terminals['CHS'] = "Charleston, SC"  
     @terminals['CLT'] = "Charlotte"
     @terminals['CMH'] = "Columbus, OH"
