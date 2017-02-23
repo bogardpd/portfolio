@@ -1,11 +1,6 @@
-class Project
+module Project
   
-  def initialize
-    
-  end
-  
-  def self.list
-    [
+  LIST = [
       {name: "Flight Historian",       caption: "A flight history tracking application"},
       {name: "Shared Itinerary",       caption: "Flight time charts for multiple travelers"},
       {name: "Terminal Silhouettes",   caption: "Airport art"},
@@ -17,7 +12,6 @@ class Project
       {name: "Visor Cam",              caption: "Road trip time lapse videos"},
       {name: "Hotel Internet Quality", caption: "Plots of hotel bandwidth by time of day"}
     ]
-  end
   
   def self.path(name)
     "#{name.parameterize.underscore}_path"

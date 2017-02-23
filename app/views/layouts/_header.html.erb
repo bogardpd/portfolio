@@ -21,7 +21,7 @@
 						<ul class="dropdown-menu">
 							<%= nav_link "All Projects", root_path %>
 							<li role="separator" class="divider"></li>
-              <%= Project.list.sort_by{|proj| proj[:name]}.map{|proj| nav_link proj[:name], eval(Project.path(proj[:name]))}.join.html_safe %>
+              <%= Project::LIST.sort_by{|proj| proj[:name]}.map{|proj| nav_link proj[:name], eval(Project.path(proj[:name]))}.join.html_safe %>
 							<li role="separator" class="divider"></li>
 							<li><%= link_to "<span class=\"glyphicon glyphicon-link\"></span> GitHub (bogardpd)".html_safe, 'https://github.com/bogardpd' %></li>
 						</ul>
