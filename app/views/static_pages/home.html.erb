@@ -1,13 +1,9 @@
 <% provide(:meta_description, "Paul Bogard’s portfolio of programming, engineering, mapping, and other projects.")%>
 
-<div class="row button-row">
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/resume.png", class: "icon-button") + "Paul’s <strong>Résumé</strong>".html_safe, resume_path, class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "Paul’s <strong>GitHub</strong> repositories".html_safe, "https://github.com/bogardpd", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-</div>
+<%= render partial: 'link_buttons', locals: {buttons: [
+  {text: "Paul’s <strong>Résumé</strong>", icon: 'resume', path: resume_path},
+  {text: "Paul’s <strong>GitHub</strong> repositories", icon: 'github', path: 'https://github.com/bogardpd'}
+]} %>
 
 <div class="row project-row">
 	<%= @covers.map{|cover| render partial: 'project_cover', locals: {name: cover[:name], caption: cover[:caption]}}.join.html_safe %>

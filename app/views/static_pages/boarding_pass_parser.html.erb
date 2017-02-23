@@ -3,14 +3,10 @@
 
 <h1>Boarding Pass Parser</h1>
 
-<div class="row button-row">
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/flight-historian.png", class: "icon-button") + "Visit <strong>Boarding Pass Parser</strong>".html_safe, "https://www.flighthistorian.com/boarding-pass", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "<strong>GitHub</strong> repository".html_safe, "https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-</div>
+<%= render partial: 'link_buttons', locals: {buttons: [
+  {text: "Visit <strong>Boarding Pass Parser</strong>", icon: 'flight-historian', path: 'https://www.flighthistorian.com/boarding-pass'},
+  {text: "See the code on <strong>GitHub</strong>", icon: 'github', path: 'https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb'}
+]} %>
 
 <p>The 2D barcodes found on boarding passes contain a good deal of flight data encoded. I wrote a parser to take the output from a scan of a boarding pass barcode, and output it either to a human-readable table or to JSON format.</p>
 
@@ -183,14 +179,10 @@
 
 <p>From there, it’s trivial to loop through the data structure to print the data and its interpretations in a tabular format.</p>
 
-<div class="row button-row">
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/flight-historian.png", class: "icon-button") + "Sample <strong>Boarding Pass Parser</strong> output".html_safe, "https://www.flighthistorian.com/boarding-pass/results/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "See implemented code on <strong>GitHub</strong>".html_safe, "https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-</div>
+<%= render partial: 'link_buttons', locals: {buttons: [
+  {text: "Sample <strong>Boarding Pass Parser</strong> output", icon: 'flight-historian', path: 'https://www.flighthistorian.com/boarding-pass/results/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh'},
+  {text: "See the implemented code on <strong>GitHub</strong>", icon: 'github', path: 'https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb'}
+]} %>
 
 <h3 id="json-api">JSON API</h3>
 
@@ -198,18 +190,14 @@
 
 <code>https://www.flighthistorian.com/boarding-pass/json/<var>RAW_DATA</var></code>
 
-<div class="row button-row">
-	<div class="col-sm-12">
-		<%= link_to(image_tag("projects/icons/flight-historian.png", class: "icon-button") + "JSON example".html_safe, "https://www.flighthistorian.com/boarding-pass/json/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-</div>
+<%= render partial: 'link_buttons', locals: {buttons: [
+  {text: "JSON example", icon: 'flight-historian', path: 'https://www.flighthistorian.com/boarding-pass/json/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh'}
+]} %>
   
 <p>If you need a callback function, use the following structure:</p>
 
 <code>https://www.flighthistorian.com/boarding-pass/json/<var>CALLBACK</var>/<var>RAW_DATA</var></code>
 
-<div class="row button-row">
-	<div class="col-sm-12">
-		<%= link_to(image_tag("projects/icons/flight-historian.png", class: "icon-button") + "JSON example with callback".html_safe, "https://www.flighthistorian.com/boarding-pass/json/MyCallback/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-</div>
+<%= render partial: 'link_buttons', locals: {buttons: [
+  {text: "JSON example with callback", icon: 'flight-historian', path: 'https://www.flighthistorian.com/boarding-pass/json/MyCallback/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh'}
+]} %>

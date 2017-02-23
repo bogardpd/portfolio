@@ -3,14 +3,10 @@
 
 <h1>Flight Historian</h1>
 
-<div class="row button-row">
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/flight-historian.png", class: "icon-button") + "Visit <strong>Flight Historian</strong>".html_safe, "http://www.flighthistorian.com", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "<strong>GitHub</strong> repository".html_safe, "https://github.com/bogardpd/flight_log", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-</div>
+<%= render partial: 'link_buttons', locals: {buttons: [
+  {text: "Visit <strong>Flight Historian</strong>", icon: 'flight-historian', path: 'https://www.flighthistorian.com/'},
+  {text: "<strong>GitHub</strong> repository", icon: 'github', path: 'https://github.com/bogardpd/flight_log'}
+]} %>
 
 <p>Flight Historian is a personal flight tracking website, allowing me to map and analyze all flights I’ve taken. Flights can be viewed all together, or analyzed by airline, aircraft, airport, route, class, or tail number.</p>
 
@@ -119,14 +115,10 @@
 
 <h2>Specifications</h2>
 
-<div class="row button-row">
-	<div class="col-sm-6">
-		<%= download_link 'files/flight-historian/Flight Log Functional Specification.pdf' %>
-	</div>
-	<div class="col-sm-6">
-		<%= download_link 'files/flight-historian/Flight Log Technical Specification.pdf' %>
-	</div>
-</div>
+<%= render partial: 'link_buttons', locals: {buttons: [
+  download_hash('files/flight-historian/Flight Log Functional Specification.pdf'),
+  download_hash('files/flight-historian/Flight Log Technical Specification.pdf')
+]} %>
 
 <h2>Credits</h2>
 

@@ -1,15 +1,11 @@
 module StaticPagesHelper
   
-  # Returns a download button with icon, filename, and filesize.
-  def download_link(path)
-    extension = File.extname(path).delete('.')
-    image_location = "file-icons/" + extension + ".png"
-    if Rails.application.assets.find_asset(image_location)
-      image_html = image_tag(image_location, class: "icon-button") + " "
-    else
-      image_html = nil
-    end
-    link_to("#{image_html}<strong>#{File.basename(path)}</strong> (#{number_to_human_size(File.size?("public/"+path))})".html_safe, path, class: "btn btn-default btn-block icon-button", role: "button")
+  # Returns a download hash with icon, filename, and filesize.
+  def download_hash(path)
+    icon = "filetypes/#{File.extname(path).delete('.')}"
+    icon = "filetypes/unknown" unless Rails.application.assets.find_asset("icons/#{icon}.png")
+    text = "<strong>#{File.basename(path)}</strong> (#{number_to_human_size(File.size?("public/"+path))})"
+    return {text: text, icon: icon, path: path}
   end
   
   # Returns a responsive image.

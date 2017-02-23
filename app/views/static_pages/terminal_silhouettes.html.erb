@@ -3,15 +3,10 @@
 
 <h1>Terminal Silhouettes</h1>
 
-<div class="row button-row">
-
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/one-hundred-airports.png", class: "icon-button") + "Read my silhouette <strong>blog posts</strong>".html_safe, "https://onehundredairports.com/category/projects/terminal-silhouettes/", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-	<div class="col-sm-6">
-		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "<strong>GitHub</strong> repository".html_safe, "https://github.com/bogardpd/terminal_silhouettes", class: "btn btn-default btn-block icon-button", role: "button") %>
-	</div>
-</div>
+<%= render partial: 'link_buttons', locals: {buttons: [
+  {text: "Read my silhouette <strong>blog posts</strong>", icon: 'one-hundred-airports', path: 'https://onehundredairports.com/category/projects/terminal-silhouettes/'},
+  {text: "<strong>GitHub</strong> repository", icon: 'github', path: 'https://github.com/bogardpd/terminal_silhouettes'}
+]} %>
 
 <p>I wanted to teach myself how to create Scalable Vector Graphics (SVG) drawings, so I started drawing silhouettes of airport terminals and concourses that <%= link_to "I’ve visited", 'http://www.flighthistorian.com/airports' %>.</p>
 
