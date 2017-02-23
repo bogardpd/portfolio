@@ -76,6 +76,12 @@ code, kbd {
 	font-family: $font-stack-monospace;
 }
 
+pre {
+  font-family: $font-stack-monospace;
+  font-size:   $font-size-default;
+  white-space: pre-wrap;
+}
+
 div.byline {
 	text-align: center;
 	color: $color-text-light;
@@ -137,6 +143,9 @@ strong {
 	font-weight: 700;
 }
 
+.emphasis {
+  font-style: italic;
+}
 
 
 /* header */

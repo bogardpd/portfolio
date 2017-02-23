@@ -1,0 +1,215 @@
+<% provide(:title, "Boarding Pass Parser")%>
+<% provide(:meta_description, "How Paul Bogard created his Boarding Pass Parser web application.")%>
+
+<h1>Boarding Pass Parser</h1>
+
+<div class="row button-row">
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/flight-historian.png", class: "icon-button") + "Visit <strong>Boarding Pass Parser</strong>".html_safe, "https://www.flighthistorian.com/boarding-pass", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "<strong>GitHub</strong> repository".html_safe, "https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+</div>
+
+<p>The 2D barcodes found on boarding passes contain a good deal of flight data encoded. I wrote a parser to take the output from a scan of a boarding pass barcode, and output it either to a human-readable table or to JSON format.</p>
+
+<%= project_image("projects/boarding-pass-parser/paper-boarding-pass.png", "Scan of paper boarding pass", false) %>
+
+<h2 id="tools">Tools</h2>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<th scope="row">Languages &amp; Frameworks</th>
+			<td>
+				Ruby on Rails (2.3.1, 4.2.3)<br/>
+				HTML<br/>
+				CSS<br/>
+        SCSS<br/>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Version Control</th>
+			<td><%= link_to("Git", 'https://git-scm.com') %></td>
+		</tr>
+		<tr>
+			<th scope="row">Hosting</th>
+			<td><%= link_to("Heroku", 'https://www.heroku.com/') %> (as part of my <%= link_to "Flight Historian", flight_historian_path %> project)</td>
+		</tr>
+		<tr>
+			<th scope="row">Project Management</th>
+			<td><%= link_to("Trello", 'https://trello.com/') %></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 id="history">History</h2>
+
+<p>Once my <%= link_to "Flight Historian", flight_historian_path %> was largely complete, I began to think about future flight data I could track with it &ndash; things such as seat numbers, fare codes, or record locators. Since I didn’t yet know what I wanted to track, I realized I would need to start saving as much information about my current flights as I could to give me retroactive data. Thus, I began scanning my boarding passes (or screenshotting my electronic ones), as they seemed to be the best source of flight information I had.</p>
+
+<p>However, having images of boarding passes would still require a lot of manual entry in the future, and I realized that all of that information should be stored digitally. I began researching the <%= link_to "Bar-Coded Boarding Pass", "https://en.wikipedia.org/wiki/Bar-coded_boarding_pass" %> (BCBP) standard. Instead of storing images of the boarding pass, I could just scan the barcode, and store it for future use in a barcode data field for each flight.</p>
+
+<%= project_image("projects/boarding-pass-parser/digital-boarding-pass.png", "Screenshot of digital boarding pass", false) %>
+
+<p>Eventually, I decided that it would be helpful for me to write a class that could interpret the boarding pass data I’d been storing.</p>
+
+<h2 id="design">Design</h2>
+
+<h3 id="data-structure">Data Structure</h3>
+
+<p>Once the barcode is scanned, the data retrieved from it comes out in a string that looks like the following:</p>
+
+<pre>M1DOE/JOHN            EABC123 BOSJFKB6 0717 345P014C0010 147>3180 M6344BB6              29279          0 B6 B6 1234567890          ^108abcdefgh</pre>
+
+<p>Some of the data is obvious (passenger name, airport codes), but a lot of it isn’t obvious at first glance, and has to be interpreted through the BCBP standard.</p>
+
+<p>The barcode data has four primary categories:</p>
+
+<ul>
+  <li>Mandatory data, which all boarding passes must have</li>
+  <li>Conditional data, which boarding passes may have all, some, or none of</li>
+  <li>Airline use data, which is an optional field of arbitrary length for airlines to use for whatever they want</li>
+  <li>Security data, which is optional in some cases, and acts as a way for the airline to sign the barcode data to ensure it hasn’t been tampered with</li>
+</ul>
+
+<p>Additionally, though it’s rare, boarding passes can technically contain data for multiple flights for the same passenger. Thus, some data is considered repeated data (data for each specific flight, even if there is only one flight) and some data is considered unique data (data specific to the passenger or the boarding pass itself).</p>
+
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="text-center">Unique</th>
+          <th class="text-center">Repeated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Mandatory</th>
+          <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+          <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+        </tr>
+        <tr>
+          <th scope="row">Conditional</th>
+          <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+          <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+        </tr>
+        <tr>
+          <th scope="row">Airline Use</th>
+          <td></td>
+          <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+        </tr>
+        <tr>
+          <th scope="row">Security</th>
+          <td class="text-center"><span class="glyphicon glyphicon-ok"></span></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<p>So there are really six groups of data: three unique and three repeated.</p>
+
+<p>The mandatory groups are a string of consecutive fixed length fields (for example, the name field in Unique Mandatory is 20 characters, and is padded with spaces if necessary).</p>
+
+<p>The conditional groups are also a collection of fixed length fields, but the total length of each conditional group is defined by a two digit hexadecimal number encoded in the string, and fields are encoded until the length of the group is reached. (It is possible to have a zero-length conditional group, which means that conditional group is absent.)</p>
+
+<p>The airline use group is a single, variable length field, again defined by a two-digit hexadecimal number encoded in the string.</p>
+
+<p>The security group has a few fixed-length fields, then a hexadecimal number, followed by a variable length field whose length was defined by that hexadecimal number.</p>
+
+<p>The string is ordered as follows:</p>
+
+<ul>
+  <li>Unique Mandatory</li>
+  <li>Repeated Mandatory (Leg 1)</li>
+  <li>Unique Conditional (if present)</li>
+  <li>Repeated Conditional (Leg 1) (if present)</li>
+  <li>Repeated Airline (Leg 1) (if present)</li>
+  <li class="emphasis">For legs 2 through N (if present):</li>
+  <ul>
+    <li>Repeated Mandatory</li>
+    <li>Repaated Conditional (if present)</li>
+    <li>Repaated Airline (if present)</li>
+  </ul>
+  <li>Unique Security (if present)</li>
+</ul>
+
+<h3 id="strategy">Strategy</h3>
+
+<p>The solution I implemented works as follows:</p>
+
+<ol>
+  <li>Define the list of possible fields (<code>create_fields</code>)</li>
+  <li>Read through the string and create a hash of start locations (within the data string) and lengths of each of the groups (<code>create_control_points</code> method)</li>
+  <li>Create a data structure to store all field data (<code>build_structured_data</code>)
+  <ol>
+    <li>For each group, loop through the possible fields  until the length of the group is reached</li>
+    <ol>
+      <li>Store the BCBP field ID, field name, raw data, validity of the data, and an interpretation of what the data means in a hash</li>
+      <li>Create a hash of these hashes for each group</li>
+    </ol>
+    <li>Create a hash of any unknown data that cannot be interpreted</li>
+    <li>Store all of the groups in the following data structure (square brackets represent arrays, curly braces represent hashes):
+      <pre>
+{
+  unique {
+    mandatory {}
+    conditional {}
+    security {}
+  },
+  repeated [
+    leg 1 {
+      mandatory {}
+      conditional {}
+      airline {}
+    },
+    ⋮
+    leg N {
+      mandatory {}
+      conditional {}
+      airline {}
+    }
+  ],
+  unknown {}
+}
+      </pre>
+    </li>
+  </ol>
+</ol>
+
+<p>From there, it’s trivial to loop through the data structure to print the data and its interpretations in a tabular format.</p>
+
+<div class="row button-row">
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/flight-historian.png", class: "icon-button") + "Sample <strong>Boarding Pass Parser</strong> output".html_safe, "https://www.flighthistorian.com/boarding-pass/results/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+	<div class="col-sm-6">
+		<%= link_to(image_tag("projects/icons/GitHub-Mark-64px.png", class: "icon-button") + "See implemented code on <strong>GitHub</strong>".html_safe, "https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+</div>
+
+<h3 id="json-api">JSON API</h3>
+
+<p>It’s also trivial to convert the above data structure to JSON, so I wrote a JSON API for the boarding pass parser. All that’s required is to place the raw barcode data into the following URL:</p>
+
+<code>https://www.flighthistorian.com/boarding-pass/json/<var>RAW_DATA</var></code>
+
+<div class="row button-row">
+	<div class="col-sm-12">
+		<%= link_to(image_tag("projects/icons/flight-historian.png", class: "icon-button") + "JSON example".html_safe, "https://www.flighthistorian.com/boarding-pass/json/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+</div>
+  
+<p>If you need a callback function, use the following structure:</p>
+
+<code>https://www.flighthistorian.com/boarding-pass/json/<var>CALLBACK</var>/<var>RAW_DATA</var></code>
+
+<div class="row button-row">
+	<div class="col-sm-12">
+		<%= link_to(image_tag("projects/icons/flight-historian.png", class: "icon-button") + "JSON example with callback".html_safe, "https://www.flighthistorian.com/boarding-pass/json/MyCallback/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh", class: "btn btn-default btn-block icon-button", role: "button") %>
+	</div>
+</div>

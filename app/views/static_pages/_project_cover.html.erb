@@ -1,0 +1,10 @@
+<% img_root = "projects/covers/#{name.parameterize}" %>
+<% img = Rails.application.assets.find_asset("#{img_root}.png") ? "#{img_root}.png" : "#{img_root}.jpg" %>
+<div class="col-lg-4 col-sm-6 project">
+	<%= link_to(("<h2>#{name}</h2>"	+
+	image_tag(img, class: 'project-icon', alt: name) +
+	"<p>#{caption}</p>").html_safe,
+	eval("#{name.parameterize.underscore}_path"),
+	class: 'btn btn-link btn-block' )
+	%>
+</div>

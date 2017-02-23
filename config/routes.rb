@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   
   # Projects
+  get 'boarding-pass-parser'   => 'static_pages#boarding_pass_parser'
   get 'cad-models'             => 'static_pages#cad_models'
   get 'earthbound-database'    => 'static_pages#earthbound_database'
-  get 'shared-itinerary'       => 'static_pages#shared_itinerary'
   get 'flight-historian'       => 'static_pages#flight_historian'
   get 'hotel-internet-quality' => 'static_pages#hotel_internet_quality'
+  get 'shared-itinerary'       => 'static_pages#shared_itinerary'
   get 'terminal-silhouettes'   => 'static_pages#terminal_silhouettes'
   get 'turn-signal-counter'    => 'static_pages#turn_signal_counter'
   get 'visor-cam'              => 'static_pages#visor_cam'
