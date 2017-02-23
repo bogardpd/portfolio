@@ -6,5 +6,5 @@
 ]} %>
 
 <div class="row project-row">
-	<%= @covers.map{|cover| render partial: 'project_cover', locals: {name: cover[:name], caption: cover[:caption]}}.join.html_safe %>
+	<%= Project.list.map{|cover| render partial: 'project_cover', locals: {name: cover[:name], caption: cover[:caption]}}.join.html_safe %>
 </div>

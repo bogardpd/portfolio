@@ -4,7 +4,7 @@
 	<%= link_to(("<h2>#{name}</h2>"	+
 	image_tag(img, class: 'project-icon', alt: name) +
 	"<p>#{caption}</p>").html_safe,
-	eval("#{name.parameterize.underscore}_path"),
+	eval(Project.path(name)),
 	class: 'btn btn-link btn-block' )
 	%>
 </div>

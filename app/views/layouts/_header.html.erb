@@ -21,15 +21,7 @@
 						<ul class="dropdown-menu">
 							<%= nav_link "All Projects", root_path %>
 							<li role="separator" class="divider"></li>
-							<%= nav_link "Flight Historian", flight_historian_path %>
-              <%= nav_link "Shared Itinerary", shared_itinerary_path %>
-              <%= nav_link "GPS Logging", gps_logging_path %>
-							<%= nav_link "CAD Models", cad_models_path %>
-							<%= nav_link "Turn Signal Counter", turn_signal_counter_path %>
-							<%= nav_link "Terminal Silhouettes", terminal_silhouettes_path %>
-							<%= nav_link "EarthBound Database", earthbound_database_path %>
-							<%= nav_link "Visor Cam", visor_cam_path %>
-							<%= nav_link "Hotel Internet Quality", hotel_internet_quality_path %>
+              <%= Project.list.sort_by{|proj| proj[:name]}.map{|proj| nav_link proj[:name], eval(Project.path(proj[:name]))}.join.html_safe %>
 							<li role="separator" class="divider"></li>
 							<li><%= link_to "<span class=\"glyphicon glyphicon-link\"></span> GitHub (bogardpd)".html_safe, 'https://github.com/bogardpd' %></li>
 						</ul>
