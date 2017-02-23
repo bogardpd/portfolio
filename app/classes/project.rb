@@ -5,7 +5,7 @@ class Project
   end
   
   def self.list
-    covers = [
+    [
       {name: "Flight Historian",       caption: "A flight history tracking application"},
       {name: "Shared Itinerary",       caption: "Flight time charts for multiple travelers"},
       {name: "Terminal Silhouettes",   caption: "Airport art"},
