@@ -1,3 +1,0 @@
-<div class="row button-row">
-  <%= buttons.map{|btn, len=buttons.length| render partial: 'link_button', locals: {cols: (12/len), text: btn[:text], icon: btn[:icon], path: btn[:path]}}.join.html_safe %>
-</div>

@@ -23,9 +23,7 @@
 <h3 id="MediaRoom">Media Room</h3>
 
 <%= project_image("projects/cad-models/Media-Room.png", "SketchUp model of a basement room") %>
-<%= render partial: 'link_buttons', locals: {buttons: [
-  download_hash('files/cad-models/Media Room.skp')
-]} %>
+<%= link_buttons(DownloadButton.new('files/cad-models/Media Room.skp')) %>
 
 <p>This model is an idealized version of an entertainment room in a walk-out basement.  The room dimensions are not from any specific basement; rather, I made this model to determine how large such a basement would need to be.</p>
 
@@ -46,45 +44,35 @@
 <h3 id="Home">Home</h3>
 
 <%= project_image("projects/cad-models/Home.png", "SketchUp model of an apartment layout") %>
-<%= render partial: 'link_buttons', locals: {buttons: [
-  download_hash('files/cad-models/Home.skp')
-]} %>
+<%= link_buttons(DownloadButton.new('files/cad-models/Home.skp')) %>
 
 <p>I originally created this model with no furniture to demonstrate the layout of my apartment in a photo gallery.  Later, I created furniture for the bedroom to play around with its layout.  Eventually, I plan to model the furniture in the remainder of the apartment.</p>
 
 <h3 id="TruckWeightFrame">Truck Weight Frame</h3>
 
 <%= project_image("projects/cad-models/Truck-Weight-Frame.png", "SketchUp model of a wooden frame") %>
-<%= render partial: 'link_buttons', locals: {buttons: [
-  download_hash('files/cad-models/Truck Weight Frame.skp')
-]} %>
+<%= link_buttons(DownloadButton.new('files/cad-models/Truck Weight Frame.skp')) %>
 
 <p>I used to drive a rear wheel drive pickup truck, so during the winter, it was useful to have some weight centered over the rear axle. I created this model to design a wooden frame to hold ten concrete blocks in place in the truck bed.</p>
 
 <h3 id="Westcott">Gingerbread Westcott House</h3>
 
 <%= project_image("projects/cad-models/Westcott-Gingerbread.png", "SketchUp model of a simplified Westcott House") %>
-<%= render partial: 'link_buttons', locals: {buttons: [
-  download_hash('files/cad-models/Westcott Gingerbread.skp')
-]} %>
+<%= link_buttons(DownloadButton.new('files/cad-models/Westcott Gingerbread.skp')) %>
 
 <p>This model was used to plan out a gingerbread house based on the Frank Lloyd Wright-designed <%= link_to("Westcott House", 'http://en.wikipedia.org/wiki/Westcott_House_%28Springfield,_Ohio%29')%>.</p>
 
 <h3 id="Pancake">Pancake (Desktop Computer)</h3>
 
 <%= project_image("projects/cad-models/Pancake (Both Cases).png", "SketchUp models of two desktop towers") %>
-<%= render partial: 'link_buttons', locals: {buttons: [
-  download_hash('files/cad-models/Pancake (Both Cases).skp')
-]} %>
+<%= link_buttons(DownloadButton.new('files/cad-models/Pancake (Both Cases).skp')) %>
 
 <p><%= link_to "Pancake", computers_path %> is my primary computer, shown here with its current case (Silverstone TJ08B-E) and its previous case (Lian Li PC-7B Plus).</p>
 
 <h3 id="ChiliDog">Chili Dog (MacBook Pro)</h3>
 
 <%= project_image("projects/cad-models/MBP-Chili-Dog.png", "SketchUp model of a MacBook Pro laptop") %>
-<%= render partial: 'link_buttons', locals: {buttons: [
-  download_hash('files/cad-models/Computer - Chili Dog.skp')
-]} %>
+<%= link_buttons(DownloadButton.new('files/cad-models/Computer - Chili Dog.skp')) %>
 
 <p>Chili Dog was a MacBook Pro laptop I used to own.</p>
 
@@ -93,15 +81,11 @@
 <h3 id="Wii">Nintendo Wii</h3>
 
 <%= project_image("projects/cad-models/Nintendo-Wii.png", "SketchUp model of a Nintendo Wii") %>
-<%= render partial: 'link_buttons', locals: {buttons: [
-  download_hash('files/cad-models/Nintendo Wii.skp')
-]} %>
+<%= link_buttons(DownloadButton.new('files/cad-models/Nintendo Wii.skp')) %>
 
 <h3 id="BoatQuarters">Boat Quarters</h3>
 
 <%= project_image("projects/cad-models/Boat-Quarters.png", "SketchUp model of living quarters on a boat") %>
-<%= render partial: 'link_buttons', locals: {buttons: [
-  download_hash('files/cad-models/Boat Quarters.skp')
-]} %>
+<%= link_buttons(DownloadButton.new('files/cad-models/Boat Quarters.skp')) %>
 
 <p>This model of living quarters on a fictional boat was largely an experiment to see how I would handle placing furnishings and fixtures along a curved wall.</p>

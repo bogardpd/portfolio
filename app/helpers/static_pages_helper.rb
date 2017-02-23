@@ -1,11 +1,8 @@
 module StaticPagesHelper
   
-  # Returns a download hash with icon, filename, and filesize.
-  def download_hash(path)
-    icon = "filetypes/#{File.extname(path).delete('.')}"
-    icon = "filetypes/unknown" unless Rails.application.assets.find_asset("icons/#{icon}.png")
-    text = "<strong>#{File.basename(path)}</strong> (#{number_to_human_size(File.size?("public/"+path))})"
-    return {text: text, icon: icon, path: path}
+  # Takes one or more LinkButtons, and returns HTML for a collection of buttons.
+  def link_buttons(*args)
+    %Q(<div class="row button-row">#{render partial: 'link_button', collection: args, as: :button}</div>).html_safe
   end
   
   # Returns a responsive image.

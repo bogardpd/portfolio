@@ -1,9 +1,9 @@
 <% provide(:meta_description, "Paul Bogard’s portfolio of programming, engineering, mapping, and other projects.")%>
 
-<%= render partial: 'link_buttons', locals: {buttons: [
-  {text: "Paul’s <strong>Résumé</strong>", icon: 'resume', path: resume_path},
-  {text: "Paul’s <strong>GitHub</strong> repositories", icon: 'github', path: 'https://github.com/bogardpd'}
-]} %>
+<%= link_buttons(
+  LinkButton.new("Paul’s <strong>Résumé</strong>", 'resume', resume_path),
+  LinkButton.new("Paul’s <strong>GitHub</strong> repositories", 'github', 'https://github.com/bogardpd/')
+  ) %>
 
 <div class="row project-row">
 	<%= Project::LIST.map{|cover| render partial: 'project_cover', locals: cover}.join.html_safe %>

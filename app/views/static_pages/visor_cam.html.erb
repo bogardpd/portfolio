@@ -3,9 +3,7 @@
 
 <h1>Visor Cam</h1>
 
-<%= render partial: 'link_buttons', locals: {buttons: [
-  {text: "Watch my <strong>Visor Cam</strong> playlist on YouTube", icon: 'youtube', path: 'http://www.youtube.com/playlist?list=PL20905252D0306C6E&feature=plcp'}
-]} %>
+<%= link_buttons(LinkButton.new("Watch my <strong>Visor Cam</strong> playlist on YouTube", 'youtube', 'http://www.youtube.com/playlist?list=PL20905252D0306C6E&feature=plcp')) %>
 
 <p>Visor Cam was an experiment to see if I could record video while driving.</p>
 

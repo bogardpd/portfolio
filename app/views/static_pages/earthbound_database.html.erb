@@ -3,9 +3,7 @@
 
 <h1>EBDB: The EarthBound Database</h1>
 
-<%= render partial: 'link_buttons', locals: {buttons: [
-  {text: "Visit <strong>EBDB</strong> on Starmen.Net", icon: 'starmen-net', path: 'http://starmen.net/mother2/ebdb/'}
-]} %>
+<%= link_buttons(LinkButton.new("Visit <strong>EBDB</strong> on Starmen.Net", 'starmen-net', 'http://starmen.net/mother2/ebdb/')) %>
 
 <p><%= link_to("EBDB", 'http://starmen.net/mother2/ebdb/') %> is a game database web application I designed to catalog various aspects of the Super Nintendo game <em><%= link_to("EarthBound", 'http://en.wikipedia.org/wiki/EarthBound') %></em>.</p>
 

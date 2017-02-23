@@ -3,10 +3,10 @@
 
 <h1>Shared Itinerary</h1>
 
-<%= render partial: 'link_buttons', locals: {buttons: [
-  {text: "Visit <strong>Shared Itinerary</strong>", icon: 'shared-itinerary', path: 'https://www.shareditinerary.com/'},
-  {text: "<strong>GitHub</strong> repository", icon: 'github', path: 'https://github.com/bogardpd/shared_itinerary'}
-]} %>
+<%= link_buttons(
+  LinkButton.new("Visit <strong>Shared Itinerary</strong>", 'shared-itinerary', 'https://www.shareditinerary.com/'),
+  LinkButton.new("<strong>GitHub</strong> repository", 'github', 'https://github.com/bogardpd/shared_itinerary')
+  ) %>
 
 <p>I’ve been to a lot of conferences, conventions, and trips where a group of people are coming on several different flights, yet trying to share cars from the airport. Traditionally, this has been a bit of an organizational challenge, usually involving having everyone post their flights to a shared spreadsheet. I created Shared Itinerary to show everyone’s flights visually, so you can easily see who’s arriving and departing at similar times.</p>
 
@@ -46,9 +46,9 @@
 
 <h2>Shared Itinerary</h2>
 
-<%= render partial: 'link_buttons', locals: {buttons: [
-  {text: "See the sample <strong>Shared Itinerary</strong> event", icon: 'shared-itinerary', path: 'https://www.shareditinerary.com/events/1/share/089f040a3616898d'}
-]} %>
+<%= link_buttons(
+  LinkButton.new("See the sample <strong>Shared Itinerary</strong> event", 'shared-itinerary', 'https://www.shareditinerary.com/events/1/share/089f040a3616898d')
+  ) %>
 
 <p>Flight charts are the primary purpose of the Shared Itinerary. These charts show flights and layovers on each day for each attendee.</p>
 
