@@ -8,9 +8,16 @@
   LinkButton.new("See the code on <strong>GitHub</strong>", 'github', 'https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb')
   ) %>
 
-<p>The 2D barcodes found on boarding passes contain a good deal of flight data encoded. I wrote a parser to take the output from a scan of a boarding pass barcode, and output it either to a human-readable table or to JSON format.</p>
+<p>The 2D barcodes found on boarding passes encode a large amount of interesting flight and passenger data. I wrote a parser to process the output from a scan of a boarding pass barcode.</p>
 
 <%= project_image("projects/boarding-pass-parser/paper-boarding-pass.png", "Scan of paper boarding pass", false) %>
+
+<h2 id="features">Capabilities</h2>
+
+<ul>
+  <li>Parses and interprets IATA Bar Coded Boarding Pass (BCBP) data</li>
+  <li>Provides an API to convert interpreted BCBP data to JSON format</li>
+</ul>
 
 <h2 id="tools">Tools</h2>
 

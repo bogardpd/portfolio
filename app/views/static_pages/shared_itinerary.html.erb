@@ -10,7 +10,14 @@
 
 <p>I’ve been to a lot of conferences, conventions, and trips where a group of people are coming on several different flights, yet trying to share cars from the airport. Traditionally, this has been a bit of an organizational challenge, usually involving having everyone post their flights to a shared spreadsheet. I created Shared Itinerary to show everyone’s flights visually, so you can easily see who’s arriving and departing at similar times.</p>
 
-<h2>Tools</h2>
+<h2 id="capabilities">Capabilities</h2>
+
+<ul>
+  <li>Stores incoming and returning flight data for multiple travelers to a specific event</li>
+  <li>Generates SVG charts which visually depict the arrival and departure time for all travelers</li>
+</ul>
+
+<h2 id="tools">Tools</h2>
 
 <table class="table table-striped">
 	<tbody>
@@ -44,7 +51,7 @@
 	</tbody>
 </table>
 
-<h2>Shared Itinerary</h2>
+<h2 id="shared-itinerary">Shared Itinerary</h2>
 
 <%= link_buttons(
   LinkButton.new("See the sample <strong>Shared Itinerary</strong> event", 'shared-itinerary', 'https://www.shareditinerary.com/events/1/share/089f040a3616898d')
@@ -62,7 +69,7 @@
 
 <p>The Shared Itinerary is designed to keep travelers’ flight information private. The creator of an event must give out a share link to allow anybody else access.</p>
 
-<h2>History</h2>
+<h2 id="history">History</h2>
 
 <p>Since I’m such a fan of <%= link_to "tracking travel", flight_historian_path %>, I’ve often ended up being the person tabulating friends’ flight arrivals and departures for conventions.</p>
 
@@ -84,7 +91,7 @@
 
 <p>From this structure, I could easily look up all flights associated with a given event and create the appropriate SVG charts.</p>
 
-<h2>Change Log</h2>
+<h2 id="change-log">Change Log</h2>
 
 <table class="table table-striped">
 	<thead>

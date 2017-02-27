@@ -10,7 +10,20 @@
 
 <p>Flight Historian is a personal flight tracking website, allowing me to map and analyze all flights I’ve taken. Flights can be viewed all together, or analyzed by airline, aircraft, airport, route, class, or tail number.</p>
 
-<h2>Tools</h2>
+<h2 id="capabilities">Capabilities</h2>
+
+<ul>
+  <li>Allows a user to keep track of every aspect of their commercial flight history</li>
+  <li>Provides detailed data about individual flights</li>
+  <li>Provides aggregate, sortable data about collections of flights</li>
+  <ul>
+    <li>Flights can be filtered by airline, airport, route, class, or tail number</li>
+  </ul>
+  <li>Shows maps of all flights, or all flights that meet a specific criteria</li>
+  <li>Stores and <%= link_to "parses", boarding_pass_parser_path %> boarding pass barcode data for each flight</li>
+</ul>
+
+<h2 id="tools">Tools</h2>
 
 <table class="table table-striped">
 	<tbody>
@@ -21,8 +34,6 @@
 				HTML<br/>
 				CSS<br/>
         SCSS<br/>
-				JavaScript<br/>
-        jQuery
 			</td>
 		</tr>
 		<tr>
@@ -44,7 +55,7 @@
 	</tbody>
 </table>
 
-<h2>History</h2>
+<h2 id="history">History</h2>
 
 <p>In 2009, I was promoted to a job with frequent travel. Soon thereafter, I started keeping track of all the places I’d been.</p>
 
@@ -74,7 +85,7 @@
 
 <p>Just as I’d used my <%= link_to "EBDB", earthbound_database_path %> project to teach myself PHP and MySQL back in 2004, I decided to create a flight log database website to teach myself Ruby on Rails. I started work on this flight log in 2012, and launched the site in April 2013.</p>
 
-<h2>Change Log</h2>
+<h2 id="change-log">Change Log</h2>
 
 <table class="table table-striped">
 	<thead>
@@ -113,14 +124,14 @@
 	</tbody>
 </table>
 
-<h2>Specifications</h2>
+<h2 id="specifications">Specifications</h2>
 
 <%= link_buttons(
   DownloadButton.new('files/flight-historian/Flight Log Functional Specification.pdf'),
   DownloadButton.new('files/flight-historian/Flight Log Technical Specification.pdf')
   ) %>
 
-<h2>Credits</h2>
+<h2 id="credits">Credits</h2>
 
 <ul>
 	<li>Thanks to <strong>Dan Bogard</strong> for reviewing the original specifications.</li>
