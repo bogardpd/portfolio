@@ -11,7 +11,7 @@
 
 <p>Understanding that the root cause of the problem was likely an inadequate connection for the number of concurrent users the hotel was expecting, I theorized that the local time of day would affect the available bandwidth – peak times of day (evenings) would perform worse than off-peak times.</p>
 
-<%= project_image("projects/hotel-internet-quality/Bandwidth-By-Local-Time-Of-Day-Hotels.png", "Scatter plot with local time of day on the x-axis and bandwidth on the y-axis", false) %>
+<%= project_image("projects/hotel-internet-quality/Bandwidth-By-Local-Time-Of-Day-Hotels.png", alt: "Scatter plot with local time of day on the x-axis and bandwidth on the y-axis") %>
 
 <p>Looking at the data (again, this data was all collected between 2010 and 2012), it appears this theory was not quite correct – most hotels never seemed to get a downstream bandwidth much above 1.0 Mbps regardless of the time of day, indicating some sort of throttling was likely at play.  However, the absolute worst data points (less than 0.1 Mbps) did tend to occur after about 17:00 (5:00 PM) daily. Even with the throttling, the hotels were still clearly overloaded at peak hours.</p>
 
@@ -23,6 +23,6 @@
 
 <p>The data didn’t support that theory, though:</p>
 
-<%= project_image("projects/hotel-internet-quality/Average-Bandwidth-By-Internet-Access-Cost-Hotels.png", "Column plot with internet access cost per night on the x-axis and bandwidth on the y-axis", false) %>
+<%= project_image("projects/hotel-internet-quality/Average-Bandwidth-By-Internet-Access-Cost-Hotels.png", alt: "Column plot with internet access cost per night on the x-axis and bandwidth on the y-axis") %>
 
 <p>While hotels charging for internet access tended to have marginally better upstream bandwidth, they actually performed <em>worse</em> than hotels with free access for downstream bandwidth.</p>

@@ -26,17 +26,17 @@
 
 <p>From July 2010 to December 2011, I recorded a log of everywhere I drove, and imported it into <%= link_to("Google Earth", 'http://www.google.com/earth/index.html') %>.</p>
 
-<%= project_image("projects/gps-logging/US-Driving.png", "Google Earth map of driving tracks") %>
+<%= project_image("projects/gps-logging/US-Driving.png", alt: "Google Earth map of driving tracks") %>
 
 <p>I performed the logging with a <%= link_to("Garmin nüvi 1390T", 'https://buy.garmin.com/shop/shop.do?pID=32700&ra=true')%> automotive GPS. However, I've been able to extract the log from other Garmin nüvi models as well.</p>
 
 <p>The GPS log gives a good overview of everywhere I drove in the country for that year and a half &mdash; when I traveled and rented a car, I brought along my GPS to record those routes as well.  For example, the Dallas/Fort Worth metroplex in Texas:</p>
 
-<%= project_image("projects/gps-logging/DFW-Driving.png", "Google Earth map of driving tracks") %>
+<%= project_image("projects/gps-logging/DFW-Driving.png", alt: "Google Earth map of driving tracks") %>
 
 <p>Even at closer zoom levels, the detail is decent:</p>
 
-<%= project_image("projects/gps-logging/30-Driving.png", "Google Earth map of driving tracks") %>
+<%= project_image("projects/gps-logging/30-Driving.png", alt: "Google Earth map of driving tracks") %>
 
 <p>Learn how to create Google Earth route maps with a Garmin GPS in my <%= link_to "Garmin/Google Earth GPS Logging tutorial", gps_logging_garmin_google_earth_path %>.</p>
 
@@ -48,7 +48,7 @@
 
 <p>As an example, there are a lot of old rail lines in my area that have been converted to bicycle trails. I took a log of my bike riding over one summer and created the following map:</p>
 
-<%= project_image("projects/gps-logging/Bicycling.png", "OpenStreetMap of bicycling tracks") %>
+<%= project_image("projects/gps-logging/Bicycling.png", alt: "OpenStreetMap of bicycling tracks") %>
 
 <p>In this case, I used <%= link_to "uMap", 'https://umap.openstreetmap.fr/en' %> with <%= link_to "OpenStreetMap", 'https://www.openstreetmap.org/' %> data. However, it would have been trivial to use the bicycling data in Google Earth instead.
 
@@ -60,6 +60,6 @@
 
 <p>Sometimes, there are groups of missions with badge pictures that form a larger mosaic. I particularly like completing these (I enjoy walking and exploring), and I’ve started recording location data while I play to make maps.</p>
 
-<%= link_to(project_image("ingress-mosaics/Tulsa Skyline.png", "Map of Tulsa Skyline Ingress Missions"), ingress_mosaics_path) %>
+<%= link_to(project_image("ingress-mosaics/Tulsa Skyline.png", alt: "Map of Tulsa Skyline Ingress Missions"), ingress_mosaics_path) %>
 
 <p>See more of my <%= link_to("Ingress mosaic maps", ingress_mosaics_path) %>.</p>

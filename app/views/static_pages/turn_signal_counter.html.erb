@@ -3,13 +3,13 @@
 
 <h1>Turn Signal Counter</h1>
 
-<%= project_image("projects/turn-signal-counter/Completed-Counter-Case.jpg", "Rear end of a Dodge Ram pickup truck, with the turn signal lit, and a four-digit counter sitting on the bumper")%>
+<%= project_image("projects/turn-signal-counter/Completed-Counter-Case.jpg", alt: "Rear end of a Dodge Ram pickup truck, with the turn signal lit, and a four-digit counter sitting on the bumper")%>
 
 <h2>Introduction</h2>
 
 <p>At some point when I owned my old truck, I was playing around with a new multimeter, and I noticed the truck’s trailer electrical connector.</p>
 
-<%= project_image("projects/turn-signal-counter/Truck-Connector.jpg", "Trailer electrical connector")%>
+<%= project_image("projects/turn-signal-counter/Truck-Connector.jpg", alt: "Trailer electrical connector")%>
 
 <p>After taking voltage measurements with various combinations of truck lights, I decided that it would be feasible to create a simple counter circuit to keep track of the number of times a turn signal had been lit since the beginning of the current trip.</p>
 
@@ -32,7 +32,7 @@
 
 <p>After voltage measurements, I determined the electrical connector has the following layout:</p>
 
-<%= project_image("projects/turn-signal-counter/Truck-Connector-Signals.jpg", "Trailer electrical connector with three female pins on the left and one male pin on the right. From left to right, the connectors are labeled “right turn/brake,” “left turn/brake,” running lights,” and “ground.”")%>
+<%= project_image("projects/turn-signal-counter/Truck-Connector-Signals.jpg", alt: "Trailer electrical connector with three female pins on the left and one male pin on the right. From left to right, the connectors are labeled “right turn/brake,” “left turn/brake,” running lights,” and “ground.”")%>
 
 <p>The running lights pin has a +12 V signal whenever the headlamp switch is set to parking lights or headlights. Since I normally drive with my parking lights or headlights on anyway, I was able to use this pin for my +12 V power line.</p>
 
@@ -40,7 +40,7 @@
 
 <p>I designed the setup for each counter circuit as follows:</p>
 
-<%= project_image("projects/turn-signal-counter/Turn-Signal-Logic.png", "Schematic diagram for the counter circuit", false)%>
+<%= project_image("projects/turn-signal-counter/Turn-Signal-Logic.png", alt: "Schematic diagram for the counter circuit")%>
 
 <p>The <%= link_to("CD4026BE", "files/turn-signal-counter/cd4026b.pdf") %></a> is a decade counter with 7-segment outputs.  It counts from zero to nine and then resets.  Carry out is high from decimal 0 to 4, and high from decimal 5 to 9 &mdash; one cycle per ten clock inputs. Thus, the carry out of one chip can be tied to the clock of the next higher decimal place’s chip to display a proper decimal count.</p>
 
@@ -52,20 +52,20 @@
 
 <p>I made the original prototype on a breadboard.  Using a single resistor on the common cathode for each display still fell into spec for any number of lit digits, although with uneven brightness of different numbers. For a prototype, this was an acceptable tradeoff for wiring simplicity.</p>
 
-<%= project_image("projects/turn-signal-counter/Counter-Breadboard.jpg", "Counter circuit on a breadboard") %>
-<%= project_image("projects/turn-signal-counter/Counter-Breadboard-On-Truck.jpg", "Counter circuit on a breadboard, sitting on the truck’s bumper") %>
+<%= project_image("projects/turn-signal-counter/Counter-Breadboard.jpg", alt: "Counter circuit on a breadboard") %>
+<%= project_image("projects/turn-signal-counter/Counter-Breadboard-On-Truck.jpg", alt: "Counter circuit on a breadboard, sitting on the truck’s bumper") %>
 
 <p>Next, I mounted the circuit on a stripboard.</p>
 
-<%= project_image("projects/turn-signal-counter/Counter-Stripboard.jpg", "Counter circuit on a stripboard (front and view)") %>
-<%= project_image("projects/turn-signal-counter/Counter-Stripboard-On-Truck.jpg", "Counter circuit on a stripboard, sitting on the truck’s bumper") %>
+<%= project_image("projects/turn-signal-counter/Counter-Stripboard.jpg", alt: "Counter circuit on a stripboard (front and view)") %>
+<%= project_image("projects/turn-signal-counter/Counter-Stripboard-On-Truck.jpg", alt: "Counter circuit on a stripboard, sitting on the truck’s bumper") %>
 
 <h2>Final Product</h2>
 
 <p>I had deliberately chosen the size of the stripboard to fit into the case for a spare accessory truck lamp I owned. This provided water resistance without sacrificing digit visibility.</p>
 
-<%= project_image("projects/turn-signal-counter/Counter-Case.jpg", "Counter circuit mounted in a case") %>
-<%= project_image("projects/turn-signal-counter/Counter-Case-On-Truck-1.jpg", "Case on the truck’s bumper") %>
-<%= project_image("projects/turn-signal-counter/Counter-Case-On-Truck-2.jpg", "Case on the truck’s bumper") %>
+<%= project_image("projects/turn-signal-counter/Counter-Case.jpg", alt: "Counter circuit mounted in a case") %>
+<%= project_image("projects/turn-signal-counter/Counter-Case-On-Truck-1.jpg", alt: "Case on the truck’s bumper") %>
+<%= project_image("projects/turn-signal-counter/Counter-Case-On-Truck-2.jpg", alt: "Case on the truck’s bumper") %>
 
 <p>I no longer own this truck, and my current car doesn’t have a trailer electrical connector, so this project is complete for the foreseeable future.</p>

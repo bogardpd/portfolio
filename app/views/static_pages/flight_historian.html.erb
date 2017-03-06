@@ -73,11 +73,11 @@
 
 <p>It worked for a while, but things gradually got more complicated. The Great Circle Mapper normally automatically zooms the map to include all of the airports in the user’s flight string. Most of my flights were in the <%= link_to "contiguous United States", 'http://en.wikipedia.org/wiki/Contiguous_United_States' %>, but a few flights to Europe forced the map to be zoomed out, which made the US map difficult to see as I filled in more of the map with flights.  Fortunately, the Great Circle Mapper allows the user to designate that the map should ignore a particular flight when figuring out its zoom by prepending it with <code>o:noext</code>. (For example, <code>CMH-ORD,o:noext,ORD-FRA,o:noext,FRA-EWR,EWR-CMH</code> generates <%= link_to "this map", 'http://www.gcmap.com/mapui?P=CMH-ORD,o:noext,ORD-FRA,o:noext,FRA-EWR,EWR-CMH' %>.) This let me flag all flights that left the continental US so that the map would remain focused on the US, and I could see the details of all those routes. But I also wanted to be able to see my world flights, so I ended up having to maintain two text files &ndash; one for within the continental US, and one for the world.</p>
 
-<%= project_image('projects/flight-historian/Routes-Text.png', "Screenshot of text file containing flight routes") %>
+<%= project_image('projects/flight-historian/Routes-Text.png', alt: "Screenshot of text file containing flight routes") %>
 
 <p>Then, in 2012, I started tracking the aircraft family, <%= link_to "tail number", 'http://en.wikipedia.org/wiki/Aircraft_registration' %>, and what class I sat in for all of my flights, and the data got more complicated. Now, a simple pair of text files was no longer good enough; I also had to keep a spreadsheet of all of the extra information about my flights. For good measure, I went back through my travel receipts again to get the past three years of aircraft family data.</p>
 
-<%= project_image('projects/flight-historian/Flight-Log-Excel.png', "Screenshot of Excel spreadsheet containing flight data") %>
+<%= project_image('projects/flight-historian/Flight-Log-Excel.png', alt: "Screenshot of Excel spreadsheet containing flight data") %>
 
 <p>All this extra data let me do some fancy things, like make maps of all my trips on a particular airline or type of airplane, but it was a lot of extra work. I’d have to use filters in Excel, type up the routes and put them in the Great Circle Mapper, all to get a series of maps that would only be good until I took my next flight. I had a lot of data to manage.</p>
 

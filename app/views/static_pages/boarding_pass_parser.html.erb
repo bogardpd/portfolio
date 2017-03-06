@@ -10,7 +10,7 @@
 
 <p>The 2D barcodes found on boarding passes encode a large amount of interesting flight and passenger data. I wrote a parser to process the output from a scan of a boarding pass barcode.</p>
 
-<%= project_image("projects/boarding-pass-parser/paper-boarding-pass.png", "Scan of paper boarding pass", false) %>
+<%= project_image("projects/boarding-pass-parser/paper-boarding-pass.png", alt: "Scan of paper boarding pass") %>
 
 <h2 id="features">Capabilities</h2>
 
@@ -53,7 +53,7 @@
 
 <p>However, having images of boarding passes would still require a lot of manual entry in the future, and I realized that all of that information should be stored digitally. I began researching the <%= link_to "Bar-Coded Boarding Pass", "https://en.wikipedia.org/wiki/Bar-coded_boarding_pass" %> (BCBP) standard. Instead of storing images of the boarding pass, I could just scan the barcode, and store it for future use in a barcode data field for each flight.</p>
 
-<%= project_image("projects/boarding-pass-parser/digital-boarding-pass.png", "Screenshot of digital boarding pass", false) %>
+<%= project_image("projects/boarding-pass-parser/digital-boarding-pass.png", alt: "Screenshot of digital boarding pass", type: :ios_screenshot) %>
 
 <p>Eventually, I decided that it would be helpful for me to write a class that could interpret the boarding pass data I’d been storing.</p>
 

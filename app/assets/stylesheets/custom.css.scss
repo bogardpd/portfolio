@@ -98,10 +98,33 @@ div.byline::after {
 	content: ' —';
 }
 
-div.image {
+figure {
 	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+  padding: 5px;
+  background-color: $color-background-light;
+  
+  figcaption {
+    margin: 10px;
+    font-weight: 700;
+  }
+  
+  img.project {
+  	margin: 10px auto;
+  }
+
+  img.ios-screenshot {
+  	max-width: 375px;
+  	height: auto;
+  	border: 1px solid $color-border;
+  }
+  
+  img.screenshot {
+    max-width: 600px;
+    border: 1px solid $color-text;
+    box-shadow: 1px 1px 5px $color-text-light;
+  }
 }
 
 h1 {
@@ -145,6 +168,12 @@ strong {
 
 .emphasis {
   font-style: italic;
+}
+
+.website-name {
+  font-variant: small-caps;
+  letter-spacing: 0.02em;
+  background-color: $color-background-light;
 }
 
 
@@ -303,16 +332,6 @@ img.icon-button {
 	width: 32px;
 	height: 32px;
 	margin-right: 10px;
-}
-
-img.project {
-	margin: 0 auto;
-}
-
-img.ios-screenshot {
-	max-width: 375px;
-	height: auto;
-	border: 1px solid $color-border;
 }
 
 img.project-icon {
