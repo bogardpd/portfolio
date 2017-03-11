@@ -49,6 +49,9 @@ class StaticPagesController < ApplicationController
     render text: ENV["LETS_ENCRYPT_KEY"]
   end
   
+  def old_computers
+  end
+  
   def oreo
   end
   

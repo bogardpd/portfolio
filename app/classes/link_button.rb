@@ -11,7 +11,7 @@ class LinkButton
   end
   
   def icon
-    "icons/#{@icon}.png"
+    @icon.present? ? "icons/#{@icon}.png" : nil
   end
   
   def path

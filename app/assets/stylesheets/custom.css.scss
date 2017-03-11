@@ -98,6 +98,17 @@ div.byline::after {
 	content: ' —';
 }
 
+div.computer-summary {
+  margin: 20px 0;
+  figure {
+    margin: 10px 0;
+  }
+  h4 {
+    font-weight: 700;
+    margin: 10px 0;
+  }
+}
+
 figure {
 	text-align: center;
 	margin-top: 25px;
