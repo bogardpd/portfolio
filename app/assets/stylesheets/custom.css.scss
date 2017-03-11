@@ -153,6 +153,11 @@ img.bordered {
 	border: 1px solid $color-border;
 }
 
+img.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 img.org-logo {
 	width: 200px;
 	height: 100px;
