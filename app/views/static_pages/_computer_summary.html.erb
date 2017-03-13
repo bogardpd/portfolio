@@ -1,0 +1,15 @@
+<% img_root = "computers/#{computer["name"].parameterize}" %>
+<% img = Rails.application.assets.find_asset("#{img_root}.png") ? "#{img_root}.png" : "#{img_root}.jpg" %>
+<div id="<%= computer["name"].parameterize %>" class="container computer-summary">
+  <div class="col-sm-12">
+    <h3 id="fishsticks"><%= computer["name"] %> <small><%= computer["from"] %>&ndash;<%= computer["to"] %></small></h3>
+    <%= "<p>#{computer["description"]}</p>".html_safe if computer["description"] %>
+  </div>
+  <div class="col-sm-4"><%= project_image(img, attribution: computer["attribution"]) %></div>
+  <div class="col-sm-8">
+    <h4><%= computer["model"] %></h4>
+    <ul class="list-unstyled">
+      <%= computer["specs"].map{|spec| "<li>#{spec}</li>"}.join("\n").html_safe %>
+    </ul>
+  </div>
+</div>

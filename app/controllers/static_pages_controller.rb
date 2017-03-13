@@ -50,6 +50,7 @@ class StaticPagesController < ApplicationController
   end
   
   def old_computers
+    @computers = JSON.parse(File.read('app/assets/json/old-computers.json'))
   end
   
   def oreo
