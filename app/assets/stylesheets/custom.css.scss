@@ -120,6 +120,11 @@ figure {
     margin: 10px;
     font-weight: 700;
   }
+  figcaption.attribution {
+    font-size: 10px;
+    font-weight: 400;
+    color: $color-text-light;
+  }
   
   img.project {
   	margin: 10px auto;

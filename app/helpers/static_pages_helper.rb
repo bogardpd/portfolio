@@ -6,7 +6,7 @@ module StaticPagesHelper
   end
   
   # Returns a responsive image.
-  def project_image(path, type: nil, alt: nil, caption: nil)
+  def project_image(path, type: nil, alt: nil, caption: nil, attribution: nil)
     classes = %w(img-responsive project)
     extra_classes = {
       :ios_screenshot => %w(ios-screenshot),
@@ -16,7 +16,8 @@ module StaticPagesHelper
     image = image_tag(path, class: classes.join(' '), alt: alt)
     image = link_to(image, image_path(path)) if type == :screenshot
     caption = "<figcaption>#{caption}</figcaption>" if caption.present?
-    return %Q(<figure>#{image}#{caption}</figure>).html_safe
+    attribution = %Q(<figcaption class="attribution">Image Credit: #{attribution}</figcaption>) if attribution.present?
+    return %Q(<figure>#{image}#{attribution}#{caption}</figure>).html_safe
   end
   
   # Returns an embedded YouTube video.

@@ -6,46 +6,27 @@
 <%= link_buttons(LinkButton.new("See Paul’s current computers", nil, computers_path)) %>
 
 <!-- Talk about how Pancake has generationally upgraded. Put Pancake timeline here. -->
-<h2>Computers</h2>
-
-
-
-<div class="container computer-summary">
-  <div class="col-sm-12">
-    <h3 id="frites-liberte">Frites Liberte <small>June 2015&ndash;April 2016</small></h3>
-  </div>
-  <div class="col-sm-4"><%= project_image('computers/Chili Dog Frites Liberte.png') %></div>
-  <div class="col-sm-8">
-    <h4>Apple MacBook Pro 15″ (mid 2012)</h4>
-    <ul class="list-unstyled">
-      <li>Intel Core i5 3210M (2.5 GHz)</li>
-      <li>4 GB DDR3-1600 SDRAM</li>
-      <li>500 GB 5400 RPM HDD</li>
-      <li>8× DVD±RW drive</li>
-      <li>Nvidia GeForce GT 650M (512 MB)</li>
-      <li>15.4″ 1440×900 display</li>
-      <li>802.11n Wi-Fi</li>
-      <li>OS X 10.11 El Capitan</li>
-    </ul>
-  </div>
-</div>
+<!-- Get old computer data (peanutbutter!) from images -->
+<h2 id="laptops">Laptops</h2>
 
 <div class="container computer-summary">
   <div class="col-sm-12">
-    <h3 id="chili-dog">Chili Dog <small>April 2009&ndash;June 2015</small></h3>
+    <h3 id="fishsticks">Fishsticks <small>July 2002&ndash;July 2008</small></h3>
+    <p>Fishsticks is the laptop I was required to purchase at the beginning of my freshman year at <%= link_to "RHIT", "http://www.rose-hulman.edu" %>.</p>
   </div>
-  <div class="col-sm-4"><%= project_image('computers/Chili Dog Frites Liberte.png') %></div>
+  <div class="col-sm-4"><%= project_image('computers/Fishsticks.png') %></div>
   <div class="col-sm-8">
-    <h4>Apple MacBook Pro 15″ (early 2009)</h4>
+    <h4>Compaq Evo N800c</h4>
     <ul class="list-unstyled">
-      <li>Intel Core 2 Duo (2.66 GHz)</li>
-      <li>4 GB DDR3-1066 SDRAM</li>
-      <li>320 GB 7200 RPM HDD</li>
-      <li>8× DVD±RW drive</li>
-      <li>Nvidia GeForce 9600M GT (512 MB)</li>
-      <li>15.4″ 1440×900 display</li>
-      <li>802.11n Wi-Fi</li>
-      <li>OS X 10.6 Snow Leopard; Windows 7 Home Premium</li>
+      <li>Intel Pentium 4 Mobile (1.7 GHz)</li>
+      <li>768 MB DDR SDRAM</li>
+      <li>60 GB 5400 RPM HDD</li>
+      <li>CD-RW/DVD-ROM drive</li>
+      <li>ATI Mobility Radeon 7500 (64 MB)</li>
+      <li>15″ 1400×1050 display</li>
+      <li>802.11b Wi-Fi</li>
+      <li>Windows XP Professional; Ubuntu 6.10</li>
+      <li>Compaq Port Replicator PR1000</li>
     </ul>
   </div>
 </div>
@@ -72,26 +53,144 @@
 
 <div class="container computer-summary">
   <div class="col-sm-12">
-    <h3 id="fishsticks">Fishsticks <small>July 2002&ndash;July 2008</small></h3>
-    <p>Fishsticks is the laptop I was required to purchase at the beginning of my freshman year at <%= link_to "RHIT", "http://www.rose-hulman.edu" %>.</p>
+    <h3 id="chili-dog">Chili Dog <small>April 2009&ndash;June 2015</small></h3>
   </div>
-  <div class="col-sm-4"><%= project_image('computers/Fishsticks.png') %></div>
+  <div class="col-sm-4"><%= project_image('computers/Chili Dog Frites Liberte.png') %></div>
   <div class="col-sm-8">
-    <h4>Compaq Evo N800c</h4>
+    <h4>Apple MacBook Pro 15″ (early 2009)</h4>
     <ul class="list-unstyled">
-      <li>Intel Pentium 4 Mobile (1.7 GHz)</li>
-      <li>768 MB DDR SDRAM</li>
-      <li>60 GB 5400 RPM HDD</li>
-      <li>CD-RW/DVD-ROM drive</li>
-      <li>ATI Mobility Radeon 7500 (64 MB)</li>
-      <li>15″ 1400×1050 display</li>
-      <li>802.11b Wi-Fi</li>
-      <li>Windows XP Professional; Ubuntu 6.10</li>
-      <li>Compaq Port Replicator PR1000</li>
+      <li>Intel Core 2 Duo (2.66 GHz)</li>
+      <li>4 GB DDR3-1066 SDRAM</li>
+      <li>320 GB 7200 RPM HDD</li>
+      <li>8× DVD±RW drive</li>
+      <li>Nvidia GeForce 9600M GT (512 MB)</li>
+      <li>15.4″ 1440×900 display</li>
+      <li>802.11n Wi-Fi</li>
+      <li>OS X 10.6 Snow Leopard; Windows 7 Home Premium</li>
     </ul>
   </div>
 </div>
 
+<div class="container computer-summary">
+  <div class="col-sm-12">
+    <h3 id="frites-liberte">Frites Liberte <small>June 2015&ndash;April 2016</small></h3>
+  </div>
+  <div class="col-sm-4"><%= project_image('computers/Chili Dog Frites Liberte.png') %></div>
+  <div class="col-sm-8">
+    <h4>Apple MacBook Pro 15″ (mid 2012)</h4>
+    <ul class="list-unstyled">
+      <li>Intel Core i5 3210M (2.5 GHz)</li>
+      <li>4 GB DDR3-1600 SDRAM</li>
+      <li>500 GB 5400 RPM HDD</li>
+      <li>8× DVD±RW drive</li>
+      <li>Nvidia GeForce GT 650M (512 MB)</li>
+      <li>15.4″ 1440×900 display</li>
+      <li>802.11n Wi-Fi</li>
+      <li>OS X 10.11 El Capitan</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <p class="alert alert-info">Current laptop: <%= link_to "Quesadilla", computers_path(anchor: "home-computers") %></p>
+</div>
+
 <h2 id="mobile">Mobile Devices</h2>
 
-<!-- Old phones - maybe a table like the website history has? -->
+<div class="container computer-summary">
+  <div class="col-sm-12">
+    <h3 id="palm-m105">Palm m105 <small>July 2000&ndash;July 2002</small></h3>
+  </div>
+  <div class="col-sm-4"><%= project_image("computers/Palm m105.png", attribution: "Amazon.com") %></div>
+  <div class="col-sm-8">
+    <h4>Palm m105</h4>
+    <ul class="list-unstyled">
+      <li>Personal Digital Assistant</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container computer-summary">
+  <div class="col-sm-12">
+    <h3 id="sony-clie">Sony Clié <small>July 2002&ndash;October 2005</small></h3>
+  </div>
+  <div class="col-sm-4"><%= project_image("computers/Sony Clie.png", attribution: "engadget.com") %></div>
+  <div class="col-sm-8">
+    <h4>Sony Clié PEG-T615C</h4>
+    <ul class="list-unstyled">
+      <li>Personal Digital Assistant</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container computer-summary">
+  <div class="col-sm-12">
+    <h3 id="tator-tot">Tator Tot <small>October 2005&ndash;February 2009</small></h3>
+  </div>
+  <div class="col-sm-4"><%= project_image("computers/Tator Tot.png", attribution: "pcmag.com") %></div>
+  <div class="col-sm-8">
+    <h4>HP iPAQ RX1950</h4>
+    <ul class="list-unstyled">
+      <li>Personal Digital Assistant</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container computer-summary">
+  <div class="col-sm-12">
+    <h3 id="tator-tot-ii">Tator Tot II <small>February 2009&ndash;July 2009</small></h3>
+  </div>
+  <div class="col-sm-4"><%= project_image("computers/Tator Tot II.png", attribution: "brighthand.com") %></div>
+  <div class="col-sm-8">
+    <h4>HTC Touch Pro</h4>
+    <ul class="list-unstyled">
+      <li>Smartphone</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container computer-summary">
+  <div class="col-sm-12">
+    <h3 id="olive">Olive <small>July 2009&ndash;May 2011</small></h3>
+  </div>
+  <div class="col-sm-4"><%= project_image("computers/Olive.png", attribution: "Evan-Amos (public domain)") %></div>
+  <div class="col-sm-8">
+    <h4>Blackberry Bold 9650</h4>
+    <ul class="list-unstyled">
+      <li>Smartphone</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container computer-summary">
+  <div class="col-sm-12">
+    <h3 id="olive">Tator Tot III <small>May 2011&ndash;November 2013</small></h3>
+  </div>
+  <div class="col-sm-4"><%= project_image("computers/Tator Tot III.png", attribution: "anonymous (CC BY-SA 3.0)") %></div>
+  <div class="col-sm-8">
+    <h4>Apple iPhone 4</h4>
+    <ul class="list-unstyled">
+      <li>Smartphone</li>
+      <li>32 GB</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container computer-summary">
+  <div class="col-sm-12">
+    <h3 id="olive">Tator Tot IV <small>November 2013&ndash;November 2015</small></h3>
+  </div>
+  <div class="col-sm-4"><%= project_image("computers/Tator Tot IV.png", attribution: "Justin14 (CC BY-SA 3.0)") %></div>
+  <div class="col-sm-8">
+    <h4>Apple iPhone 5s</h4>
+    <ul class="list-unstyled">
+      <li>Smartphone</li>
+      <li>32 GB</li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <p class="alert alert-info">Current smartphone: <%= link_to "Tator Tot V", computers_path(anchor: "mobile") %></p>
+  <p class="alert alert-info">Current tablet: <%= link_to "Latke", computers_path(anchor: "mobile") %></p>
+</div>
