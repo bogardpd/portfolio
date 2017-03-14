@@ -1,4 +1,4 @@
-<% img_root = "computers/#{computer["name"].parameterize}" %>
+<% img_root = "computers/old/#{computer["name"].parameterize}" %>
 <% img = Rails.application.assets.find_asset("#{img_root}.png") ? "#{img_root}.png" : "#{img_root}.jpg" %>
 <div id="<%= computer["name"].parameterize %>" class="container computer-summary">
   <div class="col-sm-12">
