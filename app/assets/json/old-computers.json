@@ -1,4 +1,21 @@
 {
+  "desktops" : [
+    {
+      "name"  : "Peanut Butter",
+      "from"  : "October 2004",
+      "to"    : "May 2008",
+      "model" : "Home-Built PC",
+      "description" : "I built Peanut Butter in college largely to play Half-Life 2. It ended up becoming my primary World of Warcraft machine.",
+      "specs" : [
+        "AMD Athlon 64 3200+ (2.3 GHz)",
+        "2 GB DDR-400 SDRAM",
+        "200 GB 7200 RPM HDD",
+        "DVD±RW drive",
+        "ATI Radeon 9800 Pro (128 MB)",
+        "Windows XP Pro; Ubuntu 6.10"
+      ]
+    }
+  ],
   "laptops" : [
     { 
       "name"  : "Fishsticks",
@@ -75,18 +92,18 @@
       "model" : "Palm m105",
       "specs" : [
         "Personal Digital Assistant",
-        "PalmOS"
+        "Palm OS 3"
       ],
       "attribution" : "Amazon.com"
     },
     {
-      "name"  : "Sony Clié",
+      "name"  : "Sony CLIÉ",
       "from"  : "July 2002",
       "to"    : "October 2005",
-      "model" : "Sony Clié PEG-T615C",
+      "model" : "Sony CLIÉ PEG-T615C",
       "specs" : [
         "Personal Digital Assistant",
-        "PalmOS"
+        "Palm OS 3.5"
       ],
       "attribution" : "engadget.com"
     },
@@ -97,7 +114,7 @@
       "model" : "HP iPAQ RX1950",
       "specs" : [
         "Personal Digital Assistant",
-        "Windows Mobile"
+        "Windows Mobile 5.0"
       ],
       "attribution" : "pcmag.com"
     },
@@ -108,7 +125,7 @@
       "model" : "HTC Touch Pro",
       "specs" : [
         "Smartphone",
-        "Windows Mobile"
+        "Windows Mobile 6.1"
       ],
       "attribution" : "brighthand.com"
     },
@@ -116,10 +133,10 @@
       "name"  : "Olive",
       "from"  : "July 2009",
       "to"    : "May 2011",
-      "model" : "Blackberry Bold 9650",
+      "model" : "BlackBerry Bold 9650",
       "specs" : [
         "Smartphone",
-        "Blackberry OS"
+        "BlackBerry OS 6"
       ],
       "attribution" : "Evan-Amos (public domain)"
     },
@@ -131,7 +148,7 @@
       "specs" : [
         "Smartphone",
         "32 GB",
-        "iOS"
+        "iOS 7"
       ],
       "attribution" : "anonymous (CC BY-SA 3.0)"
     },
@@ -143,7 +160,7 @@
       "specs" : [
         "Smartphone",
         "32 GB",
-        "iOS"
+        "iOS 9"
       ],
       "attribution" : "Justin14 (CC BY-SA 3.0)"
     }

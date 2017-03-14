@@ -7,7 +7,16 @@
 
 <!-- Talk about how Pancake has generationally upgraded. Put Pancake timeline here. -->
 <!-- Get old computer data (peanutbutter!) from images -->
+<!-- add dates to peanutbutter -->
 <!-- Update mobile operating systems -->
+
+<h2 id="desktops">Desktops</h2>
+
+<%= render partial: "computer_summary", collection: @computers["desktops"], as: :computer %>
+
+<div class="container">
+  <p class="alert alert-info">Current desktop: <%= link_to "Pancake", computers_path(anchor: "home-computers") %></p>
+</div>
 
 <h2 id="laptops">Laptops</h2>
 
