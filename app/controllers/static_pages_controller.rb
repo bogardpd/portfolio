@@ -18,7 +18,13 @@ class StaticPagesController < ApplicationController
   def earthbound_database
   end
   
+  def fast_track_calculus
+  end
+  
   def flight_historian
+  end
+  
+  def fred_and_harry
   end
   
   def gps_logging
