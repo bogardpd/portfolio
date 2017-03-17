@@ -5,11 +5,6 @@
 
 <%= link_buttons(LinkButton.new("See Paul’s current computers", nil, computers_path)) %>
 
-<!-- Talk about how Pancake has generationally upgraded. Put Pancake timeline here. -->
-<!-- Get old computer data (peanutbutter!) from images -->
-<!-- add dates to peanutbutter -->
-<!-- Update mobile operating systems -->
-
 <h2 id="desktops">Desktops</h2>
 
 <%= render partial: "computer_summary", collection: @computers["desktops"], as: :computer %>
@@ -34,3 +29,5 @@
   <p class="alert alert-info">Current smartphone: <%= link_to "Tator Tot V", computers_path(anchor: "mobile") %></p>
   <p class="alert alert-info">Current tablet: <%= link_to "Latke", computers_path(anchor: "mobile") %></p>
 </div>
+
+<%= link_buttons(LinkButton.new("See Paul’s current computers", nil, computers_path)) %>
