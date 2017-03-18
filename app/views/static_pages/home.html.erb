@@ -5,6 +5,6 @@
   LinkButton.new("Paul’s <strong>GitHub</strong> repositories", 'github', 'https://github.com/bogardpd/')
   ) %>
 
-<div class="row project-row">
+<div class="row cover-row">
 	<%= Project::LIST.map{|cover| render partial: 'project_cover', locals: cover}.join.html_safe %>
 </div>

@@ -109,6 +109,10 @@ div.computer-summary {
   }
 }
 
+div.photo-gallery-cover {
+  
+}
+
 figure {
 	text-align: center;
 	margin-top: 25px;
@@ -306,17 +310,9 @@ footer {
   }
 }
 
+/* Covers */
 
-/* projects */
-
-
-a.icon-button {
-	font-size: $font-size-default;
-	color: $color-text;
-	white-space: normal;
-}
-
-div.project-row {
+div.cover-row {
 	a {
 		margin-bottom: 10px;
 	}
@@ -328,20 +324,33 @@ div.project-row {
 	}
 }
 
-div.project {
+div.cover {
 	text-align: center;
 	h2 {
 		margin-top: 10px;
 	}
 	p {
 		margin-top: 10px;
+    margin-bottom: 10px;
 	}
+  span.location {
+    font-weight: 700;
+  }
 	a {
 		color: $color-primary;
 	}
 	a:hover {
 		color: $color-primary;
 	}
+}
+
+/* projects */
+
+
+a.icon-button {
+	font-size: $font-size-default;
+	color: $color-text;
+	white-space: normal;
 }
 
 div.button-row {

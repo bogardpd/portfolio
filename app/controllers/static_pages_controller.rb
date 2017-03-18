@@ -71,6 +71,9 @@ class StaticPagesController < ApplicationController
   def shared_itinerary
   end
   
+  def starmen_conventions
+  end
+  
   def stephenvlog
     @vlogs = Array.new
   end
