@@ -1,0 +1,8 @@
+<div class="col-lg-4 col-sm-6 cover">
+	<%= link_to(("<h3>#{name}</h3>"	+
+	image_tag("photos/covers/#{name.parameterize}.jpg", class: 'project-icon', alt: name) +
+	%Q(<p><span class="location">#{location}</span><br/>#{dates}</p>)).html_safe,
+	starmen_con_gallery_path(gallery: name.parameterize),
+	class: 'btn btn-link btn-block' )
+	%>
+</div>

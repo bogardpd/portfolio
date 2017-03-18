@@ -6,16 +6,27 @@
 <h2>Starmen Cons</h2>
 
 <div class="row cover-row">
-  <div class="col-lg-4 col-sm-6 cover">
-  	<%= link_to(("<h3>Washingcon</h3>"	+
-  	image_tag('photos/covers/washingcon.jpg', class: 'project-icon', alt: "Washingcon") +
-  	%Q(<p><span class="location">Marysville, Washington</span><br/>15&ndash;23 July 2007</p>)).html_safe,
-  	'#',
-  	class: 'btn btn-link btn-block' )
-  	%>
-  </div>
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Washingcon", location: "Marysville, Washington", dates: "15–23 July 2007"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Chicagocon", location: "Michigan City, Indiana", dates: "12–19 July 2008"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Yes We Con", location: "Lake George, New York", dates: "7–14 June 2009"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Gatlincon", location: "Gatlinburg, Tennessee", dates: "25–31 July 2010"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Utacon", location: "Herriman, Utah", dates: "24–31 July 2011"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Flagstaff Con", location: "Flagstaff, Arizona", dates: "22–29 June 2014"} %>
 </div>
 
+<h2>Mini Cons</h2>
+
+<div class="row cover-row">
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Indiana Minicon", location: "Lafayette &amp; Kokomo, Indiana", dates: "____ 2006"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Applecon", location: "Appleton, Wisconsin", dates: "2–4 January 2009"} %>
+</div>
+
+
 <h2>Camp Fangamer</h2>
+
+<div class="row cover-row">
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Camp Fangamer 2015", location: "Tucson, Arizona", dates: "18–19 July 2015"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {name: "Camp Videogamely 2016", location: "Tucson, Arizona", dates: "29–31 July 2016"} %>
+</div>
 
 <h2>PAX</h2>
