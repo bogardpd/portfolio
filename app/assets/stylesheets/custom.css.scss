@@ -70,7 +70,14 @@ a.btn {
 	text-decoration: none;
 }
 
+a.link-header {
+  color: inherit;
+  text-decoration: none;
+}
 
+cite {
+  font-style: italic;
+}
 
 code, kbd {
 	font-family: $font-stack-monospace;
@@ -445,6 +452,17 @@ div.resume-job-title {
 
 td.resume-date, td.resume-skill-category {
 	width: 25%;
+}
+
+/* Galleries */
+
+
+span.card-title {
+  font-style: italic;
+}
+span.card-description {
+  font-weight: 300;
+  font-style: italic;
 }
 
 /* Terminal Silhouettes */

@@ -15,6 +15,10 @@ module ApplicationHelper
     input_date.strftime("%e %b %Y").strip
   end
   
+  def link_header(text, level)
+    %Q(<h#{level} id="#{text.parameterize}">#{link_to(text, params.merge(anchor: text.parameterize), class: "link-header")}</h#{level}>).html_safe
+  end
+  
   # Returns the meta description on a per-page basis.
   def meta_description(page_meta_description = '')
     if page_meta_description.empty?
