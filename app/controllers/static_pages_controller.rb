@@ -123,6 +123,7 @@ class StaticPagesController < ApplicationController
     @terminals['MUC'] = "Munich"
     @terminals['NUE'] = "Nuremberg"
     @terminals['OKC'] = "Oklahoma City"
+    @terminals['OAJ'] = "Jacksonville, NC"
     @terminals['ONT'] = "Ontario"
     @terminals['ORD'] = "Chicago (O’Hare)"
     @terminals['PDX'] = "Portland, OR"
