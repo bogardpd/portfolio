@@ -139,6 +139,7 @@ class StaticPagesController < ApplicationController
     @terminals['TUL'] = "Tulsa"
     @terminals['TUS'] = "Tucson"
     @terminals['TXL'] = "Berlin (Tegel)"
+    @terminals['VPS'] = "Destin/Fort Walton Beach"
     @terminals['YYZ'] = "Toronto (Pearson)"
     
     @terminals = @terminals.sort_by { |iata, name| name }
