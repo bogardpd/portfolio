@@ -131,6 +131,7 @@ class StaticPagesController < ApplicationController
     @terminals['PWM'] = "Portland, ME"
     @terminals['RAP'] = "Rapid City"
     @terminals['RDU'] = "Raleigh–Durham"
+    @terminals['SAN'] = "San Diego"
     @terminals['SAT'] = "San Antonio"
     @terminals['SAV'] = "Savannah"
     @terminals['SEA'] = "Seattle/Tacoma"
