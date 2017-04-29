@@ -30,7 +30,7 @@
 		<tr>
 			<th scope="row">Languages &amp; Frameworks</th>
 			<td>
-				Ruby on Rails (2.3.1, 4.2.3)<br/>
+				Ruby on Rails (2.3.1, 5.0.0.1)<br/>
 				HTML<br/>
 				CSS<br/>
         SCSS<br/>
@@ -121,15 +121,17 @@
 			<td>2.0</td>
 			<td><%= link_to("Flight Historian", 'http://onehundredairports.com/2016/01/31/flight-log-version-2-0-flight-historian/') %></td>
 		</tr>
+		<tr>
+			<td>29 April 2017</th>
+			<td>2.1</td>
+			<td><%= link_to("Import Flights from Digital Boarding Passes", "http://onehundredairports.com/2017/04/09/flight-log-version-2-1-import-flights-from-digital-boarding-passes") %></td>
+		</tr>
 	</tbody>
 </table>
 
 <h2 id="specifications">Specifications</h2>
 
-<%= link_buttons(
-  DownloadButton.new('files/flight-historian/Flight Log Functional Specification.pdf'),
-  DownloadButton.new('files/flight-historian/Flight Log Technical Specification.pdf')
-  ) %>
+<%= link_buttons(DownloadButton.new('files/flight-historian/Flight Historian Specification.pdf')) %>
 
 <h2 id="credits">Credits</h2>
 
