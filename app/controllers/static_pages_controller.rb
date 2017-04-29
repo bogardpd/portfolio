@@ -28,7 +28,7 @@ class StaticPagesController < ApplicationController
   end
   
   def gallery
-    gallery_template = "static_pages/galleries/#{params[:gallery]}/#{params[:gallery]}"
+    gallery_template = "static_pages/galleries/#{params[:gallery]}/index"
     @page = (params[:page] || 1).to_i
     if template_exists?(gallery_template)
       render :template => gallery_template
