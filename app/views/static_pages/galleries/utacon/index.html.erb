@@ -1,8 +1,13 @@
 <% provide(:title, "Utacon") %>
 <% provide(:meta_description, "Photos from Utacon 2011.") %>
+<% page_locals = {path: :starmen_con_gallery, gallery: :utacon, current: @page, pages: ["The House","July 25","July 26","July 27","July 28","July 29","July 30","July 31"]} %>
 
 <%= render partial: "static_pages/galleries/starmen_gallery_link" %>
 
 <h1>Utacon</h1>
 
 <p>Utacon took place at a rental house in Herriman, Utah on 24&ndash;31 July, 2011.</p>
+
+<%= render partial: "static_pages/galleries/page_buttons", locals: page_locals %>
+<%= render partial: "static_pages/galleries/utacon/p#{@page}" %>
+<%= render partial: "static_pages/galleries/page_buttons", locals: page_locals %>
