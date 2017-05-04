@@ -1,0 +1,13 @@
+<% provide(:title, "Chicagocon") %>
+<% provide(:meta_description, "Photos from Chicagocon 2008.") %>
+<% page_locals = {path: :starmen_con_gallery, gallery: :chicagocon, current: @page, pages: ["The House","July 12","July 13","July 14","July 15","July 16","July 17","July 18","July 19"]} %>
+
+<%= render partial: "static_pages/galleries/starmen_gallery_link" %>
+
+<h1>Chicagocon</h1>
+
+<p>Chicagocon took place at a rental house in Michigan City, Indiana (near Chicago) on 12&ndash;19 July, 2008.</p>
+
+<%= render partial: "static_pages/galleries/page_buttons", locals: page_locals %>
+<%= render partial: "static_pages/galleries/chicagocon/p#{@page}" %>
+<%= render partial: "static_pages/galleries/page_buttons", locals: page_locals %>
