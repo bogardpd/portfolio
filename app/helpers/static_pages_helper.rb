@@ -13,6 +13,7 @@ module StaticPagesHelper
       :screenshot     => %w(screenshot)
     }
     classes.concat(extra_classes[type]) if extra_classes[type]
+    path = "https://s3.us-east-2.amazonaws.com/pbogardcom-images/#{path}"
     image = image_tag(path, class: classes.join(' '), alt: alt)
     image = link_to(image, image_path(path)) if type == :screenshot
     caption = "<figcaption>#{caption}</figcaption>" if caption.present?
