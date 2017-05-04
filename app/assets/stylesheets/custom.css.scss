@@ -130,6 +130,9 @@ figure {
   figcaption {
     margin: 10px;
     font-weight: 700;
+    span.caption-label {
+      font-style: italic;
+    }
   }
   figcaption.attribution {
     font-size: 10px;
