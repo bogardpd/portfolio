@@ -1,2 +1,61 @@
-<h1>TimeZones#index</h1>
-<p>Find me in app/views/time_zones/index.html.erb</p>
+<% provide(:title, "Time Zone Chart")%>
+<% provide(:meta_description, "Create a chart of what time zones you’ve visited recently.")%>
+
+<h1>Time Zone Chart</h1>
+
+<form id="locations">
+  <table class="table">
+    <thead>
+      <th>Start (UTC)</th>
+      <th>Location</th>
+      <th>UTC Offset</th>
+      <th>End (UTC)</th>
+    </thead>
+    <tbody>
+      <% (0...@number_of_starting_rows).each_with_index do |row,index| %>
+        <tr id="location_<%= index %>">
+          <td>
+            <% if index == 0 %>
+              Starting location
+            <% else %>
+              <div class="form-group">
+                <div class="input-group date datetimepicker" id="start_<%= index %>">
+                  <input type="text" class="form-control" />
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </div>
+            <% end %>
+          </td>
+          <td>
+            <div class="form-group">
+              <input type="text" class="form-control" id="location_<%= index %>" />
+            </div>
+          </td>
+          <td>
+            <div class="form-group">
+              <select class="form-control" id="offset_<%= index %>">
+                <option value="-5">UTC-05:00</option>
+              </select>
+            </div>
+          </td>
+          <td>
+            <% if index == @number_of_starting_rows - 1 %>
+              Ending location
+            <% else %>
+              <div class="form-group">
+                <div class="input-group date datetimepicker" id="end_<%= index %>">
+                  <input type="text" class="form-control" />
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>      
+    </tbody>
+  </table>
+</form>
