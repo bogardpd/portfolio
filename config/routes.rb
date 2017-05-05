@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   root 'static_pages#home'
   
   # Authentication
@@ -33,6 +34,9 @@ Rails.application.routes.draw do
   get 'ingress-mosaics' => 'static_pages#ingress_mosaics'
   get 'ingress-murals', :to => redirect('/ingress-mosaics', :status => 301)
   get 'history'         => 'static_pages#history'
+  
+  # Projects hosted on Portfolio
+  get "timezones" => "time_zones#index"
   
   # Non-linked Pages
   get 'stephenvlog'     => 'static_pages#stephenvlog'
