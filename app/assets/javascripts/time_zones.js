@@ -1,15 +1,12 @@
-var rowCount;
-
 $(function() {
   $(".datetimepicker").datetimepicker({format: "YYYY-MM-DD HH:mm"});
-  rowCount = $("tr.location-row").length;
-
   $("input").on("blur", updateChart);
   $("select").on("blur", updateChart);
 });
 
 function updateChart() {
   var timeZoneLocations = [];
+  var rowCount = $("tr.location-row").length;
   for(i = 0; i < rowCount; i++) {
     timeZoneLocations[i] = {
       start:    $("#start_"+i).val(),
