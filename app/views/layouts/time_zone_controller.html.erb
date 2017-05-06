@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+	<%= render 'layouts/favicon' %>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'time_zones', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <%= csrf_meta_tags %>
+	<!--[if lt IE 9]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+		</script>
+	<![endif]-->
+	
+	<meta name="author" content="Paul Bogard" />
+	<%= meta_description(yield(:meta_description)) %>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	
+	<div class="container">
+    
+    <%= yield %>
+    
+	</div>
+	
+	
+	
+</body>
+</html>
