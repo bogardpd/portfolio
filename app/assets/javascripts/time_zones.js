@@ -1,6 +1,8 @@
+/* Uses "DateTime Picker for Bootstrap" from http://www.malot.fr/bootstrap-datetimepicker/index.php under the Apache License v2.0 http://www.apache.org/licenses/LICENSE-2.0 */
+
 $(function() {
-  $(".datetimepicker").datetimepicker({format: "YYYY-MM-DD HH:mm"});
-  $("input").on("blur", updateChart);
+  $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii"});
+  $("input").on("blur change", updateChart);
   $("select").on("blur", updateChart);
 });
 
