@@ -4,6 +4,8 @@ $(function() {
   $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii"});
   $("input").on("blur change", updateChart);
   $("select").on("blur", updateChart);
+  $(".insert-row").on("click", function() { insertRow($(this)); });
+  $(".delete-row").on("click", function() { deleteRow($(this)); });
 });
 
 function updateChart() {
@@ -18,4 +20,25 @@ function updateChart() {
     };
   }
   $("#chart").text(JSON.stringify(timeZoneLocations));
+}
+
+function insertRow(button) {
+  position = getPositionFromID(button.attr('id'));
+  console.log("Insert row at position " + position);
+  // Shift everything down after the given position:
+  // Insert row:  
+  // Update chart:
+}
+
+function deleteRow(button) {
+  position = getPositionFromID(button.attr('id'));
+  console.log("Delete row " + position);
+  // Delete row:
+  // Shift everything up after the given position:  
+  // Update chart:
+}
+
+// Takes an ID string and extracts the integer potion from it
+function getPositionFromID(id) {
+  return parseInt(id.substring(id.indexOf("_")+1,id.length))
 }
