@@ -1,5 +1,14 @@
-<% img_root = "computers/old/#{computer["name"].parameterize}" %>
-<% img = Rails.application.assets.find_asset("#{img_root}.png") ? "#{img_root}.png" : "#{img_root}.jpg" %>
+<% img_root = "https://s3.us-east-2.amazonaws.com/pbogardcom-images/" %>
+<% img_path = "computers/old/#{computer["name"].parameterize}" %>
+
+<% 
+uri = URI("#{img_root}#{img_path}.png")
+request = Net::HTTP.new(uri.host)
+response = request.request_head(uri.path)
+img = response.code.to_i == 200 ? "#{img_path}.png" : "#{img_path}.jpg" %>
+
+Response <%= response.code %>
+
 <div id="<%= computer["name"].parameterize %>" class="container computer-summary">
   <div class="col-sm-12">
     <h3 id="<%= computer["name"].parameterize %>"><%= computer["name"] %> <small><%= [computer["from"],computer["to"]].join("&ndash;").html_safe if computer["from"] && computer["to"]%></small></h3>
