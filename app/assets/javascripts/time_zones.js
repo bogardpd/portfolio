@@ -1,6 +1,9 @@
 /* Uses "DateTime Picker for Bootstrap" from http://www.malot.fr/bootstrap-datetimepicker/index.php under the Apache License v2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 
 $(function() {
+  // Run on page load:
+  $("#js-warning").remove();
+  $(".hidden-by-default").show();
   setEventTriggers();
 });
 

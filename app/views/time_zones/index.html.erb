@@ -3,6 +3,10 @@
 
 <h1>Time Zone Chart</h1>
 
+<p id="js-warning">JavaScript is required to use the Time Zone Chart.</p>
+
+<div class="hidden-by-default">
+  
 <div id="chart" class="container"></div>
 
 <form id="locations">
@@ -16,62 +20,9 @@
       <th></th>
     </thead>
     <tbody>
-      <% (0...@number_of_starting_rows).each_with_index do |row,index| %>
-        <tr class="location-row" id="row_<%= index %>">
-          <td>
-            <div class="btn btn-success insert-row" id="insert_<%=index%>" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div>
-          </td>
-          <td>
-            <% if index == 0 %>
-              Starting location
-            <% else %>
-              <div class="form-group">
-                <div class="input-group date dtpicker">
-                  <input id="start_<%= index %>" type="text" class="form-control" />
-                  <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-                </div>
-              </div>
-            <% end %>
-          </td>
-          <td>
-            <div class="form-group">
-              <input type="text" class="form-control" id="location_<%= index %>" />
-            </div>
-          </td>
-          <td>
-            <div class="form-group">
-              <select class="form-control" id="offset_<%= index %>">
-                <option value="1.5">UTC+01:30</option>
-                <option value="-5">UTC-05:00</option>
-              </select>
-            </div>
-          </td>
-          <td>
-            <% if index == @number_of_starting_rows - 1 %>
-              Ending location
-            <% else %>
-              <div class="form-group">
-                <div class="input-group date dtpicker">
-                  <input id="end_<%= index %>" type="text" class="form-control" />
-                  <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-                </div>
-              </div>
-            <% end %>
-          </td>
-          <td>
-            <div class="btn btn-danger delete-row" id="delete_<%=index%>" title="Delete this location"><span class="glyphicon glyphicon-trash"></span></div>
-          </td>
-        </tr>
-      <% end %>   
-      <tr>
-        <td colspan="6">
-          <div class="btn btn-success insert-row" id="insert_<%=@number_of_starting_rows%>" title="Add a location at the end"><span class="glyphicon glyphicon-plus"></span></div>
-        </td>
-      </td>   
+      
     </tbody>
   </table>
 </form>
+
+</div>

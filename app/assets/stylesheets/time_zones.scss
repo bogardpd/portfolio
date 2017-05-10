@@ -11,6 +11,10 @@ body {
   border: 1px solid #cccccc;
 }
 
+.hidden-by-default {
+  display: none;
+}
+
 div.form-group {
   margin: 0;
 }
