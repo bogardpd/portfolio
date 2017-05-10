@@ -3,6 +3,7 @@
 $(function() {
   // Run on page load:
   $("#js-warning").remove();
+  createTableRows(3);
   $(".hidden-by-default").show();
   setEventTriggers();
 });
@@ -17,13 +18,15 @@ function setEventTriggers() {
 
 function updateChart() {
   var timeZoneLocations = [];
-  var rowCount = $("tr.location-row").length;
+  $locationRows = $("tr.location-row");
+  var rowCount = $locationRows.length;
   for(i = 0; i < rowCount; i++) {
+    $row = $locationRows.eq(i);
     timeZoneLocations[i] = {
-      start:    $("#start_"+i).val(),
-      location: $("#location_"+i).val(),
-      offset:   parseFloat($("#offset_"+i).val()),
-      end:      $("#end_"+i).val()
+      start:    $row.find(".field-start").val(),
+      location: $row.find(".field-location").val(),
+      offset:   parseFloat($row.find(".field-offset").val()),
+      end:      $row.find(".field-end").val()
     };
   }
   str = timeZoneLocations.map(function(element, index) {
@@ -32,26 +35,43 @@ function updateChart() {
   $("#chart").html(str);
 }
 
-function createRow(id) {
-  row = '<tr class="location-row" id="row_' + id + '">';
-  row += '<td><div class="btn btn-success insert-row" id="insert_' + id + '" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div></td>';
+/* HTML CREATION FUNCTIONS */
+
+function createInsertButton() {
+  return '<td><div class="btn btn-success insert-row" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div></td>';
+}
+
+function createTableRows(numberOfRows) {
+  $tableBody = $("tbody");
+  for (i = 0; i < numberOfRows; i++) {
+    $tableBody.append(createRow());
+  }
+  $tableBody.append('<tr>' + createInsertButton() + '<td colspan="5"></td></tr>');
+  $(".location-row .form-group").filter(":first, :last").remove(); // Remove first start time and last end time
+}
+
+function createRow() {
+  row = '<tr class="location-row">';
+  row += createInsertButton();
   row += '<td><div class="form-group"><div class="input-group date dtpicker">';
-  row += '<input id="start_' + id + '" type="text" class="form-control" />';
+  row += '<input type="text" class="form-control field-start" />';
   row += '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
   row += '</div></div></td>';
-  row += '<td><div class="form-group"><input type="text" class="form-control" id="location_' + id + '" /></div></td>'
-  row += '<td><div class="form-group"><select class="form-control" id="offset_' + id + '">';
+  row += '<td><div class="form-group"><input type="text" class="form-control field-location" /></div></td>'
+  row += '<td><div class="form-group"><select class="form-control field-offset">';
   row += '<option value="1.5">UTC+01:30</option>';
   row += '<option value="-5">UTC-05:00</option>';
   row += '</select></div></td>';
   row += '<td><div class="form-group"><div class="input-group date dtpicker">';
-  row += '<input id="end_' + id + '" type="text" class="form-control" />';
+  row += '<input type="text" class="form-control field-end" />';
   row += '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
   row += '</div></div></td>';
-  row += '<td><div class="btn btn-danger delete-row" id="delete_' + id + '" title="Delete this location"><span class="glyphicon glyphicon-trash"></span></div></td>';
+  row += '<td><div class="btn btn-danger delete-row" title="Delete this location"><span class="glyphicon glyphicon-trash"></span></div></td>';
   row += '</tr>';
   return row
 }
+
+/* TABLE MANIPULATION FUNCTIONS */
 
 function insertRow(button) {
   position = getPositionFromID(button.attr('id'));
