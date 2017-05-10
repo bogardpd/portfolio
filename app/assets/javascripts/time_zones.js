@@ -1,5 +1,7 @@
 /* Uses "DateTime Picker for Bootstrap" from http://www.malot.fr/bootstrap-datetimepicker/index.php under the Apache License v2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 
+const timeZoneList = [["−12:00",-12],["−11:00",-11],["−10:00",-10],["−09:30",-9.5],["−09:00",-9],["−08:00",-8],["−07:00",-7],["−06:00",-6],["−05:00",-5],["−04:00",-4],["−03:30",-3.5],["−03:00",-3],["−02:30",-2.5],["−02:00",-2],["−01:00",-1],["",0],["+01:00",1],["+01:30",1.5],["+02:00",2],["+03:00",3],["+03:30",3.5],["+04:00",4],["+04:30",4.5],["+05:00",5],["+05:30",5.5],["+05:45",5.75],["+06:00",6],["+06:30",6.5],["+07:00",7],["+08:00",8],["+08:30",8.5],["+09:00",9],["+09:30",9.5],["+10:00",10],["+10:30",10.5],["+11:00",11],["+12:00",12],["+12:45",12.75],["+13:00",13],["+13:45",13.75],["+14:00",14]];
+
 $(function() {
   // Run on page load:
   $("#js-warning").remove();
@@ -38,7 +40,17 @@ function updateChart() {
 /* HTML CREATION FUNCTIONS */
 
 function createInsertButton() {
-  return '<td><div class="btn btn-success insert-row" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div></td>';
+  return '<div class="btn btn-success insert-row" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div>';
+}
+
+function createOffsetSelect() {
+  html = '<div class="form-group"><select class="form-control field-offset">';
+  html += timeZoneList.map(function(element) {
+    return '<option value="' + element[1] + '"' + (element[1] == 0 ? ' selected' : '') +'>UTC' + element[0] + '</option>';
+  }).join("\n");
+  html += '</select></div>';
+  console.log(html);
+  return html;
 }
 
 function createTableRows(numberOfRows) {
@@ -46,22 +58,19 @@ function createTableRows(numberOfRows) {
   for (i = 0; i < numberOfRows; i++) {
     $tableBody.append(createRow());
   }
-  $tableBody.append('<tr>' + createInsertButton() + '<td colspan="5"></td></tr>');
+  $tableBody.append('<tr><td>' + createInsertButton() + '</td><td colspan="5"></td></tr>');
   $(".location-row .form-group").filter(":first, :last").remove(); // Remove first start time and last end time
 }
 
 function createRow() {
   row = '<tr class="location-row">';
-  row += createInsertButton();
+  row += '<td>' + createInsertButton() + '</td>';
   row += '<td><div class="form-group"><div class="input-group date dtpicker">';
   row += '<input type="text" class="form-control field-start" />';
   row += '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
   row += '</div></div></td>';
   row += '<td><div class="form-group"><input type="text" class="form-control field-location" /></div></td>'
-  row += '<td><div class="form-group"><select class="form-control field-offset">';
-  row += '<option value="1.5">UTC+01:30</option>';
-  row += '<option value="-5">UTC-05:00</option>';
-  row += '</select></div></td>';
+  row += '<td>' + createOffsetSelect() + '</td>';
   row += '<td><div class="form-group"><div class="input-group date dtpicker">';
   row += '<input type="text" class="form-control field-end" />';
   row += '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
