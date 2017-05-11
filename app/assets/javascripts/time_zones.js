@@ -5,15 +5,23 @@ const timeZoneList = [["−12:00",-12],["−11:00",-11],["−10:00",-10],["−09
 $(function() {
   // Run on page load:
   $("#js-warning").remove();
-  createTableRows(3);
+  data = location.search.split("data=")[1];
+  if (typeof data == "undefined") {
+    createTableRows(3);
+  } else {
+    data = JSON.parse(decodeURIComponent(data));
+    createTableRows(data.length);
+    populateTable(data);
+    updateChart();
+  }
   $(".hidden-by-default").show();
   setEventTriggers();
+  
 });
 
 function setEventTriggers() {
-  $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii"});
-  $("input").on("blur change", updateChart);
-  $("select").on("blur", updateChart);
+  $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
+  $("input, select").on("blur change", updateChart);
   $(".insert-row").on("click", function() { insertRow($(this)); });
   $(".delete-row").on("click", function() { deleteRow($(this)); });
 }
@@ -35,6 +43,13 @@ function updateChart() {
     return index + ": " + JSON.stringify(element);
   }).join("<br/>");
   $("#chart").html(str);
+  updateShareLink(timeZoneLocations);
+}
+
+function updateShareLink(timeZoneLocations) {
+  data = encodeURIComponent(JSON.stringify(timeZoneLocations));
+  //window.history.replaceState({},"",[location.protocol, '//', location.host, location.pathname, "?data=", data].join(''));
+  $("#share-link").attr("href", [location.protocol,'//',location.host,location.pathname,"?data=",data].join(''));
 }
 
 /* HTML CREATION FUNCTIONS */
@@ -49,7 +64,6 @@ function createOffsetSelect() {
     return '<option value="' + element[1] + '"' + (element[1] == 0 ? ' selected' : '') +'>UTC' + element[0] + '</option>';
   }).join("\n");
   html += '</select></div>';
-  console.log(html);
   return html;
 }
 
@@ -81,6 +95,16 @@ function createRow() {
 }
 
 /* TABLE MANIPULATION FUNCTIONS */
+
+function populateTable(timeZoneLocations) {
+  timeZoneLocations.map(function(element, index) {
+    $row = $(".location-row").eq(index);
+    $row.find(".field-start").val(element["start"]);
+    $row.find(".field-location").val(element["location"]);
+    $row.find(".field-offset").val(element["offset"]);
+    $row.find(".field-end").val(element["end"]);
+  }).join("<br/>");
+}
 
 function insertRow(button) {
   position = getPositionFromID(button.attr('id'));

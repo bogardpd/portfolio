@@ -1,12 +1,22 @@
 <% provide(:title, "Time Zone Chart")%>
 <% provide(:meta_description, "Create a chart of what time zones you’ve visited recently.")%>
 
-<h1>Time Zone Chart</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand">Time Zone Chart</div>
+    </div>
+    <div class="share-button">
+      <%= link_to %Q(<span class="glyphicon glyphicon-link" aria-hidden="true"></span> Share).html_safe, "", id: "share-link", class: "btn btn-default" %>
+    </div>
+  </div>
+</nav>
 
 <p id="js-warning">JavaScript is required to use the Time Zone Chart.</p>
 
 <div class="hidden-by-default">
-  
+
+<div class="share-link"></div>
 <div id="chart" class="container"></div>
 
 <form id="locations">
