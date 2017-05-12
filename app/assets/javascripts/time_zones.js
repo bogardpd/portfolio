@@ -22,8 +22,8 @@ $(function() {
 function setEventTriggers() {
   $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
   $("input, select").on("blur change", updateChart);
-  $(".insert-row").on("click", function() { insertRow($(this)); });
-  $(".delete-row").on("click", function() { deleteRow($(this)); });
+  $(".insert-row").off().on("click", function() { insertRow($(this)); });
+  $(".delete-row").off().on("click", function() { deleteRow($(this)); });
 }
 
 function updateChart() {
@@ -58,6 +58,14 @@ function createInsertButton() {
   return '<div class="btn btn-success insert-row" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div>';
 }
 
+function createDateTime(fieldName) {
+  html = '<div class="form-group"><div class="input-group date dtpicker">';
+  html += '<input type="text" class="form-control field-' + fieldName + '" />';
+  html += '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
+  html += '</div></div>';
+  return html;
+}
+
 function createOffsetSelect() {
   html = '<div class="form-group"><select class="form-control field-offset">';
   html += timeZoneList.map(function(element) {
@@ -79,16 +87,10 @@ function createTableRows(numberOfRows) {
 function createRow() {
   row = '<tr class="location-row">';
   row += '<td>' + createInsertButton() + '</td>';
-  row += '<td><div class="form-group"><div class="input-group date dtpicker">';
-  row += '<input type="text" class="form-control field-start" />';
-  row += '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
-  row += '</div></div></td>';
+  row += '<td>' + createDateTime("start") + '</td>';
   row += '<td><div class="form-group"><input type="text" class="form-control field-location" /></div></td>'
   row += '<td>' + createOffsetSelect() + '</td>';
-  row += '<td><div class="form-group"><div class="input-group date dtpicker">';
-  row += '<input type="text" class="form-control field-end" />';
-  row += '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
-  row += '</div></div></td>';
+  row += '<td>' + createDateTime("end") + '</td>';
   row += '<td><div class="btn btn-danger delete-row" title="Delete this location"><span class="glyphicon glyphicon-trash"></span></div></td>';
   row += '</tr>';
   return row
@@ -107,16 +109,31 @@ function populateTable(timeZoneLocations) {
 }
 
 function insertRow(button) {
-  position = getPositionFromID(button.attr('id'));
-  console.log("Insert row at position " + position);
-  // Add new row at end:
-  var newRowID = $("tr.location-row").length;
-  $(".location-row").last().after(createRow(newRowID));
+  position = parseInt($(".insert-row").index(button));
+  if (position < $(".location-row").length) {
+    $oldRow = $(".location-row").eq(position)
+    $oldRow.before(createRow());
+    $newRow = $(".location-row").eq(position)
+    $newRow.hide();
+    if (position == 0) {
+      $oldRow.find("td").eq(1).append(createDateTime("start"));
+      $newRow.find(".form-group").filter(":first").remove();
+    }
+    $newRow.find(".field-offset").val($oldRow.find(".field-offset").val())
+    $newRow.fadeIn();
+  } else {
+    $oldRow = $(".location-row").filter(":last");
+    $oldRow.find("td").eq(4).append(createDateTime("end"));
+    $oldRow.after(createRow());
+    $newRow = $(".location-row").filter(":last");
+    $newRow.hide();
+    $newRow.find(".form-group").filter(":last").remove();
+    $newRow.find(".field-offset").val($oldRow.find(".field-offset").val())
+    $newRow.fadeIn();
+  }
+  
   setEventTriggers();
   
-  // Shift everything down after the given position:
-  // Insert row:  
-  // Update chart:
 }
 
 function deleteRow(button) {
@@ -125,9 +142,4 @@ function deleteRow(button) {
   // Delete row:
   // Shift everything up after the given position:  
   // Update chart:
-}
-
-// Takes an ID string and extracts the integer potion from it
-function getPositionFromID(id) {
-  return parseInt(id.substring(id.indexOf("_")+1,id.length))
 }
