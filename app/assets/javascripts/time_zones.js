@@ -21,14 +21,14 @@ $(function() {
 
 function setEventTriggers() {
   $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
-  $("input, select").on("blur change", updateChart);
-  $(".insert-row").off().on("click", function() { insertRow($(this)); });
-  $(".delete-row").off().on("click", function() { deleteRow($(this)); });
+  $("input, select").off().on("blur change", updateChart);
+  $(".button-insert").off().on("click", function() { insertRow($(this)); });
+  $(".button-delete").off().on("click", function() { deleteRow($(this)); });
 }
 
 function updateChart() {
   var timeZoneLocations = [];
-  $locationRows = $("tr.location-row");
+  $locationRows = $("tr.row-location");
   var rowCount = $locationRows.length;
   for(i = 0; i < rowCount; i++) {
     $row = $locationRows.eq(i);
@@ -55,7 +55,7 @@ function updateShareLink(timeZoneLocations) {
 /* HTML CREATION FUNCTIONS */
 
 function createInsertButton() {
-  return '<div class="btn btn-success insert-row" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div>';
+  return '<div class="btn btn-success button-insert" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div>';
 }
 
 function createDateTime(fieldName) {
@@ -81,17 +81,17 @@ function createTableRows(numberOfRows) {
     $tableBody.append(createRow());
   }
   $tableBody.append('<tr><td>' + createInsertButton() + '</td><td colspan="5"></td></tr>');
-  $(".location-row .form-group").filter(":first, :last").remove(); // Remove first start time and last end time
+  $(".row-location .form-group").filter(":first, :last").remove(); // Remove first start time and last end time
 }
 
 function createRow() {
-  row = '<tr class="location-row">';
-  row += '<td>' + createInsertButton() + '</td>';
-  row += '<td>' + createDateTime("start") + '</td>';
-  row += '<td><div class="form-group"><input type="text" class="form-control field-location" /></div></td>'
-  row += '<td>' + createOffsetSelect() + '</td>';
-  row += '<td>' + createDateTime("end") + '</td>';
-  row += '<td><div class="btn btn-danger delete-row" title="Delete this location"><span class="glyphicon glyphicon-trash"></span></div></td>';
+  row = '<tr class="row-location">';
+  row += '<td class="cell-insert">' + createInsertButton() + '</td>';
+  row += '<td class="cell-start">' + createDateTime("start") + '</td>';
+  row += '<td class="cell-location"><div class="form-group"><input type="text" class="form-control field-location" /></div></td>'
+  row += '<td class="cell-offset">' + createOffsetSelect() + '</td>';
+  row += '<td class="cell-end">' + createDateTime("end") + '</td>';
+  row += '<td class="cell-delete"><div class="btn btn-danger button-delete" title="Delete this location"><span class="glyphicon glyphicon-trash"></span></div></td>';
   row += '</tr>';
   return row
 }
@@ -100,7 +100,7 @@ function createRow() {
 
 function populateTable(timeZoneLocations) {
   timeZoneLocations.map(function(element, index) {
-    $row = $(".location-row").eq(index);
+    $row = $(".row-location").eq(index);
     $row.find(".field-start").val(element["start"]);
     $row.find(".field-location").val(element["location"]);
     $row.find(".field-offset").val(element["offset"]);
@@ -109,11 +109,11 @@ function populateTable(timeZoneLocations) {
 }
 
 function insertRow(button) {
-  position = parseInt($(".insert-row").index(button));
-  if (position < $(".location-row").length) {
-    $oldRow = $(".location-row").eq(position)
+  position = parseInt($(".button-insert").index(button));
+  if (position < $(".row-location").length) {
+    $oldRow = $(".row-location").eq(position)
     $oldRow.before(createRow());
-    $newRow = $(".location-row").eq(position)
+    $newRow = $(".row-location").eq(position)
     $newRow.hide();
     if (position == 0) {
       $oldRow.find("td").eq(1).append(createDateTime("start"));
@@ -122,10 +122,10 @@ function insertRow(button) {
     $newRow.find(".field-offset").val($oldRow.find(".field-offset").val())
     $newRow.fadeIn();
   } else {
-    $oldRow = $(".location-row").filter(":last");
+    $oldRow = $(".row-location").filter(":last");
     $oldRow.find("td").eq(4).append(createDateTime("end"));
     $oldRow.after(createRow());
-    $newRow = $(".location-row").filter(":last");
+    $newRow = $(".row-location").filter(":last");
     $newRow.hide();
     $newRow.find(".form-group").filter(":last").remove();
     $newRow.find(".field-offset").val($oldRow.find(".field-offset").val())
