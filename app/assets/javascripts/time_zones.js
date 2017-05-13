@@ -1,6 +1,7 @@
 /* Uses "DateTime Picker for Bootstrap" from http://www.malot.fr/bootstrap-datetimepicker/index.php under the Apache License v2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 
 const timeZoneList = [["−12:00",-12],["−11:00",-11],["−10:00",-10],["−09:30",-9.5],["−09:00",-9],["−08:00",-8],["−07:00",-7],["−06:00",-6],["−05:00",-5],["−04:00",-4],["−03:30",-3.5],["−03:00",-3],["−02:30",-2.5],["−02:00",-2],["−01:00",-1],["",0],["+01:00",1],["+01:30",1.5],["+02:00",2],["+03:00",3],["+03:30",3.5],["+04:00",4],["+04:30",4.5],["+05:00",5],["+05:30",5.5],["+05:45",5.75],["+06:00",6],["+06:30",6.5],["+07:00",7],["+08:00",8],["+08:30",8.5],["+09:00",9],["+09:30",9.5],["+10:00",10],["+10:30",10.5],["+11:00",11],["+12:00",12],["+12:45",12.75],["+13:00",13],["+13:45",13.75],["+14:00",14]];
+const minimumRows = 2;
 
 $(function() {
   // Run on page load:
@@ -23,7 +24,7 @@ function setEventTriggers() {
   $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
   $("input, select").off().on("blur change", updateChart);
   $(".button-insert").off().on("click", function() { insertRow($(this)); });
-  $(".button-delete").off().on("click", function() { deleteRow($(this)); });
+  updateDeleteButtons();
 }
 
 function updateChart() {
@@ -44,6 +45,16 @@ function updateChart() {
   }).join("<br/>");
   $("#chart").html(str);
   updateShareLink(timeZoneLocations);
+}
+
+function updateDeleteButtons() {
+  if ($(".row-location").length <= minimumRows) {
+    // Disable delete buttons
+    $(".button-delete").off().addClass("disabled");
+  } else {
+    // Enable delete buttons
+    $(".button-delete").off().on("click", function() { deleteRow($(this)); }).removeClass("disabled");
+  }
 }
 
 function updateShareLink(timeZoneLocations) {
@@ -81,7 +92,8 @@ function createTableRows(numberOfRows) {
     $tableBody.append(createRow());
   }
   $tableBody.append('<tr><td>' + createInsertButton() + '</td><td colspan="5"></td></tr>');
-  $(".row-location .form-group").filter(":first, :last").remove(); // Remove first start time and last end time
+  removeFirstStartLastEnd();
+  //$(".row-location .form-group").filter(":first, :last").remove(); // Remove first start time and last end time
 }
 
 function createRow() {
@@ -131,15 +143,24 @@ function insertRow(button) {
     $newRow.find(".field-offset").val($oldRow.find(".field-offset").val())
     $newRow.fadeIn();
   }
-  
   setEventTriggers();
-  
+  updateChart();
 }
 
 function deleteRow(button) {
-  position = getPositionFromID(button.attr('id'));
+  position = parseInt($(".button-delete").index(button));
   console.log("Delete row " + position);
-  // Delete row:
-  // Shift everything up after the given position:  
-  // Update chart:
+  $delRow = $(".row-location").eq(position);
+  $delRow.fadeOut(200, function() {
+    $(this).remove();
+    removeFirstStartLastEnd();
+    updateDeleteButtons();
+    updateChart();
+  });
+}
+
+function removeFirstStartLastEnd() {
+  console.log("empty");
+  $(".row-location").filter(":first").find(".cell-start").empty();
+  $(".row-location").filter(":last").find(".cell-end").empty();
 }
