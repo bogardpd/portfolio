@@ -2,6 +2,7 @@
 
 const timeZoneList = [["−12:00",-12],["−11:00",-11],["−10:00",-10],["−09:30",-9.5],["−09:00",-9],["−08:00",-8],["−07:00",-7],["−06:00",-6],["−05:00",-5],["−04:00",-4],["−03:30",-3.5],["−03:00",-3],["−02:30",-2.5],["−02:00",-2],["−01:00",-1],["",0],["+01:00",1],["+01:30",1.5],["+02:00",2],["+03:00",3],["+03:30",3.5],["+04:00",4],["+04:30",4.5],["+05:00",5],["+05:30",5.5],["+05:45",5.75],["+06:00",6],["+06:30",6.5],["+07:00",7],["+08:00",8],["+08:30",8.5],["+09:00",9],["+09:30",9.5],["+10:00",10],["+10:30",10.5],["+11:00",11],["+12:00",12],["+12:45",12.75],["+13:00",13],["+13:45",13.75],["+14:00",14]];
 const minimumRows = 2;
+const fadeSpeed = 300;
 
 $(function() {
   // Run on page load:
@@ -128,20 +129,20 @@ function insertRow(button) {
     $newRow = $(".row-location").eq(position)
     $newRow.hide();
     if (position == 0) {
-      $oldRow.find("td").eq(1).append(createDateTime("start"));
+      $oldRow.find(".cell-start").append(createDateTime("start"));
       $newRow.find(".form-group").filter(":first").remove();
     }
     $newRow.find(".field-offset").val($oldRow.find(".field-offset").val())
-    $newRow.fadeIn();
+    $newRow.fadeIn(fadeSpeed);
   } else {
     $oldRow = $(".row-location").filter(":last");
-    $oldRow.find("td").eq(4).append(createDateTime("end"));
+    $oldRow.find(".cell-end").append(createDateTime("end"));
     $oldRow.after(createRow());
     $newRow = $(".row-location").filter(":last");
     $newRow.hide();
     $newRow.find(".form-group").filter(":last").remove();
     $newRow.find(".field-offset").val($oldRow.find(".field-offset").val())
-    $newRow.fadeIn();
+    $newRow.fadeIn(fadeSpeed);
   }
   setEventTriggers();
   updateChart();
@@ -151,7 +152,7 @@ function deleteRow(button) {
   position = parseInt($(".button-delete").index(button));
   console.log("Delete row " + position);
   $delRow = $(".row-location").eq(position);
-  $delRow.fadeOut(200, function() {
+  $delRow.fadeOut(fadeSpeed, function() {
     $(this).remove();
     removeFirstStartLastEnd();
     updateDeleteButtons();
