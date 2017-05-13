@@ -1,39 +1,20 @@
 /* Uses "DateTime Picker for Bootstrap" from http://www.malot.fr/bootstrap-datetimepicker/index.php under the Apache License v2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 
-const timeZoneList = [["−12:00",-12],["−11:00",-11],["−10:00",-10],["−09:30",-9.5],["−09:00",-9],["−08:00",-8],["−07:00",-7],["−06:00",-6],["−05:00",-5],["−04:00",-4],["−03:30",-3.5],["−03:00",-3],["−02:30",-2.5],["−02:00",-2],["−01:00",-1],["",0],["+01:00",1],["+01:30",1.5],["+02:00",2],["+03:00",3],["+03:30",3.5],["+04:00",4],["+04:30",4.5],["+05:00",5],["+05:30",5.5],["+05:45",5.75],["+06:00",6],["+06:30",6.5],["+07:00",7],["+08:00",8],["+08:30",8.5],["+09:00",9],["+09:30",9.5],["+10:00",10],["+10:30",10.5],["+11:00",11],["+12:00",12],["+12:45",12.75],["+13:00",13],["+13:45",13.75],["+14:00",14]];
-const minimumRows = 2;
-const fadeSpeed = 300;
+/*global $, console, location */
 
-$(function() {
-  // Run on page load:
-  $("#js-warning").remove();
-  data = location.search.split("data=")[1];
-  if (typeof data == "undefined") {
-    createTableRows(3);
-  } else {
-    data = JSON.parse(decodeURIComponent(data));
-    createTableRows(data.length);
-    populateTable(data);
-    updateChart();
-  }
-  $(".hidden-by-default").show();
-  setEventTriggers();
-  
-});
-
-function setEventTriggers() {
-  $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
-  $("input, select").off().on("blur change", updateChart);
-  $(".button-insert").off().on("click", function() { insertRow($(this)); });
-  updateDeleteButtons();
-}
+var timeZoneList = [["&minus;12:00", -12], ["&minus;11:00", -11], ["&minus;10:00", -10], ["&minus;09:30", -9.5], ["&minus;09:00", -9], ["&minus;08:00", -8], ["&minus;07:00", -7], ["&minus;06:00", -6], ["&minus;05:00", -5], ["&minus;04:00", -4], ["&minus;03:30", -3.5], ["&minus;03:00", -3], ["&minus;02:30", -2.5], ["&minus;02:00", -2], ["&minus;01:00", -1], ["", 0], ["+01:00", 1], ["+01:30", 1.5], ["+02:00", 2], ["+03:00", 3], ["+03:30", 3.5], ["+04:00", 4], ["+04:30", 4.5], ["+05:00", 5], ["+05:30", 5.5], ["+05:45", 5.75], ["+06:00", 6], ["+06:30", 6.5], ["+07:00", 7], ["+08:00", 8], ["+08:30", 8.5], ["+09:00", 9], ["+09:30", 9.5], ["+10:00", 10], ["+10:30", 10.5], ["+11:00", 11], ["+12:00", 12], ["+12:45", 12.75], ["+13:00", 13], ["+13:45", 13.75], ["+14:00", 14]];
+var minimumRows = 2;
+var fadeSpeed = 300;
+var chartWidth = 800;
+var chartHeight = 450;
+var chartXAxisBuffer = 1; // Minimum number of full days to show beyond data range at left and right of axis
+var chartYAxisBuffer = 1; // Minimum number of full hours to show beyond data range at top and bottom of axis
 
 function updateChart() {
   var timeZoneLocations = [];
-  $locationRows = $("tr.row-location");
-  var rowCount = $locationRows.length;
-  for(i = 0; i < rowCount; i++) {
-    $row = $locationRows.eq(i);
+  var $locationRows = $("tr.row-location");
+  for(var i = 0; i < $locationRows.length; i++) {
+    var $row = $locationRows.eq(i);
     timeZoneLocations[i] = {
       start:    $row.find(".field-start").val(),
       location: $row.find(".field-location").val(),
@@ -41,10 +22,27 @@ function updateChart() {
       end:      $row.find(".field-end").val()
     };
   }
-  str = timeZoneLocations.map(function(element, index) {
+  var allTimes = timeZoneLocations.map(function(e) {
+    return Date.parse(e.start);
+  }).concat(timeZoneLocations.map(function(e) {
+    return Date.parse(e.end);
+  })).filter(function(e) {
+    return e;
+  }).sort();
+  if (allTimes.length < 2) {return;}
+  var xMin = allTimes[0];
+  var xMax = allTimes[allTimes.length-1];
+  
+  // Calculate chart axis ranges:
+  // X axis should have at least chartXAxisBuffer full days before and after,
+  // Y axis should have a margin based on chartYAxisBuffer
+  
+  
+  var str = timeZoneLocations.map(function(element, index) {
     return index + ": " + JSON.stringify(element);
-  }).join("<br/>");
-  $("#chart").html(str);
+  }).join("\n");
+  console.log(str);
+  $("#test-output").html(allTimes.join(",") + "<br/>[" + xMin + "-" + xMax + "]");
   updateShareLink(timeZoneLocations);
 }
 
@@ -59,7 +57,7 @@ function updateDeleteButtons() {
 }
 
 function updateShareLink(timeZoneLocations) {
-  data = encodeURIComponent(JSON.stringify(timeZoneLocations));
+  var data = encodeURIComponent(JSON.stringify(timeZoneLocations));
   //window.history.replaceState({},"",[location.protocol, '//', location.host, location.pathname, "?data=", data].join(''));
   $("#share-link").attr("href", [location.protocol,'//',location.host,location.pathname,"?data=",data].join(''));
 }
@@ -71,7 +69,7 @@ function createInsertButton() {
 }
 
 function createDateTime(fieldName) {
-  html = '<div class="form-group"><div class="input-group date dtpicker">';
+  var html = '<div class="form-group"><div class="input-group date dtpicker">';
   html += '<input type="text" class="form-control field-' + fieldName + '" />';
   html += '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
   html += '</div></div>';
@@ -79,17 +77,17 @@ function createDateTime(fieldName) {
 }
 
 function createOffsetSelect() {
-  html = '<div class="form-group"><select class="form-control field-offset">';
+  var html = '<div class="form-group"><select class="form-control field-offset">';
   html += timeZoneList.map(function(element) {
-    return '<option value="' + element[1] + '"' + (element[1] == 0 ? ' selected' : '') +'>UTC' + element[0] + '</option>';
+    return '<option value="' + element[1] + '"' + (element[1] === 0 ? ' selected' : '') +'>UTC' + element[0] + '</option>';
   }).join("\n");
   html += '</select></div>';
   return html;
 }
 
 function createTableRows(numberOfRows) {
-  $tableBody = $("tbody");
-  for (i = 0; i < numberOfRows; i++) {
+  var $tableBody = $("tbody");
+  for (var i = 0; i < numberOfRows; i++) {
     $tableBody.append(createRow());
   }
   $tableBody.append('<tr><td>' + createInsertButton() + '</td><td colspan="5"></td></tr>');
@@ -98,50 +96,51 @@ function createTableRows(numberOfRows) {
 }
 
 function createRow() {
-  row = '<tr class="row-location">';
+  var row = '<tr class="row-location">';
   row += '<td class="cell-insert">' + createInsertButton() + '</td>';
   row += '<td class="cell-start">' + createDateTime("start") + '</td>';
-  row += '<td class="cell-location"><div class="form-group"><input type="text" class="form-control field-location" /></div></td>'
+  row += '<td class="cell-location"><div class="form-group"><input type="text" class="form-control field-location" /></div></td>';
   row += '<td class="cell-offset">' + createOffsetSelect() + '</td>';
   row += '<td class="cell-end">' + createDateTime("end") + '</td>';
   row += '<td class="cell-delete"><div class="btn btn-danger button-delete" title="Delete this location"><span class="glyphicon glyphicon-trash"></span></div></td>';
   row += '</tr>';
-  return row
+  return row;
 }
 
 /* TABLE MANIPULATION FUNCTIONS */
 
 function populateTable(timeZoneLocations) {
   timeZoneLocations.map(function(element, index) {
-    $row = $(".row-location").eq(index);
-    $row.find(".field-start").val(element["start"]);
-    $row.find(".field-location").val(element["location"]);
-    $row.find(".field-offset").val(element["offset"]);
-    $row.find(".field-end").val(element["end"]);
+    var $row = $(".row-location").eq(index);
+    $row.find(".field-start").val(element.start);
+    $row.find(".field-location").val(element.location);
+    $row.find(".field-offset").val(element.offset);
+    $row.find(".field-end").val(element.end);
   }).join("<br/>");
 }
 
 function insertRow(button) {
-  position = parseInt($(".button-insert").index(button));
+  var $oldRow, $newRow;
+  var position = parseInt($(".button-insert").index(button),10);
   if (position < $(".row-location").length) {
-    $oldRow = $(".row-location").eq(position)
+    $oldRow = $(".row-location").eq(position);
     $oldRow.before(createRow());
-    $newRow = $(".row-location").eq(position)
+    $newRow = $(".row-location").eq(position);
     $newRow.hide();
-    if (position == 0) {
+    if (position === 0) {
       $oldRow.find(".cell-start").append(createDateTime("start"));
-      $newRow.find(".form-group").filter(":first").remove();
+      $newRow.find(".form-group").first().remove();
     }
-    $newRow.find(".field-offset").val($oldRow.find(".field-offset").val())
+    $newRow.find(".field-offset").val($oldRow.find(".field-offset").val());
     $newRow.fadeIn(fadeSpeed);
   } else {
-    $oldRow = $(".row-location").filter(":last");
+    $oldRow = $(".row-location").last();
     $oldRow.find(".cell-end").append(createDateTime("end"));
     $oldRow.after(createRow());
-    $newRow = $(".row-location").filter(":last");
+    $newRow = $(".row-location").last();
     $newRow.hide();
-    $newRow.find(".form-group").filter(":last").remove();
-    $newRow.find(".field-offset").val($oldRow.find(".field-offset").val())
+    $newRow.find(".form-group").last().remove();
+    $newRow.find(".field-offset").val($oldRow.find(".field-offset").val());
     $newRow.fadeIn(fadeSpeed);
   }
   setEventTriggers();
@@ -149,9 +148,8 @@ function insertRow(button) {
 }
 
 function deleteRow(button) {
-  position = parseInt($(".button-delete").index(button));
-  console.log("Delete row " + position);
-  $delRow = $(".row-location").eq(position);
+  var position = parseInt($(".button-delete").index(button),10);
+  var $delRow = $(".row-location").eq(position);
   $delRow.fadeOut(fadeSpeed, function() {
     $(this).remove();
     removeFirstStartLastEnd();
@@ -161,7 +159,32 @@ function deleteRow(button) {
 }
 
 function removeFirstStartLastEnd() {
-  console.log("empty");
-  $(".row-location").filter(":first").find(".cell-start").empty();
-  $(".row-location").filter(":last").find(".cell-end").empty();
+  $(".row-location").first().find(".cell-start").empty();
+  $(".row-location").last().find(".cell-end").empty();
 }
+
+function setEventTriggers() {
+  $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
+  $("input, select").off().on("blur change", updateChart);
+  $(".button-insert").off().on("click", function() { insertRow($(this)); });
+  updateDeleteButtons();
+}
+
+/* RUN ON PAGE LOAD */
+
+$(function() {
+  $("#js-warning").remove();
+  var data = location.search.split("data=")[1];
+  if (data === undefined) {
+    createTableRows(3);
+  } else {
+    data = JSON.parse(decodeURIComponent(data));
+    createTableRows(data.length);
+    populateTable(data);
+    updateChart();
+  }
+  $(".hidden-by-default").show();
+  setEventTriggers();
+  $("#chart").attr("width", chartWidth).attr("height", chartHeight);
+  
+});

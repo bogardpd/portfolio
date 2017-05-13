@@ -6,13 +6,15 @@ body {
 }
 
 #chart {
-  width: 960px;
-  height: 300px;
   border: 1px solid #cccccc;
 }
 
 .hidden-by-default {
   display: none;
+}
+
+div.chart {
+  text-align: center;
 }
 
 div.form-group {
