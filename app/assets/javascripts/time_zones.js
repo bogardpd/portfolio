@@ -1,7 +1,5 @@
 /* Uses "DateTime Picker for Bootstrap" from http://www.malot.fr/bootstrap-datetimepicker/index.php under the Apache License v2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 
-/*global $, console, location */
-
 var timeZoneList = [["&minus;12:00", -12], ["&minus;11:00", -11], ["&minus;10:00", -10], ["&minus;09:30", -9.5], ["&minus;09:00", -9], ["&minus;08:00", -8], ["&minus;07:00", -7], ["&minus;06:00", -6], ["&minus;05:00", -5], ["&minus;04:00", -4], ["&minus;03:30", -3.5], ["&minus;03:00", -3], ["&minus;02:30", -2.5], ["&minus;02:00", -2], ["&minus;01:00", -1], ["", 0], ["+01:00", 1], ["+01:30", 1.5], ["+02:00", 2], ["+03:00", 3], ["+03:30", 3.5], ["+04:00", 4], ["+04:30", 4.5], ["+05:00", 5], ["+05:30", 5.5], ["+05:45", 5.75], ["+06:00", 6], ["+06:30", 6.5], ["+07:00", 7], ["+08:00", 8], ["+08:30", 8.5], ["+09:00", 9], ["+09:30", 9.5], ["+10:00", 10], ["+10:30", 10.5], ["+11:00", 11], ["+12:00", 12], ["+12:45", 12.75], ["+13:00", 13], ["+13:45", 13.75], ["+14:00", 14]];
 var minimumRows = 2;
 var fadeSpeed = 300;
@@ -9,12 +7,16 @@ var chartWidth = 800;
 var chartHeight = 450;
 var chartXAxisBuffer = 1; // Minimum number of full days to show beyond data range at left and right of axis
 var chartYAxisBuffer = 1; // Minimum number of full hours to show beyond data range at top and bottom of axis
+var msPerDay = 1000*60*60*24;
+
+/* FUNCTIONS TO UPDATE PAGE AND CHART ELEMENTS */
 
 function updateChart() {
+  var allTimes, i, xMax, xMin, $row;
   var timeZoneLocations = [];
   var $locationRows = $("tr.row-location");
-  for(var i = 0; i < $locationRows.length; i++) {
-    var $row = $locationRows.eq(i);
+  for(i = 0; i < $locationRows.length; i++) {
+    $row = $locationRows.eq(i);
     timeZoneLocations[i] = {
       start:    $row.find(".field-start").val(),
       location: $row.find(".field-location").val(),
@@ -22,27 +24,25 @@ function updateChart() {
       end:      $row.find(".field-end").val()
     };
   }
-  var allTimes = timeZoneLocations.map(function(e) {
-    return Date.parse(e.start);
+  allTimes = timeZoneLocations.map(function(e) {
+    return Date.parse(e.start + "Z");
   }).concat(timeZoneLocations.map(function(e) {
-    return Date.parse(e.end);
+    return Date.parse(e.end + "Z");
   })).filter(function(e) {
     return e;
   }).sort();
   if (allTimes.length < 2) {return;}
-  var xMin = allTimes[0];
-  var xMax = allTimes[allTimes.length-1];
+  xMin = new Date(allTimes[0] - (msPerDay * chartXAxisBuffer) - (allTimes[0] % msPerDay));
+  xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (chartXAxisBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
   
   // Calculate chart axis ranges:
   // X axis should have at least chartXAxisBuffer full days before and after,
   // Y axis should have a margin based on chartYAxisBuffer
   
-  
-  var str = timeZoneLocations.map(function(element, index) {
+  console.log(timeZoneLocations.map(function(element, index) {
     return index + ": " + JSON.stringify(element);
-  }).join("\n");
-  console.log(str);
-  $("#test-output").html(allTimes.join(",") + "<br/>[" + xMin + "-" + xMax + "]");
+  }).join("\n"));
+  $("#test-output").html(allTimes.join(",") + "<br/>[" + xMin.toUTCString() + " to " + xMax.toUTCString() + "]");
   updateShareLink(timeZoneLocations);
 }
 
@@ -59,7 +59,7 @@ function updateDeleteButtons() {
 function updateShareLink(timeZoneLocations) {
   var data = encodeURIComponent(JSON.stringify(timeZoneLocations));
   //window.history.replaceState({},"",[location.protocol, '//', location.host, location.pathname, "?data=", data].join(''));
-  $("#share-link").attr("href", [location.protocol,'//',location.host,location.pathname,"?data=",data].join(''));
+  $("#share-link").attr("href", [location.protocol,"//",location.host,location.pathname,"?data=",data].join(""));
 }
 
 /* HTML CREATION FUNCTIONS */
@@ -92,7 +92,6 @@ function createTableRows(numberOfRows) {
   }
   $tableBody.append('<tr><td>' + createInsertButton() + '</td><td colspan="5"></td></tr>');
   removeFirstStartLastEnd();
-  //$(".row-location .form-group").filter(":first, :last").remove(); // Remove first start time and last end time
 }
 
 function createRow() {
@@ -163,6 +162,8 @@ function removeFirstStartLastEnd() {
   $(".row-location").last().find(".cell-end").empty();
 }
 
+/* FUNCTIONS TO MANAGE EVENT TRIGGERS */
+
 function setEventTriggers() {
   $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
   $("input, select").off().on("blur change", updateChart);
@@ -173,8 +174,8 @@ function setEventTriggers() {
 /* RUN ON PAGE LOAD */
 
 $(function() {
-  $("#js-warning").remove();
   var data = location.search.split("data=")[1];
+  $("#js-warning").remove();
   if (data === undefined) {
     createTableRows(3);
   } else {
