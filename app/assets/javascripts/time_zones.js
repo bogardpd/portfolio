@@ -9,10 +9,29 @@ var chartXAxisBuffer = 1; // Minimum number of full days to show beyond data ran
 var chartYAxisBuffer = 1; // Minimum number of full hours to show beyond data range at top and bottom of axis
 var msPerDay = 1000*60*60*24;
 
+/* CALCULATION FUNCTIONS */
+
+function calculateXRange(timeZoneLocations, buffer) {
+  // Calculates the chart X axis range, based on the timeZoneLocations hash and
+  // the minimum number of days of buffer on either side of the data.
+  var allTimes, xMax, xMin;
+  allTimes = timeZoneLocations.map(function(e) {
+    return Date.parse(e.start + "Z");
+  }).concat(timeZoneLocations.map(function(e) {
+    return Date.parse(e.end + "Z");
+  })).filter(function(e) {
+    return e;
+  }).sort();
+  if (allTimes.length < 2) {return false;}
+  xMin = new Date(allTimes[0] - (msPerDay * buffer) - (allTimes[0] % msPerDay));
+  xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (buffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
+  return [xMin,xMax];
+}
+
 /* FUNCTIONS TO UPDATE PAGE AND CHART ELEMENTS */
 
 function updateChart() {
-  var allTimes, i, xMax, xMin, $row;
+  var chartXRange, i, $row;
   var timeZoneLocations = [];
   var $locationRows = $("tr.row-location");
   for(i = 0; i < $locationRows.length; i++) {
@@ -24,25 +43,13 @@ function updateChart() {
       end:      $row.find(".field-end").val()
     };
   }
-  allTimes = timeZoneLocations.map(function(e) {
-    return Date.parse(e.start + "Z");
-  }).concat(timeZoneLocations.map(function(e) {
-    return Date.parse(e.end + "Z");
-  })).filter(function(e) {
-    return e;
-  }).sort();
-  if (allTimes.length < 2) {return;}
-  xMin = new Date(allTimes[0] - (msPerDay * chartXAxisBuffer) - (allTimes[0] % msPerDay));
-  xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (chartXAxisBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
-  
-  // Calculate chart axis ranges:
-  // X axis should have at least chartXAxisBuffer full days before and after,
-  // Y axis should have a margin based on chartYAxisBuffer
+  chartXRange = calculateXRange(timeZoneLocations, chartXAxisBuffer);
+    
   
   console.log(timeZoneLocations.map(function(element, index) {
     return index + ": " + JSON.stringify(element);
   }).join("\n"));
-  $("#test-output").html(allTimes.join(",") + "<br/>[" + xMin.toUTCString() + " to " + xMax.toUTCString() + "]");
+  console.log("X range: " + chartXRange[0].toUTCString() + " to " + chartXRange[1].toUTCString());
   updateShareLink(timeZoneLocations);
 }
 
