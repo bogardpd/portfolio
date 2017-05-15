@@ -1,17 +1,26 @@
 /* Uses "DateTime Picker for Bootstrap" from http://www.malot.fr/bootstrap-datetimepicker/index.php under the Apache License v2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 
 var timeZoneList = [["&minus;12:00", -12], ["&minus;11:00", -11], ["&minus;10:00", -10], ["&minus;09:30", -9.5], ["&minus;09:00", -9], ["&minus;08:00", -8], ["&minus;07:00", -7], ["&minus;06:00", -6], ["&minus;05:00", -5], ["&minus;04:00", -4], ["&minus;03:30", -3.5], ["&minus;03:00", -3], ["&minus;02:30", -2.5], ["&minus;02:00", -2], ["&minus;01:00", -1], ["", 0], ["+01:00", 1], ["+01:30", 1.5], ["+02:00", 2], ["+03:00", 3], ["+03:30", 3.5], ["+04:00", 4], ["+04:30", 4.5], ["+05:00", 5], ["+05:30", 5.5], ["+05:45", 5.75], ["+06:00", 6], ["+06:30", 6.5], ["+07:00", 7], ["+08:00", 8], ["+08:30", 8.5], ["+09:00", 9], ["+09:30", 9.5], ["+10:00", 10], ["+10:30", 10.5], ["+11:00", 11], ["+12:00", 12], ["+12:45", 12.75], ["+13:00", 13], ["+13:45", 13.75], ["+14:00", 14]];
+var msPerDay = 1000*60*60*24;
+
 var minimumRows = 2;
 var fadeSpeed = 300;
-var chartWidth = 800;
-var chartHeight = 450;
-var chartXAxisBuffer = 1; // Minimum number of full days to show beyond data range at left and right of axis
-var chartYAxisBuffer = 1; // Minimum number of full hours to show beyond data range at top and bottom of axis
-var msPerDay = 1000*60*60*24;
+
+var chartConfig = {
+  "width":      800, // px
+  "height":     450, // px
+  "margin":      15, // px
+  "xGutter":     30, // px
+  "yGutter":     30, // px
+  "titleHeight": 30, // px
+  "xBuffer":      1, // minimum days to show beyond data range at left and right of axis
+  "yBuffer":      1  // minimum hours to show beyond data range at top and bottom of axis
+};
+var chart = {};
 
 /* CALCULATION FUNCTIONS */
 
-function calculateXRange(timeZoneLocations, buffer) {
+function calculateXRange(timeZoneLocations) {
   // Calculates the chart X axis range, based on the timeZoneLocations hash and
   // the minimum number of days of buffer on either side of the data.
   var allTimes, xMax, xMin;
@@ -23,8 +32,8 @@ function calculateXRange(timeZoneLocations, buffer) {
     return e;
   }).sort();
   if (allTimes.length < 2) {return false;}
-  xMin = new Date(allTimes[0] - (msPerDay * buffer) - (allTimes[0] % msPerDay));
-  xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (buffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
+  xMin = new Date(allTimes[0] - (msPerDay * chartConfig.xBuffer) - (allTimes[0] % msPerDay));
+  xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (chartConfig.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
   return [xMin,xMax];
 }
 
@@ -43,8 +52,9 @@ function updateChart() {
       end:      $row.find(".field-end").val()
     };
   }
-  chartXRange = calculateXRange(timeZoneLocations, chartXAxisBuffer);
-    
+  chartXRange = calculateXRange(timeZoneLocations);
+  if (chartXRange === false) {return;}
+  
   
   console.log(timeZoneLocations.map(function(element, index) {
     return index + ": " + JSON.stringify(element);
@@ -67,6 +77,41 @@ function updateShareLink(timeZoneLocations) {
   var data = encodeURIComponent(JSON.stringify(timeZoneLocations));
   //window.history.replaceState({},"",[location.protocol, '//', location.host, location.pathname, "?data=", data].join(''));
   $("#share-link").attr("href", [location.protocol,"//",location.host,location.pathname,"?data=",data].join(""));
+}
+
+/* FUNCTIONS TO DRAW CHART ELEMENTS */
+
+function drawChartBase() {
+  // Calculate chart area boundaries:
+  chart.xLeft   = chartConfig.margin + chartConfig.yGutter;
+  chart.xRight  = chartConfig.width - chartConfig.margin;
+  chart.xSize   = chart.xRight - chart.xLeft;
+  chart.yTop    = chartConfig.margin + chartConfig.titleHeight;
+  chart.yBottom = chartConfig.height - chartConfig.margin - chartConfig.xGutter;
+  chart.ySize   = chart.yBottom - chart.yTop;
+  
+  $("#chart").empty();
+  $("#chart").attr("width", chartConfig.width).attr("height", chartConfig.height);
+  drawXAxis();
+  drawYAxis();
+}
+
+function drawXAxis() {
+  $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
+    x1: chart.xLeft,
+    y1: chart.yBottom,
+    x2: chart.xRight,
+    y2: chart.yBottom
+  }).addClass("axis").appendTo("#chart");
+}
+
+function drawYAxis() {
+  $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
+    x1: chart.xLeft,
+    y1: chart.yTop,
+    x2: chart.xLeft,
+    y2: chart.yBottom
+  }).addClass("axis").appendTo("#chart");
 }
 
 /* HTML CREATION FUNCTIONS */
@@ -189,10 +234,9 @@ $(function() {
     data = JSON.parse(decodeURIComponent(data));
     createTableRows(data.length);
     populateTable(data);
-    updateChart();
+    drawChartBase();
   }
   $(".hidden-by-default").show();
   setEventTriggers();
-  $("#chart").attr("width", chartWidth).attr("height", chartHeight);
   
 });

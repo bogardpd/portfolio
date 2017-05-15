@@ -6,7 +6,6 @@ body {
 }
 
 #chart {
-  border: 1px solid #cccccc;
 }
 
 .hidden-by-default {
@@ -26,4 +25,12 @@ div.share-button {
   a {
     margin-top: 7px;
   }
+}
+
+/* SVG styles */
+
+line.axis {
+  stroke: #222222;
+  stroke-width: 2;
+  stroke-linecap: square;
 }
