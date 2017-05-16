@@ -44,12 +44,6 @@ function TimeZoneChart(config) {
     xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (config.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
     return [xMin,xMax];
   };
-    
-  this.drawBase = function() {
-    $("#chart").empty();
-    $("#chart").attr("width", config.width).attr("height", config.height);
-    this.drawAxes();
-  };
   
   this.drawAxes = function() {
     $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
@@ -63,7 +57,31 @@ function TimeZoneChart(config) {
       y1: chart.yTop,
       x2: chart.xLeft,
       y2: chart.yBottom
-    }).addClass("axis").appendTo("#chart");
+    }).addClass("axis").appendTo("#chart-axes");
+  };
+    
+  this.drawBase = function() {
+    $("#chart-grid").empty();
+    $("#chart-axes").empty();
+    $("#chart").attr("width", config.width).attr("height", config.height);
+    this.drawAxes();
+  };
+  
+  this.drawGrid = function() {
+    var i, start, end, xPos;
+    if (this.xRange === false) {return;}
+    start = this.xRange[0].getTime();
+    end = this.xRange[1].getTime();
+    
+    for (i = start; i <= end; i += msPerDay) {
+      xPos = ((i - start) / (end - start)) * (this.xSize) + this.xLeft;
+      $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
+        x1: xPos,
+        y1: chart.yTop,
+        x2: xPos,
+        y2: chart.yBottom
+      }).addClass("grid").appendTo("#chart-grid");
+    }
   };
   
   this.getFieldValues = function() {
@@ -85,7 +103,8 @@ function TimeZoneChart(config) {
   this.update = function() {
     this.getFieldValues();
     this.drawBase();
-    if (this.xRange === false) {return;}
+    //if (this.xRange === false) {return;}
+    this.drawGrid();
     
     //console.log("X range: " + chartXRange[0].toUTCString() + " to " + chartXRange[1].toUTCString());
     updateShareLink();
