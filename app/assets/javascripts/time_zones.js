@@ -16,52 +16,87 @@ var chartConfig = {
   "xBuffer":      1, // minimum days to show beyond data range at left and right of axis
   "yBuffer":      1  // minimum hours to show beyond data range at top and bottom of axis
 };
-var chart = {};
+
+var chart = new TimeZoneChart(chartConfig);
+
+function TimeZoneChart(config) {
+  this.locations = [],
+  this.xLeft = config.margin + config.yGutter,
+  this.xRight = config.width - config.margin,
+  this.xSize = this.xRight - this.xLeft,
+  this.yTop = config.margin + config.titleHeight,
+  this.yBottom = config.height - config.margin - config.xGutter,
+  this.ySize = this.yBottom - this.yTop,
+  
+  this.calculateXRange = function() {
+    // Calculates the chart X axis range, based on the timeZoneLocations hash and
+    // the minimum number of days of buffer on either side of the data.
+    var allTimes, xMax, xMin;
+    allTimes = this.locations.map(function(e) {
+      return Date.parse(e.start + "Z");
+    }).concat(this.locations.map(function(e) {
+      return Date.parse(e.end + "Z");
+    })).filter(function(e) {
+      return e;
+    }).sort();
+    if (allTimes.length < 2) {return false;}
+    xMin = new Date(allTimes[0] - (msPerDay * config.xBuffer) - (allTimes[0] % msPerDay));
+    xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (config.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
+    return [xMin,xMax];
+  };
+    
+  this.drawBase = function() {
+    $("#chart").empty();
+    $("#chart").attr("width", config.width).attr("height", config.height);
+    this.drawAxes();
+  };
+  
+  this.drawAxes = function() {
+    $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
+      x1: chart.xLeft,
+      y1: chart.yBottom,
+      x2: chart.xRight,
+      y2: chart.yBottom
+    }).addClass("axis").appendTo("#chart");
+    $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
+      x1: chart.xLeft,
+      y1: chart.yTop,
+      x2: chart.xLeft,
+      y2: chart.yBottom
+    }).addClass("axis").appendTo("#chart");
+  };
+  
+  this.getFieldValues = function() {
+    var i, $row;
+    var $locationRows = $("tr.row-location");
+    for(i = 0; i < $locationRows.length; i++) {
+      $row = $locationRows.eq(i);
+      this.locations[i] = {
+        start:    $row.find(".field-start").val(),
+        location: $row.find(".field-location").val(),
+        offset:   parseFloat($row.find(".field-offset").val()),
+        end:      $row.find(".field-end").val()
+      };
+    }
+    this.xRange = this.calculateXRange();
+    //this.locations.map(function(element) {console.log("Locations: " + JSON.stringify(element));});
+  };
+  
+  this.update = function() {
+    this.getFieldValues();
+    this.drawBase();
+    if (this.xRange === false) {return;}
+    
+    //console.log("X range: " + chartXRange[0].toUTCString() + " to " + chartXRange[1].toUTCString());
+    updateShareLink();
+  };
+  
+}
 
 /* CALCULATION FUNCTIONS */
 
-function calculateXRange(timeZoneLocations) {
-  // Calculates the chart X axis range, based on the timeZoneLocations hash and
-  // the minimum number of days of buffer on either side of the data.
-  var allTimes, xMax, xMin;
-  allTimes = timeZoneLocations.map(function(e) {
-    return Date.parse(e.start + "Z");
-  }).concat(timeZoneLocations.map(function(e) {
-    return Date.parse(e.end + "Z");
-  })).filter(function(e) {
-    return e;
-  }).sort();
-  if (allTimes.length < 2) {return false;}
-  xMin = new Date(allTimes[0] - (msPerDay * chartConfig.xBuffer) - (allTimes[0] % msPerDay));
-  xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (chartConfig.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
-  return [xMin,xMax];
-}
 
-/* FUNCTIONS TO UPDATE PAGE AND CHART ELEMENTS */
-
-function updateChart() {
-  var chartXRange, i, $row;
-  var timeZoneLocations = [];
-  var $locationRows = $("tr.row-location");
-  for(i = 0; i < $locationRows.length; i++) {
-    $row = $locationRows.eq(i);
-    timeZoneLocations[i] = {
-      start:    $row.find(".field-start").val(),
-      location: $row.find(".field-location").val(),
-      offset:   parseFloat($row.find(".field-offset").val()),
-      end:      $row.find(".field-end").val()
-    };
-  }
-  chartXRange = calculateXRange(timeZoneLocations);
-  if (chartXRange === false) {return;}
-  
-  
-  console.log(timeZoneLocations.map(function(element, index) {
-    return index + ": " + JSON.stringify(element);
-  }).join("\n"));
-  console.log("X range: " + chartXRange[0].toUTCString() + " to " + chartXRange[1].toUTCString());
-  updateShareLink(timeZoneLocations);
-}
+/* FUNCTIONS TO UPDATE PAGE */
 
 function updateDeleteButtons() {
   if ($(".row-location").length <= minimumRows) {
@@ -73,45 +108,10 @@ function updateDeleteButtons() {
   }
 }
 
-function updateShareLink(timeZoneLocations) {
-  var data = encodeURIComponent(JSON.stringify(timeZoneLocations));
+function updateShareLink() {
+  var data = encodeURIComponent(JSON.stringify(chart.locations));
   //window.history.replaceState({},"",[location.protocol, '//', location.host, location.pathname, "?data=", data].join(''));
   $("#share-link").attr("href", [location.protocol,"//",location.host,location.pathname,"?data=",data].join(""));
-}
-
-/* FUNCTIONS TO DRAW CHART ELEMENTS */
-
-function drawChartBase() {
-  // Calculate chart area boundaries:
-  chart.xLeft   = chartConfig.margin + chartConfig.yGutter;
-  chart.xRight  = chartConfig.width - chartConfig.margin;
-  chart.xSize   = chart.xRight - chart.xLeft;
-  chart.yTop    = chartConfig.margin + chartConfig.titleHeight;
-  chart.yBottom = chartConfig.height - chartConfig.margin - chartConfig.xGutter;
-  chart.ySize   = chart.yBottom - chart.yTop;
-  
-  $("#chart").empty();
-  $("#chart").attr("width", chartConfig.width).attr("height", chartConfig.height);
-  drawXAxis();
-  drawYAxis();
-}
-
-function drawXAxis() {
-  $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
-    x1: chart.xLeft,
-    y1: chart.yBottom,
-    x2: chart.xRight,
-    y2: chart.yBottom
-  }).addClass("axis").appendTo("#chart");
-}
-
-function drawYAxis() {
-  $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
-    x1: chart.xLeft,
-    y1: chart.yTop,
-    x2: chart.xLeft,
-    y2: chart.yBottom
-  }).addClass("axis").appendTo("#chart");
 }
 
 /* HTML CREATION FUNCTIONS */
@@ -195,7 +195,7 @@ function insertRow(button) {
     $newRow.fadeIn(fadeSpeed);
   }
   setEventTriggers();
-  updateChart();
+  chart.update();
 }
 
 function deleteRow(button) {
@@ -205,7 +205,7 @@ function deleteRow(button) {
     $(this).remove();
     removeFirstStartLastEnd();
     updateDeleteButtons();
-    updateChart();
+    chart.update();
   });
 }
 
@@ -218,7 +218,7 @@ function removeFirstStartLastEnd() {
 
 function setEventTriggers() {
   $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
-  $("input, select").off().on("blur change", updateChart);
+  $("input, select").off().on("change", function() {chart.update();} );
   $(".button-insert").off().on("click", function() { insertRow($(this)); });
   updateDeleteButtons();
 }
@@ -234,9 +234,9 @@ $(function() {
     data = JSON.parse(decodeURIComponent(data));
     createTableRows(data.length);
     populateTable(data);
-    drawChartBase();
+    //console.log(chart.xLeft);
+    chart.update();
   }
   $(".hidden-by-default").show();
   setEventTriggers();
-  
 });
