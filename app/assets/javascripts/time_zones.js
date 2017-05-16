@@ -38,7 +38,7 @@ function TimeZoneChart(config) {
       return Date.parse(e.end + "Z");
     })).filter(function(e) { // Remove blanks
       return e;
-    }).sort(function(a,b){return a - b});
+    }).sort(function(a,b){return a - b;});
     if (allTimes.length < 2) {return false;}
     xMin = new Date(allTimes[0] - (msPerDay * config.xBuffer) - (allTimes[0] % msPerDay));
     xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (config.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
@@ -53,33 +53,26 @@ function TimeZoneChart(config) {
       return parseFloat(e.offset);
     }).filter(function(e) { // Remove blanks
       return e;
-    }).sort(function(a,b){return a - b});
+    }).sort(function(a,b){return a - b;});
     if (allOffsets.length < 1) {return false;}
     yMin = Math.floor(allOffsets[0]) - config.yBuffer;
     yMax = Math.ceil(allOffsets[allOffsets.length-1]) + config.yBuffer;
     return [yMin,yMax];
-  }
+  };
   
   this.drawAxes = function() {
-    $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
+    createSVG("line", {
       x1: chart.xLeft,
       y1: chart.yBottom,
       x2: chart.xRight,
       y2: chart.yBottom
-    }).addClass("axis").appendTo("#chart");
-    $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
+    }).addClass("axis").appendTo("#chart-axes");
+    createSVG("line", {
       x1: chart.xLeft,
       y1: chart.yTop,
       x2: chart.xLeft,
       y2: chart.yBottom
     }).addClass("axis").appendTo("#chart-axes");
-  };
-    
-  this.drawBase = function() {
-    $("#chart-grid").empty();
-    $("#chart-axes").empty();
-    $("#chart").attr("width", config.width).attr("height", config.height);
-    this.drawAxes();
   };
   
   this.drawGrid = function() {
@@ -92,9 +85,9 @@ function TimeZoneChart(config) {
       xStart = this.xRange[0].getTime();
       xEnd = this.xRange[1].getTime();
           
-      for (i = xStart; i <= xEnd; i += msPerDay) {
+      for (i = xStart + msPerDay; i <= xEnd; i += msPerDay) {
         xPos = ((i - xStart) / (xEnd - xStart)) * (this.xSize) + this.xLeft;
-        $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
+        createSVG("line", {
           x1: xPos,
           y1: this.yTop,
           x2: xPos,
@@ -108,14 +101,15 @@ function TimeZoneChart(config) {
       yStart = this.yRange[0];
       yEnd = this.yRange[1];
     
-      for (i = yStart; i <= yEnd; i += 1) {
+      for (i = yStart; i < yEnd; i += 1) {
         yPos = ((i - yStart) / (yEnd - yStart)) * (this.ySize) + this.yTop;
-        $(document.createElementNS('http://www.w3.org/2000/svg','line')).attr({
+        createSVG("line", {
           x1: this.xLeft,
           y1: yPos,
           x2: this.xRight,
           y2: yPos
         }).addClass("grid").appendTo("#chart-grid");
+        
       }
     }
   };
@@ -140,7 +134,9 @@ function TimeZoneChart(config) {
   this.update = function() {
     console.log("update");
     this.getFieldValues();
-    this.drawBase();
+    $("#chart").children().empty();
+    $("#chart").attr("width", config.width).attr("height", config.height);
+    this.drawAxes();
     this.drawGrid();
     
     //console.log("X range: " + chartXRange[0].toUTCString() + " to " + chartXRange[1].toUTCString());
@@ -213,6 +209,13 @@ function createRow() {
   row += '</tr>';
   return row;
 }
+
+// Create an SVG element of type `type` with attributes specified in the `attr`
+// hash, and return it as a jQuery object.
+function createSVG(type, attr) {
+  return $(document.createElementNS("http://www.w3.org/2000/svg",type)).attr(attr);
+}
+
 
 /* TABLE MANIPULATION FUNCTIONS */
 
