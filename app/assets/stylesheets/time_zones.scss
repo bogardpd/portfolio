@@ -10,6 +10,7 @@ body {
 }
 
 #chart {
+  border: 1px solid $color-light;
 }
 
 .hidden-by-default {
@@ -53,7 +54,13 @@ text.axis-label {
   text-anchor: middle; 
 }
 
-text.axis-value {
+text.axis-value-x {
+  text-anchor: middle;
+  font-size: 10pt;
+  font-weight: 400;
+}
+
+text.axis-value-y {
   font-size: 12pt;
   font-weight: 300;
 }

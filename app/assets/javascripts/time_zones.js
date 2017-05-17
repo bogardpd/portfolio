@@ -1,22 +1,25 @@
 /* Uses "DateTime Picker for Bootstrap" from http://www.malot.fr/bootstrap-datetimepicker/index.php under the Apache License v2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 
 var timeZoneList = [["&minus;12:00", -12], ["&minus;11:00", -11], ["&minus;10:00", -10], ["&minus;09:30", -9.5], ["&minus;09:00", -9], ["&minus;08:00", -8], ["&minus;07:00", -7], ["&minus;06:00", -6], ["&minus;05:00", -5], ["&minus;04:00", -4], ["&minus;03:30", -3.5], ["&minus;03:00", -3], ["&minus;02:30", -2.5], ["&minus;02:00", -2], ["&minus;01:00", -1], ["", 0], ["+01:00", 1], ["+01:30", 1.5], ["+02:00", 2], ["+03:00", 3], ["+03:30", 3.5], ["+04:00", 4], ["+04:30", 4.5], ["+05:00", 5], ["+05:30", 5.5], ["+05:45", 5.75], ["+06:00", 6], ["+06:30", 6.5], ["+07:00", 7], ["+08:00", 8], ["+08:30", 8.5], ["+09:00", 9], ["+09:30", 9.5], ["+10:00", 10], ["+10:30", 10.5], ["+11:00", 11], ["+12:00", 12], ["+12:45", 12.75], ["+13:00", 13], ["+13:45", 13.75], ["+14:00", 14]];
+var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var msPerDay = 1000*60*60*24;
 
 var minimumRows = 2;
 var fadeSpeed = 300;
 
 var chartConfig = {
-  "width":      800, // px
-  "height":     450, // px
-  "margin":      15, // px
-  "label":       30, // px
-  "xGutter":     30, // px
-  "yGutter":     65, // px
-  "yMinSpacing": 20, // px
-  "titleHeight": 30, // px
-  "xBuffer":      1, // minimum days to show beyond data range at left and right of axis
-  "yBuffer":      1  // minimum hours to show beyond data range at top and bottom of axis
+  "width":           800, // px
+  "height":          450, // px
+  "margin":           15, // px
+  "label":            30, // px
+  "xGutter":          38, // px
+  "yGutter":          65, // px
+  "xValueLineHeight": 16, // px
+  "xMinSpacing":      35, // px
+  "yMinSpacing":      20, // px
+  "titleHeight":      30, // px
+  "xBuffer":           1, // minimum days to show beyond data range at left and right of axis
+  "yBuffer":           1  // minimum hours to show beyond data range at top and bottom of axis
 };
 
 var chart = new TimeZoneChart(chartConfig);
@@ -24,7 +27,7 @@ var chart = new TimeZoneChart(chartConfig);
 function TimeZoneChart(config) {
   this.locations = [],
   this.xLeft = config.margin + config.label + config.yGutter,
-  this.xRight = config.width - config.margin,
+  this.xRight = (config.width - config.margin * 2),
   this.xSize = this.xRight - this.xLeft,
   this.yTop = config.margin + config.titleHeight,
   this.yBottom = config.height - config.margin - config.label - config.xGutter,
@@ -79,23 +82,55 @@ function TimeZoneChart(config) {
   
   this.drawGrid = function() {
     var i;
-    var xStart, xEnd, xPos;
+    var xStart, xEnd, xPos, xEvery, xLabelDate, xLastMonth, xLastYear, xDays;
     var yStart, yEnd, yPos, yEvery, yLabelPos;
     
     // X axis labels and vertical gridlines:
     if (this.xRange !== false) {
       xStart = this.xRange[0].getTime();
       xEnd = this.xRange[1].getTime();
-          
-      for (i = xStart + msPerDay; i <= xEnd; i += msPerDay) {
+      
+      xEvery = Math.ceil(((xEnd - xStart) / msPerDay) / (this.xSize / config.xMinSpacing)); // Place an x value every `xEvery` gridlines
+      xDays = 0; // Number of days since xStart
+      
+      for (i = xStart; i <= xEnd; i += msPerDay) {
         xPos = ((i - xStart) / (xEnd - xStart)) * (this.xSize) + this.xLeft;
-        createSVG("line", {
-          x1: xPos,
-          y1: this.yTop,
-          x2: xPos,
-          y2: this.yBottom
-        }).addClass("grid").appendTo("#chart-grid");
+        if (i > xStart) {
+          createSVG("line", {
+            x1: xPos,
+            y1: this.yTop,
+            x2: xPos,
+            y2: this.yBottom
+          }).addClass("grid").appendTo("#chart-grid");
+        }
+        
+        if (xDays % xEvery === 0) {
+          xLabelDate = new Date(i);
+          createSVG("text", {
+            x: xPos,
+            y: this.yBottom + config.xValueLineHeight
+          }).text(xLabelDate.getUTCDate()).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
+          if (xLastMonth !== xLabelDate.getUTCMonth()) {
+            createSVG("text", {
+              x: xPos,
+              y: this.yBottom + (config.xValueLineHeight * 2)
+            }).text(monthNames[xLabelDate.getUTCMonth()]).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
+            if (xLastYear !== xLabelDate.getUTCFullYear()) {
+              createSVG("text", {
+                x: xPos,
+                y: this.yBottom + (config.xValueLineHeight * 3)
+              }).text(xLabelDate.getUTCFullYear()).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
+            }
+          }
+          xLastMonth = xLabelDate.getUTCMonth();
+          xLastYear = xLabelDate.getUTCFullYear();
+        }
+        xDays++;
       }
+      createSVG("text", {
+        x: this.xLeft + (this.xSize / 2),
+        y: config.height - config.margin
+      }).text("UTC Date").addClass("axis-label").appendTo("#chart-axis-text");
     }
     
     // Y Axis labels and horizontal gridlines:
@@ -117,7 +152,7 @@ function TimeZoneChart(config) {
           createSVG("text", {
             x: this.xLeft - config.yGutter,
             y: yPos + 5
-            }).html(formatUTC(i)).addClass("axis-value").appendTo("#chart-axis-text");
+            }).html(formatUTCOffset(i)).addClass("axis-value axis-value-y").appendTo("#chart-axis-text");
         }
       }
       yLabelPos = [config.margin + config.label - 15, this.yTop + (this.ySize / 2)];
@@ -289,7 +324,7 @@ function removeFirstStartLastEnd() {
 
 /* STRING FUNCTIONS */
 
-function formatUTC(offset) {
+function formatUTCOffset(offset) {
   offset = parseInt(offset, 10);
   var output = "UTC";
   if (offset !== 0) {
@@ -319,7 +354,6 @@ $(function() {
     data = JSON.parse(decodeURIComponent(data));
     createTableRows(data.length);
     populateTable(data);
-    //console.log(chart.xLeft);
     chart.update();
   }
   $(".hidden-by-default").show();
