@@ -31,12 +31,12 @@
 <% if @currently_reading.any? || @books_by_year.any? %>
   
   <% if @currently_reading.any? %>
-    <h2 id="current">Currently Reading</h2>
+    <h2 id="current">Currently Reading <small><%= pluralize(@currently_reading.length, "book") %></small></h2>
     <%= render 'table', book_collection: @currently_reading %>
   <% end %>
 
   <% @books_by_year.each do |year, books| %>
-    <h2 id="<%= year %>">Completed in <%= year %></h2>
+    <h2 id="<%= year %>">Completed in <%= year %> <small><%= pluralize(books.length, "book") %></small></h2>
     <%= render 'table', book_collection: books %>
   <% end %>
 
