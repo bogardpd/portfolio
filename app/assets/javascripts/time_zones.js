@@ -45,8 +45,8 @@ function TimeZoneChart(config) {
       return e;
     }).sort(function(a,b){return a - b;});
     if (allTimes.length < 2) {return false;}
-    xMin = new Date(allTimes[0] - (msPerDay * config.xBuffer) - (allTimes[0] % msPerDay));
-    xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (config.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay));
+    xMin = new Date(allTimes[0] - (msPerDay * config.xBuffer) - (allTimes[0] % msPerDay)).getTime();
+    xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (config.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay)).getTime();
     return [xMin,xMax];
   };
   
@@ -82,20 +82,18 @@ function TimeZoneChart(config) {
   
   this.drawGrid = function() {
     var i;
-    var xStart, xEnd, xPos, xEvery, xLabelDate, xLastMonth, xLastYear, xDays, xThisDate;
-    var yStart, yEnd, yPos, yEvery, yLabelPos;
+    var xPos, xEvery, xLabelDate, xLastMonth, xLastYear, xDays, xThisDate;
+    var yPos, yEvery, yLabelPos;
     
     // X axis labels and vertical gridlines:
     if (this.xRange !== false) {
-      xStart = this.xRange[0].getTime();
-      xEnd = this.xRange[1].getTime();
       
-      xEvery = Math.ceil(((xEnd - xStart) / msPerDay) / (this.xSize / config.xMinSpacing)); // Place an x value every `xEvery` gridlines
+      xEvery = Math.ceil(((this.xRange[1] - this.xRange[0]) / msPerDay) / (this.xSize / config.xMinSpacing)); // Place an x value every `xEvery` gridlines
       xDays = 0; // Number of days since xStart
       
-      for (i = xStart; i <= xEnd; i += msPerDay) {
-        xPos = ((i - xStart) / (xEnd - xStart)) * (this.xSize) + this.xLeft;
-        if (i > xStart) {
+      for (i = this.xRange[0]; i <= this.xRange[1]; i += msPerDay) {
+        xPos = this.xPos(i);
+        if (i > this.xRange[0]) {
           createSVG("line", {
             x1: xPos,
             y1: this.yTop,
@@ -107,7 +105,7 @@ function TimeZoneChart(config) {
         if (xDays % xEvery === 0) {
           xLabelDate = new Date(i);
           xThisDate = xLabelDate.getUTCDate();
-          if (xLastMonth !== xLabelDate.getUTCMonth()) {xThisDate += " " + monthNames[xLabelDate.getUTCMonth()]}
+          if (xLastMonth !== xLabelDate.getUTCMonth()) {xThisDate += " " + monthNames[xLabelDate.getUTCMonth()];}
           createSVG("text", {
             x: xPos,
             y: this.yBottom + config.xValueLineHeight
@@ -131,20 +129,18 @@ function TimeZoneChart(config) {
     
     // Y Axis labels and horizontal gridlines:
     if (this.yRange !== false) {
-      yStart = this.yRange[0];
-      yEnd = this.yRange[1];
       
-      yEvery = Math.ceil((yEnd - yStart) / (this.ySize / config.yMinSpacing)); // Place a y value every `yEvery` gridlines
+      yEvery = Math.ceil((this.yRange[1] - this.yRange[0]) / (this.ySize / config.yMinSpacing)); // Place a y value every `yEvery` gridlines
       
-      for (i = yStart + 1; i <= yEnd; i += 1) {
-        yPos = this.yBottom - ((i - yStart) / (yEnd - yStart)) * (this.ySize);
+      for (i = this.yRange[0] + 1; i <= this.yRange[1]; i += 1) {
+        yPos = this.yPos(i);
         createSVG("line", {
           x1: this.xLeft,
           y1: yPos,
           x2: this.xRight,
           y2: yPos
         }).addClass("grid").appendTo("#chart-grid");
-        if (i !== yEnd && i % yEvery === 0) {
+        if (i !== this.yRange[1] && i % yEvery === 0) {
           createSVG("text", {
             x: this.xLeft - config.yGutter,
             y: yPos + 5
@@ -184,6 +180,20 @@ function TimeZoneChart(config) {
     this.drawAxes();
     if (this.xRange === false || this.yRange === false) {return;}
     this.drawGrid();    
+  };
+  
+  // Take an integer timestamp and return the x position on the chart
+  this.xPos = function(timestamp) {
+    if (this.xRange !== false) {
+      return ((timestamp - this.xRange[0]) / (this.xRange[1] - this.xRange[0])) * this.xSize + this.xLeft;
+    }
+  };
+  
+  // Take a float offset and return the y position on the chart
+  this.yPos = function(offset) {
+    if (this.yRange !== false) {
+      return this.yBottom - ((offset - this.yRange[0]) / (this.yRange[1] - this.yRange[0])) * (this.ySize);
+    }
   };
   
 }
