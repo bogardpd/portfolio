@@ -1,7 +1,11 @@
 @import "bootstrap";
 
+$color-dark: #222222;
+$color-light: #DDDDDD;
+
 body {
   font-family: "Lato", sans-serif;
+  color: $color-dark;
   font-size: 13pt;
 }
 
@@ -30,14 +34,18 @@ div.share-button {
 /* SVG styles */
 
 line.axis {
-  stroke: #222222;
+  stroke: $color-dark;
   stroke-width: 2;
   stroke-linecap: square;
 }
 
 line.grid {
-  stroke: #DDDDDD;
+  stroke: $color-light;
   stroke-width: 1;
+}
+
+text{
+  fill: $color-dark;
 }
 
 text.axis-label {
