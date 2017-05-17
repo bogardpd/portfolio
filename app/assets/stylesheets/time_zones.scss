@@ -39,3 +39,13 @@ line.grid {
   stroke: #DDDDDD;
   stroke-width: 1;
 }
+
+text.axis-label {
+  font-size: 12pt;
+  text-anchor: middle; 
+}
+
+text.axis-value {
+  font-size: 12pt;
+  font-weight: 300;
+}

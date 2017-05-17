@@ -10,8 +10,10 @@ var chartConfig = {
   "width":      800, // px
   "height":     450, // px
   "margin":      15, // px
+  "label":       30, // px
   "xGutter":     30, // px
-  "yGutter":     30, // px
+  "yGutter":     65, // px
+  "yMinSpacing": 20, // px
   "titleHeight": 30, // px
   "xBuffer":      1, // minimum days to show beyond data range at left and right of axis
   "yBuffer":      1  // minimum hours to show beyond data range at top and bottom of axis
@@ -21,11 +23,11 @@ var chart = new TimeZoneChart(chartConfig);
 
 function TimeZoneChart(config) {
   this.locations = [],
-  this.xLeft = config.margin + config.yGutter,
+  this.xLeft = config.margin + config.label + config.yGutter,
   this.xRight = config.width - config.margin,
   this.xSize = this.xRight - this.xLeft,
   this.yTop = config.margin + config.titleHeight,
-  this.yBottom = config.height - config.margin - config.xGutter,
+  this.yBottom = config.height - config.margin - config.label - config.xGutter,
   this.ySize = this.yBottom - this.yTop,
   
   this.calculateXRange = function() {
@@ -78,9 +80,9 @@ function TimeZoneChart(config) {
   this.drawGrid = function() {
     var i;
     var xStart, xEnd, xPos;
-    var yStart, yEnd, yPos;
+    var yStart, yEnd, yPos, yEvery, yLabelPos;
     
-    // Vertical gridlines:
+    // X axis labels and vertical gridlines:
     if (this.xRange !== false) {
       xStart = this.xRange[0].getTime();
       xEnd = this.xRange[1].getTime();
@@ -96,21 +98,34 @@ function TimeZoneChart(config) {
       }
     }
     
-    // Horizontal gridlines:
+    // Y Axis labels and horizontal gridlines:
     if (this.yRange !== false) {
       yStart = this.yRange[0];
       yEnd = this.yRange[1];
-    
-      for (i = yStart; i < yEnd; i += 1) {
-        yPos = ((i - yStart) / (yEnd - yStart)) * (this.ySize) + this.yTop;
+      
+      yEvery = Math.ceil((yEnd - yStart) / (this.ySize / config.yMinSpacing)); // Place a y value every `yEvery` gridlines
+      
+      for (i = yStart + 1; i <= yEnd; i += 1) {
+        yPos = this.yBottom - ((i - yStart) / (yEnd - yStart)) * (this.ySize);
         createSVG("line", {
           x1: this.xLeft,
           y1: yPos,
           x2: this.xRight,
           y2: yPos
         }).addClass("grid").appendTo("#chart-grid");
-        
+        if (i !== yEnd && i % yEvery === 0) {
+          createSVG("text", {
+            x: this.xLeft - config.yGutter,
+            y: yPos + 5
+            }).html(formatUTC(i)).addClass("axis-value").appendTo("#chart-axis-text");
+        }
       }
+      yLabelPos = [config.margin + config.label - 15, this.yTop + (this.ySize / 2)];
+      createSVG("text", {
+        x: yLabelPos[0],
+        y: yLabelPos[1],
+        transform: "rotate(270 " + yLabelPos[0] + " " + yLabelPos[1] + ")"
+      }).text("UTC Offset (Hours)").addClass("axis-label").appendTo("#chart-axis-text");
     }
   };
   
@@ -128,6 +143,7 @@ function TimeZoneChart(config) {
     }
     this.xRange = this.calculateXRange();
     this.yRange = this.calculateYRange();
+    updateShareLink();
     //this.locations.map(function(element) {console.log("Locations: " + JSON.stringify(element));});
   };
   
@@ -137,16 +153,14 @@ function TimeZoneChart(config) {
     $("#chart").children().empty();
     $("#chart").attr("width", config.width).attr("height", config.height);
     this.drawAxes();
+    if (this.xRange === false || this.yRange === false) {return;}
     this.drawGrid();
     
     //console.log("X range: " + chartXRange[0].toUTCString() + " to " + chartXRange[1].toUTCString());
-    updateShareLink();
+    
   };
   
 }
-
-/* CALCULATION FUNCTIONS */
-
 
 /* FUNCTIONS TO UPDATE PAGE */
 
@@ -271,6 +285,18 @@ function deleteRow(button) {
 function removeFirstStartLastEnd() {
   $(".row-location").first().find(".cell-start").empty();
   $(".row-location").last().find(".cell-end").empty();
+}
+
+/* STRING FUNCTIONS */
+
+function formatUTC(offset) {
+  offset = parseInt(offset, 10);
+  var output = "UTC";
+  if (offset !== 0) {
+    output += (offset < 0) ? "&minus;" : "+";
+    output += Math.abs(offset);
+  }
+  return output;
 }
 
 /* FUNCTIONS TO MANAGE EVENT TRIGGERS */
