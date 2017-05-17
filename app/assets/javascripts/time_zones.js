@@ -12,8 +12,8 @@ var chartConfig = {
   "height":          450, // px
   "margin":           15, // px
   "label":            30, // px
-  "xGutter":          38, // px
-  "yGutter":          65, // px
+  "xGutter":          24, // px
+  "yGutter":          55, // px
   "xValueLineHeight": 16, // px
   "xMinSpacing":      35, // px
   "yMinSpacing":      20, // px
@@ -82,7 +82,7 @@ function TimeZoneChart(config) {
   
   this.drawGrid = function() {
     var i;
-    var xStart, xEnd, xPos, xEvery, xLabelDate, xLastMonth, xLastYear, xDays;
+    var xStart, xEnd, xPos, xEvery, xLabelDate, xLastMonth, xLastYear, xDays, xThisDate;
     var yStart, yEnd, yPos, yEvery, yLabelPos;
     
     // X axis labels and vertical gridlines:
@@ -106,21 +106,17 @@ function TimeZoneChart(config) {
         
         if (xDays % xEvery === 0) {
           xLabelDate = new Date(i);
+          xThisDate = xLabelDate.getUTCDate();
+          if (xLastMonth !== xLabelDate.getUTCMonth()) {xThisDate += " " + monthNames[xLabelDate.getUTCMonth()]}
           createSVG("text", {
             x: xPos,
             y: this.yBottom + config.xValueLineHeight
-          }).text(xLabelDate.getUTCDate()).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
-          if (xLastMonth !== xLabelDate.getUTCMonth()) {
+          }).text(xThisDate).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
+          if (xLastYear !== xLabelDate.getUTCFullYear()) {
             createSVG("text", {
               x: xPos,
               y: this.yBottom + (config.xValueLineHeight * 2)
-            }).text(monthNames[xLabelDate.getUTCMonth()]).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
-            if (xLastYear !== xLabelDate.getUTCFullYear()) {
-              createSVG("text", {
-                x: xPos,
-                y: this.yBottom + (config.xValueLineHeight * 3)
-              }).text(xLabelDate.getUTCFullYear()).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
-            }
+            }).text(xLabelDate.getUTCFullYear()).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
           }
           xLastMonth = xLabelDate.getUTCMonth();
           xLastYear = xLabelDate.getUTCFullYear();

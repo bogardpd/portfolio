@@ -1,7 +1,7 @@
 @import "bootstrap";
 
-$color-dark: #222222;
-$color-light: #DDDDDD;
+$color-dark: #666666;
+$color-light: #CCCCCC;
 
 body {
   font-family: "Lato", sans-serif;
@@ -54,13 +54,11 @@ text.axis-label {
   text-anchor: middle; 
 }
 
-text.axis-value-x {
-  text-anchor: middle;
+text.axis-value {
   font-size: 10pt;
   font-weight: 400;
 }
 
-text.axis-value-y {
-  font-size: 12pt;
-  font-weight: 300;
+text.axis-value-x {
+  text-anchor: middle;
 }
