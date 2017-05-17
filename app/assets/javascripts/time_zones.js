@@ -179,20 +179,15 @@ function TimeZoneChart(config) {
     this.xRange = this.calculateXRange();
     this.yRange = this.calculateYRange();
     updateShareLink();
-    //this.locations.map(function(element) {console.log("Locations: " + JSON.stringify(element));});
   };
   
   this.update = function() {
-    console.log("update");
     this.getFieldValues();
     $("#chart").children().empty();
     $("#chart").attr("width", config.width).attr("height", config.height);
     this.drawAxes();
     if (this.xRange === false || this.yRange === false) {return;}
-    this.drawGrid();
-    
-    //console.log("X range: " + chartXRange[0].toUTCString() + " to " + chartXRange[1].toUTCString());
-    
+    this.drawGrid();    
   };
   
 }
