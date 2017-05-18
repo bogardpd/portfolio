@@ -1,7 +1,7 @@
 @import "bootstrap";
 
 $color-dark: #666666;
-$color-light: #CCCCCC;
+$color-light: #DDDDDD;
 
 body {
   font-family: "Lato", sans-serif;
@@ -44,6 +44,13 @@ line.grid {
   stroke-width: 1;
 }
 
+line.travel {
+  stroke: #6475AB;
+  stroke-width: 5;
+  stroke-linecap: round;
+  opacity: 0.35;
+}
+
 text{
   fill: $color-dark;
 }
@@ -51,7 +58,7 @@ text{
 rect.location-block {
   stroke: #C07732;
   stroke-width: 1;
-  fill: #FDC086;
+  fill: #FDC086; /* Chart color base */
 }
 
 text.axis-label {

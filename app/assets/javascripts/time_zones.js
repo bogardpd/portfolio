@@ -20,7 +20,7 @@ var chartConfig = {
   "titleHeight":      30, // px
   "xBuffer":           1, // minimum days to show beyond data range at left and right of axis
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
-  "locBlockHeight":   10, // px
+  "locBlockHeight":   10  // px
 };
 
 var chart = new TimeZoneChart(chartConfig);
@@ -174,6 +174,24 @@ function TimeZoneChart(config) {
     
   };
   
+  this.drawTravelLines = function() {
+    var i, time1, offset1, time2, offset2;
+    for (i = 0; i < (this.locations.length-1); i++) {
+      time1 = this.locations[i].end;
+      offset1 = this.locations[i].offset;
+      time2 = this.locations[i+1].start;
+      offset2 = this.locations[i+1].offset;
+      if (!(Number.isNaN(time1) || Number.isNaN(offset1) || Number.isNaN(time2) || Number.isNaN(offset2))) {
+        createSVG("line", {
+          x1: this.xPos(time1),
+          y1: this.yPos(offset1),
+          x2: this.xPos(time2),
+          y2: this.yPos(offset2)
+        }).addClass("travel").appendTo("#chart-travel-lines");
+      }
+    }
+  };
+  
   this.getFieldValues = function() {
     var i, $row;
     var $locationRows = $("tr.row-location");
@@ -199,6 +217,7 @@ function TimeZoneChart(config) {
     if (this.xRange === false || this.yRange === false) {return;}
     this.drawGrid();
     this.drawLocationBlocks();
+    this.drawTravelLines();
   };
   
   // Take an integer timestamp and return the x position on the chart
@@ -251,7 +270,7 @@ function createDateTime(fieldName) {
 
 function createOffsetSelect() {
   var html = '<div class="form-group"><select class="form-control field-offset">';
-  html += timeZoneList.map(function(element) {
+  html += timeZoneList.reverse().map(function(element) {
     return '<option value="' + element[1] + '"' + (element[1] === 0 ? ' selected' : '') +'>UTC' + element[0] + '</option>';
   }).join("\n");
   html += '</select></div>';
