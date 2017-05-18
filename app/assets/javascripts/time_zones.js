@@ -58,7 +58,7 @@ function TimeZoneChart(config) {
     allOffsets = this.locations.map(function(e) {
       return parseFloat(e.offset);
     }).filter(function(e) { // Remove blanks
-      return e;
+      return e !== undefined;
     }).sort(function(a,b){return a - b;});
     if (allOffsets.length < 1) {return false;}
     yMin = Math.floor(allOffsets[0]) - config.yBuffer;
@@ -310,10 +310,10 @@ function createSVG(type, attr) {
 function populateTable(timeZoneLocations) {
   timeZoneLocations.map(function(element, index) {
     var $row = $(".row-location").eq(index);
-    $row.find(".field-start").val(formatDate(new Date(element.start)));
+    $row.find(".field-start").val(element.start > 0 ? formatDate(new Date(element.start)) : "");
     $row.find(".field-location").val(element.location);
     $row.find(".field-offset").val(element.offset);
-    $row.find(".field-end").val(formatDate(new Date(element.end)));
+    $row.find(".field-end").val(element.end > 0 ? formatDate(new Date(element.end)) : "");
   }).join("<br/>");
 }
 
