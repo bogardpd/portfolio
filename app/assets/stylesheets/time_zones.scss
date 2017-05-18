@@ -48,6 +48,12 @@ text{
   fill: $color-dark;
 }
 
+rect.location-block {
+  stroke: #C07732;
+  stroke-width: 1;
+  fill: #FDC086;
+}
+
 text.axis-label {
   font-size: 12pt;
   text-anchor: middle; 

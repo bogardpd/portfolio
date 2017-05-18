@@ -19,7 +19,8 @@ var chartConfig = {
   "yMinSpacing":      20, // px
   "titleHeight":      30, // px
   "xBuffer":           1, // minimum days to show beyond data range at left and right of axis
-  "yBuffer":           1  // minimum hours to show beyond data range at top and bottom of axis
+  "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
+  "locBlockHeight":   10, // px
 };
 
 var chart = new TimeZoneChart(chartConfig);
@@ -38,9 +39,9 @@ function TimeZoneChart(config) {
     // the minimum number of days of buffer on either side of the data.
     var allTimes, xMin, xMax;
     allTimes = this.locations.map(function(e) {
-      return Date.parse(e.start + "Z");
+      return e.start;
     }).concat(this.locations.map(function(e) {
-      return Date.parse(e.end + "Z");
+      return e.end;
     })).filter(function(e) { // Remove blanks
       return e;
     }).sort(function(a,b){return a - b;});
@@ -156,16 +157,33 @@ function TimeZoneChart(config) {
     }
   };
   
+  this.drawLocationBlocks = function() {
+    var startTime, endTime;
+    this.locations.map(function(location, index) {
+      startTime = (index === 0) ? this.xRange[0] : location.start;
+      endTime = (index === this.locations.length - 1) ? this.xRange[1] : location.end;
+      if (startTime && endTime) {
+        createSVG("rect", {
+          x: this.xPos(startTime),
+          y: this.yPos(location.offset) - (config.locBlockHeight / 2),
+          width: this.xPos(endTime) - this.xPos(startTime),
+          height: config.locBlockHeight
+        }).addClass("location-block").appendTo("#chart-location-blocks");
+      }
+    }, this);
+    
+  };
+  
   this.getFieldValues = function() {
     var i, $row;
     var $locationRows = $("tr.row-location");
     for(i = 0; i < $locationRows.length; i++) {
       $row = $locationRows.eq(i);
       this.locations[i] = {
-        start:    $row.find(".field-start").val(),
+        start:    Date.parse($row.find(".field-start").val() + "Z"),
         location: $row.find(".field-location").val(),
         offset:   parseFloat($row.find(".field-offset").val()),
-        end:      $row.find(".field-end").val()
+        end:      Date.parse($row.find(".field-end").val() + "Z")
       };
     }
     this.xRange = this.calculateXRange();
@@ -179,7 +197,8 @@ function TimeZoneChart(config) {
     $("#chart").attr("width", config.width).attr("height", config.height);
     this.drawAxes();
     if (this.xRange === false || this.yRange === false) {return;}
-    this.drawGrid();    
+    this.drawGrid();
+    this.drawLocationBlocks();
   };
   
   // Take an integer timestamp and return the x position on the chart
@@ -272,10 +291,10 @@ function createSVG(type, attr) {
 function populateTable(timeZoneLocations) {
   timeZoneLocations.map(function(element, index) {
     var $row = $(".row-location").eq(index);
-    $row.find(".field-start").val(element.start);
+    $row.find(".field-start").val(formatDate(new Date(element.start)));
     $row.find(".field-location").val(element.location);
     $row.find(".field-offset").val(element.offset);
-    $row.find(".field-end").val(element.end);
+    $row.find(".field-end").val(formatDate(new Date(element.end)));
   }).join("<br/>");
 }
 
@@ -333,6 +352,16 @@ function formatUTCOffset(offset) {
     output += Math.abs(offset);
   }
   return output;
+}
+
+function formatDate(date) {
+  var str;
+  str = date.getUTCFullYear() + "-";
+  str += ("0" + (date.getUTCMonth() + 1)).slice(-2) + "-";
+  str += ("0" + date.getUTCDate()).slice(-2) + " ";
+  str += ("0" + date.getUTCHours()).slice(-2) + ":";
+  str += ("0" + date.getUTCMinutes()).slice(-2);
+  return str;
 }
 
 /* FUNCTIONS TO MANAGE EVENT TRIGGERS */
