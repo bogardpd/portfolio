@@ -20,7 +20,8 @@ var chartConfig = {
   "titleHeight":      30, // px
   "xBuffer":           1, // minimum days to show beyond data range at left and right of axis
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
-  "locBlockHeight":   10  // px
+  "locBlockHeight":   10, // px
+  "locMargin":         4  // px
 };
 
 var chart = new TimeZoneChart(chartConfig);
@@ -158,7 +159,9 @@ function TimeZoneChart(config) {
   };
   
   this.drawLocationBlocks = function() {
-    var startTime, endTime;
+    var startTime, endTime, $locationText;
+    var sameOffsetLocations = [];
+    var sameOffsetStart, sameOffsetIndex;
     this.locations.map(function(location, index) {
       startTime = (index === 0) ? this.xRange[0] : location.start;
       endTime = (index === this.locations.length - 1) ? this.xRange[1] : location.end;
@@ -169,6 +172,42 @@ function TimeZoneChart(config) {
           width: this.xPos(endTime) - this.xPos(startTime),
           height: config.locBlockHeight
         }).addClass("location-block").appendTo("#chart-location-blocks");
+        if (index !== this.locations.length - 1 && location.offset === this.locations[index+1].offset) {
+          // This location has the same offset as the next location
+          if (sameOffsetLocations.length === 0) {
+            sameOffsetStart = startTime;
+            sameOffsetIndex = index;
+          }
+          sameOffsetLocations.push(location.location);
+        } else {
+          if (sameOffsetLocations.length > 0) {
+            sameOffsetLocations.push(location.location);
+            $locationText = createSVG("text", {
+              x: (this.xPos(sameOffsetStart) + this.xPos(endTime))/2 - ((sameOffsetLocations.length - 1)*config.locMargin/2),
+              y: this.yPos(location.offset) - (config.locBlockHeight)
+            });
+            sameOffsetLocations.map(function(element) {
+              createSVG("tspan", {
+                dx: config.locMargin
+              }).text(element).appendTo($locationText);
+            });
+          } else {
+            $locationText = createSVG("text", {
+              x: (this.xPos(startTime) + this.xPos(endTime))/2,
+              y: this.yPos(location.offset) - (config.locBlockHeight)
+            }).text(location.location);
+          }
+          $locationText.addClass("location");
+          if (index === 0 || sameOffsetIndex === 0) {
+            $locationText.attr("x", this.xLeft + config.locMargin/2).addClass("left");
+          } else if (index === this.locations.length - 1) {
+            $locationText.attr("x", this.xRight - config.locMargin/2).addClass("right");
+          }
+          $locationText.appendTo("#chart-location-text");
+          sameOffsetLocations = [];
+          sameOffsetStart = null;
+          sameOffsetIndex = null;
+        }
       }
     }, this);
     

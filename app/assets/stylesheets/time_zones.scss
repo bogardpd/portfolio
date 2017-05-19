@@ -74,3 +74,17 @@ text.axis-value {
 text.axis-value-x {
   text-anchor: middle;
 }
+
+text.location {
+  font-size: 10pt;
+  font-style: italic;
+  text-anchor: middle;
+}
+
+text.left {
+  text-anchor: start;
+}
+
+text.right {
+  text-anchor: end;
+}
