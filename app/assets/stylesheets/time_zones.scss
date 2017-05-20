@@ -45,10 +45,9 @@ line.grid {
 }
 
 line.travel {
-  stroke: #6475AB;
-  stroke-width: 5;
+  stroke: #D2D7D9;
+  stroke-width: 8;
   stroke-linecap: round;
-  opacity: 0.35;
 }
 
 text{
@@ -56,9 +55,6 @@ text{
 }
 
 rect.location-block {
-  stroke: #C07732;
-  stroke-width: 1;
-  fill: #FDC086; /* Chart color base */
 }
 
 text.axis-label {

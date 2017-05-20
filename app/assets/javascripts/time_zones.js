@@ -20,8 +20,9 @@ var chartConfig = {
   "titleHeight":      30, // px
   "xBuffer":           1, // minimum days to show beyond data range at left and right of axis
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
-  "locBlockHeight":   10, // px
-  "locMargin":         4  // px
+  "locBlockHeight":   16, // px
+  "locMargin":         4, // px
+  "locSatLight": "50%, 40%"
 };
 
 var chart = new TimeZoneChart(chartConfig);
@@ -162,6 +163,8 @@ function TimeZoneChart(config) {
     var startTime, endTime, $locationText;
     var sameOffsetLocations = [];
     var sameOffsetStart, sameOffsetIndex;
+    var locHues = this.generateLocationHues();
+    
     this.locations.map(function(location, index) {
       startTime = (index === 0) ? this.xRange[0] : location.start;
       endTime = (index === this.locations.length - 1) ? this.xRange[1] : location.end;
@@ -171,7 +174,7 @@ function TimeZoneChart(config) {
           y: this.yPos(location.offset) - (config.locBlockHeight / 2),
           width: this.xPos(endTime) - this.xPos(startTime),
           height: config.locBlockHeight
-        }).addClass("location-block").appendTo("#chart-location-blocks");
+        }).addClass("location-block").attr("fill", "hsl(" + locHues[location.location] + ", " + config.locSatLight + ")").appendTo("#chart-location-blocks");
         if (index !== this.locations.length - 1 && location.offset === this.locations[index+1].offset) {
           // This location has the same offset as the next location
           if (sameOffsetLocations.length === 0) {
@@ -246,6 +249,23 @@ function TimeZoneChart(config) {
     this.xRange = this.calculateXRange();
     this.yRange = this.calculateYRange();
     updateShareLink();
+  };
+  
+  this.generateLocationHues = function() {
+    var locHues = {};
+    var uniqLocations;
+    this.locations.map(function(e) {
+      return e.location;
+    }).filter(function(e) {
+      return e !== "";
+    }).map(function(e) {
+      locHues[e] = true;
+    });
+    uniqLocations = Object.keys(locHues).sort();
+    uniqLocations.map(function(e, index) {
+      locHues[e] = Math.round(360 * (index/uniqLocations.length));
+    });
+    return locHues;
   };
   
   this.update = function() {
