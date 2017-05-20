@@ -20,7 +20,7 @@ var chartConfig = {
   "titleHeight":      30, // px
   "xBuffer":           1, // minimum days to show beyond data range at left and right of axis
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
-  "locBlockHeight":   16, // px
+  "locBlockHeight":   20, // px
   "locMargin":         4, // px
   "locSatLight": "50%, 40%"
 };
@@ -90,10 +90,8 @@ function TimeZoneChart(config) {
     
     // X axis labels and vertical gridlines:
     if (this.xRange !== false) {
-      
       xEvery = Math.ceil(((this.xRange[1] - this.xRange[0]) / msPerDay) / (this.xSize / config.xMinSpacing)); // Place an x value every `xEvery` gridlines
       xDays = 0; // Number of days since xStart
-      
       for (i = this.xRange[0]; i <= this.xRange[1]; i += msPerDay) {
         xPos = this.xPos(i);
         if (i > this.xRange[0]) {
@@ -104,7 +102,6 @@ function TimeZoneChart(config) {
             y2: this.yBottom
           }).addClass("grid").appendTo("#chart-grid");
         }
-        
         if (xDays % xEvery === 0) {
           xLabelDate = new Date(i);
           xThisDate = xLabelDate.getUTCDate();
@@ -132,9 +129,7 @@ function TimeZoneChart(config) {
     
     // Y Axis labels and horizontal gridlines:
     if (this.yRange !== false) {
-      
       yEvery = Math.ceil((this.yRange[1] - this.yRange[0]) / (this.ySize / config.yMinSpacing)); // Place a y value every `yEvery` gridlines
-      
       for (i = this.yRange[0] + 1; i <= this.yRange[1]; i += 1) {
         yPos = this.yPos(i);
         createSVG("line", {
@@ -175,45 +170,37 @@ function TimeZoneChart(config) {
           width: this.xPos(endTime) - this.xPos(startTime),
           height: config.locBlockHeight
         }).addClass("location-block").attr("fill", "hsl(" + locHues[location.location] + ", " + config.locSatLight + ")").appendTo("#chart-location-blocks");
-        if (index !== this.locations.length - 1 && location.offset === this.locations[index+1].offset) {
-          // This location has the same offset as the next location
-          if (sameOffsetLocations.length === 0) {
-            sameOffsetStart = startTime;
-            sameOffsetIndex = index;
-          }
-          sameOffsetLocations.push(location.location);
-        } else {
-          if (sameOffsetLocations.length > 0) {
-            sameOffsetLocations.push(location.location);
-            $locationText = createSVG("text", {
-              x: (this.xPos(sameOffsetStart) + this.xPos(endTime))/2 - ((sameOffsetLocations.length - 1)*config.locMargin/2),
-              y: this.yPos(location.offset) - (config.locBlockHeight)
-            });
-            sameOffsetLocations.map(function(element) {
-              createSVG("tspan", {
-                dx: config.locMargin
-              }).text(element).appendTo($locationText);
-            });
-          } else {
-            $locationText = createSVG("text", {
-              x: (this.xPos(startTime) + this.xPos(endTime))/2,
-              y: this.yPos(location.offset) - (config.locBlockHeight)
-            }).text(location.location);
-          }
-          $locationText.addClass("location");
-          if (index === 0 || sameOffsetIndex === 0) {
-            $locationText.attr("x", this.xLeft + config.locMargin/2).addClass("left");
-          } else if (index === this.locations.length - 1) {
-            $locationText.attr("x", this.xRight - config.locMargin/2).addClass("right");
-          }
-          $locationText.appendTo("#chart-location-text");
-          sameOffsetLocations = [];
-          sameOffsetStart = null;
-          sameOffsetIndex = null;
-        }
+        
+        this.drawLocationLabel(this.xPos(startTime), this.xPos(endTime), this.yPos(location.offset), index, location.location);
+        
       }
     }, this);
     
+  };
+  
+  // Draws a location label.
+  // x1: Left side of location bar
+  // x2: Right side of location bar
+  // y: Vertical center of location bar
+  // index: Index number for creating IDs
+  // labelText: Text to place in label
+  this.drawLocationLabel = function(x1, x2, y, index, labelText) {
+    var locationValue, locationTextPath, locationText;
+    if (x2 - x1 > 2 * config.locMargin) {
+      createSVG("path", {
+        id: "path-" + index,
+        d: "M " + (x1 + config.locMargin) + " " + (y + (config.locBlockHeight * 0.25)) + " H " + (x2 - config.locMargin)
+      }).appendTo("#chart-location-text");
+    
+      locationValue = document.createTextNode(labelText);
+      locationTextPath = document.createElementNS("http://www.w3.org/2000/svg","textPath");
+      locationTextPath.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#path-" + index);
+      locationTextPath.appendChild(locationValue);
+      locationText = document.createElementNS("http://www.w3.org/2000/svg","text");
+      locationText.setAttribute("class", "location");
+      locationText.appendChild(locationTextPath);
+      document.getElementById("chart-location-text").appendChild(locationText);
+    }
   };
   
   this.drawTravelLines = function() {

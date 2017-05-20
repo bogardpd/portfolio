@@ -3,7 +3,7 @@
 $color-dark: #666666;
 $color-light: #DDDDDD;
 
-body {
+body, text {
   font-family: "Lato", sans-serif;
   color: $color-dark;
   font-size: 13pt;
@@ -50,11 +50,11 @@ line.travel {
   stroke-linecap: round;
 }
 
-text{
-  fill: $color-dark;
+rect.location-block {
 }
 
-rect.location-block {
+text {
+  fill: $color-dark;
 }
 
 text.axis-label {
@@ -74,7 +74,7 @@ text.axis-value-x {
 text.location {
   font-size: 10pt;
   font-style: italic;
-  text-anchor: middle;
+  fill: white;
 }
 
 text.left {
