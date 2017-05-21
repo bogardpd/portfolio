@@ -48,7 +48,7 @@ function TimeZoneChart(config) {
     })).filter(function(e) { // Remove blanks
       return e;
     }).sort(function(a,b){return a - b;});
-    if (allTimes.length < 2) {return false;}
+    if (allTimes.length < 1) {return false;}
     xMin = new Date(allTimes[0] - (msPerDay * config.xBuffer) - (allTimes[0] % msPerDay)).getTime();
     xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (config.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay)).getTime();
     return [xMin,xMax];
@@ -225,6 +225,7 @@ function TimeZoneChart(config) {
   this.getFieldValues = function() {
     var i, $row;
     var $locationRows = $("tr.row-location");
+    this.locations = [];
     for(i = 0; i < $locationRows.length; i++) {
       $row = $locationRows.eq(i);
       this.locations[i] = {
@@ -450,8 +451,8 @@ $(function() {
     data = JSON.parse(decodeURIComponent(data));
     createTableRows(data.length);
     populateTable(data);
-    chart.update();
   }
+  chart.update();
   $(".hidden-by-default").show();
   setEventTriggers();
 });
