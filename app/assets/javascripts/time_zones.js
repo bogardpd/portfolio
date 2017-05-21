@@ -22,7 +22,8 @@ var chartConfig = {
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
   "locBlockHeight":   20, // px
   "locMargin":         4, // px
-  "locSatLight": "50%, 40%"
+  "locSat":          "50%",
+  "locLight":        "40%"
 };
 
 var chart = new TimeZoneChart(chartConfig);
@@ -155,21 +156,21 @@ function TimeZoneChart(config) {
   };
   
   this.drawLocationBlocks = function() {
-    var startTime, endTime, $locationText;
-    var sameOffsetLocations = [];
-    var sameOffsetStart, sameOffsetIndex;
+    var startTime, endTime;
     var locHues = this.generateLocationHues();
+    var locFill;
     
     this.locations.map(function(location, index) {
       startTime = (index === 0) ? this.xRange[0] : location.start;
       endTime = (index === this.locations.length - 1) ? this.xRange[1] : location.end;
       if (startTime && endTime) {
+        locFill = Object.keys(locHues).includes(location.location) ? "hsl(" + locHues[location.location] + ", " + config.locSat + ", " + config.locLight + ")" : "hsl(0, 0%, " + config.locLight + ")"
         createSVG("rect", {
           x: this.xPos(startTime),
           y: this.yPos(location.offset) - (config.locBlockHeight / 2),
           width: this.xPos(endTime) - this.xPos(startTime),
           height: config.locBlockHeight
-        }).addClass("location-block").attr("fill", "hsl(" + locHues[location.location] + ", " + config.locSatLight + ")").appendTo("#chart-location-blocks");
+        }).addClass("location-block").attr("fill", locFill).appendTo("#chart-location-blocks");
         
         this.drawLocationLabel(this.xPos(startTime), this.xPos(endTime), this.yPos(location.offset), index, location.location);
         
