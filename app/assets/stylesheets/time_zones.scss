@@ -53,6 +53,12 @@ line.travel {
 rect.location-block {
 }
 
+rect.supplemental {
+  fill: #FFFFEE;
+  stroke: $color-dark;
+  stroke-width: 1;
+}
+
 text {
   fill: $color-dark;
 }
@@ -75,6 +81,24 @@ text.location {
   font-size: 10pt;
   font-style: italic;
   fill: white;
+}
+
+text.supplemental-location {
+  font-size: 10pt;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+text.supplemental-offset {
+  font-size: 8pt;
+  font-style: italic;
+  text-anchor: middle;
+}
+
+text.supplemental-time {
+  font-size: 8pt;
+  font-weight: 400;
+  text-anchor: middle;
 }
 
 text.left {

@@ -15,6 +15,7 @@ var chartConfig = {
   "xGutter":          24, // px
   "yGutter":          55, // px
   "xValueLineHeight": 16, // px
+  "hoverLineHeight":  15, // px
   "xMinSpacing":      35, // px
   "yMinSpacing":      20, // px
   "titleHeight":      30, // px
@@ -22,6 +23,8 @@ var chartConfig = {
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
   "locBlockHeight":   20, // px
   "locMargin":         4, // px
+  "hoverWidth":      165, // px
+  "hoverHeight":      50, // px
   "locSat":          "50%",
   "locLight":        "40%"
 };
@@ -37,6 +40,11 @@ function TimeZoneChart(config) {
   this.yBottom = config.height - config.margin - config.label - config.xGutter,
   this.ySize = this.yBottom - this.yTop,
   
+  /**
+   * Calculates the chart X axis range, based on the locations hash and
+   * the minimum number of days of buffer on either side of the data.
+   * @return {array} An array containing the integer minimum and maximum time.
+   */
   this.calculateXRange = function() {
     // Calculates the chart X axis range, based on the locations hash and
     // the minimum number of days of buffer on either side of the data.
@@ -54,9 +62,12 @@ function TimeZoneChart(config) {
     return [xMin,xMax];
   };
   
+  /**
+   * Calculates the chart Y axis range, based on the locations hash and
+   * the minimum number of hours of buffer on either side of the data.
+   * @return {array} An array containing the integer minimum and maximum offset.
+   */
   this.calculateYRange = function() {
-    // Calculates the Y axis range, based on the locations hash and the
-    // minimum number of hours of buffer on either side of the data.
     var allOffsets, yMin, yMax;
     allOffsets = this.locations.map(function(e) {
       return parseFloat(e.offset);
@@ -70,6 +81,7 @@ function TimeZoneChart(config) {
   };
   
   this.drawAxes = function() {
+    $("#chart-axes").empty();
     createSVG("line", {
       x1: chart.xLeft,
       y1: chart.yBottom,
@@ -89,6 +101,8 @@ function TimeZoneChart(config) {
     var xPos, xEvery, xLabelDate, xLastMonth, xLastYear, xDays, xThisDate;
     var yPos, yEvery, yLabelPos;
     
+    $("#chart-grid").empty();
+    $("#chart-axis-text").empty();
     // X axis labels and vertical gridlines:
     if (this.xRange !== false) {
       xEvery = Math.ceil(((this.xRange[1] - this.xRange[0]) / msPerDay) / (this.xSize / config.xMinSpacing)); // Place an x value every `xEvery` gridlines
@@ -156,36 +170,117 @@ function TimeZoneChart(config) {
   };
   
   this.drawLocationBlocks = function() {
-    var startTime, endTime;
+    var startTime, endTime, hue;
     var locHues = this.generateLocationHues();
-    var locFill;
+    
+    $("#chart-location-blocks").empty();
+    $("#chart-location-text").empty();
+    $("#chart-location-hovers").empty();
     
     this.locations.map(function(location, index) {
       startTime = (index === 0) ? this.xRange[0] : location.start;
       endTime = (index === this.locations.length - 1) ? this.xRange[1] : location.end;
       if (startTime && endTime) {
-        locFill = Object.keys(locHues).includes(location.location) ? "hsl(" + locHues[location.location] + ", " + config.locSat + ", " + config.locLight + ")" : "hsl(0, 0%, " + config.locLight + ")"
-        createSVG("rect", {
-          x: this.xPos(startTime),
-          y: this.yPos(location.offset) - (config.locBlockHeight / 2),
-          width: this.xPos(endTime) - this.xPos(startTime),
-          height: config.locBlockHeight
-        }).addClass("location-block").attr("fill", locFill).appendTo("#chart-location-blocks");
-        
-        this.drawLocationLabel(this.xPos(startTime), this.xPos(endTime), this.yPos(location.offset), index, location.location);
-        
+        hue = Object.keys(locHues).includes(location.location) ? locHues[location.location] : false;
+        this.drawLocationBox(startTime, endTime, location.offset, hue);
+        this.drawLocationLabel(startTime, endTime, location.offset, location.location, index);
+        this.drawLocationHover(startTime, endTime, location.offset, location.location, index)
       }
     }, this);
     
   };
   
-  // Draws a location label.
-  // x1: Left side of location bar
-  // x2: Right side of location bar
-  // y: Vertical center of location bar
-  // index: Index number for creating IDs
-  // labelText: Text to place in label
-  this.drawLocationLabel = function(x1, x2, y, index, labelText) {
+  /**
+   * Draws a box on the chart representing a given location.
+   * @param {number} startTime - UTC arrival time.
+   * @param {number} endTime - UTC departure time.
+   * @param {number} offset - The location's UTC offset in hours.
+   * @param {number} hue - The integer hue to use for this location, or `false` for gray.
+   */
+  this.drawLocationBox = function(startTime, endTime, offset, hue) {
+    locFill = hue ? "hsl(" + hue + ", " + config.locSat + ", " + config.locLight + ")" : "hsl(0, 0%, " + config.locLight + ")"
+    createSVG("rect", {
+      x: this.xPos(startTime),
+      y: this.yPos(offset) - (config.locBlockHeight / 2),
+      width: this.xPos(endTime) - this.xPos(startTime),
+      height: config.locBlockHeight
+    }).addClass("location-block").attr("fill", locFill).appendTo("#chart-location-blocks");
+  };
+  
+  /**
+   * Draws a supplemental info box for a location.
+   * @param {number} startTime - UTC arrival time.
+   * @param {number} endTime - UTC departure time.
+   * @param {number} offset - The location's UTC offset in hours.
+   * @param {string} locName - The location's name.
+   * @param {number} index - An index number used to create unique IDs.
+   */
+  this.drawLocationHover = function(startTime, endTime, offset, locName, index) {
+    var x, y, xCenter, tStart, tEnd, timeText, $hoverGroup;
+    
+    xCenter = ((this.xPos(startTime) + this.xPos(endTime))/2);
+    x = xCenter - (config.hoverWidth / 2);
+    if (x < this.xLeft) {
+      // Hover is off left edge of chart area
+      x = this.xLeft;
+      xCenter = this.xLeft + config.hoverWidth/2;
+    } else if (x > this.xRight - config.hoverWidth) {
+      // Hover is off right edge of chart area
+      x = this.xRight - config.hoverWidth;
+      xCenter = this.xRight - config.hoverWidth/2;
+    }
+    if (this.yPos(offset) < (this.yTop + this.yBottom)/2) {
+      // Bar is in top half of chart, so place hover beneath
+      y = this.yPos(offset) + (config.locBlockHeight/2) + config.locMargin;
+    } else {
+      // Bar is in bottom half of chart, so place hover above
+      y = this.yPos(offset) - (config.locBlockHeight/2) - config.locMargin - config.hoverHeight;
+    }
+    if (startTime === this.xRange[0]) {
+      timeText = formatTimeRange(null, endTime);
+    } else if (endTime === this.xRange[1]) {
+      timeText = formatTimeRange(startTime, null);
+    } else {
+      timeText = formatTimeRange(startTime, endTime);
+    }
+    
+    $hoverGroup = createSVG("g", {
+      id: "hover-" + index
+    });
+    createSVG("rect", {
+      x: x,
+      y: y,
+      width: config.hoverWidth,
+      height: config.hoverHeight
+    }).addClass("supplemental").appendTo($hoverGroup);
+    createSVG("text", {
+      x: xCenter,
+      y: y + config.hoverLineHeight
+    }).text(locName).addClass("supplemental-location").appendTo($hoverGroup);
+    createSVG("text", {
+      x: xCenter,
+      y: y + (config.hoverLineHeight * 2)
+    }).html(formatUTCOffset(offset)).addClass("supplemental-offset").appendTo($hoverGroup);
+    createSVG("text", {
+      x: xCenter,
+      y: y + (config.hoverLineHeight * 3)
+    }).text(timeText).addClass("supplemental-time").appendTo($hoverGroup);
+    $hoverGroup.appendTo("#chart-location-hovers");
+  };
+  
+  /**
+   * Draws a text label on the chart for a given location.
+   * @param {number} startTime - UTC arrival time.
+   * @param {number} endTime - UTC departure time.
+   * @param {number} offset - The location's UTC offset in hours.
+   * @param {string} locName - The location's name.
+   * @param {number} index - An index number used to create unique IDs.
+   */
+  this.drawLocationLabel = function(startTime, endTime, offset, locName, index) {
+    var x1, x2, y;
+    x1 = this.xPos(startTime);
+    x2 = this.xPos(endTime);
+    y = this.yPos(offset)
     var locationValue, locationTextPath, locationText;
     if (x2 - x1 > 2 * config.locMargin) {
       createSVG("path", {
@@ -193,7 +288,7 @@ function TimeZoneChart(config) {
         d: "M " + (x1 + config.locMargin) + " " + (y + (config.locBlockHeight * 0.25)) + " H " + (x2 - config.locMargin)
       }).appendTo("#chart-location-text");
     
-      locationValue = document.createTextNode(labelText);
+      locationValue = document.createTextNode(locName);
       locationTextPath = document.createElementNS("http://www.w3.org/2000/svg","textPath");
       locationTextPath.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#path-" + index);
       locationTextPath.appendChild(locationValue);
@@ -206,6 +301,7 @@ function TimeZoneChart(config) {
   
   this.drawTravelLines = function() {
     var i, time1, offset1, time2, offset2;
+    $("#chart-travel-lines").empty();
     for (i = 0; i < (this.locations.length-1); i++) {
       time1 = this.locations[i].end;
       offset1 = this.locations[i].offset;
@@ -259,7 +355,6 @@ function TimeZoneChart(config) {
   
   this.update = function() {
     this.getFieldValues();
-    $("#chart").children().empty();
     $("#chart").attr("width", config.width).attr("height", config.height);
     this.drawAxes();
     if (this.xRange === false || this.yRange === false) {return;}
@@ -429,6 +524,29 @@ function formatDate(date) {
   str += ("0" + date.getUTCHours()).slice(-2) + ":";
   str += ("0" + date.getUTCMinutes()).slice(-2);
   return str;
+}
+
+function formatTimeRange(startTime, endTime) {
+  var range, output;
+  output = "";
+  if (startTime === null) {
+    range = [new Date(endTime)];
+    output += "Depart ";
+  } else if (endTime === null) {
+    range = [new Date(startTime)];
+    output += "Arrive "
+  } else {
+    range = [new Date(startTime), new Date(endTime)];
+  }
+  output += range.map(function(e) {
+    str = e.getUTCDate() + " ";
+    str += monthNames[e.getUTCMonth()] + " ";
+    str += ("0" + e.getUTCHours()).slice(-2) + ":";
+    str += ("0" + e.getUTCMinutes()).slice(-2);
+    return str;
+  }).join(" – ");
+  output += " (UTC)";
+  return output;
 }
 
 /* FUNCTIONS TO MANAGE EVENT TRIGGERS */
