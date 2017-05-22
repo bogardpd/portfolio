@@ -23,7 +23,7 @@ var chartConfig = {
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
   "locBlockHeight":   20, // px
   "locMargin":         4, // px
-  "hoverWidth":      170, // px
+  "hoverWidth":      180, // px
   "hoverHeight":      50, // px
   "locSat":          "50%",
   "locLight":        "40%"
@@ -174,7 +174,6 @@ function TimeZoneChart(config) {
     var locHues = this.generateLocationHues();
     
     $("#chart-location-blocks").empty();
-    $("#chart-location-text").empty();
     $("#chart-location-hovers").empty();
     
     this.locations.map(function(location, index) {
@@ -182,9 +181,8 @@ function TimeZoneChart(config) {
       endTime = (index === this.locations.length - 1) ? this.xRange[1] : location.end;
       if (startTime && endTime) {
         hue = Object.keys(locHues).includes(location.location) ? locHues[location.location] : false;
-        this.drawLocationBox(startTime, endTime, location.offset, hue);
-        this.drawLocationLabel(startTime, endTime, location.offset, location.location, index);
-        this.drawLocationHover(startTime, endTime, location.offset, location.location, index);
+        this.drawLocationBox(startTime, endTime, location.offset, location.location, hue, index);
+        this.drawLocationHover(startTime, endTime, location.offset, location.location);
       }
     }, this);
     
@@ -195,16 +193,45 @@ function TimeZoneChart(config) {
    * @param {number} startTime - UTC arrival time.
    * @param {number} endTime - UTC departure time.
    * @param {number} offset - The location's UTC offset in hours.
+   * @param {string} locName - The location's name.
    * @param {number} hue - The integer hue to use for this location, or `false` for gray.
+   * @param {number} index - An index number used to create unique IDs.
    */
-  this.drawLocationBox = function(startTime, endTime, offset, hue) {
-    var locFill = (hue !== false) ? "hsl(" + hue + ", " + config.locSat + ", " + config.locLight + ")" : "hsl(0, 0%, " + config.locLight + ")";
+  this.drawLocationBox = function(startTime, endTime, offset, locName, hue, index) {
+    var x1, x2, y, locFill, locValue, locTextPath, locText;
+    var $hoverGroup;
+    
+    x1 = this.xPos(startTime);
+    x2 = this.xPos(endTime);
+    y = this.yPos(offset);
+    locFill = (hue !== false) ? "hsl(" + hue + ", " + config.locSat + ", " + config.locLight + ")" : "hsl(0, 0%, " + config.locLight + ")";
+    
+    $hoverGroup = createSVG("g", {}).addClass("location-block");
+    
     createSVG("rect", {
-      x: this.xPos(startTime),
-      y: this.yPos(offset) - (config.locBlockHeight / 2),
-      width: this.xPos(endTime) - this.xPos(startTime),
+      x: x1,
+      y: y - (config.locBlockHeight / 2),
+      width: x2 - x1,
       height: config.locBlockHeight
-    }).addClass("location-block").attr("fill", locFill).appendTo("#chart-location-blocks");
+    }).addClass("location-block").attr("fill", locFill).appendTo($hoverGroup);
+    
+    if (x2 - x1 > 2 * config.locMargin) {
+      createSVG("path", {
+        id: "path-" + index,
+        d: "M " + (x1 + config.locMargin) + " " + (y + (config.locBlockHeight * 0.25)) + " H " + (x2 - config.locMargin)
+      }).appendTo($hoverGroup);
+    
+      locValue = document.createTextNode(locName);
+      locTextPath = document.createElementNS("http://www.w3.org/2000/svg","textPath");
+      locTextPath.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#path-" + index);
+      locTextPath.appendChild(locValue);
+      locText = document.createElementNS("http://www.w3.org/2000/svg","text");
+      locText.setAttribute("class", "location");
+      locText.appendChild(locTextPath);
+      $hoverGroup.append(locText);
+    }
+    
+    $hoverGroup.appendTo("#chart-location-blocks");
   };
   
   /**
@@ -215,7 +242,7 @@ function TimeZoneChart(config) {
    * @param {string} locName - The location's name.
    * @param {number} index - An index number used to create unique IDs.
    */
-  this.drawLocationHover = function(startTime, endTime, offset, locName, index) {
+  this.drawLocationHover = function(startTime, endTime, offset, locName) {
     var x, y, xCenter, timeText, $hoverGroup;
     
     xCenter = ((this.xPos(startTime) + this.xPos(endTime))/2);
@@ -244,9 +271,7 @@ function TimeZoneChart(config) {
       timeText = formatTimeRange(startTime, endTime);
     }
     
-    $hoverGroup = createSVG("g", {
-      id: "hover-" + index
-    });
+    $hoverGroup = createSVG("g", {}).addClass("supplemental");
     createSVG("rect", {
       x: x,
       y: y,
@@ -265,38 +290,7 @@ function TimeZoneChart(config) {
       x: xCenter,
       y: y + (config.hoverLineHeight * 3)
     }).html(timeText).addClass("supplemental-time").appendTo($hoverGroup);
-    $hoverGroup.appendTo("#chart-location-hovers");
-  };
-  
-  /**
-   * Draws a text label on the chart for a given location.
-   * @param {number} startTime - UTC arrival time.
-   * @param {number} endTime - UTC departure time.
-   * @param {number} offset - The location's UTC offset in hours.
-   * @param {string} locName - The location's name.
-   * @param {number} index - An index number used to create unique IDs.
-   */
-  this.drawLocationLabel = function(startTime, endTime, offset, locName, index) {
-    var x1, x2, y;
-    x1 = this.xPos(startTime);
-    x2 = this.xPos(endTime);
-    y = this.yPos(offset);
-    var locationValue, locationTextPath, locationText;
-    if (x2 - x1 > 2 * config.locMargin) {
-      createSVG("path", {
-        id: "path-" + index,
-        d: "M " + (x1 + config.locMargin) + " " + (y + (config.locBlockHeight * 0.25)) + " H " + (x2 - config.locMargin)
-      }).appendTo("#chart-location-text");
-    
-      locationValue = document.createTextNode(locName);
-      locationTextPath = document.createElementNS("http://www.w3.org/2000/svg","textPath");
-      locationTextPath.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#path-" + index);
-      locationTextPath.appendChild(locationValue);
-      locationText = document.createElementNS("http://www.w3.org/2000/svg","text");
-      locationText.setAttribute("class", "location");
-      locationText.appendChild(locationTextPath);
-      document.getElementById("chart-location-text").appendChild(locationText);
-    }
+    $hoverGroup.hide().appendTo("#chart-location-hovers");
   };
   
   this.drawTravelLines = function() {
@@ -361,6 +355,7 @@ function TimeZoneChart(config) {
     this.drawGrid();
     this.drawLocationBlocks();
     this.drawTravelLines();
+    setEventTriggers();
   };
   
   // Take an integer timestamp and return the x position on the chart
@@ -441,8 +436,12 @@ function createRow() {
   return row;
 }
 
-// Create an SVG element of type `type` with attributes specified in the `attr`
-// hash, and return it as a jQuery object.
+/**
+ * Create an SVG element.
+ * @param {string} type - SVG element to create
+ * @param {hash} attr - Hash of attributes to apply to the element
+ * @return {jQuery} jQuery object representing the SVG element
+ */
 function createSVG(type, attr) {
   return $(document.createElementNS("http://www.w3.org/2000/svg",type)).attr(attr);
 }
@@ -484,7 +483,6 @@ function insertRow(button) {
     $newRow.find(".field-offset").val($oldRow.find(".field-offset").val());
     $newRow.fadeIn(fadeSpeed);
   }
-  setEventTriggers();
   chart.update();
 }
 
@@ -555,7 +553,29 @@ function setEventTriggers() {
   $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
   $("input, select").off().on("change", function() {chart.update();} );
   $(".button-insert").off().on("click", function() { insertRow($(this)); });
+  $("g.location-block").off().on("click", function() {toggleHover($(this));} ).on("mouseenter", function() {showHover($(this));} ).on("mouseleave", function() {hideHover();} );
   updateDeleteButtons();
+}
+
+function toggleHover($locationBox) {
+  var index = $("g.location-block").index($locationBox);
+  if ($("g.supplemental").eq(index).css("display") === "none") {
+    // Hidden
+    showHover($locationBox);
+  } else {
+    // Visible
+    hideHover();
+  }
+}
+
+function showHover($locationBox) {
+  var index = $("g.location-block").index($locationBox);
+  hideHover(); // Hide all other hovers
+  $("g.supplemental").eq(index).fadeIn().off().on("click", function() {hideHover();} );
+}
+
+function hideHover() {
+  $("g.supplemental").fadeOut();
 }
 
 /* RUN ON PAGE LOAD */
@@ -570,7 +590,7 @@ $(function() {
     createTableRows(data.length);
     populateTable(data);
   }
+  setEventTriggers();
   chart.update();
   $(".hidden-by-default").show();
-  setEventTriggers();
 });
