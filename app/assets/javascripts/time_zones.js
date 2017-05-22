@@ -23,7 +23,7 @@ var chartConfig = {
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
   "locBlockHeight":   20, // px
   "locMargin":         4, // px
-  "hoverWidth":      165, // px
+  "hoverWidth":      170, // px
   "hoverHeight":      50, // px
   "locSat":          "50%",
   "locLight":        "40%"
@@ -184,7 +184,7 @@ function TimeZoneChart(config) {
         hue = Object.keys(locHues).includes(location.location) ? locHues[location.location] : false;
         this.drawLocationBox(startTime, endTime, location.offset, hue);
         this.drawLocationLabel(startTime, endTime, location.offset, location.location, index);
-        this.drawLocationHover(startTime, endTime, location.offset, location.location, index)
+        this.drawLocationHover(startTime, endTime, location.offset, location.location, index);
       }
     }, this);
     
@@ -198,7 +198,7 @@ function TimeZoneChart(config) {
    * @param {number} hue - The integer hue to use for this location, or `false` for gray.
    */
   this.drawLocationBox = function(startTime, endTime, offset, hue) {
-    locFill = hue ? "hsl(" + hue + ", " + config.locSat + ", " + config.locLight + ")" : "hsl(0, 0%, " + config.locLight + ")"
+    var locFill = (hue !== false) ? "hsl(" + hue + ", " + config.locSat + ", " + config.locLight + ")" : "hsl(0, 0%, " + config.locLight + ")";
     createSVG("rect", {
       x: this.xPos(startTime),
       y: this.yPos(offset) - (config.locBlockHeight / 2),
@@ -216,7 +216,7 @@ function TimeZoneChart(config) {
    * @param {number} index - An index number used to create unique IDs.
    */
   this.drawLocationHover = function(startTime, endTime, offset, locName, index) {
-    var x, y, xCenter, tStart, tEnd, timeText, $hoverGroup;
+    var x, y, xCenter, timeText, $hoverGroup;
     
     xCenter = ((this.xPos(startTime) + this.xPos(endTime))/2);
     x = xCenter - (config.hoverWidth / 2);
@@ -264,7 +264,7 @@ function TimeZoneChart(config) {
     createSVG("text", {
       x: xCenter,
       y: y + (config.hoverLineHeight * 3)
-    }).text(timeText).addClass("supplemental-time").appendTo($hoverGroup);
+    }).html(timeText).addClass("supplemental-time").appendTo($hoverGroup);
     $hoverGroup.appendTo("#chart-location-hovers");
   };
   
@@ -280,7 +280,7 @@ function TimeZoneChart(config) {
     var x1, x2, y;
     x1 = this.xPos(startTime);
     x2 = this.xPos(endTime);
-    y = this.yPos(offset)
+    y = this.yPos(offset);
     var locationValue, locationTextPath, locationText;
     if (x2 - x1 > 2 * config.locMargin) {
       createSVG("path", {
@@ -527,14 +527,14 @@ function formatDate(date) {
 }
 
 function formatTimeRange(startTime, endTime) {
-  var range, output;
+  var range, output, str;
   output = "";
   if (startTime === null) {
     range = [new Date(endTime)];
     output += "Depart ";
   } else if (endTime === null) {
     range = [new Date(startTime)];
-    output += "Arrive "
+    output += "Arrive ";
   } else {
     range = [new Date(startTime), new Date(endTime)];
   }
@@ -544,7 +544,7 @@ function formatTimeRange(startTime, endTime) {
     str += ("0" + e.getUTCHours()).slice(-2) + ":";
     str += ("0" + e.getUTCMinutes()).slice(-2);
     return str;
-  }).join(" – ");
+  }).join(" &ndash; ");
   output += " (UTC)";
   return output;
 }
