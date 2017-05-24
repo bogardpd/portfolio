@@ -15,33 +15,40 @@
 <p id="js-warning">JavaScript is required to use the Time Zone Chart.</p>
 
 <div class="hidden-by-default">
-
-  <div class="chart">
-    <!-- Place the groups in order of lowest SVG layer to highest SVG layer -->
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart">
-      <g id="chart-grid"></g>
-      <g id="chart-travel-lines"></g>
-      <g id="chart-location-blocks"></g>
-      <g id="chart-axes"></g>
-      <g id="chart-axis-text"></g>
-      <g id="chart-location-hovers"></g>
-    </svg>
-  </div>
-
   <form id="locations">
-    <table class="table">
-      <thead>
-        <th></th>
-        <th>Arrival (UTC)</th>
-        <th>Location</th>
-        <th>UTC Offset</th>
-        <th>Departure (UTC)</th>
-        <th></th>
-      </thead>
-      <tbody>
+    <div id="component-title">
+      <h1 title="Click to edit title">Title (click to edit)</h1>
+      <div class="form-group input">
+        <input type="text" class="form-control field-title" />
+      </div>
+    </div>
+    <div class="chart" id="component-chart">
+      <!-- Place the groups in order of lowest SVG layer to highest SVG layer -->
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart">
+        <g id="chart-grid"></g>
+        <g id="chart-travel-lines"></g>
+        <g id="chart-location-blocks"></g>
+        <g id="chart-axes"></g>
+        <g id="chart-axis-text"></g>
+        <g id="chart-location-hovers"></g>
+      </svg>
+    </div>
+    
+    <div id="component-data">
+      <table class="table">
+        <thead>
+          <th></th>
+          <th>Arrival (UTC)</th>
+          <th>Location</th>
+          <th>UTC Offset</th>
+          <th>Departure (UTC)</th>
+          <th></th>
+        </thead>
+        <tbody>
       
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </form>
 
 </div>

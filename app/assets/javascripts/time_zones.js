@@ -18,7 +18,6 @@ var chartConfig = {
   "hoverLineHeight":  15, // px
   "xMinSpacing":      35, // px
   "yMinSpacing":      20, // px
-  "titleHeight":      30, // px
   "xBuffer":           1, // minimum days to show beyond data range at left and right of axis
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
   "locBlockHeight":   20, // px
@@ -36,7 +35,7 @@ function TimeZoneChart(config) {
   this.xLeft = config.margin + config.label + config.yGutter,
   this.xRight = (config.width - config.margin * 2),
   this.xSize = this.xRight - this.xLeft,
-  this.yTop = config.margin + config.titleHeight,
+  this.yTop = config.margin,
   this.yBottom = config.height - config.margin - config.label - config.xGutter,
   this.ySize = this.yBottom - this.yTop,
   
@@ -313,16 +312,20 @@ function TimeZoneChart(config) {
   };
   
   this.getFieldValues = function() {
-    var i, $row;
+    var i, start, end, $row;
     var $locationRows = $("tr.row-location");
     this.locations = [];
     for(i = 0; i < $locationRows.length; i++) {
       $row = $locationRows.eq(i);
+      start = $row.find(".field-start").val();
+      end = $row.find(".field-end").val();
+      if (start) {start = Date.parse(start.replace(" ","T") + "Z");}
+      if (end) {end = Date.parse(end.replace(" ","T") + "Z");}
       this.locations[i] = {
-        start:    Date.parse($row.find(".field-start").val() + "Z"),
+        start:    start,
         location: $row.find(".field-location").val(),
         offset:   parseFloat($row.find(".field-offset").val()),
-        end:      Date.parse($row.find(".field-end").val() + "Z")
+        end:      end
       };
     }
     this.xRange = this.calculateXRange();
@@ -379,17 +382,24 @@ function TimeZoneChart(config) {
 function updateDeleteButtons() {
   if ($(".row-location").length <= minimumRows) {
     // Disable delete buttons
-    $(".button-delete").off().addClass("disabled");
+    $("#component-data .button-delete").off().addClass("disabled");
   } else {
     // Enable delete buttons
-    $(".button-delete").off().on("click", function() { deleteRow($(this)); }).removeClass("disabled");
+    $("#component-data .button-delete").off().on("click", function() { deleteRow($(this)); }).removeClass("disabled");
   }
+}
+
+function updateTitle() {
+  $("#component-title h1").text($("#component-title input").val()).show();
+  $("#component-title div.input").hide();
+  updateShareLink();
 }
 
 function updateShareLink() {
   var data = encodeURIComponent(JSON.stringify(chart.locations));
+  var title = encodeURIComponent($("#component-title input").val());
   //window.history.replaceState({},"",[location.protocol, '//', location.host, location.pathname, "?data=", data].join(''));
-  $("#share-link").attr("href", [location.protocol,"//",location.host,location.pathname,"?data=",data].join(""));
+  $("#share-link").attr("href", [location.protocol,"//",location.host,location.pathname,"?data=",data,"&title=",title].join(""));
 }
 
 /* HTML CREATION FUNCTIONS */
@@ -484,6 +494,7 @@ function insertRow(button) {
     $newRow.fadeIn(fadeSpeed);
   }
   chart.update();
+  updateDeleteButtons();
 }
 
 function deleteRow(button) {
@@ -550,10 +561,15 @@ function formatTimeRange(startTime, endTime) {
 /* FUNCTIONS TO MANAGE EVENT TRIGGERS */
 
 function setEventTriggers() {
-  $(".dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
-  $("input, select").off().on("change", function() {chart.update();} );
-  $(".button-insert").off().on("click", function() { insertRow($(this)); });
-  $("g.location-block").off().on("click", function() {toggleHover($(this));} ).on("mouseenter", function() {showHover($(this));} ).on("mouseleave", function() {hideHover();} );
+  $("#component-title input").off().on("blur change", function() {updateTitle();} );
+  $("#component-title h1").off().on("click", function() {showTitleEdit();} );
+  
+  $("#component-chart g.location-block").off().on("click", function() {toggleHover($(this));} ).on("mouseenter", function() {showHover($(this));} ).on("mouseleave", function() {hideHover();} );
+ 
+  $("#component-data .dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
+  $("#component-data input, select").off().on("change", function() {chart.update();} );
+  $("#component-data .button-insert").off().on("click", function() { insertRow($(this)); });
+  
   updateDeleteButtons();
 }
 
@@ -568,10 +584,16 @@ function toggleHover($locationBox) {
   }
 }
 
+function showTitleEdit() {
+  $("#component-title h1").hide();
+  $("#component-title div").show();
+  $("#component-title input").focus();
+}
+
 function showHover($locationBox) {
   var index = $("g.location-block").index($locationBox);
   hideHover(); // Hide all other hovers
-  $("g.supplemental").eq(index).fadeIn().off().on("click", function() {hideHover();} );
+  $("#component-chart g.supplemental").eq(index).fadeIn().off().on("click", function() {hideHover();} );
 }
 
 function hideHover() {
@@ -581,16 +603,30 @@ function hideHover() {
 /* RUN ON PAGE LOAD */
 
 $(function() {
-  var data = location.search.split("data=")[1];
-  $("#js-warning").remove();
-  if (data === undefined) {
+  var query, data;
+  query = {};
+  location.search.slice(1).split("&").forEach(function(pair) {
+    pair = pair.split("=");
+    query[pair[0]] = decodeURIComponent(pair[1] || "");
+  });
+  
+  if (query.data === undefined) {
     createTableRows(3);
   } else {
-    data = JSON.parse(decodeURIComponent(data));
+    data = JSON.parse(query.data);
     createTableRows(data.length);
     populateTable(data);
   }
+  if (query.title === undefined) {
+    $("#component-title input").val($("#component-title h1").text());
+  } else {
+    $("#component-title h1").text(query.title);
+    $("#component-title input").val(query.title);
+  }
   setEventTriggers();
   chart.update();
+  
+  $("#component-title div.input").hide();
+  $("#js-warning").remove();
   $(".hidden-by-default").show();
 });

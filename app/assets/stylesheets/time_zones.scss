@@ -9,7 +9,22 @@ body, text {
   font-size: 13pt;
 }
 
+
+#component-title {
+  height: 55px;
+  h1 {
+    padding-top: 6px;
+    cursor: pointer;
+  }
+  input {
+    @extend h1;
+    height: 50px;
+    cursor: text;
+  }
+}
+
 #chart {
+  cursor: crosshair;
 }
 
 .hidden-by-default {
@@ -30,6 +45,12 @@ div.share-button {
     margin-top: 7px;
   }
 }
+
+h1 {
+  text-align: center;
+}
+
+
 
 /* SVG styles */
 
