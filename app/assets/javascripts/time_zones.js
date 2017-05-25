@@ -1,7 +1,7 @@
 /* Uses "DateTime Picker for Bootstrap" from http://www.malot.fr/bootstrap-datetimepicker/index.php under the Apache License v2.0 http://www.apache.org/licenses/LICENSE-2.0 */
+/* Uses moment.js and moment-timezone-with-data.js */
 
 var timeZoneList = [["&minus;12:00", -12], ["&minus;11:00", -11], ["&minus;10:00", -10], ["&minus;09:30", -9.5], ["&minus;09:00", -9], ["&minus;08:00", -8], ["&minus;07:00", -7], ["&minus;06:00", -6], ["&minus;05:00", -5], ["&minus;04:00", -4], ["&minus;03:30", -3.5], ["&minus;03:00", -3], ["&minus;02:30", -2.5], ["&minus;02:00", -2], ["&minus;01:00", -1], ["", 0], ["+01:00", 1], ["+01:30", 1.5], ["+02:00", 2], ["+03:00", 3], ["+03:30", 3.5], ["+04:00", 4], ["+04:30", 4.5], ["+05:00", 5], ["+05:30", 5.5], ["+05:45", 5.75], ["+06:00", 6], ["+06:30", 6.5], ["+07:00", 7], ["+08:00", 8], ["+08:30", 8.5], ["+09:00", 9], ["+09:30", 9.5], ["+10:00", 10], ["+10:30", 10.5], ["+11:00", 11], ["+12:00", 12], ["+12:45", 12.75], ["+13:00", 13], ["+13:45", 13.75], ["+14:00", 14]].reverse();
-var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var msPerDay = 1000*60*60*24;
 
 var minimumRows = 2;
@@ -56,8 +56,8 @@ function TimeZoneChart(config) {
       return e;
     }).sort(function(a,b){return a - b;});
     if (allTimes.length < 1) {return false;}
-    xMin = new Date(allTimes[0] - (msPerDay * config.xBuffer) - (allTimes[0] % msPerDay)).getTime();
-    xMax = new Date(allTimes[allTimes.length-1] + (msPerDay * (config.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay)).getTime();
+    xMin = allTimes[0] - (msPerDay * config.xBuffer) - (allTimes[0] % msPerDay);
+    xMax = allTimes[allTimes.length-1] + (msPerDay * (config.xBuffer + 1)) - (allTimes[allTimes.length-1] % msPerDay);
     return [xMin,xMax];
   };
   
@@ -117,21 +117,24 @@ function TimeZoneChart(config) {
           }).addClass("grid").appendTo("#chart-grid");
         }
         if (xDays % xEvery === 0) {
-          xLabelDate = new Date(i);
-          xThisDate = xLabelDate.getUTCDate();
-          if (xLastMonth !== xLabelDate.getUTCMonth()) {xThisDate += " " + monthNames[xLabelDate.getUTCMonth()];}
+          xLabelDate = moment(i);
+          if (xLastMonth !== xLabelDate.utc().format("M")) {
+            xThisDate = xLabelDate.utc().format("MMM D");
+          } else {
+            xThisDate = xLabelDate.utc().format("D");
+          }
           createSVG("text", {
             x: xPos,
             y: this.yBottom + config.xValueLineHeight
           }).text(xThisDate).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
-          if (xLastYear !== xLabelDate.getUTCFullYear()) {
+          if (xLastYear !== xLabelDate.utc().format("Y")) {
             createSVG("text", {
               x: xPos,
               y: this.yBottom + (config.xValueLineHeight * 2)
-            }).text(xLabelDate.getUTCFullYear()).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
+            }).text(xLabelDate.utc().format("Y")).addClass("axis-value axis-value-x").appendTo("#chart-axis-text");
           }
-          xLastMonth = xLabelDate.getUTCMonth();
-          xLastYear = xLabelDate.getUTCFullYear();
+          xLastMonth = xLabelDate.utc().format("M");
+          xLastYear = xLabelDate.utc().format("Y");
         }
         xDays++;
       }
@@ -319,8 +322,8 @@ function TimeZoneChart(config) {
       $row = $locationRows.eq(i);
       start = $row.find(".field-start").val();
       end = $row.find(".field-end").val();
-      if (start) {start = Date.parse(start.replace(" ","T") + "Z");}
-      if (end) {end = Date.parse(end.replace(" ","T") + "Z");}
+      if (start) {start = moment(start.replace(" ","T") + "Z").valueOf();}
+      if (end) {end = moment(end.replace(" ","T") + "Z").valueOf();}
       this.locations[i] = {
         start:    start,
         location: $row.find(".field-location").val(),
@@ -460,12 +463,13 @@ function createSVG(type, attr) {
 /* TABLE MANIPULATION FUNCTIONS */
 
 function populateTable(timeZoneLocations) {
+  var dateFormat = "Y-MM-DD HH:mm";
   timeZoneLocations.map(function(element, index) {
     var $row = $(".row-location").eq(index);
-    $row.find(".field-start").val(element.start > 0 ? formatDate(new Date(element.start)) : "");
+    $row.find(".field-start").val(element.start > 0 ? moment(element.start).utc().format(dateFormat) : "");
     $row.find(".field-location").val(element.location);
     $row.find(".field-offset").val(element.offset);
-    $row.find(".field-end").val(element.end > 0 ? formatDate(new Date(element.end)) : "");
+    $row.find(".field-end").val(element.end > 0 ? moment(element.end).utc().format(dateFormat) : "");
   }).join("<br/>");
 }
 
@@ -525,34 +529,20 @@ function formatUTCOffset(offset) {
   return output;
 }
 
-function formatDate(date) {
-  var str;
-  str = date.getUTCFullYear() + "-";
-  str += ("0" + (date.getUTCMonth() + 1)).slice(-2) + "-";
-  str += ("0" + date.getUTCDate()).slice(-2) + " ";
-  str += ("0" + date.getUTCHours()).slice(-2) + ":";
-  str += ("0" + date.getUTCMinutes()).slice(-2);
-  return str;
-}
-
 function formatTimeRange(startTime, endTime) {
-  var range, output, str;
+  var range, output;
   output = "";
   if (startTime === null) {
-    range = [new Date(endTime)];
+    range = [endTime];
     output += "Depart ";
   } else if (endTime === null) {
-    range = [new Date(startTime)];
+    range = [startTime];
     output += "Arrive ";
   } else {
-    range = [new Date(startTime), new Date(endTime)];
+    range = [startTime, endTime];
   }
   output += range.map(function(e) {
-    str = e.getUTCDate() + " ";
-    str += monthNames[e.getUTCMonth()] + " ";
-    str += ("0" + e.getUTCHours()).slice(-2) + ":";
-    str += ("0" + e.getUTCMinutes()).slice(-2);
-    return str;
+    return moment(e).utc().format("D MMM HH:mm");
   }).join(" &ndash; ");
   output += " (UTC)";
   return output;
@@ -593,11 +583,11 @@ function showTitleEdit() {
 function showHover($locationBox) {
   var index = $("g.location-block").index($locationBox);
   hideHover(); // Hide all other hovers
-  $("#component-chart g.supplemental").eq(index).fadeIn().off().on("click", function() {hideHover();} );
+  $("#component-chart g.supplemental").eq(index).fadeIn(fadeSpeed).off().on("click", function() {hideHover();} );
 }
 
 function hideHover() {
-  $("g.supplemental").fadeOut();
+  $("g.supplemental").fadeOut(fadeSpeed);
 }
 
 /* RUN ON PAGE LOAD */
