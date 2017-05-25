@@ -3,6 +3,7 @@
 
 var timeZoneList = [["&minus;12:00", -12], ["&minus;11:00", -11], ["&minus;10:00", -10], ["&minus;09:30", -9.5], ["&minus;09:00", -9], ["&minus;08:00", -8], ["&minus;07:00", -7], ["&minus;06:00", -6], ["&minus;05:00", -5], ["&minus;04:00", -4], ["&minus;03:30", -3.5], ["&minus;03:00", -3], ["&minus;02:30", -2.5], ["&minus;02:00", -2], ["&minus;01:00", -1], ["", 0], ["+01:00", 1], ["+01:30", 1.5], ["+02:00", 2], ["+03:00", 3], ["+03:30", 3.5], ["+04:00", 4], ["+04:30", 4.5], ["+05:00", 5], ["+05:30", 5.5], ["+05:45", 5.75], ["+06:00", 6], ["+06:30", 6.5], ["+07:00", 7], ["+08:00", 8], ["+08:30", 8.5], ["+09:00", 9], ["+09:30", 9.5], ["+10:00", 10], ["+10:30", 10.5], ["+11:00", 11], ["+12:00", 12], ["+12:45", 12.75], ["+13:00", 13], ["+13:45", 13.75], ["+14:00", 14]].reverse();
 var msPerDay = 1000*60*60*24;
+var msPerMinute = 1000*60;
 
 var minimumRows = 2;
 var fadeSpeed = 300;
@@ -305,7 +306,7 @@ function TimeZoneChart(config) {
       offset1 = this.locations[i].offset;
       time2 = this.locations[i+1].start;
       offset2 = this.locations[i+1].offset;
-      if (time1 && time2 && offset1 && offset2) {
+      if (time1 && time2 && (offset1 || offset1 === 0) && (offset2 || offset2 === 0)) {
         createSVG("line", {
           x1: this.xPos(time1),
           y1: this.yPos(offset1),
@@ -401,10 +402,57 @@ function updateTitle() {
 }
 
 function updateShareLink() {
-  var data = encodeURIComponent(JSON.stringify(chart.locations));
+  var str;
+  var data = chart.locations.map(function(loc, index) {
+    str = [];
+    if (index !== 0) {
+      str.push(loc.start ? loc.start / msPerMinute : "");
+    }
+    str.push(loc.location ? encodeURIComponent(loc.location) : "");
+    str.push(loc.offset);
+    if (index !== chart.locations.length - 1) {
+      str.push(loc.end ? loc.end / msPerMinute : "");
+    }
+    return str.join(",");
+  }).join("/");
   var title = encodeURIComponent($("#component-title input").val());
   //window.history.replaceState({},"",[location.protocol, '//', location.host, location.pathname, "?data=", data].join(''));
   $("#share-link").attr("href", [location.protocol,"//",location.host,location.pathname,"?data=",data,"&title=",title].join(""));
+}
+
+/**
+ * Decodes a data querystring into JSON
+ * @param {string} data
+ * @return {JSON}
+ */
+function decodeData(data) {
+  var locations, locData;
+  locations = data.split("/");
+  return JSON.stringify(locations.map(function(loc, index) {
+    locData = loc.split(",");
+    if (index === 0) {
+      return {
+        start: null,
+        location: decodeURIComponent(locData[0]),
+        offset: locData[1],
+        end: locData[2] ? locData[2] * msPerMinute : null
+      };
+    } else if (index === locations.length - 1) {
+      return {
+        start: locData[0] ? locData[0] * msPerMinute : null,
+        location: decodeURIComponent(locData[1]),
+        offset: locData[2],
+        end: null
+      };
+    } else {
+      return {
+        start: locData[0] ? locData[0] * msPerMinute : null,
+        location: decodeURIComponent(locData[1]),
+        offset: locData[2],
+        end: locData[3] ? locData[3] * msPerMinute : null
+      };
+    }
+  })) || null;
 }
 
 /* HTML CREATION FUNCTIONS */
@@ -595,25 +643,26 @@ function hideHover() {
 /* RUN ON PAGE LOAD */
 
 $(function() {
-  var query, data;
+  var query, data, title;
   query = {};
   location.search.slice(1).split("&").forEach(function(pair) {
     pair = pair.split("=");
-    query[pair[0]] = decodeURIComponent(pair[1] || "");
+    query[pair[0]] = (pair[1] || "");
   });
   
   if (query.data === undefined) {
     createTableRows(3);
   } else {
-    data = JSON.parse(query.data);
+    data = JSON.parse(decodeData(query.data));
     createTableRows(data.length);
     populateTable(data);
   }
   if (query.title === undefined) {
     $("#component-title input").val($("#component-title h1").text());
   } else {
-    $("#component-title h1").text(query.title);
-    $("#component-title input").val(query.title);
+    title = decodeURIComponent(query.title);
+    $("#component-title h1").text(title);
+    $("#component-title input").val(title);
   }
   setEventTriggers();
   chart.update();
