@@ -217,7 +217,7 @@ function TimeZoneChart(config) {
       height: config.locBlockHeight
     }).addClass("location-block").attr("fill", locFill).appendTo($hoverGroup);
     
-    if (x2 - x1 > 2 * config.locMargin) {
+    if (locName && x2 - x1 > 2 * config.locMargin) {
       createSVG("path", {
         id: "path-" + index,
         d: "M " + (x1 + config.locMargin) + " " + (y + (config.locBlockHeight * 0.25)) + " H " + (x2 - config.locMargin)
@@ -280,10 +280,12 @@ function TimeZoneChart(config) {
       width: config.hoverWidth,
       height: config.hoverHeight
     }).addClass("supplemental").appendTo($hoverGroup);
-    createSVG("text", {
-      x: xCenter,
-      y: y + config.hoverLineHeight
-    }).text(locName).addClass("supplemental-location").appendTo($hoverGroup);
+    if (locName) {
+      createSVG("text", {
+        x: xCenter,
+        y: y + config.hoverLineHeight
+      }).text(locName).addClass("supplemental-location").appendTo($hoverGroup);
+    }
     createSVG("text", {
       x: xCenter,
       y: y + (config.hoverLineHeight * 2)
@@ -303,7 +305,7 @@ function TimeZoneChart(config) {
       offset1 = this.locations[i].offset;
       time2 = this.locations[i+1].start;
       offset2 = this.locations[i+1].offset;
-      if (!(Number.isNaN(time1) || Number.isNaN(offset1) || Number.isNaN(time2) || Number.isNaN(offset2))) {
+      if (time1 && time2 && offset1 && offset2) {
         createSVG("line", {
           x1: this.xPos(time1),
           y1: this.yPos(offset1),
@@ -322,11 +324,11 @@ function TimeZoneChart(config) {
       $row = $locationRows.eq(i);
       start = $row.find(".field-start").val();
       end = $row.find(".field-end").val();
-      if (start) {start = moment(start.replace(" ","T") + "Z").valueOf();}
-      if (end) {end = moment(end.replace(" ","T") + "Z").valueOf();}
+      start = start ? moment(start.replace(" ","T") + "Z").valueOf() : null;
+      end = end ? moment(end.replace(" ","T") + "Z").valueOf() : null;
       this.locations[i] = {
         start:    start,
-        location: $row.find(".field-location").val(),
+        location: $row.find(".field-location").val() || null,
         offset:   parseFloat($row.find(".field-offset").val()),
         end:      end
       };
