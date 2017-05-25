@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap-datetimepicker
 //= require time_zones
+//= require moment.min
+//= require moment-timezone-with-data
