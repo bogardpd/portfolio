@@ -439,7 +439,6 @@ function updateShareLink() {
   }).join("/");
   title = encodeStringForQuery($("#component-title input").val());
   link = [location.protocol,"//",location.host,location.pathname,"?data=",data,"&title=",title].join("");
-  console.log("link: " + link);
   $("#share-link").attr("href", link);
   window.history.replaceState({},"",link + "&edit=true");
 }
@@ -713,7 +712,7 @@ $(function() {
       data = JSON.parse(JSON.stringify(decodeData(query.data)));
       createTableRows(data.length);
       populateTable(data);
-    } 
+    }
   }
   if (query.title === undefined) {
     $("#component-title input").val($("#component-title h1").text());
@@ -724,7 +723,9 @@ $(function() {
   }
   setEventTriggers();
   chart.update();
-  console.log(chartConfig);
+  if (query.data !== undefined && query.edit !== undefined) {
+    updateShareLink();
+  }
   
   $("#component-title div.input").hide();
   $("#js-warning").remove();
