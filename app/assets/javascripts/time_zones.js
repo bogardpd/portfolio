@@ -329,7 +329,48 @@ function TimeZoneChart(config) {
     }
   };
   
-  this.getFieldValues = function() {
+  /**
+   * Converts the Location array into a string for use in the query string.
+   * @return {string}
+   */
+  this.getLocationString = function() {
+    var str;
+    return chart.locations.map(function(loc, index) {
+      str = [];
+      if (index !== 0) {
+        str.push(loc.start ? loc.start / msPerMinute : "");
+      }
+      str.push(loc.location ? encodeStringForQuery(loc.location) : "");
+      str.push(loc.offset);
+      if (index !== chart.locations.length - 1) {
+        str.push(loc.end ? loc.end / msPerMinute : "");
+      }
+      return str.join(",");
+    }).join("/");
+  };
+  
+  this.generateLocationHues = function() {
+    var locHues = {};
+    var uniqLocations;
+    this.locations.map(function(e) {
+      return e.location;
+    }).filter(function(e) {
+      return e !== "";
+    }).map(function(e) {
+      locHues[e] = true;
+    });
+    uniqLocations = Object.keys(locHues).sort();
+    uniqLocations.map(function(e, index) {
+      locHues[e] = Math.round(360 * (index/uniqLocations.length));
+    });
+    return locHues;
+  };
+  
+  /**
+   * Converts the form values into a location array and calculates the x and y
+   * ranges.
+   */
+  this.retrieveFieldValues = function() {
     var i, start, end, $row, $locationRows;
     $locationRows = $("tr.row-location");
     if ($locationRows.length > 0) {
@@ -352,26 +393,12 @@ function TimeZoneChart(config) {
     this.yRange = this.calculateYRange();
   };
   
-  this.generateLocationHues = function() {
-    var locHues = {};
-    var uniqLocations;
-    this.locations.map(function(e) {
-      return e.location;
-    }).filter(function(e) {
-      return e !== "";
-    }).map(function(e) {
-      locHues[e] = true;
-    });
-    uniqLocations = Object.keys(locHues).sort();
-    uniqLocations.map(function(e, index) {
-      locHues[e] = Math.round(360 * (index/uniqLocations.length));
-    });
-    return locHues;
-  };
-  
+  /**
+   * Refreshes the chart.
+   */
   this.update = function() {
     this.calculatePositions();
-    this.getFieldValues();
+    this.retrieveFieldValues();
     $("#chart").attr("width", config.width).attr("height", config.height);
     this.drawAxes();
     if (this.xRange === false || this.yRange === false) {return;}
@@ -417,30 +444,23 @@ function updateDeleteButtons() {
   }
 }
 
-function updateTitle() {
-  $("#component-title h1").text($("#component-title input").val()).show();
-  $("#component-title div.input").hide();
-  updateShareLink();
-}
-
-function updateShareLink() {
-  var str, title, link;
-  var data = chart.locations.map(function(loc, index) {
-    str = [];
-    if (index !== 0) {
-      str.push(loc.start ? loc.start / msPerMinute : "");
-    }
-    str.push(loc.location ? encodeStringForQuery(loc.location) : "");
-    str.push(loc.offset);
-    if (index !== chart.locations.length - 1) {
-      str.push(loc.end ? loc.end / msPerMinute : "");
-    }
-    return str.join(",");
-  }).join("/");
+/**
+ * Updates the querystring in the window URL and the share link to reflect
+ * the chart's values.
+ */
+function updatePageLinks() {
+  var title, data, link;
+  data = chart.getLocationString();
   title = encodeStringForQuery($("#component-title input").val());
   link = [location.protocol,"//",location.host,location.pathname,"?data=",data,"&title=",title].join("");
   $("#share-link").attr("href", link);
   window.history.replaceState({},"",link + "&edit=true");
+}
+
+function updateTitle() {
+  $("#component-title h1").text($("#component-title input").val()).show();
+  $("#component-title div.input").hide();
+  updatePageLinks();
 }
 
 /**
@@ -651,7 +671,7 @@ function setEventTriggers() {
   $("#component-data .dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
   $("#component-data input, select").off().on("change", function() {
     chart.update();
-    updateShareLink();
+    updatePageLinks();
   });
   $("#component-data .button-insert").off().on("click", function() { insertRow($(this)); });
   
@@ -724,7 +744,7 @@ $(function() {
   setEventTriggers();
   chart.update();
   if (query.data !== undefined && query.edit !== undefined) {
-    updateShareLink();
+    updatePageLinks();
   }
   
   $("#component-title div.input").hide();
