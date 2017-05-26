@@ -408,17 +408,36 @@ function updateShareLink() {
     if (index !== 0) {
       str.push(loc.start ? loc.start / msPerMinute : "");
     }
-    str.push(loc.location ? encodeURIComponent(loc.location) : "");
+    str.push(loc.location ? encodeStringForQuery(loc.location) : "");
     str.push(loc.offset);
     if (index !== chart.locations.length - 1) {
       str.push(loc.end ? loc.end / msPerMinute : "");
     }
     return str.join(",");
   }).join("/");
-  var title = encodeURIComponent($("#component-title input").val());
+  var title = encodeStringForQuery($("#component-title input").val());
   //window.history.replaceState({},"",[location.protocol, '//', location.host, location.pathname, "?data=", data].join(''));
   $("#share-link").attr("href", [location.protocol,"//",location.host,location.pathname,"?data=",data,"&title=",title].join(""));
 }
+
+/**
+ * Encodes a string to place in the query string and replaces spaces with `+`
+ * @param {string} str - The string to encode
+ * @return {string}
+ */
+function encodeStringForQuery(str) {
+  return encodeURIComponent(str).replace(/\%20/g, "+");
+}
+
+/**
+ * Decodes a string from the query string and replaces `+` with spaces
+ * @param {string} str - The string to decode
+ * @return {string}
+ */
+function decodeStringFromQuery(str) {
+  return decodeURIComponent(str.replace(/\+/g, "%20"));
+}
+
 
 /**
  * Decodes a data querystring into JSON
@@ -433,21 +452,21 @@ function decodeData(data) {
     if (index === 0) {
       return {
         start: null,
-        location: decodeURIComponent(locData[0]),
+        location: decodeStringFromQuery(locData[0]),
         offset: locData[1],
         end: locData[2] ? locData[2] * msPerMinute : null
       };
     } else if (index === locations.length - 1) {
       return {
         start: locData[0] ? locData[0] * msPerMinute : null,
-        location: decodeURIComponent(locData[1]),
+        location: decodeStringFromQuery(locData[1]),
         offset: locData[2],
         end: null
       };
     } else {
       return {
         start: locData[0] ? locData[0] * msPerMinute : null,
-        location: decodeURIComponent(locData[1]),
+        location: decodeStringFromQuery(locData[1]),
         offset: locData[2],
         end: locData[3] ? locData[3] * msPerMinute : null
       };
@@ -660,7 +679,7 @@ $(function() {
   if (query.title === undefined) {
     $("#component-title input").val($("#component-title h1").text());
   } else {
-    title = decodeURIComponent(query.title);
+    title = decodeStringFromQuery(query.title);
     $("#component-title h1").text(title);
     $("#component-title input").val(title);
   }
