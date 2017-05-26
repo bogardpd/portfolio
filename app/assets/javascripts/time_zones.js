@@ -33,12 +33,24 @@ var chart = new TimeZoneChart(chartConfig);
 
 function TimeZoneChart(config) {
   this.locations = [],
-  this.xLeft = config.margin + config.label + config.yGutter,
-  this.xRight = (config.width - config.margin * 2),
-  this.xSize = this.xRight - this.xLeft,
-  this.yTop = config.margin,
-  this.yBottom = config.height - config.margin - config.label - config.xGutter,
-  this.ySize = this.yBottom - this.yTop,
+  this.xLeft = 0,
+  this.xRight = 0,
+  this.xSize = 0,
+  this.yTop = 0,
+  this.yBottom = 0,
+  this.ySize = 0,
+  
+  /**
+   * Sets the primary reference positions of the chart.
+   */
+  this.calculatePositions = function() {
+    this.xLeft = config.margin + config.label + config.yGutter;
+    this.xRight = (config.width - config.margin * 2);
+    this.xSize = this.xRight - this.xLeft;
+    this.yTop = config.margin;
+    this.yBottom = config.height - config.margin - config.label - config.xGutter;
+    this.ySize = this.yBottom - this.yTop;
+  };
   
   /**
    * Calculates the chart X axis range, based on the locations hash and
@@ -318,25 +330,26 @@ function TimeZoneChart(config) {
   };
   
   this.getFieldValues = function() {
-    var i, start, end, $row;
-    var $locationRows = $("tr.row-location");
-    this.locations = [];
-    for(i = 0; i < $locationRows.length; i++) {
-      $row = $locationRows.eq(i);
-      start = $row.find(".field-start").val();
-      end = $row.find(".field-end").val();
-      start = start ? moment(start.replace(" ","T") + "Z").valueOf() : null;
-      end = end ? moment(end.replace(" ","T") + "Z").valueOf() : null;
-      this.locations[i] = {
-        start:    start,
-        location: $row.find(".field-location").val() || null,
-        offset:   parseFloat($row.find(".field-offset").val()),
-        end:      end
-      };
+    var i, start, end, $row, $locationRows;
+    $locationRows = $("tr.row-location");
+    if ($locationRows.length > 0) {
+      this.locations = [];
+      for(i = 0; i < $locationRows.length; i++) {
+        $row = $locationRows.eq(i);
+        start = $row.find(".field-start").val();
+        end = $row.find(".field-end").val();
+        start = start ? moment(start.replace(" ","T") + "Z").valueOf() : null;
+        end = end ? moment(end.replace(" ","T") + "Z").valueOf() : null;
+        this.locations[i] = {
+          start:    start,
+          location: $row.find(".field-location").val() || null,
+          offset:   parseFloat($row.find(".field-offset").val()),
+          end:      end
+        };
+      }
     }
     this.xRange = this.calculateXRange();
     this.yRange = this.calculateYRange();
-    updateShareLink();
   };
   
   this.generateLocationHues = function() {
@@ -357,6 +370,7 @@ function TimeZoneChart(config) {
   };
   
   this.update = function() {
+    this.calculatePositions();
     this.getFieldValues();
     $("#chart").attr("width", config.width).attr("height", config.height);
     this.drawAxes();
@@ -365,6 +379,14 @@ function TimeZoneChart(config) {
     this.drawLocationBlocks();
     this.drawTravelLines();
     setEventTriggers();
+  };
+  
+  /**
+   * Updates the size of the chart.
+   */
+  this.updateSize = function() {
+    config.width = $(window).width();
+    config.height = ($(window).height()-$("#component-title").height())*0.95;
   };
   
   // Take an integer timestamp and return the x position on the chart
@@ -402,7 +424,7 @@ function updateTitle() {
 }
 
 function updateShareLink() {
-  var str;
+  var str, title, link;
   var data = chart.locations.map(function(loc, index) {
     str = [];
     if (index !== 0) {
@@ -415,9 +437,11 @@ function updateShareLink() {
     }
     return str.join(",");
   }).join("/");
-  var title = encodeStringForQuery($("#component-title input").val());
-  //window.history.replaceState({},"",[location.protocol, '//', location.host, location.pathname, "?data=", data].join(''));
-  $("#share-link").attr("href", [location.protocol,"//",location.host,location.pathname,"?data=",data,"&title=",title].join(""));
+  title = encodeStringForQuery($("#component-title input").val());
+  link = [location.protocol,"//",location.host,location.pathname,"?data=",data,"&title=",title].join("");
+  console.log("link: " + link);
+  $("#share-link").attr("href", link);
+  window.history.replaceState({},"",link + "&edit=true");
 }
 
 /**
@@ -440,14 +464,14 @@ function decodeStringFromQuery(str) {
 
 
 /**
- * Decodes a data querystring into JSON
+ * Decodes a data querystring into a locations array
  * @param {string} data
- * @return {JSON}
+ * @return {Array}
  */
 function decodeData(data) {
   var locations, locData;
   locations = data.split("/");
-  return JSON.stringify(locations.map(function(loc, index) {
+  return locations.map(function(loc, index) {
     locData = loc.split(",");
     if (index === 0) {
       return {
@@ -471,7 +495,7 @@ function decodeData(data) {
         end: locData[3] ? locData[3] * msPerMinute : null
       };
     }
-  })) || null;
+  }) || null;
 }
 
 /* HTML CREATION FUNCTIONS */
@@ -626,7 +650,10 @@ function setEventTriggers() {
   $("#component-chart g.location-block").off().on("click", function() {toggleHover($(this));} ).on("mouseenter", function() {showHover($(this));} ).on("mouseleave", function() {hideHover();} );
  
   $("#component-data .dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
-  $("#component-data input, select").off().on("change", function() {chart.update();} );
+  $("#component-data input, select").off().on("change", function() {
+    chart.update();
+    updateShareLink();
+  });
   $("#component-data .button-insert").off().on("click", function() { insertRow($(this)); });
   
   updateDeleteButtons();
@@ -672,9 +699,21 @@ $(function() {
   if (query.data === undefined) {
     createTableRows(3);
   } else {
-    data = JSON.parse(decodeData(query.data));
-    createTableRows(data.length);
-    populateTable(data);
+    if (query.edit === undefined) {
+      $("#navbar").remove();
+      $("#component-data").remove();
+      $("#component-chart").appendTo("body");
+      chart.locations = decodeData(query.data);
+      chart.updateSize();
+      $(window).on("resize", function() {
+        chart.updateSize();
+        chart.update();
+      });
+    } else {
+      data = JSON.parse(JSON.stringify(decodeData(query.data)));
+      createTableRows(data.length);
+      populateTable(data);
+    } 
   }
   if (query.title === undefined) {
     $("#component-title input").val($("#component-title h1").text());
@@ -685,6 +724,7 @@ $(function() {
   }
   setEventTriggers();
   chart.update();
+  console.log(chartConfig);
   
   $("#component-title div.input").hide();
   $("#js-warning").remove();
