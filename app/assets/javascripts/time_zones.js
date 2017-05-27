@@ -216,7 +216,7 @@ function TimeZoneChart(config) {
     var x1, x2, y, locFill, locValue, locTextPath, locText;
     var $hoverGroup;
     
-    if (startTime > endTime) {return;}
+    
     
     x1 = this.xPos(startTime);
     x2 = this.xPos(endTime);
@@ -225,12 +225,16 @@ function TimeZoneChart(config) {
     
     $hoverGroup = createSVG("g", {}).addClass("location-block");
     
-    createSVG("rect", {
-      x: x1,
-      y: y - (config.locBlockHeight / 2),
-      width: x2 - x1,
-      height: config.locBlockHeight
-    }).addClass("location-block").attr("fill", locFill).appendTo($hoverGroup);
+    if (startTime > endTime) {
+      createSVG("rect", {}).addClass("location-block").hide().appendTo($hoverGroup);
+    } else {
+      createSVG("rect", {
+        x: x1,
+        y: y - (config.locBlockHeight / 2),
+        width: x2 - x1,
+        height: config.locBlockHeight
+      }).addClass("location-block").attr("fill", locFill).appendTo($hoverGroup);
+    }
     
     if (locName && x2 - x1 > 2 * config.locMargin) {
       createSVG("path", {
@@ -639,7 +643,7 @@ function validateDates() {
   var $allTimes, allTimestamps, i, outOfOrderTimes;
   $allTimes = $("input.field-start, input.field-end");
   outOfOrderTimes = [];
-  allTimestamps = $allTimes.map(function(e) {
+  allTimestamps = $allTimes.map(function() {
     return timeFieldToTimestamp($(this)) || false;
   });
   for (i = 0; i < allTimestamps.length; i++) {
