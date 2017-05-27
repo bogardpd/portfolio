@@ -9,6 +9,9 @@ body, text {
   font-size: 13pt;
 }
 
+#chart {
+  cursor: crosshair;
+}
 
 #component-title {
   height: 55px;
@@ -21,10 +24,6 @@ body, text {
     height: 50px;
     cursor: text;
   }
-}
-
-#chart {
-  cursor: crosshair;
 }
 
 .hidden-by-default {

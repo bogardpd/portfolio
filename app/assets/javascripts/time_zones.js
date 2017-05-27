@@ -216,6 +216,8 @@ function TimeZoneChart(config) {
     var x1, x2, y, locFill, locValue, locTextPath, locText;
     var $hoverGroup;
     
+    if (startTime > endTime) {return;}
+    
     x1 = this.xPos(startTime);
     x2 = this.xPos(endTime);
     y = this.yPos(offset);
@@ -377,10 +379,8 @@ function TimeZoneChart(config) {
       this.locations = [];
       for(i = 0; i < $locationRows.length; i++) {
         $row = $locationRows.eq(i);
-        start = $row.find(".field-start").val();
-        end = $row.find(".field-end").val();
-        start = start ? moment(start.replace(" ","T") + "Z").valueOf() : null;
-        end = end ? moment(end.replace(" ","T") + "Z").valueOf() : null;
+        start = timeFieldToTimestamp($row.find(".field-start"));
+        end = timeFieldToTimestamp($row.find(".field-end"));
         this.locations[i] = {
           start:    start,
           location: $row.find(".field-location").val() || null,
@@ -629,6 +629,30 @@ function removeFirstStartLastEnd() {
   $(".row-location").last().find(".cell-end").empty();
 }
 
+/**
+ * Checks that all time fields are in order. Highlights any out of order
+ * fields and clears highlights for fields in the correct order.
+ * @param {jQuery} timeField - jQuery selector of the time field to check
+ */
+
+function validateDates() {
+  var $allTimes, allTimestamps, i, outOfOrderTimes;
+  $allTimes = $("input.field-start, input.field-end");
+  outOfOrderTimes = [];
+  allTimestamps = $allTimes.map(function(e) {
+    return timeFieldToTimestamp($(this)) || false;
+  });
+  for (i = 0; i < allTimestamps.length; i++) {
+    if (allTimestamps[i] && allTimestamps[i+1] && allTimestamps[i] > allTimestamps[i+1] || allTimestamps[i] && allTimestamps[i-1] && allTimestamps[i] < allTimestamps[i-1]) {
+      outOfOrderTimes.push(i);
+    }
+  }
+  $allTimes.parent().removeClass("has-error");
+  outOfOrderTimes.map(function(e) {
+    $allTimes.eq(e).parent().addClass("has-error");
+  });
+}
+
 /* STRING FUNCTIONS */
 
 function formatUTCOffset(offset) {
@@ -660,6 +684,22 @@ function formatTimeRange(startTime, endTime) {
   return output;
 }
 
+/* TIME FUNCTIONS */
+
+/**
+ * Converts a time field (assumed UTC) into a timestamp.
+ * @param {jQuery} timeField - The jQuery selector for the time field
+ * @return {number} - The unix timestamp
+ */
+function timeFieldToTimestamp(timeField) {
+  if (timeField.val()) {
+    return moment(timeField.val().replace(" ","T") + "Z").valueOf();
+  } else {
+    return null;
+  }
+}
+
+
 /* FUNCTIONS TO MANAGE EVENT TRIGGERS */
 
 function setEventTriggers() {
@@ -669,10 +709,16 @@ function setEventTriggers() {
   $("#component-chart g.location-block").off().on("click", function() {toggleHover($(this));} ).on("mouseenter", function() {showHover($(this));} ).on("mouseleave", function() {hideHover();} );
  
   $("#component-data .dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
-  $("#component-data input, select").off().on("change", function() {
+  $("input.field-location, select.field-offset").off().on("change", function() {
     chart.update();
     updatePageLinks();
   });
+  $("input.field-start, input.field-end").off().on("change", function() {
+    chart.update();
+    updatePageLinks();
+    validateDates();
+  });
+  
   $("#component-data .button-insert").off().on("click", function() { insertRow($(this)); });
   
   updateDeleteButtons();
@@ -747,6 +793,7 @@ $(function() {
     updatePageLinks();
   }
   
+  validateDates();
   $("#component-title div.input").hide();
   $("#js-warning").remove();
   $(".hidden-by-default").show();
