@@ -453,12 +453,18 @@ function updateDeleteButtons() {
  * the chart's values.
  */
 function updatePageLinks() {
-  var title, data, link;
+  var titleStr, title, data, base, link, svgData, file;
   data = chart.getLocationString();
-  title = encodeStringForQuery($("#component-title input").val());
-  link = [location.protocol,"//",location.host,location.pathname,"?data=",data,"&title=",title].join("");
+  titleStr = $("#component-title input").val();
+  title = encodeStringForQuery(titleStr);
+  base = [location.protocol,"//",location.host,location.pathname].join("");
+  link = [base,"?data=",data,"&title=",title].join("");
   $("#share-link").attr("href", link);
   window.history.replaceState({},"",link + "&edit=true");
+  
+  svgData = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart" width="1024" height="768">' + $("#chart").html() + '</svg>';
+  file = new Blob([data], {type: "image/svg+xml"});
+  $("#download-link").attr("href", URL.createObjectURL(file)).attr("download", titleStr + ".svg");
 }
 
 function updateTitle() {
@@ -801,4 +807,5 @@ $(function() {
   $("#component-title div.input").hide();
   $("#js-warning").remove();
   $(".hidden-by-default").show();
+  
 });

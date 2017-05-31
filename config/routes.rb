@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   
   # Projects hosted on Portfolio
   get "timezones" => "time_zones#index"
-  get "timezones/:title.svg" => "time_zones#svg", :as => :timezones_svg
   
   # Non-linked Pages
   get 'stephenvlog'     => 'static_pages#stephenvlog'
