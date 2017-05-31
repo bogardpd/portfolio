@@ -463,7 +463,7 @@ function updatePageLinks() {
   window.history.replaceState({},"",link + "&edit=true");
   
   svgData = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart" width="1024" height="768">' + $("#chart").html() + '</svg>';
-  file = new Blob([data], {type: "image/svg+xml"});
+  file = new Blob([svgData], {type: "image/svg+xml"});
   $("#download-link").attr("href", URL.createObjectURL(file)).attr("download", titleStr + ".svg");
 }
 
