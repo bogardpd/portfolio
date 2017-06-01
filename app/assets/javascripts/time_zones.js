@@ -472,7 +472,7 @@ function updateDeleteButtons() {
  * the chart's values.
  */
 function updatePageLinks() {
-  var titleStr, title, data, base, link, svgData, file;
+  var titleStr, title, data, base, link, svgData, $chartElement, file;
   data = chart.getLocationString();
   titleStr = $("#field-title").val();
   title = encodeStringForQuery(titleStr);
@@ -481,7 +481,9 @@ function updatePageLinks() {
   $("#share-link").attr("href", link);
   window.history.replaceState({},"",link + "&edit=true");
   
-  svgData = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart" width="' + chart.width + '" height="' + chart.height + '">' + $("#chart").html() + '</svg>';
+  $chartElement = $("#chart").clone();
+  $chartElement.find("#chart-location-hovers").remove();
+  svgData = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart" width="' + chart.width + '" height="' + chart.height + '">' + $chartElement.html() + '</svg>';
   file = new Blob([svgData], {type: "image/svg+xml"});
   $("#download-link").attr("href", URL.createObjectURL(file)).attr("download", titleStr + ".svg");
 }
