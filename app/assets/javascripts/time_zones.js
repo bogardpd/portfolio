@@ -11,6 +11,7 @@ var fadeSpeed = 300;
 var chartConfig = {
   "width":           800, // px
   "height":          450, // px
+  "title":            50, // px height
   "margin":           15, // px
   "label":            30, // px
   "xGutter":          24, // px
@@ -33,6 +34,7 @@ var chart = new TimeZoneChart(chartConfig);
 
 function TimeZoneChart(config) {
   this.locations = [],
+  this.title = "",
   this.xLeft = 0,
   this.xRight = 0,
   this.xSize = 0,
@@ -47,7 +49,7 @@ function TimeZoneChart(config) {
     this.xLeft = config.margin + config.label + config.yGutter;
     this.xRight = (config.width - config.margin * 2);
     this.xSize = this.xRight - this.xLeft;
-    this.yTop = config.margin;
+    this.yTop = config.margin + config.title;
     this.yBottom = config.height - config.margin - config.label - config.xGutter;
     this.ySize = this.yBottom - this.yTop;
   };
@@ -216,8 +218,6 @@ function TimeZoneChart(config) {
     var x1, x2, y, locFill, locValue, locTextPath, locText;
     var $hoverGroup;
     
-    
-    
     x1 = this.xPos(startTime);
     x2 = this.xPos(endTime);
     y = this.yPos(offset);
@@ -316,6 +316,21 @@ function TimeZoneChart(config) {
     $hoverGroup.hide().appendTo("#chart-location-hovers");
   };
   
+  /**
+   * Draws the title.
+   * @param {string} titleText
+   */
+  this.drawTitle = function(titleText) {
+    $("#chart-title").empty();
+    createSVG("text", {
+      x: config.width / 2,
+      y: this.yTop - config.margin
+    }).text(titleText).addClass("title").appendTo("#chart-title");
+  };
+  
+  /**
+   * Draws lines between the location boxes.
+   */
   this.drawTravelLines = function() {
     var i, time1, offset1, time2, offset2;
     $("#chart-travel-lines").empty();
@@ -378,6 +393,7 @@ function TimeZoneChart(config) {
    */
   this.retrieveFieldValues = function() {
     var i, start, end, $row, $locationRows;
+    if ($("#field-title").val()) {this.title = $("#field-title").val();}
     $locationRows = $("tr.row-location");
     if ($locationRows.length > 0) {
       this.locations = [];
@@ -401,10 +417,12 @@ function TimeZoneChart(config) {
    * Refreshes the chart.
    */
   this.update = function() {
+    console.log("chart.update");
     this.calculatePositions();
     this.retrieveFieldValues();
     $("#chart").attr("width", config.width).attr("height", config.height);
     this.drawAxes();
+    this.drawTitle(this.title);
     if (this.xRange === false || this.yRange === false) {return;}
     this.drawGrid();
     this.drawLocationBlocks();
@@ -455,7 +473,7 @@ function updateDeleteButtons() {
 function updatePageLinks() {
   var titleStr, title, data, base, link, svgData, file;
   data = chart.getLocationString();
-  titleStr = $("#component-title input").val();
+  titleStr = $("#field-title").val();
   title = encodeStringForQuery(titleStr);
   base = [location.protocol,"//",location.host,location.pathname].join("");
   link = [base,"?data=",data,"&title=",title].join("");
@@ -465,12 +483,6 @@ function updatePageLinks() {
   svgData = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart" width="1024" height="768">' + $("#chart").html() + '</svg>';
   file = new Blob([svgData], {type: "image/svg+xml"});
   $("#download-link").attr("href", URL.createObjectURL(file)).attr("download", titleStr + ".svg");
-}
-
-function updateTitle() {
-  $("#component-title h1").text($("#component-title input").val()).show();
-  $("#component-title div.input").hide();
-  updatePageLinks();
 }
 
 /**
@@ -712,14 +724,11 @@ function timeFieldToTimestamp(timeField) {
 
 /* FUNCTIONS TO MANAGE EVENT TRIGGERS */
 
-function setEventTriggers() {
-  $("#component-title input").off().on("blur change", function() {updateTitle();} );
-  $("#component-title h1").off().on("click", function() {showTitleEdit();} );
-  
+function setEventTriggers() {  
   $("#component-chart g.location-block").off().on("click", function() {toggleHover($(this));} ).on("mouseenter", function() {showHover($(this));} ).on("mouseleave", function() {hideHover();} );
  
   $("#component-data .dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
-  $("input.field-location, select.field-offset").off().on("change", function() {
+  $("input.field-title, input.field-location, select.field-offset").off().on("change", function() {
     chart.update();
     updatePageLinks();
   });
@@ -745,12 +754,6 @@ function toggleHover($locationBox) {
   }
 }
 
-function showTitleEdit() {
-  $("#component-title h1").hide();
-  $("#component-title div").show();
-  $("#component-title input").focus();
-}
-
 function showHover($locationBox) {
   var index = $("g.location-block").index($locationBox);
   hideHover(); // Hide all other hovers
@@ -771,14 +774,18 @@ $(function() {
     query[pair[0]] = (pair[1] || "");
   });
   
+  title = (query.title === undefined) ? "" : decodeStringFromQuery(query.title);
+  
   if (query.data === undefined) {
     createTableRows(3);
+    $("#field-title").val(title);
   } else {
     if (query.edit === undefined) {
       $("#navbar").remove();
       $("#component-data").remove();
       $("#component-chart").appendTo("body");
       chart.locations = decodeData(query.data);
+      chart.title = title;
       chart.updateSize();
       $(window).on("resize", function() {
         chart.updateSize();
@@ -788,15 +795,13 @@ $(function() {
       data = JSON.parse(JSON.stringify(decodeData(query.data)));
       createTableRows(data.length);
       populateTable(data);
+      $("#field-title").val(title);
     }
   }
-  if (query.title === undefined) {
-    $("#component-title input").val($("#component-title h1").text());
-  } else {
+  /*if (query.title !== undefined) {
     title = decodeStringFromQuery(query.title);
-    $("#component-title h1").text(title);
-    $("#component-title input").val(title);
-  }
+    $("#field-title").val(title);
+  }*/
   setEventTriggers();
   chart.update();
   if (query.data !== undefined && query.edit !== undefined) {

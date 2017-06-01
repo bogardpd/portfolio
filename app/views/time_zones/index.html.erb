@@ -15,44 +15,46 @@
 
 <p id="js-warning">Time Zone Chart uses JavaScript to generate and update its chart. If you would like to use Time Zone Chart, please enable JavaScript for this site.</p>
 <div class="hidden-by-default">
-  <form id="locations">
-    <div id="component-title">
-      <h1 title="Click to edit title">Title (click to edit)</h1>
-      <div class="form-group input">
-        <input type="text" class="form-control field-title" />
+      
+  <div class="chart" id="component-chart">
+    <!-- Place the groups in order of lowest SVG layer to highest SVG layer. -->
+    <!-- SVG styles are located here (instead of a stylesheet) so they can be embedded in downloaded file. -->
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart">
+      <style>
+        @import url(https://fonts.googleapis.com/css?family=Lato:400,400i,700);
+        line.axis {stroke: #666666; stroke-width: 2; stroke-linecap: square;}
+        line.grid {stroke: #DDDDDD; stroke-width: 1;}
+        line.travel {stroke: #D2D7D9; stroke-width: 8; stroke-linecap: round;}
+        rect.supplemental {fill: #FFFFEE; stroke: #666666; stroke-width: 1;}
+        text {fill: #666666; font-family: "Lato", "Helvetica", "Arial", sans-serif;}
+        text.axis-label {font-size: 12pt; text-anchor: middle;}
+        text.axis-value {font-size: 10pt; font-weight: 400;}
+        text.axis-value-x {text-anchor: middle;}
+        text.location {font-size: 10pt; font-style: italic; fill: white;}
+        text.supplemental-location {font-size: 10pt; font-weight: 700; text-anchor: middle;}
+        text.supplemental-offset {font-size: 8pt; font-style: italic; text-anchor: middle;}
+        text.supplemental-time {font-size: 8pt; font-weight: 400; text-anchor: middle;}
+        text.title {font-size: 28pt; font-weight: 400; text-anchor: middle;}
+        text.left {text-anchor: start;}
+        text.right {text-anchor: end;}
+      </style>
+      <g id="chart-grid"></g>
+      <g id="chart-travel-lines"></g>
+      <g id="chart-location-blocks"></g>
+      <g id="chart-axes"></g>
+      <g id="chart-axis-text"></g>
+      <g id="chart-title"></g>
+      <g id="chart-location-hovers"></g>
+    </svg>
+  </div>
+  
+  <hr />
+  
+  <div id="component-data">
+    <form id="locations">
+      <div class="input-group col-md-6 col-md-offset-3">
+        <div class="input-group-addon">Trip Title:</div><input type="text" id="field-title" class="form-control field-title" />
       </div>
-    </div>
-    <div class="chart" id="component-chart">
-      <!-- Place the groups in order of lowest SVG layer to highest SVG layer. -->
-      <!-- SVG styles are located here (instead of a stylesheet) so they can be embedded in downloaded file. -->
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart">
-        <style>
-          @import url(https://fonts.googleapis.com/css?family=Lato:400,400i,700);
-          line.axis {stroke: #666666; stroke-width: 2; stroke-linecap: square;}
-          line.grid {stroke: #DDDDDD; stroke-width: 1;}
-          line.travel {stroke: #D2D7D9; stroke-width: 8; stroke-linecap: round;}
-          rect.supplemental {fill: #FFFFEE; stroke: #666666; stroke-width: 1;}
-          text {fill: #666666; font-family: "Lato", "Helvetica", "Arial", sans-serif;}
-          text.axis-label {font-size: 12pt; text-anchor: middle;}
-          text.axis-value {font-size: 10pt; font-weight: 400;}
-          text.axis-value-x {text-anchor: middle;}
-          text.location {font-size: 10pt; font-style: italic; fill: white;}
-          text.supplemental-location {font-size: 10pt; font-weight: 700; text-anchor: middle;}
-          text.supplemental-offset {font-size: 8pt; font-style: italic; text-anchor: middle;}
-          text.supplemental-time {font-size: 8pt; font-weight: 400; text-anchor: middle;}
-          text.left {text-anchor: start;}
-          text.right {text-anchor: end;}
-        </style>
-        <g id="chart-grid"></g>
-        <g id="chart-travel-lines"></g>
-        <g id="chart-location-blocks"></g>
-        <g id="chart-axes"></g>
-        <g id="chart-axis-text"></g>
-        <g id="chart-location-hovers"></g>
-      </svg>
-    </div>
-    
-    <div id="component-data">
       <table class="table">
         <thead>
           <th></th>
@@ -62,11 +64,9 @@
           <th>Departure (UTC)</th>
           <th></th>
         </thead>
-        <tbody>
-      
-        </tbody>
+        <tbody></tbody>
       </table>
-    </div>
-  </form>
-
+    </form>
+  </div>
+  
 </div>
