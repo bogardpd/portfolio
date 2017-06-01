@@ -9,8 +9,8 @@ var minimumRows = 2;
 var fadeSpeed = 300;
 
 var chartConfig = {
-  "width":           800, // px
-  "height":          450, // px
+  "width":           960, // px
+  "height":          540, // px
   "title":            50, // px height
   "margin":           15, // px
   "label":            30, // px
@@ -41,16 +41,18 @@ function TimeZoneChart(config) {
   this.yTop = 0,
   this.yBottom = 0,
   this.ySize = 0,
+  this.width = config.width,
+  this.height = config.height,
   
   /**
    * Sets the primary reference positions of the chart.
    */
   this.calculatePositions = function() {
     this.xLeft = config.margin + config.label + config.yGutter;
-    this.xRight = (config.width - config.margin * 2);
+    this.xRight = (this.width - config.margin * 2);
     this.xSize = this.xRight - this.xLeft;
     this.yTop = config.margin + config.title;
-    this.yBottom = config.height - config.margin - config.label - config.xGutter;
+    this.yBottom = this.height - config.margin - config.label - config.xGutter;
     this.ySize = this.yBottom - this.yTop;
   };
   
@@ -155,7 +157,7 @@ function TimeZoneChart(config) {
       }
       createSVG("text", {
         x: this.xLeft + (this.xSize / 2),
-        y: config.height - config.margin
+        y: this.height - config.margin
       }).text("UTC Date").addClass("axis-label").appendTo("#chart-axis-text");
     }
     
@@ -323,7 +325,7 @@ function TimeZoneChart(config) {
   this.drawTitle = function(titleText) {
     $("#chart-title").empty();
     createSVG("text", {
-      x: config.width / 2,
+      x: this.width / 2,
       y: this.yTop - config.margin
     }).text(titleText).addClass("title").appendTo("#chart-title");
   };
@@ -417,10 +419,9 @@ function TimeZoneChart(config) {
    * Refreshes the chart.
    */
   this.update = function() {
-    console.log("chart.update");
     this.calculatePositions();
     this.retrieveFieldValues();
-    $("#chart").attr("width", config.width).attr("height", config.height);
+    $("#chart").attr("width", this.width).attr("height", this.height);
     this.drawAxes();
     this.drawTitle(this.title);
     if (this.xRange === false || this.yRange === false) {return;}
@@ -433,9 +434,9 @@ function TimeZoneChart(config) {
   /**
    * Updates the size of the chart.
    */
-  this.updateSize = function() {
-    config.width = $(window).width();
-    config.height = ($(window).height()-$("#component-title").height())*0.95;
+  this.updateSize = function(width,height) {
+    this.width = width;
+    this.height = height;
   };
   
   // Take an integer timestamp and return the x position on the chart
@@ -480,7 +481,7 @@ function updatePageLinks() {
   $("#share-link").attr("href", link);
   window.history.replaceState({},"",link + "&edit=true");
   
-  svgData = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart" width="1024" height="768">' + $("#chart").html() + '</svg>';
+  svgData = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="chart" width="' + chart.width + '" height="' + chart.height + '">' + $("#chart").html() + '</svg>';
   file = new Blob([svgData], {type: "image/svg+xml"});
   $("#download-link").attr("href", URL.createObjectURL(file)).attr("download", titleStr + ".svg");
 }
@@ -725,6 +726,7 @@ function timeFieldToTimestamp(timeField) {
 /* FUNCTIONS TO MANAGE EVENT TRIGGERS */
 
 function setEventTriggers() {  
+  var selectedSize;
   $("#component-chart g.location-block").off().on("click", function() {toggleHover($(this));} ).on("mouseenter", function() {showHover($(this));} ).on("mouseleave", function() {hideHover();} );
  
   $("#component-data .dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
@@ -736,6 +738,12 @@ function setEventTriggers() {
     chart.update();
     updatePageLinks();
     validateDates();
+  });
+  $("#field-size").off().on("change", function() {
+    selectedSize = $("#field-size").val().split(",");
+    chart.updateSize(selectedSize[0],selectedSize[1]);
+    chart.update();
+    updatePageLinks();
   });
   
   $("#component-data .button-insert").off().on("click", function() { insertRow($(this)); });
@@ -767,7 +775,7 @@ function hideHover() {
 /* RUN ON PAGE LOAD */
 
 $(function() {
-  var query, data, title;
+  var query, data, title, selectedSize;
   query = {};
   location.search.slice(1).split("&").forEach(function(pair) {
     pair = pair.split("=");
@@ -776,19 +784,21 @@ $(function() {
   
   title = (query.title === undefined) ? "" : decodeStringFromQuery(query.title);
   
+  selectedSize = $("#field-size").val().split(",");
+  chart.updateSize(selectedSize[0],selectedSize[1]);
   if (query.data === undefined) {
     createTableRows(3);
     $("#field-title").val(title);
   } else {
     if (query.edit === undefined) {
       $("#navbar").remove();
-      $("#component-data").remove();
       $("#component-chart").appendTo("body");
+      $(".container").remove();
       chart.locations = decodeData(query.data);
       chart.title = title;
-      chart.updateSize();
+      chart.updateSize($(window).width(),$(window).height()*0.98);
       $(window).on("resize", function() {
-        chart.updateSize();
+        chart.updateSize($(window).width(),$(window).height()*0.98);
         chart.update();
       });
     } else {
@@ -798,10 +808,7 @@ $(function() {
       $("#field-title").val(title);
     }
   }
-  /*if (query.title !== undefined) {
-    title = decodeStringFromQuery(query.title);
-    $("#field-title").val(title);
-  }*/
+  
   setEventTriggers();
   chart.update();
   if (query.data !== undefined && query.edit !== undefined) {
