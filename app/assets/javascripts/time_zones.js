@@ -801,7 +801,7 @@ $(function() {
       $("#component-chart").appendTo("body");
       $(".container").remove();
       $("#edit-buttons").hide();
-      $("#edit-link").attr("href", [location.protocol, "//", location.host, location.pathname, "?data=", query.data, "&title=", title, "&edit=true"].join(""));
+      $("#edit-link").attr("href", [location.protocol, "//", location.host, location.pathname, "?data=", query.data, "&title=", encodeStringForQuery(title), "&edit=true"].join(""));
       
       chart.locations = decodeData(query.data);
       chart.title = title;
