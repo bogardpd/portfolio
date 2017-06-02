@@ -9,8 +9,8 @@ var minimumRows = 2;
 var fadeSpeed = 300;
 
 var chartConfig = {
-  "width":           960, // px
-  "height":          540, // px
+  "width":           960, // px (default width)
+  "height":          540, // px (default height)
   "title":            50, // px height
   "margin":           15, // px
   "label":            30, // px
@@ -478,7 +478,9 @@ function updatePageLinks() {
   title = encodeStringForQuery(titleStr);
   base = [location.protocol,"//",location.host,location.pathname].join("");
   link = [base,"?data=",data,"&title=",title].join("");
-  $("#share-link").attr("href", link);
+  $("#fullscreen-link").removeClass("disabled");
+  $("#fullscreen-link").attr("href", link);
+  $("#edit-link").attr("href", link + "&edit=true");
   window.history.replaceState({},"",link + "&edit=true");
   
   $chartElement = $("#chart").clone();
@@ -789,21 +791,27 @@ $(function() {
   selectedSize = $("#field-size").val().split(",");
   chart.updateSize(selectedSize[0],selectedSize[1]);
   if (query.data === undefined) {
+    $("#fullscreen-buttons").hide();
+    $("#fullscreen-link").addClass("disabled");
     createTableRows(3);
     $("#field-title").val(title);
   } else {
     if (query.edit === undefined) {
-      $("#navbar").remove();
+      $("#navbar").appendTo("body");
       $("#component-chart").appendTo("body");
       $(".container").remove();
+      $("#edit-buttons").hide();
+      $("#edit-link").attr("href", [location.protocol, "//", location.host, location.pathname, "?data=", query.data, "&title=", title, "&edit=true"].join(""));
+      
       chart.locations = decodeData(query.data);
       chart.title = title;
-      chart.updateSize($(window).width(),$(window).height()*0.98);
+      chart.updateSize($(window).width(),($(window).height()-$("#navbar").height())*0.98);
       $(window).on("resize", function() {
-        chart.updateSize($(window).width(),$(window).height()*0.98);
+        chart.updateSize($(window).width(),($(window).height()-$("#navbar").height())*0.98);
         chart.update();
       });
     } else {
+      $("#fullscreen-buttons").hide();
       data = JSON.parse(JSON.stringify(decodeData(query.data)));
       createTableRows(data.length);
       populateTable(data);

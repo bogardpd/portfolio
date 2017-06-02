@@ -4,16 +4,19 @@
 <nav class="navbar navbar-default" id="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="navbar-brand">Time Zone Chart</div>
+      <div class="navbar-brand"><%= link_to "Time Zone Chart", timezones_path, class: "link-unstyled" %> <small>by <%= link_to "Paul Bogard", "https://www.pbogard.com" %></small></div>
     </div>
     
-    <div class="share-buttons">
+    <div class="share-buttons" id="edit-buttons">
       <form class="form-inline">
         <div class="input-group">
-          <%= link_to %Q(<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download SVG Image).html_safe, "", id: "download-link", class: "btn btn-default", download: "" %>
+          <%= link_to %Q(<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> New chart).html_safe, timezones_path, class: "btn btn-default" %>
         </div>
         <div class="input-group">
-          <div class="input-group-addon">Chart Size</div>
+          <%= link_to %Q(<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download SVG).html_safe, "", id: "download-link", class: "btn btn-default", download: "" %>
+        </div>
+        <div class="input-group">
+          <div class="input-group-addon">Chart size</div>
           <select id="field-size" class="form-control field-size" />
             <option value="640,360">640&times;360</option>
             <option value="960,540" selected>960&times;540</option>
@@ -22,10 +25,16 @@
           </select>
         </div>
         <div class="input-group">
-          <%= link_to %Q(<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span> Full Screen).html_safe, "", id: "share-link", class: "btn btn-default" %>
+          <%= link_to %Q(<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span> Full screen).html_safe, "", id: "fullscreen-link", class: "btn btn-default" %>
         </div>
       </form>
-    </div>  
+    </div>
+    
+    <div class="share-buttons" id="fullscreen-buttons">
+      <%= link_to %Q(<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create a new chart).html_safe, timezones_path, class: "btn btn-default" %>
+      <%= link_to %Q(<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Close full screen/edit chart).html_safe, "", id: "edit-link", class: "btn btn-default" %>
+    </div>
+      
   </div>
 </nav>
 

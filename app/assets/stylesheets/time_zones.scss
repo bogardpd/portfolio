@@ -51,7 +51,14 @@ table {
   margin-top: 10px;
 }
 
+.link-unstyled {
+  color: inherit;
+  text-decoration: inherit;
+}
 
-
-/* SVG styles */
-
+.navbar-brand {
+  font-weight: 600;
+  small {
+    font-weight: 300;
+  }
+}
