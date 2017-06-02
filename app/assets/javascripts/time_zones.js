@@ -473,7 +473,6 @@ function TimeZoneChart(config) {
     $("#chart").attr("width", this.width).attr("height", this.height);
     this.drawAxes();
     this.drawTitle(this.title);
-    if (this.xRange === false || this.yRange === false) {return;}
     this.drawGrid();
     this.drawLocationBlocks();
     this.drawTravelLines();
