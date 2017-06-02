@@ -334,7 +334,8 @@ function TimeZoneChart(config) {
    * Draws lines between the location boxes.
    */
   this.drawTravelLines = function() {
-    var i, time1, offset1, time2, offset2;
+    var i, time1, offset1, time2, offset2, xSplit;
+    var chartDistance = [];
     $("#chart-travel-lines").empty();
     for (i = 0; i < (this.locations.length-1); i++) {
       time1 = this.locations[i].end;
@@ -342,12 +343,60 @@ function TimeZoneChart(config) {
       time2 = this.locations[i+1].start;
       offset2 = this.locations[i+1].offset;
       if (time1 && time2 && (offset1 || offset1 === 0) && (offset2 || offset2 === 0)) {
-        createSVG("line", {
-          x1: this.xPos(time1),
-          y1: this.yPos(offset1),
-          x2: this.xPos(time2),
-          y2: this.yPos(offset2)
-        }).addClass("travel").appendTo("#chart-travel-lines");
+        if (offset2 - offset1 > 12) {
+          // Travel goes off bottom of chart
+          chartDistance[0] = (offset1 - this.yRange[0]); // Bottom
+          chartDistance[1] = (this.yRange[1] - offset2); // Top
+          xSplit = this.xPos(time1) + (this.xPos(time2) - this.xPos(time1)) * chartDistance[0]/(chartDistance[0]+chartDistance[1]);
+          createSVG("line", {
+            x1: this.xPos(time1),
+            y1: this.yPos(offset1),
+            x2: xSplit,
+            y2: this.yBottom
+          }).addClass("travel").appendTo("#chart-travel-lines");
+          createSVG("line", {
+            x1: xSplit,
+            y1: this.yTop,
+            x2: this.xPos(time2),
+            y2: this.yPos(offset2)
+          }).addClass("travel").appendTo("#chart-travel-lines");
+          createSVG("line", {
+            x1: xSplit,
+            y1: this.yBottom,
+            x2: xSplit,
+            y2: this.yTop
+          }).addClass("travel-idl").appendTo("#chart-travel-lines");
+        } else if (offset1 - offset2 > 12) {
+          // Travel goes off top of chart
+          chartDistance[0] = (offset2 - this.yRange[0]); // Bottom
+          chartDistance[1] = (this.yRange[1] - offset1); // Top
+          xSplit = this.xPos(time1) + (this.xPos(time2) - this.xPos(time1)) * chartDistance[1]/(chartDistance[0]+chartDistance[1]);
+          createSVG("line", {
+            x1: this.xPos(time1),
+            y1: this.yPos(offset1),
+            x2: xSplit,
+            y2: this.yTop
+          }).addClass("travel").appendTo("#chart-travel-lines");
+          createSVG("line", {
+            x1: xSplit,
+            y1: this.yBottom,
+            x2: this.xPos(time2),
+            y2: this.yPos(offset2)
+          }).addClass("travel").appendTo("#chart-travel-lines");
+          createSVG("line", {
+            x1: xSplit,
+            y1: this.yBottom,
+            x2: xSplit,
+            y2: this.yTop
+          }).addClass("travel-idl").appendTo("#chart-travel-lines");
+        } else {
+          createSVG("line", {
+            x1: this.xPos(time1),
+            y1: this.yPos(offset1),
+            x2: this.xPos(time2),
+            y2: this.yPos(offset2)
+          }).addClass("travel").appendTo("#chart-travel-lines");
+        }
       }
     }
   };
