@@ -32,6 +32,10 @@ var chartConfig = {
 
 var chart = new TimeZoneChart(chartConfig);
 
+/**
+ * Defines a Time Zone Chart object.
+ * @param {Object} config - A hash of configuration parameters
+ */
 function TimeZoneChart(config) {
   this.locations = [],
   this.title = "",
@@ -96,6 +100,9 @@ function TimeZoneChart(config) {
     return [yMin,yMax];
   };
   
+  /**
+   * Draws the chart axes.
+   */
   this.drawAxes = function() {
     $("#chart-axes").empty();
     createSVG("line", {
@@ -112,6 +119,9 @@ function TimeZoneChart(config) {
     }).addClass("axis").appendTo("#chart-axes");
   };
   
+  /**
+   * Draws the chart grid and axis labels.
+   */
   this.drawGrid = function() {
     var i;
     var xPos, xEvery, xLabelDate, xLastMonth, xLastYear, xDays, xThisDate;
@@ -188,6 +198,9 @@ function TimeZoneChart(config) {
     }
   };
   
+  /**
+   * Draws a location box and its associated hover.
+   */
   this.drawLocationBlocks = function() {
     var startTime, endTime, hue;
     var locHues = this.generateLocationHues();
@@ -421,6 +434,11 @@ function TimeZoneChart(config) {
     }).join("/");
   };
   
+  /**
+   * Creates a hash with location names as the keys and equally spaced hues as
+   * the values.
+   * @return {Object}
+   */
   this.generateLocationHues = function() {
     var locHues = {};
     var uniqLocations;
@@ -481,20 +499,28 @@ function TimeZoneChart(config) {
   
   /**
    * Updates the size of the chart.
+   * @param {number} width
+   * @param {number} height
    */
   this.updateSize = function(width,height) {
     this.width = width;
     this.height = height;
   };
   
-  // Take an integer timestamp and return the x position on the chart
+  /**
+   * Takes an integer timestamp and returns the x position on the chart
+   * @return {number}
+   */
   this.xPos = function(timestamp) {
     if (this.xRange !== false) {
       return ((timestamp - this.xRange[0]) / (this.xRange[1] - this.xRange[0])) * this.xSize + this.xLeft;
     }
   };
   
-  // Take a float offset and return the y position on the chart
+  /**
+   * Takes a float offset and returns the y position on the chart
+   * @return {number}
+   */
   this.yPos = function(offset) {
     if (this.yRange !== false) {
       return this.yBottom - ((offset - this.yRange[0]) / (this.yRange[1] - this.yRange[0])) * (this.ySize);
@@ -503,8 +529,14 @@ function TimeZoneChart(config) {
   
 }
 
+
 /* FUNCTIONS TO UPDATE PAGE */
 
+/**
+ * Disables the delete row buttons if the location table has the minimum number
+ * of rows, and enables them if the table has more than the minimum number of
+ * rows.
+ */
 function updateDeleteButtons() {
   if ($(".row-location").length <= minimumRows) {
     // Disable delete buttons
@@ -556,7 +588,6 @@ function decodeStringFromQuery(str) {
   return decodeURIComponent(str.replace(/\+/g, "%20"));
 }
 
-
 /**
  * Decodes a data querystring into a locations array
  * @param {string} data
@@ -592,12 +623,21 @@ function decodeData(data) {
   }) || null;
 }
 
+
 /* HTML CREATION FUNCTIONS */
 
+/**
+ * Generates the HTML for an Insert Row button.
+ * @return {string} - HTML
+ */
 function createInsertButton() {
   return '<div class="btn btn-success button-insert" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div>';
 }
 
+/**
+ * Generates the HTML for a date/time input field and picker.
+ * @return {string} - HTML
+ */
 function createDateTime(fieldName) {
   var html = '<div class="form-group"><div class="input-group date dtpicker">';
   html += '<input type="text" class="form-control field-' + fieldName + '" />';
@@ -606,6 +646,10 @@ function createDateTime(fieldName) {
   return html;
 }
 
+/**
+ * Generates the HTML for a UTC offset select box.
+ * @return {string} - HTML
+ */
 function createOffsetSelect() {
   var html = '<div class="form-group"><select class="form-control field-offset">';
   html += timeZoneList.map(function(element) {
@@ -615,6 +659,11 @@ function createOffsetSelect() {
   return html;
 }
 
+/**
+ * Generates the HTML for the location table.
+ * @param {number} numberOfRows - The number of rows this table should have.
+ * @return {string} - HTML
+ */
 function createTableRows(numberOfRows) {
   var $tableBody = $("tbody");
   for (var i = 0; i < numberOfRows; i++) {
@@ -624,6 +673,10 @@ function createTableRows(numberOfRows) {
   removeFirstStartLastEnd();
 }
 
+/**
+ * Generates the HTML for an individual location table row.
+ * @return {string} - HTML
+ */
 function createRow() {
   var row = '<tr class="row-location">';
   row += '<td class="cell-insert">' + createInsertButton() + '</td>';
@@ -649,6 +702,10 @@ function createSVG(type, attr) {
 
 /* TABLE MANIPULATION FUNCTIONS */
 
+/**
+ * Fills in the table fields with the location array.
+ * @param {Object} timeZoneLocations - The location array.
+ */
 function populateTable(timeZoneLocations) {
   var dateFormat = "Y-MM-DD HH:mm";
   timeZoneLocations.map(function(element, index) {
@@ -660,9 +717,13 @@ function populateTable(timeZoneLocations) {
   }).join("<br/>");
 }
 
-function insertRow(button) {
+/**
+ * Inserts a table row at the location of the clicked Insert Row button.
+ * @param {jQuery} $button - The button which was clicked
+ */
+function insertRow($button) {
   var $oldRow, $newRow;
-  var position = parseInt($(".button-insert").index(button),10);
+  var position = parseInt($(".button-insert").index($button),10);
   if (position < $(".row-location").length) {
     $oldRow = $(".row-location").eq(position);
     $oldRow.before(createRow());
@@ -688,8 +749,12 @@ function insertRow(button) {
   updateDeleteButtons();
 }
 
-function deleteRow(button) {
-  var position = parseInt($(".button-delete").index(button),10);
+/**
+ * Deletes the table row at the location of the clicked Delete Row button.
+ * @param {jQuery} $button - The button which was clicked
+ */
+function deleteRow($button) {
+  var position = parseInt($(".button-delete").index($button),10);
   var $delRow = $(".row-location").eq(position);
   $delRow.fadeOut(fadeSpeed, function() {
     $(this).remove();
@@ -699,6 +764,9 @@ function deleteRow(button) {
   });
 }
 
+/**
+ * Removes the first arrival time field and the last departure time field.
+ */
 function removeFirstStartLastEnd() {
   $(".row-location").first().find(".cell-start").empty();
   $(".row-location").last().find(".cell-end").empty();
@@ -707,9 +775,7 @@ function removeFirstStartLastEnd() {
 /**
  * Checks that all time fields are in order. Highlights any out of order
  * fields and clears highlights for fields in the correct order.
- * @param {jQuery} timeField - jQuery selector of the time field to check
  */
-
 function validateDates() {
   var $allTimes, allTimestamps, i, outOfOrderTimes;
   $allTimes = $("input.field-start, input.field-end");
@@ -728,8 +794,14 @@ function validateDates() {
   });
 }
 
+
 /* STRING FUNCTIONS */
 
+/**
+ * Creates a formatted string for UTC offset.
+ * @param {number} offset - The UTC offset.
+ * @return {string} - A formatted string.
+ */
 function formatUTCOffset(offset) {
   offset = parseInt(offset, 10);
   var output = "UTC";
@@ -740,6 +812,12 @@ function formatUTCOffset(offset) {
   return output;
 }
 
+/**
+ * Creates a formatted string shwoing a range between two times.
+ * @param {number} startTime - A Unix timestamp.
+ * @param {number} endTime - A Unix timestamp.
+ * @return {string} - A formatted string.
+ */
 function formatTimeRange(startTime, endTime) {
   var range, output;
   output = "";
@@ -759,16 +837,17 @@ function formatTimeRange(startTime, endTime) {
   return output;
 }
 
+
 /* TIME FUNCTIONS */
 
 /**
  * Converts a time field (assumed UTC) into a timestamp.
- * @param {jQuery} timeField - The jQuery selector for the time field
+ * @param {jQuery} $timeField - The jQuery selector for the time field
  * @return {number} - The unix timestamp
  */
-function timeFieldToTimestamp(timeField) {
-  if (timeField.val()) {
-    return moment(timeField.val().replace(" ","T") + "Z").valueOf();
+function timeFieldToTimestamp($timeField) {
+  if ($timeField.val()) {
+    return moment($timeField.val().replace(" ","T") + "Z").valueOf();
   } else {
     return null;
   }
@@ -777,6 +856,9 @@ function timeFieldToTimestamp(timeField) {
 
 /* FUNCTIONS TO MANAGE EVENT TRIGGERS */
 
+/**
+ * Clears and sets event triggers.
+ */
 function setEventTriggers() {  
   var selectedSize;
   $("#component-chart g.location-block").off().on("click", function() {toggleHover($(this));} ).on("mouseenter", function() {showHover($(this));} ).on("mouseleave", function() {hideHover();} );
@@ -803,6 +885,10 @@ function setEventTriggers() {
   updateDeleteButtons();
 }
 
+/**
+ * Shows a hover box if it's hidden, or hides it if its visible.
+ * @param {jQuery} $locationBox - The location box whose hover should be toggled.
+ */
 function toggleHover($locationBox) {
   var index = $("g.location-block").index($locationBox);
   if ($("g.supplemental").eq(index).css("display") === "none") {
@@ -814,6 +900,10 @@ function toggleHover($locationBox) {
   }
 }
 
+/**
+ * Shows a hover box.
+ * @param {jQuery} $locationBox - The location box whose hover should be shown.
+ */
 function showHover($locationBox) {
   var index = $("g.location-block").index($locationBox);
   hideHover(); // Hide all other hovers
