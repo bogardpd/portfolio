@@ -3,6 +3,7 @@
 
 var timeZoneList = [["&minus;12:00", -12], ["&minus;11:00", -11], ["&minus;10:00", -10], ["&minus;09:30", -9.5], ["&minus;09:00", -9], ["&minus;08:00", -8], ["&minus;07:00", -7], ["&minus;06:00", -6], ["&minus;05:00", -5], ["&minus;04:00", -4], ["&minus;03:30", -3.5], ["&minus;03:00", -3], ["&minus;02:30", -2.5], ["&minus;02:00", -2], ["&minus;01:00", -1], ["", 0], ["+01:00", 1], ["+01:30", 1.5], ["+02:00", 2], ["+03:00", 3], ["+03:30", 3.5], ["+04:00", 4], ["+04:30", 4.5], ["+05:00", 5], ["+05:30", 5.5], ["+05:45", 5.75], ["+06:00", 6], ["+06:30", 6.5], ["+07:00", 7], ["+08:00", 8], ["+08:30", 8.5], ["+09:00", 9], ["+09:30", 9.5], ["+10:00", 10], ["+10:30", 10.5], ["+11:00", 11], ["+12:00", 12], ["+12:45", 12.75], ["+13:00", 13], ["+13:45", 13.75], ["+14:00", 14]].reverse();
 var msPerDay = 1000*60*60*24;
+var msPerHour = 1000*60*60;
 var msPerMinute = 1000*60;
 
 var minimumRows = 2;
@@ -24,7 +25,7 @@ var chartConfig = {
   "yBuffer":           1, // minimum hours to show beyond data range at top and bottom of axis
   "locBlockHeight":   20, // px
   "locMargin":         4, // px
-  "hoverWidth":      180, // px
+  "hoverWidth":      190, // px
   "hoverHeight":      50, // px
   "locSat":          "50%",
   "locLight":        "40%"
@@ -279,7 +280,7 @@ function TimeZoneChart(config) {
    * @param {number} index - An index number used to create unique IDs.
    */
   this.drawLocationHover = function(startTime, endTime, offset, locName) {
-    var x, y, xCenter, timeText, $hoverGroup;
+    var x, y, xCenter, timeTextLocal, timeTextUTC, hoverHeight, $hoverGroup;
     
     xCenter = ((this.xPos(startTime) + this.xPos(endTime))/2);
     x = xCenter - (config.hoverWidth / 2);
@@ -300,19 +301,23 @@ function TimeZoneChart(config) {
       y = this.yPos(offset) - (config.locBlockHeight/2) - config.locMargin - config.hoverHeight;
     }
     if (startTime === this.xRange[0]) {
-      timeText = formatTimeRange(null, endTime);
+      timeTextLocal = formatTimeRange(null, endTime, offset);
+      timeTextUTC = formatTimeRange(null, endTime, 0);
     } else if (endTime === this.xRange[1]) {
-      timeText = formatTimeRange(startTime, null);
+      timeTextLocal = formatTimeRange(startTime, null, offset);
+      timeTextUTC = formatTimeRange(startTime, null, 0);
     } else {
-      timeText = formatTimeRange(startTime, endTime);
+      timeTextLocal = formatTimeRange(startTime, endTime, offset);
+      timeTextUTC = formatTimeRange(startTime, endTime, 0);
     }
     
     $hoverGroup = createSVG("g", {}).addClass("supplemental");
+    hoverHeight = (offset === 0) ? config.hoverHeight - config.hoverLineHeight : config.hoverHeight;
     createSVG("rect", {
       x: x,
       y: y,
       width: config.hoverWidth,
-      height: config.hoverHeight
+      height: hoverHeight
     }).addClass("supplemental").appendTo($hoverGroup);
     if (locName) {
       createSVG("text", {
@@ -323,11 +328,13 @@ function TimeZoneChart(config) {
     createSVG("text", {
       x: xCenter,
       y: y + (config.hoverLineHeight * 2)
-    }).html(formatUTCOffset(offset)).addClass("supplemental-offset").appendTo($hoverGroup);
-    createSVG("text", {
-      x: xCenter,
-      y: y + (config.hoverLineHeight * 3)
-    }).html(timeText).addClass("supplemental-time").appendTo($hoverGroup);
+    }).html(timeTextLocal).addClass("supplemental-time-local").appendTo($hoverGroup);
+    if (offset !== 0) {
+      createSVG("text", {
+        x: xCenter,
+        y: y + (config.hoverLineHeight * 3)
+      }).html(timeTextUTC).addClass("supplemental-time-utc").appendTo($hoverGroup);
+    }
     $hoverGroup.hide().appendTo("#chart-location-hovers");
   };
   
@@ -818,22 +825,22 @@ function formatUTCOffset(offset) {
  * @param {number} endTime - A Unix timestamp.
  * @return {string} - A formatted string.
  */
-function formatTimeRange(startTime, endTime) {
+function formatTimeRange(startTime, endTime, offset) {
   var range, output;
   output = "";
   if (startTime === null) {
-    range = [endTime];
+    range = [endTime + offset*msPerHour];
     output += "Depart ";
   } else if (endTime === null) {
-    range = [startTime];
+    range = [startTime + offset*msPerHour];
     output += "Arrive ";
   } else {
-    range = [startTime, endTime];
+    range = [startTime + offset*msPerHour, endTime + offset*msPerHour];
   }
   output += range.map(function(e) {
     return moment(e).utc().format("D MMM HH:mm");
   }).join(" &ndash; ");
-  output += " (UTC)";
+  output += " (" + formatUTCOffset(offset) + ")";
   return output;
 }
 
