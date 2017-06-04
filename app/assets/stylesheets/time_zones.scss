@@ -1,0 +1,64 @@
+@import "bootstrap";
+
+$color-dark: #666666;
+$color-light: #DDDDDD;
+
+body, text {
+  font-family: "Lato", sans-serif;
+  color: $color-dark;
+  font-size: 13pt;
+}
+
+#chart {
+  cursor: crosshair;
+}
+
+#component-title {
+  height: 55px;
+  h1 {
+    padding-top: 6px;
+    cursor: pointer;
+  }
+  input {
+    @extend h1;
+    height: 50px;
+    cursor: text;
+  }
+}
+
+.hidden-by-default {
+  display: none;
+}
+
+div.chart {
+  text-align: center;
+}
+
+div.form-group {
+  margin: 0;
+}
+
+div.share-buttons {
+  float: right;
+  padding-top: 7px;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  margin-top: 10px;
+}
+
+.link-unstyled {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  small {
+    font-weight: 400;
+  }
+}

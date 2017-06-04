@@ -147,6 +147,9 @@ class StaticPagesController < ApplicationController
     @terminals = @terminals.sort_by { |iata, name| name }
   end
   
+  def time_zone_chart
+  end
+  
   def turn_signal_counter
   end
   

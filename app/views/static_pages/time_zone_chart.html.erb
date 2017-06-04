@@ -1,0 +1,77 @@
+<% provide(:title, "Time Zone Chart")%>
+<% provide(:meta_description, "How Paul Bogard created his Time Zone Chart web application.")%>
+
+<h1>Time Zone Chart</h1>
+
+<%= link_buttons(
+  LinkButton.new("Visit <strong>Time Zone Chart</strong>", "portfolio", timezones_path),
+  LinkButton.new("See the code on <strong>GitHub</strong>", "github", "https://github.com/bogardpd/portfolio/blob/master/app/assets/javascripts/time_zones.js")
+  ) %>
+
+<p>Time Zone Chart is a single page application which creates a chart showing your time zone changes over the duration of a trip.</p>
+
+<iframe src="http://www.pbogard.com/timezones?data=Dayton,-5,24297540/24297540,Dayton,-4,24305460/24305820,Chicago,-5,24307005/24307093,Toronto,-4,24307270/24307740,Munich,1,24313620/24313740,Nuremburg,1,24316410/24316475,Berlin,1,24316620/24316740,London,0,24317400/24317400,London,1,24320844/24320997,Paris,2,24326650/24326860,Reykjavik,0,24328365/24328755,Chicago,-5,24329898/24330019,Tulsa,-5,24335275/24335414,Charlotte,-4,24335500/24335595,Dayton,-4&title=Europe+%26+Tulsa+2016" width="100%" height="600" scrolling="no"></iframe>
+
+<h2 id="features">Capabilities</h2>
+
+<ul>
+  <li>Allows a user to enter an arbitrarily large number of destinations, each with their own time zone</li>
+  <li>Automatically creates an SVG chart of UTC time on the x-axis and UTC offset on the y-axis as the user enters data</li>
+  <li>Allows the user to download the SVG chart as an .svg file</li>
+  <li>Allows the user to switch to a full chart screen view, which automatically resizes as the window resizes</li>
+</ul>
+
+<h2 id="tools">Tools</h2>
+
+<table class="table table-striped">
+	<tbody>
+		<tr>
+			<th scope="row">Languages &amp; Frameworks</th>
+			<td>
+				JavaScript<br/>
+				<%= link_to "jQuery", "https://jquery.com/" %><br/>
+				<%= link_to "moment.js", "https://momentjs.com/" %><br/>
+				<%= link_to "SVG", "https://developer.mozilla.org/en-US/docs/Web/SVG" %><br/>
+				HTML<br/>
+				CSS<br/>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row">Version Control</th>
+			<td><%= link_to("Git", "https://git-scm.com") %></td>
+		</tr>
+		<tr>
+			<th scope="row">Hosting</th>
+			<td><%= link_to("Heroku", "https://www.heroku.com/") %> (as part of my <%= link_to "Portfolio", root_path %>)</td>
+		</tr>
+		<tr>
+			<th scope="row">Project Management</th>
+			<td><%= link_to("Trello", "https://trello.com/") %></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 id="history">History</h2>
+
+<p>As I travel frequently, I can be in many time zones over the course of a week. I wanted a way to show this visually, and eventually I drew myself a chart for one of my trips. I decided to go with comparing my number of hours ahead of or behind <%= link_to "UTC", "https://en.wikipedia.org/wiki/Coordinated_Universal_Time" %> (GMT) to the time in UTC, which allowed me to not only capture time changes from travel, but also from daylight saving time shifts.</p>
+
+<%= project_image("projects/time-zone-chart/time-zones-2015.png", type: :screenshot, caption: "My time zone changes over three weeks in late 2015") %>
+
+<p>This chart accomplished what I wanted, but it was a pain to create, as I had to manually draw each bar and line to the correct position and length. I wanted to create an application which would let me enter in the locations, times, and time zones, and would generate a chart for me.</p>
+
+<h2 id="design">Design</h2>
+
+<%= link_buttons(DownloadButton.new("files/time-zone-chart/Time Zone Chart Specification.pdf")) %>
+
+<p>Since I’d done some playing around with Scalable Vector Graphics (SVG) charts for my <%= link_to "Shared Itinerary", shared_itinerary_path %> project, SVG seemed like a logical choice. SVG effectively draws shapes on a screen based on position and height and width parameters, and those would be reasonably easy to calculate from data entered into a form.</p>
+
+<p>However, <em>unlike</em> Shared Itinerary’s server-side SVG rendering, I decided to render the chart client-side instead. This would let the application update the chart as soon as the user filled in a field, and it would allow the application to resize the full-screen chart if the user resized the window.</p>
+
+<p>Doing the chart client-side realistically meant using JavaScript. Fortunately, inline SVG acts like any other HTML in the HTML Document Object Model (DOM), so it’s very easy to manipulate SVG elements with JavaScript and <%= link_to "jQuery", "https://jquery.com/" %>. (Creating SVG elements requires specifying the SVG namespace, so I did end up having to use <code><%= link_to "document.createElementNS", "https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS" %></code> instead of the jQuery element creation functions, which I wrapped in my own <code>createSVG(type, attr)</code> function.)</p>
+
+<p>I used <%= link_to "moment.js", "https://momentjs.com/" %> to handle times, as I needed to ensure everything was operating as UTC, and JavaScript’s native Date functionality isn’t great beyond the user’s local timezone.</p>
+
+<%= link_buttons(
+  LinkButton.new("See a sample <strong>Time Zone Chart</strong>", "portfolio", "http://www.pbogard.com/timezones?data=Dayton,-5,24297540/24297540,Dayton,-4,24305460/24305820,Chicago,-5,24307005/24307093,Toronto,-4,24307270/24307740,Munich,1,24313620/24313740,Nuremburg,1,24316410/24316475,Berlin,1,24316620/24316740,London,0,24317400/24317400,London,1,24320844/24320997,Paris,2,24326650/24326860,Reykjavik,0,24328365/24328755,Chicago,-5,24329898/24330019,Tulsa,-5,24335275/24335414,Charlotte,-4,24335500/24335595,Dayton,-4&title=Europe+%26+Tulsa+2016&edit=true"),
+  LinkButton.new("See the code on <strong>GitHub</strong>", "github", "https://github.com/bogardpd/portfolio/blob/master/app/assets/javascripts/time_zones.js")
+  ) %>

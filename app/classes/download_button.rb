@@ -8,4 +8,8 @@ class DownloadButton < LinkButton
     @text = "<strong>#{File.basename(@path)}</strong> (#{number_to_human_size(File.size?("public/"+@path))})"
   end
   
+  def path
+    "/" + @path
+  end
+  
 end
