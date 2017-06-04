@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   delete "logout" => "sessions#destroy"
   
   # Projects
+  get "projects" => "static_pages#home"
+  
   get "projects/boarding-pass-parser"   => "static_pages#boarding_pass_parser",   as: :boarding_pass_parser
   get "projects/cad-models"             => "static_pages#cad_models",             as: :cad_models
   get "projects/earthbound-database"    => "static_pages#earthbound_database",    as: :earthbound_database
