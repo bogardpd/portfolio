@@ -5,6 +5,7 @@ module Project
       {name: "Shared Itinerary",       caption: "Flight time charts for multiple travelers"},
       {name: "Terminal Silhouettes",   caption: "Airport art"},
       {name: "Boarding Pass Parser",   caption: "Barcode data parsing"},
+      {name: "Time Zone Chart",        caption: "Plotter for time zone changes"},
       {name: "GPS Logging",            caption: "Maps of travel paths"},
       {name: "Turn Signal Counter",    caption: "Counter integrated circuits on a truck"},
       {name: "CAD Models",             caption: "3D sketches"},

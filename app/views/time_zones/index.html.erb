@@ -4,7 +4,7 @@
 <nav class="navbar navbar-default" id="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="navbar-brand"><%= link_to "Time Zone Chart", timezones_path, class: "link-unstyled" %> <small>by <%= link_to "Paul Bogard", "https://www.pbogard.com" %></small></div>
+      <div class="navbar-brand"><%= link_to "Time Zone Chart", timezones_path, class: "link-unstyled", target: "_parent" %> <small>by <%= link_to "Paul Bogard", "https://www.pbogard.com", target: "_parent" %></small></div>
     </div>
     
     <div class="share-buttons" id="edit-buttons">
@@ -31,8 +31,8 @@
     </div>
     
     <div class="share-buttons" id="fullscreen-buttons">
-      <%= link_to %Q(<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create a new chart).html_safe, timezones_path, class: "btn btn-default" %>
-      <%= link_to %Q(<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Close full screen/edit chart).html_safe, "", id: "edit-link", class: "btn btn-default" %>
+      <%= link_to %Q(<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create a new chart).html_safe, timezones_path, class: "btn btn-default", target: "_parent" %>
+      <%= link_to %Q(<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Close full screen/edit chart).html_safe, "", id: "edit-link", class: "btn btn-default", target: "_parent" %>
     </div>
       
   </div>
@@ -64,6 +64,7 @@
         text.left {text-anchor: start;}
         text.right {text-anchor: end;}
       </style>
+      <rect width="100%" height="100%" fill="white"></rect>
       <g id="chart-grid"></g>
       <g id="chart-travel-lines"></g>
       <g id="chart-location-blocks"></g>
