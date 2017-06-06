@@ -22,6 +22,11 @@ class StaticPagesController < ApplicationController
   end
   
   def flight_historian
+    if params[:version]
+      render "static_pages/flight_historian/v#{params[:version]}"
+    else
+      render "static_pages/flight_historian/flight_historian"
+    end
   end
   
   def fred_and_harry

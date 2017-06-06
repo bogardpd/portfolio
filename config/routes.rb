@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "projects/boarding-pass-parser"   => "static_pages#boarding_pass_parser",   as: :boarding_pass_parser
   get "projects/cad-models"             => "static_pages#cad_models",             as: :cad_models
   get "projects/earthbound-database"    => "static_pages#earthbound_database",    as: :earthbound_database
-  get "projects/flight-historian"       => "static_pages#flight_historian",       as: :flight_historian
+  get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian",  as: :flight_historian
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
   get "projects/terminal-silhouettes"   => "static_pages#terminal_silhouettes",   as: :terminal_silhouettes
