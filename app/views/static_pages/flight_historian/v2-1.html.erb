@@ -1,7 +1,10 @@
 <% provide(:title, "Flight Historian 2.1")%>
 <% provide(:meta_description, "Flight Historian version 2.1 change log")%>
 
-<h1>Flight Historian 2.1</h1>
+<h1>
+  Flight Historian 2.1<br/>
+  <small>Import Flights from Digital Boarding Passes</small>
+</h1>
 
 <!-- link button to specific github version -->
 
@@ -29,11 +32,11 @@ Since I’d been working on <%= link_to "parsing boarding pass barcode data", bo
 
 <%= link_header "Getting Boarding Passes from IMAP", 2 %>
 
-<p>As the boarding pass email address I set up supports IMAP, I used Ruby’s <code>Net::IMAP</code> <%= link_to "class", "http://ruby-doc.org/stdlib- 2.0.0/libdoc/net/imap/rdoc/Net/IMAP.html", target: "_blank" %> to have Flight Historian interact with my email account.</p>
+<p>As the boarding pass email address I set up supports IMAP, I used Ruby’s <code>Net::IMAP</code> <%= link_to "class", "http://ruby-doc.org/stdlib-2.0.0/libdoc/net/imap/rdoc/Net/IMAP.html", target: "_blank" %> to have Flight Historian interact with my email account.</p>
 
 <p>When I go to the Import Boarding Pass page on Flight Historian, it checks for new messages (from a specified list of my email addresses) which have a “PKPass” (PassKit Package) attachment.</p>
 
-<p>The <%= link_to "PKPass format", "https://developer.apple.com/library/content/documentation/UserExperience/Reference/PassKit_Bundle/Chapters/Introduction.html#//apple_ref/doc", target: "_blank" %> is how Wallet stores and shares digital boarding passes. It’s actually a zipped file archive with the extension <code>.pkpass</code>. Inside this archive is, among other things, a file called <code>pass.json</code> which contains all of the information about the pass in JSON format, including the visible text and the data encoded in the 2- D barcode.</p>
+<p>The <%= link_to "PKPass format", "https://developer.apple.com/library/content/documentation/UserExperience/Reference/PassKit_Bundle/Chapters/Introduction.html", target: "_blank" %> is how Wallet stores and shares digital boarding passes. It’s actually a zipped file archive with the extension <code>.pkpass</code>. Inside this archive is, among other things, a file called <code>pass.json</code> which contains all of the information about the pass in JSON format, including the visible text and the data encoded in the 2- D barcode.</p>
 
 <p>Thus, I wrote a <code>BoardingPassEmail</code> <%= link_to "module", "https://github.com/bogardpd/flight_log/blob/master/app/modules/boarding_pass_email.rb", target: "_blank" %> for Flight Historian which would loop through any email attachments, and for each attachment, unzip it, navigate to <code>pass.json</code>, and store it as a PKPass object in my database. Once Flight Historian successfully saves the pass, it deletes the email that the pass came from.</p>
 
@@ -112,4 +115,4 @@ Since I’d been working on <%= link_to "parsing boarding pass barcode data", bo
 
 <%= link_header "Source Code", 2 %>
 
-<p>As usual, my project code is available on <%= link_to "Github", "https://github.com/bogardpd/flight_log", target: "_blank" %>.</p>
+<!-- link to github for version -->

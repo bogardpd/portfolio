@@ -1,0 +1,96 @@
+<% provide(:title, "Flight Historian 2.0")%>
+<% provide(:meta_description, "Flight Historian version 2.0 change log")%>
+
+<h1>
+  Flight Historian 2.0<br/>
+  <small>Flight Historian</small>
+</h1>
+
+<!-- link button to specific github version -->
+
+<p>It’s been over three years since I began working on my flight log. In that time, it’s gone from an interesting side feature of my <%= link_to "Portfolio", root_path %> to a major project large enough to stand on its own. For the past month, I’ve been spending my free time working on spinning it off into its own site. Now announcing:</p>
+
+<!-- image: logo with link -->
+
+<p class="center"><%= link_to("https://www.flighthistorian.com/", "https://www.flighthistorian.com/", target: "_blank") %></p>
+
+<p>Along with the new domain, I’ve worked on adding a bit of new functionality to the site.</p>
+
+<%= link_header "Premium Economy", 2 %>
+
+<!-- image -->
+
+<p>I started the flight log with the capability for three <%= link_to "classes", "https://www.flighthistorian.com/classes", target: "_blank" %>: first, business, and economy. (I’ve then somehow managed to never fly business class.) Over the last few years, many airlines have been adding a class of service that’s a little better than a standard coach class seat, but not quite to the level of a business class seat. At the very least, premium economy seats offer a few inches more legroom than a standard coach seat, and occupy a favorable part of the plane (often between the economy bulkhead and the over-wing exit rows). Many airlines are now charging for these seats or reserving them for passengers with frequent flyer status.</p>
+
+<p>The experience is different enough from standard economy, and present on enough airlines, that I feel comfortable tracking premium economy as its own class.</p>
+
+<p>Fortunately, I’ve been scanning and saving my old boarding passes for the past few years, so I was able to determine which of my recent economy flights were actually premium economy.</p>
+
+<%= link_header "IATA Codes", 2 %>
+
+<p>You may be familiar with the three-letter airport code you see printed on your boarding passes (for example, <%= link_to "LAX", "https://www.flighthistorian.com/airports/LAX", target: "_blank" %> for Los Angeles). This three- character code is assigned by the International Air Transport Association (IATA).</p>
+
+<p>Airports aren’t the only thing that the IATA has codes for; they also have two-character codes for airlines (<%= link_to "DL", "https://www.flighthistorian.com/airlines/DL", target: "_blank" %> for Delta) and three character codes for aircraft types (<%= link_to "M80", "https://www.flighthistorian.com/aircraft/13", target: "_blank" %> for MD-80), both of which you may see when booking flights online.</p>
+
+<!-- image -->
+
+<p>The IATA technically has one-letter codes for travel classes, but most airlines use their own fare codes instead. However, many travelers still informally use these IATA codes (<%= link_to "F", "https://www.flighthistorian.com/classes/F", target: "_blank" %> for first, J for business, <%= link_to "Y", "https://www.flighthistorian.com/classes/Y", target: "_blank" %> for economy) to refer to the class they’re flying.</p>
+
+<p>I’ve added these IATA codes to all <%= link_to "airlines", "https://www.flighthistorian.com/airlines", target: "_blank" %> (including operators and codeshares), <%= link_to "aircraft", "https://www.flighthistorian.com/aircraft", target: "_blank" %> types, and <%= link_to "travel classes", "https://www.flighthistorian.com/classes", target: "_blank" %>.</p>
+
+<%= link_header "Faster Loading Speeds", 2 %>
+
+<p>My old flight log often took a long time to load. For a while, I’d been assuming that I was simply hosting my site on a slow webserver.</p>
+
+<p>I realized there was more of a problem when doing all these updates required me to spend a lot of time with the site running on my local computer. Since I was the only user, it shouldn’t have been slow – yet it was.</p>
+
+<p>Looking at my local server logs, I noticed that some pages were taking nearly seven seconds to render, and had thousands of database queries.</p>
+
+<!-- image -->
+
+<p><strong>[Technical explanation – feel free to skip this paragraph.]</strong> It turned out that in some code that I used in a lot of places, I was inadvertently triggering a few database queries (due to ActiveRecord associations that I’d forgotten were actually part of another table) within each iteration of a for loop. By explicitly setting up my own monolithic SQL query with the joins, I was able in many cases to do one big query rather than thousands of tiny queries. Additionally, I’d broken some of my Ruby on Rails code into too many partials, which was driving up the view rendering time substantially. Combining a few of the partials into one helped out quite a bit.</p>
+
+<p>Essentially, by optimizing some of my code, I was able to make most of the Flight Historian’s pages load much faster than they did in the old Flight Log. In particular, the home page (“root”), which is the page most people will see first, went from loading in 3.74 seconds to loading in 0.20 seconds – about 18 times faster!</p>
+
+<%= link_header "Change Log", 2 %>
+
+<%= link_header "Front End", 3 %>
+
+<ul>
+  <li>Separated the <span class="website-name">Flight Log</span> from my <%= link_to "Portfolio", root_path %> into its own website, renamed the <span class="website-name">Flight Log</span> to the <span class="website-name">Flight Historian</span>, and gave it a new domain (<%= link_to "flighthistorian.com", "https://www.flighthistorian.com/", target: "_blank" %>)</li>
+  <li>Created a new favicon</li>
+  <li>Added <%= link_to "premium economy", "https://www.flighthistorian.com/classes/W", target: "_blank" %> to list of <%= link_to "travel classes", "https://www.flighthistorian.com/classes", target: "_blank" %></li>
+  <li>Added IATA codes to <%= link_to "airlines", "https://www.flighthistorian.com/airlines", target: "_blank" %> (including operators and codeshare airlines), <%= link_to "aircraft families", "https://www.flighthistorian.com/aircraft", target: "_blank" %> and <%= link_to "travel classes", "https://www.flighthistorian.com/classes", target: "_blank" %></li>
+  <li>Added aircraft illustrations to most <%= link_to "aircraft family pages",  "https://www.flighthistorian.com/aircraft/4", target: "_blank" %></li>
+  <li>Added aircraft name to <%= link_to "Show Flight",  "https://www.flighthistorian.com/flights/259", target: "_blank" %></li>
+  <li>Added tables of operators to Show Aircraft Family, Show Airport, Show Airline, Show Tail Number, Show Route, and Show Travel Class views</li>
+  <li>Moved the list of flights to the end of many views, but added link to flight list immediately under the map of flights</li>
+  <li>Added region selectors to many more maps</li>
+  <li>Updated all maps to use the same color schemes</li>
+  <li>Added country flags to tail numbers</li>
+  <li>Minor typo fixes</li>
+</ul>
+
+<%= link_header "Back End", 3 %>
+
+<ul>
+  <li>Rehosted <span class="website-name">Flight Historian</span> on <%= link_to "Heroku", "https://www.heroku.com/", target: "_blank" %></li>
+  <li>Upgraded from Rails 3.2.11 to Rails 4.2.3</li>
+  <li>Upgraded from Ruby 1.8.7 to Ruby 2.2.4</li>
+  <li>Converted database from MySQL to PostgreSQL</li>
+  <li>Converted stylesheets to <%= link_to "SCSS", "http://sass-lang.com/", target: "_blank" %></li>
+  <li>Converted Airlines from an attribute of Flights to a full model</li>
+  <li>Converted Aircraft Families from an attribute of Flights to a full model</li>
+  <li>Rewrote the <span class="website-name">Flight Historian</span>’s <%= link_to "Great Circle Mapper", "http://gcmap.com", target: "_blank" %> map generating functions to be more consistent</li>
+  <li>Optimized database queries and page rendering to make pages load faster</li>
+  <li>Added boarding pass data column to <code>Flights</code> table</li>
+  <li>Added date sanity check to warn if departure date and UTC departure date/time are too far apart</li>
+</ul>
+
+<%= link_header "Specification", 2 %>
+
+<!-- button link to spec -->
+
+<%= link_header "Source Code", 2 %>
+
+<!-- Link to github for version -->
