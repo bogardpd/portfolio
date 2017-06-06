@@ -24,6 +24,7 @@ class StaticPagesController < ApplicationController
   def flight_historian
     if params[:version]
       render "static_pages/flight_historian/v#{params[:version]}"
+      # TODO: redirect if page doesn't exist
     else
       render "static_pages/flight_historian/flight_historian"
     end
