@@ -89,6 +89,12 @@ pre {
   white-space: pre-wrap;
 }
 
+blockquote.twitter-tweet {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 div.byline {
 	text-align: center;
 	color: $color-text-light;
@@ -148,6 +154,11 @@ figure {
   	max-width: 375px;
   	height: auto;
   	border: 1px solid $color-border;
+  }
+  
+  img.osx-screenshot {
+    max-width: 600px;
+    border: none;
   }
   
   img.screenshot {

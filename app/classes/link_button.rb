@@ -1,9 +1,10 @@
 class LinkButton
   
-  def initialize(text, icon, path)
+  def initialize(text, icon, path, target: nil)
     @text = text
     @icon = icon
     @path = path
+    @target = target
   end
   
   def text
@@ -16,6 +17,10 @@ class LinkButton
   
   def path
     @path
+  end
+  
+  def target
+    @target
   end
   
 end

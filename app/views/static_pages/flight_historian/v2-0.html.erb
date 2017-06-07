@@ -12,7 +12,7 @@
 
 <!-- image: logo with link -->
 
-<p class="center"><%= link_to("https://www.flighthistorian.com/", "https://www.flighthistorian.com/", target: "_blank") %></p>
+<p class="center"><%= link_to("www.flighthistorian.com", "https://www.flighthistorian.com/", target: "_blank") %></p>
 
 <p>Along with the new domain, I’ve worked on adding a bit of new functionality to the site.</p>
 
@@ -28,7 +28,7 @@
 
 <%= link_header "IATA Codes", 2 %>
 
-<p>You may be familiar with the three-letter airport code you see printed on your boarding passes (for example, <%= link_to "LAX", "https://www.flighthistorian.com/airports/LAX", target: "_blank" %> for Los Angeles). This three- character code is assigned by the International Air Transport Association (IATA).</p>
+<p>You may be familiar with the three-letter airport code you see printed on your boarding passes (for example, <%= link_to "LAX", "https://www.flighthistorian.com/airports/LAX", target: "_blank" %> for Los Angeles). This three-character code is assigned by the International Air Transport Association (IATA).</p>
 
 <p>Airports aren’t the only thing that the IATA has codes for; they also have two-character codes for airlines (<%= link_to "DL", "https://www.flighthistorian.com/airlines/DL", target: "_blank" %> for Delta) and three character codes for aircraft types (<%= link_to "M80", "https://www.flighthistorian.com/aircraft/13", target: "_blank" %> for MD-80), both of which you may see when booking flights online.</p>
 
@@ -57,7 +57,7 @@
 <%= link_header "Front End", 3 %>
 
 <ul>
-  <li>Separated the <span class="website-name">Flight Log</span> from my <%= link_to "Portfolio", root_path %> into its own website, renamed the <span class="website-name">Flight Log</span> to the <span class="website-name">Flight Historian</span>, and gave it a new domain (<%= link_to "flighthistorian.com", "https://www.flighthistorian.com/", target: "_blank" %>)</li>
+  <li>Separated the <span class="website-name">Flight Log</span> from my <%= link_to "Portfolio", root_path %> into its own website, renamed the <span class="website-name">Flight Log</span> to the <span class="website-name">Flight Historian</span>, and gave it a new domain (<%= link_to "www.flighthistorian.com", "https://www.flighthistorian.com/", target: "_blank" %>)</li>
   <li>Created a new favicon</li>
   <li>Added <%= link_to "premium economy", "https://www.flighthistorian.com/classes/W", target: "_blank" %> to list of <%= link_to "travel classes", "https://www.flighthistorian.com/classes", target: "_blank" %></li>
   <li>Added IATA codes to <%= link_to "airlines", "https://www.flighthistorian.com/airlines", target: "_blank" %> (including operators and codeshare airlines), <%= link_to "aircraft families", "https://www.flighthistorian.com/aircraft", target: "_blank" %> and <%= link_to "travel classes", "https://www.flighthistorian.com/classes", target: "_blank" %></li>

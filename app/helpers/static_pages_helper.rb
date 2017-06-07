@@ -10,12 +10,13 @@ module StaticPagesHelper
     classes = %w(img-responsive project)
     extra_classes = {
       :ios_screenshot => %w(ios-screenshot),
+      :osx_screenshot => %w(osx-screenshot),
       :screenshot     => %w(screenshot)
     }
     classes.concat(extra_classes[type]) if extra_classes[type]
     path = "https://s3.us-east-2.amazonaws.com/pbogardcom-images/#{path}"
     image = image_tag(path, class: classes.join(' '), alt: alt)
-    image = link_to(image, image_path(path)) if type == :screenshot
+    image = link_to(image, image_path(path)) if (type == :screenshot || type == :osx_screenshot)
     caption = "<figcaption>#{caption}</figcaption>" if caption.present?
     attribution = %Q(<figcaption class="attribution">Image Credit: #{attribution}</figcaption>) if attribution.present?
     return %Q(<figure>#{image}#{attribution}#{caption}</figure>).html_safe
