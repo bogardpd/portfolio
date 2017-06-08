@@ -1,0 +1,55 @@
+<% provide(:title, "Flight Historian 1.1")%>
+<% provide(:meta_description, "Flight Historian version 1.1 change log")%>
+
+<h1>
+  Flight Historian 1.1<br/>
+  <small>Routes, Top 5 Lists, and More</small>
+</h1>
+
+<%= render partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu} %>
+
+<!-- link button to specific github version, spec -->
+
+<div class="release-date">24 October 2013</div>
+
+<p>On the old version of the flight log, I had a rudimentary display of routes – the Show Flight page would list all sections and trips that shared the same route. There was, however, no easy way to see which routes were the most flown. Consider that solved, with my new <%= link_to "Routes", "https://www.flighthistorian.com/routes", target: "_blank" %> page!</p>
+
+<!-- image -->
+
+<p>Clicking on any of the routes brings up details about that <%= link_to "route", "https://www.flighthistorian.com/routes/DAY-ORD", target: "_blank" %>:</p>
+
+<!-- image -->
+
+<p>Of note, the page shows the most popular airlines, aircraft, and classes flown on the route. The trip sections and trips sharing a route have been moved here from the Show Flight pages:</p>
+
+<!-- image -->
+
+<p>The same airlines, aircraft, and class lists were added to the Show Tail, Show Airport, Show Airline, Show Aircraft, and Show Class pages as appropriate.</p>
+
+<p>I also updated the <%= link_to "home", "https://www.flighthistorian.com/", target: "_blank" %> page. Instead of what was essentially a link to the <%= link_to "Flights", "https://www.flighthistorian.com/flights", target: "_blank" %> page, the home page now shows my primary flight maps, and my top 5 routes, airports, aircraft, airlines, and tail numbers:</p>
+
+<!-- image -->
+
+<p>In addition, under each of the top 5 lists, the <%= link_to "home", "https://www.flighthistorian.com/", target: "_blank" %> page shows the totals for the various statistics I track. No more extra clicks are required to see how many airports I’ve visited!</p>
+
+<p>Speaking of airports, the Show Airport page also got a snazzy new listing of top destinations:</p>
+
+<!-- image -->
+
+<p>This table also links to the new Show Route pages.</p>
+
+<%= link_header "Change Log", 2 %>
+
+<ul>
+  <li>Rewrote the home page to show flight maps, and top 5 lists and counts of <%= link_to "routes", "https://www.flighthistorian.com/routes", target: "_blank" %>, <%= link_to "airports", "https://www.flighthistorian.com/airports", target: "_blank" %>, <%= link_to "aircraft", "https://www.flighthistorian.com/aircraft", target: "_blank" %>, <%= link_to "airlines", "https://www.flighthistorian.com/airlines", target: "_blank" %>, and <%= link_to "tails", "https://www.flighthistorian.com/tails", target: "_blank" %></li>
+  <li>Added <%= link_to "Index Routes", "https://www.flighthistorian.com/routes/", target: "_blank" %> and <%= link_to "Show Routes", "https://www.flighthistorian.com/routes/DAY-ORD", target: "_blank" %> pages</li>
+  <li>Added top aircraft, airlines, and classes to <%= link_to "Show Routes", "https://www.flighthistorian.com/routes/DAY-ORD", target: "_blank" %></li>
+  <li>Added top origin/destination cities, aircraft, airlines, and classes to <%= link_to "Show Airport", "https://www.flighthistorian.com/airports/DAY", target: "_blank" %></li>
+  <li>Added top airlines and classes to <%= link_to "Show Aircraft", "https://www.flighthistorian.com/aircraft/13", target: "_blank" %></li>
+  <li>Added top aircraft and classes to <%= link_to "Show Airline", "https://www.flighthistorian.com/airlines/AA", target: "_blank" %></li>
+  <li>Added top classes to <%= link_to "Show Tail", "https://www.flighthistorian.com/tails/N909EV", target: "_blank" %></li>
+  <li>Added top airlines and aircraft to <%= link_to "Show Class", "https://www.flighthistorian.com/classes/F", target: "_blank" %></li>
+  <li>Updated logos and icons for high-resolution displays</li>
+  <li>Switched Tails and Classes on the main navigation bar</li>
+  <li>Minor bug fixes</li>
+</ul>
