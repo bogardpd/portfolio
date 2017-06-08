@@ -1,7 +1,12 @@
 <% provide(:title, "Flight Historian")%>
 <% provide(:meta_description, "How Paul Bogard created his Flight Historian web application.")%>
 
-<h1>Flight Historian</h1>
+<h1>
+  Flight Historian<br/>
+  <small>Overview</small>
+</h1>
+
+<%= render partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu} %>
 
 <%= link_buttons(
   LinkButton.new("Visit <strong>Flight Historian</strong>", 'flight-historian', 'https://www.flighthistorian.com/'),

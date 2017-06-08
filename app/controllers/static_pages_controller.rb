@@ -22,10 +22,21 @@ class StaticPagesController < ApplicationController
   end
   
   def flight_historian
+    @version_menu = {
+      "Overview": {active: false},
+      "1.0": {active: false},
+      "1.1": {active: false},
+      "1.2": {active: false},
+      "1.3": {active: false},
+      "2.0": {active: false},
+      "2.1": {active: false}
+    }
     if params[:version]
+      @version_menu[params[:version].gsub("-",".").to_sym][:active] = true
       render "static_pages/flight_historian/v#{params[:version]}"
       # TODO: redirect if page doesn't exist
     else
+      @version_menu[:Overview][:active] = true
       render "static_pages/flight_historian/flight_historian"
     end
   end

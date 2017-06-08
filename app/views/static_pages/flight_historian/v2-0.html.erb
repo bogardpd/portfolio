@@ -6,6 +6,8 @@
   <small>Flight Historian</small>
 </h1>
 
+<%= render partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu} %>
+
 <!-- link button to specific github version -->
 
 <p>It’s been over three years since I began working on my flight log. In that time, it’s gone from an interesting side feature of my <%= link_to "Portfolio", root_path %> to a major project large enough to stand on its own. For the past month, I’ve been spending my free time working on spinning it off into its own site. Now announcing:</p>
