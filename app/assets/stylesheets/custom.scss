@@ -75,6 +75,11 @@ a.link-header {
   text-decoration: none;
 }
 
+abbr {
+  text-decoration: none;
+  border-bottom: 0.05em dotted;
+}
+
 cite {
   font-style: italic;
 }
