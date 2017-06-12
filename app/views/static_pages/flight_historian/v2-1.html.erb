@@ -6,14 +6,8 @@
   <small>Import Flights from Digital Boarding Passes</small>
 </h1>
 
-<%= render partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu} %>
-
-<%= link_buttons(
-  DownloadButton.new('flight-historian/Flight Historian 2.1 Specification.pdf'),
-  LinkButton.new("Version 2.1 source code on <strong>GitHub</strong>", "github", "https://github.com/bogardpd/flight_log/tree/f4ba7e0e279a5e27481e31374c1230f8e8d9e08b", target: "_blank")
-  ) %>
-  
-<div class="release-date">29 April 2017</div>
+<%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
+<%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
 
 <p>In general, my <%= link_to "Flight Historian", flight_historian_path %> has been a big time saver for me as far as tracking my flights – instead of manually generating reports and maps from an Excel file, I can simply add flights to a database and let it do all the work. However, as I’ve started tracking more details about my flights over time, the task of entering the flights has become less simple.</p>
 

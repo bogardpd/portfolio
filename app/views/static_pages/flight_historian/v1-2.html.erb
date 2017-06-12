@@ -6,11 +6,8 @@
   <small>Operators and Codeshares</small>
 </h1>
 
-<%= render partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu} %>
-
-<!-- link button to specific github version, spec -->
-
-<div class="release-date">27 October 2014</div>
+<%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
+<%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
 
 <p>I’ve updated the Flight Log <%= link_to "Flight Log", "https://www.flighthistorian.com/", target: "_blank" %> to version 1.2 by adding codeshares, operators, and fleet numbers to flights.</p>
 

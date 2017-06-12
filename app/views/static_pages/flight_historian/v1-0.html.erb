@@ -6,11 +6,8 @@
   <small>Initial Release</small>
 </h1>
 
-<%= render partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu} %>
-
-<!-- link button to specific github version, spec -->
-
-<div class="release-date">27 April 2013</div>
+<%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
+<%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
 
 <p>I travel reasonably often, and I consider myself a bit of a transportation nerd. It’s only logical that I would keep track of where I’ve flown.</p>
 
