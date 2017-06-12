@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   root "static_pages#home"
   
+  
+  
   # Authentication
   get    "login"  => "sessions#new"
   post   "login"  => "sessions#create"
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   get "projects/boarding-pass-parser"   => "static_pages#boarding_pass_parser",   as: :boarding_pass_parser
   get "projects/cad-models"             => "static_pages#cad_models",             as: :cad_models
   get "projects/earthbound-database"    => "static_pages#earthbound_database",    as: :earthbound_database
-  get "projects/flight-historian"       => "static_pages#flight_historian",       as: :flight_historian
+  get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian",  as: :flight_historian
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
   get "projects/terminal-silhouettes"   => "static_pages#terminal_silhouettes",   as: :terminal_silhouettes
@@ -41,6 +43,10 @@ Rails.application.routes.draw do
   get "gps-logging/garmin-osm"          => redirect("projects/gps-logging/garmin-osm",          status: 301)
   get "gps-logging/ios-google-earth"    => redirect("projects/gps-logging/ios-google-earth",    status: 301)
   get "gps-logging/ios-osm"             => redirect("projects/gps-logging/ios-osm",             status: 301)
+
+  get "files/one-hundred-airports/:path.png" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-files/one-hundred-airports/%{path}.png")
+  get "files/terminal-silhouettes/png/:path.png" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-files/terminal-silhouettes/png/%{path}.png")
+  get "files/terminal-silhouettes/svg/:path.svg" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-files/terminal-silhouettes/svg/%{path}.svg")
   
   # About Pages
   get "about"  => "static_pages#about"

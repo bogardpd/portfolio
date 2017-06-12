@@ -1,0 +1,60 @@
+<% provide(:title, "Flight Historian 1.3")%>
+<% provide(:meta_description, "Flight Historian version 1.3 change log")%>
+
+<h1>
+  Flight Historian 1.3<br/>
+  <small>Distances and Annual Summaries</small>
+</h1>
+
+<%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
+<%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
+
+<p>I’ve updated the <%= link_to "Flight Log", "https://www.flighthistorian.com/", target: "_blank" %> to version 1.3 by adding distances to flights, and by adding more statistics to the annual summary pages.</p>
+
+<%= link_header "Distances", 2 %>
+
+<p>The <%= link_to "home page", "https://www.flighthistorian.com/", target: "_blank" %> now shows the total distance flown across all flights. (I’ve used the <%= link_to "great circle distance", "http://en.wikipedia.org/wiki/Great-circle_distance", target: "_blank" %> between the airports for every flight’s distance, rather than the actual flight route flown. This is the way that most US airlines calculate mileage.)</p>
+
+<%= project_image "projects/flight-historian/1-3/screenshot-distance.png", type: :osx_screenshot, alt: "Screenshot of distance under Home page map" %>
+
+<p>At the bottom of the page, I’ve added the longest route, shortest route (for routes that actually have a distance), and shortest net distance (for routes where the origin is the same as the departure, and thus the net distance traveled is zero).</p>
+
+<%= project_image "projects/flight-historian/1-3/screenshot-superlatives.png", type: :osx_screenshot, alt: "Screenshot of superlatives table on Home page" %>
+
+<p>The total distance flown has been added for every <%= link_to "flight", "https://www.flighthistorian.com/flights/58", target: "_blank" %>, <%= link_to "route", "https://www.flighthistorian.com/routes/DAY-DFW", target: "_blank" %>, <%= link_to "aircraft family", "https://www.flighthistorian.com/aircraft/13", target: "_blank" %>, <%= link_to "airline", "https://www.flighthistorian.com/airlines/AA", target: "_blank" %>, <%= link_to "operator", "https://www.flighthistorian.com/operators/EV", target: "_blank" %>, <%= link_to "tail", "https://www.flighthistorian.com/tails/N909EV", target: "_blank" %>, <%= link_to "fleet number", "https://www.flighthistorian.com/operators/AA/551", target: "_blank" %>,  <%= link_to "travel class", "https://www.flighthistorian.com/classes/F", target: "_blank" %>, <%= link_to "trip", "https://www.flighthistorian.com/trips/73", target: "_blank" %>, and <%= link_to "trip section", "https://www.flighthistorian.com/trips/73/section/6", target: "_blank" %>.</p>
+
+<p>The index routes page now shows the great circle distance for each route. In addition, the page can now be sorted by either distance or number of flights.</p>
+
+<%= project_image "projects/flight-historian/1-3/screenshot-routes.png", type: :osx_screenshot, alt: "Screenshot of Routes page" %>
+
+<p>I’ve done the same thing on the <%= link_to "show airport", "https://www.flighthistorian.com/airports/SEA#airports", target: "_blank" %> page, showing the distance to each of the direct flight airports. This table, too, is sortable.</p>
+
+<!-- image -->
+
+<%= link_header "Annual Summary Pages", 2 %>
+
+<p>At the top of the index flights page, there have been links to years. Clicking on one of them would bring you to an <%= link_to "annual summary", "https://www.flighthistorian.com/flights/year/2013", target: "_blank" %> page, showing a map and table of all of the flights in that year.</p>
+
+<p>I’ve now added more details to this page:</p>
+
+<ul>
+  <li>The year’s airports visited</li>
+  <li>The year’s aircraft families flown</li>
+  <li>The year’s airlines flown</li>
+  <li>The year’s classes flown</li>
+  <li>The year’s longest and shortest routes</li>
+</ul>
+
+<%= project_image "projects/flight-historian/1-3/screenshot-annual-map.png", type: :osx_screenshot, alt: "Screenshot of map on Annual Summary page for 2013" %>
+
+<p>Airports that were first visited in the year, aircraft families that were first flown in the year, and airlines that were first used in the year are noted in their respective tables.</p>
+
+<%= project_image "projects/flight-historian/1-3/screenshot-annual-airlines.png", type: :osx_screenshot, alt: "Screenshot of airlines table on Annual Summary page for 2013" %>
+
+<%= link_header "Change Log", 2 %>
+
+<ul>
+  <li>Added details to Index Flights by Year</li>
+  <li>Added flight distances</li>
+  <li>Minor improvements to flight entry form</li>
+</ul>

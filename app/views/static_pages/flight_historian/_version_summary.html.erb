@@ -1,0 +1,26 @@
+<div class="version-summary">
+  <table class="table table-striped version-summary">
+  	<tbody>
+  		<tr>
+  			<th scope="row">Release Date</th>
+  			<td><%= format_date(release_date) %> (<%= time_ago_in_words(release_date) %> ago)</td>
+  		</tr>
+  		<tr>
+  			<th scope="row">Repository</th>
+  			<td><%= link_to "github.com/bogardpd/flight_log", "https://github.com/#{github_repo}", target: "_blank" %>
+          <% if local_assigns[:git_sha] %>
+            (<%= link_to git_sha[0,10], "https://github.com/#{github_repo}/tree/#{git_sha}", target: "_blank" %>)
+          <% end %>
+        </td>
+  		</tr>
+  		<tr>
+  			<th scope="row">Specification<%= "s" unless specs.count == 1 %></th>
+  			<td>
+          <%= specs.map{|path|
+            DownloadButton.new(path).plain_link
+          }.join("<br/>").html_safe %>
+        </td>
+  		</tr>
+  	</tbody>
+  </table>
+</div>

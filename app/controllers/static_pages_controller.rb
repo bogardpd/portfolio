@@ -22,6 +22,89 @@ class StaticPagesController < ApplicationController
   end
   
   def flight_historian
+    @version_menu = {
+      "Overview": {active: false},
+      "1.0": {
+        active: false,
+        summary: {
+          release_date: Date.parse("2013-04-27"),
+          github_repo: "bogardpd/flight_log",
+          specs: [
+            "flight-historian/1.0/Flight Log 1.0 Functional Specification.pdf",
+            "flight-historian/1.0/Flight Log 1.0 Technical Specification.pdf"
+          ]
+        }
+      },
+      "1.1": {
+        active: false,
+        summary: {
+          release_date: Date.parse("2013-10-24"),
+          github_repo: "bogardpd/flight_log",
+          specs: [
+            "flight-historian/1.1/Flight Log 1.1 Functional Specification.pdf",
+            "flight-historian/1.1/Flight Log 1.1 Technical Specification.pdf"
+          ]
+        }
+      },
+      "1.2": {
+        active: false,
+        summary: {
+          release_date: Date.parse("2014-10-27"),
+          github_repo: "bogardpd/flight_log",
+          specs: [
+            "flight-historian/1.2/Flight Log 1.2 Functional Specification.pdf",
+            "flight-historian/1.2/Flight Log 1.2 Technical Specification.pdf"
+          ]
+        }
+      },
+      "1.3": {
+        active: false,
+        summary: {
+          release_date: Date.parse("2015-02-08"),
+          github_repo: "bogardpd/flight_log",
+          git_sha: "49798a2b120ffcfe1512b0f3576023469e961c1b",
+          specs: [
+            "flight-historian/1.3/Flight Log 1.3 Functional Specification.pdf",
+            "flight-historian/1.3/Flight Log 1.3 Technical Specification.pdf"
+          ]
+        }
+      },
+      "2.0": {
+        active: false,
+        summary: {
+          release_date: Date.parse("2016-01-31"),
+          github_repo: "bogardpd/flight_log",
+          git_sha: "d1a5f3da3e3d593f2b4c629f8ddfdcc0aefb820c",
+          specs: [
+            "flight-historian/2.0/Flight Historian 2.0 Functional Specification.pdf",
+            "flight-historian/2.0/Flight Historian 2.0 Technical Specification.pdf"
+          ]
+        }
+      },
+      "2.1": {
+        active: false,
+        summary: {
+          release_date: Date.parse("2017-04-29"),
+          github_repo: "bogardpd/flight_log",
+          git_sha: "f4ba7e0e279a5e27481e31374c1230f8e8d9e08b",
+          specs: ["flight-historian/2.1/Flight Historian 2.1 Specification.pdf"]
+        }
+      }
+    }
+    version_sym = params[:version] ? params[:version].gsub("-",".").to_sym : nil
+    if params[:version]
+      unless @version_menu[version_sym]
+        redirect_to flight_historian_path
+        return
+      end
+      @version_menu[version_sym][:active] = true
+      @summary = @version_menu[version_sym][:summary]
+      render "static_pages/flight_historian/v#{params[:version]}"
+      # TODO: redirect if page doesn't exist
+    else
+      @version_menu[:Overview][:active] = true
+      render "static_pages/flight_historian/flight_historian"
+    end
   end
   
   def fred_and_harry
