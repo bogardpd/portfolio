@@ -11,27 +11,27 @@
 
 <p>On the old version of the flight log, I had a rudimentary display of routes – the Show Flight page would list all sections and trips that shared the same route. There was, however, no easy way to see which routes were the most flown. Consider that solved, with my new <%= link_to "Routes", "https://www.flighthistorian.com/routes", target: "_blank" %> page!</p>
 
-<!-- image -->
+<%= project_image "projects/flight-historian/1-1/screenshot-routes.png", type: :osx_screenshot, alt: "Screenshot of Routes page" %>
 
 <p>Clicking on any of the routes brings up details about that <%= link_to "route", "https://www.flighthistorian.com/routes/DAY-ORD", target: "_blank" %>:</p>
 
-<!-- image -->
+<%= project_image "projects/flight-historian/1-1/screenshot-show-route.png", type: :osx_screenshot, alt: "Screenshot of Show Route page for DAY-ORD" %>
 
 <p>Of note, the page shows the most popular airlines, aircraft, and classes flown on the route. The trip sections and trips sharing a route have been moved here from the Show Flight pages:</p>
 
-<!-- image -->
+<%= project_image "projects/flight-historian/1-1/screenshot-show-route-tables.png", type: :osx_screenshot, alt: "Screenshot of tables on Show Route page for DAY-ORD" %>
 
 <p>The same airlines, aircraft, and class lists were added to the Show Tail, Show Airport, Show Airline, Show Aircraft, and Show Class pages as appropriate.</p>
 
 <p>I also updated the <%= link_to "home", "https://www.flighthistorian.com/", target: "_blank" %> page. Instead of what was essentially a link to the <%= link_to "Flights", "https://www.flighthistorian.com/flights", target: "_blank" %> page, the home page now shows my primary flight maps, and my top 5 routes, airports, aircraft, airlines, and tail numbers:</p>
 
-<!-- image -->
+<%= project_image "projects/flight-historian/1-1/screenshot-home.png", type: :osx_screenshot, alt: "Screenshot of Home page" %>
 
 <p>In addition, under each of the top 5 lists, the <%= link_to "home", "https://www.flighthistorian.com/", target: "_blank" %> page shows the totals for the various statistics I track. No more extra clicks are required to see how many airports I’ve visited!</p>
 
 <p>Speaking of airports, the Show Airport page also got a snazzy new listing of top destinations:</p>
 
-<!-- image -->
+<%= project_image "projects/flight-historian/1-1/screenshot-destinations.png", type: :osx_screenshot, alt: "Screenshot of destinations table on Show Airport page for DAY" %>
 
 <p>This table also links to the new Show Route pages.</p>
 
