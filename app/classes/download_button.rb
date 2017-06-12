@@ -2,7 +2,8 @@ class DownloadButton < LinkButton
   include ActionView::Helpers
   
   def initialize(path)
-    s3 = Aws::S3::Resource.new(region: "us-west-2")
+    client = Aws::S3::Client.new(region: "us-east-2")
+    s3 = Aws::S3::Resource.new(client: client)
     obj = s3.bucket("pbogardcom-files").object(path)
 
     puts path
