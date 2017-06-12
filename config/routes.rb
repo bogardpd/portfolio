@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   
   root "static_pages#home"
   
+  
+  
   # Authentication
   get    "login"  => "sessions#new"
   post   "login"  => "sessions#create"
@@ -41,6 +43,9 @@ Rails.application.routes.draw do
   get "gps-logging/garmin-osm"          => redirect("projects/gps-logging/garmin-osm",          status: 301)
   get "gps-logging/ios-google-earth"    => redirect("projects/gps-logging/ios-google-earth",    status: 301)
   get "gps-logging/ios-osm"             => redirect("projects/gps-logging/ios-osm",             status: 301)
+  
+  get "files/terminal-silhouettes/png/:path.png" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-files/terminal-silhouettes/png/%{path}.png")
+  get "files/terminal-silhouettes/svg/:path.svg" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-files/terminal-silhouettes/svg/%{path}.svg")
   
   # About Pages
   get "about"  => "static_pages#about"
