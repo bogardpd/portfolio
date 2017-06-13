@@ -141,6 +141,9 @@ class StaticPagesController < ApplicationController
   def hotel_internet_quality
   end
   
+  def hotel_pillow_fort
+  end
+  
   def ingress_mosaics
   end
   

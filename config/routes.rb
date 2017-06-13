@@ -63,8 +63,9 @@ Rails.application.routes.draw do
   get "timezones" => "time_zones#index"
   
   # Non-linked Pages
-  get "stephenvlog"     => "static_pages#stephenvlog"
-  get "oreo"            => "static_pages#oreo"
+  get "stephenvlog"       => "static_pages#stephenvlog"
+  get "hotel-pillow-fort" => "static_pages#hotel-pillow-fort"
+  get "oreo"              => "static_pages#oreo"
   get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", :as => :fast_track_calculus
   get "rhit/fred-and-harry" => "static_pages#fred_and_harry", :as => :fred_and_harry
   get "starmen-conventions" => "static_pages#starmen_conventions"
