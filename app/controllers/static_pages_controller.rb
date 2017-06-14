@@ -170,6 +170,8 @@ class StaticPagesController < ApplicationController
   end
   
   def terminal_silhouettes
+    @aws_root = "https://s3.us-east-2.amazonaws.com/pbogardcom-images/projects/terminal-silhouettes"
+    
     @terminals = Hash.new()
     @terminals['ABI'] = "Abilene"
     @terminals['AMA'] = "Amarillo"
