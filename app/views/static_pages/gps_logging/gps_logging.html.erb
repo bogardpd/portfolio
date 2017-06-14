@@ -7,16 +7,16 @@
 
 <div class="row button-row">
 	<div class="col-md-6">
-		<%= link_to("How to create route maps with<br/><strong>Garmin</strong> and <strong>Google Earth</strong>".html_safe, gps_logging_garmin_google_earth_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+		<%= link_to("How to create route maps with<br/><strong>Garmin</strong> and <strong>Google Earth</strong>".html_safe, gps_logging_path(source: "garmin", map: "google-earth"), class: "btn btn-default btn-block icon-button", role: "button") %>
 	</div>
 	<div class="col-md-6">
-		<%= link_to("How to create route maps with<br/><strong>iOS</strong> and <strong>Google Earth</strong>".html_safe, gps_logging_ios_google_earth_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+		<%= link_to("How to create route maps with<br/><strong>iOS</strong> and <strong>Google Earth</strong>".html_safe, gps_logging_path(source: "ios", map: "google-earth"), class: "btn btn-default btn-block icon-button", role: "button") %>
 	</div>
 	<div class="col-md-6">
-		<%= link_to("How to create route maps with<br/><strong>Garmin</strong> and <strong>OpenStreetMap</strong>".html_safe, gps_logging_garmin_osm_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+		<%= link_to("How to create route maps with<br/><strong>Garmin</strong> and <strong>OpenStreetMap</strong>".html_safe, gps_logging_path(source: "garmin", map: "osm"), class: "btn btn-default btn-block icon-button", role: "button") %>
 	</div>
 	<div class="col-md-6">
-		<%= link_to("How to create route maps with<br/><strong>iOS</strong> and <strong>OpenStreetMap</strong>".html_safe, gps_logging_ios_osm_path, class: "btn btn-default btn-block icon-button", role: "button") %>
+		<%= link_to("How to create route maps with<br/><strong>iOS</strong> and <strong>OpenStreetMap</strong>".html_safe, gps_logging_path(source: "ios", map: "osm"), class: "btn btn-default btn-block icon-button", role: "button") %>
 	</div>
 </div>
 

@@ -121,18 +121,13 @@ class StaticPagesController < ApplicationController
   end
   
   def gps_logging
-  end
-  
-  def gps_logging_garmin_google_earth
-  end
-  
-  def gps_logging_garmin_osm
-  end
-  
-  def gps_logging_ios_google_earth
-  end
-  
-  def gps_logging_ios_osm
+    @sources = {"garmin" => "Garmin", "ios" => "iOS"}
+    @maps = {"google-earth" => "Google Earth", "osm" => "OpenStreetMap"}
+    if @sources.keys.include?(params[:source]) && @maps.keys.include?(params[:map])
+      render "static_pages/gps_logging/tutorial"
+    else
+      render "static_pages/gps_logging/gps_logging"
+    end
   end
   
   def history

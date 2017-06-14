@@ -15,19 +15,14 @@ Rails.application.routes.draw do
   get "projects/boarding-pass-parser"   => "static_pages#boarding_pass_parser",   as: :boarding_pass_parser
   get "projects/cad-models"             => "static_pages#cad_models",             as: :cad_models
   get "projects/earthbound-database"    => "static_pages#earthbound_database",    as: :earthbound_database
-  get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian",  as: :flight_historian
+  get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian", as: :flight_historian
+  get "projects/gps-logging(/:source/:map)" => "static_pages#gps_logging",        as: :gps_logging
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
   get "projects/terminal-silhouettes"   => "static_pages#terminal_silhouettes",   as: :terminal_silhouettes
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
   get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter
   get "projects/visor-cam"              => "static_pages#visor_cam",              as: :visor_cam
-  
-  get "projects/gps-logging"                     => "static_pages#gps_logging",                     as: :gps_logging
-  get "projects/gps-logging/garmin-google-earth" => "static_pages#gps_logging_garmin_google_earth", as: :gps_logging_garmin_google_earth
-  get "projects/gps-logging/garmin-osm"          => "static_pages#gps_logging_garmin_osm",          as: :gps_logging_garmin_osm
-  get "projects/gps-logging/ios-google-earth"    => "static_pages#gps_logging_ios_google_earth",    as: :gps_logging_ios_google_earth
-  get "projects/gps-logging/ios-osm"             => "static_pages#gps_logging_ios_osm",             as: :gps_logging_ios_osm
   
   get "boarding-pass-parser"   => redirect("projects/boarding-pass-parser",   status: 301)
   get "cad-models"             => redirect("projects/cad-models",             status: 301)
@@ -39,10 +34,10 @@ Rails.application.routes.draw do
   get "turn-signal-counter"    => redirect("projects/turn-signal-counter",    status: 301)
   get "visor-cam"              => redirect("projects/visor-cam",              status: 301)
   get "gps-logging"                     => redirect("projects/gps-logging",                     status: 301)
-  get "gps-logging/garmin-google-earth" => redirect("projects/gps-logging/garmin-google-earth", status: 301)
-  get "gps-logging/garmin-osm"          => redirect("projects/gps-logging/garmin-osm",          status: 301)
-  get "gps-logging/ios-google-earth"    => redirect("projects/gps-logging/ios-google-earth",    status: 301)
-  get "gps-logging/ios-osm"             => redirect("projects/gps-logging/ios-osm",             status: 301)
+  get "gps-logging/garmin-google-earth" => redirect("projects/gps-logging/garmin/google-earth", status: 301)
+  get "gps-logging/garmin-osm"          => redirect("projects/gps-logging/garmin/osm",          status: 301)
+  get "gps-logging/ios-google-earth"    => redirect("projects/gps-logging/ios/google-earth",    status: 301)
+  get "gps-logging/ios-osm"             => redirect("projects/gps-logging/ios/osm",             status: 301)
 
   get "files/one-hundred-airports/:path.png" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-files/one-hundred-airports/%{path}.png")
   get "files/terminal-silhouettes/png/:path.png" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-files/terminal-silhouettes/png/%{path}.png")
