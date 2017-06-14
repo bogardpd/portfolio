@@ -9,7 +9,7 @@
 <%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
 <%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
 
-<p>In general, my <%= link_to "Flight Historian", flight_historian_path %> has been a big time saver for me as far as tracking my flights – instead of manually generating reports and maps from an Excel file, I can simply add flights to a database and let it do all the work. However, as I’ve started tracking more details about my flights over time, the task of entering the flights has become less simple.</p>
+<p>In general, my <%= link_to "Flight Historian", "https://www.flighthistorian.com/", target: "_blank" %> has been a big time saver for me as far as tracking my flights – instead of manually generating reports and maps from an Excel file, I can simply add flights to a database and let it do all the work. However, as I’ve started tracking more details about my flights over time, the task of entering the flights has become less simple.</p>
 
 <%= project_image "projects/flight-historian/2-1/1.png", type: :osx_screenshot, alt: "Screenshot of New Flight page", caption: "There are currently 24 fields to fill out in the flight log. Not every field is required, but it can still take several minutes to fill out a flight." %>
 
