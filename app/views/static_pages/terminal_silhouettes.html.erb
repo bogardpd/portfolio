@@ -4,11 +4,11 @@
 <h1>Terminal Silhouettes</h1>
 
 <%= link_buttons(
-  LinkButton.new("Read my silhouette <strong>blog posts</strong>", 'one-hundred-airports', 'https://onehundredairports.com/category/projects/terminal-silhouettes/'),
-  LinkButton.new("<strong>GitHub</strong> repository", 'github', 'https://github.com/bogardpd/terminal_silhouettes')
+  LinkButton.new("Read my silhouette <strong>blog posts</strong>", "one-hundred-airports", "https://onehundredairports.com/category/projects/terminal-silhouettes/"),
+  LinkButton.new("<strong>GitHub</strong> repository", "github", "https://github.com/bogardpd/terminal_silhouettes")
   ) %>
 
-<p>I wanted to teach myself how to create Scalable Vector Graphics (SVG) drawings, so I started drawing silhouettes of airport terminals and concourses that <%= link_to "I’ve visited", 'http://www.flighthistorian.com/airports' %>.</p>
+<p>I wanted to teach myself how to create Scalable Vector Graphics (SVG) drawings, so I started drawing silhouettes of airport terminals and concourses that <%= link_to "I’ve visited", "http://www.flighthistorian.com/airports" %>.</p>
 
 <h2>Tools</h2>
 
@@ -35,7 +35,7 @@
 <% @terminals.each do |iata, name| %>
 	<div class="col-lg-6 terminal-silhouette-container">
 		<h3><%= name %>&emsp;<%= iata %></h3>
-		<div class="terminal-silhouette-preview"><%= link_to(image_tag("#{@aws_root}/png-portfolio/#{iata}.png", alt: iata, class: "img-responsive terminal-silhouette-preview"), "files/terminal-silhouettes/png/#{iata}.png") %></div>
+		<div class="terminal-silhouette-preview"><%= link_to(image_tag("#{@aws_root}/png-portfolio/#{iata}.png", alt: iata, class: "img-responsive terminal-silhouette-preview"), "#{@aws_root}/png/#{iata}.png") %></div>
 		<div class="terminal-silhouette-links"><%= link_to "png", "#{@aws_root}/png/#{iata}.png" %> &middot; <%= link_to "svg", "#{@aws_root}/svg/#{iata}.svg" %></div>
 	</div>
 <% end %>
