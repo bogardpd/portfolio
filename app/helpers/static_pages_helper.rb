@@ -14,12 +14,12 @@ module StaticPagesHelper
       :screenshot     => %w(screenshot)
     }
     classes.concat(extra_classes[type]) if extra_classes[type]
-    path = "https://s3.us-east-2.amazonaws.com/pbogardcom-images/#{path}"
+    path = PortfolioImage::ROOT_PATH + path
     image = image_tag(path, class: classes.join(' '), alt: alt)
     if (href)
       image = link_to(image, href, target: "_blank")
     elsif (type == :screenshot || type == :osx_screenshot)
-      image = link_to(image, image_path(path)) 
+      image = link_to(image, path) 
     end
     caption = "<figcaption>#{caption}</figcaption>" if caption.present?
     attribution = %Q(<figcaption class="attribution">Image Credit: #{attribution}</figcaption>) if attribution.present?
@@ -28,10 +28,10 @@ module StaticPagesHelper
   
   # Returns an embedded YouTube video.
   def youtube_embed(video_id)
-    html = "<div class=\"row\">"
-    html += "<div class=\"col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2\">"
-    html += "<div class=\"embed-responsive embed-responsive-4by3\">"
-    html += "<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/embed/#{video_id}\" frameborder=\"0\" allowfullscreen></iframe>"
+    html = %Q(<div class="row">)
+    html += %Q(<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">)
+    html += %Q(<div class="embed-responsive embed-responsive-4by3">)
+    html += %Q(<iframe width="420" height="315" src="https://www.youtube.com/embed/#{video_id}" frameborder="0" allowfullscreen></iframe>)
     html += "</div></div></div>"
     html.html_safe
   end

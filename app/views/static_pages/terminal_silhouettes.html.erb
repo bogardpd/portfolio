@@ -35,8 +35,8 @@
 <% @terminals.each do |iata, name| %>
 	<div class="col-lg-6 terminal-silhouette-container">
 		<h3><%= name %>&emsp;<%= iata %></h3>
-		<div class="terminal-silhouette-preview"><%= link_to(image_tag("#{@aws_root}/png-portfolio/#{iata}.png", alt: iata, class: "img-responsive terminal-silhouette-preview"), "#{@aws_root}/png/#{iata}.png") %></div>
-		<div class="terminal-silhouette-links"><%= link_to "png", "#{@aws_root}/png/#{iata}.png" %> &middot; <%= link_to "svg", "#{@aws_root}/svg/#{iata}.svg" %></div>
+		<div class="terminal-silhouette-preview"><%= link_to(image_tag("#{@ts_root}/png-portfolio/#{iata}.png", alt: iata, class: "img-responsive terminal-silhouette-preview"), "#{@ts_root}/png/#{iata}.png") %></div>
+		<div class="terminal-silhouette-links"><%= link_to "png", "#{@ts_root}/png/#{iata}.png" %> &middot; <%= link_to "svg", "#{@ts_root}/svg/#{iata}.svg" %></div>
 	</div>
 <% end %>
 </div>

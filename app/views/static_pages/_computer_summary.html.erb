@@ -1,8 +1,7 @@
-<% img_root = "https://s3.us-east-2.amazonaws.com/pbogardcom-images/" %>
 <% img_path = "computers/old/#{computer["name"].parameterize}" %>
 
 <% 
-uri = URI("#{img_root}#{img_path}.png")
+uri = URI("#{PortfolioImage::ROOT_PATH}#{img_path}.png")
 request = Net::HTTP.new(uri.host)
 response = request.request_head(uri.path)
 img = response.code.to_i == 200 ? "#{img_path}.png" : "#{img_path}.jpg" %>

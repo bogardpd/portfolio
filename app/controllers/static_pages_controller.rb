@@ -170,7 +170,7 @@ class StaticPagesController < ApplicationController
   end
   
   def terminal_silhouettes
-    @aws_root = "https://s3.us-east-2.amazonaws.com/pbogardcom-images/projects/terminal-silhouettes"
+    @ts_root = PortfolioImage::ROOT_PATH + "projects/terminal-silhouettes"
     
     @terminals = Hash.new()
     @terminals["ABI"] = "Abilene"
@@ -230,6 +230,7 @@ class StaticPagesController < ApplicationController
     @terminals["YYZ"] = "Toronto (Pearson)"
     
     @terminals = @terminals.sort_by { |iata, name| name }
+    
   end
   
   def time_zone_chart
