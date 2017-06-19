@@ -16,7 +16,7 @@ module ApplicationHelper
   end
   
   def link_header(text, level)
-    %Q(<h#{level} id="#{text.parameterize}">#{link_to(text, params.merge(anchor: text.parameterize), class: "link-header")}</h#{level}>).html_safe
+    %Q(<h#{level} id="#{text.parameterize}">#{link_to(text.html_safe, params.merge(anchor: text.gsub("&amp;", "and").parameterize), class: "link-header")}</h#{level}>).html_safe
   end
   
   # Returns the meta description on a per-page basis.
