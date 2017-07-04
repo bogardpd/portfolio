@@ -439,6 +439,9 @@ p.supplemental {
 	font-size: 80%;
 	margin: 0 0 0 15px;
 	color: $color-text-light;
+  span.vlog-subtitle {
+    font-style: italic;
+  }
 }
 
 p.purchased, p.date {
