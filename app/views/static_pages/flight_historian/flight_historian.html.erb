@@ -30,32 +30,47 @@
 
 <%= link_header "Tools", 2 %>
 
-<table class="table table-striped">
+<table class="table table-striped tools-list">
 	<tbody>
 		<tr>
 			<th scope="row">Languages &amp; Frameworks</th>
-			<td>
-				Ruby on Rails (2.3.1, 5.0.0.1)<br/>
-				HTML<br/>
-				CSS<br/>
-        SCSS<br/>
-			</td>
+			<td><ul>
+				<li>Ruby on Rails (2.3.1, 5.0.0.1)</li>
+				<li>HTML</li>
+				<li>CSS</li>
+        <li>SCSS</li>
+      </ul></td>
 		</tr>
 		<tr>
 			<th scope="row">Database</th>
-			<td>PostgreSQL</td>
+			<td><ul>
+        <li>PostgreSQL</li>
+      </ul></td>
 		</tr>
+    <tr>
+      <th scope="row">APIs</th>
+      <td><ul>
+        <li><%= link_to "Great Circle Mapper", "http://www.gcmap.com/", target: "_blank" %></li>
+        <li><%= link_to "FlightXML", "https://flightaware.com/commercial/flightxml/", target: "_blank" %></li>
+      </ul></td>
+    </tr>
 		<tr>
 			<th scope="row">Version Control</th>
-			<td><%= link_to("Git", "https://git-scm.com", target: "_blank") %></td>
+			<td><ul>
+        <li><%= link_to("Git", "https://git-scm.com", target: "_blank") %>
+      </ul></td>
 		</tr>
 		<tr>
 			<th scope="row">Hosting</th>
-			<td><%= link_to("Heroku", "https://www.heroku.com/", target: "_blank") %></td>
+			<td><ul>
+        <li><%= link_to("Heroku", "https://www.heroku.com/", target: "_blank") %></li>
+      </ul></td>
 		</tr>
 		<tr>
 			<th scope="row">Project Management</th>
-			<td><%= link_to("Trello", "https://trello.com/", target: "_blank") %></td>
+			<td><ul>
+        <li><%= link_to("Trello", "https://trello.com/", target: "_blank") %></li>
+      </ul></td>
 		</tr>
 	</tbody>
 </table>
