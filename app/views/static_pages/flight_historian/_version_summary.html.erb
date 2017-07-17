@@ -3,23 +3,23 @@
   	<tbody>
   		<tr>
   			<th scope="row">Release Date</th>
-  			<td><%= format_date(release_date) %> (<%= time_ago_in_words(release_date) %> ago)</td>
+  			<td><ul><li><%= format_date(release_date) %> (<%= time_ago_in_words(release_date) %> ago)</li></ul></td>
   		</tr>
   		<tr>
   			<th scope="row">Repository</th>
-  			<td><%= link_to "github.com/bogardpd/flight_log", "https://github.com/#{github_repo}", target: "_blank" %>
+  			<td><ul><li><%= link_to "github.com/bogardpd/flight_log", "https://github.com/#{github_repo}", target: "_blank" %>
           <% if local_assigns[:git_sha] %>
             (<%= link_to git_sha[0,10], "https://github.com/#{github_repo}/tree/#{git_sha}", target: "_blank" %>)
           <% end %>
-        </td>
+        </li></ul></td>
   		</tr>
   		<tr>
   			<th scope="row">Specification<%= "s" unless specs.count == 1 %></th>
-  			<td>
+  			<td><ul>
           <%= specs.map{|path|
-            DownloadButton.new(path).plain_link
-          }.join("<br/>").html_safe %>
-        </td>
+            "<li>#{DownloadButton.new(path).plain_link}</li>"
+          }.join("").html_safe %>
+        </ul></td>
   		</tr>
   	</tbody>
   </table>
