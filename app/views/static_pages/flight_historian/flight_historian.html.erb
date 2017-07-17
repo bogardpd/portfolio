@@ -26,6 +26,9 @@
   </ul>
   <li>Shows maps of all flights, or all flights that meet a specific criteria</li>
   <li>Stores and <%= link_to "parses", boarding_pass_parser_path %> boarding pass barcode data for each flight</li>
+  <ul>
+    <li>Automatically creates new flights in the database from emailed digital boarding pass data, supplemented by FlightAware <%= link_to "FlightXML", "https://flightaware.com/commercial/flightxml/", target: "_blank" %> lookups</li>
+  </ul>
 </ul>
 
 <%= link_header "Tools", 2 %>
