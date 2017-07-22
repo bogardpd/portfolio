@@ -176,6 +176,7 @@ class StaticPagesController < ApplicationController
     @terminals["ABI"] = "Abilene"
     @terminals["AMA"] = "Amarillo"
     @terminals["ATL"] = "Atlanta"
+    @terminals["BFL"] = "Bakersfield"
     @terminals["BOS"] = "Boston"
     @terminals["BWI"] = "Baltimore"
     @terminals["BUR"] = "Burbank"
