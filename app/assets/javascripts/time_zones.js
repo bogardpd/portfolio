@@ -927,53 +927,56 @@ function hideHover() {
 $(function() {
   var query, data, title, selectedSize;
   query = {};
-  location.search.slice(1).split("&").forEach(function(pair) {
-    pair = pair.split("=");
-    query[pair[0]] = (pair[1] || "");
-  });
   
-  title = (query.title === undefined) ? "" : decodeStringFromQuery(query.title);
+  if ($("#component-chart").length) {
+    location.search.slice(1).split("&").forEach(function(pair) {
+      pair = pair.split("=");
+      query[pair[0]] = (pair[1] || "");
+    });
   
-  selectedSize = $("#field-size").val().split(",");
-  chart.updateSize(selectedSize[0],selectedSize[1]);
-  if (query.data === undefined) {
-    $("#fullscreen-buttons").hide();
-    $("#fullscreen-link").addClass("disabled");
-    createTableRows(3);
-    $("#field-title").val(title);
-  } else {
-    if (query.edit === undefined) {
-      $("#navbar").appendTo("body");
-      $("#component-chart").appendTo("body");
-      $(".container").remove();
-      $("#edit-buttons").hide();
-      $("#edit-link").attr("href", [location.protocol, "//", location.host, location.pathname, "?data=", query.data, "&title=", encodeStringForQuery(title), "&edit=true"].join(""));
-      
-      chart.locations = decodeData(query.data);
-      chart.title = title;
-      chart.updateSize($(window).width(),($(window).height()-$("#navbar").height())*0.98);
-      $(window).on("resize", function() {
-        chart.updateSize($(window).width(),($(window).height()-$("#navbar").height())*0.98);
-        chart.update();
-      });
-    } else {
+    title = (query.title === undefined) ? "" : decodeStringFromQuery(query.title);
+  
+    selectedSize = $("#field-size").val().split(",");
+    chart.updateSize(selectedSize[0],selectedSize[1]);
+    if (query.data === undefined) {
       $("#fullscreen-buttons").hide();
-      data = JSON.parse(JSON.stringify(decodeData(query.data)));
-      createTableRows(data.length);
-      populateTable(data);
+      $("#fullscreen-link").addClass("disabled");
+      createTableRows(3);
       $("#field-title").val(title);
+    } else {
+      if (query.edit === undefined) {
+        $("#navbar").appendTo("body");
+        $("#component-chart").appendTo("body");
+        $(".container").remove();
+        $("#edit-buttons").hide();
+        $("#edit-link").attr("href", [location.protocol, "//", location.host, location.pathname, "?data=", query.data, "&title=", encodeStringForQuery(title), "&edit=true"].join(""));
+      
+        chart.locations = decodeData(query.data);
+        chart.title = title;
+        chart.updateSize($(window).width(),($(window).height()-$("#navbar").height())*0.98);
+        $(window).on("resize", function() {
+          chart.updateSize($(window).width(),($(window).height()-$("#navbar").height())*0.98);
+          chart.update();
+        });
+      } else {
+        $("#fullscreen-buttons").hide();
+        data = JSON.parse(JSON.stringify(decodeData(query.data)));
+        createTableRows(data.length);
+        populateTable(data);
+        $("#field-title").val(title);
+      }
     }
-  }
   
-  setEventTriggers();
-  chart.update();
-  if (query.data !== undefined && query.edit !== undefined) {
-    updatePageLinks();
-  }
+    setEventTriggers();
+    chart.update();
+    if (query.data !== undefined && query.edit !== undefined) {
+      updatePageLinks();
+    }
   
-  validateDates();
-  $("#component-title div.input").hide();
-  $("#js-warning").remove();
-  $(".hidden-by-default").show();
+    validateDates();
+    $("#component-title div.input").hide();
+    $("#js-warning").remove();
+    $(".hidden-by-default").show();
+  }  
   
 });
