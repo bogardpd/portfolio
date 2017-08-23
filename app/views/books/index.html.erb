@@ -32,13 +32,13 @@
   
   <% if @currently_reading.any? %>
     <% page_count = @currently_reading.map{|x| x.page_count || 0}.reduce(0){|sum,x| sum+x} %>
-    <h2 id="current">Currently Reading<br/><small><%= pluralize(@currently_reading.length, "book") %><%= " &middot; ".html_safe << number_with_delimiter(page_count, delimeter: ",") << " page".pluralize(page_count) if page_count > 0 %></small></h2>
+    <h2 id="current">Currently Reading&ensp;<small><%= pluralize(@currently_reading.length, "book") %><%= " &middot; ".html_safe << number_with_delimiter(page_count, delimeter: ",") << " page".pluralize(page_count) if page_count > 0 %></small></h2>
     <%= render 'table', book_collection: @currently_reading %>
   <% end %>
 
   <% @books_by_year.each do |year, books| %>
     <% page_count = books.map{|x| x.page_count || 0}.reduce(0){|sum,x| sum+x} %>
-    <h2 id="<%= year %>">Completed in <%= year %><br/><small><%= pluralize(books.length, "book") %><%= " &middot; ".html_safe << number_with_delimiter(page_count, delimeter: ",") << " page".pluralize(page_count) if page_count > 0 %></small></h2>
+    <h2 id="<%= year %>">Completed in <%= year %>&ensp;<small><%= pluralize(books.length, "book") %><%= " &middot; ".html_safe << number_with_delimiter(page_count, delimeter: ",") << " page".pluralize(page_count) if page_count > 0 %></small></h2>
     <%= render 'table', book_collection: books %>
   <% end %>
 

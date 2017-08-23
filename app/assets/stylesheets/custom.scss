@@ -463,19 +463,31 @@ p.purchased, p.date {
 td.reading-title {
 	width: 60%;
 	font-style: italic;
-	span {
+	p {
+	  margin: 0;
+	}
+  p.subtitle {
 		font-size: 80%;
 		font-weight: 300;
-	}
+    line-height: 1.5em;
+  }
 }
 
 td.reading-author {
+  li {
+    margin-bottom: 0.5em;
+    line-height: 1.3em;
+  }
+  li:last-child {
+    margin-bottom: 0;
+  }
 }
 
 td.reading-pages {
   width: 4em;
   text-align: center;
   font-weight: 300;
+  font-style: italic;
   color: $color-text-light;
 }
 

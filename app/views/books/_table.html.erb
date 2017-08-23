@@ -14,16 +14,18 @@
       <% book_collection.each do |book| %>
         <tr>
           <td class="reading-title">
-          	<% if book.amazon_link %>
-          		<%= link_to book.title, book.amazon_link %>
-          	<% else %>
-          		<%= book.title %>
-          	<% end %>
+          	<p class="title">
+              <% if book.amazon_link %>
+          		  <%= link_to book.title, book.amazon_link %>
+            	<% else %>
+            		<%= book.title %>
+            	<% end %>
+            </p>
           	<% if book.subtitle %>
-          		<br/><span><%= book.subtitle %></span>
+          		<p class="subtitle"><%= book.subtitle %></p>
           	<% end %>
           </td>
-          <td class="reading-author"><%= book.author.gsub("\n", "<br/>").html_safe %></td>
+          <td class="reading-author"><ul class="list-unstyled"><%= book.author.split("\n").map{|a| "<li>#{a}</li>"}.join.html_safe %></ul></td>
           <td class="reading-pages">
             <%= number_with_delimiter(book.page_count, delimeter: ",") %>
           </td>
