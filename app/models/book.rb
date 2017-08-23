@@ -1,6 +1,7 @@
 class Book < ActiveRecord::Base
   validates :title, presence: true
   validates :author, presence: true
+  validates :page_count, numericality: { only_integer: true }, allow_blank: true
   
   # Returns a link to the book on the Amazon Kindle store, or nil if there is no link.
   def amazon_link

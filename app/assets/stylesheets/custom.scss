@@ -472,6 +472,13 @@ td.reading-title {
 td.reading-author {
 }
 
+td.reading-pages {
+  width: 4em;
+  text-align: center;
+  font-weight: 300;
+  color: $color-text-light;
+}
+
 td.reading-edit {
   width: 50px;
   text-align: right;

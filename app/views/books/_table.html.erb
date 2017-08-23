@@ -4,6 +4,7 @@
   		<tr>
   			<th class="reading-title">Title</th>
   			<th class="reading-author">Author</th>
+  			<th class="reading-pages">Pages</th>
         <% if logged_in? %>
           <th class="reading-edit"></th>
         <% end %>
@@ -23,6 +24,9 @@
           	<% end %>
           </td>
           <td class="reading-author"><%= book.author.gsub("\n", "<br/>").html_safe %></td>
+          <td class="reading-pages">
+            <%= number_with_delimiter(book.page_count, delimeter: ",") %>
+          </td>
           <% if logged_in? %>
             <td class="reading-edit">
               <%= link_to("<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, edit_book_path(book), title: "Edit #{book.title}", class: "btn btn-default") %>
