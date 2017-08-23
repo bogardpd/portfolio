@@ -465,18 +465,19 @@ td.reading-title {
 	font-style: italic;
 	p {
 	  margin: 0;
+    line-height: 1.6em;
 	}
   p.subtitle {
 		font-size: 80%;
 		font-weight: 300;
-    line-height: 1.5em;
   }
 }
 
 td.reading-author {
   li {
-    margin-bottom: 0.5em;
-    line-height: 1.3em;
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    line-height: 1.6em;
   }
   li:last-child {
     margin-bottom: 0;
