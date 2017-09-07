@@ -345,12 +345,12 @@ footer {
 div.cover-row {
 	a {
 		margin-bottom: 10px;
+		border-radius: 5px;
 	}
 	a:hover {
 		text-decoration: none;
 		background-color: $color-background-light;
 		border: 1px solid $color-border;
-		border-radius: 5px;
 	}
 }
 
@@ -518,6 +518,39 @@ span.card-description {
   font-weight: 300;
   font-style: italic;
 }
+
+$color-pax-aus:   #FFAE00;
+$color-pax-east:  #D9272D;
+$color-pax-south: #FF7600;
+$color-pax-west:  #007DBB;
+
+@mixin pax($color-base) {
+  a {
+    background: $color-base;
+    background: linear-gradient($color-base, darken($color-base, 5%));
+    border: 1px solid lighten($color-base, 10%);
+    &:hover {
+      background: lighten($color-base, 10%);
+      background: linear-gradient(lighten($color-base, 10%), $color-base);
+      border: 1px solid lighten($color-base, 20%);
+    }
+  }
+  h3, p {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em darken($color-base, 10%);
+  }
+  img {
+    border-color: darken($color-base, 10%);
+    box-shadow: none;
+  }
+}
+
+div.pax-aus   { @include pax($color-pax-aus);   }
+div.pax-east  { @include pax($color-pax-east);  }
+div.pax-south { @include pax($color-pax-south); }
+div.pax-west  { @include pax($color-pax-west);  }
+
+
 
 /* Terminal Silhouettes */
 
