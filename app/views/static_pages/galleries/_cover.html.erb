@@ -4,7 +4,7 @@
 	<%= link_to(("<h3>#{name}</h3>"	+
 	image_tag("#{PortfolioImage::ROOT_PATH}photos/covers/#{name.parameterize}.jpg", class: 'project-icon', alt: name) +
 	%Q(<p><span class="location">#{location}</span><br/>#{dates}</p>)).html_safe,
-	starmen_con_gallery_path(gallery: name.parameterize),
+	polymorphic_url(gallery, gallery: name.parameterize),
 	class: 'btn btn-link btn-block' )
 	%>
 </div>

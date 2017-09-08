@@ -153,6 +153,9 @@ class StaticPagesController < ApplicationController
   def oreo
   end
   
+  def pax
+  end
+  
   def reading_list
   end
   

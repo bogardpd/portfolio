@@ -8,12 +8,12 @@
 <p>Since the early 2000s, staff, moderators, and senior members of the <cite>EarthBound</cite> fansite <%= link_to "Starmen.Net", "http://starmen.net" %> have taken a group vacation together nearly every year. Generally, these involve splitting the costs of a large rental home among a few dozen people. I have attended a number of these conventions.</p>
 
 <div class="row cover-row">
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Washingcon", location: "Marysville, Washington", dates: "15–23 July 2007"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Chicagocon", location: "Michigan City, Indiana", dates: "12–19 July 2008"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Yes We Con", location: "Lake George, New York", dates: "7–14 June 2009"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Gatlincon", location: "Gatlinburg, Tennessee", dates: "25–31 July 2010"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Utacon", location: "Herriman, Utah", dates: "24–31 July 2011"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Flagstaff Con", location: "Flagstaff, Arizona", dates: "22–29 June 2014"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Washingcon", location: "Marysville, Washington", dates: "15–23 July 2007"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Chicagocon", location: "Michigan City, Indiana", dates: "12–19 July 2008"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Yes We Con", location: "Lake George, New York", dates: "7–14 June 2009"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Gatlincon", location: "Gatlinburg, Tennessee", dates: "25–31 July 2010"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Utacon", location: "Herriman, Utah", dates: "24–31 July 2011"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Flagstaff Con", location: "Flagstaff, Arizona", dates: "22–29 June 2014"} %>
 </div>
 
 <%= link_header "Mini Cons", 2 %>
@@ -21,8 +21,8 @@
 <p>There have been several other smaller, shorter meetups of Starmen Con people that I’ve attended.</p>
 
 <div class="row cover-row">
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Indiana Minicon", location: "Lafayette &amp; Kokomo, Indiana", dates: "19–20 August 2006"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Applecon", location: "Appleton, Wisconsin", dates: "2–4 January 2009"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Indiana Minicon", location: "Lafayette &amp; Kokomo, Indiana", dates: "19–20 August 2006"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Applecon", location: "Appleton, Wisconsin", dates: "2–4 January 2009"} %>
 </div>
 
 <%= link_header "Camp Fangamer", 2 %>
@@ -30,21 +30,11 @@
 <p><%= link_to "Fangamer", "https://www.fangamer.com/" %> was founded by a number of senior members from Starmen.Net. They hosted <cite>EarthBound</cite>- and <cite>Mother 3</cite>-themed conventions in 2015 and 2016.</p>
 
 <div class="row cover-row">
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Camp Fangamer 2015", location: "Tucson, Arizona", dates: "18–19 July 2015"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "Camp Videogamely 2016", location: "Tucson, Arizona", dates: "29–31 July 2016"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Camp Fangamer 2015", location: "Tucson, Arizona", dates: "18–19 July 2015"} %>
+  <%= render partial: "static_pages/galleries/cover", locals: {gallery: :starmen_con_gallery, name: "Camp Videogamely 2016", location: "Tucson, Arizona", dates: "29–31 July 2016"} %>
 </div>
 
 <%= link_header "PAX", 2 %>
 
-<p>Fangamer is also a frequent exhibitor at <%= link_to "Penny Arcade Expo", "http://www.paxsite.com/" %>. I’ve attended PAX a few times.</p>
+<p>Fangamer is also a frequent exhibitor at <%= link_to "Penny Arcade Expo", "http://www.paxsite.com/" %>. <%= link_to "I’ve attended PAX a few times.", pax_path %></p>
 
-<div class="row cover-row">
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "PAX Prime 2010", location: "Seattle, Washington", dates: "3–5 September 2010", theme: "pax-west"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "PAX Prime 2011", location: "Seattle, Washington", dates: "26–28 August 2011", theme: "pax-west"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "PAX Prime 2012", location: "Seattle, Washington", dates: "31 August–2 September 2012", theme: "pax-west"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "PAX East 2013", location: "Boston, Massachusetts", dates: "22–24 March 2013", theme: "pax-east"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "PAX Prime 2013", location: "Seattle, Washington", dates: "30 August–2 September 2013", theme: "pax-west"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "PAX East 2014", location: "Boston, Massachusetts", dates: "11–13 April 2014", theme: "pax-east"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "PAX East 2015", location: "Boston, Massachusetts", dates: "6–8 March 2015", theme: "pax-east"} %>
-  <%= render partial: "static_pages/galleries/cover", locals: {name: "PAX West 2017", location: "Seattle, Washington", dates: "1–4 September 2017", theme: "pax-west"} %>
-</div>
