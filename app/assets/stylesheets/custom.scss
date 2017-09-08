@@ -540,7 +540,7 @@ $color-pax-west:  #007DBB;
     text-shadow: 0.05em 0.05em darken($color-base, 10%);
   }
   img {
-    border-color: darken($color-base, 10%);
+    border: 1px groove darken($color-base, 10%);
     box-shadow: none;
   }
 }
