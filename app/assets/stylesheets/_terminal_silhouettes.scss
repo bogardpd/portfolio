@@ -1,0 +1,26 @@
+/******************************************************************************
+* TERMINAL SILHOUETTES                                                        *
+* Styles for terminal silhouettes.                                            *
+******************************************************************************/
+
+div.terminal-silhouette-container {
+	h3 {
+		text-align: center;
+	}
+}
+
+div.terminal-silhouette-links {
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 40px;
+}
+
+div.terminal-silhouette-preview {
+	max-width: 500px;
+	padding: 0;
+	margin: 0 auto;
+}
+
+img.terminal-silhouette-preview {
+	border: 1px solid $color-border;
+}

@@ -1,9 +1,25 @@
-/* Bootstrap */
-@import "bootstrap-sprockets";
-@import "bootstrap";
+/* Bootstrap styles */
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+
+/* Variables */
+  @import "variables";
 
 /* Base styles */
-@import "base";
+  @import "base";
 
+/* Layout styles */
+  @import "header";
+  @import "footer";
+  
 /* Component styles */
-@import "pax";
+  @import "computers";
+  @import "covers";
+  @import "forms";
+  @import "galleries";
+  @import "pax";
+  @import "projects";
+  @import "reading_list";
+  @import "resume";
+  @import "stephenvlog";
+  @import "terminal_silhouettes";

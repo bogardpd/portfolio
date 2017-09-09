@@ -1,0 +1,36 @@
+/******************************************************************************
+* COVERS                                                                      *
+* Styles for grids of page cover tiles.                                       *
+******************************************************************************/
+
+div.cover-row {
+	a {
+		margin-bottom: 10px;
+		border-radius: 5px;
+	}
+	a:hover {
+		text-decoration: none;
+		background-color: $color-background-light;
+		border: 1px solid $color-border;
+	}
+}
+
+div.cover {
+	text-align: center;
+	h2 {
+		margin-top: 10px;
+	}
+	p {
+		margin-top: 10px;
+    margin-bottom: 10px;
+	}
+  span.location {
+    font-weight: 700;
+  }
+	a {
+		color: $color-primary;
+	}
+	a:hover {
+		color: $color-primary;
+	}
+}

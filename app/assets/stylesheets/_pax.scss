@@ -1,6 +1,6 @@
 /******************************************************************************
 * PAX                                                                         *
-* This stylesheet contains styles for PAX pages and themes.                   *
+* Styles for PAX pages.                                                       *
 ******************************************************************************/
 
 $color-pax-aus:   #FFAE00;
@@ -13,16 +13,19 @@ $color-pax-west:  #007DBB;
     background: $color-base;
     background: linear-gradient($color-base, darken($color-base, 5%));
     border: 1px solid lighten($color-base, 10%);
+
     &:hover {
       background: lighten($color-base, 10%);
       background: linear-gradient(lighten($color-base, 10%), $color-base);
       border: 1px solid lighten($color-base, 20%);
     }
   }
+
   h3, p {
     color: #FFFFFF;
     text-shadow: 0.05em 0.05em darken($color-base, 10%);
   }
+
   img {
     border: 1px groove darken($color-base, 10%);
     box-shadow: none;
@@ -30,8 +33,6 @@ $color-pax-west:  #007DBB;
 }
 
 @mixin pax-page($color-base) {
-  
-  
   a {
     color: darken($color-base, 10%);
   }

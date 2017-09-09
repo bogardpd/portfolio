@@ -1,0 +1,44 @@
+/******************************************************************************
+* COMPUTERS                                                                   *
+* Styles for computer description pages.                                      *
+******************************************************************************/
+
+ul.component {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	
+	li {
+		margin-bottom: 10px;
+	}
+	p {
+		margin: 0;
+		font-weight: normal;		
+	}
+
+	p.recent {
+		font-weight: bold;
+		color: $color-text-light-good;
+	}
+	span.device_name {
+		font-weight: 700;
+	}
+	span.unpictured {
+		font-style: italic;
+	}
+}
+
+p.supplemental {
+	font-size: 80%;
+	margin: 0 0 0 15px;
+	color: $color-text-light;
+  span.vlog-subtitle {
+    font-style: italic;
+  }
+}
+
+p.purchased, p.date {
+	font-size: 70%;
+	margin: 0 0 0 15px;
+	color: $color-text-light;
+}

@@ -1,0 +1,90 @@
+/******************************************************************************
+* HEADER                                                                      *
+* Header styles.                                                              *
+******************************************************************************/
+
+header {
+	padding: 5px;
+}
+
+/* navbar */
+/* Navbar overwrite CSS modified from https://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3# */
+.navbar-default {
+    background-color: $color-primary;
+    border-color: $color-primary-extra-light;
+		
+		/* link */
+		
+		a {
+			text-decoration: none;
+		}
+		
+		.navbar-nav > li > a,
+		.navbar-nav > li > a:focus {
+		    color: $color-inverse-text;
+		}
+		.navbar-nav > li > a:hover {
+		    color: $color-inverse-text-highlight;
+		}
+		
+		.navbar-nav > .active > a, 
+		.navbar-nav > .active > a:hover, 
+		.navbar-nav > .active > a:focus {
+		    color: $color-inverse-text;
+		    background-color: $color-primary-extra-light;
+		}
+		
+		.selected {
+			font-weight: bold;
+		}
+		
+				
+		.navbar-nav > .open > a, 
+		.navbar-nav > .open > a:hover, 
+		.navbar-nav > .open > a:focus {
+		    color: $color-inverse-text;
+		    background-color: $color-primary-dark;
+		}
+		
+		/* caret */
+		.navbar-nav > .dropdown > a .caret {
+		    border-top-color: $color-inverse-text;
+		    border-bottom-color: $color-inverse-text;
+		}
+		.navbar-nav > .dropdown > a:hover .caret,
+		.navbar-nav > .dropdown > a:focus .caret {
+		    border-top-color: $color-inverse-text-highlight;
+		    border-bottom-color: $color-inverse-text-highlight;
+		}
+		.navbar-nav > .open > a .caret, 
+		.navbar-nav > .open > a:hover .caret, 
+		.navbar-nav > .open > a:focus .caret {
+		    border-top-color: $color-inverse-text;
+		    border-bottom-color: $color-inverse-text;
+		}
+		
+		/* mobile version */
+		.navbar-toggle {
+		    border-color: $color-primary-dark;
+		}
+		.navbar-toggle:hover,
+		.navbar-toggle:focus {
+		    background-color: $color-primary;
+		}
+		.navbar-toggle .icon-bar {
+		    background-color: $color-inverse-text;
+		}
+}
+
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav .open {
+		.dropdown-menu > li > a {
+        color: $color-inverse-text;
+    }
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus {
+        color: $color-inverse-text-highlight;
+    }
+	}
+		
+}
