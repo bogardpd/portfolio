@@ -8,7 +8,7 @@ $color-pax-east:  #D9272D;
 $color-pax-south: #FF7600;
 $color-pax-west:  #007DBB;
 
-@mixin pax($color-base) {
+@mixin pax-cover($color-base) {
   a {
     background: $color-base;
     background: linear-gradient($color-base, darken($color-base, 5%));
@@ -29,7 +29,37 @@ $color-pax-west:  #007DBB;
   }
 }
 
-div.pax-aus   { @include pax($color-pax-aus);   }
-div.pax-east  { @include pax($color-pax-east);  }
-div.pax-south { @include pax($color-pax-south); }
-div.pax-west  { @include pax($color-pax-west);  }
+@mixin pax-page($color-base) {
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: 0 0 0.1em $color-base;
+  }
+  
+  a {
+    color: darken($color-base, 10%);
+  }
+  
+  a.btn-primary {
+    background-color: $color-base;
+    border-color: darken($color-base, 10%);
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em darken($color-base, 10%);
+  }
+  
+  figure {
+    background-color: lighten($color-base, 45%);
+  }
+  
+  img.project {
+    border: 2px solid $color-base;
+  }
+}
+
+div.pax-aus    { @include pax-cover($color-pax-aus);   }
+div.pax-east   { @include pax-cover($color-pax-east);  }
+div.pax-south  { @include pax-cover($color-pax-south); }
+div.pax-west   { @include pax-cover($color-pax-west);  }
+
+body.pax-aus   { @include pax-page($color-pax-aus);   }
+body.pax-east  { @include pax-page($color-pax-east);  }
+body.pax-south { @include pax-page($color-pax-south); }
+body.pax-west  { @include pax-page($color-pax-west);  }
