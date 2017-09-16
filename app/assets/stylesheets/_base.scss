@@ -3,6 +3,53 @@
 * Base styles for Paul Bogard’s Portfolio.                                    *
 ******************************************************************************/
 
+@mixin page-theme($color-base) {
+  a {
+    color: darken($color-base, 10%);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    text-shadow: 0 0 0.1em $color-base;
+    a {
+      color: $color-text;
+    }
+  }
+  
+  a.btn-primary {
+    background-color: $color-base;
+    border-color: darken($color-base, 10%);
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em darken($color-base, 10%);
+  }
+  
+  figure {
+    background-color: lighten($color-base, 45%);
+  }
+  
+  img.project {
+    border: 2px solid $color-base;
+  }
+  
+  .navbar-default {
+    background-color: $color-base;
+    border-color: lighten($color-base, 10%);
+  }
+  
+	.navbar-nav > .open > a, 
+	.navbar-nav > .open > a:hover, 
+	.navbar-nav > .open > a:focus {
+	    color: $color-inverse-text;
+	    background-color: darken($color-base, 10%)
+	}
+  
+	.navbar-toggle {
+	    border-color: darken($color-base, 10%)
+	}
+	.navbar-toggle:hover,
+	.navbar-toggle:focus {
+	    background-color: $color-base;
+	}
+}
 
 /* universal */
 

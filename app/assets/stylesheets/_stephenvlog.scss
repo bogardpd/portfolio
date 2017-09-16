@@ -3,3 +3,12 @@
 * Styles for Stephenvlog page.                                                *
 ******************************************************************************/
 
+
+body.stephenvlog {
+  @include page-theme($color-theme-stephenvlog);
+}
+
+div.stephenvlog {
+  @include tile-theme($color-theme-stephenvlog);
+}
+

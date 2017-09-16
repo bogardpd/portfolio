@@ -3,6 +3,30 @@
 * Styles for grids of page cover tiles.                                       *
 ******************************************************************************/
 
+@mixin tile-theme($color-base) {
+  a {
+    background: $color-base;
+    background: linear-gradient($color-base, darken($color-base, 5%));
+    border: 1px solid lighten($color-base, 10%);
+
+    &:hover {
+      background: lighten($color-base, 10%);
+      background: linear-gradient(lighten($color-base, 10%), $color-base);
+      border: 1px solid lighten($color-base, 20%);
+    }
+  }
+
+  h3, p {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em darken($color-base, 10%);
+  }
+
+  img {
+    border: 1px groove darken($color-base, 10%);
+    box-shadow: none;
+  }
+}
+
 div.tile {
   text-align: center;
   
@@ -55,4 +79,8 @@ div.tile.tile-widescreen {
     width: 322px;  /* 320 plus 1px border */
     height: 182px; /* 180 plus 1px border */
   }
+}
+
+div.stephenvlog {
+  @include tile-theme($color-theme-stephenvlog);
 }

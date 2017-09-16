@@ -2,7 +2,7 @@
 class VlogTile < Tile
   include ActionView::Helpers
   
-  def initialize(title, youtube_id, date, details=nil, theme=nil)
+  def initialize(title, youtube_id, date, details=nil, theme="stephenvlog")
     @path = "http://www.youtube.com/watch?v=#{youtube_id}"
     @title = title
     @img = "http://img.youtube.com/vi/#{youtube_id}/mqdefault.jpg"
