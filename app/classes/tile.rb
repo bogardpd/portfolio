@@ -37,14 +37,14 @@ class Tile
   end
   
   def tile_classes
-    classes = %w(tile)
-    classes << cols
+    classes = %w(tile col-lg-4 col-sm-6)
+    classes << classes_custom
     classes << @theme if @theme
-    return classes.join(" ")
+    return classes.compact.join(" ")
   end
   
-  def cols
-    return %w(col-lg-4 col-sm-6)
+  def classes_custom
+    return nil
   end
   
   def image_source

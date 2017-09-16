@@ -6,5 +6,5 @@
   ) %>
 
 <div class="row cover-row">
-	<%= Project::LIST.map{|cover| render partial: 'project_cover', locals: cover}.join.html_safe %>
+	<%= Project::LIST.map{|cover| render partial: "project_tile", locals: cover}.join.html_safe %>
 </div>

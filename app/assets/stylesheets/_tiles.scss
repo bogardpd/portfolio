@@ -3,13 +3,11 @@
 * Styles for grids of page cover tiles.                                       *
 ******************************************************************************/
 
-div.cover, div.tile {
-	/* TODO: Make tiles always start at the left side of new rows (clear?) */
+div.tile {
   text-align: center;
   
 	a {
-    height: 22em;
-		margin-bottom: 10px;
+    margin-bottom: 10px;
 		border-radius: 5px;
     color: $color-primary;
     white-space: inherit;
@@ -22,17 +20,15 @@ div.cover, div.tile {
     }
 	}
 	
-	h2 {
-		margin-top: 10px;
-	}
-  
-  h3 {
+	h3 {
     margin: 0.5em 0;
     line-height: 1.4em;
     font-size: 125%;
   }
   
   img {
+    width: 302px;  /* 300 plus 1px border */
+    height: 227px; /* 225 plus 1px border */
   	margin: 10px 0 5px 0;
     border: 1px solid $color-border;
   	border-radius: 5px;
@@ -49,4 +45,14 @@ div.cover, div.tile {
     font-weight: 700;
   }
 	
+}
+
+div.tile.tile-widescreen {
+  a {
+    height: 22em;
+  }
+  img {
+    width: 322px;  /* 320 plus 1px border */
+    height: 182px; /* 180 plus 1px border */
+  }
 }

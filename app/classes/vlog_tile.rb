@@ -12,6 +12,10 @@ class VlogTile < Tile
   
   private
   
+  def classes_custom
+    return %w(tile-widescreen)
+  end
+  
   def video_caption(date, details)
     captions = Array.new
     captions << details if details
