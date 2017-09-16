@@ -1,0 +1,5 @@
+<div class="row">
+<% @vlogs.each do |vlog| %>
+  <%= VlogTile.new(*vlog).show %>
+<% end %>
+</div>

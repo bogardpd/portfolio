@@ -8,12 +8,15 @@
 
 <p>My first appearances on the Vlog were during the 2010 Starmen.Net convention in Gatlinburg, Tennessee. As there were 50 people at that convention, I was only on in the background of a few of the videos.</p>
 
-<ul>
-	<li><%= link_to("Day 245 - 7/27/10", "http://www.youtube.com/watch?v=F1JP-CSq30Y", target: "_blank") %> (3:45)</li>
-	<li><%= link_to("Day 246 - 7/28/10", "http://www.youtube.com/watch?v=CxGFwLkhArU", target: "_blank") %> (5:45)</li>
-	<li><%= link_to("Day 247 - 7/29/10", "http://www.youtube.com/watch?v=662ZZaYX208", target: "_blank") %> (2:51 - 3:36, 4:16 - 5:00)</li>
-	<li><%= link_to("Day 249 - 7/31/10", "http://www.youtube.com/watch?v=PkSIR2DDfXQ", target: "_blank") %> (2:31)</li>
-</ul>
+<%
+@vlogs.clear
+@vlogs.push ["I Can’t Break My Fast", "F1JP-CSq30Y", "2010-07-27", "Day 245"]
+@vlogs.push ["Screw Pancakes, I’m Getting Biscuits", "wX3JjvXZbd0", "2010-07-28", "Day 246"]
+@vlogs.push ["Drugs Are Also Like Babies, Chalk, Screwdrivers, and Lipitor", "662ZZaYX208", "2010-07-29", "Day 247"]
+@vlogs.push ["Con’s Over", "PkSIR2DDfXQ", "2010-07-31", "Day 249"]
+%>
+
+<%= render :partial => "vlog_tiles" %>
 	
 <%= link_header "South Carolina", 2 %>
 	
@@ -21,15 +24,15 @@
 
 <%
 @vlogs.clear
-@vlogs.push ["I Feel Very Overdressed", "WYtoyGu2DcM", "Day 819", "2012-02-21", 38]
-@vlogs.push ["Cadillacs & Dinosaurs", "uqpVvrdTExE", "Day 841", "2012-03-14", 41]
-@vlogs.push ["25 Wings", "vEHcjByTJUg", "Day 891", "2012-05-03", 44]
-@vlogs.push ["Hog Heaven", "6-lg2kFTLw8", "Day 975", "2012-07-26", 52]
-@vlogs.push ["Duck", "1jhCuxHdh7w", "Day 1106", "2012-12-04", 65]
-@vlogs.push ["This is the Future of Gaming", "U1JVbCe2CfU", "Day 1276", "2013-05-23", 69]
+@vlogs.push ["I Feel Very Overdressed", "WYtoyGu2DcM", "2012-02-21", "Day 819"]
+@vlogs.push ["Cadillacs & Dinosaurs", "uqpVvrdTExE", "2012-03-14", "Day 841"]
+@vlogs.push ["25 Wings", "vEHcjByTJUg", "2012-05-03", "Day 891"]
+@vlogs.push ["Hog Heaven", "6-lg2kFTLw8", "2012-07-26", "Day 975"]
+@vlogs.push ["Duck", "1jhCuxHdh7w", "2012-12-04", "Day 1106"]
+@vlogs.push ["This is the Future of Gaming", "U1JVbCe2CfU", "2013-05-23", "Day 1276"]
 %>
 
-<%= render :partial => "vlog_table" %>
+<%= render :partial => "vlog_tiles" %>
 
 <%= link_header "PAX", 2 %>
 
@@ -39,14 +42,14 @@
 
 <%
 @vlogs.clear
-@vlogs.push ["Quadruple and a Half Bus Madness", "oi-R-N6yZKQ", "Day 1010", "2012-08-30", 60]
-@vlogs.push ["Do You Want A Hug?", "erRWjYPWSH4", "Day 1011", "2012-08-31", 60]
-@vlogs.push ["My Mom Makes The Best Rice Krispy Treats, Don’tcha Think?", "N10Gjl0yzYs", "Day 1012", "2012-09-01", 60]
-@vlogs.push ["ICREMTUNA!", "tah0uL3Yw40", "Day 1013", "2012-09-02", 60]
-@vlogs.push ["Every Stump", "0jub9Zbcjb0", "Day 1014", "2012-09-03", 60]
+@vlogs.push ["Quadruple and a Half Bus Madness", "oi-R-N6yZKQ", "2012-08-30", "Day 1010", "pax-west"]
+@vlogs.push ["Do You Want A Hug?", "erRWjYPWSH4", "2012-08-31", "Day 1011", "pax-west"]
+@vlogs.push ["My Mom Makes The Best Rice Krispy Treats, Don’tcha Think?", "N10Gjl0yzYs", "2012-09-01", "Day 1012", "pax-west"]
+@vlogs.push ["ICREMTUNA!", "tah0uL3Yw40", "2012-09-02", "Day 1013", "pax-west"]
+@vlogs.push ["Every Stump", "0jub9Zbcjb0", "2012-09-03", "Day 1014", "pax-west"]
 %>
 
-<%= render :partial => "vlog_table" %>
+<%= render :partial => "vlog_tiles" %>
 
 <%= link_header "PAX East 2013", 3 %>
 
@@ -54,40 +57,42 @@
 
 <%
 @vlogs.clear
-@vlogs.push ["LadyGaga.com/balls", "9seKoZZpQHE", "Day 1215", "2013-03-23", 66]
+@vlogs.push ["LadyGaga.com/balls", "9seKoZZpQHE", "2013-03-23", "Day 1215", "pax-east"]
 %>
 
-<%= render :partial => "vlog_table" %>
+<%= render :partial => "vlog_tiles" %>
 
 <%= link_header "PAX East 2014", 3 %>
 
-  <p>During <%= link_to "PAX East 2014", pax_gallery_path(gallery: "pax-east-2014") %>, I attended a panel with Stephen.</p>
+<p>During <%= link_to "PAX East 2014", pax_gallery_path(gallery: "pax-east-2014") %>, I attended a panel with Stephen.</p>
 
 <%
 @vlogs.clear
-@vlogs.push ["Give Me The Crown!", "Fh1xxgwhWvg", "Day 1600", "2014-04-12", 80]
+@vlogs.push ["Give Me The Crown!", "Fh1xxgwhWvg", "2014-04-12", "Day 1600", "pax-east"]
 %>
 
-<%= render :partial => "vlog_table" %>
+<%= render :partial => "vlog_tiles" %>
 
 <%= link_header "Stephen &amp; Friends", 2 %>
 
+<p>I’ve played online games as part of the <%= link_to "StephenPlays", "https://www.youtube.com/channel/UCSi5T6T7XgnxhkG7N3jmH1A" %> <em>Stephen &amp; Friends</em> series.</p>
+
 <%
 @vlogs.clear
-@vlogs.push ["1kBWC #3 &ndash; “ANARCHY!”", "lmrcgmTDxQM", "Stephen &amp; Friends", "2017-06-17"]
-@vlogs.push ["GTA Online #37 &ndash; “13 PLAYER ROCKET CARS!”", "sItscyZSlNI", "Stephen &amp; Friends", "2017-07-01"]
-@vlogs.push ["1kBWC #4 &ndash; “IN BED!”", "6cvKDbF-hT0", "Stephen &amp; Friends", "2017-07-08"]
+@vlogs.push ["Anarchy!", "lmrcgmTDxQM", "2017-06-17", "1kBWC #3"]
+@vlogs.push ["13 Player Rocket Cars!", "sItscyZSlNI", "2017-07-01", "GTA Online #37"]
+@vlogs.push ["In Bed!", "6cvKDbF-hT0", "2017-07-08", "1kBWC #4"]
 %>
 
-<%= render :partial => "vlog_table" %>
+<%= render :partial => "vlog_tiles" %>
 
 <%= link_header "Other", 2 %>
 
 <%
 @vlogs.clear
-@vlogs.push ["I Officially Like Curry", "YHXNQa_sQl4", "Day 940", "2012-06-21"]
-@vlogs.push ["Secret of Mana", "MK8bxRdkNKU", "Day 958", "2012-07-09"]
-@vlogs.push ["Olympic Gold Medalist in Space Discus", "5USOBbWnyN0", "Day 1713", "2014-08-03"]
+@vlogs.push ["I Officially Like Curry", "YHXNQa_sQl4",  "2012-06-21", "Day 940"]
+@vlogs.push ["Secret of Mana", "MK8bxRdkNKU", "2012-07-09", "Day 958"]
+@vlogs.push ["Olympic Gold Medalist in Space Discus", "5USOBbWnyN0", "2014-08-03", "Day 1713"]
 %>
 
-<%= render :partial => "vlog_table" %>
+<%= render :partial => "vlog_tiles" %>

@@ -1,0 +1,52 @@
+/******************************************************************************
+* COVERS                                                                      *
+* Styles for grids of page cover tiles.                                       *
+******************************************************************************/
+
+div.cover, div.tile {
+	/* TODO: Make tiles always start at the left side of new rows (clear?) */
+  text-align: center;
+  
+	a {
+    height: 22em;
+		margin-bottom: 10px;
+		border-radius: 5px;
+    color: $color-primary;
+    white-space: inherit;
+    
+    &:hover {
+  		text-decoration: none;
+  		background-color: $color-background-light;
+  		border: 1px solid $color-border;
+      color: $color-primary;
+    }
+	}
+	
+	h2 {
+		margin-top: 10px;
+	}
+  
+  h3 {
+    margin: 0.5em 0;
+    line-height: 1.4em;
+    font-size: 125%;
+  }
+  
+  img {
+  	margin: 10px 0 5px 0;
+    border: 1px solid $color-border;
+  	border-radius: 5px;
+  	box-shadow: 1px 1px 2px $color-background-light;
+  }
+  
+	p {
+		margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 300;
+    font-style: italic;
+	}
+  span.location {
+    font-weight: 700;
+  }
+	
+}
