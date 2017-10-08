@@ -89,12 +89,28 @@
 
 <p>I’ve played online games as part of the <%= link_to "StephenPlays", "https://www.youtube.com/user/stephenplays" %> <em>Stephen &amp; Friends</em> series.</p>
 
+<%= link_header "1kBWC", 3 %>
+
 <%
 @vlogs.clear
 @vlogs.push ["Anarchy!", "lmrcgmTDxQM", "2017-06-17", "1kBWC #3"]
-@vlogs.push ["13 Player Rocket Cars!", "sItscyZSlNI", "2017-07-01", "GTA Online #37"]
 @vlogs.push ["In Bed!", "6cvKDbF-hT0", "2017-07-08", "1kBWC #4"]
+%>
+<%= render :partial => "vlog_tiles" %>
+
+<%= link_header "GTA Online", 3 %>
+
+<%
+@vlogs.clear
+@vlogs.push ["13 Player Rocket Cars!", "sItscyZSlNI", "2017-07-01", "GTA Online #37"]
+@vlogs.push ["Bus Surfing Up The Mountain", "EyRFHX9oHJM", "2017-10-07", "GTA Online #40"]
+%>
+<%= render :partial => "vlog_tiles" %>
+
+<%= link_header "Other Games", 3 %>
+
+<%
+@vlogs.clear
 @vlogs.push ["4v4 Aerial Dogfights!", "dn-XauBndU4", "2017-09-24", "Sky Knights"]
 %>
-
 <%= render :partial => "vlog_tiles" %>
