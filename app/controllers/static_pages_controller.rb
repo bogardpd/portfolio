@@ -195,6 +195,7 @@ class StaticPagesController < ApplicationController
     @terminals["DEN"] = "Denver"
     @terminals["DSM"] = "Des Moines"
     @terminals["DFW"] = "Dallas/Fort Worth"
+    @terminals["DTW"] = "Detroit"
     @terminals["EWR"] = "Newark"
     @terminals["FLG"] = "Flagstaff"
     @terminals["FRA"] = "Frankfurt"
