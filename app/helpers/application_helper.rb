@@ -17,7 +17,7 @@ module ApplicationHelper
   end
   
   def link_header(text, level)
-    %Q(<h#{level} id="#{text.parameterize}">#{link_to(text.html_safe, params.merge(anchor: text.gsub("&amp;", "and").parameterize), class: "link-header")}</h#{level}>).html_safe
+    %Q(<h#{level} id="#{anchorize(text)}">#{link_to(text.html_safe, params.merge(anchor: anchorize(text)), class: "link-header")}</h#{level}>).html_safe
   end
   
   # Returns the meta description on a per-page basis.
@@ -37,6 +37,11 @@ module ApplicationHelper
        html = "<li>#{link_to(text, path)}</li>"
      end
      html.html_safe
+  end
+  
+  # Formats text for use in anchor/id attributes
+  def anchorize(text)
+    return text.gsub("&amp;", "and").parameterize
   end
   
 end
