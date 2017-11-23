@@ -182,6 +182,7 @@ class StaticPagesController < ApplicationController
     @terminals["AUS"] = "Austin"
     @terminals["AVP"] = "Wilkes Barre/Scranton"
     @terminals["BFL"] = "Bakersfield"
+    @terminals["BNA"] = "Nashville"
     @terminals["BOS"] = "Boston"
     @terminals["BWI"] = "Baltimore"
     @terminals["BUR"] = "Burbank"
