@@ -7,6 +7,14 @@ class StaticPagesController < ApplicationController
   end
   
   def airport_code_puns
+    @puns = [
+      ["DAY", "Dayton", [
+        "It’s a great <code>DAY</code> to recycle!"
+      ]],
+      ["STL", "St. Louis", [
+        "Every day we’re hu<code>STL</code>ing for you"
+      ]]
+    ]
   end
   
   def boarding_pass_parser

@@ -16,8 +16,10 @@ module ApplicationHelper
     input_date.strftime("%e %b %Y").strip
   end
   
-  def link_header(text, level)
-    %Q(<h#{level} id="#{anchorize(text)}">#{link_to(text.html_safe, params.merge(anchor: anchorize(text)), class: "link-header")}</h#{level}>).html_safe
+  def link_header(text, level, subtext=nil)
+    header = text
+    header += " <small>#{subtext}</small>" if subtext.present?
+    %Q(<h#{level} id="#{anchorize(text)}">#{link_to(header.html_safe, params.merge(anchor: anchorize(text)), class: "link-header")}</h#{level}>).html_safe
   end
   
   # Returns the meta description on a per-page basis.
@@ -41,7 +43,7 @@ module ApplicationHelper
   
   # Formats text for use in anchor/id attributes
   def anchorize(text)
-    return text.gsub("&amp;", "and").parameterize
+    return text.gsub("&amp;", "and").gsub(/['‘’"“”]/, "").parameterize
   end
   
 end
