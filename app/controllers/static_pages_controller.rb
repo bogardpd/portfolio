@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
   def about
   end
   
+  def airport_code_puns
+  end
+  
   def boarding_pass_parser
   end
   

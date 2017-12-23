@@ -1,0 +1,18 @@
+/******************************************************************************
+* AIRPORT CODE PUNS                                                           *
+* Styles for airport code puns                                                *
+******************************************************************************/
+
+div.airport-code-pun {
+  text-align: center;
+  img {
+    width: 512px;
+    margin: 0 auto;
+  }
+  code {
+    padding: 0.15em;
+    margin: 0 0.1em;
+    background-color: $color-text;
+    color: #FFFFFF;
+  }
+}

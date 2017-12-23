@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get "resume" => "static_pages#resume"
   
   # Other Pages
+  get "airport-code-puns" => "static_pages#airport_code_puns"
   get "computers"       => "static_pages#computers"
   get "computers/old"   => "static_pages#old_computers", :as => :old_computers
   get "ingress-mosaics" => "static_pages#ingress_mosaics"
