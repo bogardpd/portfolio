@@ -163,6 +163,18 @@
         "iOS 9"
       ],
       "attribution" : "Justin14 (CC BY-SA 3.0)"
+    },
+    {
+      "name"  : "Tator Tot V",
+      "from"  : "November 2015",
+      "to"    : "January 2018",
+      "model" : "Apple iPhone 6s",
+      "specs" : [
+        "Smartphone",
+        "64 GB",
+        "iOS 11"
+      ],
+      "attribution" : "apple.com"
     }
   ]
 }
