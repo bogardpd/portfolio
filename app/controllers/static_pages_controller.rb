@@ -9,12 +9,13 @@ class StaticPagesController < ApplicationController
   def airport_code_puns
     @puns = [
       ["DAY", "Dayton", [
-        "It’s a great <code>DAY</code> to recycle!",
-        "A better <code>DAY</code>, landing soon.",
-        "Every <code>DAY</code> can be something new."
+        ["It’s a great <code>DAY</code> to recycle!"],
+        ["A better <code>DAY</code>, landing soon."],
+        ["Every <code>DAY</code> can be something new."]
       ]],
       ["STL", "St. Louis", [
-        "Every day we’re hu<code>STL</code>ing for you"
+        ["Every day we’re hu<code>STL</code>ing for you"],
+        ["To the coa<code>STL</code>ines and beyond", "Jeff"]
       ]]
     ]
   end
