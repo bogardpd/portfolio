@@ -103,6 +103,15 @@ class StaticPagesController < ApplicationController
           git_sha: "f4ba7e0e279a5e27481e31374c1230f8e8d9e08b",
           specs: ["flight-historian/2.1/Flight Historian 2.1 Specification.pdf"]
         }
+      },
+      "2.2": {
+        active: false,
+        summary: {
+          release_date: Date.parse("2018-03-15"),
+          github_repo: "bogardpd/flight_log",
+          git_sha: "5c7b7d4eb0b3ce6dcb973c471aa28b5a795bc87f",
+          specs: ["flight-historian/2.2/Flight Historian 2.2 Specification.pdf"]
+        }
       }
     }
     version_sym = params[:version] ? params[:version].gsub("-",".").to_sym : nil

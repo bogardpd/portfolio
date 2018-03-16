@@ -27,7 +27,7 @@
   <li>Shows maps of all flights, or all flights that meet a specific criteria</li>
   <li>Stores and <%= link_to "parses", boarding_pass_parser_path %> boarding pass barcode data for each flight</li>
   <ul>
-    <li>Automatically creates new flights in the database from emailed digital boarding pass data, supplemented by FlightAware <%= link_to "FlightXML", "https://flightaware.com/commercial/flightxml/", target: "_blank" %> lookups</li>
+    <li>Automatically creates new flights in the database from emailed digital boarding pass data or scanned paper boarding pass barcode (<abbr title="Bar Coded Boarding Pass">BCBP</abbr>) data, supplemented by FlightAware <%= link_to "FlightXML", "https://flightaware.com/commercial/flightxml/", target: "_blank" %> lookups</li>
   </ul>
 </ul>
 
@@ -149,12 +149,17 @@
 			<td>2.1</td>
 			<td><%= link_to "Import Flights from Digital Boarding Passes", flight_historian_path(version: "2-1") %></td>
 		</tr>
+		<tr>
+			<td>15 March 2018</th>
+			<td>2.2</td>
+			<td><%= link_to "Regions and Flight Lookups", flight_historian_path(version: "2-2") %></td>
+		</tr>
 	</tbody>
 </table>
 
 <%= link_header "Specification", 2 %>
 
-<%= link_buttons(DownloadButton.new("flight-historian/2.1/Flight Historian 2.1 Specification.pdf")) %>
+<%= link_buttons(DownloadButton.new("flight-historian/2.2/Flight Historian 2.2 Specification.pdf")) %>
 
 <%= link_header "Credits", 2 %>
 
