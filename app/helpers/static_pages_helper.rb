@@ -2,7 +2,7 @@ module StaticPagesHelper
   
   # Takes one or more LinkButtons, and returns HTML for a collection of buttons.
   def link_buttons(*args)
-    %Q(<div class="row button-row">#{render partial: 'link_button', collection: args, as: :button}</div>).html_safe
+    %Q(<div class="row button-row">#{render partial: 'static_pages/link_button', collection: args, as: :button}</div>).html_safe
   end
   
   # Returns a responsive image.

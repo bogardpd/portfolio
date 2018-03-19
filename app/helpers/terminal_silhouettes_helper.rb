@@ -1,0 +1,2 @@
+module TerminalSilhouettesHelper
+end

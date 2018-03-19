@@ -31,12 +31,20 @@
 
 <h2>Gallery</h2>
 
+<% if logged_in? %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to("<span class=\"glyphicon glyphicon-plus\"></span> Add new terminal".html_safe, new_terminal_silhouette_path, class: "btn btn-success pull-right", role: "button") %>
+    </div>
+  </div>
+<% end %>
+
 <div class="row">
-<% @terminals.each do |iata, name| %>
+<% @terminals.each do |ts| %>
 	<div class="col-lg-6 terminal-silhouette-container">
-		<h3><%= name %>&emsp;<%= iata %></h3>
-		<div class="terminal-silhouette-preview"><%= link_to(image_tag("#{@ts_root}/png-portfolio/#{iata}.png", alt: iata, class: "img-responsive terminal-silhouette-preview"), "#{@ts_root}/png/#{iata}.png") %></div>
-		<div class="terminal-silhouette-links"><%= link_to "png", "#{@ts_root}/png/#{iata}.png" %> &middot; <%= link_to "svg", "#{@ts_root}/svg/#{iata}.svg" %></div>
+		<h3><%= ts.city %>&emsp;<%= ts.iata_code %></h3>
+		<div class="terminal-silhouette-preview"><%= link_to(image_tag("#{TerminalSilhouette::ROOT_PATH}/png-portfolio/#{ts.iata_code}.png", alt: ts.iata_code, class: "img-responsive terminal-silhouette-preview"), "#{TerminalSilhouette::ROOT_PATH}/png/#{ts.iata_code}.png") %></div>
+		<div class="terminal-silhouette-links"><%= link_to "png", "#{TerminalSilhouette::ROOT_PATH}/png/#{ts.iata_code}.png" %> &middot; <%= link_to "svg", "#{TerminalSilhouette::ROOT_PATH}/svg/#{ts.iata_code}.svg" %><% if logged_in? %>&emsp;<%= link_to("<span class=\"glyphicon glyphicon-pencil\"></span> Edit #{ts.iata_code}".html_safe, edit_terminal_silhouette_path(ts), title: "Edit #{ts.iata_code}", class: "btn btn-default") %><% end %></div>
 	</div>
 <% end %>
 </div>
