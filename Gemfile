@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '4.2.7.1'
+gem 'rails', '5.0.0.1'
 gem 'bcrypt'
 # gem 'sass-rails', '5.0.6'
 gem 'bootstrap-sass', '3.2.0.0'
@@ -12,6 +12,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'aws-sdk', '~> 2'
+
+# Force loofah to 2.2.1 for security update.
+# https://github.com/flavorjones/loofah/issues/144
+gem 'loofah', '~> 2.2.1'
 
 group :development do
   gem 'web-console', '~> 2.0'
