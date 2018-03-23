@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get "projects/gps-logging(/:source/:map)" => "static_pages#gps_logging",        as: :gps_logging
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
-  resources :terminal_silhouettes, except: [:show], path: "projects/terminal_silhouettes"
+  resources :terminal_silhouettes, except: [:show], path: "projects/terminal-silhouettes"
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
   get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter
   get "projects/visor-cam"              => "static_pages#visor_cam",              as: :visor_cam
