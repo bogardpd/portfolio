@@ -43,7 +43,7 @@
 <% @terminals.each do |ts| %>
 	<div class="col-lg-6 terminal-silhouette-container">
 		<h3><%= ts.city %>&emsp;<%= ts.iata_code %></h3>
-		<div class="terminal-silhouette-preview"><%= link_to(image_tag("#{TerminalSilhouette::ROOT_PATH}/png-portfolio/#{ts.iata_code}.png", alt: ts.iata_code, class: "img-responsive terminal-silhouette-preview"), "#{TerminalSilhouette::ROOT_PATH}/png/#{ts.iata_code}.png") %></div>
+		<div class="terminal-silhouette-preview"><%= link_to(image_tag("#{TerminalSilhouette::ROOT_PATH}/png-portfolio/#{ts.iata_code}.png", alt: ts.iata_code, class: "img-responsive terminal-silhouette-preview"), "#{TerminalSilhouette::ROOT_PATH}/svg/#{ts.iata_code}.svg") %></div>
 		<div class="terminal-silhouette-links"><%= link_to "png", "#{TerminalSilhouette::ROOT_PATH}/png/#{ts.iata_code}.png" %> &middot; <%= link_to "svg", "#{TerminalSilhouette::ROOT_PATH}/svg/#{ts.iata_code}.svg" %><% if logged_in? %>&emsp;<%= link_to("<span class=\"glyphicon glyphicon-pencil\"></span> Edit #{ts.iata_code}".html_safe, edit_terminal_silhouette_path(ts), title: "Edit #{ts.iata_code}", class: "btn btn-default") %><% end %></div>
 	</div>
 <% end %>
