@@ -133,14 +133,12 @@ class StaticPagesController < ApplicationController
   def fred_and_harry
   end
   
-  def gallery
-    gallery_template = "static_pages/galleries/#{params[:gallery]}/index"
-    @page = (params[:page] || 1).to_i
-    if template_exists?(gallery_template)
-      render :template => gallery_template
-    else
-      raise ActionController::RoutingError.new("Not Found")
-    end
+  def gallery_pax
+    gallery_template
+  end
+  
+  def gallery_starmen
+    gallery_template
   end
   
   def gps_logging
@@ -202,6 +200,18 @@ class StaticPagesController < ApplicationController
   end
   
   def visor_cam
+  end
+  
+  private
+  
+  def gallery_template
+    template = "static_pages/galleries/#{params[:gallery]}/index"
+    @page = (params[:page] || 1).to_i
+    if template_exists?(template)
+      render :template => template
+    else
+      raise ActionController::RoutingError.new("Not Found")
+    end
   end
 
 end

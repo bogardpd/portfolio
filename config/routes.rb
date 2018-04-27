@@ -66,10 +66,10 @@ Rails.application.routes.draw do
   get "rhit/fred-and-harry" => "static_pages#fred_and_harry", :as => :fred_and_harry
   
   get "starmen-conventions" => "static_pages#starmen_conventions"
-  get "starmen-conventions/:gallery(/:page)" => "static_pages#gallery", :as => :starmen_con_gallery
+  get "starmen-conventions/:gallery(/:page)" => "static_pages#gallery_starmen", :as => :starmen_con_gallery
   
   get "pax" => "static_pages#pax"
-  get "pax/:gallery(/:page)" => "static_pages#gallery", :as => :pax_gallery
+  get "pax/:gallery(/:page)" => "static_pages#gallery_pax", :as => :pax_gallery
     
   resources :books
   get "/reading-list", :to => redirect("/books", :status => 301)
