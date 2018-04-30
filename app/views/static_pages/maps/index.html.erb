@@ -1,0 +1,11 @@
+<% provide(:title, "Maps")%>
+<% provide(:meta_description, "Paul Bogard’s Map Illustrations.")%>
+
+<h1>Maps</h1>
+
+<p>As might be obvious from many of my other <%= link_to("projects", root_path) %>, I enjoy maps, so I’ve created a few map illustrations.</p>
+
+<div class="row cover-row">
+  <%= render partial: "project_tile", locals: { name: "PAX West Area Map", caption: "Map of convention venues and hotels", path: maps_path(map: "pax-west-area-map") } %>
+  <%= render partial: "project_tile", locals: { name: "Interstate Grid", caption: "Intersections of major US interstates", path: maps_path(map: "interstate-grid") } %>
+</div>

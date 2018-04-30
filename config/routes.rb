@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian", as: :flight_historian
   get "projects/gps-logging(/:source/:map)" => "static_pages#gps_logging",        as: :gps_logging
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
+  get "projects/maps(/:map)"            => "static_pages#maps",                   as: :maps
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
   resources :terminal_silhouettes, except: [:show], path: "projects/terminal-silhouettes"
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart

@@ -1,0 +1,32 @@
+<% provide(:title, "PAX West Area Map")%>
+<% provide(:meta_description, "Paul Bogard’s map of Seattle around the Washington State Convention Center")%>
+
+<div><%= link_to %Q(<span class="glyphicon glyphicon-chevron-left"></span> All Maps).html_safe, maps_path, class: "btn btn-primary" %></div>
+
+<h1>PAX West Area Map</h1>
+
+<%= project_image("projects/maps/pax-west-area-map/pax-west-area-map.png", alt: "Illustration of the intersections of cross-country US interstates", type: :large, caption: "#{link_to("png","#{PortfolioImage::ROOT_PATH}projects/maps/pax-west-area-map/pax-west-area-map.png")} &middot; #{link_to("svg","#{PortfolioImage::ROOT_PATH}projects/maps/pax-west-area-map/PAX West Area Map.svg")}") %>
+
+<p><%= link_to("PAX West", "http://west.paxsite.com/", target: :_blank) %> takes place annually in Seattle, Washington, and <%= link_to("I’ve attended", pax_path) %> a number of times. Due to the size of the convention, PAX spreads out beyond the Washington State Convention Center into many downtown Seattle event spaces. I thought it would be an interesting project to map the convention venues, as well as the hotels affiliated with PAX or commonly used by PAX attendees. This map was created in 2017, based on PAX West 2016 venues.</p>
+
+<p>Using <%= link_to("QGIS", "https://qgis.org/en/site/", target: :_blank) %> with <%= link_to("OpenStreetMap", "https://www.openstreetmap.org/", target: :_blank) %> data, I created a map of building data for downtown Seattle. I then exported the building shapes as an SVG file, and used Inkscape to highlight certain buildings, add street names, and add a legend.</p>
+
+<h2>Tools</h2>
+
+<table class="table table-striped tools-list">
+	<tbody>
+    <tr>
+      <th scope="row">Vector Graphics Editor</th>
+      <td><ul><li><%= link_to("Inkscape", "https://inkscape.org", target: :_blank) %></li></ul></td>
+    </tr>
+    <tr>
+      <th scope="row"><abbr title="Geographic Information Systems">GIS</abbr> Software</th>
+      <td><ul><li><%= link_to("QGIS", "https://qgis.org/en/site/", target: :_blank) %></li></ul></td>
+    </tr>
+    <tr>
+      <th scope="row">Map Data Source</th>
+      <td><ul><li><%= link_to("OpenStreetMap", "https://www.openstreetmap.org/", target: :_blank) %></li></ul></td>
+    </tr>
+	</tbody>
+</table>
+

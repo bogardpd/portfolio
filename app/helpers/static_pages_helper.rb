@@ -11,14 +11,15 @@ module StaticPagesHelper
     extra_classes = {
       :ios_screenshot => %w(ios-screenshot),
       :osx_screenshot => %w(osx-screenshot),
-      :screenshot     => %w(screenshot)
+      :screenshot     => %w(screenshot),
+      :large          => %w(large)
     }
     classes.concat(extra_classes[type]) if extra_classes[type]
     path = PortfolioImage::ROOT_PATH + path
     image = image_tag(path, class: classes.join(' '), alt: alt)
     if (href)
       image = link_to(image, href, target: "_blank")
-    elsif (type == :screenshot || type == :osx_screenshot)
+    elsif (type == :screenshot || type == :osx_screenshot || type == :large)
       image = link_to(image, path) 
     end
     caption = "<figcaption>#{caption}</figcaption>" if caption.present?

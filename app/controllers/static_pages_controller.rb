@@ -167,6 +167,19 @@ class StaticPagesController < ApplicationController
     render text: ENV["LETS_ENCRYPT_KEY"]
   end
   
+  def maps
+    maps = %w(interstate-grid pax-west-area-map)
+    if params[:map].present?
+      if maps.include?(params[:map])
+        render "static_pages/maps/#{params[:map].gsub("-","_")}"
+      else
+        redirect_to maps_path
+      end
+    else
+      render "static_pages/maps/index"
+    end
+  end
+  
   def old_computers
     @computers = JSON.parse(File.read('app/assets/json/old-computers.json'))
   end
