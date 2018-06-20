@@ -10,7 +10,7 @@ class DownloadButton < LinkButton
       @path = obj.public_url
       @size = obj.content_length
       @icon = "filetypes/#{File.extname(@path).delete('.')}"
-      @icon = "filetypes/unknown" unless PortfolioImage::asset_exist?("icons/#{@icon}.png")
+      @icon = "filetypes/unknown" unless PortfolioImage.asset_exist?("icons/#{@icon}.png")
       @text = "<strong>#{URI.decode(File.basename(@path))}</strong> (#{number_to_human_size(@size)})"
     else
       set_file_not_found_values
