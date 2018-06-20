@@ -1,4 +1,4 @@
 <% img_root = "projects/covers/#{name.parameterize}" %>
-<% img = Rails.application.assets.find_asset("#{img_root}.png") ? "#{img_root}.png" : "#{img_root}.jpg" %>
+<% img = PortfolioImage::asset_exist?("#{img_root}.png") ? "#{img_root}.png" : "#{img_root}.jpg" %>
 <% path ||= eval(Project.path(name)) %>
 <%= Tile.new(path: path, title: name, img: image_path(img), caption: caption).show %>
