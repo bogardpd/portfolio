@@ -15,11 +15,7 @@
         <tr>
           <td class="reading-title">
           	<p class="title">
-              <% if book.amazon_link %>
-          		  <%= link_to book.title, book.amazon_link %>
-            	<% else %>
-            		<%= book.title %>
-            	<% end %>
+            	<%= book.title %>
             </p>
           	<% if book.subtitle %>
           		<p class="subtitle"><%= book.subtitle %></p>
