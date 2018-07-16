@@ -13,6 +13,9 @@ class StaticPagesController < ApplicationController
         ["A better <code>DAY</code>, landing soon."],
         ["Every <code>DAY</code> can be something new."]
       ]],
+      ["ORD", "Chicago (O’Hare)", [
+        ["Extra<code>ORD</code>inary"]
+      ]],
       ["STL", "St. Louis", [
         ["Every day we’re hu<code>STL</code>ing for you"],
         ["To the coa<code>STL</code>ines and beyond", "Jeff"]
