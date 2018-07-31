@@ -10,3 +10,15 @@ span.card-description {
   font-weight: 300;
   font-style: italic;
 }
+
+div.generic-photo-tile {
+  text-align: center;
+  img {
+    width: 512px;
+    margin: 0 auto;
+  }
+}
+
+img.generic-photo-tile {
+	border: 1px solid $color-border;
+}

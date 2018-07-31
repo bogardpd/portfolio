@@ -9,7 +9,7 @@
     <% puns.each do |pun, credit| %>
       <div class="col-lg-6 airport-code-pun">
         <figure class="figure">
-          <%= image_tag("#{PortfolioImage::ROOT_PATH}airport-code-puns/#{code.downcase}-#{anchorize(sanitize(pun, tags: []))}.jpg", alt: sanitize(pun, tags: []), class: "img-responsive terminal-silhouette-preview") %>
+          <%= image_tag("#{PortfolioImage::ROOT_PATH}airport-code-puns/#{code.downcase}-#{anchorize(sanitize(pun, tags: []))}.jpg", alt: sanitize(pun, tags: []), class: "img-responsive generic-photo-tile") %>
           <% if credit %><figcaption class="attribution">Photo provided by <%= credit %></figcaption><% end %>
           <figcaption><%= pun.html_safe %></figcaption>
         </figure>

@@ -1,0 +1,20 @@
+<% provide(:title, "MCO Lobby") %>
+<% provide(:meta_description, "Photos of the Hyatt lobby at Orlando International Airport") %>
+
+<h1>MCO Lobby</h1>
+
+<p>In 2015, I ended up traveling through the Orlando International Airport (MCO) several hours before Vid. I sent him a photo of the lobby, showing how empty it was for that early morning flight, and then later he sent me a photo back from the same position. Thus, a tradition was born, when any time either of us traveled through MCO, we'd take the same photo and send it to each other. As time went on, we got other friends involved in taking MCO lobby photos as well.</p>
+
+<div class="row">
+  <% @photos.each do |photo| %>
+    <div class="col-lg-6 generic-photo-tile">
+      <figure class="figure">
+        <%= image_tag("#{PortfolioImage::ROOT_PATH}mco-lobby/#{photo[:filename]}", alt: photo[:filename], class: "img-responsive generic-photo-tile") %>
+        <figcaption>
+          <%= photo[:people] %> &middot; <%= photo[:date].strftime("%-d %b %Y") %><br/>
+          <span class="card-description"><%= photo[:event] %></span>
+        </figcaption>
+      </figure>
+    </div>
+  <% end %>
+</div>
