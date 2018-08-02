@@ -171,7 +171,7 @@ class StaticPagesController < ApplicationController
   end
   
   def maps
-    maps = %w(interstate-grid pax-west-area-map)
+    maps = %w(interstate-grid pax-west-area-map nashville-hex)
     if params[:map].present?
       if maps.include?(params[:map])
         render "static_pages/maps/#{params[:map].gsub("-","_")}"

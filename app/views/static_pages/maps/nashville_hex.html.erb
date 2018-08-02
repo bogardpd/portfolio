@@ -1,0 +1,22 @@
+<% provide(:title, "Nashville Hex")%>
+<% provide(:meta_description, "Paul Bogard’s illustration of Nashville’s Freeways.")%>
+
+<div><%= link_to %Q(<span class="glyphicon glyphicon-chevron-left"></span> All Maps).html_safe, maps_path, class: "btn btn-primary" %></div>
+
+<h1>Nashville Hex</h1>
+
+<%= project_image("projects/maps/nashville-hex/Nashville Hex.png", alt: "Illustration of Nashville’s freeways", type: :large, caption: "#{link_to("png","#{PortfolioImage::ROOT_PATH}projects/maps/nashville-hex/Nashville Hex.png")} &middot; #{link_to("svg","#{PortfolioImage::ROOT_PATH}projects/maps/nashville-hex/Nashville Hex.svg")}") %>
+
+<p>After a trip to Nashville, I realized that the city’s central freeways mostly intersect at Y-intersections. That meant that I could draw Nashville’s freeways on a hexagonal grid.</p>
+
+<h2>Tools</h2>
+
+<table class="table table-striped tools-list">
+	<tbody>
+		<tr>
+			<th scope="row">Vector Graphics Editor</th>
+			<td><ul><li><%= link_to("Inkscape", "https://inkscape.org", target: :_blank) %></li></ul></td>
+		</tr>
+	</tbody>
+</table>
+
