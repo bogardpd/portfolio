@@ -639,7 +639,7 @@ function decodeData(data) {
  * @return {string} - HTML
  */
 function createInsertButton() {
-  return '<div class="btn btn-success button-insert" title="Add a location before this one"><span class="glyphicon glyphicon-plus"></span></div>';
+  return '<div class="btn btn-success button-insert" title="Add a location before this one">Insert</div>';
 }
 
 /**
@@ -649,7 +649,7 @@ function createInsertButton() {
 function createDateTime(fieldName) {
   var html = '<div class="form-group"><div class="input-group date dtpicker">';
   html += '<input type="text" class="form-control field-' + fieldName + '" />';
-  html += '<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>';
+  html += '<span class="input-group-addon"><span class="custom-icon">&#128197;</span></span>';
   html += '</div></div>';
   return html;
 }
@@ -692,7 +692,7 @@ function createRow() {
   row += '<td class="cell-location"><div class="form-group"><input type="text" class="form-control field-location" /></div></td>';
   row += '<td class="cell-offset">' + createOffsetSelect() + '</td>';
   row += '<td class="cell-end">' + createDateTime("end") + '</td>';
-  row += '<td class="cell-delete"><div class="btn btn-danger button-delete" title="Delete this location"><span class="glyphicon glyphicon-trash"></span></div></td>';
+  row += '<td class="cell-delete"><div class="btn btn-danger button-delete" title="Delete this location">Delete</div></td>';
   row += '</tr>';
   return row;
 }

@@ -10,10 +10,10 @@
     <div class="share-buttons" id="edit-buttons">
       <form class="form-inline">
         <div class="input-group">
-          <%= link_to %Q(<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> New chart).html_safe, timezones_path, class: "btn btn-default" %>
+          <%= link_to %Q(New chart).html_safe, timezones_path, class: "btn btn-default" %>
         </div>
         <div class="input-group">
-          <%= link_to %Q(<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Download SVG).html_safe, "", id: "download-link", class: "btn btn-default", download: "" %>
+          <%= link_to %Q(Download SVG).html_safe, "", id: "download-link", class: "btn btn-default", download: "" %>
         </div>
         <div class="input-group">
           <div class="input-group-addon">Chart size</div>
@@ -25,14 +25,14 @@
           </select>
         </div>
         <div class="input-group">
-          <%= link_to %Q(<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span> Full screen).html_safe, "", id: "fullscreen-link", class: "btn btn-default" %>
+          <%= link_to "Full screen", "", id: "fullscreen-link", class: "btn btn-default" %>
         </div>
       </form>
     </div>
     
     <div class="share-buttons" id="fullscreen-buttons">
-      <%= link_to %Q(<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create a new chart).html_safe, timezones_path, class: "btn btn-default", target: "_parent" %>
-      <%= link_to %Q(<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Close full screen/edit chart).html_safe, "", id: "edit-link", class: "btn btn-default", target: "_parent" %>
+      <%= link_to %Q(Create a new chart).html_safe, timezones_path, class: "btn btn-default", target: "_parent" %>
+      <%= link_to %Q(Close full screen/edit chart).html_safe, "", id: "edit-link", class: "btn btn-default", target: "_parent" %>
     </div>
       
   </div>
