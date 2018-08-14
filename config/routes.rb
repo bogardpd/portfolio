@@ -66,7 +66,7 @@ Rails.application.routes.draw do
   get "oreo"              => "static_pages#oreo"
   get "rhit"              => "static_pages#rhit"
   get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", :as => :fast_track_calculus
-  get "rhit/fred-and-harry" => "static_pages#fred_and_harry", :as => :fred_and_harry
+  get "rhit/fast-track-calculus/fred-and-harry" => "static_pages#fred_and_harry", :as => :fred_and_harry
   
   get "starmen-conventions" => "static_pages#starmen_conventions"
   get "starmen-conventions/:gallery(/:page)" => "static_pages#gallery_starmen", :as => :starmen_con_gallery
