@@ -5,9 +5,9 @@
 
 @mixin tile-theme($color-base) {
   a {
-    background: $color-base;
-    background: linear-gradient($color-base, darken($color-base, 5%));
-    border: 1px solid lighten($color-base, 10%);
+    background: darken($color-base, 5%);
+    background: linear-gradient(darken($color-base, 5%), darken($color-base, 10%));
+    border: 1px solid darken($color-base, 10%);
 
     &:hover {
       background: lighten($color-base, 10%);
@@ -18,7 +18,7 @@
 
   h3, p {
     color: #FFFFFF;
-    text-shadow: 0.05em 0.05em darken($color-base, 10%);
+    text-shadow: 0.05em 0.05em darken($color-base, 20%);
   }
 
   img {
@@ -29,9 +29,9 @@
 
 div.tile {
   text-align: center;
+  padding: 1rem 1.25rem;
   
 	a {
-    margin-bottom: 10px;
 		border-radius: 5px;
     color: $color-primary;
     white-space: inherit;
@@ -45,9 +45,10 @@ div.tile {
 	}
 	
 	h3 {
-    margin: 0.5em 0;
+    margin: 0.75em 0;
     line-height: 1.4em;
-    font-size: 125%;
+    font-size: 140%;
+    font-weight: 700;
   }
   
   img {
@@ -63,17 +64,13 @@ div.tile {
 		margin-top: 10px;
     margin-bottom: 10px;
     font-weight: 300;
-    font-style: italic;
 	}
-  span.location {
-    font-weight: 700;
-  }
 	
 }
 
 div.tile.tile-widescreen {
   a {
-    height: 22em;
+    height: 23em;
   }
   img {
     width: 322px;  /* 320 plus 1px border */

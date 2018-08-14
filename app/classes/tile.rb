@@ -2,12 +2,13 @@
 class Tile
   include ActionView::Helpers
   
-  def initialize(caption: nil, img: nil, path: nil, title: nil, theme: nil)
+  def initialize(caption: nil, img: nil, path: nil, title: nil, theme: nil, columns: nil)
     @path = path
     @title = title
     @img = img
     @caption = caption
     @theme = theme
+    @columns = columns || 4
   end
   
   def show
@@ -37,7 +38,7 @@ class Tile
   end
   
   def tile_classes
-    classes = %w(tile col-lg-4 col-sm-6)
+    classes = ["tile", "col-lg-#{@columns}", "col-sm-6"]
     classes << classes_custom
     classes << @theme if @theme
     return classes.compact.join(" ")

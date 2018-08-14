@@ -3,12 +3,16 @@
 * Styles for PAX pages.                                                       *
 ******************************************************************************/
 
-div.pax-aus    { @include tile-theme($color-theme-pax-aus);   }
-div.pax-east   { @include tile-theme($color-theme-pax-east);  }
-div.pax-south  { @include tile-theme($color-theme-pax-south); }
-div.pax-west   { @include tile-theme($color-theme-pax-west);  }
+body.pax-aus        { @include page-theme($color-theme-pax-aus);        }
+body.pax-dev        { @include page-theme($color-theme-pax-dev);        }
+body.pax-east       { @include page-theme($color-theme-pax-east);       }
+body.pax-south      { @include page-theme($color-theme-pax-south);      }
+body.pax-unplugged  { @include page-theme($color-theme-pax-unplugged);  }
+body.pax-west       { @include page-theme($color-theme-pax-west);       }
 
-body.pax-aus   { @include page-theme($color-theme-pax-aus);   }
-body.pax-east  { @include page-theme($color-theme-pax-east);  }
-body.pax-south { @include page-theme($color-theme-pax-south); }
-body.pax-west  { @include page-theme($color-theme-pax-west);  }
+div.pax-aus         { @include tile-theme($color-theme-pax-aus);        }
+div.pax-dev         { @include tile-theme($color-theme-pax-dev);        }
+div.pax-east        { @include tile-theme($color-theme-pax-east);       }
+div.pax-south       { @include tile-theme($color-theme-pax-south);      }
+div.pax-unplugged   { @include tile-theme($color-theme-pax-unplugged);  }
+div.pax-west        { @include tile-theme($color-theme-pax-west)        }

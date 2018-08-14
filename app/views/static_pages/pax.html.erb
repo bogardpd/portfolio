@@ -1,17 +1,18 @@
-<% provide(:title, "PAX Attendance")%>
-<% provide(:meta_description, "Paul’s attendance at PAX events")%>
+<% provide(:title, "PAX Attendance") %>
+<% provide(:meta_description, "Paul’s attendance at PAX events") %>
+<% provide(:theme, "pax-west") %>
 
 <h1>PAX Attendance</h1>
 
 <p>I’ve attended <%= link_to "Penny Arcade Expo", "http://www.paxsite.com/" %> several times.</p>
 
 <div class="row cover-row">
-  <%= render partial: "static_pages/galleries/cover_tile", locals: {gallery: :pax_gallery, name: "PAX Prime 2010", location: "Seattle, Washington", dates: "3–5 September 2010", theme: "pax-west"} %>
-  <%= render partial: "static_pages/galleries/cover_tile", locals: {gallery: :pax_gallery, name: "PAX Prime 2011", location: "Seattle, Washington", dates: "26–28 August 2011", theme: "pax-west"} %>
-  <%= render partial: "static_pages/galleries/cover_tile", locals: {gallery: :pax_gallery, name: "PAX Prime 2012", location: "Seattle, Washington", dates: "31 August–2 September 2012", theme: "pax-west"} %>
-  <%= render partial: "static_pages/galleries/cover_tile", locals: {gallery: :pax_gallery, name: "PAX East 2013", location: "Boston, Massachusetts", dates: "22–24 March 2013", theme: "pax-east"} %>
-  <%= render partial: "static_pages/galleries/cover_tile", locals: {gallery: :pax_gallery, name: "PAX Prime 2013", location: "Seattle, Washington", dates: "30 August–2 September 2013", theme: "pax-west"} %>
-  <%= render partial: "static_pages/galleries/cover_tile", locals: {gallery: :pax_gallery, name: "PAX East 2014", location: "Boston, Massachusetts", dates: "11–13 April 2014", theme: "pax-east"} %>
-  <%= render partial: "static_pages/galleries/cover_tile", locals: {gallery: :pax_gallery, name: "PAX East 2015", location: "Boston, Massachusetts", dates: "6–8 March 2015", theme: "pax-east"} %>
-  <%= render partial: "static_pages/galleries/cover_tile", locals: {gallery: :pax_gallery, name: "PAX West 2017", location: "Seattle, Washington", dates: "1–4 September 2017", theme: "pax-west"} %>
+  <%= render partial: "static_pages/galleries/pax_tile", locals: {name: "PAX Prime 2010", location: "Seattle, Washington", dates: "3–5 September 2010", theme: "pax-west"} %>
+  <%= render partial: "static_pages/galleries/pax_tile", locals: {name: "PAX Prime 2011", location: "Seattle, Washington", dates: "26–28 August 2011", theme: "pax-west"} %>
+  <%= render partial: "static_pages/galleries/pax_tile", locals: {name: "PAX Prime 2012", location: "Seattle, Washington", dates: "31 August–2 September 2012", theme: "pax-west"} %>
+  <%= render partial: "static_pages/galleries/pax_tile", locals: {name: "PAX East 2013", location: "Boston, Massachusetts", dates: "22–24 March 2013", theme: "pax-east"} %>
+  <%= render partial: "static_pages/galleries/pax_tile", locals: {name: "PAX Prime 2013", location: "Seattle, Washington", dates: "30 August–2 September 2013", theme: "pax-west"} %>
+  <%= render partial: "static_pages/galleries/pax_tile", locals: {name: "PAX East 2014", location: "Boston, Massachusetts", dates: "11–13 April 2014", theme: "pax-east"} %>
+  <%= render partial: "static_pages/galleries/pax_tile", locals: {name: "PAX East 2015", location: "Boston, Massachusetts", dates: "6–8 March 2015", theme: "pax-east"} %>
+  <%= render partial: "static_pages/galleries/pax_tile", locals: {name: "PAX West 2017", location: "Seattle, Washington", dates: "1–4 September 2017", theme: "pax-west"} %>
 </div>

@@ -14,6 +14,11 @@
       color: $color-text;
     }
   }
+
+  div.tile h3 {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em darken($color-base, 20%);
+  }
   
   a.btn-primary {
     background-color: $color-base;
@@ -56,7 +61,8 @@
 body {
 	font-family: $font-stack-normal;
 	font-size: $font-size-default;
-	color: $color-text;
+  color: $color-text;
+  background-color: #f7f7f7;
 	
 	font-variant-ligatures: common-ligatures;
 	-moz-font-feature-settings: "liga=1, dlig=1";
