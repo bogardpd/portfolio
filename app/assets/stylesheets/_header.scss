@@ -7,11 +7,16 @@ header {
 	padding: 5px;
 }
 
+nav {
+	font-weight: 300;
+}
+
 /* navbar */
 /* Navbar overwrite CSS modified from https://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3# */
 .navbar-default {
     background-color: $color-primary;
     border-color: $color-primary-extra-light;
+	margin-bottom: 0;
 		
 		/* link */
 		

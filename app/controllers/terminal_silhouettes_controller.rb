@@ -2,6 +2,7 @@ class TerminalSilhouettesController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   
   def index
+    add_breadcrumb "Terminal Silhouettes", terminal_silhouettes_path
     @terminals = TerminalSilhouette.all.order(:city)
   end
   

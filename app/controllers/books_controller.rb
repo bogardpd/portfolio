@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
   
   def index
+    add_breadcrumb "Reading List", books_path
     @currently_reading = Book.currently_reading
     @books_by_year = Book.books_by_year
   end

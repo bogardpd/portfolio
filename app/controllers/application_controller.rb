@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   
   include SessionsHelper
   
+  def add_breadcrumb(text, path)
+    @breadcrumbs ||= [["Home", root_path]]
+    @breadcrumbs.push([text, path])
+  end
+
   private
   
     # Confirms a logged-in user.
