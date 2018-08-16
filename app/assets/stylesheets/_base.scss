@@ -4,12 +4,14 @@
 ******************************************************************************/
 
 @mixin page-theme($color-base) {
+  
+  background-color: change-color($color-base, $lightness: 92%);
+  
   a {
     color: darken($color-base, 10%);
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
-    text-shadow: 0 0 0.1em $color-base;
     a {
       color: $color-text;
     }
@@ -25,10 +27,6 @@
     border-color: darken($color-base, 10%);
     color: #FFFFFF;
     text-shadow: 0.05em 0.05em darken($color-base, 10%);
-  }
-  
-  figure {
-    background-color: lighten($color-base, 45%);
   }
   
   img.project {
@@ -62,7 +60,7 @@ body {
 	font-family: $font-stack-normal;
 	font-size: $font-size-default;
   color: $color-text;
-  background-color: #f7f7f7;
+  background-color: hsl(0,0,92%);
 	
 	font-variant-ligatures: common-ligatures;
 	-moz-font-feature-settings: "liga=1, dlig=1";
@@ -70,6 +68,11 @@ body {
 	-webkit-font-feature-settings: "liga", "dlig";
 	-o-font-feature-settings: "liga", "dlig";
 	font-feature-settings: "liga", "dlig";
+}
+
+#main {
+  background-color: $color-background-main;
+  padding: 1rem 3rem;
 }
 
 section {
@@ -158,10 +161,6 @@ div.computer-summary {
   }
 }
 
-div.photo-gallery-cover {
-  
-}
-
 div.version-picker, div.version-summary {
   margin: 1.5em 0;
 }
@@ -171,7 +170,6 @@ figure {
 	margin-top: 25px;
 	margin-bottom: 25px;
   padding: 5px;
-  background-color: $color-background-light;
   
   figcaption {
     margin: 10px;
