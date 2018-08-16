@@ -176,7 +176,8 @@ class StaticPagesController < ApplicationController
       "indiana-minicon" => "Indiana Minicon",
       "applecon" => "Applecon",
       "camp-fangamer-2015" => "Camp Fangamer 2015",
-      "camp-videogamely-2016" => "Camp Videogamely 2016"
+      "camp-videogamely-2016" => "Camp Videogamely 2016",
+      "camp-fangamer-2018" => "Camp Fangamer 2018"
     }
     gallery_template(title: starmen_conventions[params[:gallery]], path: starmen_con_gallery_path(gallery: params[:gallery]))
   end
