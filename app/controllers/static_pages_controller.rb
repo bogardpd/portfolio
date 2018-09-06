@@ -159,7 +159,8 @@ class StaticPagesController < ApplicationController
       "pax-prime-2013" => "PAX Prime 2013",
       "pax-east-2014" => "PAX East 2014",
       "pax-east-2015" => "PAX East 2015",
-      "pax-west-2017" => "PAX West 2017"
+      "pax-west-2017" => "PAX West 2017",
+      "pax-west-2018" => "PAX West 2018"
     }
     gallery_template(title: pax_galleries[params[:gallery]], path: pax_gallery_path(gallery: params[:gallery]))
   end
