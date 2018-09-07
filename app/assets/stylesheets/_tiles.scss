@@ -5,14 +5,12 @@
 
 @mixin tile-theme($color-base) {
   a {
-    background: darken($color-base, 5%);
-    background: linear-gradient(darken($color-base, 5%), darken($color-base, 10%));
-    border: 1px solid darken($color-base, 10%);
+    background: darken($color-base, 7%);
+    background: linear-gradient(darken($color-base, 7%), darken($color-base, 8%));
 
     &:hover {
-      background: lighten($color-base, 10%);
-      background: linear-gradient(lighten($color-base, 10%), $color-base);
-      border: 1px solid lighten($color-base, 20%);
+      background: lighten($color-base, 5%);
+      background: linear-gradient(lighten($color-base, 5%), $color-base);
     }
   }
 

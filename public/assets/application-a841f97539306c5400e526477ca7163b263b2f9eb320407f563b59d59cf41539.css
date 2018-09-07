@@ -5304,13 +5304,17 @@ body {
   font-family: "Merriweather", serif;
   font-size: 13pt;
   color: #382e2e;
-  background-color: #f7f7f7;
+  background-color: #ebebeb;
   font-variant-ligatures: common-ligatures;
   -moz-font-feature-settings: "liga=1, dlig=1";
   -ms-font-feature-settings: "liga", "dlig";
   -webkit-font-feature-settings: "liga", "dlig";
   -o-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig"; }
+
+#main {
+  background-color: #F7F7F7;
+  padding: 1rem 3rem; }
 
 section {
   overflow: auto; }
@@ -5386,8 +5390,7 @@ figure {
   text-align: center;
   margin-top: 25px;
   margin-bottom: 25px;
-  padding: 5px;
-  background-color: #e6e6e6; }
+  padding: 5px; }
   figure figcaption {
     margin: 10px;
     font-weight: 700; }
@@ -5419,6 +5422,9 @@ h1 {
 h2 {
   margin-top: 30px;
   margin-bottom: 20px; }
+
+hr {
+  border-top: 1px solid #cccccc; }
 
 img.bordered {
   border: 1px solid #cccccc; }
@@ -5464,6 +5470,10 @@ header {
 
 nav {
   font-weight: 300; }
+
+ol.breadcrumb {
+  padding: 0;
+  background-color: #F7F7F7; }
 
 /* navbar */
 /* Navbar overwrite CSS modified from https://stackoverflow.com/questions/18529274/change-navbar-color-in-twitter-bootstrap-3# */
@@ -5528,7 +5538,6 @@ footer {
   border-top: 1px solid #cccccc;
   padding: 10px;
   margin-top: 40px;
-  margin-bottom: 30px;
   font-size: 75%; }
   footer p {
     margin-top: 5px;
@@ -5674,197 +5683,185 @@ img.generic-photo-tile {
 * PAX                                                                         *
 * Styles for PAX pages.                                                       *
 ******************************************************************************/
-body.pax-aus a {
-  color: #cc8b00; }
-body.pax-aus h1, body.pax-aus h2, body.pax-aus h3, body.pax-aus h4, body.pax-aus h5, body.pax-aus h6 {
-  text-shadow: 0 0 0.1em #FFAE00; }
+body.pax-aus {
+  background-color: #fff2d6; }
+  body.pax-aus a {
+    color: #cc8b00; }
   body.pax-aus h1 a, body.pax-aus h2 a, body.pax-aus h3 a, body.pax-aus h4 a, body.pax-aus h5 a, body.pax-aus h6 a {
     color: #382e2e; }
-body.pax-aus div.tile h3 {
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #996800; }
-body.pax-aus a.btn-primary {
-  background-color: #FFAE00;
-  border-color: #cc8b00;
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #cc8b00; }
-body.pax-aus figure {
-  background-color: #fff7e6; }
-body.pax-aus img.project {
-  border: 2px solid #FFAE00; }
-body.pax-aus .navbar-default {
-  background-color: #FFAE00;
-  border-color: #ffbe33; }
-body.pax-aus .navbar-nav > .open > a,
-body.pax-aus .navbar-nav > .open > a:hover,
-body.pax-aus .navbar-nav > .open > a:focus {
-  color: #e6e6e6;
-  background-color: #cc8b00; }
-body.pax-aus .navbar-toggle {
-  border-color: #cc8b00; }
-body.pax-aus .navbar-toggle:hover,
-body.pax-aus .navbar-toggle:focus {
-  background-color: #FFAE00; }
+  body.pax-aus div.tile h3 {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #996800; }
+  body.pax-aus a.btn-primary {
+    background-color: #FFAE00;
+    border-color: #cc8b00;
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #cc8b00; }
+  body.pax-aus img.project {
+    border: 2px solid #FFAE00; }
+  body.pax-aus .navbar-default {
+    background-color: #FFAE00;
+    border-color: #ffbe33; }
+  body.pax-aus .navbar-nav > .open > a,
+  body.pax-aus .navbar-nav > .open > a:hover,
+  body.pax-aus .navbar-nav > .open > a:focus {
+    color: #e6e6e6;
+    background-color: #cc8b00; }
+  body.pax-aus .navbar-toggle {
+    border-color: #cc8b00; }
+  body.pax-aus .navbar-toggle:hover,
+  body.pax-aus .navbar-toggle:focus {
+    background-color: #FFAE00; }
 
-body.pax-dev a {
-  color: #00716a; }
-body.pax-dev h1, body.pax-dev h2, body.pax-dev h3, body.pax-dev h4, body.pax-dev h5, body.pax-dev h6 {
-  text-shadow: 0 0 0.1em #00A49A; }
+body.pax-dev {
+  background-color: #d6fffd; }
+  body.pax-dev a {
+    color: #00716a; }
   body.pax-dev h1 a, body.pax-dev h2 a, body.pax-dev h3 a, body.pax-dev h4 a, body.pax-dev h5 a, body.pax-dev h6 a {
     color: #382e2e; }
-body.pax-dev div.tile h3 {
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #003e3a; }
-body.pax-dev a.btn-primary {
-  background-color: #00A49A;
-  border-color: #00716a;
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #00716a; }
-body.pax-dev figure {
-  background-color: #8bfff8; }
-body.pax-dev img.project {
-  border: 2px solid #00A49A; }
-body.pax-dev .navbar-default {
-  background-color: #00A49A;
-  border-color: #00d7ca; }
-body.pax-dev .navbar-nav > .open > a,
-body.pax-dev .navbar-nav > .open > a:hover,
-body.pax-dev .navbar-nav > .open > a:focus {
-  color: #e6e6e6;
-  background-color: #00716a; }
-body.pax-dev .navbar-toggle {
-  border-color: #00716a; }
-body.pax-dev .navbar-toggle:hover,
-body.pax-dev .navbar-toggle:focus {
-  background-color: #00A49A; }
+  body.pax-dev div.tile h3 {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #003e3a; }
+  body.pax-dev a.btn-primary {
+    background-color: #00A49A;
+    border-color: #00716a;
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #00716a; }
+  body.pax-dev img.project {
+    border: 2px solid #00A49A; }
+  body.pax-dev .navbar-default {
+    background-color: #00A49A;
+    border-color: #00d7ca; }
+  body.pax-dev .navbar-nav > .open > a,
+  body.pax-dev .navbar-nav > .open > a:hover,
+  body.pax-dev .navbar-nav > .open > a:focus {
+    color: #e6e6e6;
+    background-color: #00716a; }
+  body.pax-dev .navbar-toggle {
+    border-color: #00716a; }
+  body.pax-dev .navbar-toggle:hover,
+  body.pax-dev .navbar-toggle:focus {
+    background-color: #00A49A; }
 
-body.pax-east a {
-  color: #ae1f24; }
-body.pax-east h1, body.pax-east h2, body.pax-east h3, body.pax-east h4, body.pax-east h5, body.pax-east h6 {
-  text-shadow: 0 0 0.1em #D9272D; }
+body.pax-east {
+  background-color: #f9dcdd; }
+  body.pax-east a {
+    color: #ae1f24; }
   body.pax-east h1 a, body.pax-east h2 a, body.pax-east h3 a, body.pax-east h4 a, body.pax-east h5 a, body.pax-east h6 a {
     color: #382e2e; }
-body.pax-east div.tile h3 {
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #83171b; }
-body.pax-east a.btn-primary {
-  background-color: #D9272D;
-  border-color: #ae1f24;
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #ae1f24; }
-body.pax-east figure {
-  background-color: #fbeaeb; }
-body.pax-east img.project {
-  border: 2px solid #D9272D; }
-body.pax-east .navbar-default {
-  background-color: #D9272D;
-  border-color: #e15257; }
-body.pax-east .navbar-nav > .open > a,
-body.pax-east .navbar-nav > .open > a:hover,
-body.pax-east .navbar-nav > .open > a:focus {
-  color: #e6e6e6;
-  background-color: #ae1f24; }
-body.pax-east .navbar-toggle {
-  border-color: #ae1f24; }
-body.pax-east .navbar-toggle:hover,
-body.pax-east .navbar-toggle:focus {
-  background-color: #D9272D; }
+  body.pax-east div.tile h3 {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #83171b; }
+  body.pax-east a.btn-primary {
+    background-color: #D9272D;
+    border-color: #ae1f24;
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #ae1f24; }
+  body.pax-east img.project {
+    border: 2px solid #D9272D; }
+  body.pax-east .navbar-default {
+    background-color: #D9272D;
+    border-color: #e15257; }
+  body.pax-east .navbar-nav > .open > a,
+  body.pax-east .navbar-nav > .open > a:hover,
+  body.pax-east .navbar-nav > .open > a:focus {
+    color: #e6e6e6;
+    background-color: #ae1f24; }
+  body.pax-east .navbar-toggle {
+    border-color: #ae1f24; }
+  body.pax-east .navbar-toggle:hover,
+  body.pax-east .navbar-toggle:focus {
+    background-color: #D9272D; }
 
-body.pax-south a {
-  color: #cc5e00; }
-body.pax-south h1, body.pax-south h2, body.pax-south h3, body.pax-south h4, body.pax-south h5, body.pax-south h6 {
-  text-shadow: 0 0 0.1em #FF7600; }
+body.pax-south {
+  background-color: #ffe9d6; }
+  body.pax-south a {
+    color: #cc5e00; }
   body.pax-south h1 a, body.pax-south h2 a, body.pax-south h3 a, body.pax-south h4 a, body.pax-south h5 a, body.pax-south h6 a {
     color: #382e2e; }
-body.pax-south div.tile h3 {
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #994700; }
-body.pax-south a.btn-primary {
-  background-color: #FF7600;
-  border-color: #cc5e00;
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #cc5e00; }
-body.pax-south figure {
-  background-color: #fff1e6; }
-body.pax-south img.project {
-  border: 2px solid #FF7600; }
-body.pax-south .navbar-default {
-  background-color: #FF7600;
-  border-color: #ff9133; }
-body.pax-south .navbar-nav > .open > a,
-body.pax-south .navbar-nav > .open > a:hover,
-body.pax-south .navbar-nav > .open > a:focus {
-  color: #e6e6e6;
-  background-color: #cc5e00; }
-body.pax-south .navbar-toggle {
-  border-color: #cc5e00; }
-body.pax-south .navbar-toggle:hover,
-body.pax-south .navbar-toggle:focus {
-  background-color: #FF7600; }
+  body.pax-south div.tile h3 {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #994700; }
+  body.pax-south a.btn-primary {
+    background-color: #FF7600;
+    border-color: #cc5e00;
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #cc5e00; }
+  body.pax-south img.project {
+    border: 2px solid #FF7600; }
+  body.pax-south .navbar-default {
+    background-color: #FF7600;
+    border-color: #ff9133; }
+  body.pax-south .navbar-nav > .open > a,
+  body.pax-south .navbar-nav > .open > a:hover,
+  body.pax-south .navbar-nav > .open > a:focus {
+    color: #e6e6e6;
+    background-color: #cc5e00; }
+  body.pax-south .navbar-toggle {
+    border-color: #cc5e00; }
+  body.pax-south .navbar-toggle:hover,
+  body.pax-south .navbar-toggle:focus {
+    background-color: #FF7600; }
 
-body.pax-unplugged a {
-  color: #703877; }
-body.pax-unplugged h1, body.pax-unplugged h2, body.pax-unplugged h3, body.pax-unplugged h4, body.pax-unplugged h5, body.pax-unplugged h6 {
-  text-shadow: 0 0 0.1em #91489A; }
+body.pax-unplugged {
+  background-color: #f0e3f2; }
+  body.pax-unplugged a {
+    color: #703877; }
   body.pax-unplugged h1 a, body.pax-unplugged h2 a, body.pax-unplugged h3 a, body.pax-unplugged h4 a, body.pax-unplugged h5 a, body.pax-unplugged h6 a {
     color: #382e2e; }
-body.pax-unplugged div.tile h3 {
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #502854; }
-body.pax-unplugged a.btn-primary {
-  background-color: #91489A;
-  border-color: #703877;
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #703877; }
-body.pax-unplugged figure {
-  background-color: #ebdaee; }
-body.pax-unplugged img.project {
-  border: 2px solid #91489A; }
-body.pax-unplugged .navbar-default {
-  background-color: #91489A;
-  border-color: #ab60b5; }
-body.pax-unplugged .navbar-nav > .open > a,
-body.pax-unplugged .navbar-nav > .open > a:hover,
-body.pax-unplugged .navbar-nav > .open > a:focus {
-  color: #e6e6e6;
-  background-color: #703877; }
-body.pax-unplugged .navbar-toggle {
-  border-color: #703877; }
-body.pax-unplugged .navbar-toggle:hover,
-body.pax-unplugged .navbar-toggle:focus {
-  background-color: #91489A; }
+  body.pax-unplugged div.tile h3 {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #502854; }
+  body.pax-unplugged a.btn-primary {
+    background-color: #91489A;
+    border-color: #703877;
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #703877; }
+  body.pax-unplugged img.project {
+    border: 2px solid #91489A; }
+  body.pax-unplugged .navbar-default {
+    background-color: #91489A;
+    border-color: #ab60b5; }
+  body.pax-unplugged .navbar-nav > .open > a,
+  body.pax-unplugged .navbar-nav > .open > a:hover,
+  body.pax-unplugged .navbar-nav > .open > a:focus {
+    color: #e6e6e6;
+    background-color: #703877; }
+  body.pax-unplugged .navbar-toggle {
+    border-color: #703877; }
+  body.pax-unplugged .navbar-toggle:hover,
+  body.pax-unplugged .navbar-toggle:focus {
+    background-color: #91489A; }
 
-body.pax-west a {
-  color: #005b88; }
-body.pax-west h1, body.pax-west h2, body.pax-west h3, body.pax-west h4, body.pax-west h5, body.pax-west h6 {
-  text-shadow: 0 0 0.1em #007DBB; }
+body.pax-west {
+  background-color: #d6f1ff; }
+  body.pax-west a {
+    color: #005b88; }
   body.pax-west h1 a, body.pax-west h2 a, body.pax-west h3 a, body.pax-west h4 a, body.pax-west h5 a, body.pax-west h6 a {
     color: #382e2e; }
-body.pax-west div.tile h3 {
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #003955; }
-body.pax-west a.btn-primary {
-  background-color: #007DBB;
-  border-color: #005b88;
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #005b88; }
-body.pax-west figure {
-  background-color: #a2e0ff; }
-body.pax-west img.project {
-  border: 2px solid #007DBB; }
-body.pax-west .navbar-default {
-  background-color: #007DBB;
-  border-color: #009fee; }
-body.pax-west .navbar-nav > .open > a,
-body.pax-west .navbar-nav > .open > a:hover,
-body.pax-west .navbar-nav > .open > a:focus {
-  color: #e6e6e6;
-  background-color: #005b88; }
-body.pax-west .navbar-toggle {
-  border-color: #005b88; }
-body.pax-west .navbar-toggle:hover,
-body.pax-west .navbar-toggle:focus {
-  background-color: #007DBB; }
+  body.pax-west div.tile h3 {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #003955; }
+  body.pax-west a.btn-primary {
+    background-color: #007DBB;
+    border-color: #005b88;
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #005b88; }
+  body.pax-west img.project {
+    border: 2px solid #007DBB; }
+  body.pax-west .navbar-default {
+    background-color: #007DBB;
+    border-color: #009fee; }
+  body.pax-west .navbar-nav > .open > a,
+  body.pax-west .navbar-nav > .open > a:hover,
+  body.pax-west .navbar-nav > .open > a:focus {
+    color: #e6e6e6;
+    background-color: #005b88; }
+  body.pax-west .navbar-toggle {
+    border-color: #005b88; }
+  body.pax-west .navbar-toggle:hover,
+  body.pax-west .navbar-toggle:focus {
+    background-color: #007DBB; }
 
 div.pax-aus a {
   background: #e69d00;
@@ -5956,6 +5953,9 @@ div.pax-west img {
   border: 1px groove #005b88;
   box-shadow: none; }
 
+span.pax-location {
+  font-weight: bold; }
+
 /******************************************************************************
 * PROJECTS                                                                    *
 * Styles for project pages.                                                   *
@@ -6034,37 +6034,35 @@ td.resume-date, td.resume-skill-category {
 * STEPHENVLOG                                                                 *
 * Styles for Stephenvlog page.                                                *
 ******************************************************************************/
-body.stephenvlog a {
-  color: #03622f; }
-body.stephenvlog h1, body.stephenvlog h2, body.stephenvlog h3, body.stephenvlog h4, body.stephenvlog h5, body.stephenvlog h6 {
-  text-shadow: 0 0 0.1em #059347; }
+body.stephenvlog {
+  background-color: #d8fee9; }
+  body.stephenvlog a {
+    color: #03622f; }
   body.stephenvlog h1 a, body.stephenvlog h2 a, body.stephenvlog h3 a, body.stephenvlog h4 a, body.stephenvlog h5 a, body.stephenvlog h6 a {
     color: #382e2e; }
-body.stephenvlog div.tile h3 {
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #023017; }
-body.stephenvlog a.btn-primary {
-  background-color: #059347;
-  border-color: #03622f;
-  color: #FFFFFF;
-  text-shadow: 0.05em 0.05em #03622f; }
-body.stephenvlog figure {
-  background-color: #83fbbb; }
-body.stephenvlog img.project {
-  border: 2px solid #059347; }
-body.stephenvlog .navbar-default {
-  background-color: #059347;
-  border-color: #07c45f; }
-body.stephenvlog .navbar-nav > .open > a,
-body.stephenvlog .navbar-nav > .open > a:hover,
-body.stephenvlog .navbar-nav > .open > a:focus {
-  color: #e6e6e6;
-  background-color: #03622f; }
-body.stephenvlog .navbar-toggle {
-  border-color: #03622f; }
-body.stephenvlog .navbar-toggle:hover,
-body.stephenvlog .navbar-toggle:focus {
-  background-color: #059347; }
+  body.stephenvlog div.tile h3 {
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #023017; }
+  body.stephenvlog a.btn-primary {
+    background-color: #059347;
+    border-color: #03622f;
+    color: #FFFFFF;
+    text-shadow: 0.05em 0.05em #03622f; }
+  body.stephenvlog img.project {
+    border: 2px solid #059347; }
+  body.stephenvlog .navbar-default {
+    background-color: #059347;
+    border-color: #07c45f; }
+  body.stephenvlog .navbar-nav > .open > a,
+  body.stephenvlog .navbar-nav > .open > a:hover,
+  body.stephenvlog .navbar-nav > .open > a:focus {
+    color: #e6e6e6;
+    background-color: #03622f; }
+  body.stephenvlog .navbar-toggle {
+    border-color: #03622f; }
+  body.stephenvlog .navbar-toggle:hover,
+  body.stephenvlog .navbar-toggle:focus {
+    background-color: #059347; }
 
 div.stephenvlog a {
   background: #047a3b;

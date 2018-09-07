@@ -16,3 +16,9 @@ div.pax-east        { @include tile-theme($color-theme-pax-east);       }
 div.pax-south       { @include tile-theme($color-theme-pax-south);      }
 div.pax-unplugged   { @include tile-theme($color-theme-pax-unplugged);  }
 div.pax-west        { @include tile-theme($color-theme-pax-west)        }
+
+span.pax-dates {
+}
+span.pax-location {
+  font-weight: bold;
+}
