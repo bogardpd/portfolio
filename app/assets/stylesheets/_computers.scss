@@ -9,7 +9,7 @@ ul.component {
 	list-style-type: none;
 	
 	li {
-		margin-bottom: 10px;
+		margin-bottom: 0.5em;
 	}
 	p {
 		margin: 0;
@@ -29,7 +29,7 @@ ul.component {
 }
 
 p.supplemental {
-	font-size: 80%;
+	font-size: $font-size-small;
 	margin: 0 0 0 15px;
 	color: $color-text-light;
   span.vlog-subtitle {
@@ -38,7 +38,7 @@ p.supplemental {
 }
 
 p.purchased, p.date {
-	font-size: 70%;
+	font-size: $font-size-extra-small;
 	margin: 0 0 0 15px;
 	color: $color-text-light;
 }

@@ -5,7 +5,7 @@
 
 <%= link_buttons(LinkButton.new("See Paul’s current computers", nil, computers_path)) %>
 
-<h2 id="desktops">Desktops</h2>
+<%= link_header "Desktops", 2 %>
 
 <%= render partial: "computer_summary", collection: @computers["desktops"], as: :computer %>
 
@@ -13,7 +13,7 @@
   <p class="alert alert-info">Current desktop: <%= link_to "Pancake", computers_path(anchor: "home-computers") %></p>
 </div>
 
-<h2 id="laptops">Laptops</h2>
+<%= link_header "Laptops", 2 %>
 
 <%= render partial: "computer_summary", collection: @computers["laptops"], as: :computer %>
 
@@ -21,7 +21,7 @@
   <p class="alert alert-info">Current laptop: <%= link_to "Quesadilla", computers_path(anchor: "home-computers") %></p>
 </div>
 
-<h2 id="mobile">Mobile Devices</h2>
+<%= link_header "Mobile Devices", 2 %>
 
 <%= render partial: "computer_summary", collection: @computers["mobile"], as: :computer %>
 

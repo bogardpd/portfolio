@@ -199,12 +199,13 @@ figure {
 h1 {
 	text-align: center;
 	margin-top: 0.75em;
-	margin-bottom: 20px;
+	margin-bottom: 1em;
 }
 
 h2 {
-	margin-top: 30px;
-	margin-bottom: 20px;
+  font-weight: bold;
+  margin-top: 0.75em;
+	margin-bottom: 0.75em;
 }
 
 hr {
@@ -238,6 +239,10 @@ p {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	line-height: $line-height-default;
+}
+
+small {
+  color: $color-text-light;
 }
 
 .strong {
