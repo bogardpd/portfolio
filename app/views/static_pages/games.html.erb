@@ -1,0 +1,28 @@
+<% provide(:title, "Games")%>
+<% provide(:meta_description, "Paul Bogard’s game screen names.")%>
+
+<h1>Paul’s Game Screen Names</h1>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table games-table">
+      <tr>
+        <td class="icon"><%= image_tag "icons/games/steam.svg", class: "icon-games", alt: "Steam" %>
+        <td>Steam<br/><span class="sublabel">ID</span></td>
+        <td><%= link_to "pdbfishsticks".html_safe, "https://steamcommunity.com/id/pdbfishsticks", target: :_blank %></td>
+      </tr>
+      <tr>
+        <td class="icon"><%= image_tag "icons/games/nintendo-switch.svg", class: "icon-games", alt: "Nintendo Switch" %>
+        <td>Nintendo Switch<br/><span class="sublabel">Friend Code</span></td>
+        <td>SW-1215-9911-3616</td>
+      </tr>
+      <tr>
+        <td class="icon"><%= image_tag "icons/games/nintendo-3ds.svg", class: "icon-games", alt: "Nintendo 3DS" %>
+        <td>Nintendo 3DS<br/><span class="sublabel">Friend Code</span></td>
+        <td>0490-9953-9692</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<p class="center">Paul has attended GenCon and <%= link_to "PAX", pax_path %> a number of times.</p>

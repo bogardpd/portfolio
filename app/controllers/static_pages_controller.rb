@@ -172,6 +172,10 @@ class StaticPagesController < ApplicationController
     }
     gallery_template(title: starmen_conventions[params[:gallery]], path: starmen_con_gallery_path(gallery: params[:gallery]))
   end
+
+  def games
+    add_breadcrumb "Game Screen Names", games_path
+  end
   
   def gps_logging
     add_breadcrumb "GPS Logging", gps_logging_path
