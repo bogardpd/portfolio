@@ -1,3 +1,51 @@
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<div class="container">
+			<%= link_to image_tag("Portfolio-Logo.png", width: "263px", height: "24px", alt: "Paul Bogard’s Portfolio"), root_path, class: "navbar-brand" %>
+			
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					
+					<li class="nav-item dropdown">
+						<%= link_to "Projects", "#", id: "projectsDropdown", class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" %>
+						<div class="dropdown-menu" aria-labelledby="projectsDropdown">
+							<%= nav_link "All Projects", root_path %>
+							<div class="dropdown-divider"></div>
+							<%= Project::LIST.sort_by{|proj| proj[:name]}.map{|proj| nav_link proj[:name], eval(Project.path(proj[:name]))}.join.html_safe %>
+							<div class="dropdown-divider"></div>
+							<%= link_to "Github (bogardpd)", "https://github.com/bogardpd", target: :_blank, class: "dropdown-item" %>
+						</div>
+					</li>
+					
+					<li class="nav-item dropdown">
+						<%= link_to "About Paul", "#", id: "aboutDropdown", class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" %>
+						<div class="dropdown-menu" aria-labelledby="aboutDropdown">
+							<%= nav_link "About Paul", about_path %>
+							<%= nav_link "Résumé", resume_path %>
+							<div class="dropdown-divider"></div>
+							<%= nav_link "Airport Code Puns", airport_code_puns_path %>
+							<%= nav_link "Computers", computers_path %>
+							<%= nav_link "Ingress Mosaic Maps", ingress_mosaics_path %>
+							<%= nav_link "Reading List", books_path %>
+							<%= nav_link "RHIT", rhit_path %>
+							<%= nav_link "Website History", history_path %>
+						</div>
+					</li>
+
+					<li class="nav-item">
+						<%= link_to "Blog", "https://onehundredairports.com/", target: :_blank, class: "nav-link" %>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<!--
 	<header class="navbar navbar-default navbar-static-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -48,3 +96,4 @@
 		</div>
 		
 	</header>
+	-->

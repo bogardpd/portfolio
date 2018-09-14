@@ -10,6 +10,7 @@ gem 'sassc', '~> 1.12', '>= 1.12.1'
 gem 'bcrypt'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1' 
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc

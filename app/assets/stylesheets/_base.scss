@@ -33,25 +33,10 @@
     border: 2px solid $color-base;
   }
   
-  .navbar-default {
+  nav {
     background-color: $color-base;
     border-color: lighten($color-base, 10%);
   }
-  
-	.navbar-nav > .open > a, 
-	.navbar-nav > .open > a:hover, 
-	.navbar-nav > .open > a:focus {
-	    color: $color-inverse-text;
-	    background-color: darken($color-base, 10%)
-	}
-  
-	.navbar-toggle {
-	    border-color: darken($color-base, 10%)
-	}
-	.navbar-toggle:hover,
-	.navbar-toggle:focus {
-	    background-color: $color-base;
-	}
 }
 
 /* universal */
