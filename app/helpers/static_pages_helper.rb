@@ -7,7 +7,7 @@ module StaticPagesHelper
   
   # Returns a responsive image.
   def project_image(path, type: nil, alt: nil, caption: nil, attribution: nil, href: nil)
-    classes = %w(img-responsive project)
+    classes = %w(img-fluid project)
     extra_classes = {
       :ios_screenshot => %w(ios-screenshot),
       :osx_screenshot => %w(osx-screenshot),
@@ -30,7 +30,7 @@ module StaticPagesHelper
   # Returns an embedded YouTube video.
   def youtube_embed(video_id)
     html = %Q(<div class="row">)
-    html += %Q(<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">)
+    html += %Q(<div class="col-md-6 col-sm-8 offset-md-3 offset-sm-2">)
     html += %Q(<div class="embed-responsive embed-responsive-4by3">)
     html += %Q(<iframe width="420" height="315" src="https://www.youtube.com/embed/#{video_id}" frameborder="0" allowfullscreen></iframe>)
     html += "</div></div></div>"

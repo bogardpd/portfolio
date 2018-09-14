@@ -9,7 +9,7 @@
   <% @photos.each do |photo| %>
     <div class="col-lg-6 generic-photo-tile">
       <figure class="figure">
-        <%= image_tag("#{PortfolioImage::ROOT_PATH}mco-lobby/#{photo[:filename]}", alt: photo[:filename], class: "img-responsive generic-photo-tile") %>
+        <%= image_tag("#{PortfolioImage::ROOT_PATH}mco-lobby/#{photo[:filename]}", alt: photo[:filename], class: "img-fluid generic-photo-tile") %>
         <figcaption>
           <%= photo[:people] %> &middot; <%= photo[:date].strftime("%-d %b %Y") %><br/>
           <span class="card-description"><%= photo[:event] %></span>

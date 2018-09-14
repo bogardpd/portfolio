@@ -30,7 +30,8 @@ div.tile {
   padding: 0.75rem;
   
 	a {
-		border-radius: 5px;
+    text-decoration: none;
+    border-radius: 5px;
     color: $color-primary;
     white-space: inherit;
     font-size: 100%;
@@ -40,6 +41,10 @@ div.tile {
   		background-color: $color-background-light;
   		border: 1px solid $color-border;
       color: $color-primary;
+    }
+
+    &:active {
+      text-decoration: none;
     }
 	}
 	
