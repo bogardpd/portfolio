@@ -38,7 +38,7 @@ class Tile
   end
   
   def tile_classes
-    classes = ["tile", "col-lg-#{@columns}", "col-sm-6"]
+    classes = ["tile", "col", "col-xl-#{@columns}", "col-lg-6"]
     classes << classes_custom
     classes << @theme if @theme
     return classes.compact.join(" ")

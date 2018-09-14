@@ -27,7 +27,7 @@
 
 div.tile {
   text-align: center;
-  padding: 1rem 1.25rem;
+  padding: 1rem;
   
 	a {
 		border-radius: 5px;
@@ -68,7 +68,7 @@ div.tile {
 
 div.tile.tile-widescreen {
   a {
-    height: 23em;
+    height: 21em;
   }
   img {
     width: 322px;  /* 320 plus 1px border */

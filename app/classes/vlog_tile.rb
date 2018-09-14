@@ -8,7 +8,7 @@ class VlogTile < Tile
     @img = "https://img.youtube.com/vi/#{youtube_id}/mqdefault.jpg"
     @caption = video_caption(date, details)
     @theme = theme
-    @columns = 4;
+    @columns = 6;
   end
   
   private
