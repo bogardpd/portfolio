@@ -12,9 +12,22 @@ img.icon-games {
 
 table.games-table {
   margin-top: 1em;
+  
+  th {
+    background-color: $color-border-bootstrap;
+  }
+
+  td.icon {
+    width: 50px;
+  }
+
+  td.service {
+    width: 12em;
+  }
+
+  td.screen-name {
+  }
 }
 
-td.icon {
-  width: 50px;
-  padding: 0;
-}
+
+

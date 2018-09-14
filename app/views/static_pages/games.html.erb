@@ -6,21 +6,60 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <table class="table games-table">
-      <tr>
-        <td class="icon"><%= image_tag "icons/games/steam.svg", class: "icon-games", alt: "Steam" %>
-        <td>Steam<br/><span class="sublabel">ID</span></td>
-        <td><%= link_to "pdbfishsticks".html_safe, "https://steamcommunity.com/id/pdbfishsticks", target: :_blank %></td>
-      </tr>
-      <tr>
-        <td class="icon"><%= image_tag "icons/games/nintendo-switch.svg", class: "icon-games", alt: "Nintendo Switch" %>
-        <td>Nintendo Switch<br/><span class="sublabel">Friend Code</span></td>
-        <td>SW-1215-9911-3616</td>
-      </tr>
-      <tr>
-        <td class="icon"><%= image_tag "icons/games/nintendo-3ds.svg", class: "icon-games", alt: "Nintendo 3DS" %>
-        <td>Nintendo 3DS<br/><span class="sublabel">Friend Code</span></td>
-        <td>0490-9953-9692</td>
-      </tr>
+      <thead>
+        <tr><th colspan="3">Chat</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="icon"><%= image_tag "icons/games/discord.svg", class: "icon-games", alt: "Discord" %>
+          <td class="service">Discord</td>
+          <td class="screen-name"><%= link_to "Fishsticks#6215", "https://discordapp.com/users/210087365975343104/", target: :_blank %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table games-table">
+      <thead>
+        <tr><th colspan="3">Platforms</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="icon"><%= image_tag "icons/games/steam.svg", class: "icon-games", alt: "Steam" %>
+          <td class="service">Steam<br/><span class="sublabel">ID</span></td>
+          <td class="screen-name"><%= link_to "pdbfishsticks".html_safe, "https://steamcommunity.com/id/pdbfishsticks", target: :_blank %></td>
+        </tr>
+        <tr>
+          <td class="icon"><%= image_tag "icons/games/nintendo-switch.svg", class: "icon-games", alt: "Nintendo Switch" %>
+          <td class="service">Nintendo Switch<br/><span class="sublabel">Friend Code</span></td>
+          <td class="screen-name">SW-1215-9911-3616</td>
+        </tr>
+        <tr>
+          <td class="icon"><%= image_tag "icons/games/nintendo-3ds.svg", class: "icon-games", alt: "Nintendo 3DS" %>
+          <td class="service">Nintendo 3DS<br/><span class="sublabel">Friend Code</span></td>
+          <td class="screen-name">0490-9953-9692</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table games-table">
+      <thead>
+        <tr><th colspan="3">Games</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="icon"><%= image_tag "icons/games/ingress.svg", class: "icon-games", alt: "Ingress" %>
+          <td class="service">Ingress</td>
+          <td class="screen-name">PDBFishsticks<br/><span class="sublabel">ENL</span></td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>
