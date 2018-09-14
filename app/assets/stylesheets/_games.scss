@@ -11,10 +11,13 @@ img.icon-games {
 }
 
 table.games-table {
-  margin-top: 1em;
   
   th {
     background-color: $color-border-bootstrap;
+  }
+
+  td {
+    line-height: $line-height-small;
   }
 
   td.icon {
@@ -22,10 +25,10 @@ table.games-table {
   }
 
   td.service {
-    width: 12em;
   }
 
   td.screen-name {
+    text-align: right;
   }
 }
 
