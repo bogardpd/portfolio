@@ -27,12 +27,13 @@
 
 div.tile {
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem;
   
 	a {
 		border-radius: 5px;
     color: $color-primary;
     white-space: inherit;
+    font-size: 100%;
     
     &:hover {
   		text-decoration: none;
@@ -43,10 +44,9 @@ div.tile {
 	}
 	
 	h3 {
-    margin: 0.75em 0;
+    margin: 0.3em 0;
     line-height: 1.4em;
-    font-size: 140%;
-    font-weight: 700;
+    font-weight: 400;
   }
   
   img {
@@ -59,8 +59,8 @@ div.tile {
   }
   
 	p {
-		margin-top: 10px;
-    margin-bottom: 10px;
+    font-size: $font-size-small;
+		margin: 0.3em 0;
     font-weight: 300;
 	}
 	
@@ -68,7 +68,7 @@ div.tile {
 
 div.tile.tile-widescreen {
   a {
-    height: 21em;
+    height: 17em;
   }
   img {
     width: 322px;  /* 320 plus 1px border */
