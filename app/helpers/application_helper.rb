@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def show_breadcrumbs
     return "" unless @breadcrumbs && @breadcrumbs.length > 1
-    html = %Q(<nav aria-label="breadcrumb">)
+    html = %Q(<nav aria-label="breadcrumb" class="breadcrumb">)
     html += %Q(<ol class="breadcrumb">)
     @breadcrumbs[0..@breadcrumbs.length-2].each do |b|
       html += %Q(<li class="breadcrumb-item">#{link_to b[0], b[1]}</li>)
