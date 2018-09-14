@@ -4,7 +4,7 @@
       <div class="btn-group">
         <%= item.last.map{|ik, iv|
           path = (ik == :Overview) ? flight_historian_path : flight_historian_path(version: ik.to_s.parameterize)
-          classes = %w(btn btn-default)
+          classes = %w(btn btn-outline-dark)
           classes.push iv[:class] if iv[:class]
           classes.push "active" if iv[:active]
           link_to(ik, path, class: classes)

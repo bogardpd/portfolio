@@ -9,10 +9,10 @@
     <div class="col-md-12 center">
       <div class="btn-group">
         <% if @currently_reading.any? %>
-          <%= link_to "Current", '#current', class: "btn btn-default" %>
+          <%= link_to "Current", '#current', class: "btn btn-outline-dark" %>
         <% end %>
         <% @books_by_year.each do |year, books| %>
-          <%= link_to year, "##{year}", class: "btn btn-default" %>
+          <%= link_to year, "##{year}", class: "btn btn-outline-dark" %>
         <% end %>
       </div>
     </div>

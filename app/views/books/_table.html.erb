@@ -27,7 +27,7 @@
           </td>
           <% if logged_in? %>
             <td class="reading-edit">
-              <%= link_to("<span class=\"glyphicon glyphicon-pencil\"></span>".html_safe, edit_book_path(book), title: "Edit #{book.title}", class: "btn btn-default") %>
+              <%= link_to("Edit", edit_book_path(book), title: "Edit #{book.title}", class: "btn btn-primary") %>
             </td>
           <% end %>
         </tr>
