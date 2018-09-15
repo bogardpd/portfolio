@@ -29,18 +29,23 @@
       <tbody>
         <tr>
           <td class="icon"><%= image_tag "icons/games/steam.svg", class: "icon-games", alt: "Steam" %>
-          <td class="service">Steam<br/><span class="sublabel">ID</span></td>
+          <td class="service">Steam<br><span class="sublabel">ID</span></td>
           <td class="screen-name"><%= link_to "pdbfishsticks".html_safe, "https://steamcommunity.com/id/pdbfishsticks", target: :_blank %></td>
         </tr>
         <tr>
           <td class="icon"><%= image_tag "icons/games/nintendo-switch.svg", class: "icon-games", alt: "Nintendo Switch" %>
-          <td class="service">Nintendo Switch<br/><span class="sublabel">Friend Code</span></td>
+          <td class="service">Nintendo Switch<br><span class="sublabel">Friend Code</span></td>
           <td class="screen-name">SW-1215-9911-3616</td>
         </tr>
         <tr>
           <td class="icon"><%= image_tag "icons/games/nintendo-3ds.svg", class: "icon-games", alt: "Nintendo 3DS" %>
-          <td class="service">Nintendo 3DS<br/><span class="sublabel">Friend Code</span></td>
-          <td class="screen-name">0490-9953-9692</td>
+          <td class="service">Nintendo 3DS<br><span class="sublabel">Friend Code</span></td>
+          <td class="screen-name">3583-4075-6606</td>
+        </tr>
+        <tr>
+          <td class="icon"><%= image_tag "icons/games/xbox-live.svg", class: "icon-games", alt: "Xbox Live" %>
+          <td class="service">Xbox Live<br><span class="sublabel">Gamertag</span></td>
+          <td class="screen-name">PDB Fishsticks</td>
         </tr>
       </tbody>
     </table>
@@ -57,11 +62,14 @@
         <tr>
           <td class="icon"><%= image_tag "icons/games/ingress.svg", class: "icon-games", alt: "Ingress" %>
           <td class="service">Ingress</td>
-          <td class="screen-name">PDBFishsticks<br/><span class="sublabel">ENL</span></td>
+          <td class="screen-name">PDBFishsticks<br><span class="sublabel">ENL</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<p class="center">Paul has attended GenCon and <%= link_to "PAX", pax_path %> a number of times.</p>
+<p class="center">
+  Paul’s <%= link_to "computers", computers_path %> and <%= link_to "consoles", computers_path(anchor: "gaming-systems") %><br>
+  Paul’s <%= link_to "PAX attendance", pax_path %>
+</p>
