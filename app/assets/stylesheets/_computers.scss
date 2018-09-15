@@ -9,17 +9,38 @@ ul.component {
 	list-style-type: none;
 	
 	li {
-		margin-bottom: 0.5em;
+		margin-bottom: 1em;
+	}
+	li:last-child {
+		margin-bottom: 0;
 	}
 	p {
 		margin: 0;
 		font-weight: normal;		
 	}
 
+	p.supplemental, p.purchased {
+		margin-top: 0.3rem;
+	}
+
+	p.supplemental {
+		font-size: $font-size-small;
+		color: $color-text-light;
+		span.vlog-subtitle {
+			font-style: italic;
+		}
+	}
+
+	p.purchased {
+		font-size: $font-size-extra-small;
+		color: $color-text-light;
+	}
+
 	p.recent {
 		font-weight: bold;
 		color: $color-text-light-good;
 	}
+
 	span.device_name {
 		font-weight: 700;
 	}
@@ -28,17 +49,8 @@ ul.component {
 	}
 }
 
-p.supplemental {
-	font-size: $font-size-small;
-	margin: 0 0 0 15px;
-	color: $color-text-light;
-  span.vlog-subtitle {
-    font-style: italic;
-  }
-}
-
-p.purchased, p.date {
-	font-size: $font-size-extra-small;
-	margin: 0 0 0 15px;
-	color: $color-text-light;
+ul.computer-specs {
+	li {
+		line-height: $line-height-default;
+	}
 }

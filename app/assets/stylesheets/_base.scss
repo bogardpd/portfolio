@@ -234,7 +234,10 @@ img.portrait {
 }
 
 li, td {
-	line-height: $line-height-default;
+  line-height: $line-height-small;
+  p {
+    line-height: $line-height-small;
+  }
 }
 
 p {

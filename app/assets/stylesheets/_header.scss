@@ -12,10 +12,6 @@ nav.navbar {
 	background-color: $color-primary;
 
 	li.dropdown {
-		a.dropdown-item {
-			padding-top: 0;
-			padding-bottom: 0;
-		}
 		a.active {
 			font-weight: bold;
 			color: $color-text;

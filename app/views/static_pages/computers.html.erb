@@ -7,7 +7,7 @@
 
 <%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_computers_path)) %>
 
-<h2 id="home-computers">Home Computers</h2>
+<%= link_header "Home Computers", 2 %>
 
 <table class="table table-bordered">
 	<thead>
@@ -154,8 +154,6 @@
             <p class="supplemental">SSD &middot; SATA</p>
             <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
           </li>
-        </ul>
-        <ul class="component">
           <li>
             <p class="component">3 TB Western Digital Blue</p>
             <p class="supplemental">HDD &middot; 5400 RPM &middot; SATA</p>
@@ -419,7 +417,7 @@
 	</tbody>
 </table>
 
-<h2 id="network">Network</h2>
+<%= link_header "Network", 2 %>
 
 <table class="table table-bordered">
 	<tbody>
@@ -437,7 +435,7 @@
 	</tbody>
 </table>
 
-<h2 id="mobile">Mobile</h2>
+<%= link_header "Mobile", 2 %>
 
 <table class="table table-bordered">
 	<tbody>
@@ -477,7 +475,7 @@
 	</tbody>
 </table>
 
-<h2 id="gaming-systems">Gaming Systems</h2>
+<%= link_header "Game Systems", 2 %>
 
 <table class="table table-bordered">
 	<tbody>
@@ -517,7 +515,7 @@
   </tbody>
 </table>
 
-<h2 id="home-entertainment">Home Entertainment</h2>
+<%= link_header "Home Entertainment", 2 %>
 
 <table class="table table-bordered">
   <tbody>
