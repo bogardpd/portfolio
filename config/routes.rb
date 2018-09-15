@@ -55,6 +55,9 @@ Rails.application.routes.draw do
   get "ingress-mosaics" => "static_pages#ingress_mosaics"
   get "ingress-murals", :to => redirect("/ingress-mosaics", :status => 301)
   get "history"         => "static_pages#history"
+  get "rhit"            => "static_pages#rhit"
+  get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", :as => :fast_track_calculus
+  get "rhit/fast-track-calculus/fred-and-harry" => "static_pages#fred_and_harry", :as => :fred_and_harry
   
   # Projects hosted on Portfolio
   get "timezones" => "time_zones#index"
@@ -64,9 +67,6 @@ Rails.application.routes.draw do
   get "hotel-pillow-fort" => "static_pages#hotel_pillow_fort"
   get "mco-lobby"         => "static_pages#mco_lobby"
   get "oreo"              => "static_pages#oreo"
-  get "rhit"              => "static_pages#rhit"
-  get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", :as => :fast_track_calculus
-  get "rhit/fast-track-calculus/fred-and-harry" => "static_pages#fred_and_harry", :as => :fred_and_harry
   get "stephenvlog"       => "static_pages#stephenvlog"
   
   get "starmen-conventions" => "static_pages#starmen_conventions"
