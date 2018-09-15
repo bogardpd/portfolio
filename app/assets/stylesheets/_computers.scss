@@ -16,11 +16,12 @@ ul.component {
 	}
 	p {
 		margin: 0;
-		font-weight: normal;		
+		font-weight: normal;
+		line-height: $line-height-small;
 	}
 
 	p.supplemental, p.purchased {
-		margin-top: 0.3rem;
+		margin-top: 0.4rem;
 	}
 
 	p.supplemental {

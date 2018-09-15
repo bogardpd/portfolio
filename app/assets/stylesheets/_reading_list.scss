@@ -3,39 +3,44 @@
 * Styles for the Reading List.                                                *
 ******************************************************************************/
 
-td.reading-title {
-	width: 60%;
-	font-style: italic;
-	p {
-	  margin: 0;
-    line-height: 1.6em;
-	}
-  p.subtitle {
-		font-size: 80%;
-		font-weight: 300;
+table.reading-list {
+  
+  td.reading-title {
+    width: 60%;
+    font-style: italic;
+    p {
+      margin: 0;
+      line-height: $line-height-small;
+    }
+    p.subtitle {
+      margin-top: 0.25rem;
+      font-size: 80%;
+      font-weight: 300;
+    }
   }
-}
-
-td.reading-author {
-  li {
-    margin-top: 0;
-    margin-bottom: 0.75em;
-    line-height: 1.6em;
+  
+  td.reading-author {
+    li {
+      margin-top: 0;
+      margin-bottom: 0.75em;
+      line-height: $line-height-small;
+    }
+    li:last-child {
+      margin-bottom: 0;
+    }
   }
-  li:last-child {
-    margin-bottom: 0;
+  
+  td.reading-pages {
+    width: 4em;
+    text-align: center;
+    font-weight: 300;
+    font-style: italic;
+    color: $color-text-light;
   }
-}
-
-td.reading-pages {
-  width: 4em;
-  text-align: center;
-  font-weight: 300;
-  font-style: italic;
-  color: $color-text-light;
-}
-
-td.reading-edit {
-  width: 50px;
-  text-align: right;
+  
+  td.reading-edit {
+    width: 50px;
+    text-align: right;
+  }
+  
 }

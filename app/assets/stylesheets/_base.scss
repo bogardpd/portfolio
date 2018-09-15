@@ -233,13 +233,6 @@ img.portrait {
 	margin: 20px auto;
 }
 
-li, td {
-  line-height: $line-height-small;
-  p {
-    line-height: $line-height-small;
-  }
-}
-
 p {
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -256,6 +249,13 @@ small {
 
 strong {
 	font-weight: 700;
+}
+
+td {
+  line-height: $line-height-default;
+  p {
+    line-height: $line-height-default;
+  }
 }
 
 .emphasis {
