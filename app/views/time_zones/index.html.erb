@@ -1,7 +1,7 @@
 <% provide(:title, "Time Zone Chart")%>
 <% provide(:meta_description, "Create a chart of what time zones you’ve visited recently.")%>
 
-<nav class="navbar navbar-default" id="navbar">
+<nav class="navbar navbar-light" id="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <div class="navbar-brand"><%= link_to "Time Zone Chart", timezones_path, class: "link-unstyled", target: "_parent" %> <small>by <%= link_to "Paul Bogard", "https://www.pbogard.com", target: "_parent" %></small></div>
@@ -9,14 +9,13 @@
     
     <div class="share-buttons" id="edit-buttons">
       <form class="form-inline">
-        <div class="input-group">
+        <div class="input-group mr-1">
           <%= link_to %Q(New chart).html_safe, timezones_path, class: "btn btn-outline-dark" %>
         </div>
-        <div class="input-group">
+        <div class="input-group mr-1">
           <%= link_to %Q(Download SVG).html_safe, "", id: "download-link", class: "btn btn-outline-dark", download: "" %>
         </div>
-        <div class="input-group">
-          <div class="input-group-addon">Chart size</div>
+        <div class="input-group mr-1">
           <select id="field-size" class="form-control field-size" />
             <option value="640,360">640&times;360</option>
             <option value="960,540" selected>960&times;540</option>
@@ -79,8 +78,8 @@
   
   <div id="component-data">
     <form id="locations">
-      <div class="input-group col-md-6 col-md-offset-3">
-        <div class="input-group-addon">Trip Title:</div><input type="text" id="field-title" class="form-control field-title" />
+      <div class="input-group col-md-6 offset-md-3">
+        <div class="input-group-prepend"><span class="input-group-text">Trip Title</span></div><input type="text" id="field-title" class="form-control field-title" />
       </div>
       <table class="table">
         <thead>

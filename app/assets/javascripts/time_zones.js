@@ -649,7 +649,7 @@ function createInsertButton() {
 function createDateTime(fieldName) {
   var html = '<div class="form-group"><div class="input-group date dtpicker">';
   html += '<input type="text" class="form-control field-' + fieldName + '" />';
-  html += '<span class="input-group-addon"><span class="custom-icon">&#128197;</span></span>';
+  html += '<div class="input-group-append"><span class="input-group-text"><span class="custom-icon">&#128197;</span></span></div>';
   html += '</div></div>';
   return html;
 }
