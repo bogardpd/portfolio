@@ -8,7 +8,7 @@ class Tile
     @img = img
     @caption = caption
     @theme = theme
-    @columns = columns || 4
+    @columns = columns || %w(col-xl-4 col-lg-6)
   end
   
   def show
@@ -16,7 +16,7 @@ class Tile
     tile = String.new
     
     
-    tile << image_tag(image_source) if image_source
+    tile << image_tag(image_source, class: "img-fluid") if image_source
     tile << "<h3>#{title}</h3>" if title
     tile << "<p>#{caption}</p>" if caption
     
@@ -38,7 +38,8 @@ class Tile
   end
   
   def tile_classes
-    classes = ["tile", "col", "col-xl-#{@columns}", "col-lg-6"]
+    classes = ["tile"]
+    classes << @columns
     classes << classes_custom
     classes << @theme if @theme
     return classes.compact.join(" ")

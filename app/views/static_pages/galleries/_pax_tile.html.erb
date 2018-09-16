@@ -1,1 +1,1 @@
-<%= Tile.new(path: polymorphic_url(:pax_gallery, gallery: name.parameterize), title: name, caption: "<span class=\"pax-location\">#{location}</span>&ensp;<span class=\"pax-dates\">#{FormattedDate::range_text(dates)}</span>", theme: theme, columns: 3).show %>
+<%= Tile.new(path: polymorphic_url(:pax_gallery, gallery: name.parameterize), title: name, caption: "<span class=\"pax-location\">#{location}</span>&ensp;<span class=\"pax-dates\">#{FormattedDate::range_text(dates)}</span>", theme: theme, columns: %w(col-xl-3 col-lg-4 col-md-6)).show %>
