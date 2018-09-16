@@ -22,15 +22,17 @@ nav.navbar {
 }
 
 nav.breadcrumb {
-	font-weight: 300;
+	font-weight: 400;
 	padding: 0;
 	background-color: $color-background-main;
+	border-bottom: 1px solid $color-background-light;
 
 	ol.breadcrumb {
 		padding: 0;
 		margin: 0;
 		background-color: $color-background-main;
 	}
+
 }
 
 
