@@ -8610,6 +8610,10 @@ h2 {
   margin-top: 0.75em;
   margin-bottom: 0.75em; }
 
+h3 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
+
 hr {
   border-top: 1px solid #cccccc; }
 
@@ -8628,13 +8632,10 @@ img.org-logo {
 img.portrait {
   margin: 20px auto; }
 
-li, td {
-  line-height: 1.8em; }
-
 p {
   margin-top: 20px;
   margin-bottom: 20px;
-  line-height: 1.8em; }
+  line-height: 1.7em; }
 
 small {
   color: #705c5c; }
@@ -8644,6 +8645,11 @@ small {
 
 strong {
   font-weight: 700; }
+
+td {
+  line-height: 1.7em; }
+  td p {
+    line-height: 1.7em; }
 
 .emphasis {
   font-style: italic; }
@@ -8660,18 +8666,16 @@ strong {
 ******************************************************************************/
 nav.navbar {
   background-color: #550000; }
-  nav.navbar li.dropdown a.dropdown-item {
-    padding-top: 0;
-    padding-bottom: 0; }
   nav.navbar li.dropdown a.active {
     font-weight: bold;
     color: #382e2e;
     background-color: inherit; }
 
 nav.breadcrumb {
-  font-weight: 300;
+  font-weight: 400;
   padding: 0;
-  background-color: #F7F7F7; }
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #e6e6e6; }
   nav.breadcrumb ol.breadcrumb {
     padding: 0;
     margin: 0;
@@ -8725,11 +8729,12 @@ div.tile {
     margin: 0.3em 0;
     line-height: 1.4em;
     font-weight: 400; }
-  div.tile img {
+  div.tile img:not(.img-fluid) {
     width: 302px;
     /* 300 plus 1px border */
     height: 227px;
-    /* 225 plus 1px border */
+    /* 225 plus 1px border */ }
+  div.tile img {
     margin: 10px 0 5px 0;
     border: 1px solid #cccccc;
     border-radius: 5px;
@@ -8738,14 +8743,6 @@ div.tile {
     font-size: 13pt;
     margin: 0.3em 0;
     font-weight: 300; }
-
-div.tile.tile-widescreen a {
-  height: 17em; }
-div.tile.tile-widescreen img {
-  width: 322px;
-  /* 320 plus 1px border */
-  height: 182px;
-  /* 180 plus 1px border */ }
 
 div.stephenvlog a {
   background: #047036;
@@ -8785,10 +8782,23 @@ ul.component {
   padding: 0;
   list-style-type: none; }
   ul.component li {
-    margin-bottom: 0.5em; }
+    margin-bottom: 1em; }
+  ul.component li:last-child {
+    margin-bottom: 0; }
   ul.component p {
     margin: 0;
-    font-weight: normal; }
+    font-weight: normal;
+    line-height: 1.2em; }
+  ul.component p.supplemental, ul.component p.purchased {
+    margin-top: 0.4rem; }
+  ul.component p.supplemental {
+    font-size: 13pt;
+    color: #705c5c; }
+    ul.component p.supplemental span.vlog-subtitle {
+      font-style: italic; }
+  ul.component p.purchased {
+    font-size: 10pt;
+    color: #705c5c; }
   ul.component p.recent {
     font-weight: bold;
     color: #14b881; }
@@ -8797,17 +8807,8 @@ ul.component {
   ul.component span.unpictured {
     font-style: italic; }
 
-p.supplemental {
-  font-size: 13pt;
-  margin: 0 0 0 15px;
-  color: #705c5c; }
-  p.supplemental span.vlog-subtitle {
-    font-style: italic; }
-
-p.purchased, p.date {
-  font-size: 10pt;
-  margin: 0 0 0 15px;
-  color: #705c5c; }
+ul.computer-specs li {
+  line-height: 1.7em; }
 
 /******************************************************************************
 * FORMS                                                                       *
@@ -9095,31 +9096,29 @@ table.tools-list ul, table.version-summary ul {
 * READING LIST                                                                *
 * Styles for the Reading List.                                                *
 ******************************************************************************/
-td.reading-title {
+table.reading-list td.reading-title {
   width: 60%;
   font-style: italic; }
-  td.reading-title p {
+  table.reading-list td.reading-title p {
     margin: 0;
-    line-height: 1.6em; }
-  td.reading-title p.subtitle {
+    line-height: 1.2em; }
+  table.reading-list td.reading-title p.subtitle {
+    margin-top: 0.25rem;
     font-size: 80%;
     font-weight: 300; }
-
-td.reading-author li {
+table.reading-list td.reading-author li {
   margin-top: 0;
   margin-bottom: 0.75em;
-  line-height: 1.6em; }
-td.reading-author li:last-child {
+  line-height: 1.2em; }
+table.reading-list td.reading-author li:last-child {
   margin-bottom: 0; }
-
-td.reading-pages {
+table.reading-list td.reading-pages {
   width: 4em;
   text-align: center;
   font-weight: 300;
   font-style: italic;
   color: #705c5c; }
-
-td.reading-edit {
+table.reading-list td.reading-edit {
   width: 50px;
   text-align: right; }
 

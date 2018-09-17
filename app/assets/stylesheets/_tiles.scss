@@ -54,9 +54,12 @@ div.tile {
     font-weight: 400;
   }
   
-  img {
+  img:not(.img-fluid) {
     width: 302px;  /* 300 plus 1px border */
     height: 227px; /* 225 plus 1px border */
+  }
+
+  img {
   	margin: 10px 0 5px 0;
     border: 1px solid $color-border;
   	border-radius: 5px;
@@ -69,16 +72,6 @@ div.tile {
     font-weight: 300;
 	}
 	
-}
-
-div.tile.tile-widescreen {
-  a {
-    height: 17em;
-  }
-  img {
-    width: 322px;  /* 320 plus 1px border */
-    height: 182px; /* 180 plus 1px border */
-  }
 }
 
 div.stephenvlog {
