@@ -12,7 +12,7 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th style="width: 20%"></th>
+			<th class="label"></th>
 			<th style="width: 40%">Pancake</th>
 			<th style="width: 40%">Quesadilla</th>
 		</tr>
@@ -20,7 +20,7 @@
 	<tbody>
 		
 		<tr id="model">
-			<th scope="row">Model</th>
+			 <th scope="row" class="label">Model</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -40,7 +40,7 @@
 		</tr>
 		
 		<tr id="photo">
-			<th scope="row">Photo</th>
+			 <th scope="row" class="label">Photo</th>
 			<td>
 				<%= link_to(image_tag("#{PortfolioImage::ROOT_PATH}computers/Pancake 2016-08-20 - Thumbnail.jpg", class: "img-fluid project bordered"), "#{PortfolioImage::ROOT_PATH}computers/Pancake 2016-08-20.jpg") %>
 			</td>
@@ -50,7 +50,7 @@
 		</tr>
 		
 		<tr id="operating-system">
-			<th scope="row">Operating System</th>
+			 <th scope="row" class="label">Operating System</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -68,7 +68,7 @@
 		</tr>
 		
 		<tr id="processor">
-			<th scope="row">Processor</th>
+			 <th scope="row" class="label">Processor</th>
 			<td>
 				<ul class="component">
 					<ul class="component">
@@ -91,7 +91,7 @@
 		</tr>
 		
 		<tr id="motherboard">
-			<th scope="row">Motherboard</th>
+			 <th scope="row" class="label">Motherboard</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -105,7 +105,7 @@
 		</tr>
 		
 		<tr id="graphics-card">
-			<th scope="row">Graphics Card</th>
+			 <th scope="row" class="label">Graphics Card</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -126,7 +126,7 @@
 		</tr>
 		
 		<tr id="memory">
-			<th scope="row">Memory</th>
+			 <th scope="row" class="label">Memory</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -146,7 +146,7 @@
 		</tr>
 		
 		<tr id="storage">
-			<th scope="row">Storage</th>
+			 <th scope="row" class="label">Storage</th>
 			<td>
         <ul class="component">
           <li>
@@ -178,7 +178,7 @@
 		</tr>
 		
 		<tr id="optical-disc">
-			<th scope="row">Optical Disc</th>
+			 <th scope="row" class="label">Optical Disc</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -192,7 +192,7 @@
 		</tr>
 		
 		<tr id="wireless">
-			<th scope="row">Wireless</th>
+			 <th scope="row" class="label">Wireless</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -217,7 +217,7 @@
 		</tr>
 				
 		<tr id="power-supply">
-			<th scope="row">Power Supply</th>
+			 <th scope="row" class="label">Power Supply</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -233,7 +233,7 @@
 		</tr>
 		
     <tr id="case">
-      <th scope="row">Case</th>
+       <th scope="row" class="label">Case</th>
       <td>
         <ul class="component">
           <li>
@@ -249,7 +249,7 @@
     </tr>
 		    
 		<tr id="cpu-cooler">
-			<th scope="row">CPU Cooler</th>
+			 <th scope="row" class="label">CPU Cooler</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -265,28 +265,28 @@
 		</tr>
 		
 		<tr id="displays">
-			<th scope="row">Displays</th>
+			 <th scope="row" class="label">Displays</th>
 			<td colspan="2">
 				<p><%= image_tag("#{PortfolioImage::ROOT_PATH}computers/Monitor Layout.png", class: "img-fluid project bordered", alt: "A diagram showing two monitors connected to Pancake and one to Quesadilla, and a diagram showing three monitors connected to Pancake, with Quesadilla using its own built in screen.") %></p>
 				<ul class="component">
 					<li>
 						<p class="component">24″ Dell UltraSharp U2415</p>
-						<p class="supplemental">1920×1200 &middot; IPS &middot; LED backlight</p>
+						<p class="supplemental">1920×1200 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
 						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-06-01"} %>
 					</li>
 					<li>
 						<p class="component">24″ Dell UltraSharp U2415</p>
-						<p class="supplemental">1920×1200 &middot; IPS &middot; LED backlight</p>
+						<p class="supplemental">1920×1200 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
 						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-06-01"} %>
 					</li>
 					<li>
 						<p class="component">24″ Dell UltraSharp U2415</p>
-						<p class="supplemental">1920×1200 &middot; IPS &middot; LED backlight</p>
+						<p class="supplemental">1920×1200 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
 						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-05-09"} %>
 					</li>
 					<li>
 						<p class="component">12″ laptop screen</p>
-						<p class="supplemental">2304×1440 &middot; IPS &middot; LED backlight</p>
+						<p class="supplemental">2304×1440 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
 						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
 					</li>
 				</ul>
@@ -294,7 +294,7 @@
 		</tr>
 		
 		<tr id="keyboard">
-			<th scope="row">Keyboard</th>
+			 <th scope="row" class="label">Keyboard</th>
 			<td colspan="2">
 				<ul class="component">
 						<li>
@@ -306,7 +306,7 @@
 		</tr>
 		
 		<tr id="mouse">
-			<th scope="row">Mouse</th>
+			 <th scope="row" class="label">Mouse</th>
 			<td colspan="2">
 				<ul class="component">
 					<li>
@@ -319,7 +319,7 @@
 		</tr>
 		
 		<tr id="game-controllers">
-			<th scope="row">Game Controllers</th>
+			 <th scope="row" class="label">Game Controllers</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -338,7 +338,7 @@
 		</tr>
 		
 		<tr id="speakers">
-			<th scope="row">Speakers</th>
+			 <th scope="row" class="label">Speakers</th>
 			<td colspan="2">
 				<ul class="component">
 					<li>
@@ -351,7 +351,7 @@
 		</tr>
 		
 		<tr id="mixer">
-			<th scope="row">Mixer</th>
+			 <th scope="row" class="label">Mixer</th>
 			<td colspan="2">
 				<ul class="component">
 					<li>
@@ -362,21 +362,43 @@
 			</td>
 		</tr>
 		
-		<tr id="headset">
-			<th scope="row">Headset</th>
-			<td colspan="2">
+		<tr id="headphones">
+			 <th scope="row" class="label">Headphones</th>
+			<td>
 				<ul class="component">
 					<li>
-						<p class="component">Sennheiser PC 8 USB</p>
-						<p class="supplemental">Stereo USB headset</p>
+						<p class="component">Sennheiser PC 8 Headset</p>
+						<p class="supplemental">Stereo &middot; Wired &middot; USB</p>
 						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-10-18"} %>
+					</li>
+				</ul>
+			</td>
+			<td rowspan="2">
+				<ul class="component">
+					<li>
+						<p class="component">Apple AirPods</p>
+						<p class="supplemental">Stereo &middot; Wireless &middot; Bluetooth</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2018-03-06"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+
+		<tr id="microphone">
+			 <th scope="row" class="label">Microphone</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Movo M1 Lavalier Microphone</p>
+						<p class="supplemental">Wired &middot; USB</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2018-09-05"} %>
 					</li>
 				</ul>
 			</td>
 		</tr>
 		
 		<tr id="webcam">
-			<th scope="row">Webcam</th>
+			 <th scope="row" class="label">Webcam</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -398,7 +420,7 @@
 		</tr>
 		
 		<tr id="scanner">
-			<th scope="row">Scanner</th>
+			 <th scope="row" class="label">Scanner</th>
 			<td colspan="2" rowspan="2">
 				<ul class="component">
 					<li>
@@ -411,7 +433,7 @@
 		</tr>
 		
 		<tr id="printer">
-			<th scope="row">Printer</th>
+			 <th scope="row" class="label">Printer</th>
 		</tr>
 		
 	</tbody>
@@ -422,7 +444,7 @@
 <table class="table table-bordered">
 	<tbody>
 		<tr id="router">
-			<th scope="row" style="width: 20%">Router</th>
+			<th scope="row" class="label">Router</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -440,7 +462,7 @@
 <table class="table table-bordered">
 	<tbody>
 		<tr id="smartphone">
-			<th scope="row" style="width: 20%">Smartphone</th>
+			<th scope="row" class="label">Smartphone</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -451,7 +473,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th scope="row">Tablet</th>
+			 <th scope="row" class="label">Tablet</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -462,7 +484,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th scope="row">Navigation</th>
+			 <th scope="row" class="label">Navigation</th>
 			<td>
 				<ul class="component">
 					<li>
@@ -481,37 +503,43 @@
 	<tbody>
 		
 		<tr id="handhelds">
-		      <th scope="row" style="width: 20%">Handhelds</th>
-		      <td>
-		        <ul class="component">
-		          <li>
-		            <p class="component">New Nintendo 3DS XL</p>
-		            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2017-01-07"} %>
-		          </li>
-		        </ul>
-		      </td>
-		    </tr>
-        <tr id="consoles">
-		      <th scope="row" rowspan="2" style="width: 20%">Consoles</th>
-			  <td>
-		        <ul class="component">
-		          <li>
-		            <p class="component">Nintendo Switch</p>
-		            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2018-07-07"} %>
-		          </li>
-		        </ul>
-		      </td>
-			</tr>
-			<tr>
-		      <td>
-		        <ul class="component">
-		          <li>
-		            <p class="component">Microsoft Xbox 360</p>
-		            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2010-01-08"} %>
-		          </li>
-		        </ul>
-		      </td>
-		    </tr>
+			<th scope="row" rowspan="2" class="label">Handhelds</th>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">New Nintendo 3DS XL</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2017-01-07"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+
+		<tr>
+			<td rowspan="2">
+				<ul class="component">
+					<li>
+						<p class="component">Nintendo Switch</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2018-07-07"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+
+		<tr id="consoles">
+			<th scope="row" rowspan="2" class="label">Consoles</th>	
+		</tr>
+
+		<tr>
+			<td>
+				<ul class="component">
+					<li>
+						<p class="component">Microsoft Xbox 360</p>
+						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2010-01-08"} %>
+					</li>
+				</ul>
+			</td>
+		</tr>
+
   </tbody>
 </table>
 
@@ -521,7 +549,7 @@
   <tbody>
 		
 		<tr id="television">
-			<th scope="row" style="width: 20%">Television</th>
+			<th scope="row" class="label">Television</th>
 			<td>
 				<ul class="component">
 					<li>
