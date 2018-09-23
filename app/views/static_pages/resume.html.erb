@@ -3,7 +3,7 @@
 
 <h1>Résumé</h1>
 
-<p>Please contact Paul Bogard at <%= link_to "paulbogard@gmail.com", 'mailto:paulbogard@gmail.com' %> for questions or employment opportunities.</p>
+<p>Please contact Paul Bogard at <%= link_to "paulbogard@gmail.com", "mailto:paulbogard@gmail.com" %> for questions or employment opportunities.</p>
 
 <h2>Overview</h2>
 
@@ -131,14 +131,14 @@
 			<td class="resume-date">November 2008</td>
 			<td>Master of Science<br />Computer Engineering</td>
 			<td>
-				<%= link_to "Wright State University", 'http://www.wright.edu/' %><br />
+				<%= link_to "Wright State University", "http://www.wright.edu/", target: :_blank %><br />
 				Dayton, Ohio</td>
 		</tr>
 		<tr>
 			<td>May 2006</td>
 			<td>Bachelor of Science<br />Computer Engineering</td>
 			<td>
-				<%= link_to "Rose-Hulman Institute of Technology", 'http://www.rose-hulman.edu/' %><br />
+				<%= link_to "Rose-Hulman Institute of Technology", "http://www.rose-hulman.edu/", target: :_blank %><br />
 				Terre Haute, Indiana
 			</td>
 		</tr>
@@ -255,4 +255,4 @@
 	</tbody>
 </table>
 
-<p class="center"><%= link_to(image_tag("#{PortfolioImage::ROOT_PATH}about/linkedinprofilebutton.gif", :alt => "Paul Bogard's LinkedIn profile"), "http://www.linkedin.com/pub/paul-bogard/31/162/a15") %></p>
+<p class="center"><%= link_to(image_tag("#{PortfolioImage::ROOT_PATH}about/linkedinprofilebutton.gif", alt: "Paul Bogard’s LinkedIn profile"), "http://www.linkedin.com/pub/paul-bogard/31/162/a15", target: :_blank) %></p>

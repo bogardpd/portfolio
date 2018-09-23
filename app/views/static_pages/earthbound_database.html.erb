@@ -3,9 +3,9 @@
 
 <h1>EBDB: The EarthBound Database</h1>
 
-<%= link_buttons(LinkButton.new("Visit <strong>EBDB</strong> on Starmen.Net", 'starmen-net', 'http://starmen.net/mother2/ebdb/')) %>
+<%= link_buttons(LinkButton.new("Visit <strong>EBDB</strong> on Starmen.Net", "starmen-net", "https://starmen.net/mother2/ebdb/", target: :_blank)) %>
 
-<p><%= link_to("EBDB", 'http://starmen.net/mother2/ebdb/') %> is a game database web application I designed to catalog various aspects of the Super Nintendo game <em><%= link_to("EarthBound", 'http://en.wikipedia.org/wiki/EarthBound') %></em>.</p>
+<p><%= link_to("EBDB", "https://starmen.net/mother2/ebdb/", target: :_blank) %> is a game database web application I designed to catalog various aspects of the Super Nintendo game <em><%= link_to("EarthBound", "https://en.wikipedia.org/wiki/EarthBound", target: :_blank) %></em>.</p>
 
 <h2 id="capabilities">Capabilities</h2>
 
@@ -34,7 +34,7 @@
 
 <h2 id="history">History</h2>
 
-<p>I originally created this site as a project to teach myself PHP and MySQL web development, and hosted it on my personal website. I announced it on the forums of the <em>EarthBound</em> fan site <%= link_to("Starmen.Net", 'http://starmen.net/') %>; soon, they offered to let me integrate it into their site, where it resides today.</p>
+<p>I originally created this site as a project to teach myself PHP and MySQL web development, and hosted it on my personal website. I announced it on the forums of the <em>EarthBound</em> fan site <%= link_to("Starmen.Net", "https://starmen.net/", target: :_blank) %>; soon, they offered to let me integrate it into their site, where it resides today.</p>
 
 <h2 id="design">Design</h2>
 
@@ -48,4 +48,4 @@
 
 <p>To accommodate this structure, I set up the database with a table for each entity, and a junction table for each many-to-many relationship.</p>
 
-<p>When displaying items, they’re listed individually or in a group with other items of the same category. The only exception where items of different categories are displayed together is in the <%= link_to("alphabetical item list", 'http://starmen.net/mother2/ebdb/items.php?sort=abc') %>, which displays only name, an attribute common to all items.  Thus, I set up the main items table with only attributes common to all items, including an enumerated category attribute.  I also created a table for each item category containing that category’s specific attributes, and joined the appropriate table to the main item table for all individual item or item category lookups.</p>
+<p>When displaying items, they’re listed individually or in a group with other items of the same category. The only exception where items of different categories are displayed together is in the <%= link_to("alphabetical item list", "https://starmen.net/mother2/ebdb/items.php?sort=abc", target: :_blank) %>, which displays only name, an attribute common to all items.  Thus, I set up the main items table with only attributes common to all items, including an enumerated category attribute.  I also created a table for each item category containing that category’s specific attributes, and joined the appropriate table to the main item table for all individual item or item category lookups.</p>

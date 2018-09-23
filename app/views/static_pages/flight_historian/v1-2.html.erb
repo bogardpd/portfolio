@@ -9,11 +9,11 @@
 <%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
 <%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
 
-<p>I’ve updated the <%= link_to "Flight Log", "https://www.flighthistorian.com/", target: "_blank" %> to version 1.2 by adding codeshares, operators, and fleet numbers to flights.</p>
+<p>I’ve updated the <%= link_to "Flight Log", "https://www.flighthistorian.com/", target: :_blank %> to version 1.2 by adding codeshares, operators, and fleet numbers to flights.</p>
 
-<p>Not all flights are operated by the airline that advertises it; often, airlines subcontract out flights to other airlines, particularly regional flights. In either case, whether the flight is operated by the advertising airline (i.e., <%= link_to "United", "https://www.flighthistorian.com/operators/UA", target: "_blank" %>) or a different operator (i.e., <%= link_to "ExpressJet", "https://www.flighthistorian.com/operators/EV", target: "_blank" %>), the Show Flight view now displays this. In addition, if the flight was a codeshare (where an airline sold a ticket on a partner’s flight), this is shown too.</p>
+<p>Not all flights are operated by the airline that advertises it; often, airlines subcontract out flights to other airlines, particularly regional flights. In either case, whether the flight is operated by the advertising airline (i.e., <%= link_to "United", "https://www.flighthistorian.com/operators/UA", target: :_blank %>) or a different operator (i.e., <%= link_to "ExpressJet", "https://www.flighthistorian.com/operators/EV", target: :_blank %>), the Show Flight view now displays this. In addition, if the flight was a codeshare (where an airline sold a ticket on a partner’s flight), this is shown too.</p>
 
-<%= project_image "projects/flight-historian/1-2/screenshot-show-flight.png", type: :osx_screenshot, alt: "Screenshot of Show Flight page", caption: "In this example, I bought a flight through American Airlines, but American Airlines didn’t offer a flight from Flagstaff to Phoenix, so they booked me a ticket on #{link_to "US Airways flight 2909", "https://www.flighthistorian.com/flights/309", target: "_blank"}, and American sold it to me (as a codeshare) as American Airlines flight 2669. Then, since this was a short regional flight, US Airways didn’t operate it themselves; they subcontracted out to #{link_to "SkyWest Airlines", "https://www.flighthistorian.com/operators/OO", target: "_blank"} to actually operate the flight under the US Airways name." %>
+<%= project_image "projects/flight-historian/1-2/screenshot-show-flight.png", type: :osx_screenshot, alt: "Screenshot of Show Flight page", caption: "In this example, I bought a flight through American Airlines, but American Airlines didn’t offer a flight from Flagstaff to Phoenix, so they booked me a ticket on #{link_to "US Airways flight 2909", "https://www.flighthistorian.com/flights/309", target: :_blank}, and American sold it to me (as a codeshare) as American Airlines flight 2669. Then, since this was a short regional flight, US Airways didn’t operate it themselves; they subcontracted out to #{link_to "SkyWest Airlines", "https://www.flighthistorian.com/operators/OO", target: :_blank} to actually operate the flight under the US Airways name." %>
 
 <p>Clicking on the operator brings up details on a Show Operator view:</p>
 
@@ -25,7 +25,7 @@
 
 <p>Clicking on any fleet number will show details for all flights flown on that operator-fleet number combination.</p>
 
-<p>Finally, all of the operators are now listed on the Index Airlines <%= link_to "", "https://www.flighthistorian.com/airlines", target: "_blank" %> view, below the airline list:</p>
+<p>Finally, all of the operators are now listed on the Index Airlines <%= link_to "", "https://www.flighthistorian.com/airlines", target: :_blank %> view, below the airline list:</p>
 
 <%= project_image "projects/flight-historian/1-2/screenshot-airlines.png", type: :osx_screenshot, alt: "Screenshot of Operators table on Airlines page" %>
 

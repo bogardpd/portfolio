@@ -1,7 +1,7 @@
 <a name="convert"></a>
 <h2>Convert the GPX File to KML</h2>
 
-<p>You now have your map data in GPX format, but Google Earth uses <%= link_to("Keyhole Markup Language", 'http://en.wikipedia.org/wiki/Keyhole_Markup_Language') %> (.kml or .kmz files) to show map annotations; it can’t use .gpx directly.  Fortunately, free converters exist; I use <%= link_to("GPS Visualizer", 'http://www.gpsvisualizer.com/') %>.</p>
+<p>You now have your map data in GPX format, but Google Earth uses <%= link_to("Keyhole Markup Language", "https://en.wikipedia.org/wiki/Keyhole_Markup_Language", target: :_blank) %> (.kml or .kmz files) to show map annotations; it can’t use .gpx directly.  Fortunately, free converters exist; I use <%= link_to("GPS Visualizer", "http://www.gpsvisualizer.com/", target: :_blank) %>.</p>
 
 <%= project_image("projects/gps-logging/GPS-Visualizer-01.png", alt: "Screenshot of GPS Visualizer") %>
 
@@ -16,6 +16,6 @@
 <a name="import"></a>
 <h2>Import the Location Data into Google Earth</h2>
 
-<p>Simply open the .kmz file with <%= link_to("Google Earth", 'http://www.google.com/earth/index.html') %>, and you’re ready to go!</p>
+<p>Simply open the .kmz file with <%= link_to("Google Earth", "http://www.google.com/earth/index.html") %>, and you’re ready to go!</p>
 
 <%= project_image("projects/gps-logging/Google-Earth.png", alt: "Screenshot of GPS Visualizer") %>

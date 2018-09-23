@@ -9,7 +9,7 @@
 <%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
 <%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
 
-<p>In general, my <%= link_to "Flight Historian", "https://www.flighthistorian.com/", target: "_blank" %> has been a big time saver for me as far as tracking my flights – instead of manually generating reports and maps from an Excel file, I can simply add flights to a database and let it do all the work. However, as I’ve started tracking more details about my flights over time, the task of entering the flights has become less simple.</p>
+<p>In general, my <%= link_to "Flight Historian", "https://www.flighthistorian.com/", target: :_blank %> has been a big time saver for me as far as tracking my flights – instead of manually generating reports and maps from an Excel file, I can simply add flights to a database and let it do all the work. However, as I’ve started tracking more details about my flights over time, the task of entering the flights has become less simple.</p>
 
 <%= project_image "projects/flight-historian/2-1/1.png", type: :osx_screenshot, alt: "Screenshot of New Flight page", caption: "There are currently 24 fields to fill out in the flight log. Not every field is required, but it can still take several minutes to fill out a flight." %>
 
@@ -21,7 +21,7 @@ Since I’d been working on <%= link_to "parsing boarding pass barcode data", bo
 
 <%= link_header "Getting Flight Data from an Apple Wallet Pass", 2 %>
 
-<p><%= link_to "Apple Wallet", "https://support.apple.com/en-us/HT204003", target: "_blank" %> is an application included with recent iPhones that, among other things, can be used to store boarding passes from various airlines in a single location.</p>
+<p><%= link_to "Apple Wallet", "https://support.apple.com/en-us/HT204003", target: :_blank %> is an application included with recent iPhones that, among other things, can be used to store boarding passes from various airlines in a single location.</p>
 
 <%= project_image "projects/flight-historian/2-1/2.png", type: :ios_screenshot, alt: "Screenshot of digital boarding pass" %>
 
@@ -34,21 +34,21 @@ Since I’d been working on <%= link_to "parsing boarding pass barcode data", bo
   <%= project_image "projects/flight-historian/2-1/4.png", type: :ios_screenshot, alt: "Screenshot of Apple Wallet" %>
 </div>
 
-<p>So I decided I’d do for boarding passes what sites like <%= link_to "TripIt",  "https://www.tripit.com/", target: "_blank" %> do for itineraries. I would set up an email address that I could simply email my Wallet boarding passes to, and then have my server look for emails from me and process any boarding pass attachments.</p>
+<p>So I decided I’d do for boarding passes what sites like <%= link_to "TripIt",  "https://www.tripit.com/", target: :_blank %> do for itineraries. I would set up an email address that I could simply email my Wallet boarding passes to, and then have my server look for emails from me and process any boarding pass attachments.</p>
 
 <%= link_header "Getting Boarding Passes from IMAP", 2 %>
 
-<p>As the boarding pass email address I set up supports IMAP, I used Ruby’s <code>Net::IMAP</code> <%= link_to "class", "http://ruby-doc.org/stdlib-2.0.0/libdoc/net/imap/rdoc/Net/IMAP.html", target: "_blank" %> to have Flight Historian interact with my email account.</p>
+<p>As the boarding pass email address I set up supports IMAP, I used Ruby’s <code>Net::IMAP</code> <%= link_to "class", "http://ruby-doc.org/stdlib-2.0.0/libdoc/net/imap/rdoc/Net/IMAP.html", target: :_blank %> to have Flight Historian interact with my email account.</p>
 
 <p>When I go to the Import Boarding Pass page on Flight Historian, it checks for new messages (from a specified list of my email addresses) which have a “PKPass” (PassKit Package) attachment.</p>
 
-<p>The <%= link_to "PKPass format", "https://developer.apple.com/library/content/documentation/UserExperience/Reference/PassKit_Bundle/Chapters/Introduction.html", target: "_blank" %> is how Wallet stores and shares digital boarding passes. It’s actually a zipped file archive with the extension <code>.pkpass</code>. Inside this archive is, among other things, a file called <code>pass.json</code> which contains all of the information about the pass in JSON format, including the visible text and the data encoded in the 2- D barcode.</p>
+<p>The <%= link_to "PKPass format", "https://developer.apple.com/library/content/documentation/UserExperience/Reference/PassKit_Bundle/Chapters/Introduction.html", target: :_blank %> is how Wallet stores and shares digital boarding passes. It’s actually a zipped file archive with the extension <code>.pkpass</code>. Inside this archive is, among other things, a file called <code>pass.json</code> which contains all of the information about the pass in JSON format, including the visible text and the data encoded in the 2- D barcode.</p>
 
-<p>Thus, I wrote a <code>BoardingPassEmail</code> <%= link_to "module", "https://github.com/bogardpd/flight_log/blob/master/app/modules/boarding_pass_email.rb", target: "_blank" %> for Flight Historian which would loop through any email attachments, and for each attachment, unzip it, navigate to <code>pass.json</code>, and store it as a PKPass object in my database. Once Flight Historian successfully saves the pass, it deletes the email that the pass came from.</p>
+<p>Thus, I wrote a <code>BoardingPassEmail</code> <%= link_to "module", "https://github.com/bogardpd/flight_log/blob/master/app/modules/boarding_pass_email.rb", target: :_blank %> for Flight Historian which would loop through any email attachments, and for each attachment, unzip it, navigate to <code>pass.json</code>, and store it as a PKPass object in my database. Once Flight Historian successfully saves the pass, it deletes the email that the pass came from.</p>
 
 <%= link_header "Adding a Flight from a Stored Boarding Pass", 2 %>
 
-<p>Since <%= link_to "flights need to be part of a trip", "https://onehundredairports.com/2016/02/25/counting-visits-to-airports-the-significance-of-trip-sections/", target: "_blank" %>, every View Trip page provides a link to my new Import Boarding Pass view with the <code>Trip</code>’s ID as an argument. However, I included the ability to select a different trip to accept the new flight, if necessary.</p>
+<p>Since <%= link_to "flights need to be part of a trip", "https://onehundredairports.com/2016/02/25/counting-visits-to-airports-the-significance-of-trip-sections/", target: :_blank %>, every View Trip page provides a link to my new Import Boarding Pass view with the <code>Trip</code>’s ID as an argument. However, I included the ability to select a different trip to accept the new flight, if necessary.</p>
   
 <%= project_image "projects/flight-historian/2-1/5.png", type: :osx_screenshot, alt: "Screenshot of Import Boarding Passes page" %>
 
@@ -61,7 +61,7 @@ Since I’d been working on <%= link_to "parsing boarding pass barcode data", bo
 <ul>
   <li>Some fields can be populated directly from the <code>pass.json</code> file.</li>
   <li>Some field data is encoded in the pass’s barcode string. Thus, I created a barcode method for the PKPass model, which uses my <%= link_to "Boarding Pass Parser", boarding_pass_parser_path %> to decode and return the barcode data.</li>
-  <li>The remainder are not found anywhere in the electronic boarding pass. I wrote a method to look up the remaining flight data on <%= link_to "FlightAware", "http://flightaware.com/", target: "_blank" %>’s <%= link_to "FlightXML API", "http://flightaware.com/commercial/flightxml/", target: "_blank" %> using the boarding pass’s airline, flight number, and UTC departure time.</li>
+  <li>The remainder are not found anywhere in the electronic boarding pass. I wrote a method to look up the remaining flight data on <%= link_to "FlightAware", "http://flightaware.com/", target: :_blank %>’s <%= link_to "FlightXML API", "http://flightaware.com/commercial/flightxml/", target: :_blank %> using the boarding pass’s airline, flight number, and UTC departure time.</li>
 </ul>
 
 <p>When the new flight is saved, it also includes a <code>pass_serial_number</code> field, which is a string uniquely identifying each boarding pass as defined in the PKPass format. This way, if a boarding pass is updated, <span class="website-name">Flight Historian</span> knows that the updated pass needs to be associated with an existing flight rather than a new flight.</p>
@@ -80,7 +80,7 @@ Since I’d been working on <%= link_to "parsing boarding pass barcode data", bo
 
 <p>My flight log previously kept track of aircraft families (e.g. any Boeing 737), and didn’t do anything with specific types (e.g. Boeing 737-800), other than to optionally note them in an aircraft variant text field. This was a deliberate decision, as my flight log was generally set up to catalog my flight experiences, and there was no substantial quality of flight difference for me between, say, a 737-800 and a 737-900.</p>
 
-<p>However, one of the fields I needed to look up on <%= link_to "FlightXML", "http://flightaware.com/commercial/flightxml/", target: "_blank" %> was the aircraft type. FlightXML does return the specific aircraft type (by ICAO code), so at the very least, I needed to write a lookup function to convert specific aircraft types into the general aircraft families I was using.</p>
+<p>However, one of the fields I needed to look up on <%= link_to "FlightXML", "http://flightaware.com/commercial/flightxml/", target: :_blank %> was the aircraft type. FlightXML does return the specific aircraft type (by ICAO code), so at the very least, I needed to write a lookup function to convert specific aircraft types into the general aircraft families I was using.</p>
 
 <p>However, I decided that it would make more sense to do it right, and actually incorporate aircraft types into my database. I still wanted to maintain my aircraft family structure, and I still had some old flights in my database that I didn’t know the type for anyway. So I eventually decided to add a parent/child relationship to my <code>Aircraft Families</code> table, where both types and families would be stored in the table (and I could assign a flight either a family or a specific type), but the aircraft types would have a <code>parent_id</code> field that linked to the ID of their parent family. That way, I could still summarize all of my flights by their parent family (by looking at all aircraft types that were part of the given family), and for each specific type FlightXML returned, I would know the family.</p>
 
@@ -95,13 +95,13 @@ Since I’d been working on <%= link_to "parsing boarding pass barcode data", bo
 
 <ul>
   <li>Created <%= link_to "JSON API", boarding_pass_parser_path(anchor: "json-api") %> for parsed <code>BoardingPass</code> data</li>
-  <li>Created <%= link_to "Boarding Pass Parser", "https://www.flighthistorian.com/boarding-pass", target: "_blank" %> views</li>
+  <li>Created <%= link_to "Boarding Pass Parser", "https://www.flighthistorian.com/boarding-pass", target: :_blank %> views</li>
   <li>Created admin view to list any flights with invalid boarding pass data</li>
   <li>Created view to allow entry of boarding pass IATA codes which were not found in the <span class="website-name">Flight Historian</span> database</li>
   <li>Created Import Boarding Passes view</li>
   <li>Updated Add Flight form to use PKPass data when available</li>
   <li>Created Edit Flight with Updated Pass form to show and update changed flight data</li>
-  <li>Created new <%= link_to "message banner system", "https://onehundredairports.com/2017/04/05/creating-multiple-flash-messages-in-ruby-on-rails/", target: "_blank" %></li>
+  <li>Created new <%= link_to "message banner system", "https://onehundredairports.com/2017/04/05/creating-multiple-flash-messages-in-ruby-on-rails/", target: :_blank %></li>
   <li>Added aircraft types to <code>AircraftFamily</code> model and created views to manage and show specific types</li>
 </ul>
 

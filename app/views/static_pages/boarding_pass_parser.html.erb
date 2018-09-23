@@ -4,8 +4,8 @@
 <h1>Boarding Pass Parser</h1>
 
 <%= link_buttons(
-  LinkButton.new("Visit <strong>Boarding Pass Parser</strong>", 'flight-historian', 'https://www.flighthistorian.com/boarding-pass'),
-  LinkButton.new("See the code on <strong>GitHub</strong>", 'github', 'https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb')
+  LinkButton.new("Visit <strong>Boarding Pass Parser</strong>", "flight-historian", "https://www.flighthistorian.com/boarding-pass", target: :_blank),
+  LinkButton.new("See the code on <strong>GitHub</strong>", "github", "https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb", target: :_blank)
   ) %>
 
 <p>The 2D barcodes found on boarding passes encode a large amount of interesting flight and passenger data. I wrote a parser to process the output from a scan of a boarding pass barcode.</p>
@@ -34,15 +34,15 @@
 		</tr>
 		<tr>
 			<th scope="row">Version Control</th>
-			<td><ul><li><%= link_to("Git", 'https://git-scm.com') %></li></ul></td>
+			<td><ul><li><%= link_to("Git", "https://git-scm.com", target: :_blank) %></li></ul></td>
 		</tr>
 		<tr>
 			<th scope="row">Hosting</th>
-			<td><ul><li><%= link_to("Heroku", 'https://www.heroku.com/') %> (as part of my <%= link_to "Flight Historian", flight_historian_path %> project)</li></ul></td>
+			<td><ul><li><%= link_to("Heroku", "https://www.heroku.com/", target: :_blank) %> (as part of my <%= link_to "Flight Historian", flight_historian_path %> project)</li></ul></td>
 		</tr>
 		<tr>
 			<th scope="row">Project Management</th>
-			<td><ul><li><%= link_to("Trello", 'https://trello.com/') %></li></ul></td>
+			<td><ul><li><%= link_to("Trello", "https://trello.com/", target: :_blank) %></li></ul></td>
 		</tr>
 	</tbody>
 </table>
@@ -51,7 +51,7 @@
 
 <p>Once my <%= link_to "Flight Historian", flight_historian_path %> was largely complete, I began to think about future flight data I could track with it &ndash; things such as seat numbers, fare codes, or record locators. Since I didn’t yet know what I wanted to track, I realized I would need to start saving as much information about my current flights as I could to give me retroactive data. Thus, I began scanning my boarding passes (or screenshotting my electronic ones), as they seemed to be the best source of flight information I had.</p>
 
-<p>However, having images of boarding passes would still require a lot of manual entry in the future, and I realized that all of that information should be stored digitally. I began researching the <%= link_to "Bar-Coded Boarding Pass", "https://en.wikipedia.org/wiki/Bar-coded_boarding_pass" %> (BCBP) standard. Instead of storing images of the boarding pass, I could just scan the barcode, and store it for future use in a barcode data field for each flight.</p>
+<p>However, having images of boarding passes would still require a lot of manual entry in the future, and I realized that all of that information should be stored digitally. I began researching the <%= link_to "Bar-Coded Boarding Pass", "https://en.wikipedia.org/wiki/Bar-coded_boarding_pass", target: :_blank %> (BCBP) standard. Instead of storing images of the boarding pass, I could just scan the barcode, and store it for future use in a barcode data field for each flight.</p>
 
 <%= project_image("projects/boarding-pass-parser/digital-boarding-pass.png", alt: "Screenshot of digital boarding pass", type: :ios_screenshot) %>
 
@@ -187,8 +187,8 @@
 <p>From there, it’s trivial to loop through the data structure to print the data and its interpretations in a tabular format.</p>
 
 <%= link_buttons(
-  LinkButton.new("Sample <strong>Boarding Pass Parser</strong> output", 'flight-historian', 'https://www.flighthistorian.com/boarding-pass/results/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh'),
-  LinkButton.new("See the implemented code on <strong>GitHub</strong>", 'github', 'https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb')
+  LinkButton.new("Sample <strong>Boarding Pass Parser</strong> output", 'flight-historian', "https://www.flighthistorian.com/boarding-pass/results/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh", target: :_blank),
+  LinkButton.new("See the implemented code on <strong>GitHub</strong>", "github", "https://github.com/bogardpd/flight_log/blob/master/app/classes/boarding_pass.rb", target: :_blank)
   ) %>
 
 <h3 id="json-api">JSON API</h3>
@@ -197,10 +197,10 @@
 
 <code>https://www.flighthistorian.com/boarding-pass/json/<var>RAW_DATA</var></code>
 
-<%= link_buttons(LinkButton.new("JSON example", 'flight-historian', 'https://www.flighthistorian.com/boarding-pass/json/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh')) %>
+<%= link_buttons(LinkButton.new("JSON example", "flight-historian", "https://www.flighthistorian.com/boarding-pass/json/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh", target: :_blank)) %>
   
 <p>If you need a callback function, use the following structure:</p>
 
 <code>https://www.flighthistorian.com/boarding-pass/json/<var>CALLBACK</var>/<var>RAW_DATA</var></code>
 
-<%= link_buttons(LinkButton.new("JSON example with callback", 'flight-historian', 'https://www.flighthistorian.com/boarding-pass/json/MyCallback/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh')) %>
+<%= link_buttons(LinkButton.new("JSON example with callback", "flight-historian", "https://www.flighthistorian.com/boarding-pass/json/MyCallback/M1DOE%2FJOHN%20%20%20%20%20%20%20%20%20%20%20%20EABC123%20BOSJFKB6%200717%20345P014C0010%20147%3E3180%20M6344BB6%20%20%20%20%20%20%20%20%20%20%20%20%20%2029279%20%20%20%20%20%20%20%20%20%200%20B6%20B6%201234567890%20%20%20%20%20%20%20%20%20%20%5E108abcdefgh", target: :_blank)) %>

@@ -4,11 +4,11 @@
 <h1>Terminal Silhouettes</h1>
 
 <%= link_buttons(
-  LinkButton.new("Read my silhouette <strong>blog posts</strong>", "one-hundred-airports", "https://onehundredairports.com/category/projects/terminal-silhouettes/"),
-  LinkButton.new("<strong>GitHub</strong> repository", "github", "https://github.com/bogardpd/terminal_silhouettes")
+  LinkButton.new("Read my silhouette <strong>blog posts</strong>", "one-hundred-airports", "https://onehundredairports.com/category/projects/terminal-silhouettes/", target: :_blank),
+  LinkButton.new("<strong>GitHub</strong> repository", "github", "https://github.com/bogardpd/terminal_silhouettes", target: :_blank)
   ) %>
 
-<p>I wanted to teach myself how to create Scalable Vector Graphics (SVG) drawings, so I started drawing silhouettes of airport terminals and concourses that <%= link_to "I’ve visited", "http://www.flighthistorian.com/airports" %>.</p>
+<p>I wanted to teach myself how to create Scalable Vector Graphics (SVG) drawings, so I started drawing silhouettes of airport terminals and concourses that <%= link_to "I’ve visited", "https://www.flighthistorian.com/airports", target: :_blank %>.</p>
 
 <h2>Tools</h2>
 
@@ -16,15 +16,15 @@
 	<tbody>
 		<tr>
 			<th scope="row">Vector Graphics Editor</th>
-			<td><ul><li><%= link_to("Inkscape", 'https://inkscape.org') %></li></ul></td>
+			<td><ul><li><%= link_to "Inkscape", "https://inkscape.org", target: :_blank %></li></ul></td>
 		</tr>
 		<tr>
 			<th scope="row">Version Control</th>
-			<td><ul><li><%= link_to("Git", 'https://git-scm.com') %></li></ul></td>
+			<td><ul><li><%= link_to "Git", "https://git-scm.com", target: :_blank %></li></ul></td>
 		</tr>
 		<tr>
 			<th scope="row">Project Management</th>
-			<td><ul><li><%= link_to("Trello", 'https://trello.com/') %></li></ul></td>
+			<td><ul><li><%= link_to "Trello", "https://trello.com/", target: :_blank %></li></ul></td>
 		</tr>
 	</tbody>
 </table>
