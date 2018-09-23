@@ -13,6 +13,6 @@
 
 <div class="row center">
   <div class="col-md-8 offset-md-2">
-    <%= link_to "<span class=\"glyphicon glyphicon-trash\"></span> Delete this terminal silhouette".html_safe, @terminal, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete #{@terminal.iata_code}?" }, role: "button" %>
+    <%= link_to "Delete this terminal silhouette", @terminal, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete #{@terminal.iata_code}?" }, role: "button" %>
   </div>
 </div>

@@ -13,6 +13,6 @@
 
 <div class="row center">
   <div class="col-md-8 offset-md-2">
-    <%= link_to "<span class=\"glyphicon glyphicon-trash\"></span> Delete this book".html_safe, @book, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete #{@book.title}?" }, role: "button" %>
+    <%= link_to "Delete this book".html_safe, @book, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete #{@book.title}?" }, role: "button" %>
   </div>
 </div>
