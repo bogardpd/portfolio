@@ -5,7 +5,7 @@
 
 @mixin page-theme($color-base) {
   
-  background-color: change-color($color-base, $lightness: 92%);
+  background-color: change-color($color-base, $saturation: 50%, $lightness: 85%);
   
   a {
     color: darken($color-base, 10%);

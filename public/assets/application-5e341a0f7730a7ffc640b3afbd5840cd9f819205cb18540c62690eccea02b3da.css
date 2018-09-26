@@ -8718,7 +8718,7 @@ div.tile {
     color: #550000;
     white-space: inherit;
     font-size: 100%; }
-    div.tile a:hover {
+    div.tile a:hover, div.tile a:focus {
       text-decoration: none;
       background-color: #e6e6e6;
       border: 1px solid #cccccc;
@@ -8747,10 +8747,11 @@ div.tile {
 div.stephenvlog a {
   background: #047036;
   background: linear-gradient(#047036, #046c34); }
-  div.stephenvlog a:hover {
+  div.stephenvlog a:hover, div.stephenvlog a:focus {
     background: #06ac53;
-    background: linear-gradient(#06ac53, #059347); }
-    div.stephenvlog a:hover .event {
+    background: linear-gradient(#06ac53, #059347);
+    text-decoration: none; }
+    div.stephenvlog a:hover .event, div.stephenvlog a:focus .event {
       color: #06ac53; }
 div.stephenvlog h3, div.stephenvlog p {
   color: #FFFFFF;
@@ -8869,7 +8870,7 @@ img.generic-photo-tile {
 * Styles for PAX pages.                                                       *
 ******************************************************************************/
 body.pax-aus {
-  background-color: #fff2d6; }
+  background-color: #ece0c6; }
   body.pax-aus a {
     color: #cc8b00; }
   body.pax-aus h1 a, body.pax-aus h2 a, body.pax-aus h3 a, body.pax-aus h4 a, body.pax-aus h5 a, body.pax-aus h6 a {
@@ -8889,7 +8890,7 @@ body.pax-aus {
     border-color: #ffbe33; }
 
 body.pax-dev {
-  background-color: #d6fffd; }
+  background-color: #c6ecea; }
   body.pax-dev a {
     color: #00716a; }
   body.pax-dev h1 a, body.pax-dev h2 a, body.pax-dev h3 a, body.pax-dev h4 a, body.pax-dev h5 a, body.pax-dev h6 a {
@@ -8909,7 +8910,7 @@ body.pax-dev {
     border-color: #00d7ca; }
 
 body.pax-east {
-  background-color: #f9dcdd; }
+  background-color: #ecc6c7; }
   body.pax-east a {
     color: #ae1f24; }
   body.pax-east h1 a, body.pax-east h2 a, body.pax-east h3 a, body.pax-east h4 a, body.pax-east h5 a, body.pax-east h6 a {
@@ -8929,7 +8930,7 @@ body.pax-east {
     border-color: #e15257; }
 
 body.pax-south {
-  background-color: #ffe9d6; }
+  background-color: #ecd7c6; }
   body.pax-south a {
     color: #cc5e00; }
   body.pax-south h1 a, body.pax-south h2 a, body.pax-south h3 a, body.pax-south h4 a, body.pax-south h5 a, body.pax-south h6 a {
@@ -8949,7 +8950,7 @@ body.pax-south {
     border-color: #ff9133; }
 
 body.pax-unplugged {
-  background-color: #f0e3f2; }
+  background-color: #e8c6ec; }
   body.pax-unplugged a {
     color: #703877; }
   body.pax-unplugged h1 a, body.pax-unplugged h2 a, body.pax-unplugged h3 a, body.pax-unplugged h4 a, body.pax-unplugged h5 a, body.pax-unplugged h6 a {
@@ -8969,7 +8970,7 @@ body.pax-unplugged {
     border-color: #ab60b5; }
 
 body.pax-west {
-  background-color: #d6f1ff; }
+  background-color: #c6dfec; }
   body.pax-west a {
     color: #005b88; }
   body.pax-west h1 a, body.pax-west h2 a, body.pax-west h3 a, body.pax-west h4 a, body.pax-west h5 a, body.pax-west h6 a {
@@ -8991,10 +8992,11 @@ body.pax-west {
 div.pax-aus a {
   background: #db9600;
   background: linear-gradient(#db9600, #d69200); }
-  div.pax-aus a:hover {
+  div.pax-aus a:hover, div.pax-aus a:focus {
     background: #ffb61a;
-    background: linear-gradient(#ffb61a, #FFAE00); }
-    div.pax-aus a:hover .event {
+    background: linear-gradient(#ffb61a, #FFAE00);
+    text-decoration: none; }
+    div.pax-aus a:hover .event, div.pax-aus a:focus .event {
       color: #ffb61a; }
 div.pax-aus h3, div.pax-aus p {
   color: #FFFFFF;
@@ -9009,10 +9011,11 @@ div.pax-aus img {
 div.pax-dev a {
   background: #008078;
   background: linear-gradient(#008078, #007b74); }
-  div.pax-dev a:hover {
+  div.pax-dev a:hover, div.pax-dev a:focus {
     background: #00beb2;
-    background: linear-gradient(#00beb2, #00A49A); }
-    div.pax-dev a:hover .event {
+    background: linear-gradient(#00beb2, #00A49A);
+    text-decoration: none; }
+    div.pax-dev a:hover .event, div.pax-dev a:focus .event {
       color: #00beb2; }
 div.pax-dev h3, div.pax-dev p {
   color: #FFFFFF;
@@ -9027,10 +9030,11 @@ div.pax-dev img {
 div.pax-east a {
   background: #bb2126;
   background: linear-gradient(#bb2126, #b72025); }
-  div.pax-east a:hover {
+  div.pax-east a:hover, div.pax-east a:focus {
     background: #dd3d42;
-    background: linear-gradient(#dd3d42, #D9272D); }
-    div.pax-east a:hover .event {
+    background: linear-gradient(#dd3d42, #D9272D);
+    text-decoration: none; }
+    div.pax-east a:hover .event, div.pax-east a:focus .event {
       color: #dd3d42; }
 div.pax-east h3, div.pax-east p {
   color: #FFFFFF;
@@ -9045,10 +9049,11 @@ div.pax-east img {
 div.pax-south a {
   background: #db6500;
   background: linear-gradient(#db6500, #d66300); }
-  div.pax-south a:hover {
+  div.pax-south a:hover, div.pax-south a:focus {
     background: #ff841a;
-    background: linear-gradient(#ff841a, #FF7600); }
-    div.pax-south a:hover .event {
+    background: linear-gradient(#ff841a, #FF7600);
+    text-decoration: none; }
+    div.pax-south a:hover .event, div.pax-south a:focus .event {
       color: #ff841a; }
 div.pax-south h3, div.pax-south p {
   color: #FFFFFF;
@@ -9063,10 +9068,11 @@ div.pax-south img {
 div.pax-unplugged a {
   background: #7a3d82;
   background: linear-gradient(#7a3d82, #773b7e); }
-  div.pax-unplugged a:hover {
+  div.pax-unplugged a:hover, div.pax-unplugged a:focus {
     background: #a150ab;
-    background: linear-gradient(#a150ab, #91489A); }
-    div.pax-unplugged a:hover .event {
+    background: linear-gradient(#a150ab, #91489A);
+    text-decoration: none; }
+    div.pax-unplugged a:hover .event, div.pax-unplugged a:focus .event {
       color: #a150ab; }
 div.pax-unplugged h3, div.pax-unplugged p {
   color: #FFFFFF;
@@ -9081,10 +9087,11 @@ div.pax-unplugged img {
 div.pax-west a {
   background: #006597;
   background: linear-gradient(#006597, #006292); }
-  div.pax-west a:hover {
+  div.pax-west a:hover, div.pax-west a:focus {
     background: #008ed5;
-    background: linear-gradient(#008ed5, #007DBB); }
-    div.pax-west a:hover .event {
+    background: linear-gradient(#008ed5, #007DBB);
+    text-decoration: none; }
+    div.pax-west a:hover .event, div.pax-west a:focus .event {
       color: #008ed5; }
 div.pax-west h3, div.pax-west p {
   color: #FFFFFF;
@@ -9101,7 +9108,7 @@ div.pax-tile {
   div.pax-tile a {
     box-shadow: 2px 2px 4px #382e2e;
     border: none; }
-    div.pax-tile a:active {
+    div.pax-tile a:active, div.pax-tile a:focus {
       box-shadow: 2px 2px 4px #382e2e;
       border: none;
       text-decoration: none; }
@@ -9118,13 +9125,6 @@ div.pax-tile {
     border: none;
     border-radius: 0;
     box-shadow: none; }
-  div.pax-tile h3 {
-    line-height: 1.2em;
-    text-align: right; }
-    div.pax-tile h3 small {
-      color: #ffffff;
-      font-size: 10pt;
-      font-weight: 300; }
   div.pax-tile p {
     margin: 0.2rem 0;
     line-height: 1.2em; }
@@ -9228,7 +9228,7 @@ td.resume-date, td.resume-skill-category {
 * Styles for Stephenvlog page.                                                *
 ******************************************************************************/
 body.stephenvlog {
-  background-color: #d8fee9; }
+  background-color: #c6ecd7; }
   body.stephenvlog a {
     color: #03622f; }
   body.stephenvlog h1 a, body.stephenvlog h2 a, body.stephenvlog h3 a, body.stephenvlog h4 a, body.stephenvlog h5 a, body.stephenvlog h6 a {
@@ -9250,10 +9250,11 @@ body.stephenvlog {
 div.stephenvlog a {
   background: #047036;
   background: linear-gradient(#047036, #046c34); }
-  div.stephenvlog a:hover {
+  div.stephenvlog a:hover, div.stephenvlog a:focus {
     background: #06ac53;
-    background: linear-gradient(#06ac53, #059347); }
-    div.stephenvlog a:hover .event {
+    background: linear-gradient(#06ac53, #059347);
+    text-decoration: none; }
+    div.stephenvlog a:hover .event, div.stephenvlog a:focus .event {
       color: #06ac53; }
 div.stephenvlog h3, div.stephenvlog p {
   color: #FFFFFF;
