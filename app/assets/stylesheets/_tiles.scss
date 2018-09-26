@@ -8,16 +8,13 @@
     background: darken($color-base, 7%);
     background: linear-gradient(darken($color-base, 7%), darken($color-base, 8%));
 
-    &:hover {
+    &:hover, &:focus {
       background: lighten($color-base, 5%);
       background: linear-gradient(lighten($color-base, 5%), $color-base);
+      text-decoration: none;
       .event {
         color: lighten($color-base, 5%);
       }
-    }
-
-    &:focus {
-      text-decoration: none;
     }
   }
 
@@ -49,14 +46,14 @@ div.tile {
     white-space: inherit;
     font-size: 100%;
     
-    &:hover {
+    &:hover, &:focus {
   		text-decoration: none;
   		background-color: $color-background-light;
   		border: 1px solid $color-border;
       color: $color-primary;
     }
 
-    &:active, &:focus {
+    &:active {
       text-decoration: none;
     }
 	}
