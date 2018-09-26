@@ -11,12 +11,21 @@
     &:hover {
       background: lighten($color-base, 5%);
       background: linear-gradient(lighten($color-base, 5%), $color-base);
+      .event {
+        color: lighten($color-base, 5%);
+      }
     }
   }
 
   h3, p {
     color: #FFFFFF;
     text-shadow: 0.05em 0.05em darken($color-base, 20%);
+    
+  }
+
+  p.event {
+    background-color: #ffffff;
+    color: darken($color-base, 20%);
   }
 
   img {

@@ -17,8 +17,79 @@ div.pax-south       { @include tile-theme($color-theme-pax-south);      }
 div.pax-unplugged   { @include tile-theme($color-theme-pax-unplugged);  }
 div.pax-west        { @include tile-theme($color-theme-pax-west)        }
 
-span.pax-dates {
-}
-span.pax-location {
-  font-weight: 400;
+div.pax-tile {
+  width: 10em;
+  
+  a {
+    box-shadow: 2px 2px 4px $color-text;
+    border: none;
+    &:active {
+      box-shadow: 2px 2px 4px $color-text;
+      border: none;
+      text-decoration: none;
+    }
+    &:hover {
+      border: none;
+    }
+  }
+  
+  div.punch {
+    margin: 4px auto 4px auto;
+    width: 44px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: inset 2px 2px 4px $color-text;
+  }
+
+  img {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  h3 {
+    line-height: $line-height-small;
+    text-align: right;
+    small {
+      color: #ffffff;
+      font-size: $font-size-extra-small;
+      font-weight: 300;
+    }
+  }
+
+  p {
+    margin: 0.2rem 0;
+    line-height: $line-height-small;
+  }
+
+  p.event {
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
+    padding: 0.1em 0.2em;
+    letter-spacing: 0.05em;
+    text-shadow: none;
+    text-transform: uppercase;
+    text-align: right;
+    font-size: 120%;
+    font-weight: 400;
+  }
+
+  p.year {
+    letter-spacing: 0.05em;
+    text-shadow: none;
+    font-weight: 300;
+    font-size: 250%;
+  }
+
+  p.date {
+    font-weight: 300;
+  }
+
+  p.location {
+    margin-top: 0.5rem;
+    padding-top: 0.3rem;
+    font-weight: 400;
+    border-top: 1px solid #ffffff66;
+  }
 }

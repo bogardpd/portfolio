@@ -1,1 +1,11 @@
-<%= Tile.new(path: polymorphic_url(:pax_gallery, gallery: name.parameterize), title: name, caption: "<span class=\"pax-location\">#{location}</span>&ensp;<span class=\"pax-dates\">#{FormattedDate::range_text(dates)}</span>", theme: theme, columns: %w(col-xl-3 col-lg-4 col-md-6)).show %>
+<% html = [] %>
+<% html.push %Q(<div class="punch"></div>) %>
+<% html.push image_tag(image_path("pax-logo.svg"), alt: "PAX Logo", class: "img-fluid") %>
+<% html.push %Q(<p class="event">#{event}</p>) %>
+<% html.push %Q(<p class="year">#{year}</p>) %>
+<% html.push %Q(<p class="date">#{FormattedDate::range_text_without_year(dates)}</p>) %>
+<% html.push %Q(<p class="location">#{location}</p>) %>
+
+<div class="tile pax-tile <%= theme %>">
+  <%= link_to html.join("").html_safe, polymorphic_url(:pax_gallery, gallery: gallery), class: "btn btn-link btn-block" %>
+</div>

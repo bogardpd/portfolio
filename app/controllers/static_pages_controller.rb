@@ -313,15 +313,15 @@ class StaticPagesController < ApplicationController
 
   def paxen
     return {
-      "pax-prime-2010" => {name: "PAX Prime 2010", location: "Seattle",   dates: Date.parse("2010-09-03")..Date.parse("2010-09-05"), theme: "pax-west"},
-      "pax-prime-2011" => {name: "PAX Prime 2011", location: "Seattle",   dates: Date.parse("2011-08-26")..Date.parse("2011-08-28"), theme: "pax-west"},
-      "pax-prime-2012" => {name: "PAX Prime 2012", location: "Seattle",   dates: Date.parse("2012-08-31")..Date.parse("2012-09-02"), theme: "pax-west"},
-      "pax-east-2013"  => {name: "PAX East 2013",  location: "Boston",    dates: Date.parse("2013-03-22")..Date.parse("2013-03-24"), theme: "pax-east"},
-      "pax-prime-2013" => {name: "PAX Prime 2013", location: "Seattle",   dates: Date.parse("2013-08-30")..Date.parse("2013-09-02"), theme: "pax-west"},
-      "pax-east-2014"  => {name: "PAX East 2014",  location: "Boston",    dates: Date.parse("2014-04-11")..Date.parse("2014-04-13"), theme: "pax-east"},
-      "pax-east-2015"  => {name: "PAX East 2015",  location: "Boston",    dates: Date.parse("2015-03-06")..Date.parse("2015-03-08"), theme: "pax-east"},
-      "pax-west-2017"  => {name: "PAX West 2017",  location: "Seattle",   dates: Date.parse("2017-09-01")..Date.parse("2017-09-04"), theme: "pax-west"},
-      "pax-west-2018"  => {name: "PAX West 2018",  location: "Seattle",   dates: Date.parse("2018-08-31")..Date.parse("2018-09-03"), theme: "pax-west"}
+      "pax-prime-2010" => {event: "Prime", year: "2010", location: "Seattle",   dates: Date.parse("2010-09-03")..Date.parse("2010-09-05"), theme: "pax-west"},
+      "pax-prime-2011" => {event: "Prime", year: "2011", location: "Seattle",   dates: Date.parse("2011-08-26")..Date.parse("2011-08-28"), theme: "pax-west"},
+      "pax-prime-2012" => {event: "Prime", year: "2012", location: "Seattle",   dates: Date.parse("2012-08-31")..Date.parse("2012-09-02"), theme: "pax-west"},
+      "pax-east-2013"  => {event: "East",  year: "2013", location: "Boston",    dates: Date.parse("2013-03-22")..Date.parse("2013-03-24"), theme: "pax-east"},
+      "pax-prime-2013" => {event: "Prime", year: "2013", location: "Seattle",   dates: Date.parse("2013-08-30")..Date.parse("2013-09-02"), theme: "pax-west"},
+      "pax-east-2014"  => {event: "East",  year: "2014", location: "Boston",    dates: Date.parse("2014-04-11")..Date.parse("2014-04-13"), theme: "pax-east"},
+      "pax-east-2015"  => {event: "Prime", year: "2015", location: "Boston",    dates: Date.parse("2015-03-06")..Date.parse("2015-03-08"), theme: "pax-east"},
+      "pax-west-2017"  => {event: "West",  year: "2017", location: "Seattle",   dates: Date.parse("2017-09-01")..Date.parse("2017-09-04"), theme: "pax-west"},
+      "pax-west-2018"  => {event: "West",  year: "2018", location: "Seattle",   dates: Date.parse("2018-08-31")..Date.parse("2018-09-03"), theme: "pax-west"}
     }
   end
 end
