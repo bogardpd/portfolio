@@ -319,7 +319,7 @@ class StaticPagesController < ApplicationController
       "pax-east-2013"  => {event: "East",  year: "2013", location: "Boston",    dates: Date.parse("2013-03-22")..Date.parse("2013-03-24"), theme: "pax-east"},
       "pax-prime-2013" => {event: "Prime", year: "2013", location: "Seattle",   dates: Date.parse("2013-08-30")..Date.parse("2013-09-02"), theme: "pax-west"},
       "pax-east-2014"  => {event: "East",  year: "2014", location: "Boston",    dates: Date.parse("2014-04-11")..Date.parse("2014-04-13"), theme: "pax-east"},
-      "pax-east-2015"  => {event: "Prime", year: "2015", location: "Boston",    dates: Date.parse("2015-03-06")..Date.parse("2015-03-08"), theme: "pax-east"},
+      "pax-east-2015"  => {event: "East",  year: "2015", location: "Boston",    dates: Date.parse("2015-03-06")..Date.parse("2015-03-08"), theme: "pax-east"},
       "pax-west-2017"  => {event: "West",  year: "2017", location: "Seattle",   dates: Date.parse("2017-09-01")..Date.parse("2017-09-04"), theme: "pax-west"},
       "pax-west-2018"  => {event: "West",  year: "2018", location: "Seattle",   dates: Date.parse("2018-08-31")..Date.parse("2018-09-03"), theme: "pax-west"}
     }
