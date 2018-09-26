@@ -8723,7 +8723,7 @@ div.tile {
       background-color: #e6e6e6;
       border: 1px solid #cccccc;
       color: #550000; }
-    div.tile a:active {
+    div.tile a:active, div.tile a:focus {
       text-decoration: none; }
   div.tile h3 {
     margin: 0.3em 0;
@@ -8750,9 +8750,16 @@ div.stephenvlog a {
   div.stephenvlog a:hover {
     background: #06ac53;
     background: linear-gradient(#06ac53, #059347); }
+    div.stephenvlog a:hover .event {
+      color: #06ac53; }
+  div.stephenvlog a:focus {
+    text-decoration: none; }
 div.stephenvlog h3, div.stephenvlog p {
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #023017; }
+div.stephenvlog p.event {
+  background-color: #ffffff;
+  color: #023017; }
 div.stephenvlog img {
   border: 1px groove #03622f;
   box-shadow: none; }
@@ -8777,6 +8784,9 @@ div.airport-code-pun {
 * COMPUTERS                                                                   *
 * Styles for computer description pages.                                      *
 ******************************************************************************/
+th.label {
+  width: 20%; }
+
 ul.component {
   margin: 0;
   padding: 0;
@@ -8986,9 +8996,16 @@ div.pax-aus a {
   div.pax-aus a:hover {
     background: #ffb61a;
     background: linear-gradient(#ffb61a, #FFAE00); }
+    div.pax-aus a:hover .event {
+      color: #ffb61a; }
+  div.pax-aus a:focus {
+    text-decoration: none; }
 div.pax-aus h3, div.pax-aus p {
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #996800; }
+div.pax-aus p.event {
+  background-color: #ffffff;
+  color: #996800; }
 div.pax-aus img {
   border: 1px groove #cc8b00;
   box-shadow: none; }
@@ -8999,9 +9016,16 @@ div.pax-dev a {
   div.pax-dev a:hover {
     background: #00beb2;
     background: linear-gradient(#00beb2, #00A49A); }
+    div.pax-dev a:hover .event {
+      color: #00beb2; }
+  div.pax-dev a:focus {
+    text-decoration: none; }
 div.pax-dev h3, div.pax-dev p {
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #003e3a; }
+div.pax-dev p.event {
+  background-color: #ffffff;
+  color: #003e3a; }
 div.pax-dev img {
   border: 1px groove #00716a;
   box-shadow: none; }
@@ -9012,9 +9036,16 @@ div.pax-east a {
   div.pax-east a:hover {
     background: #dd3d42;
     background: linear-gradient(#dd3d42, #D9272D); }
+    div.pax-east a:hover .event {
+      color: #dd3d42; }
+  div.pax-east a:focus {
+    text-decoration: none; }
 div.pax-east h3, div.pax-east p {
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #83171b; }
+div.pax-east p.event {
+  background-color: #ffffff;
+  color: #83171b; }
 div.pax-east img {
   border: 1px groove #ae1f24;
   box-shadow: none; }
@@ -9025,9 +9056,16 @@ div.pax-south a {
   div.pax-south a:hover {
     background: #ff841a;
     background: linear-gradient(#ff841a, #FF7600); }
+    div.pax-south a:hover .event {
+      color: #ff841a; }
+  div.pax-south a:focus {
+    text-decoration: none; }
 div.pax-south h3, div.pax-south p {
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #994700; }
+div.pax-south p.event {
+  background-color: #ffffff;
+  color: #994700; }
 div.pax-south img {
   border: 1px groove #cc5e00;
   box-shadow: none; }
@@ -9038,9 +9076,16 @@ div.pax-unplugged a {
   div.pax-unplugged a:hover {
     background: #a150ab;
     background: linear-gradient(#a150ab, #91489A); }
+    div.pax-unplugged a:hover .event {
+      color: #a150ab; }
+  div.pax-unplugged a:focus {
+    text-decoration: none; }
 div.pax-unplugged h3, div.pax-unplugged p {
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #502854; }
+div.pax-unplugged p.event {
+  background-color: #ffffff;
+  color: #502854; }
 div.pax-unplugged img {
   border: 1px groove #703877;
   box-shadow: none; }
@@ -9051,15 +9096,67 @@ div.pax-west a {
   div.pax-west a:hover {
     background: #008ed5;
     background: linear-gradient(#008ed5, #007DBB); }
+    div.pax-west a:hover .event {
+      color: #008ed5; }
+  div.pax-west a:focus {
+    text-decoration: none; }
 div.pax-west h3, div.pax-west p {
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #003955; }
+div.pax-west p.event {
+  background-color: #ffffff;
+  color: #003955; }
 div.pax-west img {
   border: 1px groove #005b88;
   box-shadow: none; }
 
-span.pax-location {
-  font-weight: 400; }
+div.pax-tile {
+  width: 10em; }
+  div.pax-tile a {
+    box-shadow: 2px 2px 4px #382e2e;
+    border: none; }
+    div.pax-tile a:active, div.pax-tile a:focus {
+      box-shadow: 2px 2px 4px #382e2e;
+      border: none;
+      text-decoration: none; }
+    div.pax-tile a:hover {
+      border: none; }
+  div.pax-tile div.punch {
+    margin: 4px auto 4px auto;
+    width: 44px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: inset 2px 2px 4px #382e2e; }
+  div.pax-tile img {
+    border: none;
+    border-radius: 0;
+    box-shadow: none; }
+  div.pax-tile p {
+    margin: 0.2rem 0;
+    line-height: 1.2em; }
+  div.pax-tile p.event {
+    margin-top: 0.3rem;
+    margin-bottom: 0.1rem;
+    padding: 0.1em 0.2em;
+    letter-spacing: 0.05em;
+    text-shadow: none;
+    text-transform: uppercase;
+    text-align: right;
+    font-size: 120%;
+    font-weight: 400; }
+  div.pax-tile p.year {
+    letter-spacing: 0.05em;
+    text-shadow: none;
+    font-weight: 300;
+    font-size: 250%; }
+  div.pax-tile p.date {
+    font-weight: 300; }
+  div.pax-tile p.location {
+    margin-top: 0.5rem;
+    padding-top: 0.3rem;
+    font-weight: 400;
+    border-top: 1px solid #ffffff66; }
 
 /******************************************************************************
 * PROJECTS                                                                    *
@@ -9163,9 +9260,16 @@ div.stephenvlog a {
   div.stephenvlog a:hover {
     background: #06ac53;
     background: linear-gradient(#06ac53, #059347); }
+    div.stephenvlog a:hover .event {
+      color: #06ac53; }
+  div.stephenvlog a:focus {
+    text-decoration: none; }
 div.stephenvlog h3, div.stephenvlog p {
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #023017; }
+div.stephenvlog p.event {
+  background-color: #ffffff;
+  color: #023017; }
 div.stephenvlog img {
   border: 1px groove #03622f;
   box-shadow: none; }

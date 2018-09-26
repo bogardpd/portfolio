@@ -23,7 +23,7 @@ div.pax-tile {
   a {
     box-shadow: 2px 2px 4px $color-text;
     border: none;
-    &:active {
+    &:active, &:focus {
       box-shadow: 2px 2px 4px $color-text;
       border: none;
       text-decoration: none;
