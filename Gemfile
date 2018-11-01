@@ -18,7 +18,7 @@ gem 'aws-sdk', '~> 2'
 
 # Force loofah to 2.2.1 for security update.
 # https://github.com/flavorjones/loofah/issues/144
-gem 'loofah', '~> 2.2.1'
+gem 'loofah', '~> 2.2.3'
 
 group :development do
   gem 'web-console', '~> 2.0'
