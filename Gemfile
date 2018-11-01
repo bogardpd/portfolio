@@ -15,9 +15,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'aws-sdk', '~> 2'
-
-# Force loofah to 2.2.1 for security update.
-# https://github.com/flavorjones/loofah/issues/144
 gem 'loofah', '~> 2.2.3'
 
 group :development do
