@@ -14,8 +14,12 @@ table.reading-list {
     }
     p.subtitle {
       margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
       font-size: 80%;
       font-weight: 300;
+    }
+    span.badge {
+      font-style: normal;
     }
   }
   

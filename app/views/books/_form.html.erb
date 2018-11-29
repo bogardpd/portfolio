@@ -21,6 +21,11 @@
     <%= f.label :page_count, "Pages" %>
     <%= f.text_field :page_count, class: 'form-control', style: "width: 75px" %>
   </p>
+
+  <p>
+    <%= f.label :book_type, "Book Type" %><br>
+    <%= f.select(:book_type, options_for_select([["Fiction", "Fiction"],["Nonfiction","Nonfiction"]], @book.book_type), {include_blank: true}) %>
+  </p>
   
   
   <p>

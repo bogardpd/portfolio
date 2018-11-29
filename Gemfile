@@ -18,7 +18,6 @@ gem 'aws-sdk', '~> 2'
 gem 'loofah', '~> 2.2.3'
 
 group :development do
-  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do

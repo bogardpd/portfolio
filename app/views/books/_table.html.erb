@@ -20,6 +20,11 @@
           	<% if book.subtitle %>
           		<p class="subtitle"><%= book.subtitle %></p>
           	<% end %>
+            <% if book.book_type == "Fiction" %>
+              <p class="book_type"><span class="badge badge-pill badge-success">Fiction</span></p>
+            <% elsif book.book_type == "Nonfiction" %>
+              <p class="book_type"><span class="badge badge-pill badge-info">Nonfiction</span></p>
+            <% end %>
           </td>
           <td class="reading-author"><ul class="list-unstyled"><%= book.author.split("\n").map{|a| "<li>#{a}</li>"}.join.html_safe %></ul></td>
           <td class="reading-pages">
