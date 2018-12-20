@@ -6,11 +6,16 @@
 <% @puns.each do |code, city, puns| %>
   <%= link_header(code, 2, city) %>
   <div class="row">
-    <% puns.each do |pun, credit| %>
+    <% puns.each do |pun, credit, note| %>
+      <% notes_row = [] %>
+      <% notes_row.push "Photo provided by #{credit}" if credit %>
+      <% notes_row.push note if note %>
       <div class="col-lg-6 airport-code-pun">
         <figure class="figure">
           <%= image_tag("#{PortfolioImage::ROOT_PATH}airport-code-puns/#{code.downcase}-#{anchorize(sanitize(pun, tags: []))}.jpg", alt: sanitize(pun, tags: []), class: "img-fluid generic-photo-tile") %>
-          <% if credit %><figcaption class="attribution">Photo provided by <%= credit %></figcaption><% end %>
+          <% if notes_row.any? %>
+            <figcaption class="attribution"><%= notes_row.join(" &middot; ").html_safe %></figcaption>
+          <% end %>
           <figcaption><%= pun.html_safe %></figcaption>
         </figure>
       </div>

@@ -10,6 +10,9 @@ class StaticPagesController < ApplicationController
   def airport_code_puns
     add_breadcrumb "Airport Code Puns", airport_code_puns_path
     @puns = [
+      ["AUS", "Austin", [
+        ["No p<code>AUS</code>in ’til <code>AUS</code>tin", "Shawn Bianchi", "Photo taken at SJC"]
+      ]],
       ["DAY", "Dayton", [
         ["It’s a great <code>DAY</code> to recycle!"],
         ["A better <code>DAY</code>, landing soon."],
