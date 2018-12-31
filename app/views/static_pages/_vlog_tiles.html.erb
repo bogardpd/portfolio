@@ -1,6 +1,10 @@
-<% @vlogs.each do |vlog| %>
-  <% details = [vlog[3], (FormattedDate::text(Date.parse(vlog[2])) if vlog[2])].compact.join(" &middot; ") %>
-  <div class="tile stephenvlog">
-    <%= link_to %Q(<div class="row"><div class="col-md-3">#{image_tag "https://img.youtube.com/vi/#{vlog[1]}/mqdefault.jpg", class: "img-fluid"}</div><div class="col-md-9 align-self-center"><h3>#{vlog[0]}</h3><p>#{details}</p></div></div>).html_safe, "https://www.youtube.com/watch?v=#{vlog[1]}", class: "btn btn-link btn-block", target: :_blank %>
+<div class="row">
+  <div class="col-lg-8 offset-lg-2">
+  <% @vlogs.each do |vlog| %>
+    <% details = [vlog[3], (FormattedDate::text(Date.parse(vlog[2])) if vlog[2])].compact.join(" &middot; ") %>
+    <div class="stephenvlog">
+      <%= link_to %Q(<div class="row"><div class="col-md-4">#{image_tag "https://img.youtube.com/vi/#{vlog[1]}/mqdefault.jpg", class: "img-fluid"}</div><div class="col-md-8 align-self-center"><h3>#{vlog[0]}</h3><p>#{details}</p></div></div>).html_safe, "https://www.youtube.com/watch?v=#{vlog[1]}", class: "btn btn-link btn-block", target: :_blank %>
+    </div>
+  <% end %>
   </div>
-<% end %>
+</div>
