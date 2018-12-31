@@ -10,7 +10,8 @@
   <li>
     <%= link_to "Cheffcon", anchor: "cheffcon" %>
     <ul>
-      <li><%= link_to "Cheffcon Indiana 2014", anchor: "cheffcon-indiana-2014" %></li>
+      <li><%= link_to "Cheffcon: Indiana (2014)", anchor: "cheffcon-indiana-2014" %></li>
+      <li><%= link_to "Cheffcon: South Carolina (2018–2019)", anchor: "cheffcon-south-carolina-2018-2019" %></li>
     </ul>
   </li>
   <li>
@@ -47,7 +48,7 @@
 
 <p>Stephen’s friends Chaz and Jeff have hosted a few gatherings of the vlog friends, and ever since then, these gatherings have been called “Cheffcon.”
 
-<%= link_header "Cheffcon Indiana 2014", 3 %>
+<%= link_header "Cheffcon: Indiana (2014)", 3 %>
 
 <%
 @vlogs.clear
@@ -56,7 +57,7 @@
 
 <%= render :partial => "vlog_tiles" %>
 
-<%= link_header "Cheffcon South Carolina 2018/2019", 3 %>
+<%= link_header "Cheffcon: South Carolina (2018–2019)", 3 %>
 
 <%
 @vlogs.clear
