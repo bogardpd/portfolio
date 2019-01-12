@@ -21,12 +21,19 @@
     color: #FFFFFF;
     text-shadow: 0.05em 0.05em darken($color-base, 20%);
   }
+
+  a.btn {
+    color: #FFFFFF;
+  }
   
   a.btn-primary {
     background-color: $color-base;
     border-color: darken($color-base, 10%);
     color: #FFFFFF;
     text-shadow: 0.05em 0.05em darken($color-base, 10%);
+    &:hover {
+      background-color: lighten($color-base, 5%)
+    }
   }
   
   img.project {
