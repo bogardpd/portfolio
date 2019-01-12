@@ -5,5 +5,10 @@ class VlogVideosController < ApplicationController
 
   def index
   end
+
+  def new
+    @vlog_video = VlogVideo.new
+  end
   
+
 end

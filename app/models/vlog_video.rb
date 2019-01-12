@@ -1,2 +1,2 @@
-class VlogVideo < ApplicationRecord
+class VlogVideo < ActiveRecord::Base
 end

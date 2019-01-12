@@ -1,1 +1,13 @@
-<h1>Stephenvlog</h1>
+<% provide(:title, "StephenVlog Appearances") %>
+<% provide(:meta_description, "Paul’s appearances on StephenVlog") %>
+<% provide(:theme, "stephenvlog") %>
+
+<h1>StephenVlog Appearances</h1>
+
+<% if logged_in? %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= link_to("Add new video".html_safe, new_vlog_video_path, class: "btn btn-outline-success", role: "button") %>
+    </div>
+  </div>
+<% end %>
