@@ -67,18 +67,21 @@ Rails.application.routes.draw do
   get "hotel-pillow-fort" => "static_pages#hotel_pillow_fort"
   get "mco-lobby"         => "static_pages#mco_lobby"
   get "oreo"              => "static_pages#oreo"
-  get "stephenvlog"       => "static_pages#stephenvlog"
   
   get "starmen-conventions" => "static_pages#starmen_conventions"
   get "starmen-conventions/:gallery(/:page)" => "static_pages#gallery_starmen", :as => :starmen_con_gallery
   
   get "pax" => "static_pages#pax"
   get "pax/:gallery(/:page)" => "static_pages#gallery_pax", :as => :pax_gallery
-    
+  
+  # Resources
+  
   resources :books
   get "/reading-list", :to => redirect("/books", :status => 301)
 
-  resources :vlog_videos
+  resources :vlog_videos, path: "stephenvlog"
+  get "stephenvlog_old"       => "static_pages#stephenvlog"
+  
   
   # Certbot
   get "/.well-known/acme-challenge/:id" => "static_pages#letsencrypt"
