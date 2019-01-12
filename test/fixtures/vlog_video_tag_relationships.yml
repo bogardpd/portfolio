@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vlog_video_id: 1
+  vlog_video_tag_id: 1
+
+two:
+  vlog_video_id: 1
+  vlog_video_tag_id: 1

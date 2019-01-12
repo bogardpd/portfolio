@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_12_222939) do
+ActiveRecord::Schema.define(version: 2019_01_12_224820) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2019_01_12_222939) do
     t.string "password_digest"
     t.string "remember_digest"
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "vlog_video_tag_relationships", force: :cascade do |t|
+    t.integer "vlog_video_id"
+    t.integer "vlog_video_tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vlog_video_id", "vlog_video_tag_id"], name: "vlog_tag_relationships"
   end
 
   create_table "vlog_video_tags", force: :cascade do |t|

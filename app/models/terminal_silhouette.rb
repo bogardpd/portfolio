@@ -1,4 +1,4 @@
-class TerminalSilhouette < ActiveRecord::Base
+class TerminalSilhouette < ApplicationRecord
   ROOT_PATH = PortfolioImage::ROOT_PATH + "projects/terminal-silhouettes"
   CAP_CODES = %w( iata_code )
   

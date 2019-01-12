@@ -1,4 +1,4 @@
-class Book < ActiveRecord::Base
+class Book < ApplicationRecord
   validates :title, presence: true
   validates :author, presence: true
   validates :page_count, numericality: { only_integer: true }, allow_blank: true

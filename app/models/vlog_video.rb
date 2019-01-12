@@ -1,4 +1,7 @@
-class VlogVideo < ActiveRecord::Base
+class VlogVideo < ApplicationRecord
+  has_many :vlog_video_tag_relationships
+  has_many :vlog_video_tags, through: :vlog_video_tag_relationships
+  
   validates :title, presence: true
   validates :youtube_id, presence: true
   validates :video_date, presence: true
