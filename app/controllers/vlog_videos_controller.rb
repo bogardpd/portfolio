@@ -4,6 +4,7 @@ class VlogVideosController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
 
   def index
+    @vlog_videos = VlogVideo.order(video_date: :desc)
   end
 
   def new
