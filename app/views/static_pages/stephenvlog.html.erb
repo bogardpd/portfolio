@@ -22,7 +22,6 @@
       <li><%= link_to "PAX East 2014", anchor: "pax-east-2014" %></li>
     </ul>
   </li>
-  <li><%= link_to "Gatlinburg", anchor: "gatlinburg" %></li>
   <li><%= link_to "Other", anchor: "other" %></li>
 </ul>
 
@@ -63,7 +62,10 @@
 @vlogs.clear
 @vlogs.push ["I’ve Been Christmas This Whole Time!", "veOX8FU3E6w", "2018-12-26"]
 @vlogs.push ["Chromatic Seven", "K_k4gyrd8SU", "2018-12-27"]
+@vlogs.push ["Breakfast Stream", "sHxVcOlnANo", "2018-12-27"]
 @vlogs.push ["Screw Identification", "raH8dVEW16w", "2018-12-28"]
+@vlogs.push ["Stephen + Friends Q&A Winter 2018", "pqYyVWOXC4w", "2018-12-28"]
+@vlogs.push ["Breakfast Stream - “Testing a New PC”", "swooyn5cbqo", "2019-01-01"]
 %>
 
 <%= render :partial => "vlog_tiles" %>
@@ -103,20 +105,6 @@
 <%
 @vlogs.clear
 @vlogs.push ["Give Me The Crown!", "Fh1xxgwhWvg", "2014-04-12", "Day 1600"]
-%>
-
-<%= render :partial => "vlog_tiles" %>
-
-<%= link_header "Gatlinburg", 2 %>
-
-<p>I attended the 2010 Starmen.Net convention in Gatlinburg, Tennessee with Stephen. As there were 50 people at that convention, I was only on in the background of a few of the videos.</p>
-
-<%
-@vlogs.clear
-@vlogs.push ["I Can’t Break My Fast", "F1JP-CSq30Y", "2010-07-27", "Day 245"]
-@vlogs.push ["Screw Pancakes, I’m Getting Biscuits", "wX3JjvXZbd0", "2010-07-28", "Day 246"]
-@vlogs.push ["Drugs Are Also Like Babies, Chalk, Screwdrivers, and Lipitor", "662ZZaYX208", "2010-07-29", "Day 247"]
-@vlogs.push ["Con’s Over", "PkSIR2DDfXQ", "2010-07-31", "Day 249"]
 %>
 
 <%= render :partial => "vlog_tiles" %>
