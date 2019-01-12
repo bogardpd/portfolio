@@ -21,6 +21,20 @@ class VlogVideosController < ApplicationController
     end
   end
 
+  def edit
+    @vlog_video = VlogVideo.find(params[:id])
+  end
+
+  def update
+    @vlog_video = VlogVideo.find(params[:id])
+    if @vlog_video.update_attributes(vlog_video_params)
+      flash[:success] = "Successfully updated #{@vlog_video.title}!"
+      redirect_to vlog_videos_path
+    else
+      render "edit"
+    end
+  end
+
   private
 
   def vlog_video_params

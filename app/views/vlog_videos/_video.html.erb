@@ -1,3 +1,8 @@
 <div class="stephenvlog">
   <%= link_to %Q(<div class="row"><div class="col-md-4">#{image_tag "https://img.youtube.com/vi/#{video.youtube_id}/mqdefault.jpg", class: "img-fluid"}</div><div class="col-md-8 align-self-center"><h3>#{video.title}</h3>#{"<p>#{video.details}</p>" if video.details}</div></div>).html_safe, "https://www.youtube.com/watch?v=#{video.youtube_id}", class: "btn btn-link btn-block", target: :_blank %>
+  <% if logged_in? %>
+    <div class="video-options">
+      <%= link_to("Edit video", edit_vlog_video_path(video), class: "btn", role: "button") %>
+    </div>
+  <% end %>
 </div>
