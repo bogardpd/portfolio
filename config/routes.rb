@@ -77,6 +77,8 @@ Rails.application.routes.draw do
     
   resources :books
   get "/reading-list", :to => redirect("/books", :status => 301)
+
+  resources :vlog_videos
   
   # Certbot
   get "/.well-known/acme-challenge/:id" => "static_pages#letsencrypt"
