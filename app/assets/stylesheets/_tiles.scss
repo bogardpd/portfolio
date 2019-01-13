@@ -4,37 +4,40 @@
 ******************************************************************************/
 
 @mixin tile-theme($color-base) {
-  div.tile {
-    a {
-      background: darken($color-base, 7%);
-      background: linear-gradient(darken($color-base, 7%), darken($color-base, 8%));
+  a.tile {
+    background: darken($color-base, 7%);
+    background: linear-gradient(darken($color-base, 7%), darken($color-base, 8%));
 
-      &:hover, &:focus {
-        background: lighten($color-base, 5%);
-        background: linear-gradient(lighten($color-base, 5%), $color-base);
-        text-decoration: none;
-        .event {
-          color: lighten($color-base, 5%);
-        }
+    &:hover, &:focus {
+      background: lighten($color-base, 5%);
+      background: linear-gradient(lighten($color-base, 5%), $color-base);
+      text-decoration: none;
+      .event {
+        color: lighten($color-base, 5%);
       }
     }
-  }
 
-  h3, p {
-    color: #FFFFFF;
-    text-shadow: 0.05em 0.05em darken($color-base, 20%);
-    
-  }
+    h3, p {
+      color: #FFFFFF;
+      text-shadow: 0.05em 0.05em darken($color-base, 20%); 
+    }
 
-  p.event {
-    background-color: #ffffff;
-    color: darken($color-base, 20%);
-  }
+    p.event {
+      background-color: #ffffff;
+      color: darken($color-base, 20%);
+      text-shadow: none;
+    }
 
-  img {
-    border: 1px groove darken($color-base, 10%);
-    box-shadow: none;
+    img {
+      border: 1px groove darken($color-base, 10%);
+      box-shadow: none;
+    }
+
+    img.logo {
+      border: none;
+    }
   }
+  
 }
 
 div.tile {
