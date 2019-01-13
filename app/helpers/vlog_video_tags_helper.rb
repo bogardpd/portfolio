@@ -1,0 +1,2 @@
+module VlogVideoTagsHelper
+end

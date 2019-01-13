@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   
   root "static_pages#home"
-  
-  
-  
+    
   # Authentication
   get    "login"  => "sessions#new"
   post   "login"  => "sessions#create"
@@ -80,6 +78,7 @@ Rails.application.routes.draw do
   get "/reading-list", :to => redirect("/books", :status => 301)
 
   resources :vlog_videos, path: "stephenvlog"
+  resources :vlog_video_tags, except: [:index]
   get "stephenvlog_old"       => "static_pages#stephenvlog"
   
   

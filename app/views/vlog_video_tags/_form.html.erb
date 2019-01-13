@@ -1,0 +1,18 @@
+<%= form_for(@vlog_video_tag) do |f| %>
+  <%= render 'shared/error_messages', object: @vlog_video_tag %>
+  
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </p>
+  
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control', cols: 40, rows: 3 %>
+  </p>
+
+  <p>
+    <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+  </p>
+  
+<% end %>
