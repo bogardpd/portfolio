@@ -12,10 +12,11 @@ class VlogVideo < ApplicationRecord
     details = Array.new
     details.push("Day #{self.vlog_day}") if self.vlog_day.present?
     details.push(FormattedDate::text(self.video_date).to_s) if self.video_date.present?
-    if details.any?
-      return details.join(" &middot; ")
-    else
-      return nil
-    end
+    return details
+  end
+
+  def tags
+    # Returns an array of id/name hashes of tags for the video
+    return self.vlog_video_tags.order(name: :asc).map{|t| {id: t.id, name: t.name}}
   end
 end

@@ -4,16 +4,18 @@
 ******************************************************************************/
 
 @mixin tile-theme($color-base) {
-  a {
-    background: darken($color-base, 7%);
-    background: linear-gradient(darken($color-base, 7%), darken($color-base, 8%));
+  div.tile {
+    a {
+      background: darken($color-base, 7%);
+      background: linear-gradient(darken($color-base, 7%), darken($color-base, 8%));
 
-    &:hover, &:focus {
-      background: lighten($color-base, 5%);
-      background: linear-gradient(lighten($color-base, 5%), $color-base);
-      text-decoration: none;
-      .event {
-        color: lighten($color-base, 5%);
+      &:hover, &:focus {
+        background: lighten($color-base, 5%);
+        background: linear-gradient(lighten($color-base, 5%), $color-base);
+        text-decoration: none;
+        .event {
+          color: lighten($color-base, 5%);
+        }
       }
     }
   }
@@ -82,8 +84,4 @@ div.tile {
     font-weight: 300;
 	}
 	
-}
-
-div.stephenvlog {
-  @include tile-theme($color-theme-stephenvlog);
 }

@@ -9,21 +9,46 @@ body.stephenvlog {
 }
 
 div.stephenvlog {
-  @include tile-theme($color-theme-stephenvlog);
-  border: 1px solid #FFFFFF;
-  a {
-    white-space: normal;
-    color: #FFFFFF;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  background: darken($color-theme-stephenvlog, 7%);
+  background: linear-gradient(darken($color-theme-stephenvlog, 7%), darken($color-theme-stephenvlog, 8%));
+  color: #FFFFFF;
+  border-radius: $border-radius;
+
+  div {
+    padding: 0.5rem;
+    text-align: center;    
   }
-  img {
-    border: 1px solid #FFFFFF55;
-    margin: 0.5rem 0;
+
+  div.thumbnail {
+    img {
+      border: 1px solid $color-theme-stephenvlog;
+      border-radius: $border-radius;
+    }
   }
-  h3 {
-    margin: 0.5rem 0;
+
+  div.details {
+    h3, p {
+      margin: 0.5rem 0;
+      text-shadow: 0.05em 0.05em darken($color-theme-stephenvlog, 20%);
+      a {
+        text-decoration: none;
+      }
+    }
+    h3 {
+      a {
+        color: #FFFFFF;
+      }
+    }
+    p.details {
+      font-size: $font-size-small;
+    }
+    p.tags {
+      
+    }
   }
-  p {
-    margin: 0.5rem 0;
-  }
+  
+  
 }
 
