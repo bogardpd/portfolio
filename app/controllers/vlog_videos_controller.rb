@@ -5,10 +5,14 @@ class VlogVideosController < ApplicationController
 
   def index
     @vlog_videos = VlogVideo.order(video_date: :desc)
+    @vlog_video_tags = VlogVideoTag.order(name: :asc)
+    add_breadcrumb "StephenVlog", vlog_videos_path
   end
 
   def new
     @vlog_video = VlogVideo.new
+    add_breadcrumb "StephenVlog", vlog_videos_path
+    add_breadcrumb "New Video", new_vlog_video_path
   end
   
   def create
@@ -23,6 +27,8 @@ class VlogVideosController < ApplicationController
 
   def edit
     @vlog_video = VlogVideo.find(params[:id])
+    add_breadcrumb "StephenVlog", vlog_videos_path
+    add_breadcrumb "Edit Video", edit_vlog_video_path(@vlog_video)
   end
 
   def update

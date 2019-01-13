@@ -8,6 +8,12 @@
 
 <h2>Tags</h2>
 
+<p>
+<% @vlog_video_tags.each do |tag| %>
+  <%= link_to(tag.name, vlog_video_tag_path(tag), class: "badge badge-pill badge-theme") %>
+<% end %>
+</p>
+
 <% if logged_in? %>
   <div class="row">
     <div class="col-md-12">
@@ -15,6 +21,7 @@
     </div>
   </div>
 <% end %>
+
 
 <h2>Videos</h2>
 

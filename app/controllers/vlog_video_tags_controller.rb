@@ -4,12 +4,14 @@ class VlogVideoTagsController < ApplicationController
 
   def new
     @vlog_video_tag = VlogVideoTag.new
+    add_breadcrumb "StephenVlog", vlog_videos_path
+    add_breadcrumb "New Tag", new_vlog_video_tag_path
   end
 
   def create
     @vlog_video_tag = VlogVideoTag.new(vlog_video_tag_params)
     if @vlog_video_tag.save
-      flash[:success] = "Successfully added the <strong>#{@vlog_video_tag.name}</strong> tag!"
+      flash[:success] = "Successfully added the [#{@vlog_video_tag.name}] tag!"
       redirect_to vlog_videos_path
     else
       render "new"

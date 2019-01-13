@@ -22,11 +22,20 @@
     text-shadow: 0.05em 0.05em darken($color-base, 20%);
   }
 
+  a.badge-theme {
+    background-color: $color-base;
+    color: #FFFFFF;
+    text-decoration: none;
+    &:hover {
+      background-color: lighten($color-base, 5%);
+    }
+  }
+
   a.btn {
     color: #FFFFFF;
   }
   
-  a.btn-primary {
+  a.btn-theme {
     background-color: $color-base;
     border-color: darken($color-base, 10%);
     color: #FFFFFF;

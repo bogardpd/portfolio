@@ -11967,7 +11967,7 @@ a.text-dark:hover, a.text-dark:focus {
 * Base styles for Paul Bogard’s Portfolio.                                    *
 ******************************************************************************/
 /* universal */
-/* line 44, app/assets/stylesheets/_base.scss */
+/* line 60, app/assets/stylesheets/_base.scss */
 body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 15pt;
@@ -11981,91 +11981,91 @@ body {
   font-feature-settings: "liga", "dlig";
 }
 
-/* line 58, app/assets/stylesheets/_base.scss */
+/* line 74, app/assets/stylesheets/_base.scss */
 #main {
   background-color: #F7F7F7;
   padding: 1rem 3rem;
 }
 
-/* line 63, app/assets/stylesheets/_base.scss */
+/* line 79, app/assets/stylesheets/_base.scss */
 section {
   overflow: auto;
 }
 
-/* line 67, app/assets/stylesheets/_base.scss */
+/* line 83, app/assets/stylesheets/_base.scss */
 textarea {
   resize: vertical;
 }
 
-/* line 71, app/assets/stylesheets/_base.scss */
+/* line 87, app/assets/stylesheets/_base.scss */
 .center {
   text-align: center;
 }
 
-/* line 75, app/assets/stylesheets/_base.scss */
+/* line 91, app/assets/stylesheets/_base.scss */
 img.center {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 80, app/assets/stylesheets/_base.scss */
+/* line 96, app/assets/stylesheets/_base.scss */
 a:not(.btn) {
   color: #aa3939;
   text-decoration: underline;
 }
 
-/* line 85, app/assets/stylesheets/_base.scss */
+/* line 101, app/assets/stylesheets/_base.scss */
 a:hover {
   color: #7c1313;
 }
 
-/* line 89, app/assets/stylesheets/_base.scss */
+/* line 105, app/assets/stylesheets/_base.scss */
 a:active {
   color: #7c1313;
 }
 
-/* line 93, app/assets/stylesheets/_base.scss */
+/* line 109, app/assets/stylesheets/_base.scss */
 a.btn {
   text-decoration: none;
 }
 
-/* line 97, app/assets/stylesheets/_base.scss */
+/* line 113, app/assets/stylesheets/_base.scss */
 a.link-header {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 102, app/assets/stylesheets/_base.scss */
+/* line 118, app/assets/stylesheets/_base.scss */
 abbr {
   text-decoration: none;
   border-bottom: 0.05em dotted;
 }
 
-/* line 107, app/assets/stylesheets/_base.scss */
+/* line 123, app/assets/stylesheets/_base.scss */
 cite {
   font-style: italic;
 }
 
-/* line 111, app/assets/stylesheets/_base.scss */
+/* line 127, app/assets/stylesheets/_base.scss */
 code, kbd {
   font-family: "Source Code Pro", monospace;
 }
 
-/* line 115, app/assets/stylesheets/_base.scss */
+/* line 131, app/assets/stylesheets/_base.scss */
 pre {
   font-family: "Source Code Pro", monospace;
   font-size: 15pt;
   white-space: pre-wrap;
 }
 
-/* line 121, app/assets/stylesheets/_base.scss */
+/* line 137, app/assets/stylesheets/_base.scss */
 blockquote.twitter-tweet {
   width: 100px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 127, app/assets/stylesheets/_base.scss */
+/* line 143, app/assets/stylesheets/_base.scss */
 div.byline {
   text-align: center;
   color: #705c5c;
@@ -12074,38 +12074,38 @@ div.byline {
   margin-bottom: 35px;
 }
 
-/* line 135, app/assets/stylesheets/_base.scss */
+/* line 151, app/assets/stylesheets/_base.scss */
 div.byline::before {
   content: '— ';
 }
 
-/* line 139, app/assets/stylesheets/_base.scss */
+/* line 155, app/assets/stylesheets/_base.scss */
 div.byline::after {
   content: ' —';
 }
 
-/* line 143, app/assets/stylesheets/_base.scss */
+/* line 159, app/assets/stylesheets/_base.scss */
 div.computer-summary {
   margin: 20px 0;
 }
 
-/* line 145, app/assets/stylesheets/_base.scss */
+/* line 161, app/assets/stylesheets/_base.scss */
 div.computer-summary figure {
   margin: 10px 0;
 }
 
-/* line 148, app/assets/stylesheets/_base.scss */
+/* line 164, app/assets/stylesheets/_base.scss */
 div.computer-summary h4 {
   font-weight: 700;
   margin: 10px 0;
 }
 
-/* line 154, app/assets/stylesheets/_base.scss */
+/* line 170, app/assets/stylesheets/_base.scss */
 div.version-picker, div.version-summary {
   margin: 1.5em 0;
 }
 
-/* line 158, app/assets/stylesheets/_base.scss */
+/* line 174, app/assets/stylesheets/_base.scss */
 figure {
   text-align: center;
   margin-top: 25px;
@@ -12113,50 +12113,50 @@ figure {
   padding: 5px;
 }
 
-/* line 164, app/assets/stylesheets/_base.scss */
+/* line 180, app/assets/stylesheets/_base.scss */
 figure figcaption {
   margin: 10px;
   font-weight: 700;
 }
 
-/* line 167, app/assets/stylesheets/_base.scss */
+/* line 183, app/assets/stylesheets/_base.scss */
 figure figcaption span.caption-label {
   font-style: italic;
 }
 
-/* line 171, app/assets/stylesheets/_base.scss */
+/* line 187, app/assets/stylesheets/_base.scss */
 figure figcaption.attribution {
   font-size: 10px;
   font-weight: 400;
   color: #705c5c;
 }
 
-/* line 177, app/assets/stylesheets/_base.scss */
+/* line 193, app/assets/stylesheets/_base.scss */
 figure img.project {
   margin: 10px auto;
 }
 
-/* line 181, app/assets/stylesheets/_base.scss */
+/* line 197, app/assets/stylesheets/_base.scss */
 figure img.ios-screenshot {
   max-width: 375px;
   height: auto;
   border: 1px solid #cccccc;
 }
 
-/* line 187, app/assets/stylesheets/_base.scss */
+/* line 203, app/assets/stylesheets/_base.scss */
 figure img.osx-screenshot {
   max-width: 600px;
   border: none;
 }
 
-/* line 192, app/assets/stylesheets/_base.scss */
+/* line 208, app/assets/stylesheets/_base.scss */
 figure img.screenshot {
   max-width: 600px;
   border: 1px solid #382e2e;
   box-shadow: 1px 1px 5px #705c5c;
 }
 
-/* line 199, app/assets/stylesheets/_base.scss */
+/* line 215, app/assets/stylesheets/_base.scss */
 h1 {
   font-size: 250%;
   font-weight: 400;
@@ -12165,85 +12165,85 @@ h1 {
   margin-bottom: 0.75em;
 }
 
-/* line 207, app/assets/stylesheets/_base.scss */
+/* line 223, app/assets/stylesheets/_base.scss */
 h2 {
   font-weight: bold;
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
 
-/* line 213, app/assets/stylesheets/_base.scss */
+/* line 229, app/assets/stylesheets/_base.scss */
 h3 {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-/* line 218, app/assets/stylesheets/_base.scss */
+/* line 234, app/assets/stylesheets/_base.scss */
 hr {
   border-top: 1px solid #cccccc;
 }
 
-/* line 222, app/assets/stylesheets/_base.scss */
+/* line 238, app/assets/stylesheets/_base.scss */
 img.bordered {
   border: 1px solid #cccccc;
 }
 
-/* line 226, app/assets/stylesheets/_base.scss */
+/* line 242, app/assets/stylesheets/_base.scss */
 img.center {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 231, app/assets/stylesheets/_base.scss */
+/* line 247, app/assets/stylesheets/_base.scss */
 img.org-logo {
   width: 200px;
   height: 100px;
   margin: 10px auto;
 }
 
-/* line 237, app/assets/stylesheets/_base.scss */
+/* line 253, app/assets/stylesheets/_base.scss */
 img.portrait {
   margin: 20px auto;
 }
 
-/* line 241, app/assets/stylesheets/_base.scss */
+/* line 257, app/assets/stylesheets/_base.scss */
 p {
   margin-top: 20px;
   margin-bottom: 20px;
   line-height: 1.7em;
 }
 
-/* line 247, app/assets/stylesheets/_base.scss */
+/* line 263, app/assets/stylesheets/_base.scss */
 small {
   color: #705c5c;
 }
 
-/* line 251, app/assets/stylesheets/_base.scss */
+/* line 267, app/assets/stylesheets/_base.scss */
 .strong {
   font-weight: 700;
 }
 
-/* line 255, app/assets/stylesheets/_base.scss */
+/* line 271, app/assets/stylesheets/_base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 259, app/assets/stylesheets/_base.scss */
+/* line 275, app/assets/stylesheets/_base.scss */
 td {
   line-height: 1.7em;
 }
 
-/* line 261, app/assets/stylesheets/_base.scss */
+/* line 277, app/assets/stylesheets/_base.scss */
 td p {
   line-height: 1.7em;
 }
 
-/* line 266, app/assets/stylesheets/_base.scss */
+/* line 282, app/assets/stylesheets/_base.scss */
 .emphasis {
   font-style: italic;
 }
 
-/* line 270, app/assets/stylesheets/_base.scss */
+/* line 286, app/assets/stylesheets/_base.scss */
 .website-name {
   font-variant: small-caps;
   letter-spacing: 0.02em;
@@ -12616,19 +12616,41 @@ body.pax-aus div.tile h3 {
 }
 
 /* line 25, app/assets/stylesheets/_base.scss */
-body.pax-aus a.btn-primary {
+body.pax-aus a.badge-theme {
+  background-color: #FFAE00;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* line 29, app/assets/stylesheets/_base.scss */
+body.pax-aus a.badge-theme:hover {
+  background-color: #ffb61a;
+}
+
+/* line 34, app/assets/stylesheets/_base.scss */
+body.pax-aus a.btn {
+  color: #FFFFFF;
+}
+
+/* line 38, app/assets/stylesheets/_base.scss */
+body.pax-aus a.btn-theme {
   background-color: #FFAE00;
   border-color: #cc8b00;
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #cc8b00;
 }
 
-/* line 32, app/assets/stylesheets/_base.scss */
+/* line 43, app/assets/stylesheets/_base.scss */
+body.pax-aus a.btn-theme:hover {
+  background-color: #ffb61a;
+}
+
+/* line 48, app/assets/stylesheets/_base.scss */
 body.pax-aus img.project {
   border: 2px solid #FFAE00;
 }
 
-/* line 36, app/assets/stylesheets/_base.scss */
+/* line 52, app/assets/stylesheets/_base.scss */
 body.pax-aus nav.navbar {
   background-color: #FFAE00;
   border-color: #ffbe33;
@@ -12656,19 +12678,41 @@ body.pax-dev div.tile h3 {
 }
 
 /* line 25, app/assets/stylesheets/_base.scss */
-body.pax-dev a.btn-primary {
+body.pax-dev a.badge-theme {
+  background-color: #00A49A;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* line 29, app/assets/stylesheets/_base.scss */
+body.pax-dev a.badge-theme:hover {
+  background-color: #00beb2;
+}
+
+/* line 34, app/assets/stylesheets/_base.scss */
+body.pax-dev a.btn {
+  color: #FFFFFF;
+}
+
+/* line 38, app/assets/stylesheets/_base.scss */
+body.pax-dev a.btn-theme {
   background-color: #00A49A;
   border-color: #00716a;
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #00716a;
 }
 
-/* line 32, app/assets/stylesheets/_base.scss */
+/* line 43, app/assets/stylesheets/_base.scss */
+body.pax-dev a.btn-theme:hover {
+  background-color: #00beb2;
+}
+
+/* line 48, app/assets/stylesheets/_base.scss */
 body.pax-dev img.project {
   border: 2px solid #00A49A;
 }
 
-/* line 36, app/assets/stylesheets/_base.scss */
+/* line 52, app/assets/stylesheets/_base.scss */
 body.pax-dev nav.navbar {
   background-color: #00A49A;
   border-color: #00d7ca;
@@ -12696,19 +12740,41 @@ body.pax-east div.tile h3 {
 }
 
 /* line 25, app/assets/stylesheets/_base.scss */
-body.pax-east a.btn-primary {
+body.pax-east a.badge-theme {
+  background-color: #D9272D;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* line 29, app/assets/stylesheets/_base.scss */
+body.pax-east a.badge-theme:hover {
+  background-color: #dd3d42;
+}
+
+/* line 34, app/assets/stylesheets/_base.scss */
+body.pax-east a.btn {
+  color: #FFFFFF;
+}
+
+/* line 38, app/assets/stylesheets/_base.scss */
+body.pax-east a.btn-theme {
   background-color: #D9272D;
   border-color: #ae1f24;
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #ae1f24;
 }
 
-/* line 32, app/assets/stylesheets/_base.scss */
+/* line 43, app/assets/stylesheets/_base.scss */
+body.pax-east a.btn-theme:hover {
+  background-color: #dd3d42;
+}
+
+/* line 48, app/assets/stylesheets/_base.scss */
 body.pax-east img.project {
   border: 2px solid #D9272D;
 }
 
-/* line 36, app/assets/stylesheets/_base.scss */
+/* line 52, app/assets/stylesheets/_base.scss */
 body.pax-east nav.navbar {
   background-color: #D9272D;
   border-color: #e15257;
@@ -12736,19 +12802,41 @@ body.pax-south div.tile h3 {
 }
 
 /* line 25, app/assets/stylesheets/_base.scss */
-body.pax-south a.btn-primary {
+body.pax-south a.badge-theme {
+  background-color: #FF7600;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* line 29, app/assets/stylesheets/_base.scss */
+body.pax-south a.badge-theme:hover {
+  background-color: #ff841a;
+}
+
+/* line 34, app/assets/stylesheets/_base.scss */
+body.pax-south a.btn {
+  color: #FFFFFF;
+}
+
+/* line 38, app/assets/stylesheets/_base.scss */
+body.pax-south a.btn-theme {
   background-color: #FF7600;
   border-color: #cc5e00;
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #cc5e00;
 }
 
-/* line 32, app/assets/stylesheets/_base.scss */
+/* line 43, app/assets/stylesheets/_base.scss */
+body.pax-south a.btn-theme:hover {
+  background-color: #ff841a;
+}
+
+/* line 48, app/assets/stylesheets/_base.scss */
 body.pax-south img.project {
   border: 2px solid #FF7600;
 }
 
-/* line 36, app/assets/stylesheets/_base.scss */
+/* line 52, app/assets/stylesheets/_base.scss */
 body.pax-south nav.navbar {
   background-color: #FF7600;
   border-color: #ff9133;
@@ -12776,19 +12864,41 @@ body.pax-unplugged div.tile h3 {
 }
 
 /* line 25, app/assets/stylesheets/_base.scss */
-body.pax-unplugged a.btn-primary {
+body.pax-unplugged a.badge-theme {
+  background-color: #91489A;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* line 29, app/assets/stylesheets/_base.scss */
+body.pax-unplugged a.badge-theme:hover {
+  background-color: #a150ab;
+}
+
+/* line 34, app/assets/stylesheets/_base.scss */
+body.pax-unplugged a.btn {
+  color: #FFFFFF;
+}
+
+/* line 38, app/assets/stylesheets/_base.scss */
+body.pax-unplugged a.btn-theme {
   background-color: #91489A;
   border-color: #703877;
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #703877;
 }
 
-/* line 32, app/assets/stylesheets/_base.scss */
+/* line 43, app/assets/stylesheets/_base.scss */
+body.pax-unplugged a.btn-theme:hover {
+  background-color: #a150ab;
+}
+
+/* line 48, app/assets/stylesheets/_base.scss */
 body.pax-unplugged img.project {
   border: 2px solid #91489A;
 }
 
-/* line 36, app/assets/stylesheets/_base.scss */
+/* line 52, app/assets/stylesheets/_base.scss */
 body.pax-unplugged nav.navbar {
   background-color: #91489A;
   border-color: #ab60b5;
@@ -12816,19 +12926,41 @@ body.pax-west div.tile h3 {
 }
 
 /* line 25, app/assets/stylesheets/_base.scss */
-body.pax-west a.btn-primary {
+body.pax-west a.badge-theme {
+  background-color: #007DBB;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* line 29, app/assets/stylesheets/_base.scss */
+body.pax-west a.badge-theme:hover {
+  background-color: #008ed5;
+}
+
+/* line 34, app/assets/stylesheets/_base.scss */
+body.pax-west a.btn {
+  color: #FFFFFF;
+}
+
+/* line 38, app/assets/stylesheets/_base.scss */
+body.pax-west a.btn-theme {
   background-color: #007DBB;
   border-color: #005b88;
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #005b88;
 }
 
-/* line 32, app/assets/stylesheets/_base.scss */
+/* line 43, app/assets/stylesheets/_base.scss */
+body.pax-west a.btn-theme:hover {
+  background-color: #008ed5;
+}
+
+/* line 48, app/assets/stylesheets/_base.scss */
 body.pax-west img.project {
   border: 2px solid #007DBB;
 }
 
-/* line 36, app/assets/stylesheets/_base.scss */
+/* line 52, app/assets/stylesheets/_base.scss */
 body.pax-west nav.navbar {
   background-color: #007DBB;
   border-color: #009fee;
@@ -13268,22 +13400,49 @@ body.stephenvlog div.tile h3 {
 }
 
 /* line 25, app/assets/stylesheets/_base.scss */
-body.stephenvlog a.btn-primary {
+body.stephenvlog a.badge-theme {
+  background-color: #059347;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* line 29, app/assets/stylesheets/_base.scss */
+body.stephenvlog a.badge-theme:hover {
+  background-color: #06ac53;
+}
+
+/* line 34, app/assets/stylesheets/_base.scss */
+body.stephenvlog a.btn {
+  color: #FFFFFF;
+}
+
+/* line 38, app/assets/stylesheets/_base.scss */
+body.stephenvlog a.btn-theme {
   background-color: #059347;
   border-color: #03622f;
   color: #FFFFFF;
   text-shadow: 0.05em 0.05em #03622f;
 }
 
-/* line 32, app/assets/stylesheets/_base.scss */
+/* line 43, app/assets/stylesheets/_base.scss */
+body.stephenvlog a.btn-theme:hover {
+  background-color: #06ac53;
+}
+
+/* line 48, app/assets/stylesheets/_base.scss */
 body.stephenvlog img.project {
   border: 2px solid #059347;
 }
 
-/* line 36, app/assets/stylesheets/_base.scss */
+/* line 52, app/assets/stylesheets/_base.scss */
 body.stephenvlog nav.navbar {
   background-color: #059347;
   border-color: #07c45f;
+}
+
+/* line 11, app/assets/stylesheets/_stephenvlog.scss */
+div.stephenvlog {
+  border: 1px solid #FFFFFF;
 }
 
 /* line 7, app/assets/stylesheets/_tiles.scss */
@@ -13320,6 +13479,28 @@ div.stephenvlog p.event {
 div.stephenvlog img {
   border: 1px groove #03622f;
   box-shadow: none;
+}
+
+/* line 14, app/assets/stylesheets/_stephenvlog.scss */
+div.stephenvlog a {
+  white-space: normal;
+  color: #FFFFFF;
+}
+
+/* line 18, app/assets/stylesheets/_stephenvlog.scss */
+div.stephenvlog img {
+  border: 1px solid #FFFFFF55;
+  margin: 0.5rem 0;
+}
+
+/* line 22, app/assets/stylesheets/_stephenvlog.scss */
+div.stephenvlog h3 {
+  margin: 0.5rem 0;
+}
+
+/* line 25, app/assets/stylesheets/_stephenvlog.scss */
+div.stephenvlog p {
+  margin: 0.5rem 0;
 }
 
 /******************************************************************************
