@@ -1,6 +1,7 @@
 class VlogVideo < ApplicationRecord
   has_many :vlog_video_tag_relationships
   has_many :vlog_video_tags, through: :vlog_video_tag_relationships
+  accepts_nested_attributes_for :vlog_video_tags
   
   validates :title, presence: true
   validates :youtube_id, presence: true

@@ -79,6 +79,7 @@ Rails.application.routes.draw do
 
   resources :vlog_videos, except: [:show], path: "stephenvlog"
   resources :vlog_video_tags, except: [:index]
+  post "stephenvlog/update_video_tags" => "vlog_videos#update_video_tags", as: :update_video_tags
   get "stephenvlog_old"       => "static_pages#stephenvlog"
   
   

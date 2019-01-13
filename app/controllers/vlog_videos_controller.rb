@@ -1,7 +1,7 @@
 class VlogVideosController < ApplicationController
   # Controller for StephenVlog videos
 
-  before_action :logged_in_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :create, :edit, :update, :update_video_tags, :destroy]
 
   def index
     @vlog_videos = VlogVideo.order(video_date: :desc)
@@ -41,6 +41,10 @@ class VlogVideosController < ApplicationController
     end
   end
 
+  def update_video_tags
+
+  end
+
   def destroy
     VlogVideo.find(params[:id]).destroy
     flash[:success] = "Successfully deleted video!"
@@ -50,7 +54,7 @@ class VlogVideosController < ApplicationController
   private
 
   def vlog_video_params
-    params.require(:vlog_video).permit(:title, :youtube_id, :video_date, :vlog_day)
+    params.require(:vlog_video).permit(:title, :youtube_id, :video_date, :vlog_day, vlog_video_tag_ids: [])
   end
 
 end

@@ -22,6 +22,10 @@
   </p>
   
   <p>
+    <%= f.collection_check_boxes(:vlog_video_tag_ids, VlogVideoTag.order(name: :asc), :id, :name) %>
+  </p>
+
+  <p>
     <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
   </p>
   
