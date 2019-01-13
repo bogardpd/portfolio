@@ -56,7 +56,7 @@ module ApplicationHelper
   
   # Formats text for use in anchor/id attributes
   def anchorize(text)
-    return text.gsub("&amp;", "and").gsub(/['‘’"“”]/, "").parameterize
+    return ParameterString::format(text)
   end
   
 end
