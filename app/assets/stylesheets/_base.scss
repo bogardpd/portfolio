@@ -22,7 +22,7 @@
     text-shadow: 0.05em 0.05em darken($color-base, 20%);
   }
 
-  a.badge-theme {
+  a.badge-theme, span.badge-theme {
     background-color: $color-base;
     color: #FFFFFF;
     text-decoration: none;

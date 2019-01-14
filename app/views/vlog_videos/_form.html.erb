@@ -22,7 +22,9 @@
   </p>
   
   <p>
-    <%= f.collection_check_boxes(:vlog_video_tag_ids, VlogVideoTag.order(name: :asc), :id, :name) %>
+    <%= f.collection_check_boxes(:vlog_video_tag_ids, VlogVideoTag.order(name: :asc), :id, :name) do |b| %>
+    <%= b.check_box %> <%= b.label %><br>
+    <% end %>
   </p>
 
   <p>
