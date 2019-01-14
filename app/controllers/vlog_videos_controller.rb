@@ -29,6 +29,10 @@ class VlogVideosController < ApplicationController
     @vlog_video = VlogVideo.find(params[:id])
     add_breadcrumb "StephenVlog", vlog_videos_path
     add_breadcrumb "Edit Video", edit_vlog_video_path(@vlog_video)
+
+  rescue ActiveRecord::RecordNotFound
+    flash[:warning] = "We couldnʼt find a video with an ID of #{params[:id]}."
+    redirect_to vlog_videos_path
   end
 
   def update
@@ -39,6 +43,10 @@ class VlogVideosController < ApplicationController
     else
       render "edit"
     end
+
+  rescue ActiveRecord::RecordNotFound
+    flash[:warning] = "We couldnʼt find a video with an ID of #{params[:id]}."
+    redirect_to vlog_videos_path
   end
 
   def update_video_tags
@@ -48,6 +56,10 @@ class VlogVideosController < ApplicationController
   def destroy
     VlogVideo.find(params[:id]).destroy
     flash[:success] = "Successfully deleted video!"
+    redirect_to vlog_videos_path
+
+  rescue ActiveRecord::RecordNotFound
+    flash[:warning] = "We couldnʼt find a video with an ID of #{params[:id]}."
     redirect_to vlog_videos_path
   end
 

@@ -9,3 +9,9 @@
     <%= render "form" %>
   </div>
 </div>
+
+<div class="row center">
+  <div class="col-md-8 offset-md-2">
+    <%= link_to "Delete this tag", @vlog_video_tag, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete tag [#{@vlog_video_tag.name}]?" }, role: "button" %>
+  </div>
+</div>

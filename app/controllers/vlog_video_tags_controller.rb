@@ -35,9 +35,9 @@ class VlogVideoTagsController < ApplicationController
   def edit
     @vlog_video_tag = VlogVideoTag.find(params[:id])
     
-    rescue ActiveRecord::RecordNotFound
-      flash[:warning] = "We couldnʼt find a tag with an ID of #{params[:id]}."
-      redirect_to vlog_videos_path
+  rescue ActiveRecord::RecordNotFound
+    flash[:warning] = "We couldnʼt find a tag with an ID of #{params[:id]}."
+    redirect_to vlog_videos_path
   end
 
   def update
@@ -49,12 +49,19 @@ class VlogVideoTagsController < ApplicationController
       render "edit"
     end
     
-    rescue ActiveRecord::RecordNotFound
-      flash[:warning] = "We couldnʼt find a tag with an ID of #{params[:id]}."
-      redirect_to vlog_videos_path
+  rescue ActiveRecord::RecordNotFound
+    flash[:warning] = "We couldnʼt find a tag with an ID of #{params[:id]}."
+    redirect_to vlog_videos_path
   end
 
   def destroy
+    VlogVideoTag.find(params[:id]).destroy
+    flash[:success] = "Successfully deleted tag!"
+    redirect_to vlog_videos_path
+
+  rescue ActiveRecord::RecordNotFound
+    flash[:warning] = "We couldnʼt find a tag with an ID of #{params[:id]}."
+    redirect_to vlog_videos_path
   end
 
   private
