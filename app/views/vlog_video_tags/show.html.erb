@@ -4,6 +4,10 @@
 
 <h1>StephenVlog Appearances<br><small><%= @tag.name %></small></h1>
 
+<% if logged_in? %>
+  <p><%= link_to("Edit tag", edit_vlog_video_tag_path(@tag), class: "btn btn-primary", role: "button") %></p>
+<% end %>
+
 <% if @tag.description.present? %>
 <p><%= @tag.description %></p>
 <% end %>

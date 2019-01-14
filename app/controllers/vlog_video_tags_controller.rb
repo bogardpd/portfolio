@@ -33,9 +33,25 @@ class VlogVideoTagsController < ApplicationController
   end
 
   def edit
+    @vlog_video_tag = VlogVideoTag.find(params[:id])
+    
+    rescue ActiveRecord::RecordNotFound
+      flash[:warning] = "We couldnʼt find a tag with an ID of #{params[:id]}."
+      redirect_to vlog_videos_path
   end
 
   def update
+    @vlog_video_tag = VlogVideoTag.find(params[:id])
+    if @vlog_video_tag.update_attributes(vlog_video_tag_params)
+      flash[:success] = "Successfully updated #{@vlog_video_tag.name}!"
+      redirect_to show_vlog_video_tag_path(@vlog_video_tag.parameterized_name)
+    else
+      render "edit"
+    end
+    
+    rescue ActiveRecord::RecordNotFound
+      flash[:warning] = "We couldnʼt find a tag with an ID of #{params[:id]}."
+      redirect_to vlog_videos_path
   end
 
   def destroy
