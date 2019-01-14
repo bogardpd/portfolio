@@ -4,8 +4,8 @@ class VlogVideosController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :edit, :update, :update_video_tags, :destroy]
 
   def index
-    @vlog_videos = VlogVideo.order(video_date: :desc)
-    @vlog_video_tags = VlogVideoTag.order(name: :asc)
+    @vlog_videos = VlogVideo.eager_load(:vlog_video_tags).all.order(video_date: :desc)
+    @vlog_video_tags = VlogVideoTag.eager_load(:vlog_videos).all.order(name: :asc)
     add_breadcrumb "StephenVlog", vlog_videos_path
   end
 

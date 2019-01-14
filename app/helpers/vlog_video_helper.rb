@@ -12,7 +12,7 @@ module VlogVideoHelper
     return nil if tags.empty?
 
     content_tag :p, class: "tags" do
-      tags.collect{|t| concat(link_to(t[:name], vlog_video_tag_path(t[:id]), class: ["badge", "badge-pill", "badge-theme-inverse"]))}
+      tags.collect{|t| concat(link_to(t[:name], show_vlog_video_tag_path(t[:parameterized_name]), class: ["badge", "badge-pill", "badge-theme-inverse"]))}
     end
     
   end

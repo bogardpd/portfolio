@@ -78,7 +78,8 @@ Rails.application.routes.draw do
   get "/reading-list", :to => redirect("/books", :status => 301)
 
   resources :vlog_videos, except: [:show], path: "stephenvlog"
-  resources :vlog_video_tags, except: [:index]
+  resources :vlog_video_tags, except: [:index, :show], path: "stephenvlog/tags"
+  get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
   post "stephenvlog/update_video_tags" => "vlog_videos#update_video_tags", as: :update_video_tags
   get "stephenvlog_old"       => "static_pages#stephenvlog"
   

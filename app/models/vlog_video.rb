@@ -17,6 +17,6 @@ class VlogVideo < ApplicationRecord
 
   def tags
     # Returns an array of id/name hashes of tags for the video
-    return self.vlog_video_tags.order(name: :asc).map{|t| {id: t.id, name: t.name}}
+    return self.vlog_video_tags.order(name: :asc).map{|t| {id: t.id, name: t.name, parameterized_name: t.parameterized_name}}
   end
 end
