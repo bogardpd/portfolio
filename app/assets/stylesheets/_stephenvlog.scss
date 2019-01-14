@@ -31,18 +31,20 @@ div.stephenvlog {
   div.details {
     h3, p {
       margin: 0.5rem 0;
-      text-shadow: 0.05em 0.05em darken($color-theme-stephenvlog, 20%);
       a {
         text-decoration: none;
       }
     }
     h3 {
+      text-shadow: 0.05em 0.05em darken($color-theme-stephenvlog, 20%);
       a {
         color: #FFFFFF;
       }
     }
     p.details {
       font-size: $font-size-small;
+      color: lighten($color-theme-stephenvlog, 60%);
+      text-shadow: none;
     }
     p.tags {
       

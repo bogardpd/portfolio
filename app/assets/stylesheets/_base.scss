@@ -26,6 +26,7 @@
     background-color: $color-base;
     color: #FFFFFF;
     text-decoration: none;
+    font-weight: normal;
     &:hover {
       background-color: lighten($color-base, 5%);
     }

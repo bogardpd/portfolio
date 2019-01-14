@@ -8,25 +8,21 @@
 
 <h2>Tags</h2>
 
-<p>
+<p class="center">
 <% @vlog_video_tags.each do |tag| %>
   <%= link_to(tag.name, show_vlog_video_tag_path(tag: tag.parameterized_name), class: "badge badge-pill badge-theme") %>
 <% end %>
 </p>
 
 <% if logged_in? %>
-  <p><%= link_to("Add new tag".html_safe, new_vlog_video_tag_path, class: "btn btn-primary", role: "button") %></p>
+  <p class="center"><%= link_to("Add new tag".html_safe, new_vlog_video_tag_path, class: "btn btn-primary", role: "button") %></p>
 <% end %>
 
 
 <h2>Videos</h2>
 
 <% if logged_in? %>
-  <div class="row">
-    <div class="col-md-12">
-      <%= link_to("Add new video".html_safe, new_vlog_video_path, class: "btn btn-primary", role: "button") %>
-    </div>
-  </div>
+  <p class="center"><%= link_to("Add new video".html_safe, new_vlog_video_path, class: "btn btn-primary", role: "button") %></p>
 <% end %>
 
 <%= render partial: "videos", locals: {vlog_videos: @vlog_videos} %>
