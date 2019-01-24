@@ -283,11 +283,6 @@ class StaticPagesController < ApplicationController
     add_breadcrumb "Starmen.Net Conventions", starmen_conventions_path
   end
   
-  def stephenvlog
-    add_breadcrumb "StephenVlog", stephenvlog_path
-    @vlogs = Array.new
-  end
-  
   def time_zone_chart
     add_breadcrumb "Time Zone Chart", time_zone_chart_path
   end

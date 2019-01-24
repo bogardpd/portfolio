@@ -81,8 +81,6 @@ Rails.application.routes.draw do
   resources :vlog_video_tags, except: [:index, :show], path: "stephenvlog/tags"
   get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
   post "stephenvlog/update_video_tags" => "vlog_videos#update_video_tags", as: :update_video_tags
-  get "stephenvlog_old"       => "static_pages#stephenvlog"
-  
   
   # Certbot
   get "/.well-known/acme-challenge/:id" => "static_pages#letsencrypt"
