@@ -5,6 +5,14 @@ class PAXEvent
     @year = start_date.year
   end
 
+  # Returns a paramaterized name of the event
+  def parameterized_name
+    name = ["pax"]
+    name.push @event.downcase unless @event.blank?
+    name.push @year
+    return name.join("-")
+  end
+
   # Determines the theme of the event based on the event
   def theme
     themes = {
