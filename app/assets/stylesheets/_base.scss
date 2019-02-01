@@ -44,6 +44,14 @@
   a.btn {
     color: #FFFFFF;
   }
+
+  a.btn-outline-dark {
+    color: $color-base;
+    &:hover {
+      background-color: $color-base;
+      color: #FFFFFF;
+    }
+  }
   
   a.btn-theme {
     background-color: $color-base;
