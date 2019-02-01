@@ -154,7 +154,7 @@ class StaticPagesController < ApplicationController
   
   def gallery_pax
     add_breadcrumb "PAX", pax_path
-    title = paxen[params[:gallery]][:name] || nil
+    title = paxen.find{|p| p.parameterized_name == params[:gallery]}&.short_name
     gallery_template(title: title, path: pax_gallery_path(gallery: params[:gallery]))
   end
   
@@ -311,17 +311,17 @@ class StaticPagesController < ApplicationController
   end
 
   def paxen
-    return {
-      "pax-prime-2010" => {event: "Prime", year: "2010", location: "Seattle",   dates: Date.parse("2010-09-03")..Date.parse("2010-09-05"), theme: "pax-west"},
-      "pax-prime-2011" => {event: "Prime", year: "2011", location: "Seattle",   dates: Date.parse("2011-08-26")..Date.parse("2011-08-28"), theme: "pax-west"},
-      "pax-prime-2012" => {event: "Prime", year: "2012", location: "Seattle",   dates: Date.parse("2012-08-31")..Date.parse("2012-09-02"), theme: "pax-west"},
-      "pax-east-2013"  => {event: "East",  year: "2013", location: "Boston",    dates: Date.parse("2013-03-22")..Date.parse("2013-03-24"), theme: "pax-east"},
-      "pax-prime-2013" => {event: "Prime", year: "2013", location: "Seattle",   dates: Date.parse("2013-08-30")..Date.parse("2013-09-02"), theme: "pax-west"},
-      "pax-east-2014"  => {event: "East",  year: "2014", location: "Boston",    dates: Date.parse("2014-04-11")..Date.parse("2014-04-13"), theme: "pax-east"},
-      "pax-east-2015"  => {event: "East",  year: "2015", location: "Boston",    dates: Date.parse("2015-03-06")..Date.parse("2015-03-08"), theme: "pax-east"},
-      "pax-west-2017"  => {event: "West",  year: "2017", location: "Seattle",   dates: Date.parse("2017-09-01")..Date.parse("2017-09-04"), theme: "pax-west"},
-      "pax-west-2018"  => {event: "West",  year: "2018", location: "Seattle",   dates: Date.parse("2018-08-31")..Date.parse("2018-09-03"), theme: "pax-west"},
-      "pax-south-2019"  => {event: "South",  year: "2019", location: "San Antonio",   dates: Date.parse("2019-01-18")..Date.parse("2019-01-20"), theme: "pax-south"}
-    }
+    p = Array.new
+    p.push PAXEvent.new("Prime", "Seattle",     Date.parse("2010-09-03"), Date.parse("2010-09-05"))
+    p.push PAXEvent.new("Prime", "Seattle",     Date.parse("2011-08-26"), Date.parse("2011-08-28"))
+    p.push PAXEvent.new("Prime", "Seattle",     Date.parse("2012-08-31"), Date.parse("2012-09-02"))
+    p.push PAXEvent.new("East",  "Boston",      Date.parse("2013-03-22"), Date.parse("2013-03-24"))
+    p.push PAXEvent.new("Prime", "Seattle",     Date.parse("2013-08-30"), Date.parse("2013-09-02"))
+    p.push PAXEvent.new("East",  "Boston",      Date.parse("2014-04-11"), Date.parse("2014-04-13"))
+    p.push PAXEvent.new("East",  "Boston",      Date.parse("2015-03-06"), Date.parse("2015-03-08"))
+    p.push PAXEvent.new("West",  "Seattle",     Date.parse("2017-09-01"), Date.parse("2017-09-04"))
+    p.push PAXEvent.new("West",  "Seattle",     Date.parse("2018-08-31"), Date.parse("2018-09-03"))
+    p.push PAXEvent.new("South", "San Antonio", Date.parse("2019-01-18"), Date.parse("2019-01-20"))
+    return p
   end
 end

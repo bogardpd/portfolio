@@ -7,8 +7,6 @@
 <p class="center">I’ve attended <%= link_to "Penny Arcade Expo", "http://www.paxsite.com/", target: :_blank %> several times. Select a badge to see a photo gallery!</p>
 
 <div class="row cover-row justify-content-center">
-<% @paxen.each do |k, pax_data| %> 
-  <% pax_data.store(:gallery, k) %>
-  <%= render partial: "static_pages/galleries/pax_tile", locals: pax_data %>
-<% end %>
+<%= render partial: "static_pages/galleries/pax_tile", collection: @paxen, as: :pax %>
+
 </div>
