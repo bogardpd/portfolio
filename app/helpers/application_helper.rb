@@ -48,14 +48,11 @@ module ApplicationHelper
     end
   end
   
-  # Return a div if this link is the current page, and a link otherwise
+  # Format a menu link depending on whether or not it refers to the current page
   def nav_link(text, path)
-     if current_page?(path)
-       html = link_to(text, path, class: 'dropdown-item active')
-     else
-       html = link_to(text, path, class: 'dropdown-item')
-     end
-     html.html_safe
+     classes = %w(dropdown-item)
+     classes << "active" if current_page?(path)
+     return link_to(text, path, class: classes)
   end
   
   # Formats text for use in anchor/id attributes
