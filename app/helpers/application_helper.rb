@@ -42,20 +42,20 @@ module ApplicationHelper
   # Returns the meta description on a per-page basis.
   def meta_description(page_meta_description = '')
     if page_meta_description.empty?
-      ""
+      return ""
     else
-      "<meta name=\"description\" content=\"#{page_meta_description}\" />".html_safe
+      return content_tag(:meta, nil, name: "description", content: page_meta_description)
     end
   end
   
-  # Format a menu link depending on whether or not it refers to the current page
+  # Format a menu link depending on whether or not it refers to the current page.
   def nav_link(text, path)
      classes = %w(dropdown-item)
      classes << "active" if current_page?(path)
      return link_to(text, path, class: classes)
   end
   
-  # Formats text for use in anchor/id attributes
+  # Formats text for use in anchor/id attributes.
   def anchorize(text)
     return ParameterString::format(text)
   end
