@@ -1,2 +1,2 @@
 <% theme ||= nil %>
-<%= Tile.new(path: polymorphic_url(gallery, gallery: name.parameterize), img: "#{PortfolioImage::ROOT_PATH}photos/covers/#{name.parameterize}.jpg", title: name, caption: "#{location}<br/>#{dates}", theme: theme).show %>
+<%= Tile.new(path: polymorphic_url(gallery, gallery: name.parameterize), img: "#{PortfolioImage::ROOT_PATH}photos/covers/#{name.parameterize}.jpg", title: name, caption: location, date_string: dates, theme: theme).show %>
