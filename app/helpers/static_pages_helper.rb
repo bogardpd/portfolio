@@ -24,9 +24,9 @@ module StaticPagesHelper
     elsif (type == :screenshot || type == :osx_screenshot || type == :large)
       image = link_to(image, path) 
     end
-    caption = "<figcaption>#{caption}</figcaption>" if caption.present?
-    attribution = %Q(<figcaption class="attribution">Image Credit: #{attribution}</figcaption>) if attribution.present?
-    return %Q(<figure>#{image}#{attribution}#{caption}</figure>).html_safe
+    caption = content_tag(:figcaption, caption) if caption.present?
+    attribution = content_tag(:figcaption, "Image Credit: #{attribution}", class: "attribution") if attribution.present?
+    return content_tag(:figure, image + attribution + caption)
   end
   
   # Returns an embedded YouTube video.
