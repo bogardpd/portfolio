@@ -31,12 +31,13 @@ module StaticPagesHelper
   
   # Returns an embedded YouTube video.
   def youtube_embed(video_id)
-    html = %Q(<div class="row">)
-    html += %Q(<div class="col-md-6 col-sm-8 offset-md-3 offset-sm-2">)
-    html += %Q(<div class="embed-responsive embed-responsive-4by3">)
-    html += %Q(<iframe width="420" height="315" src="https://www.youtube.com/embed/#{video_id}" frameborder="0" allowfullscreen></iframe>)
-    html += "</div></div></div>"
-    html.html_safe
+    return content_tag(:div, class: %w(row)) do
+      content_tag(:div, class: %w(col-md-6 col-sm-8 offset-md-3 offset-sm-2)) do
+        content_tag(:div, class: %w(embed-responsive embed-responsive-4by3)) do
+          content_tag(:iframe, nil, width: "420", height: "315", src: "https://www.youtube.com/embed/#{video_id}", frameborder: 0, allowfullscreen: true)
+        end
+      end
+    end
   end
   
 end
