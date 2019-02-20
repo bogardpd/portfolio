@@ -23,7 +23,7 @@ class DownloadButton < LinkButton
   
   def plain_link
     return nil if @path.blank?
-    return %Q(#{link_to(URI.decode(File.basename(@path)), @path)} (#{number_to_human_size(@size)})).html_safe
+    return link_to(URI.decode(File.basename(@path)), @path) + " (#{number_to_human_size(@size)})"
   end
   
   private
