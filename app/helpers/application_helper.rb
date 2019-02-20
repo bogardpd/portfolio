@@ -29,9 +29,14 @@ module ApplicationHelper
   end
   
   def link_header(text, level, subtext=nil)
-    header = text
-    header += " <small>#{subtext}</small>" if subtext.present?
-    %Q(<h#{level} id="#{anchorize(text)}">#{link_to(header.html_safe, params.permit(:anchor, :gallery, :page).merge(anchor: anchorize(text)), class: "link-header")}</h#{level}>).html_safe
+    return text unless [1,2,3,4,5,6].include?(level)
+    header = ActiveSupport::SafeBuffer.new
+    header << text
+    if subtext.present?
+      header << " "
+      header << content_tag(:small, subtext)
+    end
+    return content_tag("h#{level}".to_sym, link_to(header, params.permit(:anchor, :gallery, :page).merge(anchor: anchorize(text)), class: "link-header"), id: anchorize(text))
   end
   
   # Returns the meta description on a per-page basis.
