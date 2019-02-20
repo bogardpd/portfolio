@@ -18,15 +18,14 @@ module ApplicationHelper
 
   def show_breadcrumbs
     return "" unless @breadcrumbs && @breadcrumbs.length > 1
-    html = %Q(<nav aria-label="breadcrumb" class="breadcrumb">)
-    html += %Q(<ol class="breadcrumb">)
-    @breadcrumbs[0..@breadcrumbs.length-2].each do |b|
-      html += %Q(<li class="breadcrumb-item">#{link_to b[0], b[1]}</li>)
-    end
-    html += %Q(<li class="breadcrumb-item active" aria-current="page">#{@breadcrumbs.last[0]}</li>)
-    html += "</ol></nav>"
-    #html = @breadcrumbs.map{|b| link_to b[0], b[1]}.join(" ").html_safe
-    return html.html_safe
+
+    breadcrumbs = @breadcrumbs[0..@breadcrumbs.length-2].map{|b| content_tag(:li, link_to(b[0], b[1]), class: "breadcrumb-item")}
+    breadcrumbs << content_tag(:li, @breadcrumbs.last[0], class: %w(breadcrumb-item active))
+    
+    html = content_tag(:ol, safe_join(breadcrumbs), class: "breadcrumb")
+    html = content_tag(:nav, html, "aria-label": "breadcrumb", class: "breadcrumb")
+    
+    return html
   end
   
   def link_header(text, level, subtext=nil)
