@@ -4,7 +4,7 @@ ruby '2.5.1'
 
 gem 'rails', '5.2.2'
 
-gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+gem 'bootstrap', '~> 4.3.1'
 gem 'sassc-rails', '~> 2.0'
 
 gem 'bcrypt'
