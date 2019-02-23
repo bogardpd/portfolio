@@ -11,7 +11,7 @@
 
 <p>I travel reasonably often, and I consider myself a bit of a transportation nerd. It’s only logical that I would keep track of where I’ve flown.</p>
 
-<p>For a while, I used a giant text file, and later an Excel spreadsheet, to track all of my flights; I created maps manually using the <%= link_to "Great Circle Mapper", "http://www.gcmap.com/", target: "_blank" %>. But by the time my flights began numbering in the hundreds, I needed a more automated solution, so I created <%= link_to %Q(<span class="website-name">Paul Bogard’s Flight Log</span>).html_safe, "https://www.flighthistorian.com/", target: "_blank" %>.</p>
+<p>For a while, I used a giant text file, and later an Excel spreadsheet, to track all of my flights; I created maps manually using the <%= link_to "Great Circle Mapper", "http://www.gcmap.com/", target: "_blank" %>. But by the time my flights began numbering in the hundreds, I needed a more automated solution, so I created <%= link_to content_tag(:span, "Paul Bogard’s Flight Log", class: %w(website-name)), "https://www.flighthistorian.com/", target: "_blank" %>.</p>
 
 <%= project_image "projects/flight-historian/1-0/A-1.png", type: :osx_screenshot, alt: "Screenshot of the Flight Log’s Home page" %>
 
