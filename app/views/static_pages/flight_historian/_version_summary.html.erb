@@ -16,9 +16,7 @@
   		<tr>
   			<th scope="row">Specification<%= "s" unless specs.count == 1 %></th>
   			<td><ul>
-          <%= specs.map{|path|
-            "<li>#{DownloadButton.new(path).plain_link}</li>"
-          }.join("").html_safe %>
+          <%= safe_join(specs.map{|path| content_tag(:li, DownloadButton.new(path).plain_link)}) %>
         </ul></td>
   		</tr>
   	</tbody>
