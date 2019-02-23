@@ -14,7 +14,7 @@
 						<div class="dropdown-menu" aria-labelledby="projectsDropdown">
 							<%= nav_link "All Projects", root_path %>
 							<div class="dropdown-divider"></div>
-							<%= Project::LIST.sort_by{|proj| proj[:name]}.map{|proj| nav_link proj[:name], eval(Project.path(proj[:name]))}.join.html_safe %>
+							<%= safe_join(Project::LIST.sort_by{|proj| proj[:name]}.map{|proj| nav_link proj[:name], eval(Project.path(proj[:name]))}) %>
 							<div class="dropdown-divider"></div>
 							<%= link_to "Github (bogardpd)", "https://github.com/bogardpd", target: :_blank, class: "dropdown-item" %>
 						</div>
