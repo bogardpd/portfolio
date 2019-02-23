@@ -8,12 +8,12 @@ img = response.code.to_i == 200 ? "#{img_path}.png" : "#{img_path}.jpg" %>
 
 <div id="<%= computer["name"].parameterize %>" class="row computer-summary">
   <div class="col col-sm-12">
-    <h3 id="<%= computer["name"].parameterize %>"><%= computer["name"] %> <small><%= [computer["from"],computer["to"]].join("&ndash;").html_safe if computer["from"] && computer["to"]%></small></h3>
-    <%= "<p>#{computer["description"]}</p>".html_safe if computer["description"] %>
+    <h3 id="<%= computer["name"].parameterize %>"><%= computer["name"] %> <small><%= [computer["from"],computer["to"]].join(" – ") if computer["from"] && computer["to"]%></small></h3>
+    <%= content_tag(:p, computer["description"]) if computer["description"] %>
   </div>
   <div class="col col-sm-4"><%= project_image(img, attribution: computer["attribution"]) %></div>
   <div class="col col-sm-8">
-    <%= "<h4>#{computer["model"]}</h4>".html_safe if computer["model"] %>
-    <%= [%Q(<ul class="list-unstyled computer-specs">), computer["specs"].map{|spec| "<li>#{spec}</li>"}, %Q(</ul>)].join.html_safe if computer["specs"] %>
+    <%= content_tag(:h4, computer["model"]) if computer["model"] %>
+    <%= content_tag(:ul, safe_join(computer["specs"].map{|spec| content_tag(:li, spec)}), class: %w(list-unstyled computer-specs)) if computer["specs"] %>
   </div>
 </div>
