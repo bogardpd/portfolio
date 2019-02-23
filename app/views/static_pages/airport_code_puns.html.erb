@@ -14,9 +14,9 @@
         <figure class="figure">
           <%= image_tag("#{PortfolioImage::ROOT_PATH}airport-code-puns/#{code.downcase}-#{anchorize(sanitize(pun, tags: []))}.jpg", alt: sanitize(pun, tags: []), class: "img-fluid generic-photo-tile") %>
           <% if notes_row.any? %>
-            <figcaption class="attribution"><%= notes_row.join(" &middot; ").html_safe %></figcaption>
+            <figcaption class="attribution"><%= notes_row.join(" · ") %></figcaption>
           <% end %>
-          <figcaption><%= pun.html_safe %></figcaption>
+          <figcaption><%= sanitize(pun, tags: %w(code)) %></figcaption>
         </figure>
       </div>
     <% end %>
