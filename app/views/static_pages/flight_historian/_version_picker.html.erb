@@ -2,13 +2,13 @@
   <div class="col-md-12 center">
     <% menu.group_by{|k, v| k.to_s.split(".").first}.each do |item| %>
       <div class="btn-group flex-wrap">
-        <%= item.last.map{|ik, iv|
+        <%= safe_join(item.last.map{|ik, iv|
           path = (ik == :Overview) ? flight_historian_path : flight_historian_path(version: ik.to_s.parameterize)
           classes = %w(btn btn-outline-dark)
           classes.push iv[:class] if iv[:class]
           classes.push "active" if iv[:active]
           link_to(ik, path, class: classes)
-        }.join.html_safe %>
+        }) %>
       </div>
     <% end %>
   </div>
