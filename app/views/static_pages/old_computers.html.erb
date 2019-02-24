@@ -30,4 +30,8 @@
   <p class="alert alert-info">Current tablet: <%= link_to "Latke", computers_path(anchor: "mobile") %></p>
 </div>
 
+<%= link_header "Gaming Consoles", 2 %>
+
+<%= render partial: "computer_summary", collection: @computers["gaming_consoles"], as: :computer %>
+
 <%= link_buttons(LinkButton.new("See Paul’s current computers", nil, computers_path)) %>

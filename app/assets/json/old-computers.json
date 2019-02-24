@@ -176,5 +176,13 @@
       ],
       "attribution" : "apple.com"
     }
+  ],
+  "gaming_consoles" : [
+    { 
+      "name"  : "New Nintendo 3DS XL",
+      "from"  : "January 2017",
+      "to"    : "February 2019", 
+      "model" : "New Nintendo 3DS XL"
+    }
   ]
 }
