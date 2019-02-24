@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12 center">
     <div class="btn-group flex-wrap">
-      <%= pages.map.with_index(1){|text, index| render partial: "static_pages/galleries/page_button", locals: {name: text, gallery: gallery, page: index, path: path, current: current}}.join.html_safe %>
+      <%= safe_join(pages.map.with_index(1){|text, index| render partial: "static_pages/galleries/page_button", locals: {name: text, gallery: gallery, page: index, path: path, current: current}}) %>
     </div>
   </div>
 </div>
