@@ -1,11 +1,11 @@
-<% html = [] %>
-<% html.push %Q(<div class="punch"></div>) %>
+<% html = Array.new %>
+<% html.push content_tag(:div, nil, class: %w(punch)) %>
 <% html.push image_tag(image_path("pax-logo.svg"), alt: "PAX Logo", class: %w(img-fluid logo)) %>
-<% html.push %Q(<p class="event">#{pax.event}</p>) %>
-<% html.push %Q(<p class="year">#{pax.year}</p>) %>
-<% html.push %Q(<p class="date">#{pax.dates}</p>) %>
-<% html.push %Q(<p class="location">#{pax.location}</p>) %>
+<% html.push content_tag(:p, pax.event, class: %w(event)) %>
+<% html.push content_tag(:p, pax.year, class: %w(year)) %>
+<% html.push content_tag(:p, pax.dates, class: %w(date)) %>
+<% html.push content_tag(:p, pax.location, class: %w(location)) %>
 
 <div class="tile pax-tile <%= pax.theme %>">
-  <%= link_to html.join("").html_safe, polymorphic_url(:pax_gallery, gallery: pax.parameterized_name), class: "btn btn-link btn-block tile" %>
+  <%= link_to safe_join(html), polymorphic_url(:pax_gallery, gallery: pax.parameterized_name), class: %w(btn btn-link btn-block tile) %>
 </div>
