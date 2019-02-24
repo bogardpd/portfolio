@@ -1,10 +1,15 @@
 <% img_path = "computers/old/#{computer["name"].parameterize}" %>
 
 <% 
-uri = URI("#{PortfolioImage::ROOT_PATH}#{img_path}.png")
-request = Net::HTTP.new(uri.host)
-response = request.request_head(uri.path)
-img = response.code.to_i == 200 ? "#{img_path}.png" : "#{img_path}.jpg" %>
+begin
+  uri = URI("#{PortfolioImage::ROOT_PATH}#{img_path}.png")
+  request = Net::HTTP.new(uri.host)
+  response = request.request_head(uri.path)
+  img = response.code.to_i == 200 ? "#{img_path}.png" : "#{img_path}.jpg"
+rescue SocketError
+  img = "#"
+end
+%>
 
 <div id="<%= computer["name"].parameterize %>" class="row computer-summary">
   <div class="col col-sm-12">
