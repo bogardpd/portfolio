@@ -179,11 +179,19 @@
   ],
   "gaming_consoles" : [
     { 
-      "name"  : "New Nintendo 3DS XL",
+      "name"  : "3DS",
       "from"  : "January 2017",
       "to"    : "February 2019", 
       "model" : "New Nintendo 3DS XL",
+      "no_image": 1,
       "attribution" : "Philip Terry Graham (CC0 1.0)"
+    },
+    { 
+      "name"  : "Xbox 360",
+      "from"  : "January 2010",
+      "to"    : "March 2019", 
+      "model" : "Microsoft Xbox 360 Elite 120 GB",
+      "no_image": 1
     }
   ]
 }
