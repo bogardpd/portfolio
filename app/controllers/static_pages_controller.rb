@@ -23,7 +23,11 @@ class StaticPagesController < ApplicationController
       ]],
       ["STL", "St. Louis", [
         ["Every day we’re hu<code>STL</code>ing for you"],
-        ["To the coa<code>STL</code>ines and beyond", "Jeff"]
+        ["To the coa<code>STL</code>ines and beyond", "Jeff"],
+        ["Bu<code>STL</code>ing"],
+        ["It’s va<code>STL</code>y better than landfills"],
+        ["Whi<code>STL</code>e while we work"],
+        ["Don’t wre<code>STL</code>e your bags"]
       ]]
     ]
   end
