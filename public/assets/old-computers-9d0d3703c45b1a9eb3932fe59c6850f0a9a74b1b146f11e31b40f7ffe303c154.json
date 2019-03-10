@@ -1,0 +1,203 @@
+{
+  "desktops" : [
+    {
+      "name"  : "Peanut Butter",
+      "from"  : "October 2004",
+      "to"    : "May 2008",
+      "model" : "Home-Built PC",
+      "description" : "I built Peanut Butter in college largely to play Half-Life 2. It ended up becoming my primary World of Warcraft machine.",
+      "specs" : [
+        "AMD Athlon 64 3200+ (2.3 GHz)",
+        "2 GB DDR-400 SDRAM",
+        "200 GB 7200 RPM HDD",
+        "DVD±RW drive",
+        "ATI Radeon 9800 Pro (128 MB)",
+        "Windows XP Pro; Ubuntu 6.10"
+      ]
+    }
+  ],
+  "laptops" : [
+    { 
+      "name"  : "Fishsticks",
+      "from"  : "July 2002",
+      "to"    : "July 2008", 
+      "description" : "Fishsticks is the laptop I was required to purchase at the beginning of my freshman year at RHIT.",
+      "model" : "Compaq Evo N800c",
+      "specs" : [
+        "Intel Pentium 4 Mobile (1.7 GHz)",
+        "768 MB DDR SDRAM",
+        "60 GB 5400 RPM HDD",
+        "CD-RW/DVD-ROM drive",
+        "ATI Mobility Radeon 7500 (64 MB)",
+        "15″ 1400×1050 display",
+        "802.11b Wi-Fi",
+        "Windows XP Professional; Ubuntu 6.10",
+        "Compaq Port Replicator PR1000"
+      ]
+    },
+    {
+      "name"  : "Reuben",
+      "from"  : "March 2007",
+      "to"    : "April 2009",
+      "model" : "Lenovo ThinkPad T60p Widescreen Mobile Workstation",
+      "specs" : [
+        "Intel Core 2 Duo T7400 (2.16 GHz)",
+        "2 GB DDR2-667 SDRAM",
+        "100 GB 7200 RPM HDD",
+        "8× DVD±RW drive",
+        "ATI Mobility Fire GL V5250 (256 MB)",
+        "15.4″ 1680×1050 display",
+        "802.11n Wi-Fi",
+        "Windows Vista Business"
+      ]
+    },
+    {
+      "name"  : "Chili Dog",
+      "from"  : "April 2009",
+      "to"    : "June 2015",
+      "model" : "Apple MacBook Pro 15″ (early 2009)",
+      "specs" : [
+        "Intel Core 2 Duo (2.66 GHz)",
+        "4 GB DDR3-1066 SDRAM",
+        "320 GB 7200 RPM HDD",
+        "8× DVD±RW drive",
+        "Nvidia GeForce 9600M GT (512 MB)",
+        "15.4″ 1440×900 display",
+        "802.11n Wi-Fi",
+        "OS X 10.6 Snow Leopard; Windows 7 Home Premium"
+      ]
+    },
+    {
+      "name"  : "Frites Liberté",
+      "from"  : "June 2015",
+      "to"    : "April 2016",
+      "model" : "Apple MacBook Pro 15″ (mid 2012)",
+      "specs" : [
+        "Intel Core i5 3210M (2.5 GHz)",
+        "4 GB DDR3-1600 SDRAM",
+        "500 GB 5400 RPM HDD",
+        "8× DVD±RW drive",
+        "Nvidia GeForce GT 650M (512 MB)",
+        "15.4″ 1440×900 display",
+        "802.11n Wi-Fi",
+        "OS X 10.11 El Capitan"
+      ]
+    }
+  ],
+  "mobile" : [
+    {
+      "name"  : "Palm m105",
+      "from"  : "July 2000",
+      "to"    : "July 2002",
+      "model" : "Palm m105",
+      "specs" : [
+        "Personal Digital Assistant",
+        "Palm OS 3"
+      ],
+      "attribution" : "Amazon.com"
+    },
+    {
+      "name"  : "Sony CLIÉ",
+      "from"  : "July 2002",
+      "to"    : "October 2005",
+      "model" : "Sony CLIÉ PEG-T615C",
+      "specs" : [
+        "Personal Digital Assistant",
+        "Palm OS 3.5"
+      ],
+      "attribution" : "engadget.com"
+    },
+    {
+      "name"  : "Tator Tot",
+      "from"  : "October 2005",
+      "to"    : "February 2009",
+      "model" : "HP iPAQ RX1950",
+      "specs" : [
+        "Personal Digital Assistant",
+        "Windows Mobile 5.0"
+      ],
+      "attribution" : "pcmag.com"
+    },
+    {
+      "name"  : "Tator Tot II",
+      "from"  : "February 2009",
+      "to"    : "July 2009",
+      "model" : "HTC Touch Pro",
+      "specs" : [
+        "Smartphone",
+        "Windows Mobile 6.1"
+      ],
+      "attribution" : "brighthand.com"
+    },
+    {
+      "name"  : "Olive",
+      "from"  : "July 2009",
+      "to"    : "May 2011",
+      "model" : "BlackBerry Bold 9650",
+      "specs" : [
+        "Smartphone",
+        "BlackBerry OS 6"
+      ],
+      "attribution" : "Evan-Amos (public domain)"
+    },
+    {
+      "name"  : "Tator Tot III",
+      "from"  : "May 2011",
+      "to"    : "November 2013",
+      "model" : "Apple iPhone 4",
+      "specs" : [
+        "Smartphone",
+        "32 GB",
+        "iOS 7"
+      ],
+      "attribution" : "anonymous (CC BY-SA 3.0)"
+    },
+    {
+      "name"  : "Tator Tot IV",
+      "from"  : "November 2013",
+      "to"    : "November 2015",
+      "model" : "Apple iPhone 5s",
+      "specs" : [
+        "Smartphone",
+        "32 GB",
+        "iOS 9"
+      ],
+      "attribution" : "Justin14 (CC BY-SA 3.0)"
+    },
+    {
+      "name"  : "Tator Tot V",
+      "from"  : "November 2015",
+      "to"    : "January 2018",
+      "model" : "Apple iPhone 6s",
+      "specs" : [
+        "Smartphone",
+        "64 GB",
+        "iOS 11"
+      ],
+      "attribution" : "apple.com"
+    }
+  ],
+  "gaming_consoles" : [
+    { 
+      "name"  : "Nintendo 3DS",
+      "from"  : "January 2017",
+      "to"    : "February 2019", 
+      "model" : "New Nintendo 3DS XL",
+      "attribution" : "Amazon.com",
+      "specs" : [
+        "32 GB SDHC card"
+      ]
+    },
+    { 
+      "name"  : "Xbox 360",
+      "from"  : "January 2010",
+      "to"    : "March 2019", 
+      "model" : "Microsoft Xbox 360 Elite",
+      "attribution": "Amazon.com",
+      "specs" : [
+        "120 GB",
+        "4 wireless controllers"
+      ]
+    }
+  ]
+}
