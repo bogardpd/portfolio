@@ -179,6 +179,17 @@
   ],
   "gaming_consoles" : [
     { 
+      "name"  : "Nintendo Wii",
+      "from"  : "September 2007",
+      "to"    : "July 2018"
+    },
+    { 
+      "name"  : "PlayStation 2",
+      "from"  : "February 2010",
+      "to"    : "January 2017",
+      "attribution" : "Amazon.com"
+    },
+    { 
       "name"  : "Nintendo 3DS",
       "from"  : "January 2017",
       "to"    : "February 2019", 
