@@ -3,6 +3,37 @@
 * Styles for computer description pages.                                      *
 ******************************************************************************/
 
+div.computer-summary {
+  margin: 20px 0;
+  figure {
+    margin: 10px 0;
+	}
+	h3 {
+		font-size: 150%;
+		margin-top: 0;
+		margin-bottom: 0.25em;
+	}
+	h4 {
+		margin-top: 0;
+		font-weight: 300;
+		color: $color-text-light;
+	}
+	p.computer-model {
+		font-weight: bold;
+		margin-bottom: 0.75em;
+		line-height: $line-height-small;
+	}
+	li {
+		margin-top: 0;
+		margin-bottom: 0.5em;
+		margin-left: 0.5em;
+		line-height: $line-height-small;
+	}
+	li:last-child {
+		margin-bottom: 0;
+	}
+}
+
 th.label {
 	width: 20%;
 }
@@ -51,11 +82,5 @@ ul.component {
 	}
 	span.unpictured {
 		font-style: italic;
-	}
-}
-
-ul.computer-specs {
-	li {
-		line-height: $line-height-default;
 	}
 }
