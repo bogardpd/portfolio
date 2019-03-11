@@ -9,531 +9,421 @@
 
 <%= link_header "Home Computers", 2 %>
 
-<table class="table table-bordered">
-	<thead>
-		<tr>
-			<th class="label"></th>
-			<th style="width: 40%">Pancake</th>
-			<th style="width: 40%">Quesadilla</th>
-		</tr>
-	</thead>
-	<tbody>
-		
-		<tr id="model">
-			 <th scope="row" class="label">Model</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Home-Built PC</p>
-					</li>
-				</ul>
-			</td>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Apple MacBook</p>
-						<p class="supplemental">12″ Notebook &middot; 2016</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="photo">
-			 <th scope="row" class="label">Photo</th>
-			<td>
-				<%= link_to(image_tag("#{PortfolioImage::ROOT_PATH}computers/Pancake 2016-08-20 - Thumbnail.jpg", class: "img-fluid project bordered"), "#{PortfolioImage::ROOT_PATH}computers/Pancake 2016-08-20.jpg") %>
-			</td>
-			<td>
-				<%= link_to(image_tag("#{PortfolioImage::ROOT_PATH}computers/Quesadilla 2016-05-05 - Thumbnail.jpg", class: "img-fluid project bordered"), "#{PortfolioImage::ROOT_PATH}computers/Quesadilla 2016-05-05.jpg") %>
-			</td>
-		</tr>
-		
-		<tr id="operating-system">
-			 <th scope="row" class="label">Operating System</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Microsoft Windows 10 Pro 64-bit</p>
-					</li>
-				</ul>
-			</td>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">MacOS Mojave</p>
-						<p class="supplemental">10.14</p>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="processor">
-			 <th scope="row" class="label">Processor</th>
-			<td>
-				<ul class="component">
-					<ul class="component">
-						<li>
-							<p class="component">Intel Core i5-6600K</p>
-							<p class="supplemental">Skylake &middot; 3.5 GHz</p>
-							<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
-						</li>
-					</ul>
-			</td>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Intel Core m5</p>
-						<p class="supplemental">Skylake &middot; 1.2/2.7 GHz</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="motherboard">
-			 <th scope="row" class="label">Motherboard</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">ASRock Z170M PRO4S</p>
-						<p class="supplemental">MicroATX</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
-					</li>
-				</ul>
-			</td>
-			<td></td>
-		</tr>
-		
-		<tr id="graphics-card">
-			 <th scope="row" class="label">Graphics Card</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Asus GeForce GTX 1070</p>
-						<p class="supplemental">8 GB GDDR5</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Intel HD Graphics 515</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="memory">
-			 <th scope="row" class="label">Memory</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">16 GB Crucial DDR4-2400</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">8 GB LPDDR3-1866</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="storage">
-			 <th scope="row" class="label">Storage</th>
-			<td>
-        <ul class="component">
-          <li>
-            <p class="component">1 TB Samsung 840 EVO</p>
-            <p class="supplemental">SSD &middot; SATA</p>
-            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
-          </li>
-          <li>
-            <p class="component">3 TB Western Digital Blue</p>
-            <p class="supplemental">HDD &middot; 5400 RPM &middot; SATA</p>
-            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-18"} %>
-          </li>
-        </ul>
-			</td>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">512 GB</p>
-						<p class="supplemental">SSD &middot; PCIe</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
-					</li>
-					<li>
-						<p class="component">2 TB Western Digital My Passport</p>
-						<p class="supplemental">External HDD &middot; USB 3.0</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2012-12-25"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="optical-disc">
-			 <th scope="row" class="label">Optical Disc</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Samsung 20× DVD±R</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-05-02"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-			</td>
-		</tr>
-		
-		<tr id="wireless">
-			 <th scope="row" class="label">Wireless</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">TP-LINK AC600 802.11ac Wi-Fi</p>
-						<p class="supplemental">USB Wi-Fi adapter</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-07-06"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">802.11ac Wi-Fi</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
-					</li>
-					<li>
-						<p class="component">Bluetooth 4.0</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-				
-		<tr id="power-supply">
-			 <th scope="row" class="label">Power Supply</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Corsair RM550x</p>
-						<p class="supplemental">550 W &middot; Modular</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-				
-			</td>
-		</tr>
-		
-    <tr id="case">
-       <th scope="row" class="label">Case</th>
-      <td>
-        <ul class="component">
-          <li>
-            <p class="component">Silverstone TJ08B-E</p>
-            <p class="supplemental">Black &middot; MicroATX mini tower</p>
-            <%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
-          </li>
-        </ul>
-      </td>
-      <td>
-        
-      </td>
-    </tr>
-		    
-		<tr id="cpu-cooler">
-			 <th scope="row" class="label">CPU Cooler</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Cooler Master Hyper 212 EVO</p>
-						<p class="supplemental">120 mm &middot; 9&ndash;36 dBA</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-				
-			</td>
-		</tr>
-		
-		<tr id="displays">
-			 <th scope="row" class="label">Displays</th>
-			<td colspan="2">
-				<p><%= image_tag("#{PortfolioImage::ROOT_PATH}computers/Monitor Layout.png", class: "img-fluid project bordered", alt: "A diagram showing two monitors connected to Pancake and one to Quesadilla, and a diagram showing three monitors connected to Pancake, with Quesadilla using its own built in screen.") %></p>
-				<ul class="component">
-					<li>
-						<p class="component">24″ Dell UltraSharp U2415</p>
-						<p class="supplemental">1920×1200 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-06-01"} %>
-					</li>
-					<li>
-						<p class="component">24″ Dell UltraSharp U2415</p>
-						<p class="supplemental">1920×1200 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-06-01"} %>
-					</li>
-					<li>
-						<p class="component">24″ Dell UltraSharp U2415</p>
-						<p class="supplemental">1920×1200 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-05-09"} %>
-					</li>
-					<li>
-						<p class="component">12″ laptop screen</p>
-						<p class="supplemental">2304×1440 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="keyboard">
-			 <th scope="row" class="label">Keyboard</th>
-			<td colspan="2">
-				<ul class="component">
-						<li>
-							<p class="component">CoolerMaster Storm QuickFire XT Mechanical</p>
-							<p class="supplemental">Full size &middot; CHERRY MX Brown switches &middot; Shared via <%= link_to("Synergy", "https://symless.com/synergy", target: :_blank) %></p><%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-03-05"} %>
-						</li>
-					</ul>
-			</td>
-		</tr>
-		
-		<tr id="mouse">
-			 <th scope="row" class="label">Mouse</th>
-			<td colspan="2">
-				<ul class="component">
-					<li>
-						<p class="component">Logitech G203 Prodigy</p>
-						<p class="supplemental">6-button mouse &middot; <span class="unpictured">Not Pictured</span> &middot; Shared via <%= link_to("Synergy", "https://symless.com/synergy", target: :_blank) %></p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2017-03-05"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="game-controllers">
-			 <th scope="row" class="label">Game Controllers</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Microsoft Xbox 360 Controller</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2011-11-24"} %>
-					</li>
-					<li>
-						<p class="component">Saitek AV8R Flight Stick</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2009-02-20"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-				
-			</td>
-		</tr>
-		
-		<tr id="speakers">
-			 <th scope="row" class="label">Speakers</th>
-			<td colspan="2">
-				<ul class="component">
-					<li>
-						<p class="component">Philips FW-C35 Mini-HiFi System</p>
-						<p class="supplemental">Shared via mixer</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2001-07-08"} %>
-					</li>					
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="mixer">
-			 <th scope="row" class="label">Mixer</th>
-			<td colspan="2">
-				<ul class="component">
-					<li>
-						<p class="component">GemSound DMX-2071 Stereo Preamp Mixer</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2007-11-27"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-		<tr id="headphones">
-			 <th scope="row" class="label">Headphones</th>
-			<td rowspan="2">
-				<ul class="component">
-					<li>
-						<p class="component">Sennheiser PC 8 Headset</p>
-						<p class="supplemental">Stereo &middot; Wired &middot; USB</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-10-18"} %>
-					</li>
-				</ul>
-			</td>
-			<td rowspan="2">
-				<ul class="component">
-					<li>
-						<p class="component">Apple AirPods</p>
-						<p class="supplemental">Stereo &middot; Wireless &middot; Bluetooth</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2018-03-06"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
+<div class="row computers">
+	<div class="offset-lg-2 col-6 col-lg-5 label center" id="pancake">PANCAKE</div>
+	<div class="col-6 col-lg-5 label center" id="quesadilla">QUESADILLA</div>
+</div>
 
-		<tr id="microphone">
-			<th scope="row" class="label">Microphone</th>
-		</tr>
+<div class="row computers" id="model">
+	<div class="col-12 col-lg-2 label">Model</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Home-Built PC</p>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Apple MacBook</p>
+				<p class="supplemental">12″ Notebook &middot; 2016</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="photo">
+	<div class="col-12 col-lg-2 label">Photo</div>
+	<div class="col-6 col-lg-5 center">
+		<%= link_to(image_tag("#{PortfolioImage::ROOT_PATH}computers/Pancake 2016-08-20 - Thumbnail.jpg", class: "img-fluid project bordered"), "#{PortfolioImage::ROOT_PATH}computers/Pancake 2016-08-20.jpg") %>
+	</div>
+	<div class="col-6 col-lg-5 center">
+		<%= link_to(image_tag("#{PortfolioImage::ROOT_PATH}computers/Quesadilla 2016-05-05 - Thumbnail.jpg", class: "img-fluid project bordered"), "#{PortfolioImage::ROOT_PATH}computers/Quesadilla 2016-05-05.jpg") %>
+	</div>
+</div>
+
+<div class="row computers" id="operating-system">
+	<div class="col-12 col-lg-2 label">Operating System</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Microsoft Windows 10 Pro 64-bit</p>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">MacOS Mojave</p>
+				<p class="supplemental">10.14</p>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="processor">
+	<div class="col-12 col-lg-2 label">Processor</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Intel Core i5-6600K</p>
+				<p class="supplemental">Skylake &middot; 3.5 GHz</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Intel Core m5</p>
+				<p class="supplemental">Skylake &middot; 1.2/2.7 GHz</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="motherboard">
+	<div class="col-12 col-lg-2 label">Motherboard</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">ASRock Z170M PRO4S</p>
+				<p class="supplemental">MicroATX</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
 		
-		<tr id="webcam">
-			 <th scope="row" class="label">Webcam</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Logitech C260 Webcam</p>
-						<p class="supplemental">1280×760</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2012-03-12"} %>
-					</li>
-				</ul>
-			</td>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">FaceTime Camera</p>
-						<p class="supplemental">480p</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
+	</div>
+</div>
+
+<div class="row computers" id="graphics-card">
+	<div class="col-12 col-lg-2 label">Graphics Card</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Asus GeForce GTX 1070</p>
+				<p class="supplemental">8 GB GDDR5</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Intel HD Graphics 515</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="memory">
+	<div class="col-12 col-lg-2 label">Memory</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">16 GB Crucial DDR4-2400</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">8 GB LPDDR3-1866</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="storage">
+	<div class="col-12 col-lg-2 label">Storage</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">1 TB Samsung 840 EVO</p>
+				<p class="supplemental">SSD &middot; SATA</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+			</li>
+			<li>
+				<p class="component">3 TB Western Digital Blue</p>
+				<p class="supplemental">HDD &middot; 5400 RPM &middot; SATA</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-18"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">512 GB</p>
+				<p class="supplemental">SSD &middot; PCIe</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
+			</li>
+			<li>
+				<p class="component">2 TB Western Digital My Passport</p>
+				<p class="supplemental">External HDD &middot; USB 3.0</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2012-12-25"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="optical-disc">
+	<div class="col-12 col-lg-2 label">Optical Disc</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Samsung 20× DVD±R</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2008-05-02"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
 		
-		<tr id="scanner">
-			 <th scope="row" class="label">Scanner</th>
-			<td colspan="2" rowspan="2">
-				<ul class="component">
-					<li>
-						<p class="component">Brother DCP-L2520DW Multifunction</p>
-						<p class="supplemental">Monochrome duplex laser printer &middot; Flatbed scanner &middot; Wi-Fi</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2017-08-04"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
+	</div>
+</div>
+
+<div class="row computers" id="wireless">
+	<div class="col-12 col-lg-2 label">Wireless</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">TP-LINK AC600 802.11ac Wi-Fi</p>
+				<p class="supplemental">USB Wi-Fi adapter</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-07-06"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">802.11ac Wi-Fi</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
+			</li>
+			<li>
+				<p class="component">Bluetooth 4.0</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="power-supply">
+	<div class="col-12 col-lg-2 label">Power Supply</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Corsair RM550x</p>
+				<p class="supplemental">550 W &middot; Modular</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
 		
-		<tr id="printer">
-			 <th scope="row" class="label">Printer</th>
-		</tr>
+	</div>
+</div>
+
+<div class="row computers" id="case">
+	<div class="col-12 col-lg-2 label">Case</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Silverstone TJ08B-E</p>
+				<p class="supplemental">Black &middot; MicroATX mini tower</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-07-22"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
 		
-	</tbody>
-</table>
+	</div>
+</div>
+
+<div class="row computers" id="cpu-cooler">
+	<div class="col-12 col-lg-2 label">CPU Cooler</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Cooler Master Hyper 212 EVO</p>
+				<p class="supplemental">120 mm &middot; 9&ndash;36 dBA</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-08-20"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		
+	</div>
+</div>
+
+<div class="row computers" id="displays">
+	<div class="col-12 col-lg-2 label">Displays</div>
+	<div class="col-12 col-lg-10">
+		<p class="center"><%= image_tag("#{PortfolioImage::ROOT_PATH}computers/Monitor Layout.png", class: "img-fluid project bordered", alt: "A diagram showing two monitors connected to Pancake and one to Quesadilla, and a diagram showing three monitors connected to Pancake, with Quesadilla using its own built in screen.") %></p>
+		<ul class="component">
+			<li>
+				<p class="component">24″ Dell UltraSharp U2415</p>
+				<p class="supplemental">1920×1200 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-06-01"} %>
+			</li>
+			<li>
+				<p class="component">24″ Dell UltraSharp U2415</p>
+				<p class="supplemental">1920×1200 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-06-01"} %>
+			</li>
+			<li>
+				<p class="component">24″ Dell UltraSharp U2415</p>
+				<p class="supplemental">1920×1200 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-05-09"} %>
+			</li>
+			<li>
+				<p class="component">12″ laptop screen</p>
+				<p class="supplemental">2304×1440 &middot; 16:10 &middot; IPS &middot; LED backlight</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="keyboard">
+	<div class="col-12 col-lg-2 label">Keyboard</div>
+	<div class="col-12 col-lg-10">
+		<ul class="component">
+			<li>
+				<p class="component">CoolerMaster Storm QuickFire XT Mechanical</p>
+				<p class="supplemental">Full size &middot; CHERRY MX Brown switches &middot; Shared via <%= link_to("Synergy", "https://symless.com/synergy", target: :_blank) %></p><%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-03-05"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="mouse">
+	<div class="col-12 col-lg-2 label">Mouse</div>
+	<div class="col-12 col-lg-10">
+		<ul class="component">
+			<li>
+				<p class="component">Logitech G203 Prodigy</p>
+				<p class="supplemental">6-button mouse &middot; <span class="unpictured">Not Pictured</span> &middot; Shared via <%= link_to("Synergy", "https://symless.com/synergy", target: :_blank) %></p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2017-03-05"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="game-controllers">
+	<div class="col-12 col-lg-2 label">Game Controllers</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Microsoft Xbox 360 Controller</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2011-11-24"} %>
+			</li>
+			<li>
+				<p class="component">Saitek AV8R Flight Stick</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2009-02-20"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		
+	</div>
+</div>
+
+<div class="row computers" id="sound">
+	<div class="col-12 col-lg-2 label">Sound</div>
+	<div class="col-12 col-lg-10">
+		<ul class="component">
+			<li>
+				<p class="component">GemSound DMX-2071 Stereo Preamp Mixer</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2007-11-27"} %>
+			</li>
+			<li>
+				<p class="component">Philips FW-C35 Mini-HiFi System</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2001-07-08"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="headset">
+	<div class="col-12 col-lg-2 label">Headset</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Sennheiser PC 8 Headset</p>
+				<p class="supplemental">Stereo &middot; Wired &middot; USB</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2014-10-18"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Apple AirPods</p>
+				<p class="supplemental">Stereo &middot; Wireless &middot; Bluetooth</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2018-03-06"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="webcam">
+	<div class="col-12 col-lg-2 label">Webcam</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">Logitech C260 Webcam</p>
+				<p class="supplemental">1280×760</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2012-03-12"} %>
+			</li>
+		</ul>
+	</div>
+	<div class="col-6 col-lg-5">
+		<ul class="component">
+			<li>
+				<p class="component">FaceTime Camera</p>
+				<p class="supplemental">480p</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-04-26"} %>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row computers" id="scanner-printer">
+	<div class="col-12 col-lg-2 label">Scanner / Printer</div>
+	<div class="col-12 col-lg-10">
+		<ul class="component">
+			<li>
+				<p class="component">Brother DCP-L2520DW Multifunction</p>
+				<p class="supplemental">Monochrome duplex laser printer &middot; Flatbed scanner &middot; Wi-Fi</p>
+				<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2017-08-04"} %>
+			</li>
+		</ul>
+	</div>
+</div>
 
 <%= link_header "Network", 2 %>
 
-<table class="table table-bordered">
-	<tbody>
-		<tr id="router">
-			<th scope="row" class="label">Router</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Linksys E2500 802.11n Wireless Router</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2013-07-14"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<%= render partial: "computer_equipment", locals: {computer: {type: "Wireless Router", date_from: "2013-07-14", model: "Linksys E2500", specs: ["802.11n"]}} %>
 
 <%= link_header "Mobile", 2 %>
 
-<table class="table table-bordered">
-	<tbody>
-		<tr id="smartphone">
-			<th scope="row" class="label">Smartphone</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Apple iPhone 8 Plus &middot; <span class="device_name">“Tator Tot VI”</span></p>
-						<p class="supplemental">64 GB &middot; Space Gray</p><%= render :partial => "computers_purchased", :locals => {:purchase_date => "2018-01-04"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			 <th scope="row" class="label">Tablet</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Apple iPad (4th Generation) &middot; <span class="device_name">“Latke”</span></p>
-						<p class="supplemental">64 GB &middot; Cellular &middot; Black</p><%= render :partial => "computers_purchased", :locals => {:purchase_date => "2013-01-04"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			 <th scope="row" class="label">Navigation</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">Garmin DriveSmart 50 LMT &middot; <span class="device_name">“Egg”</span></p>
-						<p class="supplemental">5″ GPS</p><%= render :partial => "computers_purchased", :locals => {:purchase_date => "2016-09-12"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<%= render partial: "computer_equipment", locals: {computer: {name: "Tator Tot VI", type: "Smartphone", date_from: "2018-01-04", model: "Apple iPhone 8 Plus", specs: ["64 GB", "Space gray"]}} %>
+<%= render partial: "computer_equipment", locals: {computer: {name: "Latke", type: "Tablet", date_from: "2013-01-04", model: "Apple iPad (4th Generation)", specs: ["64 GB", "Cellular", "Black"]}} %>
+<%= render partial: "computer_equipment", locals: {computer: {name: "Egg", type: "GPS Navigation Unit", date_from: "2016-09-12", model: "Garmin DriveSmart 50 LMT", specs: ["5″ display", "Lifetime maps and traffic"]}} %>
 
 <%= link_header "Game Systems", 2 %>
 
-<table class="table table-bordered">
-	<tbody>
-		
-		<tr id="handhelds">
-			<th scope="row" class="label">Handhelds</th>
-			
-			<td rowspan="2">
-				<ul class="component">
-					<li>
-						<p class="component">Nintendo Switch &middot; <span class="device_name">“Lemonade”</span></p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2018-07-07"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-
-		<tr id="consoles">
-			<th scope="row" class="label">Consoles</th>	
-		</tr>
-
-  </tbody>
-</table>
+<%= render partial: "computer_equipment", locals: {computer: {name: "Lemonade", type: "Handheld Console", date_from: "2018-07-07", model: "Nintendo Switch", specs: ["Sandisk Ultra 200GB microSDXC card", "(L/R) Joycons – Gray", "(L/R) Joycons – Yellow", "Pro Controller", "Charging Grip"]}} %>
 
 <%= link_header "Home Entertainment", 2 %>
 
-<table class="table table-bordered">
-  <tbody>
-		
-		<tr id="television">
-			<th scope="row" class="label">Television</th>
-			<td>
-				<ul class="component">
-					<li>
-						<p class="component">49″ Samsung Smart HDTV</p>
-						<p class="supplemental">1080p &middot; LED</p>
-						<%= render :partial => "computers_purchased", :locals => {:purchase_date => "2018-04-08"} %>
-					</li>
-				</ul>
-			</td>
-		</tr>
-		
-	</tbody>
-</table>
-
+<%= render partial: "computer_equipment", locals: {computer: {type: "Television", date_from: "2018-04-08", model: "Samsung Smart HDTV", specs: ["49″", "1080p", "LED"]}} %>
 
 <%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_computers_path)) %>

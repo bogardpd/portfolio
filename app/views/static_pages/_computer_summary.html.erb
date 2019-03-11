@@ -11,20 +11,6 @@ rescue SocketError
 end
 %>
 
-<!-- <div id="<%= computer["name"].parameterize %>" class="row computer-summary">
-  <div class="col-12">
-    <h3 id="<%= computer["name"].parameterize %>"><%= computer["name"] %> <small><%= [computer["from"],computer["to"]].join(" – ") if computer["from"] && computer["to"]%></small></h3>
-    <%= content_tag(:p, computer["description"]) if computer["description"] %>
-  </div>
-</div>
-<div class="row computer-summary">
-  <div class="col-12 col-md-8">
-    <%= content_tag(:h4, computer["model"]) if computer["model"] %>
-    <%= content_tag(:ul, safe_join(computer["specs"].map{|spec| content_tag(:li, spec)}), class: %w(list-unstyled computer-specs)) if computer["specs"] %>
-  </div>
-  <div class="col-12 col-md-4"><%= project_image(img, attribution: computer["attribution"]) unless computer["no_image"] %></div>
-</div> -->
-
 <div class="card computer-summary" id="<%= anchorize(computer["name"]) %>">
   <div class="card-body">
     <% if computer["no_image"] %>

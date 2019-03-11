@@ -3,6 +3,78 @@
 * Styles for computer description pages.                                      *
 ******************************************************************************/
 
+div.computers {
+	div {
+		border: 1px solid $color-background-main;
+		background-color: $color-background-light;
+		padding: 0.5rem;
+	}
+	div.label {
+		font-weight: bold;
+		background-color: $color-background-medium;
+	}
+}
+
+div.computer-equipment {
+	margin: 0.5em 0;
+
+	div.computer-name {
+		padding: 1rem;
+		border: 1px solid $color-background-main;
+		border-radius: $border-radius $border-radius 0 0;
+		background-color: $color-background-medium;
+
+		h3 {
+			margin: 0;
+			text-transform: uppercase;
+			text-align: center;
+		}
+
+		div.computer-type {
+			text-align: center;
+			font-size: $font-size-small;
+			font-weight: 300;
+		}
+	}
+
+	div.computer-body {
+		padding: 1rem;
+		border: 1px solid $color-background-main;
+		border-radius: 0 0 $border-radius $border-radius;
+		background-color: $color-background-light;
+
+		div.computer-dates {
+			font-size: $font-size-large;
+			font-weight: 300;
+			margin-bottom: 0.5em;
+
+			p {
+				margin: 0;
+				color: $color-text-light;
+			}
+		}
+
+		div.computer-model {
+			font-weight: bold;
+			margin-bottom: 0.5em;
+		}
+
+		ul.computer-specs {
+			list-style-type: none;
+			
+			li {
+				margin-top: 0;
+				margin-bottom: 0.5em;
+				margin-left: 0.25em;
+				line-height: $line-height-small;
+			}
+			li:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
 div.computer-summary {
   margin: 20px 0;
   figure {
@@ -32,10 +104,6 @@ div.computer-summary {
 	li:last-child {
 		margin-bottom: 0;
 	}
-}
-
-th.label {
-	width: 20%;
 }
 
 ul.component {

@@ -1,0 +1,23 @@
+<% name = computer[:name] || computer[:model] %>
+<div class="computer-equipment" id="<%= anchorize(name) %>">
+	<div class="computer-name">
+		<h3><%= link_to(name, params.permit(:anchor).merge(anchor: anchorize(name)), class: "link-header") %></h3>
+    <%= content_tag(:div, computer[:type], class: "computer-type") if computer[:type] %>
+	</div>
+	<div class="computer-body">
+    <% if computer[:date_from] %>
+      <% date_from = Date.parse(computer[:date_from]) %>
+		  <div class="computer-dates">
+        <% if computer[:date_to] %>
+        
+        <% else %>
+          Purchased <%= content_tag(:abbr, time_ago_in_words(date_from) + " ago", title: format_date(date_from)) %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= content_tag(:div, computer[:model], class: "computer-model") if computer[:model] %>
+    <%= content_tag(:ul, class: %w(list-unstyled computer-specs)) do
+          safe_join(computer[:specs].map{|s| content_tag(:li, s)})
+        end if computer[:specs] && computer[:specs].any? %>
+	</div>
+</div>
