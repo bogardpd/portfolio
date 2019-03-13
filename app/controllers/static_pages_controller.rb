@@ -260,6 +260,7 @@ class StaticPagesController < ApplicationController
     add_breadcrumb "Computers", computers_path
     add_breadcrumb "Old Computers", old_computers_path
     @computers = JSON.parse(File.read('app/assets/json/old-computers.json'))
+    @computers_hash = @computers.to_h.with_indifferent_access
   end
   
   def oreo

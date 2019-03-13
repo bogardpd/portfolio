@@ -3,6 +3,11 @@
 * Styles for computer description pages.                                      *
 ******************************************************************************/
 
+img.computer-thumbnail {
+	max-width: 200px;
+	max-height: 200px;
+}
+
 div.computers {
 	div {
 		border: 1px solid $color-background-main;
@@ -43,10 +48,13 @@ div.computer-equipment {
 		border-radius: 0 0 $border-radius $border-radius;
 		background-color: $color-background-light;
 
+		div, p, li {
+			margin-bottom: 0.5em;
+		}
+
 		div.computer-dates {
 			font-size: $font-size-large;
 			font-weight: 300;
-			margin-bottom: 0.5em;
 
 			p {
 				margin: 0;
@@ -56,7 +64,19 @@ div.computer-equipment {
 
 		div.computer-model {
 			font-weight: bold;
-			margin-bottom: 0.5em;
+		}
+
+		div.computer-thumbnail {
+			margin: 0;
+		}
+
+		figure {
+			margin: 0;
+		}
+
+		p.computer-description {
+			margin-top: 0;
+			font-style: italic;
 		}
 
 		ul.computer-specs {
@@ -64,7 +84,6 @@ div.computer-equipment {
 			
 			li {
 				margin-top: 0;
-				margin-bottom: 0.5em;
 				margin-left: 0.25em;
 				line-height: $line-height-small;
 			}

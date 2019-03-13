@@ -14,7 +14,8 @@ module StaticPagesHelper
       :ios_screenshot => %w(ios-screenshot),
       :osx_screenshot => %w(osx-screenshot),
       :screenshot     => %w(screenshot),
-      :large          => %w(large)
+      :large          => %w(large),
+      :computer_thumbnail => %w(computer-thumbnail)
     }
     allowed_tags = %w(abbr)
     classes.concat(extra_classes[type]) if extra_classes[type]

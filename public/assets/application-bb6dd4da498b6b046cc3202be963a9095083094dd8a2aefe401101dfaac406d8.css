@@ -13187,7 +13187,7 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 15pt;
   color: #382e2e;
-  background-color: #ebebeb;
+  background-color: #eceaea;
   -webkit-font-variant-ligatures: common-ligatures;
           font-variant-ligatures: common-ligatures;
   -ms-font-feature-settings: "liga", "dlig";
@@ -13198,7 +13198,7 @@ body {
 
 /* line 93, app/assets/stylesheets/_base.scss */
 #main {
-  background-color: #F7F7F7;
+  background-color: #fafafa;
   padding: 1rem 3rem;
 }
 
@@ -13446,7 +13446,7 @@ td p {
 .website-name {
   font-variant: small-caps;
   letter-spacing: 0.02em;
-  background-color: #e6e6e6;
+  background-color: #e7e4e4;
 }
 
 /* Layout styles */
@@ -13470,15 +13470,15 @@ nav.navbar li.dropdown a.active {
 nav.breadcrumb {
   font-weight: 400;
   padding: 0;
-  background-color: #F7F7F7;
-  border-bottom: 1px solid #e6e6e6;
+  background-color: #fafafa;
+  border-bottom: 1px solid #e7e4e4;
 }
 
 /* line 30, app/assets/stylesheets/_header.scss */
 nav.breadcrumb ol.breadcrumb {
   padding: 0;
   margin: 0;
-  background-color: #F7F7F7;
+  background-color: #fafafa;
 }
 
 /* line 40, app/assets/stylesheets/_header.scss */
@@ -13539,7 +13539,7 @@ div.tile a {
 /* line 54, app/assets/stylesheets/_tiles.scss */
 div.tile a:hover, div.tile a:focus {
   text-decoration: none;
-  background-color: #e6e6e6;
+  background-color: #e7e4e4;
   border: 1px solid #cccccc;
   color: #550000;
 }
@@ -13569,7 +13569,7 @@ div.tile img {
   margin: 10px 0 5px 0;
   border: 1px solid #cccccc;
   border-radius: 5px;
-  box-shadow: 1px 1px 2px #e6e6e6;
+  box-shadow: 1px 1px 2px #e7e4e4;
 }
 
 /* line 84, app/assets/stylesheets/_tiles.scss */
@@ -13608,37 +13608,146 @@ div.airport-code-pun code {
 * Styles for computer description pages.                                      *
 ******************************************************************************/
 /* line 6, app/assets/stylesheets/_computers.scss */
+img.computer-thumbnail {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+/* line 12, app/assets/stylesheets/_computers.scss */
+div.computers div {
+  border: 1px solid #fafafa;
+  background-color: #e7e4e4;
+  padding: 0.5rem;
+}
+
+/* line 17, app/assets/stylesheets/_computers.scss */
+div.computers div.label {
+  font-weight: bold;
+  background-color: #cfc9c9;
+}
+
+/* line 23, app/assets/stylesheets/_computers.scss */
+div.computer-equipment {
+  margin: 0.5em 0;
+}
+
+/* line 26, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-name {
+  padding: 1rem;
+  border: 1px solid #fafafa;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color: #cfc9c9;
+}
+
+/* line 32, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-name h3 {
+  margin: 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* line 38, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-name div.computer-type {
+  text-align: center;
+  font-size: 13pt;
+  font-weight: 300;
+}
+
+/* line 45, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body {
+  padding: 1rem;
+  border: 1px solid #fafafa;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: #e7e4e4;
+}
+
+/* line 51, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body div, div.computer-equipment div.computer-body p, div.computer-equipment div.computer-body li {
+  margin-bottom: 0.5em;
+}
+
+/* line 55, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body div.computer-dates {
+  font-size: 18pt;
+  font-weight: 300;
+}
+
+/* line 59, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body div.computer-dates p {
+  margin: 0;
+  color: #705c5c;
+}
+
+/* line 65, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body div.computer-model {
+  font-weight: bold;
+}
+
+/* line 69, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body div.computer-thumbnail {
+  margin: 0;
+}
+
+/* line 73, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body figure {
+  margin: 0;
+}
+
+/* line 77, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body p.computer-description {
+  margin-top: 0;
+  font-style: italic;
+}
+
+/* line 82, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body ul.computer-specs {
+  list-style-type: none;
+}
+
+/* line 85, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body ul.computer-specs li {
+  margin-top: 0;
+  margin-left: 0.25em;
+  line-height: 1.2em;
+}
+
+/* line 90, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body ul.computer-specs li:last-child {
+  margin-bottom: 0;
+}
+
+/* line 97, app/assets/stylesheets/_computers.scss */
 div.computer-summary {
   margin: 20px 0;
 }
 
-/* line 8, app/assets/stylesheets/_computers.scss */
+/* line 99, app/assets/stylesheets/_computers.scss */
 div.computer-summary figure {
   margin: 10px 0;
 }
 
-/* line 11, app/assets/stylesheets/_computers.scss */
+/* line 102, app/assets/stylesheets/_computers.scss */
 div.computer-summary h3 {
   font-size: 150%;
   margin-top: 0;
   margin-bottom: 0.25em;
 }
 
-/* line 16, app/assets/stylesheets/_computers.scss */
+/* line 107, app/assets/stylesheets/_computers.scss */
 div.computer-summary h4 {
   margin-top: 0;
   font-weight: 300;
   color: #705c5c;
 }
 
-/* line 21, app/assets/stylesheets/_computers.scss */
+/* line 112, app/assets/stylesheets/_computers.scss */
 div.computer-summary p.computer-model {
   font-weight: bold;
   margin-bottom: 0.75em;
   line-height: 1.2em;
 }
 
-/* line 26, app/assets/stylesheets/_computers.scss */
+/* line 117, app/assets/stylesheets/_computers.scss */
 div.computer-summary li {
   margin-top: 0;
   margin-bottom: 0.5em;
@@ -13646,74 +13755,69 @@ div.computer-summary li {
   line-height: 1.2em;
 }
 
-/* line 32, app/assets/stylesheets/_computers.scss */
+/* line 123, app/assets/stylesheets/_computers.scss */
 div.computer-summary li:last-child {
   margin-bottom: 0;
 }
 
-/* line 37, app/assets/stylesheets/_computers.scss */
-th.label {
-  width: 20%;
-}
-
-/* line 41, app/assets/stylesheets/_computers.scss */
+/* line 128, app/assets/stylesheets/_computers.scss */
 ul.component {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-/* line 46, app/assets/stylesheets/_computers.scss */
+/* line 133, app/assets/stylesheets/_computers.scss */
 ul.component li {
   margin-bottom: 1em;
 }
 
-/* line 49, app/assets/stylesheets/_computers.scss */
+/* line 136, app/assets/stylesheets/_computers.scss */
 ul.component li:last-child {
   margin-bottom: 0;
 }
 
-/* line 52, app/assets/stylesheets/_computers.scss */
+/* line 139, app/assets/stylesheets/_computers.scss */
 ul.component p {
   margin: 0;
   font-weight: normal;
   line-height: 1.2em;
 }
 
-/* line 58, app/assets/stylesheets/_computers.scss */
+/* line 145, app/assets/stylesheets/_computers.scss */
 ul.component p.supplemental, ul.component p.purchased {
   margin-top: 0.4rem;
 }
 
-/* line 62, app/assets/stylesheets/_computers.scss */
+/* line 149, app/assets/stylesheets/_computers.scss */
 ul.component p.supplemental {
   font-size: 13pt;
   color: #705c5c;
 }
 
-/* line 65, app/assets/stylesheets/_computers.scss */
+/* line 152, app/assets/stylesheets/_computers.scss */
 ul.component p.supplemental span.vlog-subtitle {
   font-style: italic;
 }
 
-/* line 70, app/assets/stylesheets/_computers.scss */
+/* line 157, app/assets/stylesheets/_computers.scss */
 ul.component p.purchased {
   font-size: 10pt;
   color: #705c5c;
 }
 
-/* line 75, app/assets/stylesheets/_computers.scss */
+/* line 162, app/assets/stylesheets/_computers.scss */
 ul.component p.recent {
   font-weight: bold;
   color: #14b881;
 }
 
-/* line 80, app/assets/stylesheets/_computers.scss */
+/* line 167, app/assets/stylesheets/_computers.scss */
 ul.component span.device_name {
   font-weight: 700;
 }
 
-/* line 83, app/assets/stylesheets/_computers.scss */
+/* line 170, app/assets/stylesheets/_computers.scss */
 ul.component span.unpictured {
   font-style: italic;
 }
@@ -14663,7 +14767,7 @@ img.project-icon {
   height: 225px;
   border: 1px solid #cccccc;
   border-radius: 5px;
-  box-shadow: 1px 1px 2px #e6e6e6;
+  box-shadow: 1px 1px 2px #e7e4e4;
 }
 
 /* line 32, app/assets/stylesheets/_projects.scss */

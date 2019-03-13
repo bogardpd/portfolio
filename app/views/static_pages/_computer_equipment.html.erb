@@ -5,19 +5,34 @@
     <%= content_tag(:div, computer[:type], class: "computer-type") if computer[:type] %>
 	</div>
 	<div class="computer-body">
-    <% if computer[:date_from] %>
-      <% date_from = Date.parse(computer[:date_from]) %>
-		  <div class="computer-dates">
-        <% if computer[:date_to] %>
-        
-        <% else %>
-          Purchased <%= content_tag(:abbr, time_ago_in_words(date_from) + " ago", title: format_date(date_from)) %>
-        <% end %>
-      </div>
+    
+    <% if computer[:image] %>
+      <div class="row">
+      <div class="col-12 col-lg-8">
     <% end %>
-    <%= content_tag(:div, computer[:model], class: "computer-model") if computer[:model] %>
-    <%= content_tag(:ul, class: %w(list-unstyled computer-specs)) do
-          safe_join(computer[:specs].map{|s| content_tag(:li, s)})
-        end if computer[:specs] && computer[:specs].any? %>
+
+      <% if computer[:date_from] %>
+        <% date_from = Date.parse(computer[:date_from]) %>
+        <div class="computer-dates">
+          <% if computer[:date_to] %>
+            <% date_to = Date.parse(computer[:date_to]) %>
+            <%= date_from.strftime("%B %Y") %> – <%= date_to.strftime("%B %Y") %>
+          <% else %>
+            Purchased <%= content_tag(:abbr, time_ago_in_words(date_from) + " ago", title: format_date(date_from)) %>
+          <% end %>
+        </div>
+      <% end %>
+      <%= content_tag(:p, computer[:description], class: "computer-description") if computer[:description] %>
+      <%= content_tag(:div, computer[:model], class: "computer-model") if computer[:model] %>
+      <%= content_tag(:ul, class: %w(list-unstyled computer-specs)) do
+            safe_join(computer[:specs].map{|s| content_tag(:li, s)})
+          end if computer[:specs] && computer[:specs].any? %>
+    
+    <% if computer[:image] %>
+      </div>
+      <div class="col-12 col-lg-4 computer-thumbnail">
+        <%= project_image("computers/#{computer[:image]}", type: :computer_thumbnail, attribution: computer[:attribution]) %>
+      </div></div>
+    <% end %>
 	</div>
 </div>
