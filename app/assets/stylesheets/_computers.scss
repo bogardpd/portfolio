@@ -18,6 +18,9 @@ div.computers {
 		font-weight: bold;
 		background-color: $color-background-medium;
 	}
+	p {
+		text-align: left;
+	}
 }
 
 div.computer-equipment {
@@ -74,17 +77,12 @@ div.computer-equipment {
 			margin: 0;
 		}
 
-		p.computer-description {
-			margin-top: 0;
-			font-style: italic;
-		}
-
 		ul.computer-specs {
 			list-style-type: none;
 			
 			li {
 				margin-top: 0;
-				margin-left: 0.25em;
+				margin-left: 0.5em;
 				line-height: $line-height-small;
 			}
 			li:last-child {
@@ -94,36 +92,10 @@ div.computer-equipment {
 	}
 }
 
-div.computer-summary {
-  margin: 20px 0;
-  figure {
-    margin: 10px 0;
-	}
-	h3 {
-		font-size: 150%;
-		margin-top: 0;
-		margin-bottom: 0.25em;
-	}
-	h4 {
-		margin-top: 0;
-		font-weight: 300;
-		color: $color-text-light;
-	}
-	p.computer-model {
-		font-weight: bold;
-		margin-bottom: 0.75em;
-		line-height: $line-height-small;
-	}
-	li {
-		margin-top: 0;
-		margin-bottom: 0.5em;
-		margin-left: 0.5em;
-		line-height: $line-height-small;
-	}
-	li:last-child {
-		margin-bottom: 0;
-	}
+p.computer-description {
+	margin-top: 0;
 }
+
 
 ul.component {
 	margin: 0;
