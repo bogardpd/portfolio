@@ -1,5 +1,0 @@
-<h3><%= link_to(computer["name"], params.permit(:anchor, :gallery, :page).merge(anchor: anchorize(computer["name"])), class: "link-header") %></h3>
-<%= content_tag(:h4, [computer["from"],computer["to"]].join(" – ")) if computer["from"] && computer["to"] %>
-<%= content_tag(:p, computer["description"], class: "card-text") if computer["description"] %>
-<%= content_tag(:p, computer["model"], class: "computer-model") if computer["model"] %>
-<%= content_tag(:ul, safe_join(computer["specs"].map{|spec| content_tag(:li, spec)}), class: %w(list-unstyled computer-specs)) if computer["specs"] %>
