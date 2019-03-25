@@ -13607,25 +13607,49 @@ div.airport-code-pun code {
 * COMPUTERS                                                                   *
 * Styles for computer description pages.                                      *
 ******************************************************************************/
-/* line 7, app/assets/stylesheets/_computers.scss */
+/* line 6, app/assets/stylesheets/_computers.scss */
+img.computer-thumbnail {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+/* line 12, app/assets/stylesheets/_computers.scss */
 div.computers div {
   border: 1px solid #fafafa;
   background-color: #e7e4e4;
   padding: 0.5rem;
 }
 
-/* line 12, app/assets/stylesheets/_computers.scss */
+/* line 17, app/assets/stylesheets/_computers.scss */
 div.computers div.label {
   font-weight: bold;
   background-color: #cfc9c9;
 }
 
-/* line 18, app/assets/stylesheets/_computers.scss */
+/* line 21, app/assets/stylesheets/_computers.scss */
+div.computers div.computer-photos {
+  border: none;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 26, app/assets/stylesheets/_computers.scss */
+div.computers div.computer-photos img {
+  margin: 0.5rem;
+}
+
+/* line 30, app/assets/stylesheets/_computers.scss */
+div.computers p {
+  text-align: left;
+}
+
+/* line 35, app/assets/stylesheets/_computers.scss */
 div.computer-equipment {
   margin: 0.5em 0;
 }
 
-/* line 21, app/assets/stylesheets/_computers.scss */
+/* line 38, app/assets/stylesheets/_computers.scss */
 div.computer-equipment div.computer-name {
   padding: 1rem;
   border: 1px solid #fafafa;
@@ -13633,21 +13657,21 @@ div.computer-equipment div.computer-name {
   background-color: #cfc9c9;
 }
 
-/* line 27, app/assets/stylesheets/_computers.scss */
+/* line 44, app/assets/stylesheets/_computers.scss */
 div.computer-equipment div.computer-name h3 {
   margin: 0;
   text-transform: uppercase;
   text-align: center;
 }
 
-/* line 33, app/assets/stylesheets/_computers.scss */
+/* line 50, app/assets/stylesheets/_computers.scss */
 div.computer-equipment div.computer-name div.computer-type {
   text-align: center;
   font-size: 13pt;
   font-weight: 300;
 }
 
-/* line 40, app/assets/stylesheets/_computers.scss */
+/* line 57, app/assets/stylesheets/_computers.scss */
 div.computer-equipment div.computer-body {
   padding: 1rem;
   border: 1px solid #fafafa;
@@ -13655,150 +13679,118 @@ div.computer-equipment div.computer-body {
   background-color: #e7e4e4;
 }
 
-/* line 46, app/assets/stylesheets/_computers.scss */
-div.computer-equipment div.computer-body div.computer-dates {
-  font-size: 18pt;
-  font-weight: 300;
+/* line 63, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body div, div.computer-equipment div.computer-body p, div.computer-equipment div.computer-body li {
   margin-bottom: 0.5em;
 }
 
-/* line 51, app/assets/stylesheets/_computers.scss */
+/* line 67, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body div.computer-dates {
+  font-size: 18pt;
+  font-weight: 300;
+}
+
+/* line 71, app/assets/stylesheets/_computers.scss */
 div.computer-equipment div.computer-body div.computer-dates p {
   margin: 0;
   color: #705c5c;
 }
 
-/* line 57, app/assets/stylesheets/_computers.scss */
+/* line 77, app/assets/stylesheets/_computers.scss */
 div.computer-equipment div.computer-body div.computer-model {
   font-weight: bold;
-  margin-bottom: 0.5em;
 }
 
-/* line 62, app/assets/stylesheets/_computers.scss */
+/* line 81, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body div.computer-thumbnail {
+  margin: 0;
+}
+
+/* line 85, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body figure {
+  margin: 0;
+}
+
+/* line 89, app/assets/stylesheets/_computers.scss */
 div.computer-equipment div.computer-body ul.computer-specs {
   list-style-type: none;
 }
 
-/* line 65, app/assets/stylesheets/_computers.scss */
+/* line 92, app/assets/stylesheets/_computers.scss */
 div.computer-equipment div.computer-body ul.computer-specs li {
   margin-top: 0;
-  margin-bottom: 0.5em;
-  margin-left: 0.25em;
-  line-height: 1.2em;
-}
-
-/* line 71, app/assets/stylesheets/_computers.scss */
-div.computer-equipment div.computer-body ul.computer-specs li:last-child {
-  margin-bottom: 0;
-}
-
-/* line 78, app/assets/stylesheets/_computers.scss */
-div.computer-summary {
-  margin: 20px 0;
-}
-
-/* line 80, app/assets/stylesheets/_computers.scss */
-div.computer-summary figure {
-  margin: 10px 0;
-}
-
-/* line 83, app/assets/stylesheets/_computers.scss */
-div.computer-summary h3 {
-  font-size: 150%;
-  margin-top: 0;
-  margin-bottom: 0.25em;
-}
-
-/* line 88, app/assets/stylesheets/_computers.scss */
-div.computer-summary h4 {
-  margin-top: 0;
-  font-weight: 300;
-  color: #705c5c;
-}
-
-/* line 93, app/assets/stylesheets/_computers.scss */
-div.computer-summary p.computer-model {
-  font-weight: bold;
-  margin-bottom: 0.75em;
-  line-height: 1.2em;
-}
-
-/* line 98, app/assets/stylesheets/_computers.scss */
-div.computer-summary li {
-  margin-top: 0;
-  margin-bottom: 0.5em;
   margin-left: 0.5em;
   line-height: 1.2em;
 }
 
-/* line 104, app/assets/stylesheets/_computers.scss */
-div.computer-summary li:last-child {
+/* line 97, app/assets/stylesheets/_computers.scss */
+div.computer-equipment div.computer-body ul.computer-specs li:last-child {
   margin-bottom: 0;
 }
 
-/* line 109, app/assets/stylesheets/_computers.scss */
-th.label {
-  width: 20%;
+/* line 104, app/assets/stylesheets/_computers.scss */
+p.computer-description {
+  margin-top: 0;
 }
 
-/* line 113, app/assets/stylesheets/_computers.scss */
+/* line 109, app/assets/stylesheets/_computers.scss */
 ul.component {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-/* line 118, app/assets/stylesheets/_computers.scss */
+/* line 114, app/assets/stylesheets/_computers.scss */
 ul.component li {
   margin-bottom: 1em;
 }
 
-/* line 121, app/assets/stylesheets/_computers.scss */
+/* line 117, app/assets/stylesheets/_computers.scss */
 ul.component li:last-child {
   margin-bottom: 0;
 }
 
-/* line 124, app/assets/stylesheets/_computers.scss */
+/* line 120, app/assets/stylesheets/_computers.scss */
 ul.component p {
   margin: 0;
   font-weight: normal;
   line-height: 1.2em;
 }
 
-/* line 130, app/assets/stylesheets/_computers.scss */
+/* line 126, app/assets/stylesheets/_computers.scss */
 ul.component p.supplemental, ul.component p.purchased {
   margin-top: 0.4rem;
 }
 
-/* line 134, app/assets/stylesheets/_computers.scss */
+/* line 130, app/assets/stylesheets/_computers.scss */
 ul.component p.supplemental {
   font-size: 13pt;
   color: #705c5c;
 }
 
-/* line 137, app/assets/stylesheets/_computers.scss */
+/* line 133, app/assets/stylesheets/_computers.scss */
 ul.component p.supplemental span.vlog-subtitle {
   font-style: italic;
 }
 
-/* line 142, app/assets/stylesheets/_computers.scss */
+/* line 138, app/assets/stylesheets/_computers.scss */
 ul.component p.purchased {
   font-size: 10pt;
   color: #705c5c;
 }
 
-/* line 147, app/assets/stylesheets/_computers.scss */
+/* line 143, app/assets/stylesheets/_computers.scss */
 ul.component p.recent {
   font-weight: bold;
   color: #14b881;
 }
 
-/* line 152, app/assets/stylesheets/_computers.scss */
+/* line 148, app/assets/stylesheets/_computers.scss */
 ul.component span.device_name {
   font-weight: 700;
 }
 
-/* line 155, app/assets/stylesheets/_computers.scss */
+/* line 151, app/assets/stylesheets/_computers.scss */
 ul.component span.unpictured {
   font-style: italic;
 }

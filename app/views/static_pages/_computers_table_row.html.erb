@@ -1,0 +1,32 @@
+<div class="row computers" id="<%= anchorize(title) %>">
+	<div class="col-12 col-lg-2 label"><%= title %></div>
+  <% col_class = device_details.count == 1 ? "col-12 col-lg-10" : "col-6 col-lg-5" %>
+  <% device_details.each do |device_detail| %>
+    <div class="<%= col_class %>">
+    <% if device_detail[:photos]&.any? %>
+      <% device_detail[:photos].each do |photo| %>
+        <div class="computer-photos">
+          <% image = image_tag(PortfolioImage::ROOT_PATH + photo[:display], alt: photo[:alt], class: %w(img-fluid project bordered)) %>
+          <%= photo[:link] ? link_to(image, PortfolioImage::ROOT_PATH + photo[:link]) : image %>
+        </div>
+      <% end %>
+    <% end %>
+    <% if device_detail[:description]&.any? %>
+      <% device_detail[:description].each do |description| %>
+        <%= content_tag(:p, description, class: "computer-description") %>
+      <% end %>
+    <% end %>
+    <% if device_detail[:components]&.any? %>
+      <ul class="component">
+        <% device_detail[:components].each do |component| %>
+          <li>
+            <%= content_tag(:p, component[:name], class: "component") if component[:name] %>
+            <%= content_tag(:p, safe_join(component[:supplemental], sanitize(" &middot; ")), class: "supplemental") if component[:supplemental] %>
+            <%= content_tag(:p, ActiveSupport::SafeBuffer.new + "Purchased " + content_tag(:abbr, time_ago_in_words(component[:purchased]) + " ago", title: "Purcahsed " + format_date(Date.parse(component[:purchased]))), class: (Date.parse(component[:purchased]) > Time.now.to_date-1.year ? %w(purchased recent) : %w(purchased))) if component[:purchased] %>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -18,6 +18,15 @@ div.computers {
 		font-weight: bold;
 		background-color: $color-background-medium;
 	}
+	div.computer-photos {
+		border: none;
+		padding: 0;
+		width: 100%;
+		text-align: center;
+		img {
+			margin: 0.5rem;
+		}
+	}
 	p {
 		text-align: left;
 	}
