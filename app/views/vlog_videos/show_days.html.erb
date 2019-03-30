@@ -12,11 +12,11 @@
   <% end_date = year == @today.year ? @today : Date.new(year, 12, 31) %>
   <div class="container">
     <div class="row">
-      <div class="col-12 col-lg-8">
-        <table class="table">
+      <div class="col">
+        <table class="table table-striped">
           <% (start_date..end_date).reverse_each do |date| %>
             <tr>
-              <td>Day <%= (date - @day_zero).to_i %></td>
+              <td><span class="light">Day</span> <%= (date - @day_zero).to_i %></td>
               <td><%= date.strftime("%-m.%-d.%Y") %></td>
               <td class="text-secondary"><%= date.strftime("%A") %></td>
             </tr>
