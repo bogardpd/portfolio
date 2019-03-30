@@ -1,0 +1,7 @@
+<div class="center">
+  <div class="btn-group" role="group">
+  <% (year_range.begin..year_range.end).reverse_each do |year| %>
+    <%= link_to year, params.permit(:anchor).merge(anchor: year), class: %w(btn btn-theme) %>
+  <% end %>
+  </div>
+</div>
