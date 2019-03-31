@@ -1,7 +1,9 @@
 <div class="center">
   <div class="btn-group flex-wrap" role="group">
   <% (year_range.begin..year_range.end).reverse_each do |year| %>
-    <%= link_to year, params.permit(:anchor).merge(anchor: year), class: %w(btn btn-theme) %>
+    <% link_class = %w(btn btn-theme) %>
+    <% link_class.push("disabled") if year == current_year %>
+    <%= link_to year, params.permit(:year).merge(year: year), class: link_class %>
   <% end %>
   </div>
 </div>

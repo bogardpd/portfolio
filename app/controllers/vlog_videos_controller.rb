@@ -12,6 +12,17 @@ class VlogVideosController < ApplicationController
   def show_days
     @day_zero = Date.parse("2009-11-24")
     @today = Time.now.in_time_zone("America/New_York").to_date
+    if params[:year] == nil
+      @year = @today.year
+    elsif params[:year].to_i > @today.year || params[:year].to_i < @day_zero.year
+      redirect_to show_vlog_days_path(year: nil)
+    else
+      @year = params[:year].to_i
+    end
+    
+    month_start = (@year == @day_zero.year) ? @day_zero.month : 1
+    month_end = (@year == @today.year) ? @today.month : 12
+    @month_range = (month_start..month_end)
   end
 
   def new
