@@ -253,7 +253,8 @@ class StaticPagesController < ApplicationController
       {filename: "2018-07-23-b.jpg", date: Date.parse("2018-07-23"), people: "Karen and Vid", event: "Camp Fangamer 2018"},
       {filename: "2018-07-23-c.jpg", date: Date.parse("2018-07-23"), people: "Karen and Vid", event: "Camp Fangamer 2018"},
       {filename: "2018-11-29.jpg", date: Date.parse("2018-11-29"), people: "Vid", event: "PAX Unplugged 2018"},
-      {filename: "2019-03-28.jpg", date: Date.parse("2019-03-28"), people: "Vid", event: "Moving"}
+      {filename: "2019-03-28.jpg", date: Date.parse("2019-03-28"), people: "Vid", event: "Moving"},
+      {filename: "2019-04-09.jpg", date: Date.parse("2019-04-09"), people: "Joanie and Joanie‘s dad", event: "Vacation"}
     ]
   end
   
