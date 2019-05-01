@@ -25,7 +25,7 @@
 
 <p><%= link_to("GPX", "https://www.topografix.com/gpx.asp", target: :_blank) %> and <%= link_to("KML", "https://developers.google.com/kml/", target: :_blank) %> are both XML-based geographic data formats, which I’ve already used for my <%= link_to("GPS Logging", gps_logging_path) %> projects. They both have the ability to specify the coordinates of points and lines on a map, which is all I really need to create flight maps.</p>
 
-<p>Generating the files was a relatively straightforward task. I already had a Map class which would accept airports, routes, and options, and create a querystring I could pass to the Great Circle Mapper. Generating this querystring already involved looping through the provided airports and routes to build a string with a specified format; I could use similar loops to generate an XML document in accordance with the GPX or KML specifications.</p>
+<p>Generating the files was a relatively straightforward task. I already had a <code>Map</code> class which would accept airports, routes, and options, and create a querystring I could pass to the Great Circle Mapper. Generating this querystring already involved looping through the provided airports and routes to build a string with a specified format; I could use similar loops to generate an XML document in accordance with the GPX or KML specifications.</p>
 
 <%= link_header "Change Log", 2 %>
 
@@ -42,7 +42,7 @@
 <ul>
   <li>Added <%= link_to("FlightXML API", "https://flightaware.com/commercial/flightxml/documentation2.rvt", target: :_blank) %> lookup for latitudes and longitudes when adding new airports</li>
   <li>Added ability to calculate route distances between two airports, using the haversine formula</li>
-  <li>Updated Map class to convert airports to internally use airport IDs instead of IATA codes</li>
-  <li>Renamed Map.draw to Map.gcmap</li>
-  <li>Added Map.gpx and Map.kml methods</li>
+  <li>Updated <code>Map</code> class to convert airports to internally use airport IDs instead of IATA codes</li>
+  <li>Renamed <code>Map.draw</code> to <code>Map.gcmap</code></li>
+  <li>Added <code>Map.gpx</code> and <code>Map.kml</code> methods</li>
 </ul>
