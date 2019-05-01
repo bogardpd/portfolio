@@ -25,6 +25,7 @@
     <li>Flights can be filtered by airline, airport, route, class, or tail number</li>
   </ul>
   <li>Shows maps of all flights, or all flights that meet a specific criteria</li>
+	<li>Exports maps into GPX or KML format</li>
   <li>Stores and <%= link_to "parses", boarding_pass_parser_path %> boarding pass barcode data for each flight</li>
   <ul>
     <li>Automatically creates new flights in the database from emailed digital boarding pass data or scanned paper boarding pass barcode (<abbr title="Bar Coded Boarding Pass">BCBP</abbr>) data, supplemented by FlightAware <%= link_to "FlightXML", "https://flightaware.com/commercial/flightxml/", target: "_blank" %> lookups</li>
@@ -154,12 +155,17 @@
 			<td>2.2</td>
 			<td><%= link_to "Regions and Flight Lookups", flight_historian_path(version: "2-2") %></td>
 		</tr>
+		<tr>
+			<td>30 April 2019</th>
+			<td>2.3</td>
+			<td><%= link_to "Automatic Distance Calculations and GPX/KML Maps", flight_historian_path(version: "2-3") %></td>
+		</tr>
 	</tbody>
 </table>
 
 <%= link_header "Specification", 2 %>
 
-<%= link_buttons(DownloadButton.new("flight-historian/2.2/Flight Historian 2.2 Specification.pdf")) %>
+<%= link_buttons(DownloadButton.new("flight-historian/2.3/Flight Historian 2.3 Specification.pdf")) %>
 
 <%= link_header "Credits", 2 %>
 
