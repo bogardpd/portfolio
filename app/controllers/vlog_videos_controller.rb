@@ -9,6 +9,9 @@ class VlogVideosController < ApplicationController
     add_breadcrumb "StephenVlog", vlog_videos_path
   end
 
+  def cheffcon_japan_2019
+  end
+
   def show_days
     @day_zero = Date.parse("2009-11-24")
     @today = Time.now.in_time_zone("America/New_York").to_date

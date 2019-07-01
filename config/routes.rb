@@ -82,6 +82,7 @@ Rails.application.routes.draw do
   get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
   post "stephenvlog/update_video_tags" => "vlog_videos#update_video_tags", as: :update_video_tags
   get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
+  get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019"
   
   # Certbot
   get "/.well-known/acme-challenge/:id" => "static_pages#letsencrypt"
