@@ -1,8 +1,11 @@
 class DownloadButton < LinkButton
   include ActionView::Helpers
+
+  require "aws-sdk-s3"
   
   def initialize(path)
-    client = Aws::S3::Client.new(region: "us-east-2")
+    credentials = Aws::Credentials.new(Rails.application.credentials[:aws][:access_key_id], Rails.application.credentials[:aws][:secret_access_key])
+    client = Aws::S3::Client.new(region: "us-east-2", credentials: credentials)
     s3 = Aws::S3::Resource.new(client: client)
     obj = s3.bucket("pbogardcom-files").object(path)
 
