@@ -4,8 +4,12 @@ class DownloadButton < LinkButton
   require "aws-sdk-s3"
   
   def initialize(path)
+    Aws.config.update({
+      credentials: Aws::Credentials.new(Rails.application.credentials[:aws][:access_key_id], Rails.application.credentials[:aws][:secret_access_key]),
+      region: "us-east-2"
+    })
     credentials = Aws::Credentials.new(Rails.application.credentials[:aws][:access_key_id], Rails.application.credentials[:aws][:secret_access_key])
-    client = Aws::S3::Client.new(region: "us-east-2", credentials: credentials)
+    client = Aws::S3::Client.new
     s3 = Aws::S3::Resource.new(client: client)
     obj = s3.bucket("pbogardcom-files").object(path)
 
