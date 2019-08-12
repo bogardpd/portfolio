@@ -5,7 +5,10 @@ class BooksController < ApplicationController
     add_breadcrumb "Reading List", books_path
     @currently_reading = Book.currently_reading
     @books_by_year = Book.books_by_year
-    @edit_links = logged_in?
+    #puts "INITIAL logged_in? CHECK"
+    puts "SESSION: session[:user_id] = #{session[:user_id]}"
+    #@edit_links = logged_in?
+    @edit_links = false
   end
   
   def new
