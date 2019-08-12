@@ -5,7 +5,7 @@
   			<th class="reading-title">Title</th>
   			<th class="reading-author">Author</th>
   			<th class="reading-pages">Pages</th>
-        <% if @logged_in %>
+        <% if edit_links %>
           <th class="reading-edit"></th>
         <% end %>
   		</tr>
@@ -30,7 +30,7 @@
           <td class="reading-pages">
             <%= number_with_delimiter(book.page_count, delimeter: ",") %>
           </td>
-          <% if @logged_in %>
+          <% if edit_links %>
             <td class="reading-edit">
               <%= link_to("Edit", edit_book_path(book), title: "Edit #{book.title}", class: "btn btn-primary") %>
             </td>
