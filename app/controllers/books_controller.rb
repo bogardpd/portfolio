@@ -5,10 +5,7 @@ class BooksController < ApplicationController
     add_breadcrumb "Reading List", books_path
     @currently_reading = Book.currently_reading
     @books_by_year = Book.books_by_year
-    #puts "INITIAL logged_in? CHECK"
-    puts "SESSION: session[:user_id] = #{session[:user_id]}"
-    #@edit_links = logged_in?
-    @edit_links = false
+    logged_in? # Force login check to set cookies and avoid multiple login checks from partials
   end
   
   def new
