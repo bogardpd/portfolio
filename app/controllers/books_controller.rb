@@ -5,6 +5,7 @@ class BooksController < ApplicationController
     add_breadcrumb "Reading List", books_path
     @currently_reading = Book.currently_reading
     @books_by_year = Book.books_by_year
+    @logged_in = logged_in?
   end
   
   def new
