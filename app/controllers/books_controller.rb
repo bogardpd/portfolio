@@ -5,7 +5,7 @@ class BooksController < ApplicationController
     add_breadcrumb "Reading List", books_path
     @currently_reading = Book.currently_reading
     @books_by_year = Book.books_by_year
-    logged_in? # Force login check to set cookies and avoid multiple login checks from partials
+    @edit_links = logged_in? # Calling logged_in? from a partial can cause repeated queries if a cookie is bad
   end
   
   def new

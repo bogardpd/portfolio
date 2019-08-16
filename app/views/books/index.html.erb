@@ -22,7 +22,7 @@
   
 <% end %>
 
-<% if logged_in? %>
+<% if @edit_links %>
   <div class="row">
     <div class="col-md-12">
       <%= link_to("Add new book", new_book_path, class: "btn btn-success pull-right", role: "button") %>
