@@ -6,6 +6,7 @@ class VlogVideosController < ApplicationController
   def index
     @vlog_videos = VlogVideo.eager_load(:vlog_video_tags).all.order(video_date: :desc)
     @vlog_video_tags = VlogVideoTag.eager_load(:vlog_videos).all.order(name: :asc)
+    @edit_links = logged_in? # Calling logged_in? from a partial can cause repeated queries if a cookie is bad
     add_breadcrumb "StephenVlog", vlog_videos_path
   end
 

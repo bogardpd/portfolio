@@ -14,14 +14,14 @@
 <% end %>
 </p>
 
-<% if logged_in? %>
+<% if @edit_links %>
   <p class="center"><%= link_to("Add new tag", new_vlog_video_tag_path, class: "btn btn-primary", role: "button") %></p>
 <% end %>
 
 
 <h2>Videos</h2>
 
-<% if logged_in? %>
+<% if @edit_links %>
   <p class="center"><%= link_to("Add new video", new_vlog_video_path, class: "btn btn-primary", role: "button") %></p>
 <% end %>
 

@@ -4,6 +4,7 @@ class TerminalSilhouettesController < ApplicationController
   def index
     add_breadcrumb "Terminal Silhouettes", terminal_silhouettes_path
     @terminals = TerminalSilhouette.all.order(:city)
+    @edit_links = logged_in? # Calling logged_in? from a partial can cause repeated queries if a cookie is bad
   end
   
   def new
