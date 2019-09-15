@@ -29,13 +29,15 @@
 
 <p>You may be familiar with the three-letter airport code you see printed on your boarding passes (for example, <%= link_to "LAX", "https://www.flighthistorian.com/airports/LAX", target: :_blank %> for Los Angeles). This three-character code is assigned by the International Air Transport Association (IATA).</p>
 
-<p>Airports aren’t the only thing that the IATA has codes for; they also have two-character codes for airlines (<%= link_to "DL", "https://www.flighthistorian.com/airlines/DL", target: :_blank %> for Delta) and three character codes for aircraft types (<%= link_to "M80", "https://www.flighthistorian.com/aircraft/13", target: :_blank %> for MD-80), both of which you may see when booking flights online.</p>
+<p>Airports aren’t the only thing that the IATA has codes for; they also have two-character codes for airlines (<%= link_to "DL", "https://www.flighthistorian.com/airlines/Delta", target: :_blank %> for Delta) and three character codes for aircraft types (<%= link_to "M83", "https://www.flighthistorian.com/aircraft/MD-83", target: :_blank %> for MD-83), both of which you may see when booking flights online.</p>
 
 <%= project_image "projects/flight-historian/2-0/screenshot-airline-codes.png", type: :osx_screenshot, alt: "Screenshot of Airlines page" %>
 
-<p>The IATA technically has one-letter codes for travel classes, but most airlines use their own fare codes instead. However, many travelers still informally use these IATA codes (<%= link_to "F", "https://www.flighthistorian.com/classes/F", target: :_blank %> for first, J for business, <%= link_to "Y", "https://www.flighthistorian.com/classes/Y", target: :_blank %> for economy) to refer to the class they’re flying.</p>
+<p>The IATA technically has one-letter codes for travel classes, but most airlines use their own fare codes instead. However, many travelers still informally use these IATA codes (<%= link_to("F", "https://www.flighthistorian.com/classes/first", target: :_blank) %> for first, <%= link_to("J", "https://www.flighthistorian.com/classes/business", target: :_blank) %> for business, <%= link_to("Y", "https://www.flighthistorian.com/classes/economy", target: :_blank) %> for economy) to refer to the class they’re flying.</p>
 
 <p>I’ve added these IATA codes to all <%= link_to "airlines", "https://www.flighthistorian.com/airlines", target: :_blank %> (including operators and codeshares), <%= link_to "aircraft", "https://www.flighthistorian.com/aircraft", target: :_blank %> types, and <%= link_to "travel classes", "https://www.flighthistorian.com/classes", target: :_blank %>.</p>
+
+<div class="alert alert-info"><strong>Note:</strong> In a later version, I removed the IATA code from classes, and added descriptions of each class instead.</div>
 
 <%= link_header "Faster Loading Speeds", 2 %>
 
@@ -56,12 +58,12 @@
 <%= link_header "Front End", 3 %>
 
 <ul>
-  <li>Separated the <span class="website-name">Flight Log</span> from my <%= link_to "Portfolio", root_path %> into its own website, renamed the <span class="website-name">Flight Log</span> to the <span class="website-name">Flight Historian</span>, and gave it a new domain (<%= link_to "www.flighthistorian.com", "https://www.flighthistorian.com/", target: :_blank %>)</li>
+  <li>Separated the <span class="website-name">Flight Log</span> from my <%= link_to "Portfolio", root_path %> into its own website, renamed the <span class="website-name">Flight Log</span> to the <span class="website-name">Flight Historian</span>, and gave it a new domain (<%= link_to("www.flighthistorian.com", "https://www.flighthistorian.com/", target: :_blank) %>)</li>
   <li>Created a new favicon</li>
-  <li>Added <%= link_to "premium economy", "https://www.flighthistorian.com/classes/W", target: :_blank %> to list of <%= link_to "travel classes", "https://www.flighthistorian.com/classes", target: :_blank %></li>
-  <li>Added IATA codes to <%= link_to "airlines", "https://www.flighthistorian.com/airlines", target: :_blank %> (including operators and codeshare airlines), <%= link_to "aircraft families", "https://www.flighthistorian.com/aircraft", target: :_blank %> and <%= link_to "travel classes", "https://www.flighthistorian.com/classes", target: :_blank %></li>
-  <li>Added aircraft illustrations to most <%= link_to "aircraft family pages",  "https://www.flighthistorian.com/aircraft/4", target: :_blank %></li>
-  <li>Added aircraft name to <%= link_to "Show Flight",  "https://www.flighthistorian.com/flights/259", target: :_blank %></li>
+  <li>Added <%= link_to("premium economy", "https://www.flighthistorian.com/classes/premium-economy", target: :_blank) %> to list of <%= link_to("travel classes", "https://www.flighthistorian.com/classes", target: :_blank) %></li>
+  <li>Added IATA codes to <%= link_to("airlines", "https://www.flighthistorian.com/airlines", target: :_blank) %> (including operators and codeshare airlines), <%= link_to("aircraft families", "https://www.flighthistorian.com/aircraft", target: :_blank) %> and <%= link_to("travel classes", "https://www.flighthistorian.com/classes", target: :_blank) %></li>
+  <li>Added aircraft illustrations to most <%= link_to("aircraft family pages",  "https://www.flighthistorian.com/aircraft/Boeing-777", target: :_blank) %></li>
+  <li>Added aircraft name to <%= link_to("Show Flight", "https://www.flighthistorian.com/flights/259", target: :_blank) %></li>
   <li>Added tables of operators to Show Aircraft Family, Show Airport, Show Airline, Show Tail Number, Show Route, and Show Travel Class views</li>
   <li>Moved the list of flights to the end of many views, but added link to flight list immediately under the map of flights</li>
   <li>Added region selectors to many more maps</li>
@@ -73,14 +75,14 @@
 <%= link_header "Back End", 3 %>
 
 <ul>
-  <li>Rehosted <span class="website-name">Flight Historian</span> on <%= link_to "Heroku", "https://www.heroku.com/", target: :_blank %></li>
+  <li>Rehosted <span class="website-name">Flight Historian</span> on <%= link_to("Heroku", "https://www.heroku.com/", target: :_blank) %></li>
   <li>Upgraded from Rails 3.2.11 to Rails 4.2.3</li>
   <li>Upgraded from Ruby 1.8.7 to Ruby 2.2.4</li>
   <li>Converted database from MySQL to PostgreSQL</li>
-  <li>Converted stylesheets to <%= link_to "SCSS", "http://sass-lang.com/", target: :_blank %></li>
+  <li>Converted stylesheets to <%= link_to("SCSS", "http://sass-lang.com/", target: :_blank) %></li>
   <li>Converted Airlines from an attribute of Flights to a full model</li>
   <li>Converted Aircraft Families from an attribute of Flights to a full model</li>
-  <li>Rewrote the <span class="website-name">Flight Historian</span>’s <%= link_to "Great Circle Mapper", "http://gcmap.com", target: :_blank %> map generating functions to be more consistent</li>
+  <li>Rewrote the <span class="website-name">Flight Historian</span>’s <%= link_to("Great Circle Mapper", "http://gcmap.com", target: :_blank) %> map generating functions to be more consistent</li>
   <li>Optimized database queries and page rendering to make pages load faster</li>
   <li>Added boarding pass data column to <code>Flights</code> table</li>
   <li>Added date sanity check to warn if departure date and UTC departure date/time are too far apart</li>
