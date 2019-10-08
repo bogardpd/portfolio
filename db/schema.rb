@@ -10,19 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_182842) do
-
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "author"
-    t.string "amazon_id"
-    t.date "completion_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "subtitle"
-    t.integer "page_count"
-    t.string "book_type"
-  end
+ActiveRecord::Schema.define(version: 2019_10_08_021418) do
 
   create_table "terminal_silhouettes", force: :cascade do |t|
     t.string "iata_code"

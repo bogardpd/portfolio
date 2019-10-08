@@ -36,6 +36,10 @@ class StaticPagesController < ApplicationController
     add_breadcrumb "Boarding Pass Parser", boarding_pass_parser_path
   end
   
+  def books
+    add_breadcrumb "Books", books_path
+  end
+
   def cad_models
     add_breadcrumb "CAD Models", cad_models_path
   end

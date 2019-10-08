@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   
   # Other Pages
   get "airport-code-puns" => "static_pages#airport_code_puns"
+  get "books"           => "static_pages#books"
   get "computers"       => "static_pages#computers"
   get "computers/old"   => "static_pages#old_computers", :as => :old_computers
   get "ingress-mosaics" => "static_pages#ingress_mosaics"
@@ -74,9 +75,6 @@ Rails.application.routes.draw do
   
   # Resources
   
-  resources :books
-  get "/reading-list", :to => redirect("/books", :status => 301)
-
   resources :vlog_videos, except: [:show], path: "stephenvlog"
   resources :vlog_video_tags, except: [:index, :show], path: "stephenvlog/tags"
   get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
