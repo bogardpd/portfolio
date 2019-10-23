@@ -249,26 +249,19 @@ class StaticPagesController < ApplicationController
 
   def mco_lobby
     add_breadcrumb "MCO Lobby", mco_lobby_path
-    @photos = [
-      {filename: "2015-07-16-a.jpg", date: Date.parse("2015-07-16"), people: "Paul", event: "Work Trip (the photo that started it all)"},
-      {filename: "2015-07-16-b.jpg", date: Date.parse("2015-07-16"), people: "Vid", event: "Camp Fangamer 2015"},
-      {filename: "2015-08-25.jpg", date: Date.parse("2015-08-25"), people: "Vid", event: "PAX West 2015"},
-      {filename: "2016-07-28.jpg", date: Date.parse("2016-07-28"), people: "Vid", event: "Camp Fangamer 2016"},
-      {filename: "2016-08-30.jpg", date: Date.parse("2016-08-30"), people: "Vid", event: "PAX West 2016"},
-      {filename: "2016-12-25.jpg", date: Date.parse("2016-12-25"), people: "Vid", event: "Portland Christmas 2016"},
-      {filename: "2017-01-24.jpg", date: Date.parse("2017-01-24"), people: "Paul", event: "Work Trip"},
-      {filename: "2017-08-25.jpg", date: Date.parse("2017-08-25"), people: "Vid", event: "PAX West 2017"},
-      {filename: "2017-10-03.jpg", date: Date.parse("2017-10-03"), people: "Paul", event: "Disney Vacation"},
-      {filename: "2017-11-21.jpg", date: Date.parse("2017-11-21"), people: "Vid", event: "PAX Unplugged 2017"},
-      {filename: "2017-12-30.jpg", date: Date.parse("2017-12-30"), people: "Vid", event: "MAGFest 2018"},
-      {filename: "2018-07-16.jpg", date: Date.parse("2018-07-16"), people: "Vid", event: "Camp Fangamer 2018"},
-      {filename: "2018-07-23-a.jpg", date: Date.parse("2018-07-23"), people: "Karen", event: "Camp Fangamer 2018"},
-      {filename: "2018-07-23-b.jpg", date: Date.parse("2018-07-23"), people: "Karen and Vid", event: "Camp Fangamer 2018"},
-      {filename: "2018-07-23-c.jpg", date: Date.parse("2018-07-23"), people: "Karen and Vid", event: "Camp Fangamer 2018"},
-      {filename: "2018-11-29.jpg", date: Date.parse("2018-11-29"), people: "Vid", event: "PAX Unplugged 2018"},
-      {filename: "2019-03-28.jpg", date: Date.parse("2019-03-28"), people: "Vid", event: "Moving"},
-      {filename: "2019-04-09.jpg", date: Date.parse("2019-04-09"), people: "Joanie and Joanie’s dad", event: "Vacation"}
-    ]
+    begin
+      photo_index = "#{PortfolioImage::ROOT_PATH}mco-lobby/photos.json"
+      response = Net::HTTP.get_response(URI.parse(photo_index))
+      photos = JSON.parse(response.body.force_encoding("UTF-8"), {symbolize_names: true})
+      @photos = photos.map{|photo| {
+        filename: photo[:filename],
+        date: Date.parse(photo[:date]).strftime("%-d %b %Y"),
+        people: photo[:people],
+        event: photo[:event]
+        }}
+    rescue
+      @photos = Array.new
+    end
   end
   
   def old_computers

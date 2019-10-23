@@ -175,6 +175,12 @@ div.byline::after {
 	content: ' —';
 }
 
+div.error {
+  background: #FFCCCC;
+  border: 1px solid #FF0000;
+  padding: 1em;
+}
+
 div.version-picker, div.version-summary {
   margin: 1.5em 0;
 }
