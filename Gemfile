@@ -5,7 +5,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2', '>= 5.2.2.1'
 
 gem 'bootstrap', '~> 4.3.1'
-gem 'sassc-rails', '~> 2.0'
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
 gem 'bcrypt'
 gem 'uglifier', '>= 1.3.0'

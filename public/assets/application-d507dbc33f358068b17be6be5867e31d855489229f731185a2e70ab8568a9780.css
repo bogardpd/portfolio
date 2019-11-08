@@ -1,1641 +1,4 @@
-/*!
- * jQuery UI CSS Framework 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/category/theming/
- *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/
- */
-
-/*
-
-
-
-
-
-
- */
-
-
-
-/* Component containers
-----------------------------------*/
-
-.ui-widget {
-	font-family: Arial,Helvetica,sans-serif/*{ffDefault}*/;
-	font-size: 1em/*{fsDefault}*/;
-}
-.ui-widget .ui-widget {
-	font-size: 1em;
-}
-.ui-widget input,
-.ui-widget select,
-.ui-widget textarea,
-.ui-widget button {
-	font-family: Arial,Helvetica,sans-serif/*{ffDefault}*/;
-	font-size: 1em;
-}
-.ui-widget.ui-widget-content {
-	border: 1px solid #c5c5c5/*{borderColorDefault}*/;
-}
-.ui-widget-content {
-	border: 1px solid #dddddd/*{borderColorContent}*/;
-	background: #ffffff/*{bgColorContent}*/ /*{bgImgUrlContent}*/ /*{bgContentXPos}*/ /*{bgContentYPos}*/ /*{bgContentRepeat}*/;
-	color: #333333/*{fcContent}*/;
-}
-.ui-widget-content a {
-	color: #333333/*{fcContent}*/;
-}
-.ui-widget-header {
-	border: 1px solid #dddddd/*{borderColorHeader}*/;
-	background: #e9e9e9/*{bgColorHeader}*/ /*{bgImgUrlHeader}*/ /*{bgHeaderXPos}*/ /*{bgHeaderYPos}*/ /*{bgHeaderRepeat}*/;
-	color: #333333/*{fcHeader}*/;
-	font-weight: bold;
-}
-.ui-widget-header a {
-	color: #333333/*{fcHeader}*/;
-}
-
-/* Interaction states
-----------------------------------*/
-.ui-state-default,
-.ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default,
-.ui-button,
-
-/* We use html here because we need a greater specificity to make sure disabled
-works properly when clicked or hovered */
-html .ui-button.ui-state-disabled:hover,
-html .ui-button.ui-state-disabled:active {
-	border: 1px solid #c5c5c5/*{borderColorDefault}*/;
-	background: #f6f6f6/*{bgColorDefault}*/ /*{bgImgUrlDefault}*/ /*{bgDefaultXPos}*/ /*{bgDefaultYPos}*/ /*{bgDefaultRepeat}*/;
-	font-weight: normal/*{fwDefault}*/;
-	color: #454545/*{fcDefault}*/;
-}
-.ui-state-default a,
-.ui-state-default a:link,
-.ui-state-default a:visited,
-a.ui-button,
-a:link.ui-button,
-a:visited.ui-button,
-.ui-button {
-	color: #454545/*{fcDefault}*/;
-	text-decoration: none;
-}
-.ui-state-hover,
-.ui-widget-content .ui-state-hover,
-.ui-widget-header .ui-state-hover,
-.ui-state-focus,
-.ui-widget-content .ui-state-focus,
-.ui-widget-header .ui-state-focus,
-.ui-button:hover,
-.ui-button:focus {
-	border: 1px solid #cccccc/*{borderColorHover}*/;
-	background: #ededed/*{bgColorHover}*/ /*{bgImgUrlHover}*/ /*{bgHoverXPos}*/ /*{bgHoverYPos}*/ /*{bgHoverRepeat}*/;
-	font-weight: normal/*{fwDefault}*/;
-	color: #2b2b2b/*{fcHover}*/;
-}
-.ui-state-hover a,
-.ui-state-hover a:hover,
-.ui-state-hover a:link,
-.ui-state-hover a:visited,
-.ui-state-focus a,
-.ui-state-focus a:hover,
-.ui-state-focus a:link,
-.ui-state-focus a:visited,
-a.ui-button:hover,
-a.ui-button:focus {
-	color: #2b2b2b/*{fcHover}*/;
-	text-decoration: none;
-}
-
-.ui-visual-focus {
-	box-shadow: 0 0 3px 1px rgb(94, 158, 214);
-}
-.ui-state-active,
-.ui-widget-content .ui-state-active,
-.ui-widget-header .ui-state-active,
-a.ui-button:active,
-.ui-button:active,
-.ui-button.ui-state-active:hover {
-	border: 1px solid #003eff/*{borderColorActive}*/;
-	background: #007fff/*{bgColorActive}*/ /*{bgImgUrlActive}*/ /*{bgActiveXPos}*/ /*{bgActiveYPos}*/ /*{bgActiveRepeat}*/;
-	font-weight: normal/*{fwDefault}*/;
-	color: #ffffff/*{fcActive}*/;
-}
-.ui-icon-background,
-.ui-state-active .ui-icon-background {
-	border: #003eff/*{borderColorActive}*/;
-	background-color: #ffffff/*{fcActive}*/;
-}
-.ui-state-active a,
-.ui-state-active a:link,
-.ui-state-active a:visited {
-	color: #ffffff/*{fcActive}*/;
-	text-decoration: none;
-}
-
-/* Interaction Cues
-----------------------------------*/
-.ui-state-highlight,
-.ui-widget-content .ui-state-highlight,
-.ui-widget-header .ui-state-highlight {
-	border: 1px solid #dad55e/*{borderColorHighlight}*/;
-	background: #fffa90/*{bgColorHighlight}*/ /*{bgImgUrlHighlight}*/ /*{bgHighlightXPos}*/ /*{bgHighlightYPos}*/ /*{bgHighlightRepeat}*/;
-	color: #777620/*{fcHighlight}*/;
-}
-.ui-state-checked {
-	border: 1px solid #dad55e/*{borderColorHighlight}*/;
-	background: #fffa90/*{bgColorHighlight}*/;
-}
-.ui-state-highlight a,
-.ui-widget-content .ui-state-highlight a,
-.ui-widget-header .ui-state-highlight a {
-	color: #777620/*{fcHighlight}*/;
-}
-.ui-state-error,
-.ui-widget-content .ui-state-error,
-.ui-widget-header .ui-state-error {
-	border: 1px solid #f1a899/*{borderColorError}*/;
-	background: #fddfdf/*{bgColorError}*/ /*{bgImgUrlError}*/ /*{bgErrorXPos}*/ /*{bgErrorYPos}*/ /*{bgErrorRepeat}*/;
-	color: #5f3f3f/*{fcError}*/;
-}
-.ui-state-error a,
-.ui-widget-content .ui-state-error a,
-.ui-widget-header .ui-state-error a {
-	color: #5f3f3f/*{fcError}*/;
-}
-.ui-state-error-text,
-.ui-widget-content .ui-state-error-text,
-.ui-widget-header .ui-state-error-text {
-	color: #5f3f3f/*{fcError}*/;
-}
-.ui-priority-primary,
-.ui-widget-content .ui-priority-primary,
-.ui-widget-header .ui-priority-primary {
-	font-weight: bold;
-}
-.ui-priority-secondary,
-.ui-widget-content .ui-priority-secondary,
-.ui-widget-header .ui-priority-secondary {
-	opacity: .7;
-	filter:Alpha(Opacity=70); /* support: IE8 */
-	font-weight: normal;
-}
-.ui-state-disabled,
-.ui-widget-content .ui-state-disabled,
-.ui-widget-header .ui-state-disabled {
-	opacity: .35;
-	filter:Alpha(Opacity=35); /* support: IE8 */
-	background-image: none;
-}
-.ui-state-disabled .ui-icon {
-	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
-}
-
-/* Icons
-----------------------------------*/
-
-/* states and images */
-.ui-icon {
-	width: 16px;
-	height: 16px;
-}
-.ui-icon,
-.ui-widget-content .ui-icon {
-	background-image: url(/assets/jquery-ui/ui-icons_444444_256x240-31d988765b4e6f56553c29588c500381dc3e6f0aa2980c8212202e5644aefd5d.png)/*{iconsContent}*/;
-}
-.ui-widget-header .ui-icon {
-	background-image: url(/assets/jquery-ui/ui-icons_444444_256x240-31d988765b4e6f56553c29588c500381dc3e6f0aa2980c8212202e5644aefd5d.png)/*{iconsHeader}*/;
-}
-.ui-state-hover .ui-icon,
-.ui-state-focus .ui-icon,
-.ui-button:hover .ui-icon,
-.ui-button:focus .ui-icon {
-	background-image: url(/assets/jquery-ui/ui-icons_555555_256x240-32175261daee76c82bb0edf0eea16a56421866fbc31e94f3c1d570aa114502f5.png)/*{iconsHover}*/;
-}
-.ui-state-active .ui-icon,
-.ui-button:active .ui-icon {
-	background-image: url(/assets/jquery-ui/ui-icons_ffffff_256x240-350df1b7131037de20e83c5c0f3a41a770d2ac48b5762ea772b3f4a8a7b9d47a.png)/*{iconsActive}*/;
-}
-.ui-state-highlight .ui-icon,
-.ui-button .ui-state-highlight.ui-icon {
-	background-image: url(/assets/jquery-ui/ui-icons_777620_256x240-0b020fc6e696d88d296e7bb1f61f1eb2ad827848e2c7382a4c3e0999e702dd9b.png)/*{iconsHighlight}*/;
-}
-.ui-state-error .ui-icon,
-.ui-state-error-text .ui-icon {
-	background-image: url(/assets/jquery-ui/ui-icons_cc0000_256x240-40985a64b4d5dd213fba27fcd862a1bd1b337a97674f6ff0b9ec20abcee4bc69.png)/*{iconsError}*/;
-}
-.ui-button .ui-icon {
-	background-image: url(/assets/jquery-ui/ui-icons_777777_256x240-faf32007ae120c302213557626e660dd10e711c5dd4f1113d35f26dc05b78d2f.png)/*{iconsDefault}*/;
-}
-
-/* positioning */
-.ui-icon-blank { background-position: 16px 16px; }
-.ui-icon-caret-1-n { background-position: 0 0; }
-.ui-icon-caret-1-ne { background-position: -16px 0; }
-.ui-icon-caret-1-e { background-position: -32px 0; }
-.ui-icon-caret-1-se { background-position: -48px 0; }
-.ui-icon-caret-1-s { background-position: -65px 0; }
-.ui-icon-caret-1-sw { background-position: -80px 0; }
-.ui-icon-caret-1-w { background-position: -96px 0; }
-.ui-icon-caret-1-nw { background-position: -112px 0; }
-.ui-icon-caret-2-n-s { background-position: -128px 0; }
-.ui-icon-caret-2-e-w { background-position: -144px 0; }
-.ui-icon-triangle-1-n { background-position: 0 -16px; }
-.ui-icon-triangle-1-ne { background-position: -16px -16px; }
-.ui-icon-triangle-1-e { background-position: -32px -16px; }
-.ui-icon-triangle-1-se { background-position: -48px -16px; }
-.ui-icon-triangle-1-s { background-position: -65px -16px; }
-.ui-icon-triangle-1-sw { background-position: -80px -16px; }
-.ui-icon-triangle-1-w { background-position: -96px -16px; }
-.ui-icon-triangle-1-nw { background-position: -112px -16px; }
-.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
-.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
-.ui-icon-arrow-1-n { background-position: 0 -32px; }
-.ui-icon-arrow-1-ne { background-position: -16px -32px; }
-.ui-icon-arrow-1-e { background-position: -32px -32px; }
-.ui-icon-arrow-1-se { background-position: -48px -32px; }
-.ui-icon-arrow-1-s { background-position: -65px -32px; }
-.ui-icon-arrow-1-sw { background-position: -80px -32px; }
-.ui-icon-arrow-1-w { background-position: -96px -32px; }
-.ui-icon-arrow-1-nw { background-position: -112px -32px; }
-.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
-.ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
-.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
-.ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
-.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
-.ui-icon-arrowstop-1-e { background-position: -208px -32px; }
-.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
-.ui-icon-arrowstop-1-w { background-position: -240px -32px; }
-.ui-icon-arrowthick-1-n { background-position: 1px -48px; }
-.ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
-.ui-icon-arrowthick-1-e { background-position: -32px -48px; }
-.ui-icon-arrowthick-1-se { background-position: -48px -48px; }
-.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
-.ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
-.ui-icon-arrowthick-1-w { background-position: -96px -48px; }
-.ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
-.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
-.ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
-.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
-.ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
-.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
-.ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
-.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
-.ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
-.ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
-.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
-.ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
-.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
-.ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
-.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
-.ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
-.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
-.ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
-.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
-.ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
-.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
-.ui-icon-arrow-4 { background-position: 0 -80px; }
-.ui-icon-arrow-4-diag { background-position: -16px -80px; }
-.ui-icon-extlink { background-position: -32px -80px; }
-.ui-icon-newwin { background-position: -48px -80px; }
-.ui-icon-refresh { background-position: -64px -80px; }
-.ui-icon-shuffle { background-position: -80px -80px; }
-.ui-icon-transfer-e-w { background-position: -96px -80px; }
-.ui-icon-transferthick-e-w { background-position: -112px -80px; }
-.ui-icon-folder-collapsed { background-position: 0 -96px; }
-.ui-icon-folder-open { background-position: -16px -96px; }
-.ui-icon-document { background-position: -32px -96px; }
-.ui-icon-document-b { background-position: -48px -96px; }
-.ui-icon-note { background-position: -64px -96px; }
-.ui-icon-mail-closed { background-position: -80px -96px; }
-.ui-icon-mail-open { background-position: -96px -96px; }
-.ui-icon-suitcase { background-position: -112px -96px; }
-.ui-icon-comment { background-position: -128px -96px; }
-.ui-icon-person { background-position: -144px -96px; }
-.ui-icon-print { background-position: -160px -96px; }
-.ui-icon-trash { background-position: -176px -96px; }
-.ui-icon-locked { background-position: -192px -96px; }
-.ui-icon-unlocked { background-position: -208px -96px; }
-.ui-icon-bookmark { background-position: -224px -96px; }
-.ui-icon-tag { background-position: -240px -96px; }
-.ui-icon-home { background-position: 0 -112px; }
-.ui-icon-flag { background-position: -16px -112px; }
-.ui-icon-calendar { background-position: -32px -112px; }
-.ui-icon-cart { background-position: -48px -112px; }
-.ui-icon-pencil { background-position: -64px -112px; }
-.ui-icon-clock { background-position: -80px -112px; }
-.ui-icon-disk { background-position: -96px -112px; }
-.ui-icon-calculator { background-position: -112px -112px; }
-.ui-icon-zoomin { background-position: -128px -112px; }
-.ui-icon-zoomout { background-position: -144px -112px; }
-.ui-icon-search { background-position: -160px -112px; }
-.ui-icon-wrench { background-position: -176px -112px; }
-.ui-icon-gear { background-position: -192px -112px; }
-.ui-icon-heart { background-position: -208px -112px; }
-.ui-icon-star { background-position: -224px -112px; }
-.ui-icon-link { background-position: -240px -112px; }
-.ui-icon-cancel { background-position: 0 -128px; }
-.ui-icon-plus { background-position: -16px -128px; }
-.ui-icon-plusthick { background-position: -32px -128px; }
-.ui-icon-minus { background-position: -48px -128px; }
-.ui-icon-minusthick { background-position: -64px -128px; }
-.ui-icon-close { background-position: -80px -128px; }
-.ui-icon-closethick { background-position: -96px -128px; }
-.ui-icon-key { background-position: -112px -128px; }
-.ui-icon-lightbulb { background-position: -128px -128px; }
-.ui-icon-scissors { background-position: -144px -128px; }
-.ui-icon-clipboard { background-position: -160px -128px; }
-.ui-icon-copy { background-position: -176px -128px; }
-.ui-icon-contact { background-position: -192px -128px; }
-.ui-icon-image { background-position: -208px -128px; }
-.ui-icon-video { background-position: -224px -128px; }
-.ui-icon-script { background-position: -240px -128px; }
-.ui-icon-alert { background-position: 0 -144px; }
-.ui-icon-info { background-position: -16px -144px; }
-.ui-icon-notice { background-position: -32px -144px; }
-.ui-icon-help { background-position: -48px -144px; }
-.ui-icon-check { background-position: -64px -144px; }
-.ui-icon-bullet { background-position: -80px -144px; }
-.ui-icon-radio-on { background-position: -96px -144px; }
-.ui-icon-radio-off { background-position: -112px -144px; }
-.ui-icon-pin-w { background-position: -128px -144px; }
-.ui-icon-pin-s { background-position: -144px -144px; }
-.ui-icon-play { background-position: 0 -160px; }
-.ui-icon-pause { background-position: -16px -160px; }
-.ui-icon-seek-next { background-position: -32px -160px; }
-.ui-icon-seek-prev { background-position: -48px -160px; }
-.ui-icon-seek-end { background-position: -64px -160px; }
-.ui-icon-seek-start { background-position: -80px -160px; }
-/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
-.ui-icon-seek-first { background-position: -80px -160px; }
-.ui-icon-stop { background-position: -96px -160px; }
-.ui-icon-eject { background-position: -112px -160px; }
-.ui-icon-volume-off { background-position: -128px -160px; }
-.ui-icon-volume-on { background-position: -144px -160px; }
-.ui-icon-power { background-position: 0 -176px; }
-.ui-icon-signal-diag { background-position: -16px -176px; }
-.ui-icon-signal { background-position: -32px -176px; }
-.ui-icon-battery-0 { background-position: -48px -176px; }
-.ui-icon-battery-1 { background-position: -64px -176px; }
-.ui-icon-battery-2 { background-position: -80px -176px; }
-.ui-icon-battery-3 { background-position: -96px -176px; }
-.ui-icon-circle-plus { background-position: 0 -192px; }
-.ui-icon-circle-minus { background-position: -16px -192px; }
-.ui-icon-circle-close { background-position: -32px -192px; }
-.ui-icon-circle-triangle-e { background-position: -48px -192px; }
-.ui-icon-circle-triangle-s { background-position: -64px -192px; }
-.ui-icon-circle-triangle-w { background-position: -80px -192px; }
-.ui-icon-circle-triangle-n { background-position: -96px -192px; }
-.ui-icon-circle-arrow-e { background-position: -112px -192px; }
-.ui-icon-circle-arrow-s { background-position: -128px -192px; }
-.ui-icon-circle-arrow-w { background-position: -144px -192px; }
-.ui-icon-circle-arrow-n { background-position: -160px -192px; }
-.ui-icon-circle-zoomin { background-position: -176px -192px; }
-.ui-icon-circle-zoomout { background-position: -192px -192px; }
-.ui-icon-circle-check { background-position: -208px -192px; }
-.ui-icon-circlesmall-plus { background-position: 0 -208px; }
-.ui-icon-circlesmall-minus { background-position: -16px -208px; }
-.ui-icon-circlesmall-close { background-position: -32px -208px; }
-.ui-icon-squaresmall-plus { background-position: -48px -208px; }
-.ui-icon-squaresmall-minus { background-position: -64px -208px; }
-.ui-icon-squaresmall-close { background-position: -80px -208px; }
-.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
-.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
-.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
-.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
-.ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
-.ui-icon-grip-diagonal-se { background-position: -80px -224px; }
-
-
-/* Misc visuals
-----------------------------------*/
-
-/* Corner radius */
-.ui-corner-all,
-.ui-corner-top,
-.ui-corner-left,
-.ui-corner-tl {
-	border-top-left-radius: 3px/*{cornerRadius}*/;
-}
-.ui-corner-all,
-.ui-corner-top,
-.ui-corner-right,
-.ui-corner-tr {
-	border-top-right-radius: 3px/*{cornerRadius}*/;
-}
-.ui-corner-all,
-.ui-corner-bottom,
-.ui-corner-left,
-.ui-corner-bl {
-	border-bottom-left-radius: 3px/*{cornerRadius}*/;
-}
-.ui-corner-all,
-.ui-corner-bottom,
-.ui-corner-right,
-.ui-corner-br {
-	border-bottom-right-radius: 3px/*{cornerRadius}*/;
-}
-
-/* Overlays */
-.ui-widget-overlay {
-	background: #aaaaaa/*{bgColorOverlay}*/ /*{bgImgUrlOverlay}*/ /*{bgOverlayXPos}*/ /*{bgOverlayYPos}*/ /*{bgOverlayRepeat}*/;
-	opacity: .3/*{opacityOverlay}*/;
-	filter: Alpha(Opacity=30)/*{opacityFilterOverlay}*/; /* support: IE8 */
-}
-.ui-widget-shadow {
-	box-shadow: 0/*{offsetLeftShadow}*/ 0/*{offsetTopShadow}*/ 5px/*{thicknessShadow}*/ #666666/*{bgColorShadow}*/;
-}
-/*!
- * jQuery UI CSS Framework 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/category/theming/
- */
-/*
-
- */
-
-/* Layout helpers
-----------------------------------*/
-
-.ui-helper-hidden {
-	display: none;
-}
-.ui-helper-hidden-accessible {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-}
-.ui-helper-reset {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	line-height: 1.3;
-	text-decoration: none;
-	font-size: 100%;
-	list-style: none;
-}
-.ui-helper-clearfix:before,
-.ui-helper-clearfix:after {
-	content: "";
-	display: table;
-	border-collapse: collapse;
-}
-.ui-helper-clearfix:after {
-	clear: both;
-}
-.ui-helper-zfix {
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	position: absolute;
-	opacity: 0;
-	filter:Alpha(Opacity=0); /* support: IE8 */
-}
-
-.ui-front {
-	z-index: 100;
-}
-
-
-/* Interaction Cues
-----------------------------------*/
-.ui-state-disabled {
-	cursor: default !important;
-	pointer-events: none;
-}
-
-
-/* Icons
-----------------------------------*/
-.ui-icon {
-	display: inline-block;
-	vertical-align: middle;
-	margin-top: -.25em;
-	position: relative;
-	text-indent: -99999px;
-	overflow: hidden;
-	background-repeat: no-repeat;
-}
-
-.ui-widget-icon-block {
-	left: 50%;
-	margin-left: -8px;
-	display: block;
-}
-
-/* Misc visuals
-----------------------------------*/
-
-/* Overlays */
-.ui-widget-overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-/*!
- * jQuery UI Accordion 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/accordion/#theming
- */
-/*
-
- */
-
-.ui-accordion .ui-accordion-header {
-	display: block;
-	cursor: pointer;
-	position: relative;
-	margin: 2px 0 0 0;
-	padding: .5em .5em .5em .7em;
-	font-size: 100%;
-}
-.ui-accordion .ui-accordion-content {
-	padding: 1em 2.2em;
-	border-top: 0;
-	overflow: auto;
-}
-/*!
- * jQuery UI Autocomplete 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/autocomplete/#theming
- */
-/*
-
- */
-
-.ui-autocomplete {
-	position: absolute;
-	top: 0;
-	left: 0;
-	cursor: default;
-}
-/*!
- * jQuery UI Button 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/button/#theming
- */
-/*
-
- */
-
-.ui-button {
-	padding: .4em 1em;
-	display: inline-block;
-	position: relative;
-	line-height: normal;
-	margin-right: .1em;
-	cursor: pointer;
-	vertical-align: middle;
-	text-align: center;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-
-	/* Support: IE <= 11 */
-	overflow: visible;
-}
-
-.ui-button,
-.ui-button:link,
-.ui-button:visited,
-.ui-button:hover,
-.ui-button:active {
-	text-decoration: none;
-}
-
-/* to make room for the icon, a width needs to be set here */
-.ui-button-icon-only {
-	width: 2em;
-	box-sizing: border-box;
-	text-indent: -9999px;
-	white-space: nowrap;
-}
-
-/* no icon support for input elements */
-input.ui-button.ui-button-icon-only {
-	text-indent: 0;
-}
-
-/* button icon element(s) */
-.ui-button-icon-only .ui-icon {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -8px;
-	margin-left: -8px;
-}
-
-.ui-button.ui-icon-notext .ui-icon {
-	padding: 0;
-	width: 2.1em;
-	height: 2.1em;
-	text-indent: -9999px;
-	white-space: nowrap;
-
-}
-
-input.ui-button.ui-icon-notext .ui-icon {
-	width: auto;
-	height: auto;
-	text-indent: 0;
-	white-space: normal;
-	padding: .4em 1em;
-}
-
-/* workarounds */
-/* Support: Firefox 5 - 40 */
-input.ui-button::-moz-focus-inner,
-button.ui-button::-moz-focus-inner {
-	border: 0;
-	padding: 0;
-}
-/*!
- * jQuery UI Checkboxradio 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/checkboxradio/#theming
- */
-/*
-
- */
-
-
-.ui-checkboxradio-label .ui-icon-background {
-	box-shadow: inset 1px 1px 1px #ccc;
-	border-radius: .12em;
-	border: none;
-}
-.ui-checkboxradio-radio-label .ui-icon-background {
-	width: 16px;
-	height: 16px;
-	border-radius: 1em;
-	overflow: visible;
-	border: none;
-}
-.ui-checkboxradio-radio-label.ui-checkboxradio-checked .ui-icon,
-.ui-checkboxradio-radio-label.ui-checkboxradio-checked:hover .ui-icon {
-	background-image: none;
-	width: 8px;
-	height: 8px;
-	border-width: 4px;
-	border-style: solid;
-}
-.ui-checkboxradio-disabled {
-	pointer-events: none;
-}
-/*!
- * jQuery UI Controlgroup 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/controlgroup/#theming
- */
-/*
-
- */
-
-
-.ui-controlgroup {
-	vertical-align: middle;
-	display: inline-block;
-}
-.ui-controlgroup > .ui-controlgroup-item {
-	float: left;
-	margin-left: 0;
-	margin-right: 0;
-}
-.ui-controlgroup > .ui-controlgroup-item:focus,
-.ui-controlgroup > .ui-controlgroup-item.ui-visual-focus {
-	z-index: 9999;
-}
-.ui-controlgroup-vertical > .ui-controlgroup-item {
-	display: block;
-	float: none;
-	width: 100%;
-	margin-top: 0;
-	margin-bottom: 0;
-	text-align: left;
-}
-.ui-controlgroup-vertical .ui-controlgroup-item {
-	box-sizing: border-box;
-}
-.ui-controlgroup .ui-controlgroup-label {
-	padding: .4em 1em;
-}
-.ui-controlgroup .ui-controlgroup-label span {
-	font-size: 80%;
-}
-.ui-controlgroup-horizontal .ui-controlgroup-label + .ui-controlgroup-item {
-	border-left: none;
-}
-.ui-controlgroup-vertical .ui-controlgroup-label + .ui-controlgroup-item {
-	border-top: none;
-}
-.ui-controlgroup-horizontal .ui-controlgroup-label.ui-widget-content {
-	border-right: none;
-}
-.ui-controlgroup-vertical .ui-controlgroup-label.ui-widget-content {
-	border-bottom: none;
-}
-
-/* Spinner specific style fixes */
-.ui-controlgroup-vertical .ui-spinner-input {
-
-	/* Support: IE8 only, Android < 4.4 only */
-	width: 75%;
-	width: calc( 100% - 2.4em );
-}
-.ui-controlgroup-vertical .ui-spinner .ui-spinner-up {
-	border-top-style: solid;
-}
-
-/*!
- * jQuery UI Datepicker 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/datepicker/#theming
- */
-/*
-
- */
-
-.ui-datepicker {
-	width: 17em;
-	padding: .2em .2em 0;
-	display: none;
-}
-.ui-datepicker .ui-datepicker-header {
-	position: relative;
-	padding: .2em 0;
-}
-.ui-datepicker .ui-datepicker-prev,
-.ui-datepicker .ui-datepicker-next {
-	position: absolute;
-	top: 2px;
-	width: 1.8em;
-	height: 1.8em;
-}
-.ui-datepicker .ui-datepicker-prev-hover,
-.ui-datepicker .ui-datepicker-next-hover {
-	top: 1px;
-}
-.ui-datepicker .ui-datepicker-prev {
-	left: 2px;
-}
-.ui-datepicker .ui-datepicker-next {
-	right: 2px;
-}
-.ui-datepicker .ui-datepicker-prev-hover {
-	left: 1px;
-}
-.ui-datepicker .ui-datepicker-next-hover {
-	right: 1px;
-}
-.ui-datepicker .ui-datepicker-prev span,
-.ui-datepicker .ui-datepicker-next span {
-	display: block;
-	position: absolute;
-	left: 50%;
-	margin-left: -8px;
-	top: 50%;
-	margin-top: -8px;
-}
-.ui-datepicker .ui-datepicker-title {
-	margin: 0 2.3em;
-	line-height: 1.8em;
-	text-align: center;
-}
-.ui-datepicker .ui-datepicker-title select {
-	font-size: 1em;
-	margin: 1px 0;
-}
-.ui-datepicker select.ui-datepicker-month,
-.ui-datepicker select.ui-datepicker-year {
-	width: 45%;
-}
-.ui-datepicker table {
-	width: 100%;
-	font-size: .9em;
-	border-collapse: collapse;
-	margin: 0 0 .4em;
-}
-.ui-datepicker th {
-	padding: .7em .3em;
-	text-align: center;
-	font-weight: bold;
-	border: 0;
-}
-.ui-datepicker td {
-	border: 0;
-	padding: 1px;
-}
-.ui-datepicker td span,
-.ui-datepicker td a {
-	display: block;
-	padding: .2em;
-	text-align: right;
-	text-decoration: none;
-}
-.ui-datepicker .ui-datepicker-buttonpane {
-	background-image: none;
-	margin: .7em 0 0 0;
-	padding: 0 .2em;
-	border-left: 0;
-	border-right: 0;
-	border-bottom: 0;
-}
-.ui-datepicker .ui-datepicker-buttonpane button {
-	float: right;
-	margin: .5em .2em .4em;
-	cursor: pointer;
-	padding: .2em .6em .3em .6em;
-	width: auto;
-	overflow: visible;
-}
-.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
-	float: left;
-}
-
-/* with multiple calendars */
-.ui-datepicker.ui-datepicker-multi {
-	width: auto;
-}
-.ui-datepicker-multi .ui-datepicker-group {
-	float: left;
-}
-.ui-datepicker-multi .ui-datepicker-group table {
-	width: 95%;
-	margin: 0 auto .4em;
-}
-.ui-datepicker-multi-2 .ui-datepicker-group {
-	width: 50%;
-}
-.ui-datepicker-multi-3 .ui-datepicker-group {
-	width: 33.3%;
-}
-.ui-datepicker-multi-4 .ui-datepicker-group {
-	width: 25%;
-}
-.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
-.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
-	border-left-width: 0;
-}
-.ui-datepicker-multi .ui-datepicker-buttonpane {
-	clear: left;
-}
-.ui-datepicker-row-break {
-	clear: both;
-	width: 100%;
-	font-size: 0;
-}
-
-/* RTL support */
-.ui-datepicker-rtl {
-	direction: rtl;
-}
-.ui-datepicker-rtl .ui-datepicker-prev {
-	right: 2px;
-	left: auto;
-}
-.ui-datepicker-rtl .ui-datepicker-next {
-	left: 2px;
-	right: auto;
-}
-.ui-datepicker-rtl .ui-datepicker-prev:hover {
-	right: 1px;
-	left: auto;
-}
-.ui-datepicker-rtl .ui-datepicker-next:hover {
-	left: 1px;
-	right: auto;
-}
-.ui-datepicker-rtl .ui-datepicker-buttonpane {
-	clear: right;
-}
-.ui-datepicker-rtl .ui-datepicker-buttonpane button {
-	float: left;
-}
-.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
-.ui-datepicker-rtl .ui-datepicker-group {
-	float: right;
-}
-.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
-.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
-	border-right-width: 0;
-	border-left-width: 1px;
-}
-
-/* Icons */
-.ui-datepicker .ui-icon {
-	display: block;
-	text-indent: -99999px;
-	overflow: hidden;
-	background-repeat: no-repeat;
-	left: .5em;
-	top: .3em;
-}
-/*!
- * jQuery UI Dialog 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/dialog/#theming
- */
-/*
-
- */
-
-.ui-dialog {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: .2em;
-	outline: 0;
-}
-.ui-dialog .ui-dialog-titlebar {
-	padding: .4em 1em;
-	position: relative;
-}
-.ui-dialog .ui-dialog-title {
-	float: left;
-	margin: .1em 0;
-	white-space: nowrap;
-	width: 90%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.ui-dialog .ui-dialog-titlebar-close {
-	position: absolute;
-	right: .3em;
-	top: 50%;
-	width: 20px;
-	margin: -10px 0 0 0;
-	padding: 1px;
-	height: 20px;
-}
-.ui-dialog .ui-dialog-content {
-	position: relative;
-	border: 0;
-	padding: .5em 1em;
-	background: none;
-	overflow: auto;
-}
-.ui-dialog .ui-dialog-buttonpane {
-	text-align: left;
-	border-width: 1px 0 0 0;
-	background-image: none;
-	margin-top: .5em;
-	padding: .3em 1em .5em .4em;
-}
-.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
-	float: right;
-}
-.ui-dialog .ui-dialog-buttonpane button {
-	margin: .5em .4em .5em 0;
-	cursor: pointer;
-}
-.ui-dialog .ui-resizable-n {
-	height: 2px;
-	top: 0;
-}
-.ui-dialog .ui-resizable-e {
-	width: 2px;
-	right: 0;
-}
-.ui-dialog .ui-resizable-s {
-	height: 2px;
-	bottom: 0;
-}
-.ui-dialog .ui-resizable-w {
-	width: 2px;
-	left: 0;
-}
-.ui-dialog .ui-resizable-se,
-.ui-dialog .ui-resizable-sw,
-.ui-dialog .ui-resizable-ne,
-.ui-dialog .ui-resizable-nw {
-	width: 7px;
-	height: 7px;
-}
-.ui-dialog .ui-resizable-se {
-	right: 0;
-	bottom: 0;
-}
-.ui-dialog .ui-resizable-sw {
-	left: 0;
-	bottom: 0;
-}
-.ui-dialog .ui-resizable-ne {
-	right: 0;
-	top: 0;
-}
-.ui-dialog .ui-resizable-nw {
-	left: 0;
-	top: 0;
-}
-.ui-draggable .ui-dialog-titlebar {
-	cursor: move;
-}
-/*!
- * jQuery UI Draggable 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
-/*
-
- */
-
-.ui-draggable-handle {
-	touch-action: none;
-}
-/*!
- * jQuery UI Menu 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/menu/#theming
- */
-/*
-
- */
-
-.ui-menu {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	display: block;
-	outline: 0;
-}
-.ui-menu .ui-menu {
-	position: absolute;
-}
-.ui-menu .ui-menu-item {
-	margin: 0;
-	cursor: pointer;
-	/* support: IE10, see #8844 */
-	list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
-}
-.ui-menu .ui-menu-item-wrapper {
-	position: relative;
-	padding: 3px 1em 3px .4em;
-}
-.ui-menu .ui-menu-divider {
-	margin: 5px 0;
-	height: 0;
-	font-size: 0;
-	line-height: 0;
-	border-width: 1px 0 0 0;
-}
-.ui-menu .ui-state-focus,
-.ui-menu .ui-state-active {
-	margin: -1px;
-}
-
-/* icon support */
-.ui-menu-icons {
-	position: relative;
-}
-.ui-menu-icons .ui-menu-item-wrapper {
-	padding-left: 2em;
-}
-
-/* left-aligned */
-.ui-menu .ui-icon {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: .2em;
-	margin: auto 0;
-}
-
-/* right-aligned */
-.ui-menu .ui-menu-icon {
-	left: auto;
-	right: 0;
-}
-/*!
- * jQuery UI Progressbar 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/progressbar/#theming
- */
-/*
-
- */
-
-.ui-progressbar {
-	height: 2em;
-	text-align: left;
-	overflow: hidden;
-}
-.ui-progressbar .ui-progressbar-value {
-	margin: -1px;
-	height: 100%;
-}
-.ui-progressbar .ui-progressbar-overlay {
-	background: url("data:image/gif;base64,R0lGODlhKAAoAIABAAAAAP///yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJAQABACwAAAAAKAAoAAACkYwNqXrdC52DS06a7MFZI+4FHBCKoDeWKXqymPqGqxvJrXZbMx7Ttc+w9XgU2FB3lOyQRWET2IFGiU9m1frDVpxZZc6bfHwv4c1YXP6k1Vdy292Fb6UkuvFtXpvWSzA+HycXJHUXiGYIiMg2R6W459gnWGfHNdjIqDWVqemH2ekpObkpOlppWUqZiqr6edqqWQAAIfkECQEAAQAsAAAAACgAKAAAApSMgZnGfaqcg1E2uuzDmmHUBR8Qil95hiPKqWn3aqtLsS18y7G1SzNeowWBENtQd+T1JktP05nzPTdJZlR6vUxNWWjV+vUWhWNkWFwxl9VpZRedYcflIOLafaa28XdsH/ynlcc1uPVDZxQIR0K25+cICCmoqCe5mGhZOfeYSUh5yJcJyrkZWWpaR8doJ2o4NYq62lAAACH5BAkBAAEALAAAAAAoACgAAAKVDI4Yy22ZnINRNqosw0Bv7i1gyHUkFj7oSaWlu3ovC8GxNso5fluz3qLVhBVeT/Lz7ZTHyxL5dDalQWPVOsQWtRnuwXaFTj9jVVh8pma9JjZ4zYSj5ZOyma7uuolffh+IR5aW97cHuBUXKGKXlKjn+DiHWMcYJah4N0lYCMlJOXipGRr5qdgoSTrqWSq6WFl2ypoaUAAAIfkECQEAAQAsAAAAACgAKAAAApaEb6HLgd/iO7FNWtcFWe+ufODGjRfoiJ2akShbueb0wtI50zm02pbvwfWEMWBQ1zKGlLIhskiEPm9R6vRXxV4ZzWT2yHOGpWMyorblKlNp8HmHEb/lCXjcW7bmtXP8Xt229OVWR1fod2eWqNfHuMjXCPkIGNileOiImVmCOEmoSfn3yXlJWmoHGhqp6ilYuWYpmTqKUgAAIfkECQEAAQAsAAAAACgAKAAAApiEH6kb58biQ3FNWtMFWW3eNVcojuFGfqnZqSebuS06w5V80/X02pKe8zFwP6EFWOT1lDFk8rGERh1TTNOocQ61Hm4Xm2VexUHpzjymViHrFbiELsefVrn6XKfnt2Q9G/+Xdie499XHd2g4h7ioOGhXGJboGAnXSBnoBwKYyfioubZJ2Hn0RuRZaflZOil56Zp6iioKSXpUAAAh+QQJAQABACwAAAAAKAAoAAACkoQRqRvnxuI7kU1a1UU5bd5tnSeOZXhmn5lWK3qNTWvRdQxP8qvaC+/yaYQzXO7BMvaUEmJRd3TsiMAgswmNYrSgZdYrTX6tSHGZO73ezuAw2uxuQ+BbeZfMxsexY35+/Qe4J1inV0g4x3WHuMhIl2jXOKT2Q+VU5fgoSUI52VfZyfkJGkha6jmY+aaYdirq+lQAACH5BAkBAAEALAAAAAAoACgAAAKWBIKpYe0L3YNKToqswUlvznigd4wiR4KhZrKt9Upqip61i9E3vMvxRdHlbEFiEXfk9YARYxOZZD6VQ2pUunBmtRXo1Lf8hMVVcNl8JafV38aM2/Fu5V16Bn63r6xt97j09+MXSFi4BniGFae3hzbH9+hYBzkpuUh5aZmHuanZOZgIuvbGiNeomCnaxxap2upaCZsq+1kAACH5BAkBAAEALAAAAAAoACgAAAKXjI8By5zf4kOxTVrXNVlv1X0d8IGZGKLnNpYtm8Lr9cqVeuOSvfOW79D9aDHizNhDJidFZhNydEahOaDH6nomtJjp1tutKoNWkvA6JqfRVLHU/QUfau9l2x7G54d1fl995xcIGAdXqMfBNadoYrhH+Mg2KBlpVpbluCiXmMnZ2Sh4GBqJ+ckIOqqJ6LmKSllZmsoq6wpQAAAh+QQJAQABACwAAAAAKAAoAAAClYx/oLvoxuJDkU1a1YUZbJ59nSd2ZXhWqbRa2/gF8Gu2DY3iqs7yrq+xBYEkYvFSM8aSSObE+ZgRl1BHFZNr7pRCavZ5BW2142hY3AN/zWtsmf12p9XxxFl2lpLn1rseztfXZjdIWIf2s5dItwjYKBgo9yg5pHgzJXTEeGlZuenpyPmpGQoKOWkYmSpaSnqKileI2FAAACH5BAkBAAEALAAAAAAoACgAAAKVjB+gu+jG4kORTVrVhRlsnn2dJ3ZleFaptFrb+CXmO9OozeL5VfP99HvAWhpiUdcwkpBH3825AwYdU8xTqlLGhtCosArKMpvfa1mMRae9VvWZfeB2XfPkeLmm18lUcBj+p5dnN8jXZ3YIGEhYuOUn45aoCDkp16hl5IjYJvjWKcnoGQpqyPlpOhr3aElaqrq56Bq7VAAAOw==");
-	height: 100%;
-	filter: alpha(opacity=25); /* support: IE8 */
-	opacity: 0.25;
-}
-.ui-progressbar-indeterminate .ui-progressbar-value {
-	background-image: none;
-}
-/*!
- * jQuery UI Resizable 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
-/*
-
- */
-
-.ui-resizable {
-	position: relative;
-}
-.ui-resizable-handle {
-	position: absolute;
-	font-size: 0.1px;
-	display: block;
-	touch-action: none;
-}
-.ui-resizable-disabled .ui-resizable-handle,
-.ui-resizable-autohide .ui-resizable-handle {
-	display: none;
-}
-.ui-resizable-n {
-	cursor: n-resize;
-	height: 7px;
-	width: 100%;
-	top: -5px;
-	left: 0;
-}
-.ui-resizable-s {
-	cursor: s-resize;
-	height: 7px;
-	width: 100%;
-	bottom: -5px;
-	left: 0;
-}
-.ui-resizable-e {
-	cursor: e-resize;
-	width: 7px;
-	right: -5px;
-	top: 0;
-	height: 100%;
-}
-.ui-resizable-w {
-	cursor: w-resize;
-	width: 7px;
-	left: -5px;
-	top: 0;
-	height: 100%;
-}
-.ui-resizable-se {
-	cursor: se-resize;
-	width: 12px;
-	height: 12px;
-	right: 1px;
-	bottom: 1px;
-}
-.ui-resizable-sw {
-	cursor: sw-resize;
-	width: 9px;
-	height: 9px;
-	left: -5px;
-	bottom: -5px;
-}
-.ui-resizable-nw {
-	cursor: nw-resize;
-	width: 9px;
-	height: 9px;
-	left: -5px;
-	top: -5px;
-}
-.ui-resizable-ne {
-	cursor: ne-resize;
-	width: 9px;
-	height: 9px;
-	right: -5px;
-	top: -5px;
-}
-/*!
- * jQuery UI Selectable 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
-/*
-
- */
-
-.ui-selectable {
-	touch-action: none;
-}
-.ui-selectable-helper {
-	position: absolute;
-	z-index: 100;
-	border: 1px dotted black;
-}
-/*!
- * jQuery UI Selectmenu 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/selectmenu/#theming
- */
-/*
-
- */
-
-.ui-selectmenu-menu {
-	padding: 0;
-	margin: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: none;
-}
-.ui-selectmenu-menu .ui-menu {
-	overflow: auto;
-	overflow-x: hidden;
-	padding-bottom: 1px;
-}
-.ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
-	font-size: 1em;
-	font-weight: bold;
-	line-height: 1.5;
-	padding: 2px 0.4em;
-	margin: 0.5em 0 0 0;
-	height: auto;
-	border: 0;
-}
-.ui-selectmenu-open {
-	display: block;
-}
-.ui-selectmenu-text {
-	display: block;
-	margin-right: 20px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.ui-selectmenu-button.ui-button {
-	text-align: left;
-	white-space: nowrap;
-	width: 14em;
-}
-.ui-selectmenu-icon.ui-icon {
-	float: right;
-	margin-top: 0;
-}
-/*!
- * jQuery UI Sortable 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- */
-/*
-
- */
-
-.ui-sortable-handle {
-	touch-action: none;
-}
-/*!
- * jQuery UI Slider 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/slider/#theming
- */
-/*
-
- */
-
-.ui-slider {
-	position: relative;
-	text-align: left;
-}
-.ui-slider .ui-slider-handle {
-	position: absolute;
-	z-index: 2;
-	width: 1.2em;
-	height: 1.2em;
-	cursor: default;
-	touch-action: none;
-}
-.ui-slider .ui-slider-range {
-	position: absolute;
-	z-index: 1;
-	font-size: .7em;
-	display: block;
-	border: 0;
-	background-position: 0 0;
-}
-
-/* support: IE8 - See #6727 */
-.ui-slider.ui-state-disabled .ui-slider-handle,
-.ui-slider.ui-state-disabled .ui-slider-range {
-	-webkit-filter: inherit;
-	        filter: inherit;
-}
-
-.ui-slider-horizontal {
-	height: .8em;
-}
-.ui-slider-horizontal .ui-slider-handle {
-	top: -.3em;
-	margin-left: -.6em;
-}
-.ui-slider-horizontal .ui-slider-range {
-	top: 0;
-	height: 100%;
-}
-.ui-slider-horizontal .ui-slider-range-min {
-	left: 0;
-}
-.ui-slider-horizontal .ui-slider-range-max {
-	right: 0;
-}
-
-.ui-slider-vertical {
-	width: .8em;
-	height: 100px;
-}
-.ui-slider-vertical .ui-slider-handle {
-	left: -.3em;
-	margin-left: 0;
-	margin-bottom: -.6em;
-}
-.ui-slider-vertical .ui-slider-range {
-	left: 0;
-	width: 100%;
-}
-.ui-slider-vertical .ui-slider-range-min {
-	bottom: 0;
-}
-.ui-slider-vertical .ui-slider-range-max {
-	top: 0;
-}
-/*!
- * jQuery UI Spinner 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/spinner/#theming
- */
-/*
-
- */
-
-.ui-spinner {
-	position: relative;
-	display: inline-block;
-	overflow: hidden;
-	padding: 0;
-	vertical-align: middle;
-}
-.ui-spinner-input {
-	border: none;
-	background: none;
-	color: inherit;
-	padding: .222em 0;
-	margin: .2em 0;
-	vertical-align: middle;
-	margin-left: .4em;
-	margin-right: 2em;
-}
-.ui-spinner-button {
-	width: 1.6em;
-	height: 50%;
-	font-size: .5em;
-	padding: 0;
-	margin: 0;
-	text-align: center;
-	position: absolute;
-	cursor: default;
-	display: block;
-	overflow: hidden;
-	right: 0;
-}
-/* more specificity required here to override default borders */
-.ui-spinner a.ui-spinner-button {
-	border-top-style: none;
-	border-bottom-style: none;
-	border-right-style: none;
-}
-.ui-spinner-up {
-	top: 0;
-}
-.ui-spinner-down {
-	bottom: 0;
-}
-/*!
- * jQuery UI Tabs 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/tabs/#theming
- */
-/*
-
- */
-
-.ui-tabs {
-	position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-	padding: .2em;
-}
-.ui-tabs .ui-tabs-nav {
-	margin: 0;
-	padding: .2em .2em 0;
-}
-.ui-tabs .ui-tabs-nav li {
-	list-style: none;
-	float: left;
-	position: relative;
-	top: 0;
-	margin: 1px .2em 0 0;
-	border-bottom-width: 0;
-	padding: 0;
-	white-space: nowrap;
-}
-.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-	float: left;
-	padding: .5em 1em;
-	text-decoration: none;
-}
-.ui-tabs .ui-tabs-nav li.ui-tabs-active {
-	margin-bottom: -1px;
-	padding-bottom: 1px;
-}
-.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
-.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
-.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
-	cursor: text;
-}
-.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
-	cursor: pointer;
-}
-.ui-tabs .ui-tabs-panel {
-	display: block;
-	border-width: 0;
-	padding: 1em 1.4em;
-	background: none;
-}
-/*!
- * jQuery UI Tooltip 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/tooltip/#theming
- */
-/*
-
- */
-
-.ui-tooltip {
-	padding: 8px;
-	position: absolute;
-	z-index: 9999;
-	max-width: 300px;
-}
-body .ui-tooltip {
-	border-width: 2px;
-}
-/*!
- * jQuery UI CSS Framework 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/category/theming/
- */
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- */
-
-/*!
- * jQuery UI CSS Framework 1.12.1
- * http://jqueryui.com
- *
- * Copyright jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/category/theming/
- */
-/*
-
-
- */
-
 @charset "UTF-8";
-/*
-
- */
 /* Bootstrap styles */
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -1687,7 +50,7 @@ html {
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 /* line 35, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_reboot.scss */
@@ -2325,6 +688,7 @@ pre code {
 
 /* line 28, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_grid.scss */
 .row {
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
@@ -2360,172 +724,201 @@ pre code {
 /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col {
   flex-basis: 0;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
   max-width: 100%;
 }
 
 /* line 36, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-auto {
-  flex: 0 0 auto;
+  -webkit-box-flex: 0;
+          flex: 0 0 auto;
   width: auto;
   max-width: 100%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-1 {
-  flex: 0 0 8.33333%;
-  max-width: 8.33333%;
+  -webkit-box-flex: 0;
+          flex: 0 0 8.3333333333%;
+  max-width: 8.3333333333%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-2 {
-  flex: 0 0 16.66667%;
-  max-width: 16.66667%;
+  -webkit-box-flex: 0;
+          flex: 0 0 16.6666666667%;
+  max-width: 16.6666666667%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-3 {
-  flex: 0 0 25%;
+  -webkit-box-flex: 0;
+          flex: 0 0 25%;
   max-width: 25%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-4 {
-  flex: 0 0 33.33333%;
-  max-width: 33.33333%;
+  -webkit-box-flex: 0;
+          flex: 0 0 33.3333333333%;
+  max-width: 33.3333333333%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-5 {
-  flex: 0 0 41.66667%;
-  max-width: 41.66667%;
+  -webkit-box-flex: 0;
+          flex: 0 0 41.6666666667%;
+  max-width: 41.6666666667%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-6 {
-  flex: 0 0 50%;
+  -webkit-box-flex: 0;
+          flex: 0 0 50%;
   max-width: 50%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-7 {
-  flex: 0 0 58.33333%;
-  max-width: 58.33333%;
+  -webkit-box-flex: 0;
+          flex: 0 0 58.3333333333%;
+  max-width: 58.3333333333%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-8 {
-  flex: 0 0 66.66667%;
-  max-width: 66.66667%;
+  -webkit-box-flex: 0;
+          flex: 0 0 66.6666666667%;
+  max-width: 66.6666666667%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-9 {
-  flex: 0 0 75%;
+  -webkit-box-flex: 0;
+          flex: 0 0 75%;
   max-width: 75%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-10 {
-  flex: 0 0 83.33333%;
-  max-width: 83.33333%;
+  -webkit-box-flex: 0;
+          flex: 0 0 83.3333333333%;
+  max-width: 83.3333333333%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-11 {
-  flex: 0 0 91.66667%;
-  max-width: 91.66667%;
+  -webkit-box-flex: 0;
+          flex: 0 0 91.6666666667%;
+  max-width: 91.6666666667%;
 }
 
 /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .col-12 {
-  flex: 0 0 100%;
+  -webkit-box-flex: 0;
+          flex: 0 0 100%;
   max-width: 100%;
 }
 
 /* line 48, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-first {
-  order: -1;
+  -webkit-box-ordinal-group: 0;
+          order: -1;
 }
 
 /* line 50, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-last {
-  order: 13;
+  -webkit-box-ordinal-group: 14;
+          order: 13;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-0 {
-  order: 0;
+  -webkit-box-ordinal-group: 1;
+          order: 0;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-1 {
-  order: 1;
+  -webkit-box-ordinal-group: 2;
+          order: 1;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-2 {
-  order: 2;
+  -webkit-box-ordinal-group: 3;
+          order: 2;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-3 {
-  order: 3;
+  -webkit-box-ordinal-group: 4;
+          order: 3;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-4 {
-  order: 4;
+  -webkit-box-ordinal-group: 5;
+          order: 4;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-5 {
-  order: 5;
+  -webkit-box-ordinal-group: 6;
+          order: 5;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-6 {
-  order: 6;
+  -webkit-box-ordinal-group: 7;
+          order: 6;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-7 {
-  order: 7;
+  -webkit-box-ordinal-group: 8;
+          order: 7;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-8 {
-  order: 8;
+  -webkit-box-ordinal-group: 9;
+          order: 8;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-9 {
-  order: 9;
+  -webkit-box-ordinal-group: 10;
+          order: 9;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-10 {
-  order: 10;
+  -webkit-box-ordinal-group: 11;
+          order: 10;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-11 {
-  order: 11;
+  -webkit-box-ordinal-group: 12;
+          order: 11;
 }
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .order-12 {
-  order: 12;
+  -webkit-box-ordinal-group: 13;
+          order: 12;
 }
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .offset-1 {
-  margin-left: 8.33333%;
+  margin-left: 8.3333333333%;
 }
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .offset-2 {
-  margin-left: 16.66667%;
+  margin-left: 16.6666666667%;
 }
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
@@ -2535,12 +928,12 @@ pre code {
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .offset-4 {
-  margin-left: 33.33333%;
+  margin-left: 33.3333333333%;
 }
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .offset-5 {
-  margin-left: 41.66667%;
+  margin-left: 41.6666666667%;
 }
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
@@ -2550,12 +943,12 @@ pre code {
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .offset-7 {
-  margin-left: 58.33333%;
+  margin-left: 58.3333333333%;
 }
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .offset-8 {
-  margin-left: 66.66667%;
+  margin-left: 66.6666666667%;
 }
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
@@ -2565,146 +958,175 @@ pre code {
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .offset-10 {
-  margin-left: 83.33333%;
+  margin-left: 83.3333333333%;
 }
 
 /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
 .offset-11 {
-  margin-left: 91.66667%;
+  margin-left: 91.6666666667%;
 }
 
 @media (min-width: 576px) {
   /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm {
     flex-basis: 0;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+            flex-grow: 1;
     max-width: 100%;
   }
   /* line 36, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-auto {
-    flex: 0 0 auto;
+    -webkit-box-flex: 0;
+            flex: 0 0 auto;
     width: auto;
     max-width: 100%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-1 {
-    flex: 0 0 8.33333%;
-    max-width: 8.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 8.3333333333%;
+    max-width: 8.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-2 {
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-3 {
-    flex: 0 0 25%;
+    -webkit-box-flex: 0;
+            flex: 0 0 25%;
     max-width: 25%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-4 {
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-5 {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-6 {
-    flex: 0 0 50%;
+    -webkit-box-flex: 0;
+            flex: 0 0 50%;
     max-width: 50%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-7 {
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-8 {
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 66.6666666667%;
+    max-width: 66.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-9 {
-    flex: 0 0 75%;
+    -webkit-box-flex: 0;
+            flex: 0 0 75%;
     max-width: 75%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-10 {
-    flex: 0 0 83.33333%;
-    max-width: 83.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-11 {
-    flex: 0 0 91.66667%;
-    max-width: 91.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 91.6666666667%;
+    max-width: 91.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-sm-12 {
-    flex: 0 0 100%;
+    -webkit-box-flex: 0;
+            flex: 0 0 100%;
     max-width: 100%;
   }
   /* line 48, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-first {
-    order: -1;
+    -webkit-box-ordinal-group: 0;
+            order: -1;
   }
   /* line 50, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-last {
-    order: 13;
+    -webkit-box-ordinal-group: 14;
+            order: 13;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-0 {
-    order: 0;
+    -webkit-box-ordinal-group: 1;
+            order: 0;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-1 {
-    order: 1;
+    -webkit-box-ordinal-group: 2;
+            order: 1;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-2 {
-    order: 2;
+    -webkit-box-ordinal-group: 3;
+            order: 2;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-3 {
-    order: 3;
+    -webkit-box-ordinal-group: 4;
+            order: 3;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-4 {
-    order: 4;
+    -webkit-box-ordinal-group: 5;
+            order: 4;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-5 {
-    order: 5;
+    -webkit-box-ordinal-group: 6;
+            order: 5;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-6 {
-    order: 6;
+    -webkit-box-ordinal-group: 7;
+            order: 6;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-7 {
-    order: 7;
+    -webkit-box-ordinal-group: 8;
+            order: 7;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-8 {
-    order: 8;
+    -webkit-box-ordinal-group: 9;
+            order: 8;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-9 {
-    order: 9;
+    -webkit-box-ordinal-group: 10;
+            order: 9;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-10 {
-    order: 10;
+    -webkit-box-ordinal-group: 11;
+            order: 10;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-11 {
-    order: 11;
+    -webkit-box-ordinal-group: 12;
+            order: 11;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-sm-12 {
-    order: 12;
+    -webkit-box-ordinal-group: 13;
+            order: 12;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-0 {
@@ -2712,11 +1134,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-1 {
-    margin-left: 8.33333%;
+    margin-left: 8.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-2 {
-    margin-left: 16.66667%;
+    margin-left: 16.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-3 {
@@ -2724,11 +1146,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-4 {
-    margin-left: 33.33333%;
+    margin-left: 33.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-5 {
-    margin-left: 41.66667%;
+    margin-left: 41.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-6 {
@@ -2736,11 +1158,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-7 {
-    margin-left: 58.33333%;
+    margin-left: 58.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-8 {
-    margin-left: 66.66667%;
+    margin-left: 66.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-9 {
@@ -2748,11 +1170,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-10 {
-    margin-left: 83.33333%;
+    margin-left: 83.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-sm-11 {
-    margin-left: 91.66667%;
+    margin-left: 91.6666666667%;
   }
 }
 
@@ -2760,134 +1182,163 @@ pre code {
   /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md {
     flex-basis: 0;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+            flex-grow: 1;
     max-width: 100%;
   }
   /* line 36, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-auto {
-    flex: 0 0 auto;
+    -webkit-box-flex: 0;
+            flex: 0 0 auto;
     width: auto;
     max-width: 100%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-1 {
-    flex: 0 0 8.33333%;
-    max-width: 8.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 8.3333333333%;
+    max-width: 8.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-2 {
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-3 {
-    flex: 0 0 25%;
+    -webkit-box-flex: 0;
+            flex: 0 0 25%;
     max-width: 25%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-4 {
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-5 {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-6 {
-    flex: 0 0 50%;
+    -webkit-box-flex: 0;
+            flex: 0 0 50%;
     max-width: 50%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-7 {
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-8 {
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 66.6666666667%;
+    max-width: 66.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-9 {
-    flex: 0 0 75%;
+    -webkit-box-flex: 0;
+            flex: 0 0 75%;
     max-width: 75%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-10 {
-    flex: 0 0 83.33333%;
-    max-width: 83.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-11 {
-    flex: 0 0 91.66667%;
-    max-width: 91.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 91.6666666667%;
+    max-width: 91.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-md-12 {
-    flex: 0 0 100%;
+    -webkit-box-flex: 0;
+            flex: 0 0 100%;
     max-width: 100%;
   }
   /* line 48, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-first {
-    order: -1;
+    -webkit-box-ordinal-group: 0;
+            order: -1;
   }
   /* line 50, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-last {
-    order: 13;
+    -webkit-box-ordinal-group: 14;
+            order: 13;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-0 {
-    order: 0;
+    -webkit-box-ordinal-group: 1;
+            order: 0;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-1 {
-    order: 1;
+    -webkit-box-ordinal-group: 2;
+            order: 1;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-2 {
-    order: 2;
+    -webkit-box-ordinal-group: 3;
+            order: 2;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-3 {
-    order: 3;
+    -webkit-box-ordinal-group: 4;
+            order: 3;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-4 {
-    order: 4;
+    -webkit-box-ordinal-group: 5;
+            order: 4;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-5 {
-    order: 5;
+    -webkit-box-ordinal-group: 6;
+            order: 5;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-6 {
-    order: 6;
+    -webkit-box-ordinal-group: 7;
+            order: 6;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-7 {
-    order: 7;
+    -webkit-box-ordinal-group: 8;
+            order: 7;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-8 {
-    order: 8;
+    -webkit-box-ordinal-group: 9;
+            order: 8;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-9 {
-    order: 9;
+    -webkit-box-ordinal-group: 10;
+            order: 9;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-10 {
-    order: 10;
+    -webkit-box-ordinal-group: 11;
+            order: 10;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-11 {
-    order: 11;
+    -webkit-box-ordinal-group: 12;
+            order: 11;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-md-12 {
-    order: 12;
+    -webkit-box-ordinal-group: 13;
+            order: 12;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-0 {
@@ -2895,11 +1346,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-1 {
-    margin-left: 8.33333%;
+    margin-left: 8.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-2 {
-    margin-left: 16.66667%;
+    margin-left: 16.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-3 {
@@ -2907,11 +1358,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-4 {
-    margin-left: 33.33333%;
+    margin-left: 33.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-5 {
-    margin-left: 41.66667%;
+    margin-left: 41.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-6 {
@@ -2919,11 +1370,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-7 {
-    margin-left: 58.33333%;
+    margin-left: 58.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-8 {
-    margin-left: 66.66667%;
+    margin-left: 66.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-9 {
@@ -2931,11 +1382,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-10 {
-    margin-left: 83.33333%;
+    margin-left: 83.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-md-11 {
-    margin-left: 91.66667%;
+    margin-left: 91.6666666667%;
   }
 }
 
@@ -2943,134 +1394,163 @@ pre code {
   /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg {
     flex-basis: 0;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+            flex-grow: 1;
     max-width: 100%;
   }
   /* line 36, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-auto {
-    flex: 0 0 auto;
+    -webkit-box-flex: 0;
+            flex: 0 0 auto;
     width: auto;
     max-width: 100%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-1 {
-    flex: 0 0 8.33333%;
-    max-width: 8.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 8.3333333333%;
+    max-width: 8.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-2 {
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-3 {
-    flex: 0 0 25%;
+    -webkit-box-flex: 0;
+            flex: 0 0 25%;
     max-width: 25%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-4 {
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-5 {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-6 {
-    flex: 0 0 50%;
+    -webkit-box-flex: 0;
+            flex: 0 0 50%;
     max-width: 50%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-7 {
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-8 {
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 66.6666666667%;
+    max-width: 66.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-9 {
-    flex: 0 0 75%;
+    -webkit-box-flex: 0;
+            flex: 0 0 75%;
     max-width: 75%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-10 {
-    flex: 0 0 83.33333%;
-    max-width: 83.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-11 {
-    flex: 0 0 91.66667%;
-    max-width: 91.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 91.6666666667%;
+    max-width: 91.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-lg-12 {
-    flex: 0 0 100%;
+    -webkit-box-flex: 0;
+            flex: 0 0 100%;
     max-width: 100%;
   }
   /* line 48, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-first {
-    order: -1;
+    -webkit-box-ordinal-group: 0;
+            order: -1;
   }
   /* line 50, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-last {
-    order: 13;
+    -webkit-box-ordinal-group: 14;
+            order: 13;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-0 {
-    order: 0;
+    -webkit-box-ordinal-group: 1;
+            order: 0;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-1 {
-    order: 1;
+    -webkit-box-ordinal-group: 2;
+            order: 1;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-2 {
-    order: 2;
+    -webkit-box-ordinal-group: 3;
+            order: 2;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-3 {
-    order: 3;
+    -webkit-box-ordinal-group: 4;
+            order: 3;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-4 {
-    order: 4;
+    -webkit-box-ordinal-group: 5;
+            order: 4;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-5 {
-    order: 5;
+    -webkit-box-ordinal-group: 6;
+            order: 5;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-6 {
-    order: 6;
+    -webkit-box-ordinal-group: 7;
+            order: 6;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-7 {
-    order: 7;
+    -webkit-box-ordinal-group: 8;
+            order: 7;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-8 {
-    order: 8;
+    -webkit-box-ordinal-group: 9;
+            order: 8;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-9 {
-    order: 9;
+    -webkit-box-ordinal-group: 10;
+            order: 9;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-10 {
-    order: 10;
+    -webkit-box-ordinal-group: 11;
+            order: 10;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-11 {
-    order: 11;
+    -webkit-box-ordinal-group: 12;
+            order: 11;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-lg-12 {
-    order: 12;
+    -webkit-box-ordinal-group: 13;
+            order: 12;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-0 {
@@ -3078,11 +1558,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-1 {
-    margin-left: 8.33333%;
+    margin-left: 8.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-2 {
-    margin-left: 16.66667%;
+    margin-left: 16.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-3 {
@@ -3090,11 +1570,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-4 {
-    margin-left: 33.33333%;
+    margin-left: 33.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-5 {
-    margin-left: 41.66667%;
+    margin-left: 41.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-6 {
@@ -3102,11 +1582,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-7 {
-    margin-left: 58.33333%;
+    margin-left: 58.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-8 {
-    margin-left: 66.66667%;
+    margin-left: 66.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-9 {
@@ -3114,11 +1594,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-10 {
-    margin-left: 83.33333%;
+    margin-left: 83.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-lg-11 {
-    margin-left: 91.66667%;
+    margin-left: 91.6666666667%;
   }
 }
 
@@ -3126,134 +1606,163 @@ pre code {
   /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl {
     flex-basis: 0;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+            flex-grow: 1;
     max-width: 100%;
   }
   /* line 36, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-auto {
-    flex: 0 0 auto;
+    -webkit-box-flex: 0;
+            flex: 0 0 auto;
     width: auto;
     max-width: 100%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-1 {
-    flex: 0 0 8.33333%;
-    max-width: 8.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 8.3333333333%;
+    max-width: 8.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-2 {
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-3 {
-    flex: 0 0 25%;
+    -webkit-box-flex: 0;
+            flex: 0 0 25%;
     max-width: 25%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-4 {
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-5 {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 41.6666666667%;
+    max-width: 41.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-6 {
-    flex: 0 0 50%;
+    -webkit-box-flex: 0;
+            flex: 0 0 50%;
     max-width: 50%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-7 {
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-8 {
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 66.6666666667%;
+    max-width: 66.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-9 {
-    flex: 0 0 75%;
+    -webkit-box-flex: 0;
+            flex: 0 0 75%;
     max-width: 75%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-10 {
-    flex: 0 0 83.33333%;
-    max-width: 83.33333%;
+    -webkit-box-flex: 0;
+            flex: 0 0 83.3333333333%;
+    max-width: 83.3333333333%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-11 {
-    flex: 0 0 91.66667%;
-    max-width: 91.66667%;
+    -webkit-box-flex: 0;
+            flex: 0 0 91.6666666667%;
+    max-width: 91.6666666667%;
   }
   /* line 43, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .col-xl-12 {
-    flex: 0 0 100%;
+    -webkit-box-flex: 0;
+            flex: 0 0 100%;
     max-width: 100%;
   }
   /* line 48, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-first {
-    order: -1;
+    -webkit-box-ordinal-group: 0;
+            order: -1;
   }
   /* line 50, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-last {
-    order: 13;
+    -webkit-box-ordinal-group: 14;
+            order: 13;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-0 {
-    order: 0;
+    -webkit-box-ordinal-group: 1;
+            order: 0;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-1 {
-    order: 1;
+    -webkit-box-ordinal-group: 2;
+            order: 1;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-2 {
-    order: 2;
+    -webkit-box-ordinal-group: 3;
+            order: 2;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-3 {
-    order: 3;
+    -webkit-box-ordinal-group: 4;
+            order: 3;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-4 {
-    order: 4;
+    -webkit-box-ordinal-group: 5;
+            order: 4;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-5 {
-    order: 5;
+    -webkit-box-ordinal-group: 6;
+            order: 5;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-6 {
-    order: 6;
+    -webkit-box-ordinal-group: 7;
+            order: 6;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-7 {
-    order: 7;
+    -webkit-box-ordinal-group: 8;
+            order: 7;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-8 {
-    order: 8;
+    -webkit-box-ordinal-group: 9;
+            order: 8;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-9 {
-    order: 9;
+    -webkit-box-ordinal-group: 10;
+            order: 9;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-10 {
-    order: 10;
+    -webkit-box-ordinal-group: 11;
+            order: 10;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-11 {
-    order: 11;
+    -webkit-box-ordinal-group: 12;
+            order: 11;
   }
   /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .order-xl-12 {
-    order: 12;
+    -webkit-box-ordinal-group: 13;
+            order: 12;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-0 {
@@ -3261,11 +1770,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-1 {
-    margin-left: 8.33333%;
+    margin-left: 8.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-2 {
-    margin-left: 16.66667%;
+    margin-left: 16.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-3 {
@@ -3273,11 +1782,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-4 {
-    margin-left: 33.33333%;
+    margin-left: 33.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-5 {
-    margin-left: 41.66667%;
+    margin-left: 41.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-6 {
@@ -3285,11 +1794,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-7 {
-    margin-left: 58.33333%;
+    margin-left: 58.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-8 {
-    margin-left: 66.66667%;
+    margin-left: 66.6666666667%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-9 {
@@ -3297,11 +1806,11 @@ pre code {
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-10 {
-    margin-left: 83.33333%;
+    margin-left: 83.3333333333%;
   }
   /* line 59, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_grid-framework.scss */
   .offset-xl-11 {
-    margin-left: 91.66667%;
+    margin-left: 91.6666666667%;
   }
 }
 
@@ -3725,12 +2234,14 @@ pre code {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
   /* line 7, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
   .form-control {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -3752,6 +2263,10 @@ pre code {
 
 /* line 37, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
 .form-control::-webkit-input-placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+.form-control::-moz-placeholder {
   color: #6c757d;
   opacity: 1;
 }
@@ -3873,6 +2388,7 @@ textarea.form-control {
 
 /* line 184, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
 .form-row {
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
   margin-right: -5px;
@@ -3912,8 +2428,10 @@ textarea.form-control {
 
 /* line 222, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
 .form-check-inline {
+  display: -webkit-inline-box;
   display: inline-flex;
-  align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
   padding-left: 0;
   margin-right: 0.75rem;
 }
@@ -4216,9 +2734,13 @@ textarea.form-control {
 
 /* line 258, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
 .form-inline {
+  display: -webkit-box;
   display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 /* line 266, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
@@ -4229,17 +2751,25 @@ textarea.form-control {
 @media (min-width: 576px) {
   /* line 272, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
   .form-inline label {
+    display: -webkit-box;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
     margin-bottom: 0;
   }
   /* line 280, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
   .form-inline .form-group {
+    display: -webkit-box;
     display: flex;
-    flex: 0 0 auto;
-    flex-flow: row wrap;
-    align-items: center;
+    -webkit-box-flex: 0;
+            flex: 0 0 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-flow: row wrap;
+    -webkit-box-align: center;
+            align-items: center;
     margin-bottom: 0;
   }
   /* line 289, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
@@ -4259,9 +2789,12 @@ textarea.form-control {
   }
   /* line 307, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
   .form-inline .form-check {
+    display: -webkit-box;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
     width: auto;
     padding-left: 0;
   }
@@ -4275,8 +2808,10 @@ textarea.form-control {
   }
   /* line 322, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
   .form-inline .custom-control {
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
   }
   /* line 326, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_forms.scss */
   .form-inline .custom-control-label {
@@ -4301,12 +2836,14 @@ textarea.form-control {
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
   /* line 7, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_buttons.scss */
   .btn {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -5019,12 +3556,14 @@ input[type="button"].btn-block {
 
 /* line 1, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_transitions.scss */
 .fade {
+  -webkit-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
 }
 
 @media (prefers-reduced-motion: reduce) {
   /* line 1, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_transitions.scss */
   .fade {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -5044,12 +3583,14 @@ input[type="button"].btn-block {
   position: relative;
   height: 0;
   overflow: hidden;
+  -webkit-transition: height 0.35s ease;
   transition: height 0.35s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
   /* line 15, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_transitions.scss */
   .collapsing {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -5343,6 +3884,7 @@ input[type="button"].btn-block {
 .btn-group,
 .btn-group-vertical {
   position: relative;
+  display: -webkit-inline-box;
   display: inline-flex;
   vertical-align: middle;
 }
@@ -5351,7 +3893,8 @@ input[type="button"].btn-block {
 .btn-group > .btn,
 .btn-group-vertical > .btn {
   position: relative;
-  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
 }
 
 /* line 13, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/mixins/_hover.scss */
@@ -5370,9 +3913,11 @@ input[type="button"].btn-block {
 
 /* line 28, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_button-group.scss */
 .btn-toolbar {
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
 }
 
 /* line 33, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_button-group.scss */
@@ -5432,9 +3977,13 @@ input[type="button"].btn-block {
 
 /* line 111, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_button-group.scss */
 .btn-group-vertical {
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 
 /* line 116, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_button-group.scss */
@@ -5482,9 +4031,11 @@ input[type="button"].btn-block {
 /* line 7, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_input-group.scss */
 .input-group {
   position: relative;
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch;
+  -webkit-box-align: stretch;
+          align-items: stretch;
   width: 100%;
 }
 
@@ -5494,7 +4045,8 @@ input[type="button"].btn-block {
 .input-group > .custom-select,
 .input-group > .custom-file {
   position: relative;
-  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
   width: 1%;
   margin-bottom: 0;
 }
@@ -5543,8 +4095,10 @@ input[type="button"].btn-block {
 
 /* line 52, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_input-group.scss */
 .input-group > .custom-file {
+  display: -webkit-box;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 /* line 56, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_input-group.scss */
@@ -5563,6 +4117,7 @@ input[type="button"].btn-block {
 /* line 69, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_input-group.scss */
 .input-group-prepend,
 .input-group-append {
+  display: -webkit-box;
   display: flex;
 }
 
@@ -5603,8 +4158,10 @@ input[type="button"].btn-block {
 
 /* line 102, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_input-group.scss */
 .input-group-text {
+  display: -webkit-box;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
   padding: 0.375rem 0.75rem;
   margin-bottom: 0;
   font-size: 1rem;
@@ -5700,6 +4257,7 @@ input[type="button"].btn-block {
 
 /* line 17, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_custom-forms.scss */
 .custom-control-inline {
+  display: -webkit-inline-box;
   display: inline-flex;
   margin-right: 1rem;
 }
@@ -5845,6 +4403,7 @@ input[type="button"].btn-block {
   height: calc(1rem - 4px);
   background-color: #adb5bd;
   border-radius: 0.5rem;
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
   transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
@@ -5853,6 +4412,7 @@ input[type="button"].btn-block {
 @media (prefers-reduced-motion: reduce) {
   /* line 179, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_custom-forms.scss */
   .custom-switch .custom-control-label::after {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -6057,6 +4617,7 @@ input[type="button"].btn-block {
   background-color: #007bff;
   border: 0;
   border-radius: 1rem;
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
           appearance: none;
@@ -6065,6 +4626,7 @@ input[type="button"].btn-block {
 @media (prefers-reduced-motion: reduce) {
   /* line 387, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_custom-forms.scss */
   .custom-range::-webkit-slider-thumb {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -6092,6 +4654,7 @@ input[type="button"].btn-block {
   background-color: #007bff;
   border: 0;
   border-radius: 1rem;
+  -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -moz-appearance: none;
        appearance: none;
@@ -6100,6 +4663,7 @@ input[type="button"].btn-block {
 @media (prefers-reduced-motion: reduce) {
   /* line 414, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_custom-forms.scss */
   .custom-range::-moz-range-thumb {
+    -moz-transition: none;
     transition: none;
   }
 }
@@ -6130,6 +4694,7 @@ input[type="button"].btn-block {
   background-color: #007bff;
   border: 0;
   border-radius: 1rem;
+  -ms-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
 }
@@ -6137,6 +4702,7 @@ input[type="button"].btn-block {
 @media (prefers-reduced-motion: reduce) {
   /* line 440, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_custom-forms.scss */
   .custom-range::-ms-thumb {
+    -ms-transition: none;
     transition: none;
   }
 }
@@ -6199,6 +4765,7 @@ input[type="button"].btn-block {
 .custom-control-label::before,
 .custom-file-label,
 .custom-select {
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -6207,12 +4774,14 @@ input[type="button"].btn-block {
   .custom-control-label::before,
   .custom-file-label,
   .custom-select {
+    -webkit-transition: none;
     transition: none;
   }
 }
 
 /* line 6, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_nav.scss */
 .nav {
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -6296,14 +4865,16 @@ input[type="button"].btn-block {
 
 /* line 94, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_nav.scss */
 .nav-fill .nav-item {
-  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
   text-align: center;
 }
 
 /* line 101, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_nav.scss */
 .nav-justified .nav-item {
   flex-basis: 0;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
   text-align: center;
 }
 
@@ -6320,20 +4891,26 @@ input[type="button"].btn-block {
 /* line 18, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar {
   position: relative;
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
   padding: 0.5rem 1rem;
 }
 
 /* line 28, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar > .container,
 .navbar > .container-fluid {
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
 }
 
 /* line 42, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
@@ -6354,8 +4931,11 @@ input[type="button"].btn-block {
 
 /* line 61, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-nav {
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -6383,8 +4963,10 @@ input[type="button"].btn-block {
 /* line 99, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-collapse {
   flex-basis: 100%;
-  flex-grow: 1;
-  align-items: center;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 /* line 108, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
@@ -6425,12 +5007,17 @@ input[type="button"].btn-block {
 @media (min-width: 576px) {
   /* line 140, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-sm {
-    flex-flow: row nowrap;
-    justify-content: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-flow: row nowrap;
+    -webkit-box-pack: start;
+            justify-content: flex-start;
   }
   /* line 153, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-sm .navbar-nav {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
   }
   /* line 156, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-sm .navbar-nav .dropdown-menu {
@@ -6448,6 +5035,7 @@ input[type="button"].btn-block {
   }
   /* line 172, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-sm .navbar-collapse {
+    display: -webkit-box !important;
     display: flex !important;
     flex-basis: auto;
   }
@@ -6469,12 +5057,17 @@ input[type="button"].btn-block {
 @media (min-width: 768px) {
   /* line 140, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-md {
-    flex-flow: row nowrap;
-    justify-content: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-flow: row nowrap;
+    -webkit-box-pack: start;
+            justify-content: flex-start;
   }
   /* line 153, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-md .navbar-nav {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
   }
   /* line 156, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-md .navbar-nav .dropdown-menu {
@@ -6492,6 +5085,7 @@ input[type="button"].btn-block {
   }
   /* line 172, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-md .navbar-collapse {
+    display: -webkit-box !important;
     display: flex !important;
     flex-basis: auto;
   }
@@ -6513,12 +5107,17 @@ input[type="button"].btn-block {
 @media (min-width: 992px) {
   /* line 140, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-lg {
-    flex-flow: row nowrap;
-    justify-content: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-flow: row nowrap;
+    -webkit-box-pack: start;
+            justify-content: flex-start;
   }
   /* line 153, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-lg .navbar-nav {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
   }
   /* line 156, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-lg .navbar-nav .dropdown-menu {
@@ -6536,6 +5135,7 @@ input[type="button"].btn-block {
   }
   /* line 172, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-lg .navbar-collapse {
+    display: -webkit-box !important;
     display: flex !important;
     flex-basis: auto;
   }
@@ -6557,12 +5157,17 @@ input[type="button"].btn-block {
 @media (min-width: 1200px) {
   /* line 140, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-xl {
-    flex-flow: row nowrap;
-    justify-content: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-flow: row nowrap;
+    -webkit-box-pack: start;
+            justify-content: flex-start;
   }
   /* line 153, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-xl .navbar-nav {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
   }
   /* line 156, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-xl .navbar-nav .dropdown-menu {
@@ -6580,6 +5185,7 @@ input[type="button"].btn-block {
   }
   /* line 172, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar-expand-xl .navbar-collapse {
+    display: -webkit-box !important;
     display: flex !important;
     flex-basis: auto;
   }
@@ -6591,8 +5197,11 @@ input[type="button"].btn-block {
 
 /* line 140, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-expand {
-  flex-flow: row nowrap;
-  justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
 }
 
 /* line 142, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
@@ -6604,7 +5213,9 @@ input[type="button"].btn-block {
 
 /* line 153, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-expand .navbar-nav {
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
 }
 
 /* line 156, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
@@ -6626,6 +5237,7 @@ input[type="button"].btn-block {
 
 /* line 172, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_navbar.scss */
 .navbar-expand .navbar-collapse {
+  display: -webkit-box !important;
   display: flex !important;
   flex-basis: auto;
 }
@@ -6756,8 +5368,11 @@ input[type="button"].btn-block {
 /* line 5, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
 .card {
   position: relative;
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
   background-color: #fff;
@@ -6786,7 +5401,8 @@ input[type="button"].btn-block {
 
 /* line 34, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
 .card-body {
-  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
   padding: 1.25rem;
 }
 
@@ -6892,8 +5508,11 @@ input[type="button"].btn-block {
 
 /* line 143, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
 .card-deck {
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
 }
 
 /* line 147, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
@@ -6904,15 +5523,21 @@ input[type="button"].btn-block {
 @media (min-width: 576px) {
   /* line 143, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
   .card-deck {
-    flex-flow: row wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-flow: row wrap;
     margin-right: -15px;
     margin-left: -15px;
   }
   /* line 156, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
   .card-deck .card {
+    display: -webkit-box;
     display: flex;
-    flex: 1 0 0%;
-    flex-direction: column;
+    -webkit-box-flex: 1;
+            flex: 1 0 0%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
     margin-right: 15px;
     margin-bottom: 0;
     margin-left: 15px;
@@ -6921,8 +5546,11 @@ input[type="button"].btn-block {
 
 /* line 173, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
 .card-group {
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
 }
 
 /* line 179, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
@@ -6933,11 +5561,14 @@ input[type="button"].btn-block {
 @media (min-width: 576px) {
   /* line 173, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
   .card-group {
-    flex-flow: row wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-flow: row wrap;
   }
   /* line 187, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
   .card-group > .card {
-    flex: 1 0 0%;
+    -webkit-box-flex: 1;
+            flex: 1 0 0%;
     margin-bottom: 0;
   }
   /* line 192, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
@@ -6986,8 +5617,10 @@ input[type="button"].btn-block {
   /* line 238, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_card.scss */
   .card-columns {
     -webkit-column-count: 3;
+       -moz-column-count: 3;
             column-count: 3;
     -webkit-column-gap: 1.25rem;
+       -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
     orphans: 1;
     widows: 1;
@@ -7035,6 +5668,7 @@ input[type="button"].btn-block {
 
 /* line 1, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_breadcrumb.scss */
 .breadcrumb {
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
   padding: 0.75rem 1rem;
@@ -7074,6 +5708,7 @@ input[type="button"].btn-block {
 
 /* line 1, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_pagination.scss */
 .pagination {
+  display: -webkit-box;
   display: flex;
   padding-left: 0;
   list-style: none;
@@ -7187,12 +5822,14 @@ input[type="button"].btn-block {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.25rem;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
   /* line 6, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_badge.scss */
   .badge {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -7575,6 +6212,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 /* line 9, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_progress.scss */
 .progress {
+  display: -webkit-box;
   display: flex;
   height: 1rem;
   overflow: hidden;
@@ -7585,19 +6223,25 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 /* line 19, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_progress.scss */
 .progress-bar {
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
   color: #fff;
   text-align: center;
   white-space: nowrap;
   background-color: #007bff;
+  -webkit-transition: width 0.6s ease;
   transition: width 0.6s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
   /* line 19, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_progress.scss */
   .progress-bar {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -7624,19 +6268,25 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 /* line 1, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_media.scss */
 .media {
+  display: -webkit-box;
   display: flex;
-  align-items: flex-start;
+  -webkit-box-align: start;
+          align-items: flex-start;
 }
 
 /* line 6, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_media.scss */
 .media-body {
-  flex: 1;
+  -webkit-box-flex: 1;
+          flex: 1;
 }
 
 /* line 5, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
 .list-group {
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
   padding-left: 0;
   margin-bottom: 0;
 }
@@ -7702,7 +6352,9 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 /* line 88, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
 .list-group-horizontal {
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
 }
 
 /* line 91, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
@@ -7729,7 +6381,9 @@ a.badge-dark:focus, a.badge-dark.focus {
 @media (min-width: 576px) {
   /* line 88, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
   .list-group-horizontal-sm {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
   }
   /* line 91, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
   .list-group-horizontal-sm .list-group-item {
@@ -7754,7 +6408,9 @@ a.badge-dark:focus, a.badge-dark.focus {
 @media (min-width: 768px) {
   /* line 88, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
   .list-group-horizontal-md {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
   }
   /* line 91, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
   .list-group-horizontal-md .list-group-item {
@@ -7779,7 +6435,9 @@ a.badge-dark:focus, a.badge-dark.focus {
 @media (min-width: 992px) {
   /* line 88, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
   .list-group-horizontal-lg {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
   }
   /* line 91, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
   .list-group-horizontal-lg .list-group-item {
@@ -7804,7 +6462,9 @@ a.badge-dark:focus, a.badge-dark.focus {
 @media (min-width: 1200px) {
   /* line 88, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
   .list-group-horizontal-xl {
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
   }
   /* line 91, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_list-group.scss */
   .list-group-horizontal-xl .list-group-item {
@@ -8076,8 +6736,10 @@ a.close.disabled {
 
 /* line 32, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_toasts.scss */
 .toast-header {
+  display: -webkit-box;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
   padding: 0.25rem 0.75rem;
   color: #6c757d;
   background-color: rgba(255, 255, 255, 0.85);
@@ -8124,6 +6786,7 @@ a.close.disabled {
 
 /* line 44, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_modal.scss */
 .modal.fade .modal-dialog {
+  -webkit-transition: -webkit-transform 0.3s ease-out;
   transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
   transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
@@ -8134,6 +6797,7 @@ a.close.disabled {
 @media (prefers-reduced-motion: reduce) {
   /* line 44, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_modal.scss */
   .modal.fade .modal-dialog {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -8146,6 +6810,7 @@ a.close.disabled {
 
 /* line 53, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_modal.scss */
 .modal-dialog-scrollable {
+  display: -webkit-box;
   display: flex;
   max-height: calc(100% - 1rem);
 }
@@ -8169,8 +6834,10 @@ a.close.disabled {
 
 /* line 72, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_modal.scss */
 .modal-dialog-centered {
+  display: -webkit-box;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+          align-items: center;
   min-height: calc(100% - 1rem);
 }
 
@@ -8183,8 +6850,11 @@ a.close.disabled {
 
 /* line 85, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_modal.scss */
 .modal-dialog-centered.modal-dialog-scrollable {
-  flex-direction: column;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
   height: 100%;
 }
 
@@ -8201,8 +6871,11 @@ a.close.disabled {
 /* line 101, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_modal.scss */
 .modal-content {
   position: relative;
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
   width: 100%;
   pointer-events: auto;
   background-color: #fff;
@@ -8235,9 +6908,12 @@ a.close.disabled {
 
 /* line 135, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_modal.scss */
 .modal-header {
+  display: -webkit-box;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  -webkit-box-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
   padding: 1rem 1rem;
   border-bottom: 1px solid #dee2e6;
   border-top-left-radius: 0.3rem;
@@ -8259,15 +6935,19 @@ a.close.disabled {
 /* line 158, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_modal.scss */
 .modal-body {
   position: relative;
-  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
   padding: 1rem;
 }
 
 /* line 167, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_modal.scss */
 .modal-footer {
+  display: -webkit-box;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
   padding: 1rem;
   border-top: 1px solid #dee2e6;
   border-bottom-right-radius: 0.3rem;
@@ -8681,6 +7361,7 @@ a.close.disabled {
   margin-right: -100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.6s ease-in-out;
   transition: -webkit-transform 0.6s ease-in-out;
   transition: transform 0.6s ease-in-out;
   transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
@@ -8689,6 +7370,7 @@ a.close.disabled {
 @media (prefers-reduced-motion: reduce) {
   /* line 29, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_carousel.scss */
   .carousel-item {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -8717,6 +7399,7 @@ a.close.disabled {
 /* line 61, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_carousel.scss */
 .carousel-fade .carousel-item {
   opacity: 0;
+  -webkit-transition-property: opacity;
   transition-property: opacity;
   -webkit-transform: none;
           transform: none;
@@ -8735,6 +7418,7 @@ a.close.disabled {
 .carousel-fade .active.carousel-item-right {
   z-index: 0;
   opacity: 0;
+  -webkit-transition: 0s 0.6s opacity;
   transition: 0s 0.6s opacity;
 }
 
@@ -8742,6 +7426,7 @@ a.close.disabled {
   /* line 74, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_carousel.scss */
   .carousel-fade .active.carousel-item-left,
   .carousel-fade .active.carousel-item-right {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -8753,13 +7438,17 @@ a.close.disabled {
   top: 0;
   bottom: 0;
   z-index: 1;
+  display: -webkit-box;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
   width: 15%;
   color: #fff;
   text-align: center;
   opacity: 0.5;
+  -webkit-transition: opacity 0.15s ease;
   transition: opacity 0.15s ease;
 }
 
@@ -8767,6 +7456,7 @@ a.close.disabled {
   /* line 87, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_carousel.scss */
   .carousel-control-prev,
   .carousel-control-next {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -8817,8 +7507,10 @@ a.close.disabled {
   bottom: 0;
   left: 0;
   z-index: 15;
+  display: -webkit-box;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+          justify-content: center;
   padding-left: 0;
   margin-right: 15%;
   margin-left: 15%;
@@ -8828,7 +7520,8 @@ a.close.disabled {
 /* line 159, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_carousel.scss */
 .carousel-indicators li {
   box-sizing: content-box;
-  flex: 0 1 auto;
+  -webkit-box-flex: 0;
+          flex: 0 1 auto;
   width: 30px;
   height: 3px;
   margin-right: 3px;
@@ -8840,12 +7533,14 @@ a.close.disabled {
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   opacity: .5;
+  -webkit-transition: opacity 0.6s ease;
   transition: opacity 0.6s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
   /* line 159, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/_carousel.scss */
   .carousel-indicators li {
+    -webkit-transition: none;
     transition: none;
   }
 }
@@ -9270,11 +7965,13 @@ button.bg-dark:focus {
 
 /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
 .d-flex {
+  display: -webkit-box !important;
   display: flex !important;
 }
 
 /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
 .d-inline-flex {
+  display: -webkit-inline-box !important;
   display: inline-flex !important;
 }
 
@@ -9309,10 +8006,12 @@ button.bg-dark:focus {
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-sm-flex {
+    display: -webkit-box !important;
     display: flex !important;
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-sm-inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important;
   }
 }
@@ -9348,10 +8047,12 @@ button.bg-dark:focus {
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-md-flex {
+    display: -webkit-box !important;
     display: flex !important;
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-md-inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important;
   }
 }
@@ -9387,10 +8088,12 @@ button.bg-dark:focus {
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-lg-flex {
+    display: -webkit-box !important;
     display: flex !important;
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-lg-inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important;
   }
 }
@@ -9426,10 +8129,12 @@ button.bg-dark:focus {
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-xl-flex {
+    display: -webkit-box !important;
     display: flex !important;
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-xl-inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important;
   }
 }
@@ -9465,10 +8170,12 @@ button.bg-dark:focus {
   }
   /* line 24, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-print-flex {
+    display: -webkit-box !important;
     display: flex !important;
   }
   /* line 24, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_display.scss */
   .d-print-inline-flex {
+    display: -webkit-inline-box !important;
     display: inline-flex !important;
   }
 }
@@ -9505,7 +8212,7 @@ button.bg-dark:focus {
 
 /* line 35, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_embed.scss */
 .embed-responsive-21by9::before {
-  padding-top: 42.85714%;
+  padding-top: 42.8571428571%;
 }
 
 /* line 35, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_embed.scss */
@@ -9525,22 +8232,30 @@ button.bg-dark:focus {
 
 /* line 11, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .flex-row {
-  flex-direction: row !important;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+          flex-direction: row !important;
 }
 
 /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .flex-column {
-  flex-direction: column !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+          flex-direction: column !important;
 }
 
 /* line 13, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .flex-row-reverse {
-  flex-direction: row-reverse !important;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: reverse !important;
+          flex-direction: row-reverse !important;
 }
 
 /* line 14, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .flex-column-reverse {
-  flex-direction: column-reverse !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: reverse !important;
+          flex-direction: column-reverse !important;
 }
 
 /* line 16, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
@@ -9560,17 +8275,20 @@ button.bg-dark:focus {
 
 /* line 19, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .flex-fill {
-  flex: 1 1 auto !important;
+  -webkit-box-flex: 1 !important;
+          flex: 1 1 auto !important;
 }
 
 /* line 20, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .flex-grow-0 {
-  flex-grow: 0 !important;
+  -webkit-box-flex: 0 !important;
+          flex-grow: 0 !important;
 }
 
 /* line 21, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .flex-grow-1 {
-  flex-grow: 1 !important;
+  -webkit-box-flex: 1 !important;
+          flex-grow: 1 !important;
 }
 
 /* line 22, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
@@ -9585,22 +8303,26 @@ button.bg-dark:focus {
 
 /* line 25, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .justify-content-start {
-  justify-content: flex-start !important;
+  -webkit-box-pack: start !important;
+          justify-content: flex-start !important;
 }
 
 /* line 26, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .justify-content-end {
-  justify-content: flex-end !important;
+  -webkit-box-pack: end !important;
+          justify-content: flex-end !important;
 }
 
 /* line 27, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .justify-content-center {
-  justify-content: center !important;
+  -webkit-box-pack: center !important;
+          justify-content: center !important;
 }
 
 /* line 28, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .justify-content-between {
-  justify-content: space-between !important;
+  -webkit-box-pack: justify !important;
+          justify-content: space-between !important;
 }
 
 /* line 29, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
@@ -9610,27 +8332,32 @@ button.bg-dark:focus {
 
 /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .align-items-start {
-  align-items: flex-start !important;
+  -webkit-box-align: start !important;
+          align-items: flex-start !important;
 }
 
 /* line 32, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .align-items-end {
-  align-items: flex-end !important;
+  -webkit-box-align: end !important;
+          align-items: flex-end !important;
 }
 
 /* line 33, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .align-items-center {
-  align-items: center !important;
+  -webkit-box-align: center !important;
+          align-items: center !important;
 }
 
 /* line 34, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .align-items-baseline {
-  align-items: baseline !important;
+  -webkit-box-align: baseline !important;
+          align-items: baseline !important;
 }
 
 /* line 35, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
 .align-items-stretch {
-  align-items: stretch !important;
+  -webkit-box-align: stretch !important;
+          align-items: stretch !important;
 }
 
 /* line 37, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
@@ -9696,19 +8423,27 @@ button.bg-dark:focus {
 @media (min-width: 576px) {
   /* line 11, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-sm-row {
-    flex-direction: row !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important;
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-sm-column {
-    flex-direction: column !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important;
   }
   /* line 13, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-sm-row-reverse {
-    flex-direction: row-reverse !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important;
   }
   /* line 14, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-sm-column-reverse {
-    flex-direction: column-reverse !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important;
   }
   /* line 16, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-sm-wrap {
@@ -9724,15 +8459,18 @@ button.bg-dark:focus {
   }
   /* line 19, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-sm-fill {
-    flex: 1 1 auto !important;
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important;
   }
   /* line 20, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-sm-grow-0 {
-    flex-grow: 0 !important;
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important;
   }
   /* line 21, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-sm-grow-1 {
-    flex-grow: 1 !important;
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important;
   }
   /* line 22, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-sm-shrink-0 {
@@ -9744,19 +8482,23 @@ button.bg-dark:focus {
   }
   /* line 25, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-sm-start {
-    justify-content: flex-start !important;
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important;
   }
   /* line 26, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-sm-end {
-    justify-content: flex-end !important;
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important;
   }
   /* line 27, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-sm-center {
-    justify-content: center !important;
+    -webkit-box-pack: center !important;
+            justify-content: center !important;
   }
   /* line 28, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-sm-between {
-    justify-content: space-between !important;
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important;
   }
   /* line 29, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-sm-around {
@@ -9764,23 +8506,28 @@ button.bg-dark:focus {
   }
   /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-sm-start {
-    align-items: flex-start !important;
+    -webkit-box-align: start !important;
+            align-items: flex-start !important;
   }
   /* line 32, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-sm-end {
-    align-items: flex-end !important;
+    -webkit-box-align: end !important;
+            align-items: flex-end !important;
   }
   /* line 33, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-sm-center {
-    align-items: center !important;
+    -webkit-box-align: center !important;
+            align-items: center !important;
   }
   /* line 34, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-sm-baseline {
-    align-items: baseline !important;
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important;
   }
   /* line 35, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-sm-stretch {
-    align-items: stretch !important;
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important;
   }
   /* line 37, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-content-sm-start {
@@ -9835,19 +8582,27 @@ button.bg-dark:focus {
 @media (min-width: 768px) {
   /* line 11, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-md-row {
-    flex-direction: row !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important;
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-md-column {
-    flex-direction: column !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important;
   }
   /* line 13, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-md-row-reverse {
-    flex-direction: row-reverse !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important;
   }
   /* line 14, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-md-column-reverse {
-    flex-direction: column-reverse !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important;
   }
   /* line 16, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-md-wrap {
@@ -9863,15 +8618,18 @@ button.bg-dark:focus {
   }
   /* line 19, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-md-fill {
-    flex: 1 1 auto !important;
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important;
   }
   /* line 20, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-md-grow-0 {
-    flex-grow: 0 !important;
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important;
   }
   /* line 21, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-md-grow-1 {
-    flex-grow: 1 !important;
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important;
   }
   /* line 22, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-md-shrink-0 {
@@ -9883,19 +8641,23 @@ button.bg-dark:focus {
   }
   /* line 25, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-md-start {
-    justify-content: flex-start !important;
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important;
   }
   /* line 26, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-md-end {
-    justify-content: flex-end !important;
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important;
   }
   /* line 27, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-md-center {
-    justify-content: center !important;
+    -webkit-box-pack: center !important;
+            justify-content: center !important;
   }
   /* line 28, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-md-between {
-    justify-content: space-between !important;
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important;
   }
   /* line 29, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-md-around {
@@ -9903,23 +8665,28 @@ button.bg-dark:focus {
   }
   /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-md-start {
-    align-items: flex-start !important;
+    -webkit-box-align: start !important;
+            align-items: flex-start !important;
   }
   /* line 32, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-md-end {
-    align-items: flex-end !important;
+    -webkit-box-align: end !important;
+            align-items: flex-end !important;
   }
   /* line 33, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-md-center {
-    align-items: center !important;
+    -webkit-box-align: center !important;
+            align-items: center !important;
   }
   /* line 34, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-md-baseline {
-    align-items: baseline !important;
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important;
   }
   /* line 35, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-md-stretch {
-    align-items: stretch !important;
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important;
   }
   /* line 37, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-content-md-start {
@@ -9974,19 +8741,27 @@ button.bg-dark:focus {
 @media (min-width: 992px) {
   /* line 11, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-lg-row {
-    flex-direction: row !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important;
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-lg-column {
-    flex-direction: column !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important;
   }
   /* line 13, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-lg-row-reverse {
-    flex-direction: row-reverse !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important;
   }
   /* line 14, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-lg-column-reverse {
-    flex-direction: column-reverse !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important;
   }
   /* line 16, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-lg-wrap {
@@ -10002,15 +8777,18 @@ button.bg-dark:focus {
   }
   /* line 19, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-lg-fill {
-    flex: 1 1 auto !important;
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important;
   }
   /* line 20, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-lg-grow-0 {
-    flex-grow: 0 !important;
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important;
   }
   /* line 21, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-lg-grow-1 {
-    flex-grow: 1 !important;
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important;
   }
   /* line 22, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-lg-shrink-0 {
@@ -10022,19 +8800,23 @@ button.bg-dark:focus {
   }
   /* line 25, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-lg-start {
-    justify-content: flex-start !important;
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important;
   }
   /* line 26, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-lg-end {
-    justify-content: flex-end !important;
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important;
   }
   /* line 27, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-lg-center {
-    justify-content: center !important;
+    -webkit-box-pack: center !important;
+            justify-content: center !important;
   }
   /* line 28, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-lg-between {
-    justify-content: space-between !important;
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important;
   }
   /* line 29, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-lg-around {
@@ -10042,23 +8824,28 @@ button.bg-dark:focus {
   }
   /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-lg-start {
-    align-items: flex-start !important;
+    -webkit-box-align: start !important;
+            align-items: flex-start !important;
   }
   /* line 32, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-lg-end {
-    align-items: flex-end !important;
+    -webkit-box-align: end !important;
+            align-items: flex-end !important;
   }
   /* line 33, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-lg-center {
-    align-items: center !important;
+    -webkit-box-align: center !important;
+            align-items: center !important;
   }
   /* line 34, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-lg-baseline {
-    align-items: baseline !important;
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important;
   }
   /* line 35, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-lg-stretch {
-    align-items: stretch !important;
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important;
   }
   /* line 37, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-content-lg-start {
@@ -10113,19 +8900,27 @@ button.bg-dark:focus {
 @media (min-width: 1200px) {
   /* line 11, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-xl-row {
-    flex-direction: row !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: row !important;
   }
   /* line 12, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-xl-column {
-    flex-direction: column !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+            flex-direction: column !important;
   }
   /* line 13, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-xl-row-reverse {
-    flex-direction: row-reverse !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: row-reverse !important;
   }
   /* line 14, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-xl-column-reverse {
-    flex-direction: column-reverse !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+            flex-direction: column-reverse !important;
   }
   /* line 16, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-xl-wrap {
@@ -10141,15 +8936,18 @@ button.bg-dark:focus {
   }
   /* line 19, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-xl-fill {
-    flex: 1 1 auto !important;
+    -webkit-box-flex: 1 !important;
+            flex: 1 1 auto !important;
   }
   /* line 20, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-xl-grow-0 {
-    flex-grow: 0 !important;
+    -webkit-box-flex: 0 !important;
+            flex-grow: 0 !important;
   }
   /* line 21, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-xl-grow-1 {
-    flex-grow: 1 !important;
+    -webkit-box-flex: 1 !important;
+            flex-grow: 1 !important;
   }
   /* line 22, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .flex-xl-shrink-0 {
@@ -10161,19 +8959,23 @@ button.bg-dark:focus {
   }
   /* line 25, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-xl-start {
-    justify-content: flex-start !important;
+    -webkit-box-pack: start !important;
+            justify-content: flex-start !important;
   }
   /* line 26, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-xl-end {
-    justify-content: flex-end !important;
+    -webkit-box-pack: end !important;
+            justify-content: flex-end !important;
   }
   /* line 27, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-xl-center {
-    justify-content: center !important;
+    -webkit-box-pack: center !important;
+            justify-content: center !important;
   }
   /* line 28, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-xl-between {
-    justify-content: space-between !important;
+    -webkit-box-pack: justify !important;
+            justify-content: space-between !important;
   }
   /* line 29, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .justify-content-xl-around {
@@ -10181,23 +8983,28 @@ button.bg-dark:focus {
   }
   /* line 31, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-xl-start {
-    align-items: flex-start !important;
+    -webkit-box-align: start !important;
+            align-items: flex-start !important;
   }
   /* line 32, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-xl-end {
-    align-items: flex-end !important;
+    -webkit-box-align: end !important;
+            align-items: flex-end !important;
   }
   /* line 33, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-xl-center {
-    align-items: center !important;
+    -webkit-box-align: center !important;
+            align-items: center !important;
   }
   /* line 34, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-xl-baseline {
-    align-items: baseline !important;
+    -webkit-box-align: baseline !important;
+            align-items: baseline !important;
   }
   /* line 35, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-items-xl-stretch {
-    align-items: stretch !important;
+    -webkit-box-align: stretch !important;
+            align-items: stretch !important;
   }
   /* line 37, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_flex.scss */
   .align-content-xl-start {
@@ -10520,7 +9327,7 @@ button.bg-dark:focus {
   z-index: 1;
   pointer-events: auto;
   content: "";
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 /* line 11, ../../.rvm/gems/ruby-2.5.1/gems/bootstrap-4.3.1/assets/stylesheets/bootstrap/utilities/_spacing.scss */
@@ -13188,10 +11995,8 @@ body {
   font-size: 15pt;
   color: #382e2e;
   background-color: #eceaea;
-  -webkit-font-variant-ligatures: common-ligatures;
-          font-variant-ligatures: common-ligatures;
+  font-variant-ligatures: common-ligatures;
   -ms-font-feature-settings: "liga", "dlig";
-  -webkit-font-feature-settings: "liga", "dlig";
   -o-font-feature-settings: "liga", "dlig";
   font-feature-settings: "liga", "dlig";
 }
@@ -13300,11 +12105,18 @@ div.byline::after {
 }
 
 /* line 178, app/assets/stylesheets/_base.scss */
+div.error {
+  background: #FFCCCC;
+  border: 1px solid #FF0000;
+  padding: 1em;
+}
+
+/* line 184, app/assets/stylesheets/_base.scss */
 div.version-picker, div.version-summary {
   margin: 1.5em 0;
 }
 
-/* line 182, app/assets/stylesheets/_base.scss */
+/* line 188, app/assets/stylesheets/_base.scss */
 figure {
   text-align: center;
   margin-top: 25px;
@@ -13312,50 +12124,50 @@ figure {
   padding: 5px;
 }
 
-/* line 188, app/assets/stylesheets/_base.scss */
+/* line 194, app/assets/stylesheets/_base.scss */
 figure figcaption {
   margin: 10px;
   font-weight: 700;
 }
 
-/* line 191, app/assets/stylesheets/_base.scss */
+/* line 197, app/assets/stylesheets/_base.scss */
 figure figcaption span.caption-label {
   font-style: italic;
 }
 
-/* line 195, app/assets/stylesheets/_base.scss */
+/* line 201, app/assets/stylesheets/_base.scss */
 figure figcaption.attribution {
   font-size: 10px;
   font-weight: 400;
   color: #705c5c;
 }
 
-/* line 201, app/assets/stylesheets/_base.scss */
+/* line 207, app/assets/stylesheets/_base.scss */
 figure img.project {
   margin: 10px auto;
 }
 
-/* line 205, app/assets/stylesheets/_base.scss */
+/* line 211, app/assets/stylesheets/_base.scss */
 figure img.ios-screenshot {
   max-width: 375px;
   height: auto;
   border: 1px solid #cccccc;
 }
 
-/* line 211, app/assets/stylesheets/_base.scss */
+/* line 217, app/assets/stylesheets/_base.scss */
 figure img.osx-screenshot {
   max-width: 600px;
   border: none;
 }
 
-/* line 216, app/assets/stylesheets/_base.scss */
+/* line 222, app/assets/stylesheets/_base.scss */
 figure img.screenshot {
   max-width: 600px;
   border: 1px solid #382e2e;
   box-shadow: 1px 1px 5px #705c5c;
 }
 
-/* line 223, app/assets/stylesheets/_base.scss */
+/* line 229, app/assets/stylesheets/_base.scss */
 h1 {
   font-size: 250%;
   font-weight: 400;
@@ -13364,85 +12176,90 @@ h1 {
   margin-bottom: 0.75em;
 }
 
-/* line 231, app/assets/stylesheets/_base.scss */
+/* line 237, app/assets/stylesheets/_base.scss */
 h2 {
   font-weight: bold;
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
 
-/* line 237, app/assets/stylesheets/_base.scss */
+/* line 243, app/assets/stylesheets/_base.scss */
 h3 {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-/* line 242, app/assets/stylesheets/_base.scss */
+/* line 248, app/assets/stylesheets/_base.scss */
 hr {
   border-top: 1px solid #cccccc;
 }
 
-/* line 246, app/assets/stylesheets/_base.scss */
+/* line 252, app/assets/stylesheets/_base.scss */
 img.bordered {
   border: 1px solid #cccccc;
 }
 
-/* line 250, app/assets/stylesheets/_base.scss */
+/* line 256, app/assets/stylesheets/_base.scss */
 img.center {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 255, app/assets/stylesheets/_base.scss */
+/* line 261, app/assets/stylesheets/_base.scss */
 img.org-logo {
   width: 200px;
   height: 100px;
   margin: 10px auto;
 }
 
-/* line 261, app/assets/stylesheets/_base.scss */
+/* line 267, app/assets/stylesheets/_base.scss */
 img.portrait {
   margin: 20px auto;
 }
 
-/* line 265, app/assets/stylesheets/_base.scss */
+/* line 271, app/assets/stylesheets/_base.scss */
 p {
   margin-top: 20px;
   margin-bottom: 20px;
   line-height: 1.7em;
 }
 
-/* line 271, app/assets/stylesheets/_base.scss */
+/* line 277, app/assets/stylesheets/_base.scss */
 small {
   color: #705c5c;
 }
 
-/* line 275, app/assets/stylesheets/_base.scss */
+/* line 281, app/assets/stylesheets/_base.scss */
 .strong {
   font-weight: 700;
 }
 
-/* line 279, app/assets/stylesheets/_base.scss */
+/* line 285, app/assets/stylesheets/_base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 283, app/assets/stylesheets/_base.scss */
+/* line 289, app/assets/stylesheets/_base.scss */
 td {
   line-height: 1.7em;
 }
 
-/* line 285, app/assets/stylesheets/_base.scss */
+/* line 291, app/assets/stylesheets/_base.scss */
 td p {
   line-height: 1.7em;
 }
 
-/* line 290, app/assets/stylesheets/_base.scss */
+/* line 296, app/assets/stylesheets/_base.scss */
 .emphasis {
   font-style: italic;
 }
 
-/* line 294, app/assets/stylesheets/_base.scss */
+/* line 300, app/assets/stylesheets/_base.scss */
+.light {
+  font-weight: 300;
+}
+
+/* line 304, app/assets/stylesheets/_base.scss */
 .website-name {
   font-variant: small-caps;
   letter-spacing: 0.02em;
@@ -14380,12 +13197,14 @@ body.pax-west nav.navbar {
 /* line 7, app/assets/stylesheets/_tiles.scss */
 div.pax-aus a.tile {
   background: #db9600;
+  background: -webkit-gradient(linear, left top, left bottom, from(#db9600), to(#d69200));
   background: linear-gradient(#db9600, #d69200);
 }
 
 /* line 11, app/assets/stylesheets/_tiles.scss */
 div.pax-aus a.tile:hover, div.pax-aus a.tile:focus {
   background: #ffb61a;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffb61a), to(#FFAE00));
   background: linear-gradient(#ffb61a, #FFAE00);
   text-decoration: none;
 }
@@ -14422,12 +13241,14 @@ div.pax-aus a.tile img.logo {
 /* line 7, app/assets/stylesheets/_tiles.scss */
 div.pax-dev a.tile {
   background: #008078;
+  background: -webkit-gradient(linear, left top, left bottom, from(#008078), to(#007b74));
   background: linear-gradient(#008078, #007b74);
 }
 
 /* line 11, app/assets/stylesheets/_tiles.scss */
 div.pax-dev a.tile:hover, div.pax-dev a.tile:focus {
   background: #00beb2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00beb2), to(#00A49A));
   background: linear-gradient(#00beb2, #00A49A);
   text-decoration: none;
 }
@@ -14464,12 +13285,14 @@ div.pax-dev a.tile img.logo {
 /* line 7, app/assets/stylesheets/_tiles.scss */
 div.pax-east a.tile {
   background: #bb2126;
+  background: -webkit-gradient(linear, left top, left bottom, from(#bb2126), to(#b72025));
   background: linear-gradient(#bb2126, #b72025);
 }
 
 /* line 11, app/assets/stylesheets/_tiles.scss */
 div.pax-east a.tile:hover, div.pax-east a.tile:focus {
   background: #dd3d42;
+  background: -webkit-gradient(linear, left top, left bottom, from(#dd3d42), to(#D9272D));
   background: linear-gradient(#dd3d42, #D9272D);
   text-decoration: none;
 }
@@ -14506,12 +13329,14 @@ div.pax-east a.tile img.logo {
 /* line 7, app/assets/stylesheets/_tiles.scss */
 div.pax-south a.tile {
   background: #db6500;
+  background: -webkit-gradient(linear, left top, left bottom, from(#db6500), to(#d66300));
   background: linear-gradient(#db6500, #d66300);
 }
 
 /* line 11, app/assets/stylesheets/_tiles.scss */
 div.pax-south a.tile:hover, div.pax-south a.tile:focus {
   background: #ff841a;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ff841a), to(#FF7600));
   background: linear-gradient(#ff841a, #FF7600);
   text-decoration: none;
 }
@@ -14548,12 +13373,14 @@ div.pax-south a.tile img.logo {
 /* line 7, app/assets/stylesheets/_tiles.scss */
 div.pax-unplugged a.tile {
   background: #7a3d82;
+  background: -webkit-gradient(linear, left top, left bottom, from(#7a3d82), to(#773b7e));
   background: linear-gradient(#7a3d82, #773b7e);
 }
 
 /* line 11, app/assets/stylesheets/_tiles.scss */
 div.pax-unplugged a.tile:hover, div.pax-unplugged a.tile:focus {
   background: #a150ab;
+  background: -webkit-gradient(linear, left top, left bottom, from(#a150ab), to(#91489A));
   background: linear-gradient(#a150ab, #91489A);
   text-decoration: none;
 }
@@ -14590,12 +13417,14 @@ div.pax-unplugged a.tile img.logo {
 /* line 7, app/assets/stylesheets/_tiles.scss */
 div.pax-west a.tile {
   background: #006597;
+  background: -webkit-gradient(linear, left top, left bottom, from(#006597), to(#006292));
   background: linear-gradient(#006597, #006292);
 }
 
 /* line 11, app/assets/stylesheets/_tiles.scss */
 div.pax-west a.tile:hover, div.pax-west a.tile:focus {
   background: #008ed5;
+  background: -webkit-gradient(linear, left top, left bottom, from(#008ed5), to(#007DBB));
   background: linear-gradient(#008ed5, #007DBB);
   text-decoration: none;
 }
@@ -14914,6 +13743,7 @@ div.stephenvlog {
   margin-top: 0.1rem;
   margin-bottom: 0.1rem;
   background: #047036;
+  background: -webkit-gradient(linear, left top, left bottom, from(#047036), to(#046c34));
   background: linear-gradient(#047036, #046c34);
   color: #FFFFFF;
   border-radius: 0.5rem;

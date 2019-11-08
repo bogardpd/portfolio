@@ -7,12 +7,9 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  */
-
 .datetimepicker {
 	padding: 4px;
 	margin-top: 1px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
 	border-radius: 4px;
 	direction: ltr;
 }
@@ -145,8 +142,6 @@
 	text-align: center;
 	width: 20px;
 	height: 20px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
 	border-radius: 4px;
 	border: none;
 }
@@ -188,11 +183,7 @@
 .datetimepicker table tr td.today.disabled,
 .datetimepicker table tr td.today.disabled:hover {
 	background-color: #fde19a;
-	background-image: -moz-linear-gradient(top, #fdd49a, #fdf59a);
-	background-image: -ms-linear-gradient(top, #fdd49a, #fdf59a);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdd49a), to(#fdf59a));
-	background-image: -webkit-linear-gradient(top, #fdd49a, #fdf59a);
-	background-image: -o-linear-gradient(top, #fdd49a, #fdf59a);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fdd49a), to(#fdf59a));
 	background-image: linear-gradient(to bottom, #fdd49a, #fdf59a);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd49a', endColorstr='#fdf59a', GradientType=0);
@@ -240,11 +231,7 @@
 .datetimepicker table tr td.active.disabled,
 .datetimepicker table tr td.active.disabled:hover {
 	background-color: #006dcc;
-	background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
-	background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
-	background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0088cc), to(#0044cc));
 	background-image: linear-gradient(to bottom, #0088cc, #0044cc);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
@@ -297,8 +284,6 @@
 	float: left;
 	margin: 1%;
 	cursor: pointer;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
 	border-radius: 4px;
 }
 
@@ -339,11 +324,7 @@
 .datetimepicker table tr td span.active.disabled,
 .datetimepicker table tr td span.active.disabled:hover {
 	background-color: #006dcc;
-	background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
-	background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-	background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
-	background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#0088cc), to(#0044cc));
 	background-image: linear-gradient(to bottom, #0088cc, #0044cc);
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
