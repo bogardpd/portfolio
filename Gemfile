@@ -15,7 +15,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
-gem 'loofah', '~> 2.3.1'
 
 group :development do
 end
