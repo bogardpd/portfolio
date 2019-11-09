@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get "hotel-internet-quality" => redirect("projects/hotel-internet-quality", status: 301)
   get "shared-itinerary"       => redirect("projects/shared-itinerary",       status: 301)
   get "terminal-silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
+  get "terminals"              => redirect("projects/terminal-silhouettes",   status: 301)
   get "turn-signal-counter"    => redirect("projects/turn-signal-counter",    status: 301)
   get "visor-cam"              => redirect("projects/visor-cam",              status: 301)
   get "gps-logging"                     => redirect("projects/gps-logging",                     status: 301)
