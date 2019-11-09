@@ -1,4 +1,4 @@
-class CreateTerminalSilhouettes < ActiveRecord::Migration
+class CreateTerminalSilhouettes < ActiveRecord::Migration[5.2]
   def change
     create_table :terminal_silhouettes do |t|
       t.string :iata_code
