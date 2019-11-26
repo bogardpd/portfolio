@@ -27,7 +27,10 @@ class StaticPagesController < ApplicationController
         ["Bu<code>STL</code>ing"],
         ["It’s va<code>STL</code>y better than landfills"],
         ["Whi<code>STL</code>e while we work"],
-        ["Don’t wre<code>STL</code>e your bags"]
+        ["Don’t wre<code>STL</code>e your bags"],
+        ["Feeling re<code>STL</code>ess"],
+        ["Giving you more bells and whi<code>STL</code>es"],
+        ["No more jo<code>STL</code>ing"]
       ]]
     ]
   end
