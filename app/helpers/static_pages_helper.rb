@@ -18,6 +18,7 @@ module StaticPagesHelper
       :computer_thumbnail => %w(computer-thumbnail)
     }
     allowed_tags = %w(abbr a)
+    allowed_attributes = %w(href target)
     classes.concat(extra_classes[type]) if extra_classes[type]
     path = PortfolioImage::ROOT_PATH + path
     image = image_tag(path, class: classes.join(' '), alt: alt)
@@ -26,7 +27,7 @@ module StaticPagesHelper
     elsif (type == :screenshot || type == :osx_screenshot || type == :large)
       image = link_to(image, path) 
     end
-    caption = content_tag(:figcaption, sanitize(caption, tags: allowed_tags)) if caption.present?
+    caption = content_tag(:figcaption, sanitize(caption, tags: allowed_tags, attributes: allowed_attributes)) if caption.present?
     attribution = content_tag(:figcaption, ActiveSupport::SafeBuffer.new + "Image Credit: " + sanitize(attribution, tags: allowed_tags), class: "attribution") if attribution.present?
     return content_tag(:figure, image + attribution + caption)
   end
