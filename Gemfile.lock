@@ -969,7 +969,7 @@ GEM
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
-    puma (3.9.1)
+    puma (3.12.2)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -1063,7 +1063,7 @@ DEPENDENCIES
   minitest
   minitest-reporters
   pg (~> 0.18.4)
-  puma (= 3.9.1)
+  puma (= 3.12.2)
   rails (~> 6.0, >= 6.0.1)
   rails_12factor (= 0.0.2)
   sassc-rails (~> 2.1, >= 2.1.2)
