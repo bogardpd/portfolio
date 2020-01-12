@@ -13,6 +13,9 @@ class StaticPagesController < ApplicationController
       ["AUS", "Austin", [
         ["No p<code>AUS</code>in ’til <code>AUS</code>tin", "Shawn Bianchi", "Photo taken at SJC"]
       ]],
+      ["CVG", "Cincinnati", [
+        ["<code>C</code>lean. <code>V</code>ery <code>G</code>reen."]
+      ]],
       ["DAY", "Dayton", [
         ["It’s a great <code>DAY</code> to recycle!"],
         ["A better <code>DAY</code>, landing soon."],
