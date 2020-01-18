@@ -238,6 +238,7 @@ class StaticPagesController < ApplicationController
   def maps
     add_breadcrumb "Maps", maps_path
     maps = Hash.new
+    maps["gate-13"]           = "Gate 13"
     maps["interstate-grid"]   = "Interstate Grid"
     maps["nashville-hex"]     = "Nashville Hex"
     maps["pax-west-area-map"] = "PAX West Area Map"
