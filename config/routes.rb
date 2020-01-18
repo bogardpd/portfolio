@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get "earthbound-database"    => redirect("projects/earthbound-database",    status: 301)
   get "flight-historian"       => redirect("projects/flight-historian",       status: 301)
   get "hotel-internet-quality" => redirect("projects/hotel-internet-quality", status: 301)
+  get "maps"                   => redirect("projects/maps",                   status: 301)
   get "shared-itinerary"       => redirect("projects/shared-itinerary",       status: 301)
   get "terminal-silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
   get "terminal_silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
