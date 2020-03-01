@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter
   get "projects/visor-cam"              => "static_pages#visor_cam",              as: :visor_cam
   
+  # Aliases and redirects
   get "boarding-pass-parser"   => redirect("projects/boarding-pass-parser",   status: 301)
   get "cad-models"             => redirect("projects/cad-models",             status: 301)
   get "earthbound-database"    => redirect("projects/earthbound-database",    status: 301)
@@ -30,11 +31,14 @@ Rails.application.routes.draw do
   get "hotel-internet-quality" => redirect("projects/hotel-internet-quality", status: 301)
   get "maps"                   => redirect("projects/maps",                   status: 301)
   get "shared-itinerary"       => redirect("projects/shared-itinerary",       status: 301)
-  get "terminal-silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
-  get "terminal_silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
-  get "terminals"              => redirect("projects/terminal-silhouettes",   status: 301)
   get "turn-signal-counter"    => redirect("projects/turn-signal-counter",    status: 301)
   get "visor-cam"              => redirect("projects/visor-cam",              status: 301)
+
+  get "terminal-silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
+  get "terminal_silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
+  get "terminalsilhouettes"    => redirect("projects/terminal-silhouettes",   status: 301)
+  get "terminals"              => redirect("projects/terminal-silhouettes",   status: 301)
+
   get "gps-logging"                     => redirect("projects/gps-logging",                     status: 301)
   get "gps-logging/garmin-google-earth" => redirect("projects/gps-logging/garmin/google-earth", status: 301)
   get "gps-logging/garmin-osm"          => redirect("projects/gps-logging/garmin/osm",          status: 301)
