@@ -24,9 +24,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'minitest'
   gem 'minitest-reporters'
-  gem 'mini_backtrace', '0.1.3'
 end
 
 group :production do
