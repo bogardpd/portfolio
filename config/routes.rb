@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   get "gps-logging/ios-google-earth"    => redirect("projects/gps-logging/ios/google-earth",    status: 301)
   get "gps-logging/ios-osm"             => redirect("projects/gps-logging/ios/osm",             status: 301)
 
-  get "files/one-hundred-airports/:path.png" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-files/one-hundred-airports/%{path}.png")
+  get "files/one-hundred-airports/:path.png" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-images/one-hundred-airports/%{path}.png")
   get "files/terminal-silhouettes/png/:path.png" => redirect(PortfolioImage::ROOT_PATH + "projects/terminal-silhouettes/png/%{path}.png")
   get "files/terminal-silhouettes/svg/:path.svg" => redirect(PortfolioImage::ROOT_PATH + "projects/terminal-silhouettes/svg/%{path}.svg")
   
