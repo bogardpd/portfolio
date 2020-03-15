@@ -69,10 +69,6 @@ class VlogVideosController < ApplicationController
     redirect_to vlog_videos_path
   end
 
-  def update_video_tags
-
-  end
-
   def destroy
     VlogVideo.find(params[:id]).destroy
     flash[:success] = "Successfully deleted video!"

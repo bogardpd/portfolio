@@ -6,6 +6,23 @@ class VlogVideoFlowsTest < ActionDispatch::IntegrationTest
     @video = vlog_videos(:breakfast_stream_2019_01_01)
   end
 
+  # STATIC PAGES
+
+  test "should get days" do
+    get(show_vlog_days_path)
+    assert_response(:success)
+
+    get(show_vlog_days_path(year: 2019))
+    assert_response(:success)
+  end
+
+  test "should get cheffcon japan" do
+    get(cheffcon_japan_2019_path)
+    assert_response(:success)
+  end
+
+  # RESOURCE PAGES
+
   test "should get index" do
     get(vlog_videos_path)
     assert_response(:success)
