@@ -17,7 +17,7 @@ class DownloadButton < LinkButton
       @size = obj.content_length
       @icon = "filetypes/#{File.extname(@path).delete('.')}"
       @icon = "filetypes/unknown" unless PortfolioImage.asset_exist?("icons/#{@icon}.png")
-      @text = "<strong>#{URI.decode(File.basename(@path))}</strong> (#{number_to_human_size(@size)})"
+      @text = "<strong>#{URI.decode_www_form_component(File.basename(@path))}</strong> (#{number_to_human_size(@size)})"
     else
       set_file_not_found_values
     end
@@ -29,7 +29,7 @@ class DownloadButton < LinkButton
   
   def plain_link
     return nil if @path.blank?
-    return link_to(URI.decode(File.basename(@path)), @path) + " (#{number_to_human_size(@size)})"
+    return link_to(URI.decode_www_form_component(File.basename(@path)), @path) + " (#{number_to_human_size(@size)})"
   end
   
   private
