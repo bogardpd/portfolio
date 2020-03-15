@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class TimeZoneFlowsTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  
+  test "should get time zones" do
+    get(timezones_path)
+    assert_response(:success)
+  end
+
 end
