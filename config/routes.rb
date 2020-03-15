@@ -6,6 +6,15 @@ Rails.application.routes.draw do
   get    "login"  => "sessions#new"
   post   "login"  => "sessions#create"
   delete "logout" => "sessions#destroy"
+
+  # Resources
+  
+  resources :terminal_silhouettes, except: [:show], path: "projects/terminal-silhouettes"
+  resources :vlog_videos, except: [:show], path: "stephenvlog"
+  resources :vlog_video_tags, except: [:index, :show], path: "stephenvlog/tags"
+  get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
+  get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
+  get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
   
   # Projects
   get "projects" => "static_pages#home"
@@ -18,7 +27,6 @@ Rails.application.routes.draw do
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
   get "projects/maps(/:map)"            => "static_pages#maps",                   as: :maps
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
-  resources :terminal_silhouettes, except: [:show], path: "projects/terminal-silhouettes"
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
   get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter
   get "projects/visor-cam"              => "static_pages#visor_cam",              as: :visor_cam
@@ -79,14 +87,6 @@ Rails.application.routes.draw do
   
   get "pax" => "static_pages#pax"
   get "pax/:gallery(/:page)" => "static_pages#gallery_pax", :as => :pax_gallery
-  
-  # Resources
-  
-  resources :vlog_videos, except: [:show], path: "stephenvlog"
-  resources :vlog_video_tags, except: [:index, :show], path: "stephenvlog/tags"
-  get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
-  get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
-  get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
   
   # Certbot
   get "/.well-known/acme-challenge/:id" => "static_pages#letsencrypt"
