@@ -1,8 +1,12 @@
 {
   "dependencies": {
-    "@rails/webpacker": "^4.2.0"
+    "@rails/webpacker": "^4.2.2"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.9.0"
+    "webpack": "^4.42.0",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "resolutions": {
+    "acorn": "^6.4.1"
   }
 }
