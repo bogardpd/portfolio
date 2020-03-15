@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  youtube_id: MyString
-  video_date: 2019-01-12
-  vlog_day: MyString
+breakfast_stream_2019_01_01:
+  title: "☀️ Testing a New PC"
+  youtube_id: "swooyn5cbqo"
+  video_date: 2019-01-01
+  vlog_day: null
 
-two:
-  title: MyString
-  youtube_id: MyString
-  video_date: 2019-01-12
-  vlog_day: MyString
+vlog_2014_08_31:
+  title: "Olympic Gold Medalist in Space Discus"
+  youtube_id: "5USOBbWnyN0"
+  video_date: 2014-08-31
+  vlog_day: "1713"

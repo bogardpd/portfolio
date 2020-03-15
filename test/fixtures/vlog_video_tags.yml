@@ -1,9 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+breakfast_stream:
+  name: "Breakfast Stream"
+  description: "A Biweekly Twitch stream"
+  parameterized_name: "breakfast-stream"
 
-one:
-  name: MyString
-  description: MyText
-
-two:
-  name: MyString
-  description: MyText
+cheffcon:
+  name: "Cheffcon"
+  description: "Gatherings of friends"
+  parameterized_name: "cheffcon"
