@@ -62,6 +62,10 @@ class StaticPagesController < ApplicationController
     add_breadcrumb "RHIT", rhit_path
     add_breadcrumb "Fast Track Calculus", fast_track_calculus_path
   end
+
+  def flight_directed_graphs
+    add_breadcrumb "Flight Directed Graphs", flight_directed_graphs_path
+  end
   
   def flight_historian
     add_breadcrumb "Flight Historian", flight_historian_path

@@ -2,8 +2,9 @@ module Project
   
   LIST = [
       {name: "Flight Historian",       caption: "A flight history tracking application"},
-      {name: "Shared Itinerary",       caption: "Flight time charts for multiple travelers"},
       {name: "Terminal Silhouettes",   caption: "Airport art"},
+      {name: "Shared Itinerary",       caption: "Flight time charts for multiple travelers"},
+      {name: "Flight Directed Graphs", caption: "Airport relationship diagrams"},
       {name: "Boarding Pass Parser",   caption: "Barcode data parsing"},
       {name: "Time Zone Chart",        caption: "Plotter for time zone changes"},
       {name: "Maps",                   caption: "Geospatial illustrations"},

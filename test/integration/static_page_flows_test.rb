@@ -59,6 +59,11 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
+  test "should get flight directed graphs" do
+    get(flight_directed_graphs_path)
+    assert_response(:success)
+  end
+
   test "should get flight historian" do
     versions = %w(1-0 1-1 1-2 1-3 2-0 2-1 2-2 2-3)
     get(flight_historian_path)

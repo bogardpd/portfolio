@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "projects/boarding-pass-parser"   => "static_pages#boarding_pass_parser",   as: :boarding_pass_parser
   get "projects/cad-models"             => "static_pages#cad_models",             as: :cad_models
   get "projects/earthbound-database"    => "static_pages#earthbound_database",    as: :earthbound_database
+  get "projects/flight-directed-graphs" => "static_pages#flight_directed_graphs", as: :flight_directed_graphs
   get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian", as: :flight_historian
   get "projects/gps-logging(/:source/:map)" => "static_pages#gps_logging",        as: :gps_logging
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
