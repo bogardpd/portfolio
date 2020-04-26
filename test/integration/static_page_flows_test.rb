@@ -118,7 +118,7 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "should get maps" do
-    maps = %w(gate-13 interstate-grid nashville-hex pax-west-area-map)
+    maps = %w(gate-13 interstate-grid nashville-hex pax-west-area-map travel-heatmap)
     get(maps_path)
     assert_response(:success)
 

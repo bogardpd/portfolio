@@ -246,6 +246,7 @@ class StaticPagesController < ApplicationController
     maps["interstate-grid"]   = "Interstate Grid"
     maps["nashville-hex"]     = "Nashville Hex"
     maps["pax-west-area-map"] = "PAX West Area Map"
+    maps["travel-heatmap"]    = "Travel Heatmap"
     if params[:map].present?
       if maps[params[:map]]
         add_breadcrumb maps[params[:map]], maps_path(map: params[:map])

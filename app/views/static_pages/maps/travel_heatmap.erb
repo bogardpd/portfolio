@@ -1,0 +1,52 @@
+<% provide(:title, "Travel Heatmap")%>
+<% provide(:meta_description, "Paul Bogard’s map of time spent in various locations.")%>
+
+<h1>Travel Heatmap</h1>
+
+<%= project_image("projects/maps/travel-heatmap/Travel Heatmap.png", alt: "Heatmap of time spent in various locations", type: :large, attribution: "Created by Paul Bogard using Mapbox map tiles (&copy; #{link_to("Mapbox", "https://www.mapbox.com/about/maps/", target: :_blank)} &copy; #{link_to("OpenStreetMap", "https://www.openstreetmap.org/copyright", target: :_blank)})") %>
+
+<p>For a while, I’ve kept a spreadsheet that keeps track of the date, duration, and location of all of my out-of-town stays (mostly in hotels, but including some visits to friends and family as well).</p>
+
+<p>Using that data, I created a heatmap of my time spent away from home. The hotter (yellower) a map area is, the more nights I’ve spent there.</p>
+
+<%= link_header("Tools and Data Sources", 2) %>
+
+<table class="table tools-list">
+	<tbody>
+    <tr>
+      <th scope="row"><abbr title="Geographic Information Systems">GIS</abbr> Software</th>
+      <td>
+        <ul>
+          <li><%= link_to("QGIS", "https://qgis.org/en/site/", target: :_blank) %></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Map Tiles</th>
+      <td>
+        <ul>
+          <li><%= link_to("Mapbox", "https://www.mapbox.com/about/maps/", target: :_blank) %></li>
+          <li><%= link_to("OpenStreetMap", "https://www.openstreetmap.org/", target: :_blank) %></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Hotel Data Processing</th>
+      <td>
+        <ul>
+          <li>My <%= link_to("hotel-data-utils", "https://github.com/bogardpd/hotel-data-utils", target: :_blank) %> Python package</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">City Latitudes and Longitudes</th>
+      <td>
+        <ul>
+          <li><%= link_to "Wikipedia", "https://www.wikipedia.org/", target: "_blank" %></li>
+        </ul>
+      </td>
+    </tr>
+	</tbody>
+</table>
+
+<%= render "static_pages/maps/license" %>
