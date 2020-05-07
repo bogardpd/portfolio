@@ -275,6 +275,10 @@ class StaticPagesController < ApplicationController
       @photos = Array.new
     end
   end
+
+  def nights_away_and_home
+    add_breadcrumb "Nights Away and Home", nights_away_and_home_path
+  end
   
   def old_computers
     add_breadcrumb "Computers", computers_path

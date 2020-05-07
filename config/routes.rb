@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "projects/gps-logging(/:source/:map)" => "static_pages#gps_logging",        as: :gps_logging
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
   get "projects/maps(/:map)"            => "static_pages#maps",                   as: :maps
+  get "projects/nights-away-and-home"   => "static_pages#nights_away_and_home",   as: :nights_away_and_home
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
   get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter

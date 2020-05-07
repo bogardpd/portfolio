@@ -8,6 +8,7 @@ module Project
       {name: "Boarding Pass Parser",   caption: "Barcode data parsing"},
       {name: "Time Zone Chart",        caption: "Plotter for time zone changes"},
       {name: "Maps",                   caption: "Geospatial illustrations"},
+      {name: "Nights Away and Home",   caption: "Travel duration chart"},
       {name: "GPS Logging",            caption: "Maps of travel paths"},
       {name: "Turn Signal Counter",    caption: "Counter integrated circuits on a truck"},
       {name: "CAD Models",             caption: "3D sketches"},
