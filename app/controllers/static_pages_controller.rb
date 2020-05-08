@@ -1,6 +1,16 @@
 class StaticPagesController < ApplicationController
   
-  def home
+  def projects
+    # Home page directs here
+
+    if params[:tag]
+      @projects = Project::LIST.select{|p| p[:tags].include?(params[:tag])}
+    else
+      @projects = Project::LIST
+    end
+    
+    @tags = {nil => {name: "All Projects", description: "All Projects"}}.merge(Project::TAGS)
+
   end
   
   def about
@@ -206,6 +216,10 @@ class StaticPagesController < ApplicationController
   def games
     add_breadcrumb "Game Screen Names", games_path
   end
+
+  def gate_13
+    add_breadcrumb "Gate 13", gate_13_path
+  end
   
   def gps_logging
     add_breadcrumb "GPS Logging", gps_logging_path
@@ -233,6 +247,10 @@ class StaticPagesController < ApplicationController
   
   def ingress_mosaics
     add_breadcrumb "Ingress Mosaic Maps", ingress_mosaics_path
+  end
+
+  def interstate_grid
+    add_breadcrumb "Interstate Grid", interstate_grid_path
   end
   
   def letsencrypt
@@ -276,6 +294,10 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def nashville_hex
+    add_breadcrumb "Nashville Hex", nashville_hex_path
+  end
+
   def nights_away_and_home
     add_breadcrumb "Nights Away and Home", nights_away_and_home_path
   end
@@ -294,6 +316,10 @@ class StaticPagesController < ApplicationController
   def pax
     add_breadcrumb "PAX", pax_path
     @paxen = paxen
+  end
+
+  def pax_west_area_map
+    add_breadcrumb "PAX West Area Map", pax_west_area_map_path
   end
   
   def resume
@@ -314,6 +340,10 @@ class StaticPagesController < ApplicationController
   
   def time_zone_chart
     add_breadcrumb "Time Zone Chart", time_zone_chart_path
+  end
+  
+  def travel_heatmap
+    add_breadcrumb "Travel Heatmap", travel_heatmap_path
   end
   
   def turn_signal_counter

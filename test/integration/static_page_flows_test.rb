@@ -14,6 +14,18 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
+  test "should get projects" do
+    get("/projects")
+    assert_response(:success)
+  end
+
+  test "should get project tags" do
+    Project::TAGS.each do |tag, value|
+      get(projects_path(tag: tag))
+      assert_response(:success)
+    end
+  end
+
   test "should get about" do
     get(about_path)
     assert_response(:success)
@@ -26,11 +38,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
 
   test "should get boarding pass parser" do
     get(boarding_pass_parser_path)
-    assert_response(:success)
-  end
-
-  test "should get books" do
-    get(books_path)
     assert_response(:success)
   end
 
@@ -85,6 +92,11 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
+  test "should get gate 13" do
+    get(gate_13_path)
+    assert_response(:success)
+  end
+
   test "should get GPS logging" do
     get(gps_logging_path)
     assert_response(:success)
@@ -117,15 +129,9 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
-  test "should get maps" do
-    maps = %w(gate-13 interstate-grid nashville-hex pax-west-area-map travel-heatmap)
-    get(maps_path)
+  test "should get interstate grid" do
+    get(interstate_grid_path)
     assert_response(:success)
-
-    maps.each do |map|
-      get(maps_path(map: map))
-      assert_response(:success)
-    end
   end
 
   test "should get MCO lobby" do
@@ -135,6 +141,11 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
 
   test "should get old computers" do
     get(old_computers_path)
+    assert_response(:success)
+  end
+
+  test "should get nashville hex" do
+    get(nashville_hex_path)
     assert_response(:success)
   end
 
@@ -178,8 +189,8 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should get projects" do
-    get("/projects")
+  test "should get pax west area map" do
+    get(pax_west_area_map_path)
     assert_response(:success)
   end
 
@@ -231,6 +242,11 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
 
   test "should get time zone chart" do
     get(time_zone_chart_path)
+    assert_response(:success)
+  end
+
+  test "should get travel heatmap" do
+    get(travel_heatmap_path)
     assert_response(:success)
   end
 
@@ -299,7 +315,7 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
   test "should redirect maps" do
     get("/maps")
     assert_response(301)
-    assert_redirected_to(maps_path)
+    assert_redirected_to(projects_path(tag: :maps))
   end
 
   test "should redirect shared itinerary" do

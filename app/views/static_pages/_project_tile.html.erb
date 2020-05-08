@@ -1,4 +1,4 @@
-<% img_root = "projects/covers/#{name.parameterize}" %>
+<% img_root = "projects/covers/#{project[:name].parameterize}" %>
 <% img = PortfolioImage.asset_exist?("#{img_root}.png") ? "#{img_root}.png" : "#{img_root}.jpg" %>
-<% path ||= eval(Project.path(name)) %>
-<%= Tile.new(path: path, title: name, img: image_path(img), caption: caption).show %>
+<% path ||= eval(Project.path(project[:name])) %>
+<%= Tile.new(path: path, title: project[:name], img: image_path(img), caption: project[:caption]).show %>

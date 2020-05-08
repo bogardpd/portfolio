@@ -125,6 +125,16 @@ a:active {
 	color: $color-primary-light;
 }
 
+a.badge {
+  background-color: $color-background-light;
+  text-decoration: none;
+}
+
+span.badge-active {
+  background-color: $color-primary-light;
+  color: #FFFFFF;
+}
+
 a.btn {
 	text-decoration: none;
 }

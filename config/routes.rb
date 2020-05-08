@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root "static_pages#home"
+  root "static_pages#projects"
     
   # Authentication
   get    "login"  => "sessions#new"
@@ -17,19 +17,23 @@ Rails.application.routes.draw do
   get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
   
   # Projects
-  get "projects" => "static_pages#home"
+  get "projects(/tags/:tag)" => "static_pages#projects", as: :projects
   
   get "projects/boarding-pass-parser"   => "static_pages#boarding_pass_parser",   as: :boarding_pass_parser
   get "projects/cad-models"             => "static_pages#cad_models",             as: :cad_models
   get "projects/earthbound-database"    => "static_pages#earthbound_database",    as: :earthbound_database
   get "projects/flight-directed-graphs" => "static_pages#flight_directed_graphs", as: :flight_directed_graphs
   get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian", as: :flight_historian
+  get "projects/gate-13"                => "static_pages#gate_13",                as: :gate_13
   get "projects/gps-logging(/:source/:map)" => "static_pages#gps_logging",        as: :gps_logging
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
-  get "projects/maps(/:map)"            => "static_pages#maps",                   as: :maps
+  get "projects/interstate-grid"        => "static_pages#interstate_grid",        as: :interstate_grid
+  get "projects/nashville-hex"          => "static_pages#nashville_hex",          as: :nashville_hex
   get "projects/nights-away-and-home"   => "static_pages#nights_away_and_home",   as: :nights_away_and_home
+  get "projects/pax-west-area-map"      => "static_pages#pax_west_area_map",      as: :pax_west_area_map
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
+  get "projects/travel-heatmap "        => "static_pages#travel_heatmap",         as: :travel_heatmap
   get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter
   get "projects/visor-cam"              => "static_pages#visor_cam",              as: :visor_cam
   
@@ -39,7 +43,12 @@ Rails.application.routes.draw do
   get "earthbound-database"    => redirect("projects/earthbound-database",    status: 301)
   get "flight-historian"       => redirect("projects/flight-historian",       status: 301)
   get "hotel-internet-quality" => redirect("projects/hotel-internet-quality", status: 301)
-  get "maps"                   => redirect("projects/maps",                   status: 301)
+  get "maps"                   => redirect("projects/tags/maps",              status: 301)
+  get "projects/maps/gate-13"  => redirect("projects/gate-13",                status: 301)
+  get "projects/maps/interstate-grid" => redirect("projects/interstate-grid", status: 301)
+  get "projects/maps/nashville-hex" => redirect("projects/nashville-hex",     status: 301)
+  get "projects/maps/pax-west-area-map" => redirect("projects/pax-west-area-map", status: 301)
+  get "projects/maps/travel-heatmap" => redirect("projects/travel-heatmap",   status: 301)
   get "shared-itinerary"       => redirect("projects/shared-itinerary",       status: 301)
   get "turn-signal-counter"    => redirect("projects/turn-signal-counter",    status: 301)
   get "visor-cam"              => redirect("projects/visor-cam",              status: 301)
