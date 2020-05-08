@@ -7,7 +7,7 @@
 
 <% @tags.each do |tag, values| %>
   <% if params[:tag] == tag.to_s || params[:tag] == tag %>
-    <span class="badge badge-pill badge-active"><%= values[:name] %></span>
+    <span class="badge badge-pill badge-active" title="<%= values[:description] %>"><%= values[:name] %></span>
   <% else %>
     <%= link_to(values[:name], projects_path(tag: tag), title: values[:description], class: "badge badge-pill") %>
   <% end %>
