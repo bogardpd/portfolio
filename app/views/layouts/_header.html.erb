@@ -8,23 +8,16 @@
   		</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
+
+					<li class="nav-item">
+						<%= link_to "Projects", projects_path, class: "nav-link" %>
+					</li>
 					
 					<li class="nav-item dropdown">
 						<%= link_to "About Paul", "#", id: "aboutDropdown", class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" %>
 						<div class="dropdown-menu" aria-labelledby="aboutDropdown">
 							<%= nav_link "About Paul", about_path %>
 							<%= nav_link "Résumé", resume_path %>
-						</div>
-					</li>
-					
-					<li class="nav-item dropdown">
-						<%= link_to "Projects", "#", id: "projectsDropdown", class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" %>
-						<div class="dropdown-menu" aria-labelledby="projectsDropdown">
-							<%= nav_link "All Projects", root_path %>
-							<div class="dropdown-divider"></div>
-							<%= safe_join(Project::LIST.sort_by{|proj| proj[:name]}.map{|proj| nav_link proj[:name], eval(Project.path(proj[:name]))}) %>
-							<div class="dropdown-divider"></div>
-							<%= link_to "Github (bogardpd)", "https://github.com/bogardpd", target: :_blank, class: "dropdown-item" %>
 						</div>
 					</li>
 
