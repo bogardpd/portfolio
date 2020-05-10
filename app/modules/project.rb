@@ -44,12 +44,17 @@ module Project
       {
         name: "Travel Heatmap",
         caption: "Time spent in various cities",
-        tags: %w(maps qgis)
+        tags: %w(maps programming python qgis)
       },
       {
         name: "PAX West Area Map",
         caption: "Map of convention venues and hotels",
         tags: %w(maps qgis svg)
+      },
+      {
+        name: "Song Lyrics Graph",
+        caption: "Word frequencies and relationships",
+        tags: %w(graphs programming python)
       },
       {
         name: "Interstate Grid",

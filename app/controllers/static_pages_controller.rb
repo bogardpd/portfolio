@@ -333,6 +333,10 @@ class StaticPagesController < ApplicationController
   def shared_itinerary
     add_breadcrumb "Shared Itinerary", shared_itinerary_path
   end
+
+  def song_lyrics_graph
+    add_breadcrumb "Song Lyrics Graph", song_lyrics_graph_path
+  end
   
   def starmen_conventions
     add_breadcrumb "Starmen.Net Conventions", starmen_conventions_path

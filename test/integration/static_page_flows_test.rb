@@ -204,6 +204,11 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
+  test "should get song lyrics graph" do
+    get(song_lyrics_graph_path)
+    assert_response(:success)
+  end
+
   test "should get shared itinerary" do
     get(shared_itinerary_path)
     assert_response(:success)

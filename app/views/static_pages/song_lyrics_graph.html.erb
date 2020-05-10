@@ -1,0 +1,43 @@
+<% provide(:title, "Song Lyrics Graph")%>
+<% provide(:meta_description, "Paul Bogard’s song lyric visualization project.")%>
+
+<h1>Song Lyrics Graph</h1>
+
+<%= link_buttons(LinkButton.new("<strong>GitHub</strong> repository", "github", "https://github.com/bogardpd/song-lyrics-graph", target: :_blank)) %>
+
+<p>Song Lyrics Graph is a Python script designed to convert a text file of song lyrics into a GraphML directed graph showing the relationship between song lyrics.</p>
+<p>The generated graph has a node for each unique word in the lyrics, with size proportional to the frequency of that word within the lyrics. Word nodes are connected by directed edges (arrows) indicating which words directly follow which other words.</p>
+
+<%= project_image("projects/song-lyrics-graph/shop-vac.png", type: :large, alt: "Song Lyrics Graph of Shop Vac by Jonathan Coulton", attribution: "Created by Paul Bogard using lyrics from <i>Shop Vac</i> by #{link_to("Jonathan Coulton", "https://www.jonathancoulton.com/", target: :_blank)} (#{link_to("CC BY-NC 3.0", "https://creativecommons.org/licenses/by-nc/3.0/", target: :_blank)})") %>
+
+<p>This works especially well with songs with repetitive phrases. For an extreme example, here’s <i><%= link_to("99 Bottles of Beer", "https://en.wikipedia.org/wiki/99_Bottles_of_Beer", target: :_blank) %></i>:
+
+<%= project_image("projects/song-lyrics-graph/99-bottles.png", type: :large, alt: "Song Lyrics Graph of 99 Bottles of Beer") %>
+
+<%= link_header("Tools", 2) %>
+
+<table class="table tools-list">
+	<tbody>
+    <tr>
+      <th scope="row">Graph Format</th>
+			<td><ul>
+        <li><%= link_to("GraphML", "http://graphml.graphdrawing.org/", target: :_blank) %></li>
+      </ul></td>
+		</tr>
+    <tr>
+      <th scope="row">GraphML Generator</th>
+      <td>
+        <ul>
+          <li>My <%= link_to("song-lyrics-graph", "https://github.com/bogardpd/song-lyrics-graph", target: :_blank) %> Python script</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Graph Editor</th>
+			<td><ul>
+        <li><%= link_to("yEd Graph Editor", "https://www.yworks.com/products/yed", target: :_blank) %></li>
+      </ul></td>
+		</tr>
+    </tr>
+	</tbody>
+</table>

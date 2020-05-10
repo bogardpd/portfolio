@@ -9,7 +9,8 @@
 
 <table class="table tools-list">
 	<tbody>
-    <th scope="row">Graph Format</th>
+    <tr>
+      <th scope="row">Graph Format</th>
 			<td><ul>
         <li><%= link_to("GraphML", "http://graphml.graphdrawing.org/", target: :_blank) %></li>
       </ul></td>
@@ -20,7 +21,8 @@
         <li><%= link_to("Flight Historian", flight_historian_path) %> (exported via <%= link_to("GraphML module", "https://github.com/bogardpd/flight_log/blob/master/app/modules/graph_ml.rb", target: :_blank) %>)</li>
       </ul></td>
 		</tr>
-    <th scope="row">Graph Editor</th>
+    <tr>
+      <th scope="row">Graph Editor</th>
 			<td><ul>
         <li><%= link_to("yEd Graph Editor", "https://www.yworks.com/products/yed", target: :_blank) %></li>
       </ul></td>

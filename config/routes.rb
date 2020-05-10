@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get "projects/nights-away-and-home"   => "static_pages#nights_away_and_home",   as: :nights_away_and_home
   get "projects/pax-west-area-map"      => "static_pages#pax_west_area_map",      as: :pax_west_area_map
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
+  get "projects/song-lyrics-graph"      => "static_pages#song_lyrics_graph",      as: :song_lyrics_graph
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
   get "projects/travel-heatmap "        => "static_pages#travel_heatmap",         as: :travel_heatmap
   get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter
