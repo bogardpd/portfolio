@@ -20,33 +20,7 @@ class StaticPagesController < ApplicationController
   
   def airport_code_puns
     add_breadcrumb "Airport Code Puns", airport_code_puns_path
-    @puns = [
-      ["AUS", "Austin", [
-        ["No p<code>AUS</code>in ’til <code>AUS</code>tin", "Shawn Bianchi", "Photo taken at SJC"]
-      ]],
-      ["CVG", "Cincinnati", [
-        ["<code>C</code>lean. <code>V</code>ery <code>G</code>reen."]
-      ]],
-      ["DAY", "Dayton", [
-        ["It’s a great <code>DAY</code> to recycle!"],
-        ["A better <code>DAY</code>, landing soon."],
-        ["Every <code>DAY</code> can be something new."]
-      ]],
-      ["ORD", "Chicago (O’Hare)", [
-        ["Extra<code>ORD</code>inary"]
-      ]],
-      ["STL", "St. Louis", [
-        ["Every day we’re hu<code>STL</code>ing for you"],
-        ["To the coa<code>STL</code>ines and beyond", "Jeff"],
-        ["Bu<code>STL</code>ing"],
-        ["It’s va<code>STL</code>y better than landfills"],
-        ["Whi<code>STL</code>e while we work"],
-        ["Don’t wre<code>STL</code>e your bags"],
-        ["Feeling re<code>STL</code>ess"],
-        ["Giving you more bells and whi<code>STL</code>es"],
-        ["No more jo<code>STL</code>ing"]
-      ]]
-    ]
+    @puns = YAML.load_file("app/data/airport_code_puns.yml").deep_symbolize_keys.sort.to_h
   end
   
   def boarding_pass_parser

@@ -3,22 +3,26 @@
 
 <h1>Airport Code Puns</h1>
 
-<% @puns.each do |code, city, puns| %>
-  <%= link_header(code, 2, city) %>
+<% @puns.each do |code, values| %>
+  <%= link_header(code.to_s, 2, values[:airport]) %>
+  
   <div class="row">
-    <% puns.each do |pun, credit, note| %>
+    <% values[:puns].each do |pun| %>
+      
       <% notes_row = [] %>
-      <% notes_row.push "Photo provided by #{credit}" if credit %>
-      <% notes_row.push note if note %>
+      <% notes_row.push "Photo provided by #{pun[:credit]}" if pun[:credit] %>
+      <% notes_row.push pun[:note] if pun[:note] %>
       <div class="col-lg-6 airport-code-pun">
         <figure class="figure">
-          <%= image_tag("#{PortfolioImage::ROOT_PATH}airport-code-puns/#{code.downcase}-#{anchorize(sanitize(pun, tags: []))}.jpg", alt: sanitize(pun, tags: []), class: "img-fluid generic-photo-tile") %>
+          <%= image_tag("#{PortfolioImage::ROOT_PATH}airport-code-puns/#{code.to_s.downcase}-#{anchorize(pun[:pun].gsub("`", ""))}.jpg", alt: sanitize(pun[:pun], tags: []), class: "img-fluid generic-photo-tile") %>
           <% if notes_row.any? %>
             <figcaption class="attribution"><%= notes_row.join(" · ") %></figcaption>
           <% end %>
-          <figcaption><%= sanitize(pun, tags: %w(code)) %></figcaption>
+          <figcaption><%= sanitize(pun[:pun].gsub(/`([^`]*)`/, '<code>\1</code>'), tags: %w(code)) %></figcaption>
         </figure>
       </div>
+
     <% end %>
   </div>
+
 <% end %>
