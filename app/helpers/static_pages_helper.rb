@@ -43,12 +43,12 @@ module StaticPagesHelper
     if params[:tag] == tag.to_s || params[:tag] == tag
       return content_tag(:span,
         values[:name],
-        title: values[:description],
+        title: values[:description].capitalize,
         class: %w(badge badge-pill badge-project-tag-active)
       )
     else
       return link_to(values[:name], projects_path(tag: tag),
-        title: values[:description],
+        title: values[:description].capitalize,
         class: %w(badge badge-pill badge-project-tag)
       )
     end

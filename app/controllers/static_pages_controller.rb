@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
       @projects = Project.all
     end
     
+    @tag = params[:tag] ? Project.all_tags[params[:tag].to_sym] : nil
     @tags = {nil => {name: "All Projects", description: "All Projects"}}.merge(Project.all_tags)
 
   end

@@ -1,65 +1,85 @@
 # Tag keys should match tags in projects.yml.
+# 'name' is used on the tag itself. Nouns should be plural.
+# 'adjective' is used in titles and preceeds "Projects" (e.g. "Chart Projects").
+# 'description' is used alone in tag tooltips, and follows "Paul Bogard's" in
+#   meta descriptions.
 
 cad:
   name: "CAD"
-  description: "Computer-aided design drawings"
+  adjective: "CAD"
+  description: "computer-aided design drawings"
 
 charts:
   name: "Charts"
-  description: "Illustrations of data"
+  adjective: "Chart"
+  description: "illustrations of data"
 
 databases:
   name: "Databases"
-  description: "Projects whose primary purpose involves a database"
+  adjective: "Database"
+  description: "projects whose primary purpose involves a database"
 
 electronics:
   name: "Electronics"
-  description: "Projects involving circuit design"
+  adjective: "Electronic"
+  description: "projects involving circuit design"
 
 graphs:
   name: "Graphs"
-  description: "Representations of relationships as nodes and edges"
+  adjective: "Graph"
+  description: "representations of relationships as nodes and edges"
 
 illustrations:
   name: "Illustrations"
-  description: "Visual art"
+  adjective: "Illustration"
+  description: "visual art projects"
 
 javascript:
   name: "JavaScript"
-  description: "Projects making extensive use of the JavaScript language"
+  adjective: "JavaScript"
+  description: "projects making extensive use of the JavaScript language"
 
 jquery:
   name: "jQuery"
-  description: "Projects using the jQuery JavaScript library"
+  adjective: "jQuery"
+  description: "projects using the jQuery JavaScript library"
 
 maps:
   name: "Maps"
-  description: "Geospatial art and data"
+  adjective: "Map"
+  description: "geospatial art and data"
 
 php:
   name: "PHP"
-  description: "Projects using the PHP language"
+  adjective: "PHP"
+  description: "projects using the PHP language"
 
 programming:
   name: "Programming"
-  description: "Programming projects"
+  adjective: "Programming"
+  description: "programming projects"
 
 python:
   name: "Python"
-  description: "Projects using the Python language"
+  adjective: "Python"
+  description: "projects using the Python language"
 
 qgis:
   name: "QGIS"
-  description: "Maps created with QGIS"
+  adjective: "QGIS"
+  description: "maps created with QGIS"
 
 ruby-on-rails:
   name: "Ruby on Rails"
-  description: "Projects using the Ruby on Rails web framework"
+  adjective: "Ruby on Rails"
+  description: "projects using the Ruby on Rails web framework"
 
 svg:
   name: "SVG"
-  description: "Projects using Scalable Vector Graphics images"
+  adjective: "SVG"
+  description: "projects using Scalable Vector Graphics images"
 
 video:
   name: "Video"
-  description: "Video projects"
+  adjective: "Video"
+  description: "video projects"

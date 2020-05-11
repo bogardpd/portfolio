@@ -1,11 +1,18 @@
-<% provide(:meta_description, "Paul Bogard’s portfolio of programming, engineering, mapping, and other projects.")%>
+<%
+  if (@tag)
+    provide(:title, "#{@tag[:adjective]} Projects")
+    provide(:meta_description, "Paul Bogard’s #{@tag[:description]}.")
+  else
+    provide(:meta_description, "Paul Bogard’s portfolio of programming, engineering, mapping, and other projects.")
+  end
+%>
 
 <%= link_buttons(
   LinkButton.new("Paul’s <strong>Résumé</strong>", "resume", resume_path),
   LinkButton.new("Paul’s <strong>GitHub</strong> repositories", "github", "https://github.com/bogardpd/", target: :_blank)
   ) %>
 
-<h1>Projects<% if params[:tag] && tag = Project.all_tags[params[:tag].to_sym] %> <small>(<%= tag[:name] %>)</small><% end %></h1>
+<h1><% if @tag %><%= @tag[:adjective] %> <% end %>Projects</h1>
 
 <div class="project-tags">
   <%= project_tag_badges(@tags) %>
