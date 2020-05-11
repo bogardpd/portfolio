@@ -258,26 +258,6 @@ class StaticPagesController < ApplicationController
     render plain: ENV["LETS_ENCRYPT_KEY"]
   end
   
-  def maps
-    add_breadcrumb "Maps", maps_path
-    maps = Hash.new
-    maps["gate-13"]           = "Gate 13"
-    maps["interstate-grid"]   = "Interstate Grid"
-    maps["nashville-hex"]     = "Nashville Hex"
-    maps["pax-west-area-map"] = "PAX West Area Map"
-    maps["travel-heatmap"]    = "Travel Heatmap"
-    if params[:map].present?
-      if maps[params[:map]]
-        add_breadcrumb maps[params[:map]], maps_path(map: params[:map])
-        render "static_pages/maps/#{params[:map].gsub("-","_")}"
-      else
-        redirect_to maps_path
-      end
-    else
-      render "static_pages/maps/index"
-    end
-  end
-
   def mco_lobby
     add_breadcrumb "MCO Lobby", mco_lobby_path
     begin
