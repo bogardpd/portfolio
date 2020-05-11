@@ -3,6 +3,8 @@
 
 <h1>Travel Heatmap</h1>
 
+<%= render partial: "project_tags", locals: {project: :"travel-heatmap"} %>
+
 <%= project_image("projects/maps/travel-heatmap/Travel Heatmap.png", alt: "Heatmap of time spent in various locations", type: :large, attribution: "Created by Paul Bogard using Mapbox map tiles (&copy; #{link_to("Mapbox", "https://www.mapbox.com/about/maps/", target: :_blank)} &copy; #{link_to("OpenStreetMap", "https://www.openstreetmap.org/copyright", target: :_blank)})") %>
 
 <p>For a while, I’ve kept a spreadsheet that keeps track of the date, duration, and location of all of my out-of-town stays (mostly in hotels, but including some visits to friends and family as well).</p>

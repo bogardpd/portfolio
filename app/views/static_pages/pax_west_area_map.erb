@@ -3,6 +3,8 @@
 
 <h1>PAX West Area Map</h1>
 
+<%= render partial: "project_tags", locals: {project: :"pax-west-area-map"} %>
+
 <%= project_image("projects/maps/pax-west-area-map/pax-west-area-map.png", alt: "Illustration of the intersections of cross-country US interstates", type: :large, caption: "#{link_to("png","#{PortfolioImage::ROOT_PATH}projects/maps/pax-west-area-map/pax-west-area-map.png")} &middot; #{link_to("svg","#{PortfolioImage::ROOT_PATH}projects/maps/pax-west-area-map/PAX West Area Map.svg")}", attribution: "&copy; #{link_to("OpenStreetMap", "https://www.openstreetmap.org/copyright", target: :_blank)} contributors. Original data and Paul Bogard’s modifations available under the Open Database License.") %>
 
 <p><%= link_to("PAX West", "http://west.paxsite.com/", target: :_blank) %> takes place annually in Seattle, Washington, and <%= link_to("I’ve attended", pax_path) %> a number of times. Due to the size of the convention, PAX spreads out beyond the Washington State Convention Center into many downtown Seattle event spaces. I thought it would be an interesting project to map the convention venues, as well as the hotels affiliated with PAX or commonly used by PAX attendees. This map was created in 2017, based on PAX West 2016 venues.</p>

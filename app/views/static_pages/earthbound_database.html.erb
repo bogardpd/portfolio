@@ -3,6 +3,8 @@
 
 <h1>EBDB: The EarthBound Database</h1>
 
+<%= render partial: "project_tags", locals: {project: :"earthbound-database"} %>
+
 <%= link_buttons(LinkButton.new("Visit <strong>EBDB</strong> on Starmen.Net", "starmen-net", "https://starmen.net/mother2/ebdb/", target: :_blank)) %>
 
 <p><%= link_to("EBDB", "https://starmen.net/mother2/ebdb/", target: :_blank) %> is a game database web application I designed to catalog various aspects of the Super Nintendo game <em><%= link_to("EarthBound", "https://en.wikipedia.org/wiki/EarthBound", target: :_blank) %></em>.</p>

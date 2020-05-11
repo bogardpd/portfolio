@@ -3,6 +3,8 @@
 
 <h1>Shared Itinerary</h1>
 
+<%= render partial: "project_tags", locals: {project: :"shared-itinerary"} %>
+
 <%= link_buttons(
   LinkButton.new("Visit <strong>Shared Itinerary</strong>", "shared-itinerary", "https://www.shareditinerary.com/", target: :_blank),
   LinkButton.new("<strong>GitHub</strong> repository", "github", "https://github.com/bogardpd/shared_itinerary", target: :_blank)

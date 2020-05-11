@@ -3,6 +3,8 @@
 
 <h1>Time Zone Chart</h1>
 
+<%= render partial: "project_tags", locals: {project: :"time-zone-chart"} %>
+
 <%= link_buttons(
   LinkButton.new("Visit <strong>Time Zone Chart</strong>", "portfolio", timezones_path),
   LinkButton.new("See the code on <strong>GitHub</strong>", "github", "https://github.com/bogardpd/portfolio/blob/master/app/assets/javascripts/time_zones.js", target: :_blank)

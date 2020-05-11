@@ -20,7 +20,7 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "should get project tags" do
-    Project::TAGS.each do |tag, value|
+    Project.all_tags.each do |tag, value|
       get(projects_path(tag: tag))
       assert_response(:success)
     end

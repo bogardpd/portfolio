@@ -7,6 +7,7 @@
 </h1>
 
 <%= render partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu} %>
+<%= render partial: "project_tags", locals: {project: :"flight-historian"} %>
 
 <%= link_buttons(
   LinkButton.new("Visit <strong>Flight Historian</strong>", "flight-historian", "https://www.flighthistorian.com/", target: :_blank),

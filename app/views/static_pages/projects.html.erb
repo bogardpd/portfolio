@@ -5,13 +5,11 @@
   LinkButton.new("Paul’s <strong>GitHub</strong> repositories", "github", "https://github.com/bogardpd/", target: :_blank)
   ) %>
 
-<% @tags.each do |tag, values| %>
-  <% if params[:tag] == tag.to_s || params[:tag] == tag %>
-    <span class="badge badge-pill badge-active" title="<%= values[:description] %>"><%= values[:name] %></span>
-  <% else %>
-    <%= link_to(values[:name], projects_path(tag: tag), title: values[:description], class: "badge badge-pill") %>
-  <% end %>
-<% end %>
+<h1>Projects</h1>
+
+<div class="project-tags">
+  <%= project_tag_badges(@tags) %>
+</div>
 
 <% if @projects.any? %>
   <div class="row cover-row">

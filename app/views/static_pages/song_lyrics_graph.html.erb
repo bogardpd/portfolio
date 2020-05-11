@@ -3,6 +3,8 @@
 
 <h1>Song Lyrics Graph</h1>
 
+<%= render partial: "project_tags", locals: {project: :"song-lyrics-graph"} %>
+
 <%= link_buttons(LinkButton.new("<strong>GitHub</strong> repository", "github", "https://github.com/bogardpd/song-lyrics-graph", target: :_blank)) %>
 
 <p>Song Lyrics Graph is a Python script designed to convert a text file of song lyrics into a GraphML directed graph showing the relationship between song lyrics.</p>

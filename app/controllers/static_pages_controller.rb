@@ -4,12 +4,12 @@ class StaticPagesController < ApplicationController
     # Home page directs here
 
     if params[:tag]
-      @projects = Project::LIST.select{|p| p[:tags].include?(params[:tag])}
+      @projects = Project.all.select{|k, v| v[:tags].include?(params[:tag])}
     else
-      @projects = Project::LIST
+      @projects = Project.all
     end
     
-    @tags = {nil => {name: "All Projects", description: "All Projects"}}.merge(Project::TAGS)
+    @tags = {nil => {name: "All Projects", description: "All Projects"}}.merge(Project.all_tags)
 
   end
   

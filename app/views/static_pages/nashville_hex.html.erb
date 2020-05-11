@@ -3,6 +3,8 @@
 
 <h1>Nashville Hex</h1>
 
+<%= render partial: "project_tags", locals: {project: :"nashville-hex"} %>
+
 <%= project_image("projects/maps/nashville-hex/Nashville Hex.png", alt: "Illustration of Nashville’s freeways", type: :large, caption: "#{link_to("png","#{PortfolioImage::ROOT_PATH}projects/maps/nashville-hex/Nashville Hex.png")} &middot; #{link_to("svg","#{PortfolioImage::ROOT_PATH}projects/maps/nashville-hex/Nashville Hex.svg")}") %>
 
 <p>After a trip to Nashville, I realized that the city’s central freeways mostly intersect at Y-intersections. That meant that I could draw Nashville’s freeways on a hexagonal grid.</p>

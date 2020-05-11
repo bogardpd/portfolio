@@ -1,0 +1,147 @@
+# Place projects in the order they should be displayed. Project key should match
+# route (e.g., flight-historian matches route projects/flight-historian). Tags
+# should match tag keys in project_tags.yml.
+
+flight-historian:
+  name: "Flight Historian"
+  caption: "A flight history tracking application"
+  tags:
+    - databases
+    - programming
+    - ruby-on-rails
+
+terminal-silhouettes:
+  name: "Terminal Silhouettes"
+  caption: "Airport art"
+  tags:
+    - illustrations
+    - svg
+
+shared-itinerary:
+  name: "Shared Itinerary"
+  caption: "Flight time charts for multiple travelers"
+  tags:
+    - databases
+    - programming
+    - ruby-on-rails
+    - svg
+
+flight-directed-graphs:
+  name: "Flight Directed Graphs"
+  caption: "Airport relationship diagrams"
+  tags:
+    - graphs
+    - programming
+    - ruby-on-rails
+
+boarding-pass-parser:
+  name: "Boarding Pass Parser"
+  caption: "Barcode data parsing"
+  tags:
+    - programming
+    - ruby-on-rails
+
+time-zone-chart:
+  name: "Time Zone Chart"
+  caption: "Plotter for time zone changes"
+  tags:
+    - javascript
+    - jquery
+    - programming
+    - svg
+
+gate-13:
+  name: "Gate 13"
+  caption: "Unlucky airport gates"
+  tags:
+    - maps
+    - qgis
+
+nights-away-and-home:
+  name: "Nights Away and Home"
+  caption: "Travel duration chart"
+  tags:
+    - charts
+    - programming
+    - python
+    - svg
+
+travel-heatmap:  
+  name: "Travel Heatmap"
+  caption: "Time spent in various cities"
+  tags:
+    - maps
+    - programming
+    - python
+    - qgis
+
+pax-west-area-map:
+  name: "PAX West Area Map"
+  caption: "Map of convention venues and hotels"
+  tags:
+    - maps
+    - qgis
+    - svg
+
+song-lyrics-graph:
+  name: "Song Lyrics Graph"
+  caption: "Word frequencies and relationships"
+  tags:
+    - graphs
+    - programming
+    - python
+
+interstate-grid:
+  name: "Interstate Grid"
+  caption: "Intersections of major US interstates"
+  tags: 
+    - illustrations
+    - maps
+    - svg
+
+nashville-hex:
+  name: "Nashville Hex"
+  caption: "Nashville’s freeways on a hex grid"
+  tags:
+    - illustrations
+    - maps
+    - svg
+
+gps-logging:
+  name: "GPS Logging"
+  caption: "Maps of travel paths"
+  tags:
+    - maps
+
+turn-signal-counter:
+  name: "Turn Signal Counter"
+  caption: "Counter integrated circuits on a truck"
+  tags:
+    - electronics
+
+cad-models:
+  name: "CAD Models"
+  caption: "3D sketches"
+  tags:
+    - cad
+    - illustrations
+
+earthbound-database:
+  name: "EarthBound Database"
+  caption: "A game information repository"
+  tags:
+    - databases
+    - php
+    - programming
+
+visor-cam:
+  name: "Visor Cam"
+  caption: "Road trip time lapse videos"
+  tags:
+    - video
+
+hotel-internet-quality:
+  name: "Hotel Internet Quality"
+  caption: "Plots of hotel bandwidth by time of day"
+  tags:
+    - charts

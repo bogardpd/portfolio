@@ -31,6 +31,28 @@ module StaticPagesHelper
     attribution = content_tag(:figcaption, ActiveSupport::SafeBuffer.new + "Image Credit: " + sanitize(attribution, tags: allowed_tags, attributes: allowed_attributes), class: "attribution") if attribution.present?
     return content_tag(:figure, image + attribution + caption)
   end
+
+  # Creates badges for a hash of project tags.
+  def project_tag_badges(tag_hash)
+    badges = tag_hash.collect{|k, v| project_tag_badge(k, v)}
+    return safe_join(badges)
+  end
+
+  # Creates a single project tag badge.
+  def project_tag_badge(tag, values)
+    if params[:tag] == tag.to_s || params[:tag] == tag
+      return content_tag(:span,
+        values[:name],
+        title: values[:description],
+        class: %w(badge badge-pill badge-project-tag-active)
+      )
+    else
+      return link_to(values[:name], projects_path(tag: tag),
+        title: values[:description],
+        class: %w(badge badge-pill badge-project-tag)
+      )
+    end
+  end
   
   # Returns an embedded YouTube video.
   def youtube_embed(video_id)
