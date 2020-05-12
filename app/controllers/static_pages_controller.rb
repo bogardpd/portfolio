@@ -240,17 +240,6 @@ class StaticPagesController < ApplicationController
   end
 
   def paxen
-    p = Array.new
-    p.push PAXEvent.new("Prime", "Seattle",     Date.parse("2010-09-03"), Date.parse("2010-09-05"))
-    p.push PAXEvent.new("Prime", "Seattle",     Date.parse("2011-08-26"), Date.parse("2011-08-28"))
-    p.push PAXEvent.new("Prime", "Seattle",     Date.parse("2012-08-31"), Date.parse("2012-09-02"))
-    p.push PAXEvent.new("East",  "Boston",      Date.parse("2013-03-22"), Date.parse("2013-03-24"))
-    p.push PAXEvent.new("Prime", "Seattle",     Date.parse("2013-08-30"), Date.parse("2013-09-02"))
-    p.push PAXEvent.new("East",  "Boston",      Date.parse("2014-04-11"), Date.parse("2014-04-13"))
-    p.push PAXEvent.new("East",  "Boston",      Date.parse("2015-03-06"), Date.parse("2015-03-08"))
-    p.push PAXEvent.new("West",  "Seattle",     Date.parse("2017-09-01"), Date.parse("2017-09-04"))
-    p.push PAXEvent.new("West",  "Seattle",     Date.parse("2018-08-31"), Date.parse("2018-09-03"))
-    p.push PAXEvent.new("South", "San Antonio", Date.parse("2019-01-18"), Date.parse("2019-01-20"))
-    return p
+    return YAML.load_file("app/data/paxen.yml").values.map{|pax| PAXEvent.new(*pax.values)}
   end
 end

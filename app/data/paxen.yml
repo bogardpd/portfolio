@@ -1,0 +1,59 @@
+pax-prime-2010:
+  pax   : Prime
+  city  : Seattle
+  start : 2010-09-03
+  end   : 2010-09-05
+
+pax-prime-2011:
+  pax   : Prime
+  city  : Seattle
+  start : 2011-08-26
+  end   : 2011-08-28
+
+pax-prime-2012:
+  pax   : Prime
+  city  : Seattle
+  start : 2012-08-31
+  end   : 2012-09-02
+
+pax-east-2013:
+  pax   : East
+  city  : Boston
+  start : 2013-03-22
+  end   : 2013-03-24
+
+pax-prime-2013:
+  pax   : Prime
+  city  : Seattle
+  start : 2013-08-30
+  end   : 2013-09-02
+
+pax-east-2014:
+  pax   : East
+  city  : Boston
+  start : 2014-04-11
+  end   : 2014-04-13
+
+pax-east-2015:
+  pax   : East
+  city  : Boston
+  start : 2015-03-06
+  end   : 2015-03-08
+
+pax-west-2017:
+  pax   : West
+  city  : Seattle
+  start : 2017-09-01
+  end   : 2017-09-04
+
+pax-west-2018:
+  pax   : West
+  city  : Seattle
+  start : 2018-08-31
+  end   : 2018-09-03
+
+pax-south-2019:
+  pax   : South
+  city  : San Antonio
+  start : 2019-01-18
+  end   : 2019-01-20
