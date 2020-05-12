@@ -77,8 +77,8 @@ class StaticPagesController < ApplicationController
   
   def gallery_pax
     add_breadcrumb "PAX", pax_path
-    title = paxen.find{|p| p.parameterized_name == params[:gallery]}&.short_name
-    gallery_template(title: title, path: pax_gallery_path(gallery: params[:gallery]))
+    pax = PAXEvent.new(*YAML.load_file("app/data/paxen.yml")[params[:gallery]].values)
+    gallery_template(title: pax.short_name, path: pax_gallery_path(gallery: params[:gallery]))
   end
   
   def gallery_starmen
@@ -181,7 +181,7 @@ class StaticPagesController < ApplicationController
   
   def pax
     add_breadcrumb "PAX", pax_path
-    @paxen = paxen
+    @paxen = YAML.load_file("app/data/paxen.yml").values.map{|pax| PAXEvent.new(*pax.values)}
   end
 
   def pax_west_area_map
@@ -239,7 +239,4 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def paxen
-    return YAML.load_file("app/data/paxen.yml").values.map{|pax| PAXEvent.new(*pax.values)}
-  end
 end
