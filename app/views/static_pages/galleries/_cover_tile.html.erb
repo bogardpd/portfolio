@@ -1,2 +1,11 @@
-<% theme ||= nil %>
-<%= Tile.new(path: polymorphic_url(gallery, gallery: name.parameterize), img: "#{PortfolioImage::ROOT_PATH}photos/covers/#{name.parameterize}.jpg", title: name, caption: location, date_string: dates, theme: theme).show %>
+<%
+  if defined?(cover_tile)
+    key, v = cover_tile
+    name = v[:name]
+    location = v[:location]
+    start_date = v[:start]
+    end_date = v[:end]    
+  end
+%>
+
+<%= Tile.new(path: polymorphic_url(gallery_parent, gallery: key), img: "#{PortfolioImage::ROOT_PATH}photos/covers/#{key.to_s}.jpg", title: name, caption: location, date_string: FormattedDate.range_text(start_date..end_date)).show %>

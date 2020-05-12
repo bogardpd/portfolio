@@ -1,9 +1,7 @@
-<% provide(:title, "Applecon") %>
-<% provide(:meta_description, "Photos from Applecon 2009.") %>
+<% provide(:title, @convention[:name]) %>
+<% provide(:meta_description, @meta_description) %>
 
-
-
-<h1>Applecon</h1>
+<h1><%= @convention[:name] %></h1>
 
 <p>Applecon took place in Appleton, Wisconsin on 2&ndash;4 January, 2009. As the weather was a bit cold in Wisconsin in January, we spent most of our time in our host’s basement, or dining out at restaurants.</p>
 

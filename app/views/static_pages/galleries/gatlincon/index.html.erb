@@ -1,10 +1,8 @@
-<% provide(:title, "Gatlincon") %>
-<% provide(:meta_description, "Photos from Gatlincon 2010.") %>
+<% provide(:title, @convention[:name]) %>
+<% provide(:meta_description, @meta_description) %>
 <% page_locals = {path: :starmen_con_gallery, gallery: :gatlincon, current: @page, pages: ["The House","Pre-Con","July 25","July 26","July 27","July 28","July 29","July 30","July 31"]} %>
 
-
-
-<h1>Gatlincon</h1>
+<h1><%= @convention[:name] %></h1>
 
 <p>Gatlincon took place at a rental house in Gatlinburg, Tennessee on 25&ndash;31 July, 2010.</p>
 

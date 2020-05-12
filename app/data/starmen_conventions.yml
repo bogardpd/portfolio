@@ -1,11 +1,76 @@
-washingcon            : "Washingcon"
-chicagocon            : "Chicagocon"
-yes-we-con            : "Yes We Con"
-gatlincon             : "Gatlincon"
-utacon                : "Utacon"
-flagstaff-con         : "Flagstaff Con"
-indiana-minicon       : "Indiana Minicon"
-applecon              : "Applecon"
-camp-fangamer-2015    : "Camp Fangamer 2015"
-camp-videogamely-2016 : "Camp Videogamely 2016"
-camp-fangamer-2018    : "Camp Fangamer 2018"
+washingcon:
+  name     : "Washingcon"
+  category : "Starmen Cons"
+  location : "Marysville, Washington"
+  start    : 2007-07-15
+  end      : 2007-07-23
+
+chicagocon:
+  name     : "Chicagocon"
+  category : "Starmen Cons"
+  location : "Michigan City, Indiana"
+  start    : 2008-07-12
+  end      : 2008-07-19
+
+yes-we-con:
+  name     : "Yes We Con"
+  category : "Starmen Cons"
+  location : "Lake George, New York"
+  start    : 2009-06-07
+  end      : 2009-06-14
+
+gatlincon:
+  name     : "Gatlincon"
+  category : "Starmen Cons"
+  location : "Gatlinburg, Tennessee"
+  start    : 2010-07-25
+  end      : 2010-07-31
+
+utacon:
+  name     : "Utacon"
+  category : "Starmen Cons"
+  location : "Herriman, Utah"
+  start    : 2011-07-24
+  end      : 2011-07-31
+
+flagstaff-con:
+  name     : "Flagstaff Con"
+  category : "Starmen Cons"
+  location : "Flagstaff, Arizona"
+  start    : 2014-06-22
+  end      : 2014-06-29
+
+indiana-minicon:
+  name     : "Indiana Minicon"
+  category : "Mini Cons"
+  location : "Lafayette and Kokomo, Indiana"
+  start    : 2006-08-19
+  end      : 2006-08-20
+
+applecon:
+  name     : "Applecon"
+  category : "Mini Cons"
+  location : "Appleton, Wisconsin"
+  start    : 2009-01-02
+  end      : 2009-01-04
+
+camp-fangamer-2015:
+  name     : "Camp Fangamer 2015"
+  category : "Camp Fangamer"
+  location : "Tucson, Arizona"
+  start    : 2015-07-18
+  end      : 2015-07-19
+
+camp-videogamely-2016:
+  name     : "Camp Videogamely 2016"
+  category : "Camp Fangamer"
+  location : "Tucson, Arizona"
+  start    : 2016-07-29
+  end      : 2016-07-31
+
+camp-fangamer-2018:
+  name     : "Camp Fangamer 2018"
+  category : "Camp Fangamer"
+  location : "Tucson, Arizona"
+  start    : 2018-07-21
+  end      : 2018-07-22

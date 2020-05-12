@@ -1,10 +1,8 @@
-<% provide(:title, "Utacon") %>
-<% provide(:meta_description, "Photos from Utacon 2011.") %>
+<% provide(:title, @convention[:name]) %>
+<% provide(:meta_description, @meta_description) %>
 <% page_locals = {path: :starmen_con_gallery, gallery: :utacon, current: @page, pages: ["The House","July 25","July 26","July 27","July 28","July 29","July 30","July 31"]} %>
 
-
-
-<h1>Utacon</h1>
+<h1><%= @convention[:name] %></h1>
 
 <p>Utacon took place at a rental house in Herriman, Utah (near Salt Lake City) on 24&ndash;31 July, 2011.</p>
 

@@ -1,8 +1,8 @@
-<% provide(:title, "Yes We Con") %>
-<% provide(:meta_description, "Photos from Yes We Con 2009.") %>
+<% provide(:title, @convention[:name]) %>
+<% provide(:meta_description, @meta_description) %>
 <% page_locals = {path: :starmen_con_gallery, gallery: "yes-we-con", current: @page, pages: ["June 7","June 8","June 9","June 10","June 11","June 12","June 13","June 14"]} %>
 
-<h1>Yes We Con</h1>
+<h1><%= @convention[:name] %></h1>
 
 <p>Yes We Con took place at a vacation rental in Lake George, New York on 7&ndash;14 June, 2009.</p>
 

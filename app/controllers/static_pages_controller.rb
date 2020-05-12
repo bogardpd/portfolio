@@ -83,8 +83,9 @@ class StaticPagesController < ApplicationController
   
   def gallery_starmen
     add_breadcrumb "Starmen.Net Conventions", starmen_conventions_path
-    starmen_conventions = YAML.load_file("app/data/starmen_conventions.yml")
-    gallery_template(title: starmen_conventions[params[:gallery]], path: starmen_con_gallery_path(gallery: params[:gallery]))
+    @convention = YAML.load_file("app/data/starmen_conventions.yml")[params[:gallery]].symbolize_keys
+    @meta_description = "Photos from #{@convention[:name]} (#{FormattedDate.range_text(@convention[:start]..@convention[:end])})"
+    gallery_template(title: @convention[:name], path: starmen_con_gallery_path(gallery: params[:gallery]))
   end
 
   def games
@@ -194,6 +195,7 @@ class StaticPagesController < ApplicationController
   
   def starmen_conventions
     add_breadcrumb "Starmen.Net Conventions", starmen_conventions_path
+    @conventions = YAML.load_file("app/data/starmen_conventions.yml").deep_symbolize_keys
   end
   
   def time_zone_chart

@@ -17,7 +17,7 @@ module StaticPagesHelper
       :large          => %w(large),
       :computer_thumbnail => %w(computer-thumbnail)
     }
-    allowed_tags = %w(abbr a i)
+    allowed_tags = %w(abbr a br i)
     allowed_attributes = %w(href target)
     classes.concat(extra_classes[type]) if extra_classes[type]
     path = PortfolioImage::ROOT_PATH + path
