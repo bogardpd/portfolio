@@ -83,19 +83,7 @@ class StaticPagesController < ApplicationController
   
   def gallery_starmen
     add_breadcrumb "Starmen.Net Conventions", starmen_conventions_path
-    starmen_conventions = {
-      "washingcon" => "Washingcon",
-      "chicagocon" => "Chicagocon",
-      "yes-we-con" => "Yes We Con",
-      "gatlincon" => "Gatlincon",
-      "utacon" => "Utacon",
-      "flagstaff-con" => "Flagstaff Con",
-      "indiana-minicon" => "Indiana Minicon",
-      "applecon" => "Applecon",
-      "camp-fangamer-2015" => "Camp Fangamer 2015",
-      "camp-videogamely-2016" => "Camp Videogamely 2016",
-      "camp-fangamer-2018" => "Camp Fangamer 2018"
-    }
+    starmen_conventions = YAML.load_file("app/data/starmen_conventions.yml")
     gallery_template(title: starmen_conventions[params[:gallery]], path: starmen_con_gallery_path(gallery: params[:gallery]))
   end
 
