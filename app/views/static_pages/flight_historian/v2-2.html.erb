@@ -1,15 +1,9 @@
 <% provide(:title, "Flight Historian 2.2")%>
 <% provide(:meta_description, "Flight Historian version 2.2 change log")%>
 
-<h1>
-  Flight Historian 2.2<br/>
-  <small>Regions and Flight Lookups</small>
-</h1>
-
-<%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
-<%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
-
-<p></p>
+<%= render(partial: "static_pages/flight_historian/version_h1", locals: @version) %>
+<%= render(partial: "static_pages/flight_historian/version_picker") %>
+<%= render(partial: "static_pages/flight_historian/version_summary", locals: @version) %>
 
 <%= link_header "Regions", 2 %>
 

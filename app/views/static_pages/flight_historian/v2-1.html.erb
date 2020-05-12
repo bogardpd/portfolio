@@ -1,13 +1,9 @@
 <% provide(:title, "Flight Historian 2.1")%>
 <% provide(:meta_description, "Flight Historian version 2.1 change log")%>
 
-<h1>
-  Flight Historian 2.1<br/>
-  <small>Import Flights from Digital Boarding Passes</small>
-</h1>
-
-<%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
-<%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
+<%= render(partial: "static_pages/flight_historian/version_h1", locals: @version) %>
+<%= render(partial: "static_pages/flight_historian/version_picker") %>
+<%= render(partial: "static_pages/flight_historian/version_summary", locals: @version) %>
 
 <p>In general, my <%= link_to "Flight Historian", "https://www.flighthistorian.com/", target: :_blank %> has been a big time saver for me as far as tracking my flights – instead of manually generating reports and maps from an Excel file, I can simply add flights to a database and let it do all the work. However, as I’ve started tracking more details about my flights over time, the task of entering the flights has become less simple.</p>
 

@@ -11,7 +11,6 @@ module ApplicationHelper
   end
   
   # Returns a formatted date.
-  # TODO: Remove in favor of FormattedDate module throughout portfolio
   def format_date(input_date)
     input_date.strftime("%e %b %Y").strip
   end

@@ -1,13 +1,9 @@
 <% provide(:title, "Flight Log 1.1")%>
 <% provide(:meta_description, "Flight Log version 1.1 change log")%>
 
-<h1>
-  Flight Log 1.1<br/>
-  <small>Routes, Top 5 Lists, and More</small>
-</h1>
-
-<%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
-<%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
+<%= render(partial: "static_pages/flight_historian/version_h1", locals: @version) %>
+<%= render(partial: "static_pages/flight_historian/version_picker") %>
+<%= render(partial: "static_pages/flight_historian/version_summary", locals: @version) %>
 
 <p>On the old version of the <%= link_to "flight log", "https://www.flighthistorian.com/", target: :_blank %>, I had a rudimentary display of routes – the Show Flight page would list all sections and trips that shared the same route. There was, however, no easy way to see which routes were the most flown. Consider that solved, with my new <%= link_to "Routes", "https://www.flighthistorian.com/routes", target: :_blank %> page!</p>
 

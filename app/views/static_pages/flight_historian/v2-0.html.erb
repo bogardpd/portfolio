@@ -1,13 +1,9 @@
 <% provide(:title, "Flight Historian 2.0")%>
 <% provide(:meta_description, "Flight Historian version 2.0 change log")%>
 
-<h1>
-  Flight Historian 2.0<br/>
-  <small>Flight Historian</small>
-</h1>
-
-<%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
-<%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
+<%= render(partial: "static_pages/flight_historian/version_h1", locals: @version) %>
+<%= render(partial: "static_pages/flight_historian/version_picker") %>
+<%= render(partial: "static_pages/flight_historian/version_summary", locals: @version) %>
 
 <p>It’s been over three years since I began working on my <%= link_to "flight log", "https://www.flighthistorian.com/", target: :_blank %>. In that time, it’s gone from an interesting side feature of my <%= link_to "Portfolio", root_path %> to a major project large enough to stand on its own. For the past month, I’ve been spending my free time working on spinning it off into its own site. Now announcing:</p>
 

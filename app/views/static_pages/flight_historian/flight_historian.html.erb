@@ -1,13 +1,9 @@
 <% provide(:title, "Flight Historian")%>
 <% provide(:meta_description, "How Paul Bogard created his Flight Historian web application.")%>
 
-<h1>
-  Flight Historian<br/>
-  <small>Overview</small>
-</h1>
-
-<%= render partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu} %>
-<%= render partial: "project_tags", locals: {project: :"flight-historian"} %>
+<%= render(partial: "static_pages/flight_historian/version_h1", locals: @version) %>
+<%= render(partial: "static_pages/flight_historian/version_picker") %>
+<%= render(partial: "project_tags", locals: {project: :"flight-historian"}) %>
 
 <%= link_buttons(
   LinkButton.new("Visit <strong>Flight Historian</strong>", "flight-historian", "https://www.flighthistorian.com/", target: :_blank),
@@ -120,49 +116,14 @@
 			<th>Release</th>
 			<th>Changes</th>
 		</tr>
+		<% @all_versions.reject{|k, v| k == nil}.each do |version, summary| %>
+			<tr>
+				<td><%= format_date(summary[:release_date]) %></td>
+				<td><%= version.to_s %></td>
+				<td><%= link_to(summary[:title], flight_historian_path(version: version.to_s.parameterize)) %></td>
+			</tr>
+		<% end %>
 	</thead>
-	<tbody>
-		<tr>
-			<td>27 April 2013</th>
-			<td>1.0</td>
-			<td><%= link_to "Initial release", flight_historian_path(version: "1-0") %></td>
-		</tr>
-		<tr>
-			<td>24 October 2013</th>
-			<td>1.1</td>
-			<td><%= link_to "Routes and Top 5 Lists", flight_historian_path(version: "1-1") %></td>
-		</tr>
-		<tr>
-			<td>27 October 2014</th>
-			<td>1.2</td>
-			<td><%= link_to "Operators and Codeshares", flight_historian_path(version: "1-2") %></td>
-		</tr>
-		<tr>
-			<td>8 February 2015</th>
-			<td>1.3</td>
-			<td><%= link_to "Distances and Annual Summaries", flight_historian_path(version: "1-3") %></td>
-		</tr>
-		<tr>
-			<td>31 January 2016</th>
-			<td>2.0</td>
-			<td><%= link_to "Flight Historian", flight_historian_path(version: "2-0") %></td>
-		</tr>
-		<tr>
-			<td>29 April 2017</th>
-			<td>2.1</td>
-			<td><%= link_to "Import Flights from Digital Boarding Passes", flight_historian_path(version: "2-1") %></td>
-		</tr>
-		<tr>
-			<td>15 March 2018</th>
-			<td>2.2</td>
-			<td><%= link_to "Regions and Flight Lookups", flight_historian_path(version: "2-2") %></td>
-		</tr>
-		<tr>
-			<td>30 April 2019</th>
-			<td>2.3</td>
-			<td><%= link_to "Automatic Distance Calculations and GPX/KML Maps", flight_historian_path(version: "2-3") %></td>
-		</tr>
-	</tbody>
 </table>
 
 <%= link_header "Specification", 2 %>

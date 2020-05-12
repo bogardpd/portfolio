@@ -1,15 +1,13 @@
 <div class="row version-picker">
   <div class="col-md-12 center">
-    <% menu.group_by{|k, v| k.to_s.split(".").first}.each do |item| %>
+    <% @all_versions.group_by{|k, v| v[:version].split(".").first}.values.each do |group| %>
       <div class="btn-group flex-wrap">
-        <%= safe_join(item.last.map{|ik, iv|
-          path = (ik == :Overview) ? flight_historian_path : flight_historian_path(version: ik.to_s.parameterize)
-          classes = %w(btn btn-outline-dark)
-          classes.push iv[:class] if iv[:class]
-          classes.push "active" if iv[:active]
-          link_to(ik, path, class: classes)
-        }) %>
-      </div>
+        <% group.each do |k, v| %>
+          <% classes = %w(btn btn-outline-dark) %>
+          <% classes.push "active" if params[:version]&.to_sym == k %>
+          <%= link_to(v[:version], flight_historian_path(version: k), class: classes) %>
+        <% end %>
+      </div>      
     <% end %>
   </div>
 </div>

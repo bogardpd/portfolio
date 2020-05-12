@@ -1,13 +1,9 @@
 <% provide(:title, "Flight Log 1.2")%>
 <% provide(:meta_description, "Flight Log version 1.2 change log")%>
 
-<h1>
-  Flight Log 1.2<br/>
-  <small>Operators and Codeshares</small>
-</h1>
-
-<%= render(partial: "static_pages/flight_historian/version_picker", locals: {menu: @version_menu}) %>
-<%= render(partial: "static_pages/flight_historian/version_summary", locals: @summary) if @summary %>
+<%= render(partial: "static_pages/flight_historian/version_h1", locals: @version) %>
+<%= render(partial: "static_pages/flight_historian/version_picker") %>
+<%= render(partial: "static_pages/flight_historian/version_summary", locals: @version) %>
 
 <p>I’ve updated the <%= link_to "Flight Log", "https://www.flighthistorian.com/", target: :_blank %> to version 1.2 by adding codeshares, operators, and fleet numbers to flights.</p>
 
