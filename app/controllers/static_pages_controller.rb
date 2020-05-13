@@ -37,6 +37,8 @@ class StaticPagesController < ApplicationController
   
   def computers
     add_breadcrumb "Computers", computers_path
+    @computer_specs = YAML.load_file("app/data/computers/computer_specs.yml").each(&:deep_symbolize_keys!)
+    @devices = YAML.load_file("app/data/computers/devices.yml").deep_symbolize_keys
   end
   
   def earthbound_database
@@ -160,8 +162,7 @@ class StaticPagesController < ApplicationController
   def old_computers
     add_breadcrumb "Computers", computers_path
     add_breadcrumb "Old Computers", old_computers_path
-    @computers = JSON.parse(File.read('app/assets/json/old-computers.json'))
-    @computers_hash = @computers.to_h.with_indifferent_access
+    @old_computers = YAML.load_file("app/data/computers/old_devices.yml").deep_symbolize_keys
   end
   
   def oreo

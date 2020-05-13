@@ -7,7 +7,7 @@
 
 <%= link_header "Desktops", 2 %>
 
-<%= render partial: "computer_equipment", collection: @computers_hash["desktops"], as: :computer %>
+<%= render partial: "computer_equipment", collection: @old_computers[:desktops], as: :device %>
 
 <div class="container">
   <p class="alert alert-info">Current desktop: <%= link_to "Pancake", computers_path(anchor: "home-computers") %></p>
@@ -15,7 +15,7 @@
 
 <%= link_header "Laptops", 2 %>
 
-<%= render partial: "computer_equipment", collection: @computers_hash["laptops"], as: :computer %>
+<%= render partial: "computer_equipment", collection: @old_computers[:laptops], as: :device %>
 
 <div class="container">
   <p class="alert alert-info">Current laptop: <%= link_to "Quesadilla", computers_path(anchor: "home-computers") %></p>
@@ -23,16 +23,16 @@
 
 <%= link_header "Mobile Devices", 2 %>
 
-<%= render partial: "computer_equipment", collection: @computers_hash["mobile"], as: :computer %>
+<%= render partial: "computer_equipment", collection: @old_computers[:mobile], as: :device %>
 
 <div class="container">
   <p class="alert alert-info">Current smartphone: <%= link_to "Tator Tot VI", computers_path(anchor: "mobile") %></p>
   <p class="alert alert-info">Current tablet: <%= link_to "Latke", computers_path(anchor: "mobile") %></p>
 </div>
 
-<%= link_header "Gaming Consoles", 2 %>
+<%= link_header "Game Systems", 2 %>
 
-<%= render partial: "computer_equipment", collection: @computers_hash["gaming_consoles"], as: :computer %>
+<%= render partial: "computer_equipment", collection: @old_computers[:game_systems], as: :device %>
 
 <div class="container">
   <p class="alert alert-info">Current console: <%= link_to "Lemonade", computers_path(anchor: "game-systems") %></p>

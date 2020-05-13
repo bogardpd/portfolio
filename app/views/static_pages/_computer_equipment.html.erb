@@ -1,37 +1,37 @@
-<% name = computer[:name] || computer[:model] %>
+<% name = device[:name] || device[:model] %>
 <div class="computer-equipment" id="<%= anchorize(name) %>">
 	<div class="computer-name">
 		<h3><%= link_to(name, params.permit(:anchor).merge(anchor: anchorize(name)), class: "link-header") %></h3>
-    <%= content_tag(:div, computer[:type], class: "computer-type") if computer[:type] %>
+    <%= content_tag(:div, device[:type], class: "computer-type") if device[:type] %>
 	</div>
 	<div class="computer-body">
     
-    <% if computer[:image] %>
+    <% if device[:image] %>
       <div class="row">
       <div class="col-12 col-lg-8">
     <% end %>
 
-      <% if computer[:date_from] %>
-        <% date_from = Date.parse(computer[:date_from]) %>
+      <% if device[:date_from] %>
+        <% date_from = Date.parse(device[:date_from]) %>
         <div class="computer-dates">
-          <% if computer[:date_to] %>
-            <% date_to = Date.parse(computer[:date_to]) %>
+          <% if device[:date_to] %>
+            <% date_to = Date.parse(device[:date_to]) %>
             <%= date_from.strftime("%B %Y") %> – <%= date_to.strftime("%B %Y") %>
           <% else %>
             Purchased <%= content_tag(:abbr, time_ago_in_words(date_from) + " ago", title: format_date(date_from)) %>
           <% end %>
         </div>
       <% end %>
-      <%= content_tag(:p, computer[:description], class: "computer-description") if computer[:description] %>
-      <%= content_tag(:div, computer[:model], class: "computer-model") if computer[:model] %>
+      <%= content_tag(:p, device[:description], class: "computer-description") if device[:description] %>
+      <%= content_tag(:div, device[:model], class: "computer-model") if device[:model] %>
       <%= content_tag(:ul, class: %w(list-unstyled computer-specs)) do
-            safe_join(computer[:specs].map{|s| content_tag(:li, s)})
-          end if computer[:specs] && computer[:specs].any? %>
+            safe_join(device[:specs].map{|s| content_tag(:li, s)})
+          end if device[:specs] && device[:specs].any? %>
     
-    <% if computer[:image] %>
+    <% if device[:image] %>
       </div>
       <div class="col-12 col-lg-4 computer-thumbnail">
-        <%= project_image("computers/#{computer[:image]}", type: :computer_thumbnail, attribution: computer[:attribution]) %>
+        <%= project_image("computers/#{device[:image]}", type: :computer_thumbnail, attribution: device[:attribution]) %>
       </div></div>
     <% end %>
 	</div>
