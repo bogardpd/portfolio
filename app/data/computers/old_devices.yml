@@ -2,8 +2,8 @@ desktops:
 
   - name: "Peanut Butter"
     type: "Desktop"
-    date_from: "October 2004"
-    date_to: "May 2008"
+    date_from: "2004-10-07"
+    date_to: "May 2008" # Find
     model: "Home-Built PC"
     description: "I built Peanut Butter in college largely to play Half-Life 2. It ended up becoming my primary World of Warcraft machine."
     specs:
