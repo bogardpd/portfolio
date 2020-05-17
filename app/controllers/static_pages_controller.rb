@@ -44,20 +44,33 @@ class StaticPagesController < ApplicationController
   def computer_history
     add_breadcrumb "Computers", computers_path
     add_breadcrumb "History", computer_history_path
-
+    parts_data = YAML.load_file("app/data/computers/parts.yml").deep_symbolize_keys
+    @computers = parts_data[:computers]
+    @part_types = parts_data[:part_types]
   end
 
   def computer_history_details
     add_breadcrumb "Computers", computers_path
     add_breadcrumb "History", computer_history_path
-    if params[:computer]
-      add_breadcrumb params[:computer], computer_history_details_path(computer: params[:computer])
-    elsif params[:part]
-      add_breadcrumb params[:part], part_history_details_path(part: params[:part])
+    parts_data = YAML.load_file("app/data/computers/parts.yml").deep_symbolize_keys
+
+    if params[:computer] && @computer = parts_data[:computers][params[:computer].to_sym]
+      add_breadcrumb @computer[:name], computer_history_details_path(computer: params[:computer])
     else
       redirect_to computer_history_path
     end
+  end
 
+  def part_history_details
+    add_breadcrumb "Computers", computers_path
+    add_breadcrumb "History", computer_history_path
+    parts_data = YAML.load_file("app/data/computers/parts.yml").deep_symbolize_keys
+    
+    if params[:part] && @part_type = parts_data[:part_types][params[:part].to_sym]
+      add_breadcrumb @part_type[:name], part_history_details_path(part: params[:part])
+    else
+      redirect_to computer_history_path
+    end
   end
   
   def earthbound_database

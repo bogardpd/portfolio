@@ -1,0 +1,22 @@
+computers:
+  chili-dog:
+    name: "Chili Dog"
+  fishsticks:
+    name: "Fishsticks"
+  frites-liberte:
+    name: "Frites Liberté"
+  pancake:
+    name: "Pancake"
+  peanut-butter:
+    name: "Peanut Butter"
+    form_factor: "desktop"
+  quesadilla:
+    name: "Quesadilla"
+  reuben:
+    name: "Reuben"
+
+part_types:
+  monitors:
+    name: "Monitors"
+  processors:
+    name: "Processors"

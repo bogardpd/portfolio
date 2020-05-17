@@ -1,5 +1,5 @@
-<% provide(:title, "Computer History")%>
-<% provide(:meta_description, "Paul Bogard’s history of old computers and devices.") %>
+<% provide(:title, "#{@computer[:name]} - Computer History")%>
+<% provide(:meta_description, "Paul Bogard’s history of parts in his computer #{@computer[:name]}.") %>
 
-<h1>Details</h1>
+<h1>Computer History &ndash; <%= @computer[:name] %></h1>
 
