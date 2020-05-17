@@ -73,13 +73,18 @@ Rails.application.routes.draw do
   get "about"  => "static_pages#about"
   get "resume" => "static_pages#resume"
   
+  # Computers
+  get "computers"                       => "static_pages#computers"
+  get "computers/old"                   => "static_pages#old_computers",            as: :old_computers
+  get "computers/history/parts(/:part)" => "static_pages#computer_history_details", as: :part_history_details
+  get "computers/history/:computer"     => "static_pages#computer_history_details", as: :computer_history_details
+  get "computers/history"               => "static_pages#computer_history",         as: :computer_history
+
   # Other Pages
   get "airport-code-puns" => "static_pages#airport_code_puns"
   get "books"           => "static_pages#books"
-  get "computers"       => "static_pages#computers"
-  get "computers/old"   => "static_pages#old_computers", :as => :old_computers
   get "ingress-mosaics" => "static_pages#ingress_mosaics"
-  get "ingress-murals", :to => redirect("/ingress-mosaics", :status => 301)
+  get "ingress-murals", to: redirect("/ingress-mosaics", status: 301)
   get "history"         => "static_pages#history"
   get "rhit"            => "static_pages#rhit"
   get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", :as => :fast_track_calculus
@@ -103,7 +108,7 @@ Rails.application.routes.draw do
   # Certbot
   get "/.well-known/acme-challenge/:id" => "static_pages#letsencrypt"
   
-   # Permanently redirect legacy flight log routes to Flight Historian:
+  # Permanently redirect legacy flight log routes to Flight Historian:
 
   get "/flightlog",       :to => redirect("https://www.flighthistorian.com/", :status => 301)
   get "/flightlog/*all",  :to => redirect("https://www.flighthistorian.com/", :status => 301)

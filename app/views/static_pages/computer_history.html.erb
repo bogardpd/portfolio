@@ -1,0 +1,16 @@
+<% provide(:title, "Computer History")%>
+<% provide(:meta_description, "Paul Bogard’s history of old computers and devices.") %>
+
+<h1>Computer History</h1>
+
+<p>[chart of laptops and desktops]</p>
+
+<p>[list of computers]</p>
+
+<p><%= link_to("Pancake", computer_history_details_path(computer: "pancake")) %></p>
+
+<%= link_header("Devices", 2) %>
+
+<p>[list of device tags]</p>
+
+<p><%= link_to("Monitors", part_history_details_path(part: "monitors")) %></p>

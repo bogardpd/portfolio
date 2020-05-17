@@ -40,6 +40,25 @@ class StaticPagesController < ApplicationController
     @computer_specs = YAML.load_file("app/data/computers/computer_specs.yml").each(&:deep_symbolize_keys!)
     @devices = YAML.load_file("app/data/computers/devices.yml").deep_symbolize_keys
   end
+
+  def computer_history
+    add_breadcrumb "Computers", computers_path
+    add_breadcrumb "History", computer_history_path
+
+  end
+
+  def computer_history_details
+    add_breadcrumb "Computers", computers_path
+    add_breadcrumb "History", computer_history_path
+    if params[:computer]
+      add_breadcrumb params[:computer], computer_history_details_path(computer: params[:computer])
+    elsif params[:part]
+      add_breadcrumb params[:part], part_history_details_path(part: params[:part])
+    else
+      redirect_to computer_history_path
+    end
+
+  end
   
   def earthbound_database
     add_breadcrumb "EBDB", earthbound_database_path
