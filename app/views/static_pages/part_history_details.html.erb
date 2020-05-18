@@ -1,5 +1,8 @@
-<% provide(:title, "#{@part_type[:name].singularize} History")%>
-<% provide(:meta_description, "Paul Bogard’s device history of #{@part_type[:name].downcase}.") %>
+<% provide(:title, "#{@parts.type_name} - Device History")%>
+<% provide(:meta_description, "Paul Bogard’s device history of #{@parts.type_name.downcase}.") %>
 
-<h1>Device History &ndash; <%= @part_type[:name] %></h1>
+<h1>Device History &ndash; <%= @parts.type_name %></h1>
 
+<div class="center">
+  <%= @parts.svg_xml %>
+</div>

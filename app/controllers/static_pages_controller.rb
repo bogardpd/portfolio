@@ -42,35 +42,32 @@ class StaticPagesController < ApplicationController
   end
 
   def computer_history
+    parts = ComputerPartsData.new()
+    @computers = parts.all_computers
+    @part_types = parts.standalone_types
+
     add_breadcrumb "Computers", computers_path
     add_breadcrumb "History", computer_history_path
-    parts_data = YAML.load_file("app/data/computers/parts.yml").deep_symbolize_keys
-    @computers = parts_data[:computers]
-    @part_types = parts_data[:part_types]
   end
 
   def computer_history_details
-    add_breadcrumb "Computers", computers_path
-    add_breadcrumb "History", computer_history_path
-    parts_data = YAML.load_file("app/data/computers/parts.yml").deep_symbolize_keys
-
-    if params[:computer] && @computer = parts_data[:computers][params[:computer].to_sym]
-      add_breadcrumb @computer[:name], computer_history_details_path(computer: params[:computer])
-    else
+    @parts = ComputerPartsData.new(computer: params[:computer])
+    unless @parts.computer_exists?(params[:computer])
       redirect_to computer_history_path
     end
+    add_breadcrumb("Computers", computers_path)
+    add_breadcrumb("History", computer_history_path)
+    add_breadcrumb(@parts.computer_name, computer_history_details_path(computer: params[:computer]))
   end
 
   def part_history_details
-    add_breadcrumb "Computers", computers_path
-    add_breadcrumb "History", computer_history_path
-    parts_data = YAML.load_file("app/data/computers/parts.yml").deep_symbolize_keys
-    
-    if params[:part] && @part_type = parts_data[:part_types][params[:part].to_sym]
-      add_breadcrumb @part_type[:name], part_history_details_path(part: params[:part])
-    else
+    @parts = ComputerPartsData.new(type: params[:part])
+    unless @parts.type_exists?(params[:part])
       redirect_to computer_history_path
     end
+    add_breadcrumb("Computers", computers_path)
+    add_breadcrumb("History", computer_history_path)
+    add_breadcrumb(@parts.type_name, part_history_details_path(part: params[:part]))
   end
   
   def earthbound_database
