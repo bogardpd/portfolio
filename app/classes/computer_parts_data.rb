@@ -89,7 +89,19 @@ class ComputerPartsData
     return @part_types[type].present?
   end
 
-  # Returns the type name if the collection is filtered by type.
+  # Returns the computer form factor if the collection is filtered by computer.
+  def computer_form_factor
+    return nil unless @computer
+    return @computer[:form_factor]
+  end
+  
+  # Returns the computer model if the collection is filtered by computer.
+  def computer_model
+    return nil unless @computer
+    return @computer[:model]
+  end
+
+  # Returns the computer name if the collection is filtered by computer.
   def computer_name
     return nil unless @computer
     return @computer[:name]
@@ -250,7 +262,7 @@ class ComputerPartsData
           text_anchor = "start"
           text_fill = @settings[:bar][:text][:fill_side]
         end
-        label = part[:name] ? "#{part[:name]} (#{part[:title]})" : part[:title]
+        label = part[:name] ? "#{part[:name]} (#{part[:model]})" : part[:model]
         xml.text_(
           id: "part-#{index}-label",
           x: text_x,

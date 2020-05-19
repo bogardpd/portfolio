@@ -1,19 +1,59 @@
 computers:
   chili-dog:
     name: "Chili Dog"
+    model: "MacBook Pro 15″ (early 2009)"
+    form_factor: "laptop"
+    purchase_date: 2009-04-15
+    use_dates:
+      - start:     2009-04-15
+        end:       2015-06-27
+    disposal_date: 2015-06-27
   fishsticks:
     name: "Fishsticks"
+    model: "Compaq Evo N800c"
+    form_factor: "laptop"
+    purchase_date: 2002-07-21
+    use_dates:
+      - start:     2002-07-21
+        end:       2008-07-31
+    disposal_date: 2009-11-01
   frites-liberte:
     name: "Frites Liberté"
+    model: "MacBook Pro 15″ (mid 2012)"
+    form_factor: "laptop"
+    purchase_date: 2015-06-27
+    use_dates:
+      - start:     2015-06-27
+        end:       2016-04-26
+    disposal_date: 2016-04-26
   pancake:
     name: "Pancake"
+    model: "Home-Built PC"
+    form_factor: "desktop"
   peanut-butter:
     name: "Peanut Butter"
+    model: "Home-Built PC"
     form_factor: "desktop"
   quesadilla:
     name: "Quesadilla"
+    model: "MacBook (2016)"
+    form_factor: "laptop"
+    purchase_date: 2016-04-23
+    use_dates:
+      - start:     2016-04-26
+        end:       2016-05-01
+      - start:     2016-05-01
+        end:       null
+    disposal_date: null
   reuben:
     name: "Reuben"
+    model: "Lenovo Thinkpad T60p"
+    form_factor: "laptop"
+    purchase_date: 2007-03-24
+    use_dates:
+      - start:     2007-03-24
+        end:       2009-04-15
+    disposal_date: 2009-11-01
 
 part_types:
   cameras:
@@ -52,6 +92,8 @@ part_types:
     name: "Headphones"
   headsets:
     name: "Headsets"
+  keyboards:
+    name: "Keyboards"
   microphones:
     name: "Microphones"
   mobile:
@@ -75,7 +117,7 @@ part_types:
 
 parts:
 
-  - title: "60 GB HDD"
+  - model: "60 GB HDD"
     part_types:
       - "hard-drives"
     specs:
@@ -88,7 +130,7 @@ parts:
         computer:  "fishsticks"
     disposal_date: 2009-11-01
 
-  - title: "100 GB HDD"
+  - model: "100 GB HDD"
     part_types:
       - "hard-drives"
     specs:
@@ -101,7 +143,7 @@ parts:
         computer:  "reuben"
     disposal_date: 2009-11-01
 
-  - title: "320 GB HDD"
+  - model: "320 GB HDD"
     part_types:
       - "hard-drives"
     specs:
@@ -114,7 +156,7 @@ parts:
         computer:  "chili-dog"
     disposal_date: 2015-02-14
 
-  - title: "Acer AL2216W"
+  - model: "Acer AL2216W"
     part_types:
       - "monitors"
     specs:
@@ -127,7 +169,7 @@ parts:
         end:       2016-06-02
     disposal_date: 2016-06-02
 
-  - title: "Acer AL2216W"
+  - model: "Acer AL2216W"
     part_types:
       - "monitors"
     specs:
@@ -140,7 +182,7 @@ parts:
         end:       2016-06-02
     disposal_date: 2016-06-02
 
-  - title: "AMD Athlon 64 3200"
+  - model: "AMD Athlon 64 3200"
     part_types:
       - "processors"
     part_number: "ADA3200AXBOX"
@@ -155,7 +197,7 @@ parts:
         computer:  "peanut-butter"
     disposal_date: 2008-05-02
   
-  - title: "Apple AirPods"
+  - model: "Apple AirPods"
     part_types:
       - "computer-audio"
       - "headphones"
@@ -167,7 +209,18 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "ASUS GeForce GTX 1070"
+  - model: "Apple Wireless Keyboard"
+    part_types:
+      - "keyboards"
+    specs:
+      - "Bluetooth"
+    purchase_date: 2014-08-16
+    use_dates:
+      - start:     2014-08-16
+        end:       2016-04-26
+    disposal_date: null
+
+  - model: "ASUS GeForce GTX 1070"
     part_types:
       - "video-cards"
     purchase_date: 2016-08-19
@@ -177,7 +230,7 @@ parts:
         computer:  "pancake"
     disposal_date: null
 
-  - title: "Blackberry Bold 9650"
+  - model: "Blackberry Bold 9650"
     name: "Olive"
     part_types:
       - "cell-phones"
@@ -190,7 +243,7 @@ parts:
         end:       2011-05-24
     disposal_date: 2011-05-24
 
-  - title: "Brother DCP-L2520DW"
+  - model: "Brother DCP-L2520DW"
     part_types:
       - "printers"
       - "scanners"
@@ -205,7 +258,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "Brother HL-2170W"
+  - model: "Brother HL-2170W"
     part_types:
       - "printers"
     specs:
@@ -218,7 +271,7 @@ parts:
         end:       2017-08-02
     disposal_date: 2017-08-02
   
-  - title: "Candy bar phone"
+  - model: "Candy bar phone"
     part_types:
       - "cell-phones"
       - "mobile"
@@ -228,7 +281,7 @@ parts:
         end:       2007-06-05
     disposal_date: 2007-06-05
 
-  - title: "Canon PowerShot A460"
+  - model: "Canon PowerShot A460"
     part_types:
       - "cameras"
       - "mobile"
@@ -238,7 +291,7 @@ parts:
         end:       2010-03-02
     disposal_date: 2010-03-02
 
-  - title: "Canon PowerShot SD1200 IS"
+  - model: "Canon PowerShot SD1200 IS"
     part_types:
       - "cameras"
       - "mobile"
@@ -247,8 +300,8 @@ parts:
       - start:     2010-03-02
         end:       2014-06-19
     disposal_date: 2014-06-19
-  
-  - title: "Compaq FD-01PUB USB External Floppy"
+
+  - model: "Compaq FD-01PUB USB External Floppy"
     part_types:
       "floppy-drives"
     purchase_date: 2002-07-21
@@ -257,7 +310,7 @@ parts:
         end:       2009-11-01
     disposal_date: null
 
-  - title: "Compaq Port Replicator PR1000"
+  - model: "Compaq Port Replicator PR1000"
     part_types:
       - "docking-stations"
     purchase_date: 2005-05-14
@@ -266,8 +319,17 @@ parts:
         end:       2008-07-31
         computer:  "fishsticks"
     disposal_date: 2009-11-01
+  
+  - model: "CoolerMaster Storm QuickFire XT Mechanical"
+    part_types:
+      - "keyboards"
+    purchase_date: 2014-03-05
+    use_dates:
+      - start:     2014-03-05
+        end:       null
+    disposal_date: null
 
-  - title: "Dell UltraSharp U2415"
+  - model: "Dell UltraSharp U2415"
     part_types:
       - "monitors"
     specs:
@@ -281,7 +343,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "Dell UltraSharp U2415"
+  - model: "Dell UltraSharp U2415"
     part_types:
       - "monitors"
     specs:
@@ -295,7 +357,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "Dell UltraSharp U2415"
+  - model: "Dell UltraSharp U2415"
     part_types:
       - "monitors"
     specs:
@@ -309,7 +371,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "DVD player"
+  - model: "DVD player"
     part_types:
       - "dvd-players"
       - "entertainment-center"
@@ -319,7 +381,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "Epson Perfection V200 Photo"
+  - model: "Epson Perfection V200 Photo"
     part_types:
       - "scanners"
     purchase_date: 2008-01-07
@@ -328,7 +390,7 @@ parts:
         end:       2017-08-02
     disposal_date: 2017-08-02
   
-  - title: "EVGA GeForce GTX 670"
+  - model: "EVGA GeForce GTX 670"
     part_types:
       - "video-cards"
     specs:
@@ -340,7 +402,7 @@ parts:
         computer:  "pancake"
     disposal_date: 2016-08-20
 
-  - title: "Fitbit Alta"
+  - model: "Fitbit Alta"
     part_types:
       - "fitness-trackers"
     purchase_date: 2017-08-24
@@ -349,7 +411,7 @@ parts:
         end:       2018-06-27
     disposal_date: null
 
-  - title: "Fitbit One"
+  - model: "Fitbit One"
     part_types:
       - "fitness-trackers"
     purchase_date: 2014-01-17
@@ -360,7 +422,7 @@ parts:
         end:       2017-08-24
     disposal_date: 2017-08-24
 
-  - title: "Flip phone"
+  - model: "Flip phone"
     part_types:
       - "cell-phones"
       - "mobile"
@@ -370,7 +432,7 @@ parts:
         end:       2009-02-13
     disposal_date: 2009-02-13
   
-  - title: "Garmin DriveSmart 50LMT"
+  - model: "Garmin DriveSmart 50LMT"
     name: "Egg"
     part_types:
       - "gps"
@@ -380,7 +442,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "Garmin nüvi 265WT"
+  - model: "Garmin nüvi 265WT"
     part_types:
       - "gps"
     purchase_date: 2009-06-24
@@ -389,7 +451,7 @@ parts:
         end:       2010-07-25
     disposal_date: 2010-07-25
     
-  - title: "Garmin nüvi 1390T"
+  - model: "Garmin nüvi 1390T"
     part_types:
       - "gps"
     purchase_date: 2010-07-25
@@ -402,7 +464,7 @@ parts:
         end:       2011-12-15
     disposal_date: 2011-12-15
 
-  - title: "Garmin nüvi 2455LT"
+  - model: "Garmin nüvi 2455LT"
     part_types:
       - "gps"
     purchase_date: 2011-12-15
@@ -411,7 +473,7 @@ parts:
         end:       2015-02-25
     disposal_date: 2015-02-27
 
-  - title: "Garmin nüvi 2539LMT"
+  - model: "Garmin nüvi 2539LMT"
     part_types:
       - "gps"
     purchase_date: 2015-02-25
@@ -420,7 +482,7 @@ parts:
         end:       2016-09-12
     disposal_date: 2016-09-16
 
-  - title: "HP DeskJet 855c"
+  - model: "HP DeskJet 855c"
     part_types:
       - "printers"
     specs:
@@ -432,7 +494,7 @@ parts:
         end:       2006-06-15
     disposal_date: 2006-06-15
 
-  - title: "HP PhotoSmart 7450"
+  - model: "HP PhotoSmart 7450"
     part_types:
       - "printers"
     specs:
@@ -444,7 +506,7 @@ parts:
         end:       2008-05-02
     disposal_date: 2008-07-31
   
-  - title: "HTC Touch Pro"
+  - model: "HTC Touch Pro"
     name: "Tator Tot II"
     part_types:
       - "cell-phones"
@@ -458,7 +520,7 @@ parts:
         end:       2009-07-14
     disposal_date: 2009-07-14
 
-  - title: "Intel Core 2 Quad Q9300"
+  - model: "Intel Core 2 Quad Q9300"
     part_types:
       - "processors"
     part_number: "BX80580Q9300"
@@ -474,7 +536,7 @@ parts:
         computer:  "pancake"
     disposal_date: 2014-07-22
 
-  - title: "Intel Core i5-4690"
+  - model: "Intel Core i5-4690"
     part_types:
       - "processors"
     specs:
@@ -487,7 +549,7 @@ parts:
         computer:  "pancake"
     disposal_date: 2016-08-20
 
-  - title: "Intel Core i5-6600K"
+  - model: "Intel Core i5-6600K"
     part_types:
       - "processors"
     purchase_date: 2016-08-19
@@ -497,7 +559,7 @@ parts:
         computer:  "pancake"
     disposal_date: null
   
-  - title: "iPhone 4"
+  - model: "iPhone 4"
     name: "Tator Tot III"
     part_types:
       - "cell-phones"
@@ -510,7 +572,7 @@ parts:
         end:       2013-11-29
     disposal_date: 2013-11-29
 
-  - title: "iPhone 5S"
+  - model: "iPhone 5S"
     name: "Tator Tot IV"
     part_types:
       - "cell-phones"
@@ -523,7 +585,7 @@ parts:
         end:       2015-11-10
     disposal_date: 2015-11-10
 
-  - title: "iPhone 6S"
+  - model: "iPhone 6S"
     name: "Tator Tot V"
     part_types:
       - "cell-phones"
@@ -536,7 +598,7 @@ parts:
         end:       2018-01-02
     disposal_date: 2018-01-02
 
-  - title: "iPhone 8 Plus"
+  - model: "iPhone 8 Plus"
     name: "Tator Tot VI"
     part_types:
       - "cell-phones"
@@ -549,7 +611,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "Jabra Evolve 40 UC Professional"
+  - model: "Jabra Evolve 40 UC Professional"
     part_types:
       - "computer-audio"
       - "headphones"
@@ -563,7 +625,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "Lenovo ThinkPad 250410U Advanced Mini Dock"
+  - model: "Lenovo ThinkPad 250410U Advanced Mini Dock"
     part_types:
       - "docking-stations"
     specs:
@@ -575,7 +637,7 @@ parts:
         computer:  "reuben"
     disposal_date: 2009-11-01
 
-  - title: "Lian Li PC-7B Plus II"
+  - model: "Lian Li PC-7B Plus II"
     part_types:
       - "cases"
     specs:
@@ -590,7 +652,38 @@ parts:
         computer:  "pancake"
     disposal_date: 2014-07-22
 
-  - title: "Maxtop Signature CSX-147K2F"
+  - model: "Logitech Elite Keyboard"
+    part_types:
+      - "keyboards"
+    purchase_date: 2004-07-24
+    use_dates:
+      - start:     2004-07-24
+        end:       2006-10-09
+    disposal_date: 2008-09-01
+  
+  - model: "Logitech G15 Gaming Keyboard"
+    part_types:
+      - "keyboards"
+    purchase_date: 2006-10-09
+    use_dates:
+      - start:     2006-10-09
+        end:       2009-12-11
+    disposal_date: 2011-09-27
+
+  - model: "Logitech Wireless Touch Keyboard K400r"
+    part_types:
+      - "entertainment-center"
+      - "keyboards"
+    specs:
+      - "Wireless"
+      - "Touchpad"
+    purchase_date: 2013-10-26
+    use_dates:
+      - start:     2013-10-26
+        end:       null
+    disposal_date: null
+
+  - model: "Maxtop Signature CSX-147K2F"
     part_types:
       - "cases"
     purchase_date: 2004-04-26
@@ -600,7 +693,7 @@ parts:
         computer:  "peanut-butter"
     disposal_date: 2008-05-02
   
-  - title: "Maxtor DiamondMax 8.4 GB"
+  - model: "Maxtor DiamondMax 8.4 GB"
     part_types:
       - "hard-drives"
     part_number: "2160"
@@ -612,8 +705,17 @@ parts:
         end:       2006-05-13
         computer:  "peanut-butter"
     disposal_date: 2006-05-13
+  
+  - model: "Microsoft Natural Ergonomic Keyboard 4000"
+    part_types:
+      - "keyboards"
+    purchase_date: 2009-12-11
+    use_dates:
+      - start:     2009-12-11
+        end:       2014-03-05
+    disposal_date: 2014-03-05
 
-  - title: "New Nintendo 3DS XL"
+  - model: "New Nintendo 3DS XL"
     part_types:
       - "game-consoles"
     purchase_date: 2017-01-07
@@ -626,7 +728,7 @@ parts:
         end:       2019-02-24
     disposal_date: 2019-02-24
   
-  - title: "Nintendo DS Lite"
+  - model: "Nintendo DS Lite"
     part_types:
       - "game-consoles"
     purchase_date: 2010-01-23
@@ -635,7 +737,7 @@ parts:
         end:       2017-01-07
     disposal_date: 2019-02-24
 
-  - title: "Nintendo Switch"
+  - model: "Nintendo Switch"
     part_types:
       - "game-consoles"
     purchase_date: 2018-07-07
@@ -644,7 +746,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "Nintendo Wii"
+  - model: "Nintendo Wii"
     part_types:
       - "game-consoles"
     purchase_date: 2007-09-07
@@ -653,7 +755,7 @@ parts:
         end:       2018-04-08
     disposal_date: 2018-04-08
 
-  - title: "nMEDIAPC ZE-C68"
+  - model: "nMEDIAPC ZE-C68"
     part_types:
       - "card-readers"
     specs:
@@ -667,7 +769,7 @@ parts:
         computer:  "pancake"
     disposal_date: 2016-08-18
 
-  - title: "Nyko AirFlo PC Dual Analog"
+  - model: "Nyko AirFlo PC Dual Analog"
     part_types:
       - "game-controllers"
     purchase_date: 2003-08-14
@@ -676,7 +778,7 @@ parts:
         end:       2005-02-08
     disposal_date: 2005-02-08
 
-  - title: "Ozeri 4x3razor Pedometer"
+  - model: "Ozeri 4x3razor Pedometer"
     part_types:
       - "fitness-trackers"
     purchase_date: 2012-08-03
@@ -685,7 +787,7 @@ parts:
         end:       2014-01-17
     disposal_date: 2014-01-17
 
-  - title: "PlayStation 2"
+  - model: "PlayStation 2"
     part_types:
       - "game-consoles"
     purchase_date: 2010-02-07
@@ -694,7 +796,7 @@ parts:
         end:       2017-01-01
     disposal_date: 2017-01-01
 
-  - title: "PowerColor Radeon 9800 Pro"
+  - model: "PowerColor Radeon 9800 Pro"
     part_types:
       - "video-cards"
     specs:
@@ -706,7 +808,7 @@ parts:
         computer: "peanut-butter"
     disposal_date: 2008-05-02
 
-  - title: "Saitek AV8R Flight Stick"
+  - model: "Saitek AV8R Flight Stick"
     part_types:
       - "game-controllers"
     purchase_date: 2009-02-20
@@ -715,7 +817,7 @@ parts:
         end:       null
     disposal_date: null
   
-  - title: "Saitek P880 Dual Analog"
+  - model: "Saitek P880 Dual Analog"
     part_types:
       - "game-controllers"
     purchase_date: 2004-12-12
@@ -724,7 +826,7 @@ parts:
         end:       2011-11-25
     disposal_date: 2011-11-25
 
-  - title: "Samsung Spinpoint F1 750 GB"
+  - model: "Samsung Spinpoint F1 750 GB"
     part_types:
       - "hard-drives"
     part_number: "HD753LJ"
@@ -738,7 +840,7 @@ parts:
         computer:  "pancake"
     disposal_date: 2014-07-22
 
-  - title: "Samsung 840 EVO 1 TB SSD"
+  - model: "Samsung 840 EVO 1 TB SSD"
     part_types:
       - "hard-drives"
     specs:
@@ -753,7 +855,7 @@ parts:
         computer:  "pancake"
     disposal_date: null
 
-  - title: "Samsung Spinpoint F1 750 GB"
+  - model: "Samsung Spinpoint F1 750 GB"
     part_types:
       - "hard-drives"
     part_number: "HD753LJ"
@@ -767,7 +869,7 @@ parts:
         computer:  "pancake"
     disposal_date: 2012-09-04
 
-  - title: "Samsung SyncMaster 997DF CRT"
+  - model: "Samsung SyncMaster 997DF CRT"
     part_types:
       - "monitors"
     specs:
@@ -779,7 +881,7 @@ parts:
         end:       2007-12-08
     disposal_date: 2008-11-16
   
-  - title: "Seagate BarraCuda 200 GB"
+  - model: "Seagate BarraCuda 200 GB"
     part_types:
       - "hard-drives"
     part_number: ST3200822AS
@@ -792,7 +894,7 @@ parts:
         computer:  "peanut-butter"
     disposal_date: 2008-05-02
 
-  - title: "Sennheiser PC 8 USB"
+  - model: "Sennheiser PC 8 USB"
     part_types:
       - "computer-audio"
       - "headphones"
@@ -806,7 +908,7 @@ parts:
         end:       2020-03-12
     disposal_date: null
 
-  - title: "Silverstone TJ08B-E Mini"
+  - model: "Silverstone TJ08B-E Mini"
     part_types:
       - "cases"
     specs:
@@ -818,7 +920,7 @@ parts:
         computer:  "pancake"
     disposal_date: null
 
-  - title: "Sun 447Z CRT"
+  - model: "Sun 447Z CRT"
     part_types:
       - "monitors"
     specs:
@@ -830,7 +932,7 @@ parts:
         end:       2008-05-11
     disposal_date: 2009-11-01
 
-  - title: "Super Nintendo Entertainment System"
+  - model: "Super Nintendo Entertainment System"
     part_types:
       - "game-consoles"
     purchase_date: 2004-10-29
@@ -839,7 +941,7 @@ parts:
         end:       2013-07-18
     disposal_date: 2018-04-08
 
-  - title: "ViewSonic VX2025wm"
+  - model: "ViewSonic VX2025wm"
     part_types:
       - "monitors"
     specs:
@@ -854,7 +956,7 @@ parts:
         end:       2007-10-08
     disposal_date: 2007-10-08
 
-  - title: "ViewSonic VX2035wm"
+  - model: "ViewSonic VX2035wm"
     part_types:
       - "monitors"
     specs:
@@ -867,7 +969,7 @@ parts:
         end:       2016-05-09
     disposal_date: 2016-05-09
 
-  - title: "Western Digital Black 500 GB"
+  - model: "Western Digital Black 500 GB"
     part_types:
       - "hard-drives"
     specs:
@@ -880,7 +982,7 @@ parts:
         computer:  "chili-dog"
     disposal_date: 2015-06-27
   
-  - title: "Western Digital Caviar Black 1 TB"
+  - model: "Western Digital Caviar Black 1 TB"
     part_types:
       - "hard-drives"
     part_number: "WD1002FAEX"
@@ -894,7 +996,7 @@ parts:
         computer:  "pancake"
     disposal_date: 2016-04-24
 
-  - title: "Western Digital Blue 3 TB"
+  - model: "Western Digital Blue 3 TB"
     part_types:
       - "hard-drives"
     specs:
@@ -907,7 +1009,7 @@ parts:
         computer:  "pancake"
     disposal_date: null
 
-  - title: "Western Digital Caviar SE16 320 GB"
+  - model: "Western Digital Caviar SE16 320 GB"
     part_types:
       - "hard-drives"
     part_number: "WD3200KS"
@@ -926,7 +1028,7 @@ parts:
     disposal_date: 2008-05-02
     note: "In external enclosure for Fishsticks"
 
-  - title: "Western Digital My Passport 2 TB External"
+  - model: "Western Digital My Passport 2 TB External"
     part_types:
       - "hard-drives"
     purchase_date: 2012-02-25
@@ -942,7 +1044,7 @@ parts:
         computer:  "quesadilla"
     disposal_date: null
 
-  - title: "Western Digital Raptor 150 GB"
+  - model: "Western Digital Raptor 150 GB"
     part_types:
       - "hard-drives"
     part_number: "WD1500ADFD"
@@ -956,7 +1058,7 @@ parts:
         computer:  "pancake"
     disposal_date: 2010-11-04
 
-  - title: "Xbox 360"
+  - model: "Xbox 360"
     part_types:
       - "game-consoles"
     purchase_date: 2010-01-08
@@ -965,7 +1067,7 @@ parts:
         end:       2019-03-04
     disposal_date: 2019-03-04
 
-  - title: "Xbox 360 Wired Controller"
+  - model: "Xbox 360 Wired Controller"
     part_types:
       - "game-controllers"
     purchase_date: 2011-11-25
@@ -974,7 +1076,7 @@ parts:
         end:       null
     disposal_date: null
 
-  - title: "XFX GeForce 8800 GTX"
+  - model: "XFX GeForce 8800 GTX"
     part_types:
       - "video-cards"
     specs:
