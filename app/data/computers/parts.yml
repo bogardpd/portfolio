@@ -16,8 +16,35 @@ computers:
     name: "Reuben"
 
 part_types:
+  cameras:
+    name: "Cameras"
+  card-readers:
+    name: "Card Readers"
+  cases:
+    name: "Cases"
+  cell-phones:
+    name: "Cell Phones"
+  docking-stations:
+    name: "Docking Stations"
+  dvd-players:
+    name: "DVD Players"
+    lowercase: "DVD players"
+  fitness-trackers:
+    name: "Fitness Trackers"
+  floppy-drives:
+    name: "Floppy Drives"
+  game-consoles:
+    name: "Game Consoles"
+  game-controllers:
+    name: "Game Controllers"
   gps:
     name: "GPS Units"
+    lowercase: "GPS units"
+  hard-drives:
+    name: "Hard Drives and SSDs"
+    lowercase: "hard drives and SSDs"
+  mobile:
+    name: "Mobile"
   monitors:
     name: "Monitors"
   processors:
@@ -26,12 +53,55 @@ part_types:
     name: "Printers"
   scanners:
     name: "Scanners"
+  smartphones:
+    name: "Smartphones"
+  video-cards:
+    name: "Video Cards"
 
-###############################################################################
-# PARTS LIST                                                                  #
-###############################################################################
+##############
+# PARTS LIST #
+##############
 
 parts:
+
+  - title: "60 GB HDD"
+    part_types:
+      - "hard-drives"
+    specs:
+      - "2.5″ internal"
+      - "5400 RPM"
+    purchase_date: 2002-07-21
+    use_dates:
+      - start:     2002-07-21
+        end:       2008-07-31
+        computer:  "fishsticks"
+    disposal_date: 2009-11-01
+
+  - title: "100 GB HDD"
+    part_types:
+      - "hard-drives"
+    specs:
+      - "2.5″ internal"
+      - "7200 RPM"
+    purchase_date: 2007-03-24
+    use_dates:
+      - start:     2007-03-24
+        end:       2009-04-15
+        computer:  "reuben"
+    disposal_date: 2009-11-01
+
+  - title: "320 GB HDD"
+    part_types:
+      - "hard-drives"
+    specs:
+      - "2.5″ internal"
+      - "7200 RPM"
+    purchase_date: 2009-04-15
+    use_dates:
+      - start:     2009-04-15
+        end:       2015-02-14
+        computer:  "chili-dog"
+    disposal_date: 2015-02-14
 
   - title: "Acer AL2216W"
     part_types:
@@ -60,7 +130,6 @@ parts:
     disposal_date: 2016-06-02
 
   - title: "AMD Athlon 64 3200"
-    computer: "peanut-butter"
     part_types:
       - "processors"
     part_number: "ADA3200AXBOX"
@@ -72,7 +141,31 @@ parts:
     use_dates:
       - start:     2004-10-07
         end:       2008-05-02
+        computer:  "peanut-butter"
     disposal_date: 2008-05-02
+  
+  - title: "ASUS GeForce GTX 1070"
+    part_types:
+      - "video-cards"
+    purchase_date: 2016-08-19
+    use_dates:
+      - start:     2016-08-20
+        end:       null
+        computer:  "pancake"
+    disposal_date: null
+
+  - title: "Blackberry Bold 9650"
+    name: "Olive"
+    part_types:
+      - "cell-phones"
+      - "smartphones"
+      - "mobile"
+    specs:
+    purchase_date: 2009-07-14
+    use_dates:
+      - start:     2009-07-14
+        end:       2011-05-24
+    disposal_date: 2011-05-24
 
   - title: "Brother DCP-L2520DW"
     part_types:
@@ -101,6 +194,55 @@ parts:
       - start:     2008-05-02
         end:       2017-08-02
     disposal_date: 2017-08-02
+  
+  - title: "Candy bar phone"
+    part_types:
+      - "cell-phones"
+      - "mobile"
+    purchase_date: 2004-06-26
+    use_dates:
+      - start:     2004-06-26
+        end:       2007-06-05
+    disposal_date: 2007-06-05
+
+  - title: "Canon PowerShot A460"
+    part_types:
+      - "cameras"
+      - "mobile"
+    purchase_date: 2007-07-08
+    use_dates:
+      - start:     2007-07-08
+        end:       2010-03-02
+    disposal_date: 2010-03-02
+
+  - title: "Canon PowerShot SD1200 IS"
+    part_types:
+      - "cameras"
+      - "mobile"
+    purchase_date: 2010-03-02
+    use_dates:
+      - start:     2010-03-02
+        end:       2014-06-19
+    disposal_date: 2014-06-19
+  
+  - title: "Compaq FD-01PUB USB External Floppy"
+    part_types:
+      "floppy-drives"
+    purchase_date: 2002-07-21
+    use_dates:
+      - start:     2002-07-21
+        end:       2009-11-01
+    disposal_date: null
+
+  - title: "Compaq Port Replicator PR1000"
+    part_types:
+      - "docking-stations"
+    purchase_date: 2005-05-14
+    use_dates:
+      - start:     2005-05-14
+        end:       2008-07-31
+        computer:  "fishsticks"
+    disposal_date: 2009-11-01
 
   - title: "Dell UltraSharp U2415"
     part_types:
@@ -144,6 +286,15 @@ parts:
         end:       null
     disposal_date: null
 
+  - title: "DVD player"
+    part_types:
+      - "dvd-players"
+    purchase_date: 2019-03-02
+    use_dates:
+      - start:     2019-03-02
+        end:       null
+    disposal_date: null
+
   - title: "Epson Perfection V200 Photo"
     part_types:
       - "scanners"
@@ -152,6 +303,98 @@ parts:
       - start:     2008-01-07
         end:       2017-08-02
     disposal_date: 2017-08-02
+  
+  - title: "EVGA GeForce GTX 670"
+    part_types:
+      - "video-cards"
+    specs:
+      - "2 GB"
+    purchase_date: 2012-09-04
+    use_dates:
+      - start:     2012-09-04
+        end:       2016-08-20
+        computer:  "pancake"
+    disposal_date: 2016-08-20
+
+  - title: "Fitbit Alta"
+    part_types:
+      - "fitness-trackers"
+    purchase_date: 2017-08-24
+    use_dates:
+      - start:     2017-08-24
+        end:       2018-06-27
+    disposal_date: null
+
+  - title: "Fitbit One"
+    part_types:
+      - "fitness-trackers"
+    purchase_date: 2014-01-17
+    use_dates:
+      - start:     2014-01-17
+        end:       2014-11-29
+      - start:     2014-12-01
+        end:       2017-08-24
+    disposal_date: 2017-08-24
+
+  - title: "Flip phone"
+    part_types:
+      - "cell-phones"
+      - "mobile"
+    purchase_date: 2007-06-05
+    use_dates:
+      - start:     2007-06-05
+        end:       2009-02-13
+    disposal_date: 2009-02-13
+  
+  - title: "Garmin DriveSmart 50LMT"
+    name: "Egg"
+    part_types:
+      - "gps"
+    purchase_date: 2016-09-12
+    use_dates:
+      - start:     2016-09-12
+        end:       null
+    disposal_date: null
+
+  - title: "Garmin nüvi 265WT"
+    part_types:
+      - "gps"
+    purchase_date: 2009-06-24
+    use_dates:
+      - start:     2009-06-24
+        end:       2010-07-25
+    disposal_date: 2010-07-25
+    
+  - title: "Garmin nüvi 1390T"
+    part_types:
+      - "gps"
+    purchase_date: 2010-07-25
+    use_dates:
+      - start:     2010-07-25
+        end:       2010-08-17
+      - start:     2010-08-17
+        end:       2010-09-27
+      - start:     2010-10-01
+        end:       2011-12-15
+    disposal_date: 2011-12-15
+
+  - title: "Garmin nüvi 2455LT"
+    part_types:
+      - "gps"
+    purchase_date: 2011-12-15
+    use_dates:
+      - start:     2011-12-15
+        end:       2015-02-25
+    disposal_date: 2015-02-27
+
+  - title: "Garmin nüvi 2539LMT"
+    part_types:
+      - "gps"
+    purchase_date: 2015-02-25
+    use_dates:
+      - start:     2015-02-27
+        end:       2016-09-12
+    disposal_date: 2016-09-16
 
   - title: "HP DeskJet 855c"
     part_types:
@@ -176,9 +419,22 @@ parts:
       - start:     2006-06-15
         end:       2008-05-02
     disposal_date: 2008-07-31
+  
+  - title: "HTC Touch Pro"
+    name: "Tator Tot II"
+    part_types:
+      - "cell-phones"
+      - "smartphones"
+      - "mobile"
+    specs:
+      - "Windows Mobile"
+    purchase_date: 2009-02-13
+    use_dates:
+      - start:     2009-02-13
+        end:       2009-07-14
+    disposal_date: 2009-07-14
 
   - title: "Intel Core 2 Quad Q9300"
-    computer: "pancake"
     part_types:
       - "processors"
     part_number: "BX80580Q9300"
@@ -191,10 +447,10 @@ parts:
     use_dates:
       - start:     2008-05-02
         end:       2014-07-22
+        computer:  "pancake"
     disposal_date: 2014-07-22
 
   - title: "Intel Core i5-4690"
-    computer: "pancake"
     part_types:
       - "processors"
     specs:
@@ -204,17 +460,275 @@ parts:
     use_dates:
       - start:     2014-07-22
         end:       2016-08-20
+        computer:  "pancake"
     disposal_date: 2016-08-20
 
   - title: "Intel Core i5-6600K"
-    computer: "pancake"
     part_types:
       - "processors"
     purchase_date: 2016-08-19
     use_dates:
       - start:     2016-08-20
         end:       null
+        computer:  "pancake"
     disposal_date: null
+  
+  - title: "iPhone 4"
+    name: "Tator Tot III"
+    part_types:
+      - "cell-phones"
+      - "smartphones"
+      - "mobile"
+    specs:
+    purchase_date: 2011-05-24
+    use_dates:
+      - start:     2011-05-24
+        end:       2013-11-29
+    disposal_date: 2013-11-29
+
+  - title: "iPhone 5S"
+    name: "Tator Tot IV"
+    part_types:
+      - "cell-phones"
+      - "smartphones"
+      - "mobile"
+    specs:
+    purchase_date: 2013-11-29
+    use_dates:
+      - start:     2013-11-29
+        end:       2015-11-10
+    disposal_date: 2015-11-10
+
+  - title: "iPhone 6S"
+    name: "Tator Tot V"
+    part_types:
+      - "cell-phones"
+      - "smartphones"
+      - "mobile"
+    specs:
+    purchase_date: 2015-11-10
+    use_dates:
+      - start:     2015-11-10
+        end:       2018-01-02
+    disposal_date: 2018-01-02
+
+  - title: "iPhone 8 Plus"
+    name: "Tator Tot VI"
+    part_types:
+      - "cell-phones"
+      - "smartphones"
+      - "mobile"
+    specs:
+    purchase_date: 2018-01-02
+    use_dates:
+      - start:     2018-01-02
+        end:       null
+    disposal_date: null
+
+  - title: "Lenovo ThinkPad 250410U Advanced Mini Dock"
+    part_types:
+      - "docking-stations"
+    specs:
+      - "Black"
+    purchase_date: 2007-05-24
+    use_dates:
+      - start:     2007-05-24
+        end:       2009-04-15
+        computer:  "reuben"
+    disposal_date: 2009-11-01
+
+  - title: "Lian Li PC-7B Plus II"
+    part_types:
+      - "cases"
+    specs:
+      - "Aluminum"
+      - "ATX"
+      - "Mid-tower"
+      - "Black"
+    purchase_date: 2008-05-02
+    use_dates:
+      - start:     2008-05-02
+        end:       2014-07-22
+        computer:  "pancake"
+    disposal_date: 2014-07-22
+
+  - title: "Maxtop Signature CSX-147K2F"
+    part_types:
+      - "cases"
+    purchase_date: 2004-04-26
+    use_dates:
+      - start:     2004-04-26
+        end:       2008-05-02
+        computer:  "peanut-butter"
+    disposal_date: 2008-05-02
+  
+  - title: "Maxtor DiamondMax 8.4 GB"
+    part_types:
+      - "hard-drives"
+    part_number: "2160"
+    specs:
+      - "5200 RPM"
+    purchase_date: 2003-09-01
+    use_dates:
+      - start:     2003-09-01
+        end:       2006-05-13
+        computer:  "peanut-butter"
+    disposal_date: 2006-05-13
+
+
+  - title: "New Nintendo 3DS XL"
+    part_types:
+      - "game-consoles"
+    purchase_date: 2017-01-07
+    use_dates:
+      - start:     2017-01-07
+        end:       2017-01-12
+      - start:     2017-01-23
+        end:       2017-06-12
+      - start:     2017-06-22
+        end:       2019-02-24
+    disposal_date: 2019-02-24
+  
+  - title: "Nintendo DS Lite"
+    part_types:
+      - "game-consoles"
+    purchase_date: 2010-01-23
+    use_dates:
+      - start:     2010-01-23
+        end:       2017-01-07
+    disposal_date: 2019-02-24
+
+  - title: "Nintendo Switch"
+    part_types:
+      - "game-consoles"
+    purchase_date: 2018-07-07
+    use_dates:
+      - start:     2018-07-07
+        end:       null
+    disposal_date: null
+
+  - title: "Nintendo Wii"
+    part_types:
+      - "game-consoles"
+    purchase_date: 2007-09-07
+    use_dates:
+      - start:     2007-09-07
+        end:       2018-04-08
+    disposal_date: 2018-04-08
+
+  - title: "nMEDIAPC ZE-C68"
+    part_types:
+      - "card-readers"
+    specs:
+      - "3.5″ drive bay"
+      - "All-in-one"
+      - "USB 2.0 port"
+    purchase_date: 2008-05-02
+    use_dates:
+      - start:     2008-05-02
+        end:       2016-08-18
+        computer:  "pancake"
+    disposal_date: 2016-08-18
+
+  - title: "Nyko AirFlo PC Dual Analog"
+    part_types:
+      - "game-controllers"
+    purchase_date: 2003-08-14
+    use_dates:
+      - start:     2003-08-14
+        end:       2005-02-08
+    disposal_date: 2005-02-08
+
+  - title: "Ozeri 4x3razor Pedometer"
+    part_types:
+      - "fitness-trackers"
+    purchase_date: 2012-08-03
+    use_dates:
+      - start:     2012-08-03
+        end:       2014-01-17
+    disposal_date: 2014-01-17
+
+  - title: "PlayStation 2"
+    part_types:
+      - "game-consoles"
+    purchase_date: 2010-02-07
+    use_dates:
+      - start:     2010-02-07
+        end:       2017-01-01
+    disposal_date: 2017-01-01
+
+  - title: "PowerColor Radeon 9800 Pro"
+    part_types:
+      - "video-cards"
+    specs:
+      - "128 MB DDR"
+    purchase_date: 2004-10-07
+    use_dates:
+      - start:     2004-10-07
+        end:       2008-05-02
+        computer: "peanut-butter"
+    disposal_date: 2008-05-02
+
+  - title: "Saitek AV8R Flight Stick"
+    part_types:
+      - "game-controllers"
+    purchase_date: 2009-02-20
+    use_dates:
+      - start:     2009-02-20
+        end:       null
+    disposal_date: null
+  
+  - title: "Saitek P880 Dual Analog"
+    part_types:
+      - "game-controllers"
+    purchase_date: 2004-12-12
+    use_dates:
+      - start:     2004-12-12
+        end:       2011-11-25
+    disposal_date: 2011-11-25
+
+  - title: "Samsung Spinpoint F1 750 GB"
+    part_types:
+      - "hard-drives"
+    part_number: "HD753LJ"
+    specs:
+      - "7200 RPM"
+      - "3.5″"
+    purchase_date: 2008-05-02
+    use_dates:
+      - start:     2008-05-02
+        end:       2014-07-22
+        computer:  "pancake"
+    disposal_date: 2014-07-22
+
+  - title: "Samsung 840 EVO 1 TB SSD"
+    part_types:
+      - "hard-drives"
+    specs:
+      - "2.5″"
+    purchase_date: 2014-07-16
+    use_dates:
+      - start:     2014-07-16
+        end:       2014-07-18
+        computer:  "pancake"
+      - start:     2014-07-22
+        end:       null
+        computer:  "pancake"
+    disposal_date: null
+
+  - title: "Samsung Spinpoint F1 750 GB"
+    part_types:
+      - "hard-drives"
+    part_number: "HD753LJ"
+    specs:
+      - "7200 RPM"
+      - "3.5″ (in external enclosure)"
+    purchase_date: 2008-05-02
+    use_dates:
+      - start:     2008-05-02
+        end:       2012-09-04
+        computer:  "pancake"
+    disposal_date: 2012-09-04
 
   - title: "Samsung SyncMaster 997DF CRT"
     part_types:
@@ -227,6 +741,31 @@ parts:
       - start:     2004-07-08
         end:       2007-12-08
     disposal_date: 2008-11-16
+  
+  - title: "Seagate BarraCuda 200 GB"
+    part_types:
+      - "hard-drives"
+    part_number: ST3200822AS
+    specs:
+      - "7200 RPM"
+    purchase_date: 2004-10-07
+    use_dates:
+      - start:     2004-10-07
+        end:       2008-05-02
+        computer:  "peanut-butter"
+    disposal_date: 2008-05-02
+
+  - title: "Silverstone TJ08B-E Mini"
+    part_types:
+      - "cases"
+    specs:
+      - "μATX"
+    purchase_date: 2014-07-16
+    use_dates:
+      - start:     2014-07-22
+        end:       null
+        computer:  "pancake"
+    disposal_date: null
 
   - title: "Sun 447Z CRT"
     part_types:
@@ -239,6 +778,15 @@ parts:
       - start:     2004-12-12
         end:       2008-05-11
     disposal_date: 2009-11-01
+
+  - title: "Super Nintendo Entertainment System"
+    part_types:
+      - "game-consoles"
+    purchase_date: 2004-10-29
+    use_dates:
+      - start:     2004-10-29
+        end:       2013-07-18
+    disposal_date: 2018-04-08
 
   - title: "ViewSonic VX2025wm"
     part_types:
@@ -267,3 +815,122 @@ parts:
       - start:     2007-11-01
         end:       2016-05-09
     disposal_date: 2016-05-09
+
+  - title: "Western Digital Black 500 GB"
+    part_types:
+      - "hard-drives"
+    specs:
+      - "7200 RPM"
+      - "2.5″"
+    purchase_date: 2015-02-14
+    use_dates:
+      - start:     2015-02-14
+        end:       2015-06-27
+        computer:  "chili-dog"
+    disposal_date: 2015-06-27
+  
+  - title: "Western Digital Caviar Black 1 TB"
+    part_types:
+      - "hard-drives"
+    part_number: "WD1002FAEX"
+    specs:
+      - "7200 RPM"
+      - "3.5″"
+    purchase_date: 2010-11-04
+    use_dates:
+      - start:     2010-11-04
+        end:       2016-04-24
+        computer:  "pancake"
+    disposal_date: 2016-04-24
+
+  - title: "Western Digital Blue 3 TB"
+    part_types:
+      - "hard-drives"
+    specs:
+      - "5400 RPM"
+      - "3.5″"
+    purchase_date: 2016-08-16
+    use_dates:
+      - start:     2016-08-18
+        end:       null
+        computer:  "pancake"
+    disposal_date: null
+
+  - title: "Western Digital Caviar SE16 320 GB"
+    part_types:
+      - "hard-drives"
+    part_number: "WD3200KS"
+    specs:
+      - "7200 RPM"
+      - "SATA"
+      - "3.5″"
+    purchase_date: 2006-05-13
+    use_dates:
+      - start:     2006-05-13
+        end:       2007-05-11
+        computer:  "peanut-butter"
+      - start:     2007-05-11
+        end:       2008-05-02
+        computer:  "fishsticks"
+    disposal_date: 2008-05-02
+    note: "In external enclosure for Fishsticks"
+
+  - title: "Western Digital My Passport 2 TB External"
+    part_types:
+      - "hard-drives"
+    purchase_date: 2012-02-25
+    use_dates:
+      - start:     2012-02-25
+        end:       2015-06-27
+        computer:  "chili-dog"
+      - start:     2015-06-27
+        end:       2016-04-26
+        computer:  "frites-liberte"
+      - start:     2016-04-26
+        end:       null
+        computer:  "quesadilla"
+    disposal_date: null
+
+  - title: "Western Digital Raptor 150 GB"
+    part_types:
+      - "hard-drives"
+    part_number: "WD1500ADFD"
+    specs:
+      - "10000 RPM"
+      - "3.5″"
+    purchase_date: 2008-05-02
+    use_dates:
+      - start:     2008-05-02
+        end:       2010-11-04
+        computer:  "pancake"
+    disposal_date: 2010-11-04
+
+  - title: "Xbox 360"
+    part_types:
+      - "game-consoles"
+    purchase_date: 2010-01-08
+    use_dates:
+      - start:     2010-01-08
+        end:       2019-03-04
+    disposal_date: 2019-03-04
+
+  - title: "Xbox 360 Wired Controller"
+    part_types:
+      - "game-controllers"
+    purchase_date: 2011-11-25
+    use_dates:
+      - start:     2011-11-25
+        end:       null
+    disposal_date: null
+
+  - title: "XFX GeForce 8800 GTX"
+    part_types:
+      - "video-cards"
+    specs:
+      - "768 MB GDDR3"
+    purchase_date: 2008-05-02
+    use_dates:
+      - start:     2008-05-02
+        end:       2012-09-04
+        computer:  "pancake"
+    disposal_date: 2012-09-04

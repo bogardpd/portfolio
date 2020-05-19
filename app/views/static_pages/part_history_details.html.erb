@@ -1,5 +1,5 @@
 <% provide(:title, "#{@parts.type_name} - Device History")%>
-<% provide(:meta_description, "Paul Bogard’s device history of #{@parts.type_name.downcase}.") %>
+<% provide(:meta_description, "Paul Bogard’s device history of #{@parts.type_name(downcase: true)}.") %>
 
 <h1>Device History &ndash; <%= @parts.type_name %></h1>
 

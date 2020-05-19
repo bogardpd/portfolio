@@ -9,13 +9,13 @@ class ComputerPartsData
       h_padding: 20
     },
     bar: {
-      height: 24,
+      height: 25,
       v_margin: 2,
       h_margin: 5,
       fill_owned: "#a5a8af",
       fill_used: "#42454a",
       text: {
-        b_margin: 6,
+        b_margin: 7,
         h_margin: 5,
         font_size: "12pt",
         fill_over: "#fbfbfc",
@@ -38,6 +38,7 @@ class ComputerPartsData
     @current_parts = @parts_data[:parts]
     @part_types = @parts_data[:part_types]
     @computers = @parts_data[:computers]
+    @today = Date.today
     self.select!(computer: computer, type: type) if computer || type
     calculate_initial_settings
   end
@@ -45,7 +46,7 @@ class ComputerPartsData
   # Filters the parts list by collection and/or part type.
   def select!(computer: nil, type: nil)
     if computer
-      @current_parts.select!{|p| p[:computer] == computer}
+      @current_parts.select!{|p| p[:use_dates].map{|u| u[:computer]}.include?(computer)}
       @computer = @computers[computer]
     end
     if type
@@ -67,7 +68,7 @@ class ComputerPartsData
   # Returns a hash of all part types which have at least one instance not associated with a computer.
   def standalone_types
     standalone_types = @parts_data[:parts]
-      .select{|p| p[:computer].nil?}
+      .select{|p| p[:use_dates].map{|u| u[:computer]}.include?(nil)}
       .map{|p| p[:part_types]}.flatten.uniq
       .map(&:to_sym).sort
     return @part_types.slice(*standalone_types)
@@ -92,9 +93,13 @@ class ComputerPartsData
   end
 
   # Returns the type name if the collection is filtered by type.
-  def type_name
+  def type_name(downcase: false)
     return nil unless @part_type
-    return @part_type[:name]
+    if downcase
+      return @part_type[:lowercase] || @part_type[:name].downcase
+    else
+      return @part_type[:name]
+    end
   end
 
   # Creates XML for a timeline SVG graphic.
@@ -141,7 +146,7 @@ class ComputerPartsData
     @settings[:canvas][:height] = (2 * @settings[:canvas][:v_padding]) + ((@current_parts.size + 1) * @settings[:bar][:row_height])
     @settings[:date_range] = {
       min: Date.new(@current_parts.min_by{|p| p[:purchase_date]}[:purchase_date].year),
-      max: Date.new((@current_parts.max_by{|p| p[:disposal_date] || Date.today}[:disposal_date] || Date.today).year,-1,-1)
+      max: Date.new(disposal_date(@current_parts.max_by{|p| disposal_date(p)}).year,-1,-1)
     }
     @settings[:date_range][:duration] = (@settings[:date_range][:max] - @settings[:date_range][:min]).to_i
     @settings[:date_range][:years] = (@settings[:date_range][:min].year..@settings[:date_range][:max].year).map{|y| [y, date_x_pos(Date.new(y))]}.to_h
@@ -149,7 +154,7 @@ class ComputerPartsData
 
   # Draws timelines for a collection of parts.
   def draw_timeline_block(xml, parts, anchor_y)
-    parts.sort_by!{|p| p[:purchase_date]}
+    parts.sort_by!{|p| [p[:purchase_date], disposal_date(p)]}
 
     # Draw years.
     bottom_y = anchor_y + (parts.size + 1) * @settings[:bar][:row_height]
@@ -186,7 +191,7 @@ class ComputerPartsData
     parts.each_with_index do |part, index|
       xml.g(id: "part-#{index}-timelines") do
         left_x = date_x_pos(part[:purchase_date])
-        right_x = date_x_pos(part[:disposal_date] || Date.today)
+        right_x = date_x_pos(disposal_date(part))
         width = right_x - left_x
         y = anchor_y + ((index + 1) * @settings[:bar][:row_height]) + @settings[:bar][:v_margin]
 
@@ -206,7 +211,7 @@ class ComputerPartsData
         if part[:use_dates]
           part[:use_dates].each_with_index do |use, use_index|
             use_x = date_x_pos(use[:start])
-            use_width = (date_x_pos(use[:end] || Date.today) - use_x)
+            use_width = (date_x_pos(end_date(use[:end])) - use_x)
             xml.rect(
               id: "part-#{index}-use-#{use_index}",
               x: use_x,
@@ -235,6 +240,7 @@ class ComputerPartsData
           text_anchor = "start"
           text_fill = @settings[:bar][:text][:fill_side]
         end
+        label = part[:name] ? "#{part[:name]} (#{part[:title]})" : part[:title]
         xml.text_(
           id: "part-#{index}-label",
           x: text_x,
@@ -244,7 +250,7 @@ class ComputerPartsData
           "font-family": @settings[:font],
           "text-anchor": text_anchor
         ) do
-          xml.text(part[:title])
+          xml.text(label)
         end
       end
     end
@@ -254,6 +260,16 @@ class ComputerPartsData
   def date_x_pos(date)
     range_fraction = (date - @settings[:date_range][:min]).to_f / @settings[:date_range][:duration]
     return @settings[:bar][:min_x] + range_fraction * @settings[:bar][:max_width]
+  end
+
+  # Returns the disposal date of a part. Returns today's date if nil.
+  def disposal_date(part)
+    return end_date(part[:disposal_date])
+  end
+
+  # Takes a date or nil. Returns the provided date, or returns today's date if nil.
+  def end_date(date)
+    return date || @today
   end
 
 end
