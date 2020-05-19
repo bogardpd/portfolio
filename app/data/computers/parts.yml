@@ -24,11 +24,16 @@ part_types:
     name: "Cases"
   cell-phones:
     name: "Cell Phones"
+  computer-audio:
+    name: "Computer Audio"
   docking-stations:
     name: "Docking Stations"
   dvd-players:
     name: "DVD Players"
-    lowercase: "DVD players"
+    lowercase_plural: "DVD players"
+  entertainment-center:
+    name: "Entertainment Center"
+    lowercase_plural: "entertainment center parts"
   fitness-trackers:
     name: "Fitness Trackers"
   floppy-drives:
@@ -39,10 +44,16 @@ part_types:
     name: "Game Controllers"
   gps:
     name: "GPS Units"
-    lowercase: "GPS units"
+    lowercase_plural: "GPS units"
   hard-drives:
     name: "Hard Drives and SSDs"
-    lowercase: "hard drives and SSDs"
+    lowercase_plural: "hard drives and SSDs"
+  headphones:
+    name: "Headphones"
+  headsets:
+    name: "Headsets"
+  microphones:
+    name: "Microphones"
   mobile:
     name: "Mobile"
   monitors:
@@ -144,6 +155,18 @@ parts:
         computer:  "peanut-butter"
     disposal_date: 2008-05-02
   
+  - title: "Apple AirPods"
+    part_types:
+      - "computer-audio"
+      - "headphones"
+      - "headsets"
+      - "microphones"
+    purchase_date: 2018-03-06
+    use_dates:
+      - start:     2018-03-06
+        end:       null
+    disposal_date: null
+
   - title: "ASUS GeForce GTX 1070"
     part_types:
       - "video-cards"
@@ -289,6 +312,7 @@ parts:
   - title: "DVD player"
     part_types:
       - "dvd-players"
+      - "entertainment-center"
     purchase_date: 2019-03-02
     use_dates:
       - start:     2019-03-02
@@ -525,6 +549,20 @@ parts:
         end:       null
     disposal_date: null
 
+  - title: "Jabra Evolve 40 UC Professional"
+    part_types:
+      - "computer-audio"
+      - "headphones"
+      - "headsets"
+      - "microphones"
+    specs:
+      - "Wired"
+    purchase_date: 2020-03-12
+    use_dates:
+      - start:     2020-03-12
+        end:       null
+    disposal_date: null
+
   - title: "Lenovo ThinkPad 250410U Advanced Mini Dock"
     part_types:
       - "docking-stations"
@@ -574,7 +612,6 @@ parts:
         end:       2006-05-13
         computer:  "peanut-butter"
     disposal_date: 2006-05-13
-
 
   - title: "New Nintendo 3DS XL"
     part_types:
@@ -754,6 +791,20 @@ parts:
         end:       2008-05-02
         computer:  "peanut-butter"
     disposal_date: 2008-05-02
+
+  - title: "Sennheiser PC 8 USB"
+    part_types:
+      - "computer-audio"
+      - "headphones"
+      - "headsets"
+      - "microphones"
+    specs:
+      - "Wired"
+    purchase_date: 2014-10-18
+    use_dates:
+      - start:     2014-10-18
+        end:       2020-03-12
+    disposal_date: null
 
   - title: "Silverstone TJ08B-E Mini"
     part_types:

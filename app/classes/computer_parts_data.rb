@@ -13,6 +13,8 @@ class ComputerPartsData
       v_margin: 2,
       h_margin: 5,
       fill_owned: "#a5a8af",
+      fill_used_other_computer: "#50ac5f",
+      fill_used_current: "#00358c",
       fill_used: "#42454a",
       text: {
         b_margin: 7,
@@ -48,6 +50,7 @@ class ComputerPartsData
     if computer
       @current_parts.select!{|p| p[:use_dates].map{|u| u[:computer]}.include?(computer)}
       @computer = @computers[computer]
+      @computer_key = computer
     end
     if type
       @current_parts.select!{|p| p[:part_types].include?(type)}
@@ -93,10 +96,10 @@ class ComputerPartsData
   end
 
   # Returns the type name if the collection is filtered by type.
-  def type_name(downcase: false)
+  def type_name(meta: false)
     return nil unless @part_type
-    if downcase
-      return @part_type[:lowercase] || @part_type[:name].downcase
+    if meta
+      return @part_type[:lowercase_plural] || @part_type[:name].downcase
     else
       return @part_type[:name]
     end
@@ -212,13 +215,20 @@ class ComputerPartsData
           part[:use_dates].each_with_index do |use, use_index|
             use_x = date_x_pos(use[:start])
             use_width = (date_x_pos(end_date(use[:end])) - use_x)
+            if @computer_key && @computer_key != use[:computer]
+              use_fill = @settings[:bar][:fill_used_other_computer]
+            elsif use[:end].nil?
+              use_fill = @settings[:bar][:fill_used_current]
+            else
+              use_fill = @settings[:bar][:fill_used]
+            end
             xml.rect(
               id: "part-#{index}-use-#{use_index}",
               x: use_x,
               y: y,
               width: use_width,
               height: @settings[:bar][:height],
-              fill: @settings[:bar][:fill_used]
+              fill: use_fill
             )
           end
         end
