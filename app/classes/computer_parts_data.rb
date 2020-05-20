@@ -53,7 +53,7 @@ class ComputerPartsData
       @computer_key = computer
     end
     if type
-      @current_parts.select!{|p| p[:part_types].include?(type)}
+      @current_parts.select!{|p| p[:part_types] && p[:part_types].include?(type)}
       @part_type = @part_types[type]
     end
   end
@@ -71,10 +71,10 @@ class ComputerPartsData
   # Returns a hash of all part types which have at least one instance not associated with a computer.
   def standalone_types
     standalone_types = @parts_data[:parts]
-      .select{|p| p[:use_dates].map{|u| u[:computer]}.include?(nil)}
-      .map{|p| p[:part_types]}.flatten.uniq
-      .map(&:to_sym).sort
-    return @part_types.slice(*standalone_types)
+      .select{|p| p[:use_dates].nil? || p[:use_dates].map{|u| u[:computer]}.include?(nil)}
+      .map{|p| p[:part_types]}.flatten.compact.uniq
+      .map(&:to_sym)
+    return @part_types.slice(*standalone_types).sort_by{|k,t| t[:name]}.to_h
   end
 
   # Returns true if the provided computer is defined in the data file.
