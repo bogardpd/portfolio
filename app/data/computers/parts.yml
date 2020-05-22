@@ -18,9 +18,6 @@ part_types:
   dvd_players:
     name: "DVD Players"
     lowercase_plural: "DVD players"
-  entertainment_center:
-    name: "Entertainment Center"
-    lowercase_plural: "entertainment center parts"
   fitness_trackers:
     name: "Fitness Trackers"
   floppy_drives:
@@ -32,6 +29,8 @@ part_types:
   gps:
     name: "GPS Units"
     lowercase_plural: "GPS units"
+  handheld_computers:
+    name: "Handheld Computers"
   hard_drives:
     name: "Hard Drives and SSDs"
     lowercase_plural: "hard drives and SSDs"
@@ -51,8 +50,6 @@ part_types:
     name: "Mixers"
   motherboards:
     name: "Motherboards"
-  mobile:
-    name: "Mobile"
   monitors:
     # Used specifically for standalone monitors, not laptop displays.
     name: "Monitors"
@@ -263,7 +260,7 @@ parts:
       - "TFT"
     <<: *reuben_lifetime
 
-  - model: "20× DVD±RW"
+  - model: "24× DVD±RW"
     part_types:
       - optical_drives
     <<: *reuben_lifetime
@@ -341,6 +338,26 @@ parts:
     specs:
       - "PCIe"
     <<: *quesadilla_lifetime
+
+  - model: "802.11ac Wi-Fi"
+    part_types:
+      - wifi_adapters
+    <<: *quesadilla_lifetime
+
+  - model: "802.11n Wi-Fi"
+    part_types:
+      - wifi_adapters
+    <<: *chili_dog_lifetime
+
+  - model: "802.11n Wi-Fi"
+    part_types:
+      - wifi_adapters
+    <<: *frites_liberte_lifetime
+
+  - model: "802.11n Wi-Fi"
+    part_types:
+      - wifi_adapters
+    <<: *reuben_lifetime
 
   - model: "Acer AL2216W"
     part_types:
@@ -522,8 +539,8 @@ parts:
     name: "Olive"
     part_types:
       - cell_phones
+      - handheld_computers
       - smartphones
-      - mobile
     specs:
     purchase_date: 2009-07-14
     use_dates:
@@ -562,7 +579,6 @@ parts:
   - model: "Candy bar phone"
     part_types:
       - cell_phones
-      - mobile
     purchase_date: 2004-06-26
     use_dates:
       - start:     2004-06-26
@@ -572,7 +588,6 @@ parts:
   - model: "Canon PowerShot A460"
     part_types:
       - cameras
-      - mobile
     purchase_date: 2007-07-08
     use_dates:
       - start:     2007-07-08
@@ -582,7 +597,6 @@ parts:
   - model: "Canon PowerShot SD1200 IS"
     part_types:
       - cameras
-      - mobile
     purchase_date: 2010-03-02
     use_dates:
       - start:     2010-03-02
@@ -726,7 +740,6 @@ parts:
   - model: "DVD Player"
     part_types:
       - dvd_players
-      - entertainment_center
     purchase_date: 2019-03-02
     use_dates:
       - start:     2019-03-02
@@ -753,6 +766,13 @@ parts:
         end:       *build_2016
         computer:  pancake
     disposal_date: *build_2016
+
+  - model: "FaceTime Camera"
+    part_types:
+      - webcams
+    specs:
+      - "480p"
+    <<: *quesadilla_lifetime
 
   - model: "Fellowes 98905"
     part_types:
@@ -790,7 +810,6 @@ parts:
   - model: "Flip phone"
     part_types:
       - cell_phones
-      - mobile
     purchase_date: 2007-06-05
     use_dates:
       - start:     2007-06-05
@@ -929,8 +948,10 @@ parts:
   - model: "HP iPAQ rx1955 Pocket PC"
     name: "Tator Tot"
     part_types:
+      - handheld_computers
       - pda
-      - mobile
+    specs:
+      - "Windows Mobile 5.0"
     purchase_date: 2005-10-29
     use_dates:
       - start:     2005-10-29
@@ -953,10 +974,10 @@ parts:
     name: "Tator Tot II"
     part_types:
       - cell_phones
+      - handheld_computers
       - smartphones
-      - mobile
     specs:
-      - "Windows Mobile"
+      - "Windows Mobile 6.1"
     purchase_date: 2009-02-13
     use_dates:
       - start:     2009-02-13
@@ -1051,6 +1072,8 @@ parts:
 
   - model: "iPad 4th Gen"
     name: "Latke"
+    specs:
+      - "64 GB"
     part_types:
       - tablets
     purchase_date: 2013-01-04
@@ -1064,10 +1087,11 @@ parts:
     part_types:
       - cameras
       - cell_phones
+      - handheld_computers
       - smartphones
-      - mobile
       - portable_media_players
     specs:
+      - "32 GB"
     purchase_date: 2011-05-24
     use_dates:
       - start:     2011-05-24
@@ -1079,10 +1103,11 @@ parts:
     part_types:
       - cameras
       - cell_phones
+      - handheld_computers
       - smartphones
-      - mobile
       - portable_media_players
     specs:
+      - "32 GB"
     purchase_date: 2013-11-29
     use_dates:
       - start:     2013-11-29
@@ -1094,10 +1119,11 @@ parts:
     part_types:
       - cameras
       - cell_phones
+      - handheld_computers
       - smartphones
-      - mobile
       - portable_media_players
     specs:
+      - "64 GB"
     purchase_date: 2015-11-10
     use_dates:
       - start:     2015-11-10
@@ -1109,10 +1135,11 @@ parts:
     part_types:
       - cameras
       - cell_phones
+      - handheld_computers
       - smartphones
-      - mobile
       - portable_media_players
     specs:
+      - "64 GB"
     purchase_date: 2018-01-02
     use_dates:
       - start:     2018-01-02
@@ -1121,7 +1148,6 @@ parts:
 
   - model: "iPod Nano 4th Gen"
     part_types:
-      - mobile
       - portable_media_players
     specs:
       - "Purple"
@@ -1184,9 +1210,9 @@ parts:
     purchase_date: 2007-05-24
     use_dates:
       - start:     2007-05-24
-        end:       2009-04-15
+        end:       *reuben_end
         computer:  reuben
-    disposal_date: 2009-11-01
+    disposal_date: *reuben_disposal
 
   - model: "LG Ultra Slim Portable DVD Writer 8× DVD±RW External"
     part_types:
@@ -1307,7 +1333,6 @@ parts:
 
   - model: "Logitech Wireless Touch Keyboard K400r"
     part_types:
-      - entertainment_center
       - keyboards
     specs:
       - "Wireless"
@@ -1528,8 +1553,8 @@ parts:
     disposal_date: 2019-02-24
 
   - model: "Nintendo Switch"
+    name: "Lemonade"
     part_types:
-      - entertainment_center
       - game_consoles
     purchase_date: 2018-07-07
     use_dates:
@@ -1539,7 +1564,6 @@ parts:
 
   - model: "Nintendo Wii"
     part_types:
-      - entertainment_center
       - game_consoles
     purchase_date: 2007-09-07
     use_dates:
@@ -1605,7 +1629,6 @@ parts:
 
   - model: "Onkyo 7.1 Home Theater System"
     part_types:
-      - entertainment_center
       - speakers
     part_number: "HT-S6200"
     purchase_date: 2009-12-30
@@ -1625,8 +1648,10 @@ parts:
 
   - model: "Palm m105"
     part_types:
+      - handheld_computers
       - pda
-      - mobile
+    specs:
+      - "PalmOS 3"
     purchase_date: 2001-07-08
     use_dates:
       - start:     2001-07-08
@@ -1644,7 +1669,7 @@ parts:
 
   - model: "PLANET WL-8310 PCI Wireless Card"
     part_types:
-      - wifi-adapter
+      - wifi_adapters
     purchase_date: 2004-12-01
     use_dates:
       - start:     2004-12-01
@@ -1654,7 +1679,6 @@ parts:
 
   - model: "PlayStation 2"
     part_types:
-      - entertainment_center
       - game_consoles
     purchase_date: 2010-02-07
     use_dates:
@@ -1664,7 +1688,6 @@ parts:
 
   - model: "Portable CD Player"
     part_types:
-      - mobile
       - portable_media_players
     purchase_date: 2003-04-24
     use_dates:
@@ -1751,7 +1774,6 @@ parts:
 
   - model: "Samsung 49″ 5 Series Smart HDTV"
     part_types:
-      - entertainment_center
       - televisions
     part_number: "UN49M5300AF"
     specs:
@@ -1876,8 +1898,10 @@ parts:
   
   - model: "Sony CLIÉ PEG-T615C"
     part_types:
+      - handheld_computers
       - pda
-      - mobile
+    specs:
+      - "PalmOS 3.5"
     purchase_date: 2002-07-07
     use_dates:
       - start:     2002-07-08
@@ -1886,7 +1910,6 @@ parts:
 
   - model: "Sony ATRAC3/MP3 CD Walkman"
     part_types:
-      - mobile
       - portable_media_players
     part_number: "D-NE518CK"
     purchase_date: 2003-08-20
@@ -1911,7 +1934,6 @@ parts:
   - model: "Super Nintendo Entertainment System"
     part_types:
       - game_consoles
-      - entertainment_center
     purchase_date: 2004-10-29
     use_dates:
       - start:     2004-10-29
@@ -1942,7 +1964,7 @@ parts:
 
   - model: "TP-LINK AC600 802.11ac USB"
     part_types:
-      - wifi-adapter
+      - wifi_adapters
     purchase_date: 2016-07-06
     use_dates:
       - start:     2016-07-06
@@ -2002,7 +2024,6 @@ parts:
 
   - model: "Visio VT470M 47″"
     part_types:
-      - entertainment_center
       - televisions
     purchase_date: 2009-12-30
     use_dates:
@@ -2170,7 +2191,6 @@ parts:
   - model: "Xbox 360"
     part_types:
       - dvd_players
-      - entertainment_center
       - game_consoles
     purchase_date: 2010-01-08
     use_dates:
