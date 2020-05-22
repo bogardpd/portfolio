@@ -5,32 +5,34 @@
 part_types:
   cameras:
     name: "Cameras"
-  card-readers:
+  card_readers:
     name: "Card Readers"
   cases:
     name: "Cases"
-  cell-phones:
+  cell_phones:
     name: "Cell Phones"
-  docking-stations:
+  displays:
+    name: "Displays"
+  docking_stations:
     name: "Docking Stations"
-  dvd-players:
+  dvd_players:
     name: "DVD Players"
     lowercase_plural: "DVD players"
-  entertainment-center:
+  entertainment_center:
     name: "Entertainment Center"
     lowercase_plural: "entertainment center parts"
-  fitness-trackers:
+  fitness_trackers:
     name: "Fitness Trackers"
-  floppy-drives:
+  floppy_drives:
     name: "Floppy Drives"
-  game-consoles:
+  game_consoles:
     name: "Game Consoles"
-  game-controllers:
+  game_controllers:
     name: "Game Controllers"
   gps:
     name: "GPS Units"
     lowercase_plural: "GPS units"
-  hard-drives:
+  hard_drives:
     name: "Hard Drives and SSDs"
     lowercase_plural: "hard drives and SSDs"
   headphones:
@@ -52,15 +54,18 @@ part_types:
   mobile:
     name: "Mobile"
   monitors:
+    # Used specifically for standalone monitors, not laptop displays.
     name: "Monitors"
-  optical-drives:
+  operating_systems:
+    name: "Operating Systems"
+  optical_drives:
     name: "Optical Drives"
   pda:
     name: "PDAs"
     lowercase_plural: "PDAs"
-  portable-media-players:
+  portable_media_players:
     name: "Portable Media Players"
-  power-supplies:
+  power_supplies:
     name: "Power Supplies"
   processors:
     name: "Processors"
@@ -70,19 +75,21 @@ part_types:
     name: "Scanners"
   smartphones:
     name: "Smartphones"
+  sound_cards:
+    name: "Sound Cards"
   speakers:
     name: "Speakers"
   tablets:
     name: "Tablets"
   televisions:
     name: "Televisions"
-  video-cards:
+  video_cards:
     name: "Video Cards"
   webcams:
     name: "Webcams"
-  wifi-adapters:
+  wifi_adapters:
     name: "Wi-Fi Adapters"
-  wifi-routers:
+  wifi_routers:
     name: "Wi-Fi Routers"
     lowercase_plural: "Wi-Fi routers"
 
@@ -93,67 +100,84 @@ part_types:
 
 computers:
   
-  chili-dog:
+  chili_dog:
     name: "Chili Dog"
     model: "MacBook Pro 15″ (early 2009)"
     form_factor: "laptop"
-    purchase_date: 2009-04-15
-    use_dates:
-      - start:     2009-04-15
-        end:       2015-06-27
-    disposal_date: 2015-06-27
+    <<: &chili_dog_lifetime
+      purchase_date: &chili_dog_purchase 2009-04-15
+      use_dates:
+        - start:     &chili_dog_start    2009-04-15
+          end:       &chili_dog_end      2015-06-27
+          computer:  chili_dog
+      disposal_date: &chili_dog_disposal 2015-06-27
   
   fishsticks:
     name: "Fishsticks"
     model: "Compaq Evo N800c"
     form_factor: "laptop"
-    purchase_date: 2002-07-21
-    use_dates:
-      - start:     2002-07-21
-        end:       2008-07-31
-    disposal_date: 2009-11-01
+    <<: &fishsticks_lifetime
+      purchase_date: &fishsticks_purchase 2002-07-21
+      use_dates:
+        - start:     &fishsticks_start    2002-07-21
+          end:       &fishsticks_end      2008-07-31
+          computer:  fishsticks
+      disposal_date: &fishsticks_disposal 2009-11-01
   
-  frites-liberte:
+  frites_liberte:
     name: "Frites Liberté"
     model: "MacBook Pro 15″ (mid 2012)"
     form_factor: "laptop"
-    purchase_date: 2015-06-27
-    use_dates:
-      - start:     2015-06-27
-        end:       2016-04-26
-    disposal_date: 2016-04-26
+    <<: &frites_liberte_lifetime
+      purchase_date: &frites_liberte_purchase 2015-06-27
+      use_dates:
+        - start:     &frites_liberte_start    2015-06-27
+          end:       &frites_liberte_end      2016-04-26
+          computer:  frites_liberte
+      disposal_date: &frites_liberte_disposal 2016-04-26
   
   pancake:
     name: "Pancake"
     model: "Home-built PC"
     form_factor: "desktop"
+    build_dates:
+      - &build_2008 2008-05-02
+      - &build_2014 2014-07-22
+      - &build_2016 2016-08-20
   
-  peanut-butter:
+  peanut_butter:
     name: "Peanut Butter"
     model: "Home-built PC"
     form_factor: "desktop"
+    build_dates:
+      - &build_2004 2004-10-07
   
   quesadilla:
     name: "Quesadilla"
     model: "MacBook (2016)"
     form_factor: "laptop"
-    purchase_date: 2016-04-23
-    use_dates:
-      - start:     2016-04-26
-        end:       2016-05-01
-      - start:     2016-05-01
-        end:       null
-    disposal_date: null
+    <<: &quesadilla_lifetime
+      purchase_date: &quesadilla_purchase 2016-04-23
+      use_dates:
+        - start:     &quesadilla_start_1  2016-04-26
+          end:       &quesadilla_end_1    2016-05-01
+          computer:  quesadilla
+        - start:     &quesadilla_start_2  2016-05-01
+          end:       &quesadilla_end_2    null
+          computer:  quesadilla
+      disposal_date: &quesadilla_disposal null
   
   reuben:
     name: "Reuben"
     model: "Lenovo Thinkpad T60p"
     form_factor: "laptop"
-    purchase_date: 2007-03-24
-    use_dates:
-      - start:     2007-03-24
-        end:       2009-04-15
-    disposal_date: 2009-11-01
+    <<: &reuben_lifetime
+      purchase_date: &reuben_purchase 2007-03-24
+      use_dates:
+        - start:     &reuben_start    2007-03-24
+          end:       &reuben_end      2009-04-15
+          computer:  reuben
+      disposal_date: &reuben_disposal 2009-11-01
 
 
 ##############
@@ -162,47 +186,165 @@ computers:
 
 parts:
 
+  - model: "2 GB DDR2-667"
+    part_types:
+      memory
+    <<: *reuben_lifetime
+
+  - model: "3½″ Floppy"
+    part_types:
+      floppy_drives
+    purchase_date: *build_2004
+    use_dates:
+      - start:     *build_2004
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
+
+  - model: "4 GB DDR3-1066"
+    part_types:
+      memory
+    <<: *chili_dog_lifetime
+
+  - model: "4 GB DDR3-1600"
+    part_types:
+      memory
+    <<: *frites_liberte_lifetime
+
+  - model: "8 GB LPDDR3-1866"
+    part_types:
+      memory
+    <<: *quesadilla_lifetime
+
+  - model: "8× SuperDrive (DVD±R DL/DVD±RW/CD-RW)"
+    part_types:
+      - optical_drives
+    purchase_date: *chili_dog_purchase
+    use_dates:
+      - start:     *chili_dog_start
+        end:       2014-04-28
+        computer:  chili_dog
+    disposal_date: 2014-04-28
+
+  - model: "12″ 2304×1440"
+    part_types:
+      - displays
+    specs:
+      - "16:10"
+      - "IPS"
+      - "LED"
+    <<: *quesadilla_lifetime
+
+  - model: "15″ 1400×1500"
+    part_types:
+      - displays
+    specs:
+      - "TFT"
+    <<: *fishsticks_lifetime
+
+  - model: "15.4″ 1440×900"
+    part_types:
+      - displays
+    specs:
+      - "LED"
+    <<: *chili_dog_lifetime
+
+  - model: "15.4″ 1440×900"
+    part_types:
+      - displays
+    specs:
+      - "LED"
+    <<: *frites_liberte_lifetime
+
+  - model: "15.4″ 1680×1050"
+    part_types:
+      - displays
+    specs:
+      - "TFT"
+    <<: *reuben_lifetime
+
+  - model: "20× DVD±RW"
+    part_types:
+      - optical_drives
+    <<: *reuben_lifetime
+
+  - model: "24× SuperDrive (DVD±R DL/DVD±RW/CD-RW)"
+    part_types:
+      - optical_drives
+    <<: *frites_liberte_lifetime
+  
+  - model: "256 MB DDR-266"
+    part_types:
+      - memory
+    <<: *fishsticks_lifetime
+  
   - model: "60 GB HDD"
     part_types:
-      - hard-drives
+      - hard_drives
     specs:
       - "2.5″ internal"
       - "5400 RPM"
-    purchase_date: 2002-07-21
-    use_dates:
-      - start:     2002-07-21
-        end:       2008-07-31
-        computer:  fishsticks
-    disposal_date: 2009-11-01
+    <<: *fishsticks_lifetime
 
   - model: "100 GB HDD"
     part_types:
-      - hard-drives
+      - hard_drives
     specs:
       - "2.5″ internal"
       - "7200 RPM"
-    purchase_date: 2007-03-24
-    use_dates:
-      - start:     2007-03-24
-        end:       2009-04-15
-        computer:  reuben
-    disposal_date: 2009-11-01
+    <<: *reuben_lifetime
 
   - model: "320 GB HDD"
     part_types:
-      - hard-drives
+      - hard_drives
     specs:
       - "2.5″ internal"
       - "7200 RPM"
-    purchase_date: 2009-04-15
+    purchase_date: *chili_dog_purchase
     use_dates:
-      - start:     2009-04-15
+      - start:     *chili_dog_start
         end:       2015-02-14
-        computer:  chili-dog
+        computer:  chili_dog
     disposal_date: 2015-02-14
+
+  - model: "500 GB HDD"
+    part_types:
+      - hard_drives
+    specs:
+      - "2.5″ internal"
+      - "5400 RPM"
+    <<: *frites_liberte_lifetime
+
+  - model: "512 MB DDR-266"
+    part_types:
+      - memory
+    purchase_date: 2003-07-12
+    use_dates:
+      - start:     2003-07-12
+        end:       *fishsticks_end
+        computer:  fishsticks
+    disposal_date: *fishsticks_disposal
+
+  - model: "512 MB DDR-400"
+    part_types:
+      - memory
+    purchase_date: 2004-12-13
+    use_dates:
+      - start:     2004-12-13
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
+
+  - model: "512 GB SSD"
+    part_types:
+      - hard_drives
+    specs:
+      - "PCIe"
+    <<: *quesadilla_lifetime
 
   - model: "Acer AL2216W"
     part_types:
+      - displays
       - monitors
     specs:
       - "22″"
@@ -216,6 +358,7 @@ parts:
 
   - model: "Acer AL2216W"
     part_types:
+      - displays
       - monitors
     specs:
       - "22″"
@@ -236,20 +379,20 @@ parts:
         end:       2015-02-09
     disposal_date: 2015-02-09
 
-  - model: "AMD Athlon 64 3200"
+  - model: "AMD Athlon 64 3200+ 2.3 GHz"
     part_types:
-      - "processors"
+      - processors
     part_number: "ADA3200AXBOX"
     specs:
       - "Newcastle"
       - "2.3 GHz"
       - "Socket 754"
-    purchase_date: 2004-10-07
+    purchase_date: *build_2004
     use_dates:
-      - start:     2004-10-07
-        end:       2008-05-02
-        computer:  peanut-butter
-    disposal_date: 2008-05-02
+      - start:     *build_2004
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
   
   - model: "Apple AirPods"
     part_types:
@@ -281,10 +424,10 @@ parts:
       - "Intel (Socket 1150)"
     purchase_date: 2014-07-16
     use_dates:
-      - start:     2014-07-22
-        end:       2016-08-20
+      - start:     *build_2014
+        end:       *build_2016
         computer:  pancake
-    disposal_date: 2016-08-20
+    disposal_date: *build_2016
 
   - model: "ASRock Z170M Pro4S"
     part_types:
@@ -294,17 +437,17 @@ parts:
       - "Intel (Socket 1151)"
     purchase_date: 2016-08-19
     use_dates:
-      - start:     2016-08-20
+      - start:     *build_2016
         end:       null
         computer:  pancake
     disposal_date: null
 
   - model: "ASUS GeForce GTX 1070"
     part_types:
-      - video-cards
+      - video_cards
     purchase_date: 2016-08-19
     use_dates:
-      - start:     2016-08-20
+      - start:     *build_2016
         end:       null
         computer:  pancake
     disposal_date: null
@@ -316,12 +459,15 @@ parts:
       - "ATX"
       - "AMD (Socket 754)"
       - "nForce3 250 chipset"
-    purchase_date: 2004-10-07
+    purchase_date: *build_2004
     use_dates:
-      - start:     2004-10-07
-        end:       2008-05-02
-        computer:  peanut-butter
-    disposal_date: 2008-05-02
+      - start:     *build_2004
+        end:       2004-12-13
+        computer:  peanut_butter
+      - start:     2004-12-13
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
   
   - model: "ASUS P5E"
     part_types:
@@ -330,28 +476,52 @@ parts:
       - "ATX"
       - "Intel (LGA 775)"
       - "X38 chipset"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
+      - start:     *build_2008
         end:       2008-09-22
         computer:  pancake
     disposal_date: 2008-09-22
     note: "RMA (destroyed RAM)"
 
+  - model: "ASUS SupremeFX II PCIe"
+    part_types:
+      - sound_cards
+    purchase_date: *build_2008
+    use_dates:
+      - start:     *build_2008
+        end:       2008-09-22
+        computer:  pancake
+    disposal_date: 2008-09-22
+
+  - model: "ATI Mobility Fire GL V5250"
+    part_types:
+      - video_cards
+    specs:
+      - "256 MB"
+    <<: *reuben_lifetime
+
+  - model: "ATI Mobility Radeon 7500"
+    part_types:
+      - video_cards
+    specs:
+      - "64 MB"
+    <<: *fishsticks_lifetime
+
   - model: "BFG Tech GS Series 650 W"
     part_types:
-      - power-supplies
+      - power_supplies
     purchase_date: 2010-01-08
     use_dates:
       - start:     2010-01-08
-        end:       2014-07-22
+        end:       *build_2014
         computer:  pancake
-    disposal_date: 2014-07-22
+    disposal_date: *build_2014
 
   - model: "Blackberry Bold 9650"
     name: "Olive"
     part_types:
-      - cell-phones
+      - cell_phones
       - smartphones
       - mobile
     specs:
@@ -383,15 +553,15 @@ parts:
       - "Monochrome"
       - "Laser"
       - "Wireless"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
+      - start:     *build_2008
         end:       2017-08-02
     disposal_date: 2017-08-02
   
   - model: "Candy bar phone"
     part_types:
-      - cell-phones
+      - cell_phones
       - mobile
     purchase_date: 2004-06-26
     use_dates:
@@ -421,22 +591,22 @@ parts:
 
   - model: "Compaq FD-01PUB USB External 3½″ Floppy"
     part_types:
-      "floppy-drives"
-    purchase_date: 2002-07-21
+      floppy_drives
+    purchase_date: *fishsticks_purchase
     use_dates:
-      - start:     2002-07-21
+      - start:     *fishsticks_start
         end:       2009-11-01
     disposal_date: null
 
   - model: "Compaq Port Replicator PR1000"
     part_types:
-      - "docking-stations"
+      - docking_stations
     purchase_date: 2005-05-14
     use_dates:
       - start:     2005-05-14
-        end:       2008-07-31
+        end:       *fishsticks_end
         computer:  fishsticks
-    disposal_date: 2009-11-01
+    disposal_date: *fishsticks_disposal
   
   - model: "CoolerMaster Storm QuickFire XT Mechanical"
     part_types:
@@ -449,11 +619,11 @@ parts:
   
   - model: "CORSAIR RMx Series 550 W"
     part_types:
-      - power-supplies
+      - power_supplies
     part_number: RM550x
     purchase_date: 2016-08-19
     use_dates:
-      - start:     2016-08-20
+      - start:     *build_2016
         end:       null
         computer:  pancake
     disposal_date: null
@@ -472,21 +642,21 @@ parts:
       - memory
     specs:
       - "2 × 2 GB"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
-        end:       2008-06-21
+      - start:     *build_2008
+        end:       2008-09-01
         computer:  pancake
-    disposal_date: 2008-06-21
+    disposal_date: 2008-09-01
 
   - model: "Crucial Ballistix 4 GB DDR2-800"
     part_types:
       - memory
     specs:
       - "2 × 2 GB"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
+      - start:     *build_2008
         end:       2008-09-25
         computer:  pancake
     disposal_date: 2008-09-25
@@ -505,6 +675,7 @@ parts:
 
   - model: "Dell UltraSharp U2415"
     part_types:
+      - displays
       - monitors
     specs:
       - "24″"
@@ -519,6 +690,7 @@ parts:
 
   - model: "Dell UltraSharp U2415"
     part_types:
+      - displays
       - monitors
     specs:
       - "24″"
@@ -533,6 +705,7 @@ parts:
 
   - model: "Dell UltraSharp U2415"
     part_types:
+      - displays
       - monitors
     specs:
       - "24″"
@@ -545,10 +718,15 @@ parts:
         end:       null
     disposal_date: null
 
-  - model: "DVD player"
+  - model: "DVD-ROM/CD-RW"
     part_types:
-      - dvd-players
-      - entertainment-center
+      - optical_drives
+    <<: *fishsticks_lifetime
+
+  - model: "DVD Player"
+    part_types:
+      - dvd_players
+      - entertainment_center
     purchase_date: 2019-03-02
     use_dates:
       - start:     2019-03-02
@@ -566,15 +744,15 @@ parts:
   
   - model: "EVGA GeForce GTX 670"
     part_types:
-      - video-cards
+      - video_cards
     specs:
       - "2 GB"
     purchase_date: 2012-09-04
     use_dates:
       - start:     2012-09-04
-        end:       2016-08-20
+        end:       *build_2016
         computer:  pancake
-    disposal_date: 2016-08-20
+    disposal_date: *build_2016
 
   - model: "Fellowes 98905"
     part_types:
@@ -583,15 +761,15 @@ parts:
       - "Silver/blue"
       - "5-button"
       - "Wired"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
+      - start:     *build_2008
         end:       2008-11-07
     disposal_date: 2008-11-07
 
   - model: "Fitbit Alta"
     part_types:
-      - fitness-trackers
+      - fitness_trackers
     purchase_date: 2017-08-24
     use_dates:
       - start:     2017-08-24
@@ -600,7 +778,7 @@ parts:
 
   - model: "Fitbit One"
     part_types:
-      - fitness-trackers
+      - fitness_trackers
     purchase_date: 2014-01-17
     use_dates:
       - start:     2014-01-17
@@ -611,7 +789,7 @@ parts:
 
   - model: "Flip phone"
     part_types:
-      - cell-phones
+      - cell_phones
       - mobile
     purchase_date: 2007-06-05
     use_dates:
@@ -627,9 +805,9 @@ parts:
     purchase_date: 2008-09-22
     use_dates:
       - start:     2008-09-22
-        end:       2014-07-22
+        end:       *build_2014
         computer:  pancake
-    disposal_date: 2014-07-22
+    disposal_date: *build_2014
 
   - model: "G.Skill Ares 8 GB DDR3-1600"
     part_types:
@@ -638,10 +816,10 @@ parts:
       - "2 × 4 GB"
     purchase_date: 2014-07-16
     use_dates:
-      - start:     2014-07-22
-        end:       2016-08-20
+      - start:     *build_2014
+        end:       *build_2016
         computer:  pancake
-    disposal_date: 2016-08-20
+    disposal_date: *build_2016
   
   - model: "G.Skill Ares 8 GB DDR3-1600"
     part_types:
@@ -650,10 +828,10 @@ parts:
       - "2 × 4 GB"
     purchase_date: 2014-07-18
     use_dates:
-      - start:     2014-07-22
-        end:       2016-08-20
+      - start:     *build_2014
+        end:       *build_2016
         computer:  pancake
-    disposal_date: 2016-08-20
+    disposal_date: *build_2016
   
   - model: "Garmin DriveSmart 50LMT"
     name: "Egg"
@@ -726,6 +904,16 @@ parts:
         end:       2008-04-03
     disposal_date: 2012-01-21
 
+  - model: "Gentoo Linux"
+    part_types:
+      - operating_systems
+    purchase_date: *build_2004
+    use_dates:
+      - start:     *build_2004
+        end:       2006-10-26
+        computer:  peanut_butter
+    disposal_date: 2006-10-26
+
   - model: "HP DeskJet 855c"
     part_types:
       - printers
@@ -758,13 +946,13 @@ parts:
     purchase_date: 2006-06-15
     use_dates:
       - start:     2006-06-15
-        end:       2008-05-02
+        end:       *build_2008
     disposal_date: 2008-07-31
   
   - model: "HTC Touch Pro"
     name: "Tator Tot II"
     part_types:
-      - cell-phones
+      - cell_phones
       - smartphones
       - mobile
     specs:
@@ -774,46 +962,93 @@ parts:
       - start:     2009-02-13
         end:       2009-07-14
     disposal_date: 2009-07-14
-
-  - model: "Intel Core 2 Quad Q9300"
+  
+  - model: "Intel Core 2 Duo T7400 2.16 GHz"
     part_types:
-      - "processors"
+      - processors
+    specs:
+      - "Merom"
+    <<: *reuben_lifetime
+
+  - model: "Intel Core 2 Duo T9550 2.66 GHz"
+    part_types:
+      - processors
+    specs:
+      - "Penryn"
+    <<: *chili_dog_lifetime
+
+  - model: "Intel Core 2 Quad Q9300 2.5 GHz"
+    part_types:
+      - processors
     part_number: "BX80580Q9300"
     specs:
       - "Yorkfield"
       - "Quad-Core"
-      - "2.5 GHz"
       - "LGA 775"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
-        end:       2014-07-22
+      - start:     *build_2008
+        end:       *build_2014
         computer:  pancake
-    disposal_date: 2014-07-22
+    disposal_date: *build_2014
 
-  - model: "Intel Core i5-4690"
+  - model: "Intel Core i5-3210M 2.5 GHz"
     part_types:
-      - "processors"
+      - processors
+    specs:
+      - "Ivy Bridge"
+    <<: *frites_liberte_lifetime
+
+  - model: "Intel Core i5-4690 3.5 GHz"
+    part_types:
+      - processors
     specs:
       - "Haswell"
-      - "3.5 GHz"
     purchase_date: 2014-07-16
     use_dates:
-      - start:     2014-07-22
-        end:       2016-08-20
+      - start:     *build_2014
+        end:       *build_2016
         computer:  pancake
-    disposal_date: 2016-08-20
+    disposal_date: *build_2016
 
-  - model: "Intel Core i5-6600K"
+  - model: "Intel Core i5-6600K 3.5 GHz"
     part_types:
-      - "processors"
+      - processors
     purchase_date: 2016-08-19
     use_dates:
-      - start:     2016-08-20
+      - start:     *build_2016
         end:       null
         computer:  pancake
     disposal_date: null
+
+  - model: "Intel Core m5-6Y54 1.2/2.7 GHz"
+    part_types:
+      - processors
+    specs:
+      - "Skylake"
+    <<: *quesadilla_lifetime
+
+  - model: "Intel HD Graphics 515"
+    part_types:
+      - video_cards
+    specs:
+      - "Integrated"
+    <<: *quesadilla_lifetime
   
+  - model: "Intel HD Graphics 4000"
+    part_types:
+      - video_cards
+    specs:
+      - "Integrated"
+    <<: *frites_liberte_lifetime
+  
+  - model: "Intel Pentium 4-M 1.7 GHz"
+    part_types:
+      - processors
+    specs:
+      - "Northwood"
+    <<: *fishsticks_lifetime
+
   - model: "iPad 4th Gen"
     name: "Latke"
     part_types:
@@ -828,10 +1063,10 @@ parts:
     name: "Tator Tot III"
     part_types:
       - cameras
-      - cell-phones
+      - cell_phones
       - smartphones
       - mobile
-      - portable-media-players
+      - portable_media_players
     specs:
     purchase_date: 2011-05-24
     use_dates:
@@ -843,10 +1078,10 @@ parts:
     name: "Tator Tot IV"
     part_types:
       - cameras
-      - cell-phones
+      - cell_phones
       - smartphones
       - mobile
-      - portable-media-players
+      - portable_media_players
     specs:
     purchase_date: 2013-11-29
     use_dates:
@@ -858,10 +1093,10 @@ parts:
     name: "Tator Tot V"
     part_types:
       - cameras
-      - cell-phones
+      - cell_phones
       - smartphones
       - mobile
-      - portable-media-players
+      - portable_media_players
     specs:
     purchase_date: 2015-11-10
     use_dates:
@@ -873,10 +1108,10 @@ parts:
     name: "Tator Tot VI"
     part_types:
       - cameras
-      - cell-phones
+      - cell_phones
       - smartphones
       - mobile
-      - portable-media-players
+      - portable_media_players
     specs:
     purchase_date: 2018-01-02
     use_dates:
@@ -887,7 +1122,7 @@ parts:
   - model: "iPod Nano 4th Gen"
     part_types:
       - mobile
-      - portable-media-players
+      - portable_media_players
     specs:
       - "Purple"
     purchase_date: 2008-11-26
@@ -921,12 +1156,12 @@ parts:
   - model: "Kingmax 512 MB DDR-400"
     part_types:
       - memory
-    purchase_date: 2004-10-07
+    purchase_date: *build_2004
     use_dates:
-      - start:     2004-10-07
-        end:       2005-09-16
-        computer:  peanut-butter
-    disposal_date: 2005-09-16
+      - start:     *build_2004
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
 
   - model: "Labtec PC Mic 333"
     part_types:
@@ -943,7 +1178,7 @@ parts:
 
   - model: "Lenovo ThinkPad 250410U Advanced Mini Dock"
     part_types:
-      - docking-stations
+      - docking_stations
     specs:
       - "Black"
     purchase_date: 2007-05-24
@@ -953,15 +1188,15 @@ parts:
         computer:  reuben
     disposal_date: 2009-11-01
 
-  - model: "LG Ultra Slim Portable DVD Writer 8X DVD±RW External"
+  - model: "LG Ultra Slim Portable DVD Writer 8× DVD±RW External"
     part_types:
-      - optical-drives
+      - optical_drives
     purchase_date: 2014-04-28
     use_dates:
       - start:     2014-04-28
-        end:       2015-06-27
-        computer:  chili-dog
-    disposal_date: 2015-06-27
+        end:       *chili_dog_end
+        computer:  chili_dog
+    disposal_date: *chili_dog_disposal
 
   - model: "Lian Li PC-7B Plus II"
     part_types:
@@ -971,16 +1206,16 @@ parts:
       - "ATX"
       - "Mid-tower"
       - "Black"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
-        end:       2014-07-22
+      - start:     *build_2008
+        end:       *build_2014
         computer:  pancake
-    disposal_date: 2014-07-22
+    disposal_date: *build_2014
 
   - model: "Linksys E2500 802.11n Dual-Band"
     part_types:
-      - wifi-routers
+      - wifi_routers
     purchase_date: 2013-07-14
     use_dates:
       - start:     2013-07-14
@@ -989,7 +1224,7 @@ parts:
 
   - model: "Linksys WRT54GL 802.11g"
     part_types:
-      - wifi-routers
+      - wifi_routers
     purchase_date: 2006-09-14
     use_dates:
       - start:     2006-09-14
@@ -1021,8 +1256,8 @@ parts:
     purchase_date: 2006-11-06
     use_dates:
       - start:     2006-11-06
-        end:       2008-05-02
-    disposal_date: 2008-05-02
+        end:       *build_2008
+    disposal_date: *build_2008
 
   - model: "Logitech G15 Gaming Keyboard"
     part_types:
@@ -1072,7 +1307,7 @@ parts:
 
   - model: "Logitech Wireless Touch Keyboard K400r"
     part_types:
-      - entertainment-center
+      - entertainment_center
       - keyboards
     specs:
       - "Wireless"
@@ -1083,39 +1318,162 @@ parts:
         end:       null
     disposal_date: null
 
+  - model: "Mac OS X Leopard (10.5)"
+    part_types:
+      - operating_systems
+    purchase_date: *chili_dog_purchase
+    use_dates:
+      - start:     *chili_dog_start
+        end:       2009-11-13
+        computer:  chili_dog
+    disposal_date: 2009-11-13
+
+  - model: "Mac OS X Snow Leopard (10.6)"
+    part_types:
+      - operating_systems
+    purchase_date: 2009-11-13
+    use_dates:
+      - start:     2009-11-13
+        end:       2012-04-07
+        computer:  chili_dog
+    disposal_date: 2012-04-07
+
+  - model: "Mac OS X Lion (10.7)"
+    part_types:
+      - operating_systems
+    purchase_date: 2012-04-07
+    use_dates:
+      - start:     2012-04-07
+        end:       2013-11-09
+        computer:  chili_dog
+    disposal_date: 2013-11-09
+
+  - model: "OS X Mavericks (10.9)"
+    part_types:
+      - operating_systems
+    purchase_date: 2013-11-09
+    use_dates:
+      - start:     2013-11-09
+        end:       2015-02-14
+        computer:  chili_dog
+    disposal_date: 2015-02-14
+
+  - model: "OS X Yosemite (10.10)"
+    part_types:
+      - operating_systems
+    purchase_date: 2015-02-14
+    use_dates:
+      - start:     2015-02-14
+        end:       *chili_dog_end
+        computer:  chili_dog
+    disposal_date: *chili_dog_disposal
+
+  - model: "OS X Yosemite (10.10)"
+    part_types:
+      - operating_systems
+    purchase_date: *frites_liberte_purchase
+    use_dates:
+      - start:     *frites_liberte_start
+        end:       2015-11-13
+        computer:  frites_liberte
+    disposal_date: 2015-11-13
+
+  - model: "OS X El Capitan (10.11)"
+    part_types:
+      - operating_systems
+    purchase_date: 2015-11-13
+    use_dates:
+      - start:     2015-11-13
+        end:       *frites_liberte_end
+        computer:  frites_liberte
+    disposal_date: *frites_liberte_disposal
+
+  - model: "OS X El Capitan (10.11)"
+    part_types:
+      - operating_systems
+    purchase_date: *quesadilla_purchase
+    use_dates:
+      - start:     *quesadilla_start_1
+        end:       *quesadilla_end_1
+        computer:  quesadilla
+      - start:     *quesadilla_start_2
+        end:       2016-10-10
+        computer:  quesadilla
+    disposal_date: 2016-10-10
+
+  - model: "macOS Sierra (10.12)"
+    part_types:
+      - operating_systems
+    purchase_date: 2016-10-10
+    use_dates:
+      - start:     2016-10-10
+        end:       2018-01-06
+        computer:  quesadilla
+    disposal_date: 2018-01-06
+
+  - model: "macOS High Sierra (10.13)"
+    part_types:
+      - operating_systems
+    purchase_date: 2018-01-06
+    use_dates:
+      - start:     2018-01-06
+        end:       2018-10-21
+        computer:  quesadilla
+    disposal_date: 2018-10-21
+
+  - model: "macOS Mojave (10.14)"
+    part_types:
+      - operating_systems
+    purchase_date: 2018-10-21
+    use_dates:
+      - start:     2018-10-21
+        end:       2019-11-27
+        computer:  quesadilla
+    disposal_date: 2019-11-27
+
+  - model: "macOS Catalina (10.15)"
+    part_types:
+      - operating_systems
+    purchase_date: 2019-11-27
+    use_dates:
+      - start:     2019-11-27
+        end:       *quesadilla_end_2
+        computer:  quesadilla
+    disposal_date: *quesadilla_disposal
+
   - model: "Maxtop Signature CSX-147K2F"
     part_types:
       - cases
     purchase_date: 2004-04-26
     use_dates:
       - start:     2004-04-26
-        end:       2004-10-07
-      - start:     2004-10-07
-        end:       2008-05-02
-        computer:  peanut-butter
-    disposal_date: 2008-05-02
+        end:       *build_2004
+      - start:     *build_2004
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
   
   - model: "Maxtor DiamondMax 8.4 GB"
     part_types:
-      - hard-drives
+      - hard_drives
     part_number: "2160"
     specs:
       - "5200 RPM"
     purchase_date: 2003-09-01
     use_dates:
       - start:     2003-09-01
-        end:       2004-10-07
-      - start:     2004-10-07
+        end:       *build_2004
+      - start:     *build_2004
         end:       2006-05-13
-        computer:  peanut-butter
+        computer:  peanut_butter
     disposal_date: 2006-05-13
   
   - model: "Microsoft Intellimouse Optical 5-Button"
     part_types:
       - mice
-    purchase_date: 2002-07-21
+    purchase_date: *fishsticks_purchase
     use_dates:
-      - start:     2002-07-21
+      - start:     *fishsticks_start
         end:       2005-02-08
       - start:     2008-11-07
         end:       2015-02-14
@@ -1130,21 +1488,26 @@ parts:
         end:       2014-03-05
     disposal_date: 2014-03-05
 
+  - model: "Multiport Wireless LAN 802.11b"
+    part_types:
+      - wifi_adapters
+    <<: *fishsticks_lifetime
+
   - model: "NEC DVD±RW ND-2510A"
     part_types:
-      - optical-drives
+      - optical_drives
     specs:
       - "Beige"
-    purchase_date: 2004-10-07
+    purchase_date: *build_2004
     use_dates:
-      - start:     2004-10-07
-        end:       2008-05-02
-        computer:  peanut-butter
-    disposal_date: 2008-05-02
+      - start:     *build_2004
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
 
   - model: "New Nintendo 3DS XL"
     part_types:
-      - game-consoles
+      - game_consoles
     purchase_date: 2017-01-07
     use_dates:
       - start:     2017-01-07
@@ -1157,7 +1520,7 @@ parts:
   
   - model: "Nintendo DS Lite"
     part_types:
-      - game-consoles
+      - game_consoles
     purchase_date: 2010-01-23
     use_dates:
       - start:     2010-01-23
@@ -1166,8 +1529,8 @@ parts:
 
   - model: "Nintendo Switch"
     part_types:
-      - entertainment-center
-      - game-consoles
+      - entertainment_center
+      - game_consoles
     purchase_date: 2018-07-07
     use_dates:
       - start:     2018-07-07
@@ -1176,8 +1539,8 @@ parts:
 
   - model: "Nintendo Wii"
     part_types:
-      - entertainment-center
-      - game-consoles
+      - entertainment_center
+      - game_consoles
     purchase_date: 2007-09-07
     use_dates:
       - start:     2007-09-07
@@ -1186,21 +1549,42 @@ parts:
 
   - model: "nMEDIAPC ZE-C68"
     part_types:
-      - card-readers
+      - card_readers
     specs:
       - "3.5″ drive bay"
       - "All-in-one"
       - "USB 2.0 port"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
+      - start:     *build_2008
         end:       2016-08-18
         computer:  pancake
     disposal_date: 2016-08-18
 
+  - model: "NVIDIA GeForce 9400M"
+    part_types:
+      - video_cards
+    specs:
+      - "Integrated"
+    <<: *chili_dog_lifetime
+
+  - model: "NVIDIA GeForce 9600M GT"
+    part_types:
+      - video_cards
+    specs:
+      - "512 MB"
+    <<: *chili_dog_lifetime
+
+  - model: "NVIDIA GeForce GT 650M"
+    part_types:
+      - video_cards
+    specs:
+      - "512 MB"
+    <<: *frites_liberte_lifetime
+
   - model: "Nyko AirFlo PC Dual Analog"
     part_types:
-      - game-controllers
+      - game_controllers
     purchase_date: 2003-08-14
     use_dates:
       - start:     2003-08-14
@@ -1215,13 +1599,13 @@ parts:
     purchase_date: 2008-09-25
     use_dates:
       - start:     2008-09-25
-        end:       2014-07-22
+        end:       *build_2014
         computer:  pancake
-    disposal_date: 2014-07-22
+    disposal_date: *build_2014
 
   - model: "Onkyo 7.1 Home Theater System"
     part_types:
-      - entertainment-center
+      - entertainment_center
       - speakers
     part_number: "HT-S6200"
     purchase_date: 2009-12-30
@@ -1232,7 +1616,7 @@ parts:
 
   - model: "Ozeri 4x3razor Pedometer"
     part_types:
-      - fitness-trackers
+      - fitness_trackers
     purchase_date: 2012-08-03
     use_dates:
       - start:     2012-08-03
@@ -1258,20 +1642,30 @@ parts:
         end:       null
     disposal_date: null
 
+  - model: "PLANET WL-8310 PCI Wireless Card"
+    part_types:
+      - wifi-adapter
+    purchase_date: 2004-12-01
+    use_dates:
+      - start:     2004-12-01
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
+
   - model: "PlayStation 2"
     part_types:
-      - entertainment-center
-      - game-consoles
+      - entertainment_center
+      - game_consoles
     purchase_date: 2010-02-07
     use_dates:
       - start:     2010-02-07
-        end:       2017-01-01
-    disposal_date: 2017-01-01
+        end:       2015-08-30
+    disposal_date: 2015-08-30
 
   - model: "Portable CD Player"
     part_types:
       - mobile
-      - portable-media-players
+      - portable_media_players
     purchase_date: 2003-04-24
     use_dates:
       - start:     2003-04-24
@@ -1280,15 +1674,15 @@ parts:
 
   - model: "PowerColor Radeon 9800 Pro"
     part_types:
-      - video-cards
+      - video_cards
     specs:
       - "128 MB DDR"
-    purchase_date: 2004-10-07
+    purchase_date: *build_2004
     use_dates:
-      - start:     2004-10-07
-        end:       2008-05-02
-        computer:  peanut-butter
-    disposal_date: 2008-05-02
+      - start:     *build_2004
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
 
   - model: "Rolls MX51S"
     part_types:
@@ -1305,13 +1699,13 @@ parts:
     purchase_date: 2005-09-16
     use_dates:
       - start:     2005-09-16
-        end:       2008-05-02
-        computer:  peanut-butter
-    disposal_date: 2008-05-02
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
 
   - model: "Saitek AV8R Flight Stick"
     part_types:
-      - game-controllers
+      - game_controllers
     purchase_date: 2009-02-20
     use_dates:
       - start:     2009-02-20
@@ -1320,7 +1714,7 @@ parts:
   
   - model: "Saitek P880 Dual Analog"
     part_types:
-      - game-controllers
+      - game_controllers
     purchase_date: 2004-12-12
     use_dates:
       - start:     2004-12-12
@@ -1329,11 +1723,11 @@ parts:
 
   - model: "Samsung 20× DVD±RW"
     part_types:
-      - optical-drives
+      - optical_drives
     part_number: "SH-S203N"
     specs:
       - "SATA"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
       - start:     2009-05-01
         end:       null
@@ -1342,7 +1736,7 @@ parts:
 
   - model: "Samsung 840 EVO 1 TB SSD"
     part_types:
-      - hard-drives
+      - hard_drives
     specs:
       - "2.5″"
     purchase_date: 2014-07-16
@@ -1350,14 +1744,14 @@ parts:
       - start:     2014-07-16
         end:       2014-07-18
         computer:  pancake
-      - start:     2014-07-22
+      - start:     *build_2014
         end:       null
         computer:  pancake
     disposal_date: null
 
   - model: "Samsung 49″ 5 Series Smart HDTV"
     part_types:
-      - entertainment-center
+      - entertainment_center
       - televisions
     part_number: "UN49M5300AF"
     specs:
@@ -1371,34 +1765,35 @@ parts:
 
   - model: "Samsung Spinpoint F1 750 GB"
     part_types:
-      - hard-drives
+      - hard_drives
     part_number: "HD753LJ"
     specs:
       - "7200 RPM"
       - "3.5″"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
-        end:       2014-07-22
+      - start:     *build_2008
+        end:       *build_2014
         computer:  pancake
-    disposal_date: 2014-07-22
+    disposal_date: *build_2014
 
   - model: "Samsung Spinpoint F1 750 GB"
     part_types:
-      - hard-drives
+      - hard_drives
     part_number: "HD753LJ"
     specs:
       - "7200 RPM"
       - "3.5″ (in external enclosure)"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
+      - start:     *build_2008
         end:       2012-09-04
         computer:  pancake
     disposal_date: 2012-09-04
 
   - model: "Samsung SyncMaster 997DF CRT"
     part_types:
+      - displays
       - monitors
     specs:
       - "19″"
@@ -1411,26 +1806,26 @@ parts:
   
   - model: "Seagate BarraCuda 200 GB"
     part_types:
-      - hard-drives
-    part_number: ST3200822AS
+      - hard_drives
+    part_number: "ST3200822AS"
     specs:
       - "7200 RPM"
-    purchase_date: 2004-10-07
+    purchase_date: *build_2004
     use_dates:
-      - start:     2004-10-07
-        end:       2008-05-02
-        computer:  peanut-butter
-    disposal_date: 2008-05-02
+      - start:     *build_2004
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
 
   - model: "SeaSonic G Series 550 W"
     part_types:
-      - power-supplies
+      - power_supplies
     purchase_date: 2014-07-16
     use_dates:
-      - start:     2014-07-22
-        end:       2016-08-20
+      - start:     *build_2014
+        end:       *build_2016
         computer:  pancake
-    disposal_date: 2016-08-20
+    disposal_date: *build_2016
 
   - model: "Sennheiser PC 8 USB"
     part_types:
@@ -1461,14 +1856,14 @@ parts:
       - "μATX"
     purchase_date: 2014-07-16
     use_dates:
-      - start:     2014-07-22
+      - start:     *build_2014
         end:       null
         computer:  pancake
     disposal_date: null
 
   - model: "Sony 20× DVD±RW"
     part_types:
-      - optical-drives
+      - optical_drives
     part_number: "AD-7190A-0B"
     specs:
       - "PATA"
@@ -1492,7 +1887,7 @@ parts:
   - model: "Sony ATRAC3/MP3 CD Walkman"
     part_types:
       - mobile
-      - portable-media-players
+      - portable_media_players
     part_number: "D-NE518CK"
     purchase_date: 2003-08-20
     use_dates:
@@ -1502,6 +1897,7 @@ parts:
 
   - model: "Sun 447Z CRT"
     part_types:
+      - displays
       - monitors
     specs:
       - "17″"
@@ -1514,8 +1910,8 @@ parts:
 
   - model: "Super Nintendo Entertainment System"
     part_types:
-      - game-consoles
-      - entertainment-center
+      - game_consoles
+      - entertainment_center
     purchase_date: 2004-10-29
     use_dates:
       - start:     2004-10-29
@@ -1524,22 +1920,22 @@ parts:
 
   - model: "Thermaltake Silent PurePower 420 W"
     part_types:
-      - power-supplies
+      - power_supplies
     part_number: "W0009R"
-    purchase_date: 2004-10-07
+    purchase_date: *build_2004
     use_dates:
-      - start:     2004-10-07
-        end:       2008-05-02
-        computer:  peanut-butter
-    disposal_date: 2008-05-02
+      - start:     *build_2004
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
 
   - model: "Thermaltake Toughpower 700 W"
     part_types:
-      - power-supplies
+      - power_supplies
     part_number: "W0106RU"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
+      - start:     *build_2008
         end:       2010-01-08
         computer:  pancake
     disposal_date: 2010-01-08
@@ -1554,8 +1950,29 @@ parts:
         computer:  pancake
     disposal_date: null
 
+  - model: "Ubuntu Edgy Eft (6.10)"
+    part_types:
+      - operating_systems
+    purchase_date: 2006-10-26
+    use_dates:
+      - start:     2006-10-26
+        end:       *fishsticks_end
+        computer:  fishsticks
+    disposal_date: *fishsticks_disposal
+
+  - model: "Ubuntu Edgy Eft (6.10)"
+    part_types:
+      - operating_systems
+    purchase_date: 2006-10-26
+    use_dates:
+      - start:     2006-10-26
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
+
   - model: "ViewSonic VX2025wm"
     part_types:
+      - displays
       - monitors
     specs:
       - "20″"
@@ -1571,6 +1988,7 @@ parts:
 
   - model: "ViewSonic VX2035wm"
     part_types:
+      - displays
       - monitors
     specs:
       - "20″"
@@ -1584,7 +2002,7 @@ parts:
 
   - model: "Visio VT470M 47″"
     part_types:
-      - entertainment-center
+      - entertainment_center
       - televisions
     purchase_date: 2009-12-30
     use_dates:
@@ -1594,20 +2012,33 @@ parts:
 
   - model: "Western Digital Black 500 GB"
     part_types:
-      - hard-drives
+      - hard_drives
     specs:
       - "7200 RPM"
       - "2.5″"
     purchase_date: 2015-02-14
     use_dates:
       - start:     2015-02-14
-        end:       2015-06-27
-        computer:  chili-dog
-    disposal_date: 2015-06-27
+        end:       *chili_dog_end
+        computer:  chili_dog
+    disposal_date: *chili_dog_disposal
+
+  - model: "Western Digital Blue 3 TB"
+    part_types:
+      - hard_drives
+    specs:
+      - "5400 RPM"
+      - "3.5″"
+    purchase_date: 2016-08-16
+    use_dates:
+      - start:     2016-08-18
+        end:       null
+        computer:  pancake
+    disposal_date: null
   
   - model: "Western Digital Caviar Black 1 TB"
     part_types:
-      - hard-drives
+      - hard_drives
     part_number: "WD1002FAEX"
     specs:
       - "7200 RPM"
@@ -1618,23 +2049,10 @@ parts:
         end:       2016-04-24
         computer:  pancake
     disposal_date: 2016-04-24
-
-  - model: "Western Digital Blue 3 TB"
-    part_types:
-      - hard-drives
-    specs:
-      - "5400 RPM"
-      - "3.5″"
-    purchase_date: 2016-08-16
-    use_dates:
-      - start:     2016-08-18
-        end:       null
-        computer:  pancake
-    disposal_date: null
-
+ 
   - model: "Western Digital Caviar SE16 320 GB"
     part_types:
-      - hard-drives
+      - hard_drives
     part_number: "WD3200KS"
     specs:
       - "7200 RPM"
@@ -1644,24 +2062,24 @@ parts:
     use_dates:
       - start:     2006-05-13
         end:       2007-05-11
-        computer:  peanut-butter
+        computer:  peanut_butter
       - start:     2007-05-11
-        end:       2008-05-02
+        end:       *build_2008
         computer:  fishsticks
-    disposal_date: 2008-05-02
+    disposal_date: *build_2008
     note: "In external enclosure for Fishsticks"
 
   - model: "Western Digital My Passport 2 TB External"
     part_types:
-      - hard-drives
+      - hard_drives
     purchase_date: 2012-02-25
     use_dates:
       - start:     2012-02-25
         end:       2015-06-27
-        computer:  chili-dog
+        computer:  chili_dog
       - start:     2015-06-27
         end:       2016-04-26
-        computer:  frites-liberte
+        computer:  frites_liberte
       - start:     2016-04-26
         end:       null
         computer:  quesadilla
@@ -1669,23 +2087,91 @@ parts:
 
   - model: "Western Digital Raptor 150 GB"
     part_types:
-      - hard-drives
+      - hard_drives
     part_number: "WD1500ADFD"
     specs:
       - "10000 RPM"
       - "3.5″"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
+      - start:     *build_2008
+        end:       2010-11-04
+        computer:  pancake
+    disposal_date: 2010-11-04
+  
+  - model: "Windows 7 Home Premium"
+    part_types:
+      - operating_systems
+    specs:
+      - "64-bit"
+    purchase_date: 2009-11-13
+    use_dates:
+      - start:     2009-11-13
+        end:       *chili_dog_end
+        computer:  chili_dog
+    disposal_date: *chili_dog_disposal
+
+  - model: "Windows 7 Professional"
+    part_types:
+      - operating_systems
+    purchase_date: 2010-11-04
+    specs:
+      - "64-bit"
+    use_dates:
+      - start:     2010-11-04
+        end:       2015-08-18
+        computer:  pancake
+    disposal_date: 2015-08-18
+
+  - model: "Windows 10 Pro"
+    part_types:
+      - operating_systems
+    purchase_date: 2015-08-18
+    use_dates:
+      - start:     2015-08-18
+        end:       null
+        computer:  pancake
+    disposal_date: null
+  
+  - model: "Windows Vista Business"
+    part_types:
+      - operating_systems
+    specs:
+      - "32-bit"
+    <<: *reuben_lifetime
+
+  - model: "Windows Vista Ultimate"
+    part_types:
+      - operating_systems
+    specs:
+      - "64-bit"
+    purchase_date: *build_2008
+    use_dates:
+      - start:     *build_2008
         end:       2010-11-04
         computer:  pancake
     disposal_date: 2010-11-04
 
+  - model: "Windows XP Professional"
+    part_types:
+      - operating_systems
+    <<: *fishsticks_lifetime
+
+  - model: "Windows XP Professional"
+    part_types:
+      - operating_systems
+    purchase_date: *build_2004
+    use_dates:
+      - start:     *build_2004
+        end:       *build_2008
+        computer:  peanut_butter
+    disposal_date: *build_2008
+
   - model: "Xbox 360"
     part_types:
-      - dvd-players
-      - entertainment-center
-      - game-consoles
+      - dvd_players
+      - entertainment_center
+      - game_consoles
     purchase_date: 2010-01-08
     use_dates:
       - start:     2010-01-08
@@ -1694,7 +2180,7 @@ parts:
 
   - model: "Xbox 360 Wired Controller"
     part_types:
-      - game-controllers
+      - game_controllers
     purchase_date: 2011-11-25
     use_dates:
       - start:     2011-11-25
@@ -1703,12 +2189,12 @@ parts:
 
   - model: "XFX GeForce 8800 GTX"
     part_types:
-      - video-cards
+      - video_cards
     specs:
       - "768 MB GDDR3"
-    purchase_date: 2008-05-02
+    purchase_date: *build_2008
     use_dates:
-      - start:     2008-05-02
+      - start:     *build_2008
         end:       2012-09-04
         computer:  pancake
     disposal_date: 2012-09-04

@@ -36,19 +36,17 @@ class ComputerPartsData
   }
 
   def initialize(computer: nil, type: nil)
+    computer = computer&.underscore
+    type = type&.underscore
+
     @parts_data = YAML.load_file(PARTS_DATA_FILE).with_indifferent_access
     @current_parts = @parts_data[:parts]
     @part_types = @parts_data[:part_types]
     @computers = @parts_data[:computers]
     @today = Date.today
-    self.select!(computer: computer, type: type) if computer || type
-    calculate_initial_settings
-  end
-
-  # Filters the parts list by collection and/or part type.
-  def select!(computer: nil, type: nil)
+    
     if computer
-      @current_parts.select!{|p| p[:use_dates].map{|u| u[:computer]}.include?(computer)}
+      @current_parts.select!{|p| p[:use_dates] && p[:use_dates].map{|u| u[:computer]}.include?(computer)}
       @computer = @computers[computer]
       @computer_key = computer
     end
@@ -56,6 +54,8 @@ class ComputerPartsData
       @current_parts.select!{|p| p[:part_types] && p[:part_types].include?(type)}
       @part_type = @part_types[type]
     end
+
+    calculate_initial_settings
   end
 
   # Returns the current parts list.
@@ -80,13 +80,13 @@ class ComputerPartsData
   # Returns true if the provided computer is defined in the data file.
   def computer_exists?(computer)
     return false if computer.nil?
-    return @computers[computer].present?
+    return @computers[computer.underscore].present?
   end
 
   # Returns true if the provided type is defined in the data file.
   def type_exists?(type)
     return false if type.nil?
-    return @part_types[type].present?
+    return @part_types[type.underscore].present?
   end
 
   # Returns the computer form factor if the collection is filtered by computer.
@@ -169,7 +169,7 @@ class ComputerPartsData
 
   # Draws timelines for a collection of parts.
   def draw_timeline_block(xml, parts, anchor_y)
-    parts.sort_by!{|p| [p[:purchase_date], disposal_date(p)]}
+    parts.sort_by!{|p| [p[:purchase_date], disposal_date(p), p[:model]]}
 
     # Draw years.
     bottom_y = anchor_y + (parts.size + 1) * @settings[:bar][:row_height]

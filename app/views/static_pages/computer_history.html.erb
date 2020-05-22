@@ -7,7 +7,7 @@
 
 <ul>
   <% @computers.each do |k, computer| %>
-    <li><%= link_to(computer[:name], computer_history_details_path(computer: k)) %>
+    <li><%= link_to(computer[:name], computer_history_details_path(computer: k.dasherize)) %>
   <% end %>
 </ul>
 
@@ -15,6 +15,6 @@
 
 <ul>
   <% @part_types.each do |k, part_type| %>
-    <li><%= link_to(part_type[:name], part_history_details_path(part: k)) %>
+    <li><%= link_to(part_type[:name], part_history_details_path(part: k.dasherize)) %>
   <% end %>
 </ul>
