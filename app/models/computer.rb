@@ -1,4 +1,10 @@
 class Computer < ApplicationRecord
+  FORM_FACTORS = {laptop: "Laptop", desktop: "Desktop"}
+
+  validates :name, presence: true
+  validates :form_factor, inclusion: {in: FORM_FACTORS.keys.map(&:to_s), message: "%{value} is not a valid form factor."}
+  validates :purchase_date, presence: true
+  before_save :generate_slug
 
   # # Returns an array of description paragraphs. If the computer has no
   # # description, returns an empty array.
@@ -37,5 +43,39 @@ class Computer < ApplicationRecord
   #     return @parts.part_types.dig(part_type, :name)
   #   end
   # end
+
+  # def self.slug(str)
+  #   existing = %w(peanut peanut-1 peanut-2 peanut-butter peanut-butter-1 fishsticks)
+  #   slug = str.parameterize
+  #   if existing.include?(slug)
+  #     numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}
+  #     if numbered_matching_slugs.any?
+  #       numbers = numbered_matching_slugs.map{|s| s.rpartition("-").last.to_i}
+  #       return "#{slug}-#{numbers.max + 1}"
+  #     else
+  #       return "#{slug}-1"
+  #     end
+  #   else
+  #     return slug
+  #   end
+  # end
+
+  protected
+
+  def generate_slug
+    slug = self.name.parameterize
+    existing = Computer.where("slug LIKE :prefix", prefix: "##{slug}").pluck(:slug)
+    if existing.include?(slug)
+      numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}
+      if numbered_matching_slugs.any?
+        numbers = numbered_matching_slugs.map{|s| s.rpartition("-").last.to_i}
+        self.slug = "#{slug}-#{numbers.max + 1}"
+      else
+        self.slug = "#{slug}-1"
+      end
+    else
+      self.slug = slug
+    end
+  end  
 
 end

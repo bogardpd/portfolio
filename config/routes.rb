@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
   get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
 
-  resources :computers
+  resources :computers, param: :slug
   
   # Projects
   get "projects(/tags/:tag)" => "static_pages#projects", as: :projects

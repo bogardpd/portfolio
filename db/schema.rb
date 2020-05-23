@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_170339) do
+ActiveRecord::Schema.define(version: 2020_05_23_192348) do
 
   create_table "computers", force: :cascade do |t|
     t.string "name"
     t.string "slug"
     t.string "model"
-    t.string "description"
+    t.text "description"
     t.string "form_factor"
     t.date "purchase_date"
     t.date "disposal_date"
