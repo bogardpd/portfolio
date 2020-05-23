@@ -7,6 +7,16 @@
 
 <%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_computers_path)) %>
 
+<%= link_header("Pancake", 2) %>
+
+<%= render partial: "computer_details", locals: {computer: @computers["pancake"]} %>
+
+<%= link_header("Quesadilla", 2) %>
+
+<%= render partial: "computer_details", locals: {computer: @computers["quesadilla"]} %>
+
+
+
 <%= link_header "Home Computers", 2 %>
 
 <div class="row computers">

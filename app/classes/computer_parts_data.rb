@@ -68,6 +68,11 @@ class ComputerPartsData
     return @computers
   end
 
+  # Returns a hash of all part types.
+  def part_types
+    return @part_types
+  end
+
   # Returns a hash of all part types which have at least one instance not associated with a computer.
   def standalone_types
     standalone_types = @parts_data[:parts]
@@ -101,10 +106,31 @@ class ComputerPartsData
     return @computer[:model]
   end
 
+  # Returns an array of description paragraphs if the collection is filtered by
+  # computer. If the computer has no description, returns an empty array.
+  def computer_description
+    return nil unless @computer
+    return @computer[:description] || []
+  end
+
+  def computer_photo
+    return nil unless @computer
+    return @computer[:photo]
+  end
+
   # Returns the computer name if the collection is filtered by computer.
   def computer_name
     return nil unless @computer
     return @computer[:name]
+  end
+
+  # Returns all computer parts currently in use (with a nil final end date),
+  # grouped by part type.
+  def computer_parts_today
+    part_order = %w(processors motherboards displays video_cards memory storage optical_drives power_supplies cases wifi_adapters webcams operating_systems)
+    parts_today = @current_parts.select{|p| p[:use_dates] && p[:use_dates].last[:end].nil?}
+    grouped_parts = part_order.map{|po| [po, parts_today.select{|cp| cp[:part_types] && cp[:part_types].include?(po)}]}.to_h
+    return grouped_parts.reject{|k, v| v.empty?}
   end
 
   # Returns the type name if the collection is filtered by type.
@@ -114,6 +140,17 @@ class ComputerPartsData
       return @part_type[:lowercase_plural] || @part_type[:name].downcase
     else
       return @part_type[:name]
+    end
+  end
+
+  # Formats a type name to singular or plural based on the count of parts
+  def format_type_name(part_type, count)
+    return nil unless part_type && count
+    if count == 1
+      return nil unless details = @part_types[part_type]
+      return details[:singular] || details[:name].singularize
+    else
+      return @part_types.dig(part_type, :name)
     end
   end
 

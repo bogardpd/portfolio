@@ -22,6 +22,7 @@ part_types:
     name: "Fitness Trackers"
   floppy_drives:
     name: "Floppy Drives"
+    singular: "Floppy Drive"
   game_consoles:
     name: "Game Consoles"
   game_controllers:
@@ -31,17 +32,16 @@ part_types:
     lowercase_plural: "GPS units"
   handheld_computers:
     name: "Handheld Computers"
-  hard_drives:
-    name: "Hard Drives and SSDs"
-    lowercase_plural: "hard drives and SSDs"
   headphones:
     name: "Headphones"
+    singular: "Headphones"
   headsets:
     name: "Headsets"
   keyboards:
     name: "Keyboards"
   memory:
     name: "Memory"
+    lowercase_plural: "memory modules"
   mice:
     name: "Mice"
   microphones:
@@ -57,6 +57,7 @@ part_types:
     name: "Operating Systems"
   optical_drives:
     name: "Optical Drives"
+    singular: "Optical Drive"
   pda:
     name: "PDAs"
     lowercase_plural: "PDAs"
@@ -76,6 +77,9 @@ part_types:
     name: "Sound Cards"
   speakers:
     name: "Speakers"
+  storage:
+    name: "Storage"
+    lowercase_plural: "storage devices"
   tablets:
     name: "Tablets"
   televisions:
@@ -137,6 +141,9 @@ computers:
     name: "Pancake"
     model: "Home-built PC"
     form_factor: "desktop"
+    description:
+      - "Pancake is my home PC, built to be able to handle games. I also use it for doing image editing for my maps, terminal silhouettes, and other projects."
+    photo: "computers/Pancake 2016-08-20.jpg"
     build_dates:
       - &build_2008 2008-05-02
       - &build_2014 2014-07-22
@@ -153,6 +160,10 @@ computers:
     name: "Quesadilla"
     model: "MacBook (2016)"
     form_factor: "laptop"
+    description:
+      - "Quesadilla is my laptop for travel, so I traded off raw computing power to get minimum weight, minimum size, and USB-C charging. (Thus, it can charge off my multi-USB charger, saving me the weight of its own power cord and allowing me to charge all my devices from a single hotel outlet.)"
+      - "Quesadilla also functions as the development environment for my web projects."
+    photo: computers/Quesadilla 2016-05-05.jpg
     <<: &quesadilla_lifetime
       purchase_date: &quesadilla_purchase 2016-04-23
       use_dates:
@@ -277,7 +288,7 @@ parts:
   
   - model: "60 GB HDD"
     part_types:
-      - hard_drives
+      - storage
     specs:
       - "2.5″ internal"
       - "5400 RPM"
@@ -285,7 +296,7 @@ parts:
 
   - model: "100 GB HDD"
     part_types:
-      - hard_drives
+      - storage
     specs:
       - "2.5″ internal"
       - "7200 RPM"
@@ -293,7 +304,7 @@ parts:
 
   - model: "320 GB HDD"
     part_types:
-      - hard_drives
+      - storage
     specs:
       - "2.5″ internal"
       - "7200 RPM"
@@ -306,7 +317,7 @@ parts:
 
   - model: "500 GB HDD"
     part_types:
-      - hard_drives
+      - storage
     specs:
       - "2.5″ internal"
       - "5400 RPM"
@@ -334,7 +345,7 @@ parts:
 
   - model: "512 GB SSD"
     part_types:
-      - hard_drives
+      - storage
     specs:
       - "PCIe"
     <<: *quesadilla_lifetime
@@ -631,7 +642,7 @@ parts:
         end:       null
     disposal_date: null
   
-  - model: "CORSAIR RMx Series 550 W"
+  - model: "550 W CORSAIR RMx Series"
     part_types:
       - power_supplies
     part_number: RM550x
@@ -675,7 +686,7 @@ parts:
         computer:  pancake
     disposal_date: 2008-09-25
 
-  - model: "Crucial Ballistix Sport 16 GB DDR4-2400"
+  - model: "16 GB DDR4-2400 Crucial Ballistix Sport"
     part_types:
       - memory
     specs:
@@ -1032,7 +1043,7 @@ parts:
         computer:  pancake
     disposal_date: *build_2016
 
-  - model: "Intel Core i5-6600K 3.5 GHz"
+  - model: "3.5 GHz Intel Core i5-6600K"
     part_types:
       - processors
     purchase_date: 2016-08-19
@@ -1042,7 +1053,7 @@ parts:
         computer:  pancake
     disposal_date: null
 
-  - model: "Intel Core m5-6Y54 1.2/2.7 GHz"
+  - model: "1.2/2.7 GHz Intel Core m5-6Y54"
     part_types:
       - processors
     specs:
@@ -1480,7 +1491,7 @@ parts:
   
   - model: "Maxtor DiamondMax 8.4 GB"
     part_types:
-      - hard_drives
+      - storage
     part_number: "2160"
     specs:
       - "5200 RPM"
@@ -1757,9 +1768,9 @@ parts:
         computer:  pancake
     disposal_date: null
 
-  - model: "Samsung 840 EVO 1 TB SSD"
+  - model: "1 TB Samsung 840 EVO SSD"
     part_types:
-      - hard_drives
+      - storage
     specs:
       - "2.5″"
     purchase_date: 2014-07-16
@@ -1787,7 +1798,7 @@ parts:
 
   - model: "Samsung Spinpoint F1 750 GB"
     part_types:
-      - hard_drives
+      - storage
     part_number: "HD753LJ"
     specs:
       - "7200 RPM"
@@ -1801,7 +1812,7 @@ parts:
 
   - model: "Samsung Spinpoint F1 750 GB"
     part_types:
-      - hard_drives
+      - storage
     part_number: "HD753LJ"
     specs:
       - "7200 RPM"
@@ -1828,7 +1839,7 @@ parts:
   
   - model: "Seagate BarraCuda 200 GB"
     part_types:
-      - hard_drives
+      - storage
     part_number: "ST3200822AS"
     specs:
       - "7200 RPM"
@@ -2033,7 +2044,7 @@ parts:
 
   - model: "Western Digital Black 500 GB"
     part_types:
-      - hard_drives
+      - storage
     specs:
       - "7200 RPM"
       - "2.5″"
@@ -2044,9 +2055,9 @@ parts:
         computer:  chili_dog
     disposal_date: *chili_dog_disposal
 
-  - model: "Western Digital Blue 3 TB"
+  - model: "3 TB Western Digital Blue"
     part_types:
-      - hard_drives
+      - storage
     specs:
       - "5400 RPM"
       - "3.5″"
@@ -2059,7 +2070,7 @@ parts:
   
   - model: "Western Digital Caviar Black 1 TB"
     part_types:
-      - hard_drives
+      - storage
     part_number: "WD1002FAEX"
     specs:
       - "7200 RPM"
@@ -2073,7 +2084,7 @@ parts:
  
   - model: "Western Digital Caviar SE16 320 GB"
     part_types:
-      - hard_drives
+      - storage
     part_number: "WD3200KS"
     specs:
       - "7200 RPM"
@@ -2092,7 +2103,7 @@ parts:
 
   - model: "Western Digital My Passport 2 TB External"
     part_types:
-      - hard_drives
+      - storage
     purchase_date: 2012-02-25
     use_dates:
       - start:     2012-02-25
@@ -2108,7 +2119,7 @@ parts:
 
   - model: "Western Digital Raptor 150 GB"
     part_types:
-      - hard_drives
+      - storage
     part_number: "WD1500ADFD"
     specs:
       - "10000 RPM"

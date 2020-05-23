@@ -111,6 +111,37 @@ p.computer-history-model {
 	font-weight: 300;
 }
 
+table.computer-parts-summary {
+	span.model {
+		font-weight: 300;
+	}
+	ul {
+		list-style-type: none;
+		padding-left: 0;
+		margin: 0;
+		li {
+			margin: 0;
+		}
+	}
+}
+
+ul.computer-parts-summary {
+	list-style-type: none;
+	padding-left: 0;
+	
+	li {
+		font-weight: bold;
+
+		ul {
+			list-style-type: none;
+			padding-left: 1em;
+
+			li {
+				font-weight: normal;
+			}
+		}
+	}
+}
 
 ul.component {
 	margin: 0;
