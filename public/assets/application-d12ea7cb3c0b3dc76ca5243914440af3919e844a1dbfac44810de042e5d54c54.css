@@ -11788,47 +11788,53 @@ a:active {
 }
 
 /* line 128, app/assets/stylesheets/_base.scss */
+a.badge {
+  background-color: #e7e4e4;
+  text-decoration: none;
+}
+
+/* line 133, app/assets/stylesheets/_base.scss */
 a.btn {
   text-decoration: none;
 }
 
-/* line 132, app/assets/stylesheets/_base.scss */
+/* line 137, app/assets/stylesheets/_base.scss */
 a.link-header {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 137, app/assets/stylesheets/_base.scss */
+/* line 142, app/assets/stylesheets/_base.scss */
 abbr {
   text-decoration: none;
   border-bottom: 0.05em dotted;
 }
 
-/* line 142, app/assets/stylesheets/_base.scss */
+/* line 147, app/assets/stylesheets/_base.scss */
 cite {
   font-style: italic;
 }
 
-/* line 146, app/assets/stylesheets/_base.scss */
+/* line 151, app/assets/stylesheets/_base.scss */
 code, kbd {
   font-family: "Source Code Pro", monospace;
 }
 
-/* line 150, app/assets/stylesheets/_base.scss */
+/* line 155, app/assets/stylesheets/_base.scss */
 pre {
   font-family: "Source Code Pro", monospace;
   font-size: 15pt;
   white-space: pre-wrap;
 }
 
-/* line 156, app/assets/stylesheets/_base.scss */
+/* line 161, app/assets/stylesheets/_base.scss */
 blockquote.twitter-tweet {
   width: 100px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 162, app/assets/stylesheets/_base.scss */
+/* line 167, app/assets/stylesheets/_base.scss */
 div.byline {
   text-align: center;
   color: #705c5c;
@@ -11837,29 +11843,29 @@ div.byline {
   margin-bottom: 35px;
 }
 
-/* line 170, app/assets/stylesheets/_base.scss */
+/* line 175, app/assets/stylesheets/_base.scss */
 div.byline::before {
   content: '— ';
 }
 
-/* line 174, app/assets/stylesheets/_base.scss */
+/* line 179, app/assets/stylesheets/_base.scss */
 div.byline::after {
   content: ' —';
 }
 
-/* line 178, app/assets/stylesheets/_base.scss */
+/* line 183, app/assets/stylesheets/_base.scss */
 div.error {
   background: #FFCCCC;
   border: 1px solid #FF0000;
   padding: 1em;
 }
 
-/* line 184, app/assets/stylesheets/_base.scss */
+/* line 189, app/assets/stylesheets/_base.scss */
 div.version-picker, div.version-summary {
   margin: 1.5em 0;
 }
 
-/* line 188, app/assets/stylesheets/_base.scss */
+/* line 193, app/assets/stylesheets/_base.scss */
 figure {
   text-align: center;
   margin-top: 25px;
@@ -11867,50 +11873,50 @@ figure {
   padding: 5px;
 }
 
-/* line 194, app/assets/stylesheets/_base.scss */
+/* line 199, app/assets/stylesheets/_base.scss */
 figure figcaption {
   margin: 10px;
   font-weight: 700;
 }
 
-/* line 197, app/assets/stylesheets/_base.scss */
+/* line 202, app/assets/stylesheets/_base.scss */
 figure figcaption span.caption-label {
   font-style: italic;
 }
 
-/* line 201, app/assets/stylesheets/_base.scss */
+/* line 206, app/assets/stylesheets/_base.scss */
 figure figcaption.attribution {
   font-size: 10px;
   font-weight: 400;
   color: #705c5c;
 }
 
-/* line 207, app/assets/stylesheets/_base.scss */
+/* line 212, app/assets/stylesheets/_base.scss */
 figure img.project {
   margin: 10px auto;
 }
 
-/* line 211, app/assets/stylesheets/_base.scss */
+/* line 216, app/assets/stylesheets/_base.scss */
 figure img.ios-screenshot {
   max-width: 375px;
   height: auto;
   border: 1px solid #cccccc;
 }
 
-/* line 217, app/assets/stylesheets/_base.scss */
+/* line 222, app/assets/stylesheets/_base.scss */
 figure img.osx-screenshot {
   max-width: 600px;
   border: none;
 }
 
-/* line 222, app/assets/stylesheets/_base.scss */
+/* line 227, app/assets/stylesheets/_base.scss */
 figure img.screenshot {
   max-width: 600px;
   border: 1px solid #382e2e;
   box-shadow: 1px 1px 5px #705c5c;
 }
 
-/* line 229, app/assets/stylesheets/_base.scss */
+/* line 234, app/assets/stylesheets/_base.scss */
 h1 {
   font-size: 250%;
   font-weight: 400;
@@ -11919,90 +11925,90 @@ h1 {
   margin-bottom: 0.75em;
 }
 
-/* line 237, app/assets/stylesheets/_base.scss */
+/* line 242, app/assets/stylesheets/_base.scss */
 h2 {
   font-weight: bold;
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
 
-/* line 243, app/assets/stylesheets/_base.scss */
+/* line 248, app/assets/stylesheets/_base.scss */
 h3 {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-/* line 248, app/assets/stylesheets/_base.scss */
+/* line 253, app/assets/stylesheets/_base.scss */
 hr {
   border-top: 1px solid #cccccc;
 }
 
-/* line 252, app/assets/stylesheets/_base.scss */
+/* line 257, app/assets/stylesheets/_base.scss */
 img.bordered {
   border: 1px solid #cccccc;
 }
 
-/* line 256, app/assets/stylesheets/_base.scss */
+/* line 261, app/assets/stylesheets/_base.scss */
 img.center {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 261, app/assets/stylesheets/_base.scss */
+/* line 266, app/assets/stylesheets/_base.scss */
 img.org-logo {
   width: 200px;
   height: 100px;
   margin: 10px auto;
 }
 
-/* line 267, app/assets/stylesheets/_base.scss */
+/* line 272, app/assets/stylesheets/_base.scss */
 img.portrait {
   margin: 20px auto;
 }
 
-/* line 271, app/assets/stylesheets/_base.scss */
+/* line 276, app/assets/stylesheets/_base.scss */
 p {
   margin-top: 20px;
   margin-bottom: 20px;
   line-height: 1.7em;
 }
 
-/* line 277, app/assets/stylesheets/_base.scss */
+/* line 282, app/assets/stylesheets/_base.scss */
 small {
   color: #705c5c;
 }
 
-/* line 281, app/assets/stylesheets/_base.scss */
+/* line 286, app/assets/stylesheets/_base.scss */
 .strong {
   font-weight: 700;
 }
 
-/* line 285, app/assets/stylesheets/_base.scss */
+/* line 290, app/assets/stylesheets/_base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 289, app/assets/stylesheets/_base.scss */
+/* line 294, app/assets/stylesheets/_base.scss */
 td {
   line-height: 1.7em;
 }
 
-/* line 291, app/assets/stylesheets/_base.scss */
+/* line 296, app/assets/stylesheets/_base.scss */
 td p {
   line-height: 1.7em;
 }
 
-/* line 296, app/assets/stylesheets/_base.scss */
+/* line 301, app/assets/stylesheets/_base.scss */
 .emphasis {
   font-style: italic;
 }
 
-/* line 300, app/assets/stylesheets/_base.scss */
+/* line 305, app/assets/stylesheets/_base.scss */
 .light {
   font-weight: 300;
 }
 
-/* line 304, app/assets/stylesheets/_base.scss */
+/* line 309, app/assets/stylesheets/_base.scss */
 .website-name {
   font-variant: small-caps;
   letter-spacing: 0.02em;
@@ -12293,64 +12299,110 @@ p.computer-description {
   margin-top: 0;
 }
 
-/* line 109, app/assets/stylesheets/_computers.scss */
+/* line 108, app/assets/stylesheets/_computers.scss */
+p.computer-history-model {
+  text-align: center;
+  font-size: 18pt;
+  font-weight: 300;
+}
+
+/* line 115, app/assets/stylesheets/_computers.scss */
+table.computer-parts-summary span.model {
+  font-weight: 300;
+}
+
+/* line 118, app/assets/stylesheets/_computers.scss */
+table.computer-parts-summary ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* line 122, app/assets/stylesheets/_computers.scss */
+table.computer-parts-summary ul li {
+  margin: 0;
+}
+
+/* line 128, app/assets/stylesheets/_computers.scss */
+ul.computer-parts-summary {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* line 132, app/assets/stylesheets/_computers.scss */
+ul.computer-parts-summary li {
+  font-weight: bold;
+}
+
+/* line 135, app/assets/stylesheets/_computers.scss */
+ul.computer-parts-summary li ul {
+  list-style-type: none;
+  padding-left: 1em;
+}
+
+/* line 139, app/assets/stylesheets/_computers.scss */
+ul.computer-parts-summary li ul li {
+  font-weight: normal;
+}
+
+/* line 146, app/assets/stylesheets/_computers.scss */
 ul.component {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-/* line 114, app/assets/stylesheets/_computers.scss */
+/* line 151, app/assets/stylesheets/_computers.scss */
 ul.component li {
   margin-bottom: 1em;
 }
 
-/* line 117, app/assets/stylesheets/_computers.scss */
+/* line 154, app/assets/stylesheets/_computers.scss */
 ul.component li:last-child {
   margin-bottom: 0;
 }
 
-/* line 120, app/assets/stylesheets/_computers.scss */
+/* line 157, app/assets/stylesheets/_computers.scss */
 ul.component p {
   margin: 0;
   font-weight: normal;
   line-height: 1.2em;
 }
 
-/* line 126, app/assets/stylesheets/_computers.scss */
+/* line 163, app/assets/stylesheets/_computers.scss */
 ul.component p.supplemental, ul.component p.purchased {
   margin-top: 0.4rem;
 }
 
-/* line 130, app/assets/stylesheets/_computers.scss */
+/* line 167, app/assets/stylesheets/_computers.scss */
 ul.component p.supplemental {
   font-size: 13pt;
   color: #705c5c;
 }
 
-/* line 133, app/assets/stylesheets/_computers.scss */
+/* line 170, app/assets/stylesheets/_computers.scss */
 ul.component p.supplemental span.vlog-subtitle {
   font-style: italic;
 }
 
-/* line 138, app/assets/stylesheets/_computers.scss */
+/* line 175, app/assets/stylesheets/_computers.scss */
 ul.component p.purchased {
   font-size: 10pt;
   color: #705c5c;
 }
 
-/* line 143, app/assets/stylesheets/_computers.scss */
+/* line 180, app/assets/stylesheets/_computers.scss */
 ul.component p.recent {
   font-weight: bold;
   color: #14b881;
 }
 
-/* line 148, app/assets/stylesheets/_computers.scss */
+/* line 185, app/assets/stylesheets/_computers.scss */
 ul.component span.device_name {
   font-weight: 700;
 }
 
-/* line 151, app/assets/stylesheets/_computers.scss */
+/* line 188, app/assets/stylesheets/_computers.scss */
 ul.component span.unpictured {
   font-style: italic;
 }
@@ -13287,13 +13339,52 @@ div.button-row {
 }
 
 /* line 17, app/assets/stylesheets/_projects.scss */
+div.project-tags {
+  background: #e7e4e4;
+  border: 1px solid #cccccc;
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+}
+
+/* line 23, app/assets/stylesheets/_projects.scss */
+div.project-tags a.badge-project-tag, div.project-tags span.badge-project-tag-active {
+  font-size: 13pt;
+  font-weight: normal;
+  margin: 0.2em;
+}
+
+/* line 29, app/assets/stylesheets/_projects.scss */
+div.project-tags a.badge-project-tag {
+  background-color: #fafafa;
+  border: 1px solid #cccccc;
+  box-shadow: 1px 1px #cccccc;
+}
+
+/* line 35, app/assets/stylesheets/_projects.scss */
+div.project-tags span.badge-project-tag-active {
+  background-color: #7c1313;
+  border: 1px solid #550000;
+  box-shadow: 1px 1px #550000;
+  color: #FFFFFF;
+}
+
+/* line 42, app/assets/stylesheets/_projects.scss */
+div.project-tags span.project-tags-label {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  color: #705c5c;
+  font-size: 13pt;
+  text-transform: uppercase;
+}
+
+/* line 53, app/assets/stylesheets/_projects.scss */
 img.icon-button {
   width: 32px;
   height: 32px;
   margin-right: 10px;
 }
 
-/* line 23, app/assets/stylesheets/_projects.scss */
+/* line 59, app/assets/stylesheets/_projects.scss */
 img.project-icon {
   /* TODO: remove after converting everything to tiles */
   width: 300px;
@@ -13303,7 +13394,7 @@ img.project-icon {
   box-shadow: 1px 1px 2px #e7e4e4;
 }
 
-/* line 32, app/assets/stylesheets/_projects.scss */
+/* line 68, app/assets/stylesheets/_projects.scss */
 table.tools-list ul, table.version-summary ul {
   list-style: none;
   padding: 0;

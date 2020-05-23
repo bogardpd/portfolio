@@ -36,7 +36,7 @@ class ComputerPartsData
   }
 
   def initialize(computer: nil, type: nil)
-    computer = computer&.underscore
+    computer = computer&.to_s.underscore
     type = type&.underscore
 
     @parts_data = YAML.load_file(PARTS_DATA_FILE).with_indifferent_access
@@ -94,30 +94,6 @@ class ComputerPartsData
     return @part_types[type.underscore].present?
   end
 
-  # Returns the computer form factor if the collection is filtered by computer.
-  def computer_form_factor
-    return nil unless @computer
-    return @computer[:form_factor]
-  end
-  
-  # Returns the computer model if the collection is filtered by computer.
-  def computer_model
-    return nil unless @computer
-    return @computer[:model]
-  end
-
-  # Returns an array of description paragraphs if the collection is filtered by
-  # computer. If the computer has no description, returns an empty array.
-  def computer_description
-    return nil unless @computer
-    return @computer[:description] || []
-  end
-
-  def computer_photo
-    return nil unless @computer
-    return @computer[:photo]
-  end
-
   # Returns the computer name if the collection is filtered by computer.
   def computer_name
     return nil unless @computer
@@ -140,17 +116,6 @@ class ComputerPartsData
       return @part_type[:lowercase_plural] || @part_type[:name].downcase
     else
       return @part_type[:name]
-    end
-  end
-
-  # Formats a type name to singular or plural based on the count of parts
-  def format_type_name(part_type, count)
-    return nil unless part_type && count
-    if count == 1
-      return nil unless details = @part_types[part_type]
-      return details[:singular] || details[:name].singularize
-    else
-      return @part_types.dig(part_type, :name)
     end
   end
 

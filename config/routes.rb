@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
   get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
   get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
+
+  resources :computers
   
   # Projects
   get "projects(/tags/:tag)" => "static_pages#projects", as: :projects
@@ -74,11 +76,11 @@ Rails.application.routes.draw do
   get "resume" => "static_pages#resume"
   
   # Computers
-  get "computers"                       => "static_pages#computers"
-  get "computers/old"                   => "static_pages#old_computers",            as: :old_computers
-  get "computers/history/parts(/:part)" => "static_pages#part_history_details",     as: :part_history_details
-  get "computers/history/:computer"     => "static_pages#computer_history_details", as: :computer_history_details
-  get "computers/history"               => "static_pages#computer_history",         as: :computer_history
+  # get "computers"                       => "static_pages#computers"
+  # get "computers/old"                   => "static_pages#old_computers",            as: :old_computers
+  # get "computers/history/parts(/:part)" => "static_pages#part_history_details",     as: :part_history_details
+  # get "computers/history/:computer"     => "static_pages#computer_history_details", as: :computer_history_details
+  # get "computers/history"               => "static_pages#computer_history",         as: :computer_history
 
   # Other Pages
   get "airport-code-puns" => "static_pages#airport_code_puns"

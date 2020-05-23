@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_021418) do
+ActiveRecord::Schema.define(version: 2020_05_23_170339) do
+
+  create_table "computers", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "model"
+    t.string "description"
+    t.string "form_factor"
+    t.date "purchase_date"
+    t.date "disposal_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_computers_on_slug"
+  end
 
   create_table "terminal_silhouettes", force: :cascade do |t|
     t.string "iata_code"

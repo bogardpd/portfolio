@@ -38,7 +38,7 @@ class StaticPagesController < ApplicationController
   def computers
     add_breadcrumb "Computers", computers_path
     @computer_specs = YAML.load_file("app/data/computers/computer_specs.yml").each(&:deep_symbolize_keys!)
-    @computers = ["pancake","quesadilla"].map{|c| [c, ComputerPartsData.new(computer: c)]}.to_h
+    @computers = [:pancake, :quesadilla].map{|c| [c, Computer.new(c)]}.to_h
     @devices = YAML.load_file("app/data/computers/devices.yml").deep_symbolize_keys
   end
 

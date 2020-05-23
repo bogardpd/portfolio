@@ -1,21 +1,21 @@
-<% computer.computer_description.each do |paragraph| %>
+<% computer.description.each do |paragraph| %>
   <p><%= paragraph %></p>
 <% end %>
 
 <div class="container">
 	<div class="row">
 		<div class="col-lg-4">
-			<% if computer.computer_photo %>
-        <%= project_image(computer.computer_photo, type: :large) %>
+			<% if computer.photo %>
+        <%= project_image(computer.photo, type: :large) %>
       <% end %>
 		</div>
 		<div class="col-lg-8">
-			<p class="computer-history-model"><%= computer.computer_model %> &middot; <%= computer.computer_form_factor %></p>
+			<p class="computer-history-model"><%= computer.model %> &middot; <%= computer.form_factor %></p>
 			<table class="table computer-parts-summary">
 				<tbody>
-					<% computer.computer_parts_today.each do |k, v| %>
+					<% computer.current_parts.each do |k, v| %>
 						<tr>
-							<th scope="row"><%= computer.format_type_name(k, v.size) %></th>
+							<th scope="row"><%= computer.part_category_name(k, v.size) %></th>
 							<td>
 								<ul>
 									<% v.each do |part| %>

@@ -51,38 +51,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
-  test "should get computers" do
-    get(computers_path)
-    assert_response(:success)
-  end
-
-  test "should get computer history" do
-    get(computers_path)
-    assert_response(:success)
-  end
-
-  test "should get computer history details" do
-    parts_data = YAML.load_file("app/data/computers/parts.yml").deep_symbolize_keys
-    parts_data[:computers].keys.each do |computer|
-      get(computer_history_details_path(computer: computer))
-      assert_response(:success)
-    end
-    get(computer_history_details_path(computer: "does-not-exist"))
-    assert_redirected_to(computer_history_path)
-  end
-
-  test "should get part history details" do
-    parts_data = YAML.load_file("app/data/computers/parts.yml").deep_symbolize_keys
-    parts_data[:part_types].keys.each do |part_type|
-      get(part_history_details_path(part: part_type))
-      assert_response(:success)
-    end
-    get(part_history_details_path(part: nil))
-    assert_redirected_to(computer_history_path)
-    get(part_history_details_path(part: "does-not-exist"))
-    assert_redirected_to(computer_history_path)
-  end
-
   test "should get earthbound database" do
     get(earthbound_database_path)
     assert_response(:success)
@@ -163,11 +131,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
 
   test "should get MCO lobby" do
     get(mco_lobby_path)
-    assert_response(:success)
-  end
-
-  test "should get old computers" do
-    get(old_computers_path)
     assert_response(:success)
   end
 
