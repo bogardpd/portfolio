@@ -44,6 +44,14 @@ class ComputersController < ApplicationController
     end
   end
 
+  def destroy
+    computer = Computer.find_by!(slug: params[:slug])
+    name = computer.name
+    computer.destroy
+    flash[:success] = "Successfully deleted #{name}!"
+    redirect_to computers_path
+  end
+
   private
 
   def computer_params
