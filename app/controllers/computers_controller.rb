@@ -29,6 +29,9 @@ class ComputersController < ApplicationController
 
   def edit
     @computer = Computer.find_by!(slug: params[:slug])
+    add_breadcrumb("Computers", computers_path)
+    add_breadcrumb(@computer.name, computer_path(@computer.slug))
+    add_breadcrumb("Edit", edit_computer_path(@computer.slug))
   end
 
   def update

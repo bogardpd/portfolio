@@ -1,11 +1,8 @@
 <% provide(:title, "Computers") %>
 <% provide(:meta_description, "Tech specs of Paul Bogard’s computers and other electronics.") %>
+<% provide(:admin_actions, format_admin_actions({"Add Computer" => new_computer_path})) %>
 
 <h1>Computers</h1>
-
-<% if logged_in? %>
-  <div><%= link_to("Add computer", new_computer_path) %></div>
-<% end %>
 
 <ul>
   <% @computers.each do |computer| %>

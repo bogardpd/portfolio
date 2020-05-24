@@ -33,7 +33,7 @@ class Computer < ApplicationRecord
 
   def generate_slug
     slug = self.name.parameterize
-    if self.name_was != slug
+    if self.name_was.parameterize != slug
       existing = Computer.where("slug LIKE :prefix", prefix: "##{slug}").pluck(:slug) && ["new"]
       if existing.include?(slug)
         numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}

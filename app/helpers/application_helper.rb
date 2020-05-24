@@ -10,6 +10,11 @@ module ApplicationHelper
     end
   end
   
+  # Takes a hash with text as keys and paths as values, and creates admin links.
+  def format_admin_actions(link_hash)
+    return safe_join(link_hash.map{|text, link| link_to(text, link)}, sanitize("&emsp;&emsp;"))
+  end
+
   # Returns a formatted date.
   def format_date(input_date)
     input_date.strftime("%e %b %Y").strip

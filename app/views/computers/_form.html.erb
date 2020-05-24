@@ -36,7 +36,7 @@
       </p>
       
       <p>
-        <%= f.submit yield(:button_text), class: 'btn btn-primary' %>
+        <%= f.submit(yield(:button_text), class: %w(btn btn-primary)) %>
       </p>
 
     <% end %>

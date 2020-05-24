@@ -25,7 +25,20 @@
 	<%= render "layouts/header" %>
   
   <div id="main" class="container">
-    <%= show_breadcrumbs %>
+		
+		<% if @breadcrumbs || (logged_in? && yield(:admin_actions).present?) %>
+			<div class="breadcrumbs-admin row">
+				<div class="col px-0">
+					<%= show_breadcrumbs %>
+				</div>
+				<% if logged_in? && yield(:admin_actions).present? %>
+					<div class="col px-0 text-right">
+						<%= yield(:admin_actions) %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+
 		<% flash.each do |message_type, message| %>
   	  <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
