@@ -1,6 +1,6 @@
 <% provide(:title, "#{@computer.name} - Computer History") %>
 <% provide(:meta_description, "Paul Bogard’s history of parts in his computer #{@computer.name}.") %>
-<% provide(:admin_actions, format_admin_actions({"Edit" => edit_computer_path(@computer.slug)})) %>
+<% provide(:admin_actions, format_admin_actions({"Edit" => edit_electronics_computer_path(@computer.slug)})) %>
 
 <h1>Computer History &ndash; <%= @computer.name %></h1>
 

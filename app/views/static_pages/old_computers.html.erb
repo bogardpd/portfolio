@@ -3,14 +3,14 @@
 
 <h1>Paul’s Old Computers</h1>
 
-<%= link_buttons(LinkButton.new("See Paul’s current computers", nil, computers_path)) %>
+<%= link_buttons(LinkButton.new("See Paul’s current computers", nil, electronics_computers_path)) %>
 
 <%= link_header "Desktops", 2 %>
 
 <%= render partial: "computer_equipment", collection: @old_computers[:desktops], as: :device %>
 
 <div class="container">
-  <p class="alert alert-info">Current desktop: <%= link_to "Pancake", computers_path(anchor: "home-computers") %></p>
+  <p class="alert alert-info">Current desktop: <%= link_to "Pancake", electronics_computers_path(anchor: "home-computers") %></p>
 </div>
 
 <%= link_header "Laptops", 2 %>
@@ -18,7 +18,7 @@
 <%= render partial: "computer_equipment", collection: @old_computers[:laptops], as: :device %>
 
 <div class="container">
-  <p class="alert alert-info">Current laptop: <%= link_to "Quesadilla", computers_path(anchor: "home-computers") %></p>
+  <p class="alert alert-info">Current laptop: <%= link_to "Quesadilla", electronics_computers_path(anchor: "home-computers") %></p>
 </div>
 
 <%= link_header "Mobile Devices", 2 %>
@@ -26,8 +26,8 @@
 <%= render partial: "computer_equipment", collection: @old_computers[:mobile], as: :device %>
 
 <div class="container">
-  <p class="alert alert-info">Current smartphone: <%= link_to "Tator Tot VI", computers_path(anchor: "mobile") %></p>
-  <p class="alert alert-info">Current tablet: <%= link_to "Latke", computers_path(anchor: "mobile") %></p>
+  <p class="alert alert-info">Current smartphone: <%= link_to "Tator Tot VI", electronics_computers_path(anchor: "mobile") %></p>
+  <p class="alert alert-info">Current tablet: <%= link_to "Latke", electronics_computers_path(anchor: "mobile") %></p>
 </div>
 
 <%= link_header "Game Systems", 2 %>
@@ -35,7 +35,7 @@
 <%= render partial: "computer_equipment", collection: @old_computers[:game_systems], as: :device %>
 
 <div class="container">
-  <p class="alert alert-info">Current console: <%= link_to "Lemonade", computers_path(anchor: "game-systems") %></p>
+  <p class="alert alert-info">Current console: <%= link_to "Lemonade", electronics_computers_path(anchor: "game-systems") %></p>
 </div>
 
-<%= link_buttons(LinkButton.new("See Paul’s current computers", nil, computers_path)) %>
+<%= link_buttons(LinkButton.new("See Paul’s current computers", nil, electronics_computers_path)) %>

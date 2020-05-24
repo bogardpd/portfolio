@@ -1,6 +1,6 @@
 class Computer < ApplicationRecord
   FORM_FACTORS = {laptop: "Laptop", desktop: "Desktop"}
-  RESERVED_SLUGS = %w(new part-categories parts)
+  RESERVED_SLUGS = %w(new)
 
   before_validation :generate_slug
   validates :name, presence: true

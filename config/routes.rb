@@ -16,11 +16,13 @@ Rails.application.routes.draw do
   get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
   get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
 
-  namespace :computers do
-    resources :parts
+  
+  namespace :electronics do
+    root to: "electronics#index"
+    resources :computers, param: :slug
     resources :part_categories, path: "part-categories", param: :slug
+    resources :parts
   end
-  resources :computers, param: :slug
   
   # Projects
   get "projects(/tags/:tag)" => "static_pages#projects", as: :projects
@@ -45,6 +47,9 @@ Rails.application.routes.draw do
   get "projects/visor-cam"              => "static_pages#visor_cam",              as: :visor_cam
   
   # Aliases and redirects
+
+  get "computers" => redirect("electronics"), status: 301
+
   get "boarding-pass-parser"   => redirect("projects/boarding-pass-parser",   status: 301)
   get "cad-models"             => redirect("projects/cad-models",             status: 301)
   get "earthbound-database"    => redirect("projects/earthbound-database",    status: 301)

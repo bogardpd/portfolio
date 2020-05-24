@@ -1,0 +1,11 @@
+<% provide(:title, "Computers") %>
+<% provide(:meta_description, "Tech specs and history of Paul Bogard’s computers.") %>
+<% provide(:admin_actions, format_admin_actions({"Add Computer" => new_electronics_computer_path})) %>
+
+<h1>Computers</h1>
+
+<ul>
+  <% @computers.each do |computer| %>
+    <li><%= link_to(computer.name, electronics_computer_path(computer.slug)) %></li>
+  <% end %>
+</ul>

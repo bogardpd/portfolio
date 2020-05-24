@@ -36,7 +36,7 @@ class StaticPagesController < ApplicationController
   end
   
   def computers
-    add_breadcrumb "Computers", computers_path
+    add_breadcrumb "Computers", electronics_computers_path
     @computer_specs = YAML.load_file("app/data/computers/computer_specs.yml").each(&:deep_symbolize_keys!)
     @computers = [:pancake, :quesadilla].map{|c| [c, Computer.new(c)]}.to_h
     @devices = YAML.load_file("app/data/computers/devices.yml").deep_symbolize_keys
@@ -47,7 +47,7 @@ class StaticPagesController < ApplicationController
     @computers = parts.all_computers
     @part_types = parts.standalone_types
 
-    add_breadcrumb "Computers", computers_path
+    add_breadcrumb "Computers", electronics_computers_path
     add_breadcrumb "History", computer_history_path
   end
 
@@ -56,7 +56,7 @@ class StaticPagesController < ApplicationController
     unless @parts.computer_exists?(params[:computer])
       redirect_to computer_history_path
     end
-    add_breadcrumb("Computers", computers_path)
+    add_breadcrumb("Computers", electronics_computers_path)
     add_breadcrumb("History", computer_history_path)
     add_breadcrumb(@parts.computer_name, computer_history_details_path(computer: params[:computer]))
   end
@@ -66,7 +66,7 @@ class StaticPagesController < ApplicationController
     unless @parts.type_exists?(params[:part])
       redirect_to computer_history_path
     end
-    add_breadcrumb("Computers", computers_path)
+    add_breadcrumb("Computers", electronics_computers_path)
     add_breadcrumb("History", computer_history_path)
     add_breadcrumb(@parts.type_name, part_history_details_path(part: params[:part]))
   end
@@ -190,8 +190,8 @@ class StaticPagesController < ApplicationController
   end
   
   def old_computers
-    add_breadcrumb "Computers", computers_path
-    add_breadcrumb "Old Computers", old_computers_path
+    add_breadcrumb "Computers", electronics_computers_path
+    add_breadcrumb "Old Computers", old_electronics_computers_path
     @old_computers = YAML.load_file("app/data/computers/old_devices.yml").deep_symbolize_keys
   end
   

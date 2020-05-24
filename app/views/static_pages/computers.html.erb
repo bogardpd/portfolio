@@ -5,7 +5,7 @@
 
 <div class="container center"><%= link_to(image_tag("#{PortfolioImage::ROOT_PATH}computers/Desk 2016-12-20 - 800.jpg", class: "img-fluid project bordered center"), "#{PortfolioImage::ROOT_PATH}computers/Desk 2016-12-20.jpg") %></div>
 
-<%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_computers_path)) %>
+<%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_electronics_computers_path)) %>
 
 <%= link_header("Pancake", 2) %>
 
@@ -42,4 +42,4 @@
 
 <%= render partial: "computer_equipment", collection: @devices[:home_entertainment], as: :device %>
 
-<%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_computers_path)) %>
+<%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_electronics_computers_path)) %>
