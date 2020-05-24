@@ -223,6 +223,11 @@ figure {
     max-width: 600px;
     border: none;
   }
+
+  img.photo {
+    border: 1px solid $color-text;
+    box-shadow: 1px 1px 5px $color-text-light;
+  }
   
   img.screenshot {
     max-width: 600px;

@@ -11,11 +11,12 @@ module StaticPagesHelper
   def project_image(path, type: nil, alt: nil, caption: nil, attribution: nil, href: nil)
     classes = %w(img-fluid project)
     extra_classes = {
-      :ios_screenshot => %w(ios-screenshot),
-      :osx_screenshot => %w(osx-screenshot),
-      :screenshot     => %w(screenshot),
-      :large          => %w(large),
-      :computer_thumbnail => %w(computer-thumbnail)
+      ios_screenshot:      %w(ios-screenshot),
+      osx_screenshot:      %w(osx-screenshot),
+      screenshot:          %w(screenshot),
+      large:               %w(large),
+      photo:               %w(photo),
+      computer_thumbnail:  %w(computer-thumbnail)
     }
     allowed_tags = %w(abbr a br i)
     allowed_attributes = %w(href target)
@@ -24,7 +25,7 @@ module StaticPagesHelper
     image = image_tag(path, class: classes.join(' '), alt: alt)
     if (href)
       image = link_to(image, href, target: "_blank")
-    elsif (type == :screenshot || type == :osx_screenshot || type == :large)
+    elsif [:screenshot, :osx_screenshot, :large, :photo].include?(type)
       image = link_to(image, path) 
     end
     caption = content_tag(:figcaption, sanitize(caption, tags: allowed_tags, attributes: allowed_attributes)) if caption.present?

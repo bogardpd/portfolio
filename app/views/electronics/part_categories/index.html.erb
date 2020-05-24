@@ -5,6 +5,6 @@
 
 <ul>
   <% @categories.each do |category| %>
-    <li><%= link_to(category.name, electronics_part_category_path(part_category.slug)) %></li>
+    <li><%= link_to(category.name, electronics_part_category_path(category.slug)) %></li>
   <% end %>
 </ul>
