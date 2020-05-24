@@ -4,6 +4,7 @@ class Electronics::PartCategoriesController < ApplicationController
 
   def index
     add_part_categories_breadcrumbs
+    @categories = PartCategory.all
   end
 
   private

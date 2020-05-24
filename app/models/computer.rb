@@ -1,12 +1,11 @@
 class Computer < ApplicationRecord
   FORM_FACTORS = {laptop: "Laptop", desktop: "Desktop"}
-  RESERVED_SLUGS = %w(new)
 
   before_validation :generate_slug
   validates :name, presence: true
   validates :form_factor, inclusion: {in: FORM_FACTORS.keys.map(&:to_s), message: "%{value} is not a valid form factor."}
   validates :purchase_date, presence: true
-  validates :slug, uniqueness: true
+  validates :slug, presence: true, uniqueness: {case_sensitive: false}
 
   # Override to_param so forms use slugs
   def to_param
@@ -33,21 +32,7 @@ class Computer < ApplicationRecord
   protected
 
   def generate_slug
-    slug = self.name.parameterize
-    if self.name_was&.parameterize != slug
-      existing = Computer.where("slug LIKE :prefix", prefix: "##{slug}").pluck(:slug) && RESERVED_SLUGS
-      if existing.include?(slug)
-        numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}
-        if numbered_matching_slugs.any?
-          numbers = numbered_matching_slugs.map{|s| s.rpartition("-").last.to_i}
-          self.slug = "#{slug}-#{numbers.max + 1}"
-        else
-          self.slug = "#{slug}-1"
-        end
-      else
-        self.slug = slug
-      end
-    end
+    self.slug = Slug.generate(Computer, self.name, self.name_was)
   end  
 
 end

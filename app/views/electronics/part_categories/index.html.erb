@@ -2,3 +2,9 @@
 <% provide(:meta_description, "Category listing for Paul Bogard’s electronic devices and parts.") %>
 
 <h1>Part Categories</h1>
+
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= link_to(category.name, electronics_part_category_path(part_category.slug)) %></li>
+  <% end %>
+</ul>
