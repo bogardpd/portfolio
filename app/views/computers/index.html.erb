@@ -4,7 +4,7 @@
 <h1>Computers</h1>
 
 <% @computers.each do |computer| %>
-  <p><%= computer.name %></p>
+  <p><%= link_to(computer.name, computer_path(computer.slug)) %></p>
 <% end %>
 
 <% if logged_in? %>

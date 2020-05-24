@@ -6,27 +6,6 @@ class Computer < ApplicationRecord
   validates :purchase_date, presence: true
   before_save :generate_slug
 
-  # # Returns an array of description paragraphs. If the computer has no
-  # # description, returns an empty array.
-  # def description
-  #   return @computer[:description] || []
-  # end
-
-  # # Returns the computer's form factor.
-  # def form_factor
-  #   return @computer[:form_factor]
-  # end
-
-  # # Returns the computer's model.
-  # def model
-  #   return @computer[:model]
-  # end
-
-  # # Returns the relative path to the computer's photo.
-  # def photo
-  #   return @computer[:photo]
-  # end
-
   # # Returns all computer parts currently in use (with a nil final end date),
   # # grouped by part type.
   # def current_parts_by_category
@@ -44,27 +23,11 @@ class Computer < ApplicationRecord
   #   end
   # end
 
-  # def self.slug(str)
-  #   existing = %w(peanut peanut-1 peanut-2 peanut-butter peanut-butter-1 fishsticks)
-  #   slug = str.parameterize
-  #   if existing.include?(slug)
-  #     numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}
-  #     if numbered_matching_slugs.any?
-  #       numbers = numbered_matching_slugs.map{|s| s.rpartition("-").last.to_i}
-  #       return "#{slug}-#{numbers.max + 1}"
-  #     else
-  #       return "#{slug}-1"
-  #     end
-  #   else
-  #     return slug
-  #   end
-  # end
-
   protected
 
   def generate_slug
     slug = self.name.parameterize
-    existing = Computer.where("slug LIKE :prefix", prefix: "##{slug}").pluck(:slug)
+    existing = Computer.where("slug LIKE :prefix", prefix: "##{slug}").pluck(:slug) && ["new"]
     if existing.include?(slug)
       numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}
       if numbered_matching_slugs.any?

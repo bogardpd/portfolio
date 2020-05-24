@@ -4,10 +4,13 @@ class ComputersController < ApplicationController
 
   def index
     @computers = Computer.all
+    add_breadcrumb "Computers", computers_path
   end
 
   def show
-
+    @computer = Computer.find_by!(slug: params[:slug])
+    add_breadcrumb("Computers", computers_path)
+    add_breadcrumb(@computer.name, computer_path(@computer.slug))
   end
 
   def new

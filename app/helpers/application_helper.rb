@@ -58,13 +58,5 @@ module ApplicationHelper
   def anchorize(text)
     return ParameterString::format(text)
   end
-
-  # Parses markdown and returns a sanitized HTML string without <p> tags.
-  def parse_markdown(text)
-    whitelist = {tags: %w(a span), attributes: %w(class href target)}
-    renderer = Redcarpet::Render::HTML.new(link_attributes: {target: :_blank})
-    markdown = Redcarpet::Markdown.new(renderer)
-    return sanitize(markdown.render(text), **whitelist)
-  end
   
 end
