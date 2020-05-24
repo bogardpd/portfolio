@@ -1,10 +1,16 @@
 class Computer < ApplicationRecord
   FORM_FACTORS = {laptop: "Laptop", desktop: "Desktop"}
 
+  before_validation :generate_slug
   validates :name, presence: true
   validates :form_factor, inclusion: {in: FORM_FACTORS.keys.map(&:to_s), message: "%{value} is not a valid form factor."}
   validates :purchase_date, presence: true
-  before_save :generate_slug
+  validates :slug, uniqueness: true
+
+  # Override to_param so forms use slugs
+  def to_param
+    return slug
+  end
 
   # # Returns all computer parts currently in use (with a nil final end date),
   # # grouped by part type.
@@ -27,17 +33,19 @@ class Computer < ApplicationRecord
 
   def generate_slug
     slug = self.name.parameterize
-    existing = Computer.where("slug LIKE :prefix", prefix: "##{slug}").pluck(:slug) && ["new"]
-    if existing.include?(slug)
-      numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}
-      if numbered_matching_slugs.any?
-        numbers = numbered_matching_slugs.map{|s| s.rpartition("-").last.to_i}
-        self.slug = "#{slug}-#{numbers.max + 1}"
+    if self.name_was != slug
+      existing = Computer.where("slug LIKE :prefix", prefix: "##{slug}").pluck(:slug) && ["new"]
+      if existing.include?(slug)
+        numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}
+        if numbered_matching_slugs.any?
+          numbers = numbered_matching_slugs.map{|s| s.rpartition("-").last.to_i}
+          self.slug = "#{slug}-#{numbers.max + 1}"
+        else
+          self.slug = "#{slug}-1"
+        end
       else
-        self.slug = "#{slug}-1"
+        self.slug = slug
       end
-    else
-      self.slug = slug
     end
   end  
 

@@ -1,6 +1,12 @@
-<% provide(:title, "#{@computer.name} - Computer History")%>
+<% provide(:title, "#{@computer.name} - Computer History") %>
 <% provide(:meta_description, "Paul Bogard’s history of parts in his computer #{@computer.name}.") %>
 
 <h1>Computer History &ndash; <%= @computer.name %></h1>
+
+<p class="computer-history-model"><%= @computer.model %> &middot; <%= @computer.form_factor %></p>
+
+<% if logged_in? %>
+  <%= link_to("Edit", edit_computer_path(@computer.slug)) %>
+<% end %>
 
 <%= MarkdownText.parse(@computer.description) %>

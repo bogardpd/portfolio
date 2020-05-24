@@ -3,10 +3,12 @@
 
 <h1>Computers</h1>
 
-<% @computers.each do |computer| %>
-  <p><%= link_to(computer.name, computer_path(computer.slug)) %></p>
+<% if logged_in? %>
+  <div><%= link_to("Add computer", new_computer_path) %></div>
 <% end %>
 
-<% if logged_in? %>
-  <div><%= link_to("Add computer", new_computer_path) %>
-<% end %>
+<ul>
+  <% @computers.each do |computer| %>
+    <li><%= link_to(computer.name, computer_path(computer.slug)) %></li>
+  <% end %>
+</ul>

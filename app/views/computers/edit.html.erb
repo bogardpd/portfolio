@@ -1,0 +1,6 @@
+<% provide(:title, "Edit #{@computer.name}") %>
+<% provide(:button_text, "Update computer") %>
+
+<h1>Edit <%= @computer.name %></h1>
+
+<%= render partial: "form" %>

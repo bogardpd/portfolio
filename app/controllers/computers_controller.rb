@@ -27,6 +27,20 @@ class ComputersController < ApplicationController
     end
   end
 
+  def edit
+    @computer = Computer.find_by!(slug: params[:slug])
+  end
+
+  def update
+    @computer = Computer.find_by!(slug: params[:slug])
+    if @computer.update_attributes(computer_params)
+      flash[:success] = "Successfully updated #{@computer.name}!"
+      redirect_to computer_path(@computer.slug)
+    else
+      render "edit"
+    end
+  end
+
   private
 
   def computer_params
