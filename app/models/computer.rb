@@ -1,5 +1,6 @@
 class Computer < ApplicationRecord
   FORM_FACTORS = {laptop: "Laptop", desktop: "Desktop"}
+  RESERVED_SLUGS = %w(new part-categories parts)
 
   before_validation :generate_slug
   validates :name, presence: true
@@ -34,7 +35,7 @@ class Computer < ApplicationRecord
   def generate_slug
     slug = self.name.parameterize
     if self.name_was&.parameterize != slug
-      existing = Computer.where("slug LIKE :prefix", prefix: "##{slug}").pluck(:slug) && ["new"]
+      existing = Computer.where("slug LIKE :prefix", prefix: "##{slug}").pluck(:slug) && RESERVED_SLUGS
       if existing.include?(slug)
         numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}
         if numbered_matching_slugs.any?

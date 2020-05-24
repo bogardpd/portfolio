@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  model: MyString
+  name: MyString
+  part_number: MyString
+  specs: MyText
+  purchase_date: 2020-05-24
+  disposal_date: 2020-05-24
+  note: MyText
+
+two:
+  model: MyString
+  name: MyString
+  part_number: MyString
+  specs: MyText
+  purchase_date: 2020-05-24
+  disposal_date: 2020-05-24
+  note: MyText

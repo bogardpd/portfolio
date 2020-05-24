@@ -11,6 +11,10 @@ class ComputersController < ApplicationController
     @computer = Computer.find_by!(slug: params[:slug])
     add_breadcrumb("Computers", computers_path)
     add_breadcrumb(@computer.name, computer_path(@computer.slug))
+
+  rescue ActiveRecord::RecordNotFound
+    flash[:warning] = "Sorry, we couldn’t find a computer named #{params[:slug]}."
+    redirect_to computers_path
   end
 
   def new

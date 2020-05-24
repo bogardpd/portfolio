@@ -1,0 +1,2 @@
+class PartCategory < ApplicationRecord
+end

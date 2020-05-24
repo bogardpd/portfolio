@@ -36,7 +36,7 @@ class ComputerPartsData
   }
 
   def initialize(computer: nil, type: nil)
-    computer = computer&.to_s.underscore
+    computer = computer.to_s.underscore unless computer.nil?
     type = type&.underscore
 
     @parts_data = YAML.load_file(PARTS_DATA_FILE).with_indifferent_access

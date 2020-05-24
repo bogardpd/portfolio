@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
   get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
 
+  namespace :computers do
+    resources :parts
+    resources :part_categories, path: "part-categories", param: :slug
+  end
   resources :computers, param: :slug
   
   # Projects
