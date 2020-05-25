@@ -7,9 +7,9 @@ class Computer < ApplicationRecord
   validates :purchase_date, presence: true
   validates :slug, presence: true, uniqueness: {case_sensitive: false}
 
-  # Override to_param so forms use slugs
+  # Override to_param so forms use slugs.
   def to_param
-    return slug
+    return self.slug
   end
 
   # # Returns all computer parts currently in use (with a nil final end date),
@@ -31,6 +31,7 @@ class Computer < ApplicationRecord
 
   protected
 
+  # Generate a unique slug.
   def generate_slug
     self.slug = Slug.generate(Computer, self.name, self.name_was)
   end  
