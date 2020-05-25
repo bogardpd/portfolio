@@ -3,4 +3,12 @@ class Part < ApplicationRecord
   validates :model, presence: true
   validates :purchase_date, presence: true
 
+  def name_and_model
+    if self.name.present?
+      return "#{self.model} (“#{self.name}”)"
+    else
+      return self.model
+    end
+  end
+
 end

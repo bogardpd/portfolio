@@ -1,2 +1,15 @@
 <% provide(:title, "Parts") %>
 <% provide(:meta_description, "Tech specs and history of Paul Bogard’s electronic devices and parts.") %>
+<% provide(:admin_actions, format_admin_actions({"Add Part" => new_electronics_part_path})) %>
+
+<h1>Parts</h1>
+
+<% if @parts.any? %>
+  <ul>
+    <% @parts.each do |part| %>
+      <li><%= link_to(part.model, electronics_part_path(part)) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="alert alert-info">No parts have been added yet.</div>
+<% end %>

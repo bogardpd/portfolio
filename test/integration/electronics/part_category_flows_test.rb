@@ -13,6 +13,11 @@ class PartCategoryFlowsTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get show" do
+    get electronics_part_category_path(@category)
+    assert_response :success
+  end
+
   test "should redirect new when not logged in" do
     get new_electronics_part_category_path
     assert_response :redirect

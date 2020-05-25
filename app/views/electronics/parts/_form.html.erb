@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+
+    <%= form_with(model: [:electronics, @part]) do |f| %>
+      <%= render "shared/error_messages", object: @part %>
+      
+      <p>
+        <%= f.label :model %>
+        <%= f.text_field :model, class: "form-control" %>
+      </p>
+
+      <p>
+        <%= f.label :part_number, "Part number (optional)" %>
+        <%= f.text_field :part_number, class: "form-control" %>
+      </p>
+
+      <p>
+        <%= f.label :name, "Name (optional)" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </p>
+
+      <p>Part categories</p>
+      <ul class="form-collection-check-boxes">
+      <%= f.collection_check_boxes(:part_category_ids, PartCategory.order(name: :asc), :id, :name) do |b| %>
+        <li><%= b.check_box %> <%= b.label %></li>
+      <% end %>
+      </ul>      
+
+      <p>
+        <%= f.label(:specs, "Specs (optional) – one spec per line") %>
+        <%= f.text_area(:specs, class: "form-control", rows: 3) %>
+      </p>
+
+       <p>
+        <%= f.label(:purchase_date) %>
+        <%= f.date_field(:purchase_date, class: %w(form-control date-field)) %>
+      </p>
+
+      <p>
+        <%= f.label(:disposal_date, "Disposal date (optional) – leave blank if still owned") %>
+        <%= f.date_field(:disposal_date, class: %w(form-control date-field)) %>
+      </p>
+
+      <p>
+        <%= f.label(:note, "Note (optional) – supports Markdown") %>
+        <%= f.text_area(:note, class: "form-control") %>
+      </p>
+      
+      <p>
+        <%= f.submit yield(:button_text), class: %w(btn btn-primary) %>
+      </p>
+
+    <% end %>
+
+  </div>
+</div>

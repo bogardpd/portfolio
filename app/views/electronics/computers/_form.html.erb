@@ -16,7 +16,7 @@
       </p>
       
       <p>
-        <%= f.label(:description, "Description (supports Markdown)") %>
+        <%= f.label(:description, "Description (optional) – supports Markdown") %>
         <%= f.text_area(:description, class: "form-control") %>
       </p>
       
@@ -31,7 +31,7 @@
       </p>
 
       <p>
-        <%= f.label(:disposal_date, "Disposal date (leave blank if still owned)") %>
+        <%= f.label(:disposal_date, "Disposal date (optional) – leave blank if still owned") %>
         <%= f.date_field(:disposal_date, class: %w(form-control date-field)) %>
       </p>
       

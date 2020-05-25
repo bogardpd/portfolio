@@ -4,8 +4,12 @@
 
 <h1>Computers</h1>
 
-<ul>
-  <% @computers.each do |computer| %>
-    <li><%= link_to(computer.name, electronics_computer_path(computer.slug)) %></li>
-  <% end %>
-</ul>
+<% if @computers.any? %>
+  <ul>
+    <% @computers.each do |computer| %>
+      <li><%= link_to(computer.name, electronics_computer_path(computer.slug)) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="alert alert-info">No computers have been added yet.</div>
+<% end %>
