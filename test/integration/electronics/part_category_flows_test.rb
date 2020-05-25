@@ -25,24 +25,24 @@ class PartCategoryFlowsTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_path
   end
 
-  # test "should redirect edit when not logged in" do
-  #   get(edit_electronics_computer_path(@computer))
-  #   assert_response(:redirect)
-  #   assert_redirected_to(login_path)
-  # end
+  test "should redirect edit when not logged in" do
+    get(edit_electronics_computer_path(@category))
+    assert_response(:redirect)
+    assert_redirected_to(login_path)
+  end
 
-  # test "should redirect update when not logged in" do
-  #   patch(electronics_computer_path(@computer))
-  #   assert_response(:redirect)
-  #   assert_redirected_to(login_path)
-  # end
+  test "should redirect update when not logged in" do
+    patch(electronics_computer_path(@category))
+    assert_response(:redirect)
+    assert_redirected_to(login_path)
+  end
 
-  # test "should redirect destroy when not logged in" do
-  #   assert_no_difference("PartCategory.count") do
-  #     delete(electronics_computer_path(@computer))
-  #     assert_response(:redirect)
-  #     assert_redirected_to(login_path)
-  #   end
-  # end
+  test "should redirect destroy when not logged in" do
+    assert_no_difference("PartCategory.count") do
+      delete(electronics_computer_path(@category))
+      assert_response(:redirect)
+      assert_redirected_to(login_path)
+    end
+  end
 
 end

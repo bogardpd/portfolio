@@ -32,6 +32,31 @@ class Electronics::PartCategoriesController < ApplicationController
     end
   end
 
+  def edit
+    @category = PartCategory.find_by!(slug: params[:slug])
+    add_part_category_breadcrumbs
+    add_breadcrumb @category.name, electronics_part_category_path(@category.slug)
+    add_breadcrumb "Edit", edit_electronics_part_category_path(@category.slug)
+  end
+
+  def update
+    @category = PartCategory.find_by!(slug: params[:slug])
+    if @category.update_attributes(part_category_params)
+      flash[:success] = "Successfully updated #{@category.name}!"
+      redirect_to electronics_part_category_path(@category.slug)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    category = PartCategory.find_by!(slug: params[:slug])
+    name = category.name
+    category.destroy
+    flash[:success] = "Successfully deleted #{name}!"
+    redirect_to electronics_part_categories_path
+  end
+
   private
 
   def add_part_category_breadcrumbs
