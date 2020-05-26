@@ -1,6 +1,8 @@
 class Computer < ApplicationRecord
+  has_many :part_use_periods
+  has_many :parts, through: :part_use_periods
+  
   FORM_FACTORS = {laptop: "Laptop", desktop: "Desktop"}
-
   validates :name, presence: true
   validates :form_factor, inclusion: {in: FORM_FACTORS.keys.map(&:to_s), message: "%{value} is not a valid form factor."}
   validates :purchase_date, presence: true

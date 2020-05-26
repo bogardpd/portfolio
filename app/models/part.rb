@@ -1,5 +1,8 @@
 class Part < ApplicationRecord
   has_and_belongs_to_many :part_categories
+  has_many :part_use_periods
+  has_many :computers, through: :part_use_periods
+  
   validates :model, presence: true
   validates :purchase_date, presence: true
 

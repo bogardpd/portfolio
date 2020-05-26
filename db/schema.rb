@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_172823) do
+ActiveRecord::Schema.define(version: 2020_05_26_182214) do
 
   create_table "computers", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 2020_05_24_172823) do
     t.integer "part_id", null: false
     t.index ["part_category_id"], name: "index_part_categories_parts_on_part_category_id"
     t.index ["part_id"], name: "index_part_categories_parts_on_part_id"
+  end
+
+  create_table "part_use_periods", force: :cascade do |t|
+    t.integer "part_id"
+    t.integer "computer_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["computer_id"], name: "index_part_use_periods_on_computer_id"
+    t.index ["part_id"], name: "index_part_use_periods_on_part_id"
   end
 
   create_table "parts", force: :cascade do |t|
@@ -97,4 +108,6 @@ ActiveRecord::Schema.define(version: 2020_05_24_172823) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "part_use_periods", "computers"
+  add_foreign_key "part_use_periods", "parts"
 end
