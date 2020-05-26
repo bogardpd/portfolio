@@ -2,7 +2,7 @@ module MarkdownText
 
   WHITELISTS = {
     nil => {
-      tags: %w(a span strong p),
+      tags: %w(a em p span strong),
       attributes: %w(href target)
     },
     computer_supplemental: {

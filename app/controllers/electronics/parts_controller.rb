@@ -32,6 +32,31 @@ class Electronics::PartsController < ApplicationController
     end
   end
 
+  def edit
+    @part = Part.find(params[:id])
+    add_part_breadcrumbs
+    add_breadcrumb @part.model, electronics_part_path(@part)
+    add_breadcrumb "Edit", edit_electronics_part_path(@part)
+  end
+
+  def update
+    @part = Part.find(params[:id])
+    if @part.update_attributes(part_params)
+      flash[:success] = "Successfully updated #{@part.model}!"
+      redirect_to electronics_part_path(@part)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    part = Part.find(params[:id])
+    model = part.model
+    part.destroy
+    flash[:success] = "Successfully deleted #{model}!"
+    redirect_to electronics_parts_path
+  end
+
   private
 
   def add_part_breadcrumbs

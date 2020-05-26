@@ -8,8 +8,20 @@
   <h1><%= @part.model %></h1>
 <% end %>
 
+<%= MarkdownText.parse(@part.note) %>
+
 <% if @part.part_categories.any? %>
   <p>Categories: <%= safe_join(@part.part_categories.map{|category| link_to(category.name, electronics_part_category_path(category.slug))}, ", ") %></p>
 <% else %>
   <div class="alert alert-info"><%= @part.model %> has not been assigned to any part categories.</div>
+<% end %>
+
+<%= link_header("Specs", 2) %>
+
+<% if @part.specs_array.any? %>
+  <ul>
+    <% @part.specs_array.each do |spec| %>
+      <li><%= spec %></li>
+    <% end %>
+  </ul>
 <% end %>

@@ -18,7 +18,7 @@ class PartCategory < ApplicationRecord
     end
   end
 
-  protected
+  private
 
   # Generate a unique slug.
   def generate_slug

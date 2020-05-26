@@ -6,6 +6,9 @@ class Computer < ApplicationRecord
   validates :purchase_date, presence: true
   after_validation :generate_slug
 
+  NEWLINE_ATTRS = %w(description)
+  before_save :normalize_newlines
+
   # Override to_param so forms use slugs.
   def to_param
     return self.slug
@@ -28,11 +31,16 @@ class Computer < ApplicationRecord
   #   end
   # end
 
-  protected
+  private
 
   # Generate a unique slug.
   def generate_slug
     self.slug = Slug.generate(Computer, self.name, self.name_was, self.slug_was)
-  end  
+  end
+  
+  # Converts all textarea newlines to universal newlines
+  def normalize_newlines
+    NEWLINE_ATTRS.each {|attr| self[attr] = self[attr].encode(universal_newline: true)}
+  end
 
 end
