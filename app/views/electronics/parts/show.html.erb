@@ -11,7 +11,7 @@
 <%= MarkdownText.parse(@part.note) %>
 
 <% if @part.part_categories.any? %>
-  <p>Categories: <%= safe_join(@part.part_categories.map{|category| link_to(category.name, electronics_part_category_path(category.slug))}, ", ") %></p>
+  <p>Categories: <%= safe_join(@part.part_categories.map{|category| link_to(category.name, electronics_part_category_path(category))}, ", ") %></p>
 <% else %>
   <div class="alert alert-info"><%= @part.model %> has not been assigned to any part categories.</div>
 <% end %>
@@ -26,9 +26,24 @@
 
 <% if @part.part_use_periods.any? %>
   <table class="table">
-    <% @part.part_use_periods.each do |use| %>
-      <tr><td><%= use %></td></tr>
-    <% end %>
+    <thead>
+      <th>Start Use Date</th>
+      <th>End Use Date</th>
+      <th>Computer</th>
+    </thead>
+    <tbody>
+      <% @part.part_use_periods.each do |use| %>
+        <tr>
+          <td><%= use.start_date %></td>
+          <td><%= use.end_date %></td>
+          <td>
+            <% if use.computer %>
+              <%= link_to use.computer.name, electronics_computer_path(use.computer) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 <% end %>
 

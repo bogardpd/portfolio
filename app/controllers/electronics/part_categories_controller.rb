@@ -10,7 +10,7 @@ class Electronics::PartCategoriesController < ApplicationController
   def show
     @category = PartCategory.find_by!(slug: params[:slug])
     add_part_category_breadcrumbs
-    add_breadcrumb @category.name, electronics_part_category_path(@category.slug)
+    add_breadcrumb @category.name, electronics_part_category_path(@category)
   rescue ActiveRecord::RecordNotFound
     flash[:warning] = "Sorry, we couldn’t find a part category named #{params[:slug]}."
     redirect_to electronics_part_categories_path
@@ -35,15 +35,15 @@ class Electronics::PartCategoriesController < ApplicationController
   def edit
     @category = PartCategory.find_by!(slug: params[:slug])
     add_part_category_breadcrumbs
-    add_breadcrumb @category.name, electronics_part_category_path(@category.slug)
-    add_breadcrumb "Edit", edit_electronics_part_category_path(@category.slug)
+    add_breadcrumb @category.name, electronics_part_category_path(@category)
+    add_breadcrumb "Edit", edit_electronics_part_category_path(@category)
   end
 
   def update
     @category = PartCategory.find_by!(slug: params[:slug])
     if @category.update_attributes(part_category_params)
       flash[:success] = "Successfully updated #{@category.name}!"
-      redirect_to electronics_part_category_path(@category.slug)
+      redirect_to electronics_part_category_path(@category)
     else
       render "edit"
     end

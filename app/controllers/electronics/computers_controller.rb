@@ -10,7 +10,7 @@ class Electronics::ComputersController < ApplicationController
   def show
     @computer = Computer.find_by!(slug: params[:slug])
     add_computer_breadcrumbs
-    add_breadcrumb @computer.name, electronics_computer_path(@computer.slug)
+    add_breadcrumb @computer.name, electronics_computer_path(@computer)
   rescue ActiveRecord::RecordNotFound
     flash[:warning] = "Sorry, we couldn’t find a computer named #{params[:slug]}."
     redirect_to electronics_computers_path
@@ -35,15 +35,15 @@ class Electronics::ComputersController < ApplicationController
   def edit
     @computer = Computer.find_by!(slug: params[:slug])
     add_computer_breadcrumbs
-    add_breadcrumb @computer.name, electronics_computer_path(@computer.slug)
-    add_breadcrumb "Edit", edit_electronics_computer_path(@computer.slug)
+    add_breadcrumb @computer.name, electronics_computer_path(@computer)
+    add_breadcrumb "Edit", edit_electronics_computer_path(@computer)
   end
 
   def update
     @computer = Computer.find_by!(slug: params[:slug])
     if @computer.update_attributes(computer_params)
       flash[:success] = "Successfully updated #{@computer.name}!"
-      redirect_to electronics_computer_path(@computer.slug)
+      redirect_to electronics_computer_path(@computer)
     else
       render "edit"
     end

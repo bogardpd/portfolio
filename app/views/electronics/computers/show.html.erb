@@ -1,6 +1,6 @@
 <% provide(:title, "#{@computer.name} - Computer History") %>
 <% provide(:meta_description, "Paul Bogard’s history of parts in his computer #{@computer.name}.") %>
-<% provide(:admin_actions, format_admin_actions({"Edit" => edit_electronics_computer_path(@computer.slug)})) %>
+<% provide(:admin_actions, format_admin_actions({"Edit" => edit_electronics_computer_path(@computer)})) %>
 
 <h1>Computer History &ndash; <%= @computer.name %></h1>
 
@@ -10,8 +10,25 @@
 
 <%= link_header("Parts", 2) %>
 
-<% if @computer.parts.any? %>
-  <% @computer.parts.each do |part| %>
-    <%= part %>
-  <% end %>
+<% if @computer.part_use_periods.any? %>
+  <table class="table">
+    <thead>
+      <th>Part</th>
+      <th>Start Use Date</th>
+      <th>End Use Date</th>
+    </thead>
+    <tbody>
+      <% @computer.part_use_periods.each do |use| %>
+        <tr>
+          <td>
+            <% if use.part %>
+              <%= link_to(use.part.name_and_model, electronics_part_path(use.part)) %>
+            <% end %>
+          </td>
+          <td><%= use.start_date %></td>
+          <td><%= use.end_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

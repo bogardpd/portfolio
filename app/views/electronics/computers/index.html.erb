@@ -7,7 +7,7 @@
 <% if @computers.any? %>
   <ul>
     <% @computers.each do |computer| %>
-      <li><%= link_to(computer.name, electronics_computer_path(computer.slug)) %></li>
+      <li><%= link_to(computer.name, electronics_computer_path(computer)) %></li>
     <% end %>
   </ul>
 <% else %>

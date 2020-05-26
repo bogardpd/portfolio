@@ -5,10 +5,8 @@
 
 <%= render partial: "form" %>
 
-<% if @category.slug&.present? %>
 <div class="row center">
   <div class="col-md-8 offset-md-2">
-    <%= link_to "Delete this part category", electronics_part_category_path(@category.slug), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete category #{@category.name}?" }, role: "button" %>
+    <%= link_to "Delete this part category", electronics_part_category_path(@category), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete category #{@category.name}?" }, role: "button" %>
   </div>
 </div>
-<% end %>

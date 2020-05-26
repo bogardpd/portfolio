@@ -1,6 +1,6 @@
 <% provide(:title, "#{@category.name} - Electronics History") %>
 <% provide(:meta_description, "Paul Bogard’s device history for #{@category.name_lowercase_plural}.") %>
-<% provide(:admin_actions, format_admin_actions({"Edit" => edit_electronics_part_category_path(@category.slug)})) %>
+<% provide(:admin_actions, format_admin_actions({"Edit" => edit_electronics_part_category_path(@category)})) %>
 
 <h1>Device History &ndash; <%= @category.name %></h1>
 
