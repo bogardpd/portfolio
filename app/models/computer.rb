@@ -42,7 +42,7 @@ class Computer < ApplicationRecord
   
   # Converts all textarea newlines to universal newlines
   def normalize_newlines
-    NEWLINE_ATTRS.each {|attr| self[attr] = self[attr].encode(universal_newline: true)}
+    NEWLINE_ATTRS.each{|attr| self[attr] = self[attr].encode(universal_newline: true)}
   end
 
 end

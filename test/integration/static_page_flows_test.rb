@@ -269,11 +269,17 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_redirected_to(cad_models_path)
   end
 
-  test "should redirect computers" do
-    get("/computers")
-    assert_response(301)
-    assert_redirected_to(electronics_root_path)
-  end
+  # test "should redirect computers" do
+  #   get("/computers")
+  #   assert_response(301)
+  #   assert_redirected_to(electronics_root_path)
+  # end
+
+  # test "should redirect old computers" do
+  #   get("/computers/old")
+  #   assert_response(301)
+  #   assert_redirected_to(electronics_root_path)
+  # end
 
   test "should redirect earthbound database" do
     get("/earthbound-database")

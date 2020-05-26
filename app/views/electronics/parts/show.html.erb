@@ -16,6 +16,26 @@
   <div class="alert alert-info"><%= @part.model %> has not been assigned to any part categories.</div>
 <% end %>
 
+<% if @part.disposal_date.present? %>
+  <p>Owned from <%= format_date(@part.purchase_date) %> &ndash; <%= format_date(@part.disposal_date) %>.</p>
+<% else %>
+  <p>Owned since <%= format_date(@part.purchase_date) %>.</p>
+<% end %>
+
+<%= link_header("Use Periods", 2) %>
+
+<% if @part.part_use_periods.any? %>
+  <table class="table">
+    <% @part.part_use_periods.each do |use| %>
+      <tr><td><%= use %></td></tr>
+    <% end %>
+  </table>
+<% end %>
+
+<% if logged_in? %>
+  <%= link_to "Add a use period", new_electronics_part_part_use_period_path(@part) %>
+<% end %>
+
 <%= link_header("Specs", 2) %>
 
 <% if @part.specs_array.any? %>

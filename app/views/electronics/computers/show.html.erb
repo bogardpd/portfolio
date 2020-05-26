@@ -7,3 +7,11 @@
 <p class="computer-history-model"><%= @computer.model %> &middot; <%= @computer.form_factor %></p>
 
 <%= MarkdownText.parse(@computer.description) %>
+
+<%= link_header("Parts", 2) %>
+
+<% if @computer.parts.any? %>
+  <% @computer.parts.each do |part| %>
+    <%= part %>
+  <% end %>
+<% end %>

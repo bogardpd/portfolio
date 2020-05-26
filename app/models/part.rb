@@ -2,7 +2,7 @@ class Part < ApplicationRecord
   has_and_belongs_to_many :part_categories
   has_many :part_use_periods
   has_many :computers, through: :part_use_periods
-  
+
   validates :model, presence: true
   validates :purchase_date, presence: true
 
@@ -18,7 +18,6 @@ class Part < ApplicationRecord
   end
 
   def specs_array
-    # return ["a"] unless self.specs.present?
     return self.specs.lines.map(&:squish)
   end
 
@@ -26,7 +25,7 @@ class Part < ApplicationRecord
 
   # Converts all textarea newlines to universal newlines
   def normalize_newlines
-    NEWLINE_ATTRS.each {|attr| self[attr] = self[attr].encode(universal_newline: true)}
+    NEWLINE_ATTRS.each{|attr| self[attr] = self[attr].encode(universal_newline: true)}
   end
 
 end

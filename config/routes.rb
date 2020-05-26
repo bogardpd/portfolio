@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     root to: "electronics#index"
     resources :computers, param: :slug
     resources :part_categories, path: "part-categories", param: :slug
-    resources :parts
+    resources :parts do
+      resources :part_use_periods, only: [:new], path: "use-periods"
+    end
   end
   
   # Projects
@@ -48,7 +50,8 @@ Rails.application.routes.draw do
   
   # Aliases and redirects
 
-  get "computers" => redirect("electronics"), status: 301
+  # get "computers" => redirect("electronics"), status: 301
+  # get "computers/old" => redirect("electronics"), status: 301
 
   get "boarding-pass-parser"   => redirect("projects/boarding-pass-parser",   status: 301)
   get "cad-models"             => redirect("projects/cad-models",             status: 301)
