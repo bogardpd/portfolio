@@ -88,8 +88,8 @@ Rails.application.routes.draw do
   get "resume" => "static_pages#resume"
   
   # Computers
-  # get "computers"                       => "static_pages#computers"
-  # get "computers/old"                   => "static_pages#old_computers",            as: :old_computers
+  get "computers"                       => "static_pages#computers"
+  get "computers/old"                   => "static_pages#old_computers",            as: :old_computers
   # get "computers/history/parts(/:part)" => "static_pages#part_history_details",     as: :part_history_details
   # get "computers/history/:computer"     => "static_pages#computer_history_details", as: :computer_history_details
   # get "computers/history"               => "static_pages#computer_history",         as: :computer_history

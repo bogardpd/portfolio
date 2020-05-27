@@ -5,23 +5,13 @@
 
 <div class="container center"><%= link_to(image_tag("#{PortfolioImage::ROOT_PATH}computers/Desk 2016-12-20 - 800.jpg", class: "img-fluid project bordered center"), "#{PortfolioImage::ROOT_PATH}computers/Desk 2016-12-20.jpg") %></div>
 
-<%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_electronics_computers_path)) %>
-
-<%= link_header("Pancake", 2) %>
-
-<%= render partial: "computer_details", locals: {computer: @computers[:pancake]} %>
-
-<%= link_header("Quesadilla", 2) %>
-
-<%= render partial: "computer_details", locals: {computer: @computers[:quesadilla]} %>
-
-
+<%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_computers_path)) %>
 
 <%= link_header "Home Computers", 2 %>
 
 <div class="row computers">
-	<div class="offset-lg-2 col-6 col-lg-5 label center" id="pancake"><%= link_to("PANCAKE", params.permit(:anchor).merge(anchor: "pancake"), class: "link-header") %></div>
-	<div class="col-6 col-lg-5 label center" id="quesadilla"><%= link_to("QUESADILLA", params.permit(:anchor).merge(anchor: "quesadilla"), class: "link-header") %></div>
+	<div class="offset-lg-2 col-6 col-lg-5 label center" id="pancake"><%= link_to("PANCAKE", params.permit!.merge(anchor: "pancake"), class: "link-header") %></div>
+	<div class="col-6 col-lg-5 label center" id="quesadilla"><%= link_to("QUESADILLA", params.permit!.merge(anchor: "quesadilla"), class: "link-header") %></div>
 </div>
 
 <%= render partial: "computer_specs_row", collection: @computer_specs %>
@@ -42,4 +32,4 @@
 
 <%= render partial: "computer_equipment", collection: @devices[:home_entertainment], as: :device %>
 
-<%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_electronics_computers_path)) %>
+<%= link_buttons(LinkButton.new("See Paul’s old computers", nil, old_computers_path)) %>
