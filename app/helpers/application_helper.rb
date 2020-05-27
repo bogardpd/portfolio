@@ -40,7 +40,7 @@ module ApplicationHelper
       header << " "
       header << content_tag(:small, subtext)
     end
-    return content_tag("h#{level}".to_sym, link_to(header, params.permit(:anchor, :gallery, :map, :page, :version).merge(anchor: anchorize(text)), class: "link-header"), id: anchorize(text))
+    return content_tag("h#{level}".to_sym, link_to(header, params.permit!.merge(anchor: anchorize(text)), class: "link-header"), id: anchorize(text))
   end
   
   # Returns the meta description on a per-page basis.
