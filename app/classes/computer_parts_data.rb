@@ -58,6 +58,60 @@ class ComputerPartsData
     calculate_initial_settings
   end
 
+  def load_data_into_database(destroy_old: false)
+    if destroy_old
+      PartUsePeriod.all.map(&:destroy)
+      Part.all.map(&:destroy)
+      PartCategory.all.map(&:destroy)
+      Computer.all.map(&:destroy)
+    end
+
+    # Create part categories
+    part_types = Hash.new
+    @part_types.each do |k, v|
+      part_types[k] = PartCategory.create(name: v["name"], name_singular: v["singular"], name_lowercase_plural: v["lowercase_plural"])
+    end
+
+    # Create computers
+    computers = Hash.new
+    @computers.each do |k, v|
+      desc = Array(v["description"]).join("\n\n")
+      computers[k] = Computer.create(name: v["name"], model: v["model"], description: desc, form_factor: v["form_factor"], purchase_date: v["purchase_date"], disposal_date: v["disposal_date"])
+    end
+
+    # Loop through parts and create associations
+    @current_parts.each do |p|
+      # Create part and assign categories
+      categories = Array(p["part_types"]).map{|pt| part_types[pt]&.id}.compact
+      part_attr = {
+        model: p["model"],
+        name: p["name"],
+        part_number: p["part_number"],
+        specs: Array(p["specs"]).join("\n"),
+        purchase_date: p["purchase_date"],
+        disposal_date: p["disposal_date"],
+        note: p["note"],
+        part_category_ids: categories
+      }
+      part_object = Part.create(**part_attr)
+
+      # Create use periods
+      p["use_dates"].each do |u|
+        use_attr = {
+          part_id: part_object.id,
+          computer_id: computers[u[:computer]]&.id,
+          start_date: u["start"],
+          end_date: u["end"]
+        }
+        PartUsePeriod.create(**use_attr)
+      end
+    end
+    
+
+    return nil
+
+  end
+
   # Returns the current parts list.
   def current_parts
     return @current_parts

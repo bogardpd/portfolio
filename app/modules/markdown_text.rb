@@ -19,6 +19,7 @@ module MarkdownText
 
   # Parses a Markdown string to HTML.
   def self.parse(text, format: nil)
+    return "" unless text
     whitelist = WHITELISTS[format]
     output = ActionController::Base.helpers.sanitize(self.markdown.render(text), **whitelist)
     return output

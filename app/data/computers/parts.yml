@@ -27,7 +27,7 @@ part_types:
     name: "Game Consoles"
   game_controllers:
     name: "Game Controllers"
-  gps:
+  gps_units:
     name: "GPS Units"
     lowercase_plural: "GPS units"
   handheld_computers:
@@ -58,7 +58,7 @@ part_types:
   optical_drives:
     name: "Optical Drives"
     singular: "Optical Drive"
-  pda:
+  pdas:
     name: "PDAs"
     lowercase_plural: "PDAs"
   portable_media_players:
@@ -88,9 +88,9 @@ part_types:
     name: "Video Cards"
   webcams:
     name: "Webcams"
-  wifi_adapters:
+  wi_fi_adapters:
     name: "Wi-Fi Adapters"
-  wifi_routers:
+  wi_fi_routers:
     name: "Wi-Fi Routers"
     lowercase_plural: "Wi-Fi routers"
 
@@ -144,6 +144,7 @@ computers:
     description:
       - "Pancake is my home PC, built to be able to handle games. I also use it for doing image editing for my maps, terminal silhouettes, and other projects."
     photo: "computers/Pancake 2016-08-20.jpg"
+    purchase_date: 2008-05-02
     build_dates:
       - &build_2008 2008-05-02
       - &build_2014 2014-07-22
@@ -153,6 +154,7 @@ computers:
     name: "Peanut Butter"
     model: "Home-built PC"
     form_factor: "desktop"
+    purchase_date: 2004-10-07
     build_dates:
       - &build_2004 2004-10-07
   
@@ -352,22 +354,22 @@ parts:
 
   - model: "802.11ac Wi-Fi"
     part_types:
-      - wifi_adapters
+      - wi_fi_adapters
     <<: *quesadilla_lifetime
 
   - model: "802.11n Wi-Fi"
     part_types:
-      - wifi_adapters
+      - wi_fi_adapters
     <<: *chili_dog_lifetime
 
   - model: "802.11n Wi-Fi"
     part_types:
-      - wifi_adapters
+      - wi_fi_adapters
     <<: *frites_liberte_lifetime
 
   - model: "802.11n Wi-Fi"
     part_types:
-      - wifi_adapters
+      - wi_fi_adapters
     <<: *reuben_lifetime
 
   - model: "Acer AL2216W"
@@ -866,7 +868,7 @@ parts:
   - model: "Garmin DriveSmart 50LMT"
     name: "Egg"
     part_types:
-      - "gps"
+      - "gps_units"
     purchase_date: 2016-09-12
     use_dates:
       - start:     2016-09-12
@@ -875,7 +877,7 @@ parts:
 
   - model: "Garmin nüvi 265WT"
     part_types:
-      - "gps"
+      - "gps_units"
     purchase_date: 2009-06-24
     use_dates:
       - start:     2009-06-24
@@ -884,7 +886,7 @@ parts:
     
   - model: "Garmin nüvi 1390T"
     part_types:
-      - "gps"
+      - "gps_units"
     purchase_date: 2010-07-25
     use_dates:
       - start:     2010-07-25
@@ -897,7 +899,7 @@ parts:
 
   - model: "Garmin nüvi 2455LT"
     part_types:
-      - "gps"
+      - "gps_units"
     purchase_date: 2011-12-15
     use_dates:
       - start:     2011-12-15
@@ -906,7 +908,7 @@ parts:
 
   - model: "Garmin nüvi 2539LMT"
     part_types:
-      - "gps"
+      - "gps_units"
     purchase_date: 2015-02-25
     use_dates:
       - start:     2015-02-27
@@ -960,7 +962,7 @@ parts:
     name: "Tator Tot"
     part_types:
       - handheld_computers
-      - pda
+      - pdas
     specs:
       - "Windows Mobile 5.0"
     purchase_date: 2005-10-29
@@ -1252,7 +1254,7 @@ parts:
 
   - model: "Linksys E2500 802.11n Dual-Band"
     part_types:
-      - wifi_routers
+      - wi_fi_routers
     purchase_date: 2013-07-14
     use_dates:
       - start:     2013-07-14
@@ -1261,7 +1263,7 @@ parts:
 
   - model: "Linksys WRT54GL 802.11g"
     part_types:
-      - wifi_routers
+      - wi_fi_routers
     purchase_date: 2006-09-14
     use_dates:
       - start:     2006-09-14
@@ -1526,7 +1528,7 @@ parts:
 
   - model: "Multiport Wireless LAN 802.11b"
     part_types:
-      - wifi_adapters
+      - wi_fi_adapters
     <<: *fishsticks_lifetime
 
   - model: "NEC DVD±RW ND-2510A"
@@ -1660,7 +1662,7 @@ parts:
   - model: "Palm m105"
     part_types:
       - handheld_computers
-      - pda
+      - pdas
     specs:
       - "PalmOS 3"
     purchase_date: 2001-07-08
@@ -1680,7 +1682,7 @@ parts:
 
   - model: "PLANET WL-8310 PCI Wireless Card"
     part_types:
-      - wifi_adapters
+      - wi_fi_adapters
     purchase_date: 2004-12-01
     use_dates:
       - start:     2004-12-01
@@ -1910,7 +1912,7 @@ parts:
   - model: "Sony CLIÉ PEG-T615C"
     part_types:
       - handheld_computers
-      - pda
+      - pdas
     specs:
       - "PalmOS 3.5"
     purchase_date: 2002-07-07
@@ -1975,7 +1977,7 @@ parts:
 
   - model: "TP-LINK AC600 802.11ac USB"
     part_types:
-      - wifi_adapters
+      - wi_fi_adapters
     purchase_date: 2016-07-06
     use_dates:
       - start:     2016-07-06

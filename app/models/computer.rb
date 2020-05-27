@@ -1,5 +1,5 @@
 class Computer < ApplicationRecord
-  has_many :part_use_periods
+  has_many :part_use_periods, dependent: :delete_all
   has_many :parts, through: :part_use_periods
   
   FORM_FACTORS = {laptop: "Laptop", desktop: "Desktop"}
@@ -42,7 +42,7 @@ class Computer < ApplicationRecord
   
   # Converts all textarea newlines to universal newlines
   def normalize_newlines
-    NEWLINE_ATTRS.each{|attr| self[attr] = self[attr].encode(universal_newline: true)}
+    NEWLINE_ATTRS.each{|attr| self[attr] = self[attr]&.encode(universal_newline: true)}
   end
 
 end
