@@ -4,6 +4,9 @@ class PartCategory < ApplicationRecord
   validates :name, presence: true
   after_validation :generate_slug
 
+  # An array of slugs to define the default category order for parts tables.
+  TABLE_ORDER = %w(processors motherboards displays video-cards memory storage optical-drives power-supplies cases wi-fi-adapters webcams operating-systems)
+
   # Override to_param so forms use slugs.
   def to_param
     return self.slug
@@ -16,6 +19,21 @@ class PartCategory < ApplicationRecord
     else
       return read_attribute(:name)&.downcase
     end
+  end
+
+  # Returns a singular name if count == 1, plural name otherwise
+  def name_category_heading(count)
+    if count == 1
+      return self.name_singular || self.name.singularize
+    else
+      return self.name
+    end
+  end
+
+  # Returns a sort lookup hash with slugs as keys and integers as values. Used
+  # to sort categories within parts tables.
+  def self.table_order
+    return TABLE_ORDER.to_enum.with_index.to_h
   end
 
   private

@@ -16,22 +16,21 @@ class Computer < ApplicationRecord
     return self.slug
   end
 
-  # # Returns all computer parts currently in use (with a nil final end date),
-  # # grouped by part type.
-  # def current_parts_by_category
-  #   return @parts.computer_parts_today
-  # end
-
-  # # Formats a type name to singular or plural based on the count of parts
-  # def part_category_name(part_type, count)
-  #   return nil unless part_type && count
-  #   if count == 1
-  #     return nil unless details = @parts.part_types[part_type]
-  #     return details[:singular] || details[:name].singularize
-  #   else
-  #     return @parts.part_types.dig(part_type, :name)
-  #   end
-  # end
+  # Returns a hash with keys of PartCategories, and values of arrays of Parts
+  # which have a PartUsePeriod with no end date associated with this Computer.
+  def current_parts_by_category
+    sort_order = PartCategory.table_order
+    current_uses = self.part_use_periods.includes(part: :part_categories).where(end_date: nil)
+    current_parts = current_uses.map{|u| u.part}
+    categories = current_parts.map{|p| p.part_categories.first}
+    categories.sort_by!{|c| [sort_order[c.slug] || sort_order.size, c.name]}
+    return categories.map{|c| [
+      c,
+      current_parts.select{|cp|
+        cp.part_categories && cp.part_categories.include?(c)
+      }
+    ]}.to_h
+  end
 
   private
 

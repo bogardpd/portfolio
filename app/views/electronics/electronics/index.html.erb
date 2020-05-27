@@ -5,6 +5,39 @@
 
 <%= project_image("computers/Desk 2016-12-20 - 800.jpg", type: :photo) %>
 
+<% @computers.each do |computer| %>
+  <%= link_header(computer.name, 2) %>
+
+  <%= MarkdownText.parse(computer.description) %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <!-- photo here -->
+      </div>
+      <div class="col-lg-8">
+        <p class="computer-history-model"><%= computer.model %> &middot; <%= computer.form_factor %></p>
+        <table class="table computer-parts-summary">
+          <tbody>
+            <% computer.current_parts_by_category.each do |category, parts| %>
+              <tr>
+                <th scope="row"><%= category.name_category_heading(parts.size) %></th>
+                <td>
+                  <ul>
+                    <% parts.each do |part| %>
+                      <li><%= part.name_and_model %></li>
+                    <% end %>
+                  </ul>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <p><%= link_to "Computers", electronics_computers_path %></p>
 <p><%= link_to "Parts", electronics_parts_path %></p>
 <p><%= link_to "Part Categories", electronics_part_categories_path %></p>
