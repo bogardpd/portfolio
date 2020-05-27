@@ -1,0 +1,12 @@
+<% provide(:title, "Edit Use Period") %>
+<% provide(:button_text, "Update use period") %>
+
+<h1>Edit Use Period</h1>
+
+<%= render partial: "form" %>
+
+<div class="row center">
+  <div class="col-md-8 offset-md-2">
+    <%= link_to "Delete this use period", electronics_part_part_use_period_path(@part, @use), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete this use period?" }, role: "button" %>
+  </div>
+</div>

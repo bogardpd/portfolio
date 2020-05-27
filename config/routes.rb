@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :computers, param: :slug
     resources :part_categories, path: "part-categories", param: :slug
     resources :parts do
-      resources :part_use_periods, only: [:index, :new, :create], path: "use-periods"
+      resources :part_use_periods, except: [:index, :show], path: "use-periods"
     end
   end
   

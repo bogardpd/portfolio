@@ -30,6 +30,9 @@
       <th>Start Use Date</th>
       <th>End Use Date</th>
       <th>Computer</th>
+      <% if logged_in? %>
+        <th>Edit</th>
+      <% end %>
     </thead>
     <tbody>
       <% @part.part_use_periods.each do |use| %>
@@ -41,6 +44,9 @@
               <%= link_to use.computer.name, electronics_computer_path(use.computer) %>
             <% end %>
           </td>
+          <% if logged_in? %>
+            <td><%= link_to "Edit", edit_electronics_part_part_use_period_path(@part, use) %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

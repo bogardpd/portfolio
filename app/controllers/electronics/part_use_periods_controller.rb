@@ -5,7 +5,10 @@ class Electronics::PartUsePeriodsController < ApplicationController
     @use = PartUsePeriod.new
     @part = Part.find(params[:part_id])
     add_part_use_period_breadcrumbs
-    add_breadcrumb "New Use Period", new_electronics_part_part_use_period_path
+    add_breadcrumb(
+      "New Use Period",
+      new_electronics_part_part_use_period_path
+    )
   rescue ActiveRecord::RecordNotFound
     redirect_to electronics_root_path
   end
@@ -20,6 +23,36 @@ class Electronics::PartUsePeriodsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def edit
+    @use = PartUsePeriod.find(params[:id])
+    @part = Part.find(params[:part_id])
+    add_part_use_period_breadcrumbs
+    add_breadcrumb(
+      "Edit Use Period",
+      edit_electronics_part_part_use_period_path(@part, @use)
+    )
+  end
+
+  def update
+    @use = PartUsePeriod.find(params[:id])
+    @part = Part.find(params[:part_id])
+    @use.part = @part
+    if @use.update_attributes(part_use_period_params)
+      flash[:success] = "Successfully updated a use period!"
+      redirect_to electronics_part_path(@part)
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    use = PartUsePeriod.find(params[:id])
+    part = Part.find(params[:part_id])
+    use.destroy
+    flash[:success] = "Successfully deleted a use period!"
+    redirect_to electronics_part_path(part)
   end
 
   private
