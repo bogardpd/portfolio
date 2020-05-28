@@ -44,7 +44,7 @@
 
 <table class="table computer-parts-summary">
   <tbody>
-    <% Part.in_use_by_category.each do |category, parts| %>
+    <% Part.in_use_no_computer_by_category.each do |category, parts| %>
       <tr>
         <th scope="row"><%= category.name_category_heading(parts.size) %></th>
         <td>

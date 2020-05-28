@@ -11,6 +11,8 @@ class Computer < ApplicationRecord
   NEWLINE_ATTRS = %w(description)
   before_save :normalize_newlines
 
+  CATEGORY_ORDER = %w(processors motherboards displays video-cards memory storage optical-drives power-supplies cases wi-fi-adapters webcams operating-systems)
+
   # Override to_param so forms use slugs.
   def to_param
     return self.slug
@@ -19,7 +21,9 @@ class Computer < ApplicationRecord
   # Returns a hash with keys of PartCategories, and values of arrays of Parts
   # which have a PartUsePeriod with no end date associated with this Computer.
   def in_use_by_category
-    return Part.in_use_by_category(computer: self)
+    # return Part.in_use_by_category(computer: self)
+    parts = Part.joins(:part_use_periods).where(part_use_periods: {end_date: nil, computer: self})
+    return parts.group_by_category(sort_order: CATEGORY_ORDER)
   end
 
   def photo

@@ -22,16 +22,31 @@ class Part < ApplicationRecord
   end
 
   # Returns a hash with keys of PartCategories, and values of arrays of Parts
-  # which have a PartUsePeriod with no end date associated with the specified
-  # Computer (or with no Computer if computer is nil).
-  def self.in_use_by_category(computer: nil)
-    parts = Part.includes(:part_categories).joins(:part_use_periods).where(part_use_periods: {end_date: nil, computer: computer})
+  # which have a PartUsePeriod with no end date not associated with any
+  # Computer.
+  def self.in_use_no_computer_by_category
+    parts = Part.joins(:part_use_periods).where(part_use_periods: {end_date: nil, computer: nil})
+    return parts.group_by_category
+  end
+
+  # Groups an ActiveRecord Association of Parts into PartCategories. If a part
+  # has multiple categories, it will be placed into all categories it matches.
+  #
+  # @param sort_order [Array, nil] an array of PartCategory slug strings
+  #   specifying the order in which to sort the categories. PartCategories not
+  #   in the array will be placed after the specified category and sorted
+  #   alphabetically by name. If sort_order is not provided, all categories
+  #   will be sorted alphabetically by name.
+  # @return [Hash] a hash with PartCategories as keys and arrays of Parts as
+  #   values
+  def self.group_by_category(sort_order: nil)
+    parts = self.includes(:part_categories)
     category_ids = parts.joins(:part_categories).pluck(:part_category_id).uniq
     categories = Array(PartCategory.where(id: category_ids))
 
-    if computer
-      sort_order = PartCategory.table_order
-      categories.sort_by!{|c| [sort_order[c.slug] || sort_order.size, c.name]}
+    if sort_order
+      lookup = sort_order.to_enum.with_index.to_h
+      categories.sort_by!{|c| [lookup[c.slug] || lookup.size, c.name]}
     else
       categories.sort_by!{|c| c.name}
     end
