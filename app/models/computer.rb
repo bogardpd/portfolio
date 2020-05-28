@@ -18,18 +18,13 @@ class Computer < ApplicationRecord
 
   # Returns a hash with keys of PartCategories, and values of arrays of Parts
   # which have a PartUsePeriod with no end date associated with this Computer.
-  def current_parts_by_category
-    sort_order = PartCategory.table_order
-    current_uses = self.part_use_periods.includes(part: :part_categories).where(end_date: nil)
-    current_parts = current_uses.map{|u| u.part}
-    categories = current_parts.map{|p| p.part_categories.first}
-    categories.sort_by!{|c| [sort_order[c.slug] || sort_order.size, c.name]}
-    return categories.map{|c| [
-      c,
-      current_parts.select{|cp|
-        cp.part_categories && cp.part_categories.include?(c)
-      }
-    ]}.to_h
+  def in_use_by_category
+    return Part.in_use_by_category(computer: self)
+  end
+
+  def photo
+    @photo ||= ExternalImage.new("electronics/computers/#{self.slug}.jpg")
+    return @photo
   end
 
   private
