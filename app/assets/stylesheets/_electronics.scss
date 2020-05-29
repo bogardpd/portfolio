@@ -121,10 +121,13 @@ table.computer-parts-summary {
 	}
 	ul {
 		list-style-type: none;
-		padding-left: 0;
 		margin: 0;
+		padding-left: 0;
 		li {
-			margin: 0;
+			margin-bottom: 0.8em;
+		}
+		li:last-child {
+			margin-bottom: 0;
 		}
 	}
 }

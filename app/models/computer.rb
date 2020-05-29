@@ -11,7 +11,20 @@ class Computer < ApplicationRecord
   NEWLINE_ATTRS = %w(description)
   before_save :normalize_newlines
 
-  CATEGORY_ORDER = %w(processors motherboards displays video-cards memory storage optical-drives power-supplies cases wi-fi-adapters webcams operating-systems)
+  CATEGORY_ORDER = %w(
+    processors
+    memory
+    storage
+    video-cards
+    motherboards
+    displays
+    optical-drives
+    power-supplies
+    cases
+    wi-fi-adapters
+    webcams
+    operating-systems
+  )
 
   # Override to_param so forms use slugs.
   def to_param
