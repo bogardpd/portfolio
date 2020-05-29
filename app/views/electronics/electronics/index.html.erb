@@ -3,7 +3,9 @@
 
 <h1>Electronics and Computers</h1>
 
-<%= project_image("computers/Desk 2016-12-20 - 800.jpg", type: :photo) %>
+<div class="center">
+  <%= image_tag ExternalImage.new("computers/Desk 2016-12-20 - 800.jpg").url, class: "img-fluid photo" %>
+</div>
 
 <% @computers.each do |computer| %>
   <%= link_header(computer.name, 2) %>
