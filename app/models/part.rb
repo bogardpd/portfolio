@@ -41,7 +41,7 @@ class Part < ApplicationRecord
   #   values
   def self.group_by_category(sort_order: nil)
     parts = self.includes(:part_categories)
-    category_ids = parts.joins(:part_categories).pluck(:part_category_id).uniq
+    category_ids = parts.joins(:part_categories).map{|p| p.part_categories.pluck(:id)}.flatten.uniq
     categories = Array(PartCategory.where(id: category_ids))
 
     if sort_order
@@ -57,6 +57,13 @@ class Part < ApplicationRecord
         p.part_categories.include?(c)
       }
     ]}.to_h
+  end
+
+  # Creates an SVG timeline for an ActiveRecord association of Parts.
+  def self.timeline
+    parts = self.all
+    return nil unless parts.any?
+    return ElectronicsTimeline.new(parts).svg_xml.html_safe
   end
 
   private

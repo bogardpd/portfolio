@@ -4,9 +4,13 @@
 
 <h1>Device History &ndash; <%= @category.name %></h1>
 
-<% if @category.parts.any? %>
+<div class="center">
+  <%= @parts.timeline %>
+</div>
+
+<% if @parts.any? %>
   <ul>
-    <% @category.parts.each do |part| %>
+    <% @parts.each do |part| %>
       <li><%= link_to(part.name_and_model, electronics_part_path(part)) %></li>
     <% end %>
   </ul>

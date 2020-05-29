@@ -1,0 +1,36 @@
+# Configuration for ElectronicsTimeline charts
+
+canvas:
+  width: 900
+  fill: "#f4f5f6"
+  padding:
+    v: 20
+    h: 20
+
+bar:
+  height: 25
+  margin:
+    h: 5 # horizontal
+    v: 2 # vertical
+  fill:
+    owned: "#a5a8af"
+    used: "#42454a"
+    used_current: "#00358c"
+    used_other_computer: "#50ac5f"
+  text:
+    fill:
+      over: "#fbfbfc"
+      side: "#42454a"
+    font_size: "12pt"
+    margin:
+      b: 7 # bottom
+      h: 5 # horizontal
+
+font: "Source Sans Pro"
+
+year:
+  label:
+    fill: "#c1c3c8"
+    font_size: "12pt"
+  stroke: "#c1c3c8"
+  stroke_width: 1
