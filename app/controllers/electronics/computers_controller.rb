@@ -9,7 +9,6 @@ class Electronics::ComputersController < ApplicationController
 
   def show
     @computer = Computer.find_by!(slug: params[:slug])
-    @uses = @computer.part_use_periods.includes(:part)
     add_computer_breadcrumbs
     add_breadcrumb @computer.name, electronics_computer_path(@computer)
   rescue ActiveRecord::RecordNotFound

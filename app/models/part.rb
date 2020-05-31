@@ -53,7 +53,7 @@ class Part < ApplicationRecord
 
     return categories.map{|c| [
       c,
-      parts.select{|p|
+      Array(parts).uniq.select{|p|
         p.part_categories.include?(c)
       }
     ]}.to_h

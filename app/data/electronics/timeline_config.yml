@@ -18,7 +18,7 @@ bar:
   height: 25
   margin:
     h: 5 # horizontal
-    v: 2 # vertical
+    v: 3 # vertical
   fill:
     owned: "#a5a8af"
     used: "#42454a"
