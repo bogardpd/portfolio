@@ -44,6 +44,11 @@ class Computer < ApplicationRecord
     return @photo
   end
 
+  # Returns an ElectronicsTimeline SVG, grouped by category.
+  def timeline
+    return self.parts.timeline(category_order: CATEGORY_ORDER)
+  end
+
   private
 
   # Generate a unique slug.

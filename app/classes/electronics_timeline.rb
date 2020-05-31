@@ -2,8 +2,14 @@ class ElectronicsTimeline
 
   CONFIG_FILE = "app/data/electronics/timeline_config.yml"
 
-  def initialize(parts_association)
-    @parts = Array(parts_association.includes(:part_use_periods))
+  def initialize(parts_association, category_order: nil)
+    parts_association = parts_association.includes(:part_use_periods)
+    @parts = Array(parts_association)
+    if category_order
+      @parts_by_category = parts_association.group_by_category(sort_order: category_order)
+    else
+      @parts_by_category = {nil: @parts}
+    end
     @today = Date.today
     calculate_initial_settings
   end
@@ -13,25 +19,51 @@ class ElectronicsTimeline
     return nil unless @parts.any?
     calculate_settings
     output = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
-      xml.svg(
+      svg_options = {
         xmlns: "http://www.w3.org/2000/svg",
         width: @settings[:canvas][:width],
         height: @settings[:canvas][:height]
-      ) do
+      }
+      xml.svg(**svg_options) do
         xml.rect(id: "background", **@settings[:canvas])
-        draw_timeline_block(xml, @parts, @settings[:chart][:anchor_y])
+
+        # TODO: write style tag
+
+        anchor_y = @settings[:canvas][:padding][:v]
+        @parts_by_category.each do |category, parts|
+          if @parts_by_category.size > 1
+            draw_category_heading(xml, anchor_y, category)
+            anchor_y += @settings[:category][:height]  
+          end
+          draw_timeline_block(xml, anchor_y, parts)
+          anchor_y += timeline_block_height(parts) + @settings[:timeline_block][:margin][:b]
+        end
       end
     end
     return output.to_xml.html_safe
   end
 
   # Draw a timeline to the provided SVG file.
-  def draw_timeline(output_file)
+  def export_timeline(output_file)
     File.write(output_file, svg_xml)
-    puts "Saved timeline to #{output_file} (parts count: #{@parts.size})"
+    puts "Saved timeline to #{output_file}"
   end
 
   private
+
+  def calculate_canvas_height
+    height = Hash.new
+    height[:margin] = 2 * @settings[:canvas][:padding][:v]
+    height[:timeline_blocks] = @parts_by_category.map{|c,p| timeline_block_height(p)}.sum
+
+    if @parts_by_category.size > 1
+      category_count = @parts_by_category.keys.size
+      height[:category_headings] = category_count * @settings[:category][:height]
+      height[:timeline_margins] = (category_count - 1) * @settings[:timeline_block][:margin][:b]
+    end
+
+    @settings[:canvas][:height] = height.values.sum
+  end
 
   # Calculates unchanging timeline elements from initial settings.
   def calculate_initial_settings
@@ -49,17 +81,39 @@ class ElectronicsTimeline
 
   # Updates settings based on chart data.
   def calculate_settings
-    @settings[:canvas][:height] = (2 * @settings[:canvas][:padding][:v]) + ((@parts.size + 1) * @settings[:bar][:row_height])
+    calculate_canvas_height
+
     @settings[:date_range] = {
       min: Date.new(@parts.min_by{|p| p.purchase_date}.purchase_date.year),
       max: Date.new(disposal_date(@parts.max_by{|p| disposal_date(p)}).year,-1,-1)
     }
-    @settings[:date_range][:duration] = (@settings[:date_range][:max] - @settings[:date_range][:min]).to_i
-    @settings[:date_range][:years] = (@settings[:date_range][:min].year..@settings[:date_range][:max].year).map{|y| [y, date_x_pos(Date.new(y))]}.to_h
+
+    day_count = @settings[:date_range][:max] - @settings[:date_range][:min]
+    @settings[:date_range][:duration] = day_count.to_i
+
+    year_range = (@settings[:date_range][:min].year..@settings[:date_range][:max].year)
+    @settings[:date_range][:years] = year_range.map{|y| [y, date_x_pos(Date.new(y))]}.to_h
   end
 
-  def draw_part(xml, part, anchor_y, index)
-    y = anchor_y + ((index + 1) * @settings[:bar][:row_height]) + @settings[:bar][:margin][:v]
+  def draw_category_heading(xml, anchor_y, category)
+    if category && category.name
+      category_name = category.name
+    else
+      category_name = "Uncategorized"
+    end
+    text_attrs = {
+      x: @settings[:bar][:min_x] + @settings[:category][:padding][:l],
+      y: anchor_y + @settings[:category][:height] - @settings[:category][:padding][:b],
+      "font-family": @settings[:font],
+      "font-size": @settings[:category][:font_size]
+    }
+    xml.text_(**text_attrs) do
+      xml.text(category_name)
+    end
+  end
+
+  def draw_part(xml, anchor_y, index, part)
+    y = anchor_y + (index * @settings[:bar][:row_height]) + @settings[:bar][:margin][:v]
     left_x = date_x_pos(part[:purchase_date])
     right_x = date_x_pos(disposal_date(part))
     width = right_x - left_x
@@ -132,34 +186,37 @@ class ElectronicsTimeline
   end
 
   # Draws timelines for a collection of parts.
-  def draw_timeline_block(xml, parts, anchor_y)
+  def draw_timeline_block(xml, anchor_y, parts)
+    draw_year_gridlines(xml, anchor_y, timeline_block_height(parts))
+
+    anchor_y += @settings[:year][:height]
     parts.sort_by!{|p| [p.purchase_date, disposal_date(p), p.model]}
-    draw_years(xml, parts, anchor_y)
     parts.each_with_index do |part, index|
       xml.g(id: "part-#{index}-timelines") do
-        draw_part(xml, part, anchor_y, index)
+        draw_part(xml, anchor_y, index, part)
       end
     end
   end
 
   # Draws a vertical gridline and axis label for each year
-  def draw_years(xml, parts, anchor_y)
-    bottom_y = anchor_y + (parts.size + 1) * @settings[:bar][:row_height]
+  def draw_year_gridlines(xml, anchor_y, height)
+    top_y = anchor_y
+    bottom_y = anchor_y + height
     xml.g do
       @settings[:date_range][:years].each do |year, x|
         next_x = @settings[:date_range][:years][year+1] || @settings[:bar][:max_x]
         xml.line(
           x1: x,
-          y1: anchor_y,
+          y1: top_y,
           x2: x,
           y2: bottom_y,
           stroke: @settings[:year][:stroke]
         )
         xml.text_(
           x: (x + next_x)/2,
-          y: anchor_y + @settings[:bar][:height] - @settings[:bar][:text][:margin][:b],
-          fill: @settings[:year][:label][:fill],
-          "font-size": @settings[:year][:label][:font_size],
+          y: top_y + @settings[:year][:height] - @settings[:year][:text][:padding][:b],
+          fill: @settings[:year][:text][:fill],
+          "font-size": @settings[:year][:text][:font_size],
           "font-family": @settings[:font],
           "text-anchor": "middle"
         ) do
@@ -168,7 +225,7 @@ class ElectronicsTimeline
       end
       xml.line(
         x1: @settings[:bar][:max_x],
-        y1: anchor_y,
+        y1: top_y,
         x2: @settings[:bar][:max_x],
         y2: bottom_y,
         stroke: @settings[:year][:stroke]
@@ -190,6 +247,10 @@ class ElectronicsTimeline
   # Takes a date or nil. Returns the provided date, or returns today's date if nil.
   def end_date(date)
     return date || @today
+  end
+
+  def timeline_block_height(parts)
+    return @settings[:year][:height] + parts.size * @settings[:bar][:row_height] + @settings[:timeline_block][:padding][:b]
   end
 
 end

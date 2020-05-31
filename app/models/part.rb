@@ -60,10 +60,10 @@ class Part < ApplicationRecord
   end
 
   # Creates an SVG timeline for an ActiveRecord association of Parts.
-  def self.timeline
+  def self.timeline(category_order: nil)
     parts = self.all
     return nil unless parts.any?
-    return ElectronicsTimeline.new(parts).svg_xml.html_safe
+    return ElectronicsTimeline.new(parts, category_order: category_order).svg_xml.html_safe
   end
 
   private

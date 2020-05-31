@@ -8,9 +8,13 @@
 
 <%= MarkdownText.parse(@computer.description) %>
 
+<div class="center">
+  <%= @computer.timeline %>
+</div>
+
 <%= link_header("Parts", 2) %>
 
-<% if @computer.part_use_periods.any? %>
+<% if @uses.any? %>
   <table class="table">
     <thead>
       <th>Part</th>
@@ -18,7 +22,7 @@
       <th>End Use Date</th>
     </thead>
     <tbody>
-      <% @computer.part_use_periods.each do |use| %>
+      <% @uses.each do |use| %>
         <tr>
           <td>
             <% if use.part %>

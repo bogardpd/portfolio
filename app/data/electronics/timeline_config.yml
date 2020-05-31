@@ -7,6 +7,13 @@ canvas:
     v: 20
     h: 20
 
+category:
+  font_size: "16pt"
+  height: 45
+  padding:
+    b: 20 # bottom
+    l: 0  # left
+
 bar:
   height: 25
   margin:
@@ -28,9 +35,18 @@ bar:
 
 font: "Source Sans Pro"
 
+timeline_block:
+  margin:
+    b: 20
+  padding:
+    b: 10
+
 year:
-  label:
+  height: 25
+  text:
     fill: "#c1c3c8"
     font_size: "12pt"
+    padding:
+      b: 7 # bottom
   stroke: "#c1c3c8"
   stroke_width: 1
