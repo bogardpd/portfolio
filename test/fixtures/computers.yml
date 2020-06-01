@@ -3,6 +3,6 @@ fishsticks:
   slug: "fishsticks"
   model: "Compaq Evo N800c"
   description: "Fishsticks is a laptop"
-  form_factor: "Laptop"
+  form_factor: "laptop"
   purchase_date: 2002-07-21
   disposal_date: 2009-11-01

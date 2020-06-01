@@ -63,7 +63,8 @@ class Part < ApplicationRecord
   def self.timeline(category_order: nil)
     parts = self.all
     return nil unless parts.any?
-    return ElectronicsTimeline.new(parts, category_order: category_order).svg_xml.html_safe
+    et =  ElectronicsTimeline.new(parts_association: parts, category_order: category_order)
+    return et.svg_xml.html_safe
   end
 
   private

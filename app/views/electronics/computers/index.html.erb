@@ -5,6 +5,11 @@
 <h1>Computers</h1>
 
 <% if @computers.any? %>
+
+  <div class="electronics-timeline">
+    <%= Computer.all_computers_timeline %>
+  </div>
+
   <ul>
     <% @computers.each do |computer| %>
       <li><%= link_to(computer.name, electronics_computer_path(computer)) %></li>

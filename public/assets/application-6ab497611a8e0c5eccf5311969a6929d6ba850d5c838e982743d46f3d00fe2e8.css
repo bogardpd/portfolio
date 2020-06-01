@@ -11968,19 +11968,13 @@ figure img.osx-screenshot {
 }
 
 /* line 227, app/assets/stylesheets/_base.scss */
-figure img.photo {
-  border: 1px solid #382e2e;
-  box-shadow: 1px 1px 5px #705c5c;
-}
-
-/* line 232, app/assets/stylesheets/_base.scss */
 figure img.screenshot {
   max-width: 600px;
   border: 1px solid #382e2e;
   box-shadow: 1px 1px 5px #705c5c;
 }
 
-/* line 239, app/assets/stylesheets/_base.scss */
+/* line 234, app/assets/stylesheets/_base.scss */
 h1 {
   font-size: 250%;
   font-weight: 400;
@@ -11989,90 +11983,95 @@ h1 {
   margin-bottom: 0.75em;
 }
 
-/* line 247, app/assets/stylesheets/_base.scss */
+/* line 242, app/assets/stylesheets/_base.scss */
 h2 {
   font-weight: bold;
   margin-top: 0.75em;
   margin-bottom: 0.75em;
 }
 
-/* line 253, app/assets/stylesheets/_base.scss */
+/* line 248, app/assets/stylesheets/_base.scss */
 h3 {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
-/* line 258, app/assets/stylesheets/_base.scss */
+/* line 253, app/assets/stylesheets/_base.scss */
 hr {
   border-top: 1px solid #cccccc;
 }
 
-/* line 262, app/assets/stylesheets/_base.scss */
+/* line 257, app/assets/stylesheets/_base.scss */
 img.bordered {
   border: 1px solid #cccccc;
 }
 
-/* line 266, app/assets/stylesheets/_base.scss */
+/* line 261, app/assets/stylesheets/_base.scss */
 img.center {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 271, app/assets/stylesheets/_base.scss */
+/* line 266, app/assets/stylesheets/_base.scss */
 img.org-logo {
   width: 200px;
   height: 100px;
   margin: 10px auto;
 }
 
-/* line 277, app/assets/stylesheets/_base.scss */
+/* line 272, app/assets/stylesheets/_base.scss */
+img.photo {
+  box-shadow: 1px 1px 5px #705c5c;
+}
+
+/* line 276, app/assets/stylesheets/_base.scss */
 img.portrait {
   margin: 20px auto;
 }
 
-/* line 281, app/assets/stylesheets/_base.scss */
+/* line 280, app/assets/stylesheets/_base.scss */
 p {
   margin-top: 20px;
   margin-bottom: 20px;
   line-height: 1.7em;
 }
 
-/* line 287, app/assets/stylesheets/_base.scss */
+/* line 286, app/assets/stylesheets/_base.scss */
 small {
   color: #705c5c;
 }
 
-/* line 291, app/assets/stylesheets/_base.scss */
+/* line 290, app/assets/stylesheets/_base.scss */
 .strong {
   font-weight: 700;
 }
 
-/* line 295, app/assets/stylesheets/_base.scss */
+/* line 294, app/assets/stylesheets/_base.scss */
 strong {
   font-weight: 700;
 }
 
-/* line 299, app/assets/stylesheets/_base.scss */
+/* line 298, app/assets/stylesheets/_base.scss */
 td {
   line-height: 1.7em;
 }
 
-/* line 301, app/assets/stylesheets/_base.scss */
+/* line 300, app/assets/stylesheets/_base.scss */
 td p {
   line-height: 1.7em;
 }
 
-/* line 306, app/assets/stylesheets/_base.scss */
+/* line 305, app/assets/stylesheets/_base.scss */
 .emphasis {
   font-style: italic;
 }
 
-/* line 310, app/assets/stylesheets/_base.scss */
+/* line 309, app/assets/stylesheets/_base.scss */
 .light {
   font-weight: 300;
 }
 
-/* line 314, app/assets/stylesheets/_base.scss */
+/* line 313, app/assets/stylesheets/_base.scss */
 .website-name {
   font-variant: small-caps;
   letter-spacing: 0.02em;
@@ -12250,20 +12249,30 @@ img.computer-thumbnail {
   max-height: 200px;
 }
 
-/* line 12, app/assets/stylesheets/_electronics.scss */
+/* line 11, app/assets/stylesheets/_electronics.scss */
+div.electronics-categories {
+  text-align: center;
+}
+
+/* line 15, app/assets/stylesheets/_electronics.scss */
+div.electronics-timeline {
+  text-align: center;
+}
+
+/* line 20, app/assets/stylesheets/_electronics.scss */
 div.computers div {
   border: 1px solid #fafafa;
   background-color: #e7e4e4;
   padding: 0.5rem;
 }
 
-/* line 17, app/assets/stylesheets/_electronics.scss */
+/* line 25, app/assets/stylesheets/_electronics.scss */
 div.computers div.label {
   font-weight: bold;
   background-color: #cfc9c9;
 }
 
-/* line 21, app/assets/stylesheets/_electronics.scss */
+/* line 29, app/assets/stylesheets/_electronics.scss */
 div.computers div.computer-photos {
   border: none;
   padding: 0;
@@ -12271,22 +12280,22 @@ div.computers div.computer-photos {
   text-align: center;
 }
 
-/* line 26, app/assets/stylesheets/_electronics.scss */
+/* line 34, app/assets/stylesheets/_electronics.scss */
 div.computers div.computer-photos img {
   margin: 0.5rem;
 }
 
-/* line 30, app/assets/stylesheets/_electronics.scss */
+/* line 38, app/assets/stylesheets/_electronics.scss */
 div.computers p {
   text-align: left;
 }
 
-/* line 35, app/assets/stylesheets/_electronics.scss */
+/* line 43, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment {
   margin: 0.5em 0;
 }
 
-/* line 38, app/assets/stylesheets/_electronics.scss */
+/* line 46, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-name {
   padding: 1rem;
   border: 1px solid #fafafa;
@@ -12294,21 +12303,21 @@ div.computer-equipment div.computer-name {
   background-color: #cfc9c9;
 }
 
-/* line 44, app/assets/stylesheets/_electronics.scss */
+/* line 52, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-name h3 {
   margin: 0;
   text-transform: uppercase;
   text-align: center;
 }
 
-/* line 50, app/assets/stylesheets/_electronics.scss */
+/* line 58, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-name div.computer-type {
   text-align: center;
   font-size: 13pt;
   font-weight: 300;
 }
 
-/* line 57, app/assets/stylesheets/_electronics.scss */
+/* line 65, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body {
   padding: 1rem;
   border: 1px solid #fafafa;
@@ -12316,169 +12325,174 @@ div.computer-equipment div.computer-body {
   background-color: #e7e4e4;
 }
 
-/* line 63, app/assets/stylesheets/_electronics.scss */
+/* line 71, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div, div.computer-equipment div.computer-body p, div.computer-equipment div.computer-body li {
   margin-bottom: 0.5em;
 }
 
-/* line 67, app/assets/stylesheets/_electronics.scss */
+/* line 75, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div.computer-dates {
   font-size: 18pt;
   font-weight: 300;
 }
 
-/* line 71, app/assets/stylesheets/_electronics.scss */
+/* line 79, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div.computer-dates p {
   margin: 0;
   color: #705c5c;
 }
 
-/* line 77, app/assets/stylesheets/_electronics.scss */
+/* line 85, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div.computer-model {
   font-weight: bold;
 }
 
-/* line 81, app/assets/stylesheets/_electronics.scss */
+/* line 89, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div.computer-thumbnail {
   margin: 0;
 }
 
-/* line 85, app/assets/stylesheets/_electronics.scss */
+/* line 93, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body figure {
   margin: 0;
 }
 
-/* line 89, app/assets/stylesheets/_electronics.scss */
+/* line 97, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body ul.computer-specs {
   list-style-type: none;
 }
 
-/* line 92, app/assets/stylesheets/_electronics.scss */
+/* line 100, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body ul.computer-specs li {
   margin-top: 0;
   margin-left: 0.5em;
   line-height: 1.2em;
 }
 
-/* line 97, app/assets/stylesheets/_electronics.scss */
+/* line 105, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body ul.computer-specs li:last-child {
   margin-bottom: 0;
 }
 
-/* line 104, app/assets/stylesheets/_electronics.scss */
+/* line 112, app/assets/stylesheets/_electronics.scss */
 p.computer-description {
   margin-top: 0;
 }
 
-/* line 108, app/assets/stylesheets/_electronics.scss */
+/* line 116, app/assets/stylesheets/_electronics.scss */
 p.computer-history-model {
   text-align: center;
   font-size: 18pt;
   font-weight: 300;
 }
 
-/* line 114, app/assets/stylesheets/_electronics.scss */
+/* line 122, app/assets/stylesheets/_electronics.scss */
 span.electronics-name {
   font-style: italic;
 }
 
-/* line 119, app/assets/stylesheets/_electronics.scss */
+/* line 127, app/assets/stylesheets/_electronics.scss */
 table.computer-parts-summary span.model {
   font-weight: 300;
 }
 
-/* line 122, app/assets/stylesheets/_electronics.scss */
+/* line 130, app/assets/stylesheets/_electronics.scss */
 table.computer-parts-summary ul {
   list-style-type: none;
+  margin: 0;
   padding-left: 0;
-  margin: 0;
 }
 
-/* line 126, app/assets/stylesheets/_electronics.scss */
+/* line 134, app/assets/stylesheets/_electronics.scss */
 table.computer-parts-summary ul li {
-  margin: 0;
+  margin-bottom: 0.8em;
 }
 
-/* line 132, app/assets/stylesheets/_electronics.scss */
+/* line 137, app/assets/stylesheets/_electronics.scss */
+table.computer-parts-summary ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* line 143, app/assets/stylesheets/_electronics.scss */
 ul.computer-parts-summary {
   list-style-type: none;
   padding-left: 0;
 }
 
-/* line 136, app/assets/stylesheets/_electronics.scss */
+/* line 147, app/assets/stylesheets/_electronics.scss */
 ul.computer-parts-summary li {
   font-weight: bold;
 }
 
-/* line 139, app/assets/stylesheets/_electronics.scss */
+/* line 150, app/assets/stylesheets/_electronics.scss */
 ul.computer-parts-summary li ul {
   list-style-type: none;
   padding-left: 1em;
 }
 
-/* line 143, app/assets/stylesheets/_electronics.scss */
+/* line 154, app/assets/stylesheets/_electronics.scss */
 ul.computer-parts-summary li ul li {
   font-weight: normal;
 }
 
-/* line 150, app/assets/stylesheets/_electronics.scss */
+/* line 161, app/assets/stylesheets/_electronics.scss */
 ul.component {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-/* line 155, app/assets/stylesheets/_electronics.scss */
+/* line 166, app/assets/stylesheets/_electronics.scss */
 ul.component li {
   margin-bottom: 1em;
 }
 
-/* line 158, app/assets/stylesheets/_electronics.scss */
+/* line 169, app/assets/stylesheets/_electronics.scss */
 ul.component li:last-child {
   margin-bottom: 0;
 }
 
-/* line 161, app/assets/stylesheets/_electronics.scss */
+/* line 172, app/assets/stylesheets/_electronics.scss */
 ul.component p {
   margin: 0;
   font-weight: normal;
   line-height: 1.2em;
 }
 
-/* line 167, app/assets/stylesheets/_electronics.scss */
+/* line 178, app/assets/stylesheets/_electronics.scss */
 ul.component p.supplemental, ul.component p.purchased {
   margin-top: 0.4rem;
 }
 
-/* line 171, app/assets/stylesheets/_electronics.scss */
+/* line 182, app/assets/stylesheets/_electronics.scss */
 ul.component p.supplemental {
   font-size: 13pt;
   color: #705c5c;
 }
 
-/* line 174, app/assets/stylesheets/_electronics.scss */
+/* line 185, app/assets/stylesheets/_electronics.scss */
 ul.component p.supplemental span.vlog-subtitle {
   font-style: italic;
 }
 
-/* line 179, app/assets/stylesheets/_electronics.scss */
+/* line 190, app/assets/stylesheets/_electronics.scss */
 ul.component p.purchased {
   font-size: 10pt;
   color: #705c5c;
 }
 
-/* line 184, app/assets/stylesheets/_electronics.scss */
+/* line 195, app/assets/stylesheets/_electronics.scss */
 ul.component p.recent {
   font-weight: bold;
   color: #14b881;
 }
 
-/* line 189, app/assets/stylesheets/_electronics.scss */
+/* line 200, app/assets/stylesheets/_electronics.scss */
 ul.component span.device_name {
   font-weight: 700;
 }
 
-/* line 192, app/assets/stylesheets/_electronics.scss */
+/* line 203, app/assets/stylesheets/_electronics.scss */
 ul.component span.unpictured {
   font-style: italic;
 }

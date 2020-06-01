@@ -3,13 +3,31 @@ class ElectronicsTimeline
   CONFIG_FILE = "app/data/electronics/timeline_config.yml"
   STYLES_FILE = "app/data/electronics/timeline.style_tag.css"
 
-  def initialize(parts_association, category_order: nil)
-    parts_association = parts_association.includes(:part_use_periods)
-    @parts = Array(parts_association)
-    if category_order
-      @parts_by_category = parts_association.group_by_category(sort_order: category_order)
-    else
-      @parts_by_category = {nil: @parts}
+  # Accepts an ActiveRecord CollectionProxy of Parts, or hash of Part arrays
+  # grouped by PartCategories, and initializes an ElectronicsTimeline.
+  # 
+  # @param parts_association [Part::ActiveRecord_Associations_CollectionProxy]
+  #   a collection of Parts
+  # @param grouped_categories [Hash] a hash with keys of PartCategories and
+  #   values of Arrays of Parts
+  # @param category_order [Array] an array of PartCategory slug strings
+  #   specifying the order in which to sort the categories. PartCategories not
+  #   in the array will be placed after the specified category and sorted
+  #   alphabetically by name. If sort_order is not provided, all categories
+  #   will be sorted alphabetically by name. Only used with a parts_association.
+  def initialize(parts_association: nil, grouped_categories: nil, category_order: nil)
+    return nil unless parts_association || grouped_categories
+    if parts_association
+      parts_association = parts_association.includes(:part_use_periods)
+      @parts = Array(parts_association)
+      if category_order
+        @parts_by_category = parts_association.group_by_category(sort_order: category_order)
+      else
+        @parts_by_category = {nil: @parts}
+      end
+    elsif grouped_categories
+      @parts = grouped_categories.values.flatten.uniq
+      @parts_by_category = grouped_categories
     end
     @today = Date.today
     calculate_initial_settings

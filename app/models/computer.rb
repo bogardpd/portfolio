@@ -2,7 +2,7 @@ class Computer < ApplicationRecord
   has_many :part_use_periods, dependent: :delete_all
   has_many :parts, through: :part_use_periods
   
-  FORM_FACTORS = {laptop: "Laptop", desktop: "Desktop"}
+  FORM_FACTORS = {desktop: "Desktop", laptop: "Laptop"}
   validates :name, presence: true
   validates :form_factor, inclusion: {in: FORM_FACTORS.keys.map(&:to_s), message: "%{value} is not a valid form factor."}
   validates :purchase_date, presence: true
@@ -47,6 +47,29 @@ class Computer < ApplicationRecord
   # Returns an ElectronicsTimeline SVG, grouped by category.
   def timeline
     return self.parts.timeline(category_order: CATEGORY_ORDER)
+  end
+
+  # Returns an ElectronicsTimeline SVG for all computers.
+  def self.all_computers_timeline
+    form_factor_groups = Computer.all.group_by{|c| c.form_factor}
+    grouped_categories = Hash.new()
+    FORM_FACTORS.each do |form_factor, name|
+      parts = form_factor_groups[form_factor.to_s]
+      if parts && parts.any?
+        parts = parts.map do |c|
+          part_attr = {
+            model: c.model,
+            name: c.name,
+            purchase_date: c.purchase_date,
+            disposal_date: c.disposal_date
+          }
+          next Part.new(part_attr)
+        end
+        category = PartCategory.new(name: name.pluralize)
+        grouped_categories[category] = parts
+      end
+    end
+    return ElectronicsTimeline.new(grouped_categories: grouped_categories).svg_xml.html_safe
   end
 
   private
