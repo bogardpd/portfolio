@@ -2,13 +2,11 @@
 
 canvas:
   width: 900
-  fill: "#f4f5f6"
   padding:
     v: 20
     h: 20
 
 category:
-  font_size: "16pt"
   height: 45
   padding:
     b: 20 # bottom
@@ -19,21 +17,9 @@ bar:
   margin:
     h: 5 # horizontal
     v: 3 # vertical
-  fill:
-    owned: "#a5a8af"
-    used: "#42454a"
-    used_current: "#00358c"
-    used_other_computer: "#50ac5f"
-  text:
-    fill:
-      over: "#fbfbfc"
-      side: "#42454a"
-    font_size: "12pt"
-    margin:
-      b: 7 # bottom
-      h: 5 # horizontal
-
-font: "Source Sans Pro"
+  padding:
+    b: 7 # bottom
+    h: 5 # horizontal
 
 timeline_block:
   margin:
@@ -43,10 +29,5 @@ timeline_block:
 
 year:
   height: 25
-  text:
-    fill: "#c1c3c8"
-    font_size: "12pt"
-    padding:
-      b: 7 # bottom
-  stroke: "#c1c3c8"
-  stroke_width: 1
+  padding:
+    b: 7 # bottom

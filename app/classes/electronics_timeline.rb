@@ -1,6 +1,7 @@
 class ElectronicsTimeline
 
   CONFIG_FILE = "app/data/electronics/timeline_config.yml"
+  STYLES_FILE = "app/data/electronics/timeline.style_tag.css"
 
   def initialize(parts_association, category_order: nil)
     parts_association = parts_association.includes(:part_use_periods)
@@ -25,9 +26,14 @@ class ElectronicsTimeline
         height: @settings[:canvas][:height]
       }
       xml.svg(**svg_options) do
-        xml.rect(id: "background", **@settings[:canvas])
+        append_styles(xml)
 
-        # TODO: write style tag
+        canvas_attr = {
+          id: "canvas",
+          width: @settings[:canvas][:width],
+          height: @settings[:canvas][:height]
+        }
+        xml.rect(**canvas_attr)
 
         anchor_y = @settings[:canvas][:padding][:v]
         @parts_by_category.each do |category, parts|
@@ -50,6 +56,14 @@ class ElectronicsTimeline
   end
 
   private
+
+  # Adds an SVG <style> tag to the XML document.
+  def append_styles(xml)
+    styles = File.open(STYLES_FILE, "r", textmode: true) {|io| io.read}   
+    xml.style do
+      xml.text(styles)
+    end
+  end
 
   def calculate_canvas_height
     height = Hash.new
@@ -104,12 +118,9 @@ class ElectronicsTimeline
     text_attrs = {
       x: @settings[:bar][:min_x] + @settings[:category][:padding][:l],
       y: anchor_y + @settings[:category][:height] - @settings[:category][:padding][:b],
-      "font-family": @settings[:font],
-      "font-size": @settings[:category][:font_size]
+      class: "category"
     }
-    xml.text_(**text_attrs) do
-      xml.text(category_name)
-    end
+    xml.text_(**text_attrs) {xml.text(category_name)}
   end
 
   def draw_part(xml, anchor_y, index, part)
@@ -125,9 +136,7 @@ class ElectronicsTimeline
       y: y,
       width: width,
       height: @settings[:bar][:height],
-      fill: @settings[:bar][:fill][:owned],
-      stroke: @settings[:bar][:stroke],
-      "stroke-width": @settings[:bar][:stroke_width]
+      class: "owned"
     )
 
     # Draw used timelines.
@@ -137,11 +146,11 @@ class ElectronicsTimeline
         use_x = date_x_pos(use.start_date)
         use_width = (date_x_pos(end_date(use.end_date)) - use_x)
         if @computer_key && @computer_key != use[:computer]
-          use_fill = @settings[:bar][:fill][:used_other_computer]
+          use_class = "used-other-computer"
         elsif use.end_date.nil?
-          use_fill = @settings[:bar][:fill][:used_current]
+          use_class = "used-current"
         else
-          use_fill = @settings[:bar][:fill][:used]
+          use_class = "used"
         end
         xml.rect(
           id: "part-#{index}-use-#{use_index}",
@@ -149,40 +158,38 @@ class ElectronicsTimeline
           y: y,
           width: use_width,
           height: @settings[:bar][:height],
-          fill: use_fill
+          class: use_class
         )
       end
     end
 
     # Draw labels.
+    text_class = ["part-bar"]
     if width / @settings[:bar][:max_width] >= 0.40
       # Place text on the bar
-      text_x = left_x + @settings[:bar][:text][:margin][:h]
+      text_x = left_x + @settings[:bar][:padding][:h]
       text_anchor = "start"
-      text_fill = @settings[:bar][:text][:fill][:over]
+      text_class.push("part-bar-over")
     elsif (left_x - @settings[:bar][:min_x]) > (@settings[:bar][:max_x] - right_x)
       # Place text to the left of the bar
-      text_x = left_x - @settings[:bar][:text][:margin][:h]
+      text_x = left_x - @settings[:bar][:padding][:h]
       text_anchor = "end"
-      text_fill = @settings[:bar][:text][:fill_side]
+      text_class.push("part-bar-side")
     else
       # Place text to the right of the bar
-      text_x = right_x + @settings[:bar][:text][:margin][:h]
+      text_x = right_x + @settings[:bar][:padding][:h]
       text_anchor = "start"
-      text_fill = @settings[:bar][:text][:fill][:side]
+      text_class.push("part-bar-side")
     end
     label = part[:name] ? "#{part[:name]} (#{part[:model]})" : part[:model]
-    xml.text_(
+    label_attr = {
       id: "part-#{index}-label",
       x: text_x,
-      y: y + @settings[:bar][:height] - @settings[:bar][:text][:margin][:b],
-      fill: text_fill,
-      "font-size": @settings[:bar][:text][:font_size],
-      "font-family": @settings[:font],
+      y: y + @settings[:bar][:height] - @settings[:bar][:padding][:b],
+      class: text_class.join(" "),
       "text-anchor": text_anchor
-    ) do
-      xml.text(label)
-    end
+    }
+    xml.text_(**label_attr) {xml.text(label)}
   end
 
   # Draws timelines for a collection of parts.
@@ -202,34 +209,24 @@ class ElectronicsTimeline
   def draw_year_gridlines(xml, anchor_y, height)
     top_y = anchor_y
     bottom_y = anchor_y + height
+    line_y_attr = {
+      y1: top_y,
+      y2: bottom_y,
+      class: "gridline"
+    }
     xml.g do
       @settings[:date_range][:years].each do |year, x|
         next_x = @settings[:date_range][:years][year+1] || @settings[:bar][:max_x]
-        xml.line(
-          x1: x,
-          y1: top_y,
-          x2: x,
-          y2: bottom_y,
-          stroke: @settings[:year][:stroke]
-        )
-        xml.text_(
+        xml.line(x1: x, x2: x, **line_y_attr)
+        year_attr = {
           x: (x + next_x)/2,
-          y: top_y + @settings[:year][:height] - @settings[:year][:text][:padding][:b],
-          fill: @settings[:year][:text][:fill],
-          "font-size": @settings[:year][:text][:font_size],
-          "font-family": @settings[:font],
-          "text-anchor": "middle"
-        ) do
-          xml.text(year)
-        end
+          y: top_y + @settings[:year][:height] - @settings[:year][:padding][:b],
+          class: "year"
+        }
+        xml.text_(**year_attr) {xml.text(year)}
+          
       end
-      xml.line(
-        x1: @settings[:bar][:max_x],
-        y1: top_y,
-        x2: @settings[:bar][:max_x],
-        y2: bottom_y,
-        stroke: @settings[:year][:stroke]
-      )
+      xml.line(x1: @settings[:bar][:max_x], x2: @settings[:bar][:max_x], **line_y_attr)
     end
   end
 

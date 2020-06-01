@@ -1,0 +1,41 @@
+line.gridline {
+  stroke: #c1c3c8;
+  stroke-width: 1;
+}
+
+rect#canvas {
+  fill: #f4f5f6;
+}
+rect.owned {
+  fill: #a5a8af;
+}
+rect.used {
+  fill: #42454a;
+}
+rect.used-current {
+  fill: #00358c;
+}
+rect.used-other-computer {
+  fill: #50ac5f;
+}
+
+text {
+  font-family: "Source Sans Pro";
+}
+text.category {
+  font-size: 16pt;
+}
+text.part-bar {
+  font-size: 12pt;
+}
+text.part-bar-over {
+  fill: #fbfbfc;
+}
+text.part-bar-side {
+  fill: #42454a;
+}
+text.year {
+  fill: #c1c3c8;
+  font-size: 12pt;
+  text-anchor: middle;
+}
