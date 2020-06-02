@@ -1,10 +1,13 @@
 class Electronics::PartCategoriesController < ApplicationController
-
   before_action :logged_in_user, except: [:index, :show]
-
+  
   def index
     add_part_category_breadcrumbs
-    @categories = PartCategory.all.order(:name)
+    if logged_in?
+      @categories = PartCategory.alphabetical
+    else
+      @categories = PartCategory.used_without_computer
+    end
   end
 
   def show

@@ -4,6 +4,14 @@ class PartCategory < ApplicationRecord
   validates :name, presence: true
   after_validation :generate_slug
 
+  scope :alphabetical, -> {order(:name)}
+  scope :used_without_computer, -> {
+    joins(parts: :part_use_periods)
+      .where(parts: {part_use_periods: {computer: nil}})
+      .alphabetical
+      .distinct
+  }
+
   # Override to_param so forms use slugs.
   def to_param
     return self.slug
