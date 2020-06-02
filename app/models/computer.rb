@@ -49,26 +49,31 @@ class Computer < ApplicationRecord
     return self.parts.timeline(category_order: CATEGORY_ORDER)
   end
 
+  
+
   # Returns an ElectronicsTimeline SVG for all computers.
   def self.all_computers_timeline
-    form_factor_groups = Computer.all.group_by{|c| c.form_factor}
+    form_factor_groups = Computer.all.includes(:part_use_periods).group_by{|c| c.form_factor}
     grouped_categories = Hash.new()
     FORM_FACTORS.each do |form_factor, name|
-      parts = form_factor_groups[form_factor.to_s]
-      if parts && parts.any?
-        parts = parts.map do |c|
+      # Create grouped categories, treating each Computer as a Part:
+      computers = form_factor_groups[form_factor.to_s]
+      if computers && computers.any?
+        computers = computers.map do |c|
           part_attr = {
             model: c.model,
             name: c.name,
             purchase_date: c.purchase_date,
-            disposal_date: c.disposal_date
-          }
+            disposal_date: c.disposal_date,
+            part_use_periods: merge_overlapping_part_use_periods(c.part_use_periods)
+          }          
           next Part.new(part_attr)
         end
         category = PartCategory.new(name: name.pluralize)
-        grouped_categories[category] = parts
+        grouped_categories[category] = computers
       end
     end
+    # return grouped_categories
     return ElectronicsTimeline.new(grouped_categories: grouped_categories).svg_xml.html_safe
   end
 
@@ -82,6 +87,35 @@ class Computer < ApplicationRecord
   # Converts all textarea newlines to universal newlines
   def normalize_newlines
     NEWLINE_ATTRS.each{|attr| self[attr] = self[attr]&.encode(universal_newline: true)}
+  end
+
+  # Determines Computer use periods by merging overlapping PartUsePeriods for
+  # the Computer's Parts.
+  def self.merge_overlapping_part_use_periods(use_periods)
+    date_ranges = use_periods.map{|u| u.start_date...u.end_date}
+    merged_date_ranges = date_ranges.sort_by(&:begin).inject([]) do |ranges, range|
+      if ranges.any? && use_period_ranges_overlap?(ranges.last, range)
+        next ranges[0...-1] + [merge_use_period_ranges(ranges.last, range)]
+      else
+        next ranges + [range]
+      end
+    end
+    return merged_date_ranges.map{|pu| PartUsePeriod.new(start_date: pu.begin, end_date: pu.end)}
+  end
+
+  # Merges two overlapping PartUsePeriod date ranges into a single date range.
+  def self.merge_use_period_ranges(a, b)
+    ends = [a.end, b.end]
+    max_end = ends.include?(nil) ? nil : ends.max
+    return [a.begin, b.begin].min...max_end
+  end
+
+  # Checks if two PartUsePeriod date ranges overlap.
+  def self.use_period_ranges_overlap?(a, b)
+    return true if a.end.nil? && b.end.nil?
+    a_includes_b_begin = a.end.nil? ? (b.end > a.begin) : a.include?(b.begin)
+    b_includes_a_begin = b.end.nil? ? (a.end > b.begin) : b.include?(a.begin)
+    return a_includes_b_begin || b_includes_a_begin
   end
 
 end
