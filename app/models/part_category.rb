@@ -27,6 +27,13 @@ class PartCategory < ApplicationRecord
     end
   end
 
+  # Returns the other PartCategories associated with any Part of this
+  # PartCategory. Returns an empty Array if there are no other categories.
+  def shared_categories
+    categories = self.parts.includes(:part_categories).map{|p| p.part_categories}.flatten.uniq
+    return categories.reject{|c| c == self}.sort_by(&:name)
+  end
+
   private
 
   # Generate a unique slug.

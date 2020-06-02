@@ -8,12 +8,10 @@
   <%= @parts.timeline %>
 </div>
 
-<% if @parts.any? %>
-  <ul>
-    <% @parts.each do |part| %>
-      <li><%= link_to(part.name_and_model, electronics_part_path(part)) %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <div class="alert alert-info">No parts have been assigned to <%= @category.name %>.</div>
+<% if @category.shared_categories.any? %>
+  <p class="electronics-shared-categories">See also:
+  <% @category.shared_categories.each do |category| %>
+    <%= link_to(category.name, electronics_part_category_path(category), class: %w(badge badge-pill)) %>
+  <% end %>
+  </p>
 <% end %>
