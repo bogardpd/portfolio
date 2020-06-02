@@ -1,5 +1,6 @@
 <% provide(:title, "Electronics and Computers") %>
 <% provide(:meta_description, "Tech specs and history of Paul Bogard’s computers and other electronics.") %>
+<% provide(:admin_actions, format_admin_actions({"Parts List" => electronics_parts_path})) %>
 
 <h1>Electronics and Computers</h1>
 
@@ -63,6 +64,4 @@
   </tbody>
 </table>
 
-
-<p><%= link_to "Parts", electronics_parts_path %></p>
-<p><%= link_to "Part Categories", electronics_part_categories_path %></p>
+<p><%= link_to "Device History by Part Category", electronics_part_categories_path %></p>

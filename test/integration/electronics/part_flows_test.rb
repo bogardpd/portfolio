@@ -8,14 +8,16 @@ class PartFlowsTest < ActionDispatch::IntegrationTest
 
   # RESOURCE PAGES
 
-  test "should get index" do
+  test "should redirect index when not logged in" do
     get(electronics_parts_path)
-    assert_response(:success)
+    assert_response :redirect
+    assert_redirected_to login_path
   end
 
-  test "should get show" do
+  test "should redirect show when not logged in" do
     get electronics_part_path(@part)
-    assert_response :success
+    assert_response :redirect
+    assert_redirected_to login_path
   end
 
   test "should redirect new when not logged in" do
