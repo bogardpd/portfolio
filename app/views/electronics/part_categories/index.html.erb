@@ -5,11 +5,13 @@
 <h1>Part Categories</h1>
 
 <% if @categories.any? %>
-  <ul>
-    <% @categories.each do |category| %>
-      <li><%= link_to(category.name, electronics_part_category_path(category)) %></li>
-    <% end %>
-  </ul>
+  <table class="table">
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr><td><%= link_to(category.name, electronics_part_category_path(category)) %></td></tr>
+      <% end %>
+    </tbody>
+  </table>
 <% else %>
   <div class="alert alert-info">No part categories have been added yet.</div>
 <% end %>
