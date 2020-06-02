@@ -148,14 +148,15 @@ class ElectronicsTimeline
     width = right_x - left_x
 
     # Draw owned timelines.
-    xml.rect(
-      id: "part-#{index}-owned",
+    rect_owned_attr = {
+      id: "part-#{part_id(part)}-owned",
       x: left_x,
       y: y,
       width: width,
       height: @settings[:bar][:height],
       class: "owned"
-    )
+    }
+    xml.rect(**rect_owned_attr)
 
     # Draw used timelines.
     use_periods = part.part_use_periods
@@ -170,14 +171,15 @@ class ElectronicsTimeline
         else
           use_class = "used"
         end
-        xml.rect(
-          id: "part-#{index}-use-#{use_index}",
+        rect_use_attr = {
+          id: "part-#{part_id(part)}-use-#{use_index}",
           x: use_x,
           y: y,
           width: use_width,
           height: @settings[:bar][:height],
           class: use_class
-        )
+        }
+        xml.rect(**rect_use_attr)
       end
     end
 
@@ -201,7 +203,7 @@ class ElectronicsTimeline
     end
     label = part[:name] ? "#{part[:name]} (#{part[:model]})" : part[:model]
     label_attr = {
-      id: "part-#{index}-label",
+      id: "part-#{part_id(part)}-label",
       x: text_x,
       y: y + @settings[:bar][:height] - @settings[:bar][:padding][:b],
       class: text_class.join(" "),
@@ -217,7 +219,7 @@ class ElectronicsTimeline
     anchor_y += @settings[:year][:height]
     parts.sort_by!{|p| [p.purchase_date, disposal_date(p), p.model]}
     parts.each_with_index do |part, index|
-      xml.g(id: "part-#{index}-timelines") do
+      xml.g(id: "part-#{part_id(part)}-timelines") do
         draw_part(xml, anchor_y, index, part)
       end
     end
@@ -262,6 +264,10 @@ class ElectronicsTimeline
   # Takes a date or nil. Returns the provided date, or returns today's date if nil.
   def end_date(date)
     return date || @today
+  end
+
+  def part_id(part)
+    return part.id || part.name&.parameterize
   end
 
   def timeline_block_height(parts)
