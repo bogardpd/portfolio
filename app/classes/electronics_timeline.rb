@@ -40,8 +40,9 @@ class ElectronicsTimeline
     output = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
       svg_options = {
         xmlns: "http://www.w3.org/2000/svg",
-        width: @settings[:canvas][:width],
-        height: @settings[:canvas][:height]
+        # width: @settings[:canvas][:width],
+        # height: @settings[:canvas][:height]
+        viewBox: "0 0 #{@settings[:canvas][:width]} #{@settings[:canvas][:height]}"
       }
       xml.svg(**svg_options) do
         append_styles(xml)

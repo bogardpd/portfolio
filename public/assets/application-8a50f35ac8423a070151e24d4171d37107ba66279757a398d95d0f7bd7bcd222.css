@@ -12249,20 +12249,35 @@ img.computer-thumbnail {
   max-height: 200px;
 }
 
-/* line 12, app/assets/stylesheets/_electronics.scss */
+/* line 11, app/assets/stylesheets/_electronics.scss */
+div.electronics-categories {
+  text-align: center;
+}
+
+/* line 15, app/assets/stylesheets/_electronics.scss */
+div.electronics-timeline {
+  text-align: center;
+}
+
+/* line 17, app/assets/stylesheets/_electronics.scss */
+div.electronics-timeline svg {
+  max-width: 900px;
+}
+
+/* line 23, app/assets/stylesheets/_electronics.scss */
 div.computers div {
   border: 1px solid #fafafa;
   background-color: #e7e4e4;
   padding: 0.5rem;
 }
 
-/* line 17, app/assets/stylesheets/_electronics.scss */
+/* line 28, app/assets/stylesheets/_electronics.scss */
 div.computers div.label {
   font-weight: bold;
   background-color: #cfc9c9;
 }
 
-/* line 21, app/assets/stylesheets/_electronics.scss */
+/* line 32, app/assets/stylesheets/_electronics.scss */
 div.computers div.computer-photos {
   border: none;
   padding: 0;
@@ -12270,22 +12285,22 @@ div.computers div.computer-photos {
   text-align: center;
 }
 
-/* line 26, app/assets/stylesheets/_electronics.scss */
+/* line 37, app/assets/stylesheets/_electronics.scss */
 div.computers div.computer-photos img {
   margin: 0.5rem;
 }
 
-/* line 30, app/assets/stylesheets/_electronics.scss */
+/* line 41, app/assets/stylesheets/_electronics.scss */
 div.computers p {
   text-align: left;
 }
 
-/* line 35, app/assets/stylesheets/_electronics.scss */
+/* line 46, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment {
   margin: 0.5em 0;
 }
 
-/* line 38, app/assets/stylesheets/_electronics.scss */
+/* line 49, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-name {
   padding: 1rem;
   border: 1px solid #fafafa;
@@ -12293,21 +12308,21 @@ div.computer-equipment div.computer-name {
   background-color: #cfc9c9;
 }
 
-/* line 44, app/assets/stylesheets/_electronics.scss */
+/* line 55, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-name h3 {
   margin: 0;
   text-transform: uppercase;
   text-align: center;
 }
 
-/* line 50, app/assets/stylesheets/_electronics.scss */
+/* line 61, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-name div.computer-type {
   text-align: center;
   font-size: 13pt;
   font-weight: 300;
 }
 
-/* line 57, app/assets/stylesheets/_electronics.scss */
+/* line 68, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body {
   padding: 1rem;
   border: 1px solid #fafafa;
@@ -12315,169 +12330,179 @@ div.computer-equipment div.computer-body {
   background-color: #e7e4e4;
 }
 
-/* line 63, app/assets/stylesheets/_electronics.scss */
+/* line 74, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div, div.computer-equipment div.computer-body p, div.computer-equipment div.computer-body li {
   margin-bottom: 0.5em;
 }
 
-/* line 67, app/assets/stylesheets/_electronics.scss */
+/* line 78, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div.computer-dates {
   font-size: 18pt;
   font-weight: 300;
 }
 
-/* line 71, app/assets/stylesheets/_electronics.scss */
+/* line 82, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div.computer-dates p {
   margin: 0;
   color: #705c5c;
 }
 
-/* line 77, app/assets/stylesheets/_electronics.scss */
+/* line 88, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div.computer-model {
   font-weight: bold;
 }
 
-/* line 81, app/assets/stylesheets/_electronics.scss */
+/* line 92, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body div.computer-thumbnail {
   margin: 0;
 }
 
-/* line 85, app/assets/stylesheets/_electronics.scss */
+/* line 96, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body figure {
   margin: 0;
 }
 
-/* line 89, app/assets/stylesheets/_electronics.scss */
+/* line 100, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body ul.computer-specs {
   list-style-type: none;
 }
 
-/* line 92, app/assets/stylesheets/_electronics.scss */
+/* line 103, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body ul.computer-specs li {
   margin-top: 0;
   margin-left: 0.5em;
   line-height: 1.2em;
 }
 
-/* line 97, app/assets/stylesheets/_electronics.scss */
+/* line 108, app/assets/stylesheets/_electronics.scss */
 div.computer-equipment div.computer-body ul.computer-specs li:last-child {
   margin-bottom: 0;
 }
 
-/* line 104, app/assets/stylesheets/_electronics.scss */
+/* line 115, app/assets/stylesheets/_electronics.scss */
 p.computer-description {
   margin-top: 0;
 }
 
-/* line 108, app/assets/stylesheets/_electronics.scss */
+/* line 119, app/assets/stylesheets/_electronics.scss */
 p.computer-history-model {
   text-align: center;
   font-size: 18pt;
   font-weight: 300;
 }
 
-/* line 114, app/assets/stylesheets/_electronics.scss */
+/* line 125, app/assets/stylesheets/_electronics.scss */
+p.electronics-shared-categories {
+  text-align: center;
+}
+
+/* line 129, app/assets/stylesheets/_electronics.scss */
 span.electronics-name {
   font-style: italic;
 }
 
-/* line 119, app/assets/stylesheets/_electronics.scss */
+/* line 134, app/assets/stylesheets/_electronics.scss */
 table.computer-parts-summary span.model {
   font-weight: 300;
 }
 
-/* line 122, app/assets/stylesheets/_electronics.scss */
+/* line 137, app/assets/stylesheets/_electronics.scss */
 table.computer-parts-summary ul {
   list-style-type: none;
+  margin: 0;
   padding-left: 0;
-  margin: 0;
 }
 
-/* line 126, app/assets/stylesheets/_electronics.scss */
+/* line 141, app/assets/stylesheets/_electronics.scss */
 table.computer-parts-summary ul li {
-  margin: 0;
+  margin-bottom: 0.8em;
 }
 
-/* line 132, app/assets/stylesheets/_electronics.scss */
+/* line 144, app/assets/stylesheets/_electronics.scss */
+table.computer-parts-summary ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* line 150, app/assets/stylesheets/_electronics.scss */
 ul.computer-parts-summary {
   list-style-type: none;
   padding-left: 0;
 }
 
-/* line 136, app/assets/stylesheets/_electronics.scss */
+/* line 154, app/assets/stylesheets/_electronics.scss */
 ul.computer-parts-summary li {
   font-weight: bold;
 }
 
-/* line 139, app/assets/stylesheets/_electronics.scss */
+/* line 157, app/assets/stylesheets/_electronics.scss */
 ul.computer-parts-summary li ul {
   list-style-type: none;
   padding-left: 1em;
 }
 
-/* line 143, app/assets/stylesheets/_electronics.scss */
+/* line 161, app/assets/stylesheets/_electronics.scss */
 ul.computer-parts-summary li ul li {
   font-weight: normal;
 }
 
-/* line 150, app/assets/stylesheets/_electronics.scss */
+/* line 168, app/assets/stylesheets/_electronics.scss */
 ul.component {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-/* line 155, app/assets/stylesheets/_electronics.scss */
+/* line 173, app/assets/stylesheets/_electronics.scss */
 ul.component li {
   margin-bottom: 1em;
 }
 
-/* line 158, app/assets/stylesheets/_electronics.scss */
+/* line 176, app/assets/stylesheets/_electronics.scss */
 ul.component li:last-child {
   margin-bottom: 0;
 }
 
-/* line 161, app/assets/stylesheets/_electronics.scss */
+/* line 179, app/assets/stylesheets/_electronics.scss */
 ul.component p {
   margin: 0;
   font-weight: normal;
   line-height: 1.2em;
 }
 
-/* line 167, app/assets/stylesheets/_electronics.scss */
+/* line 185, app/assets/stylesheets/_electronics.scss */
 ul.component p.supplemental, ul.component p.purchased {
   margin-top: 0.4rem;
 }
 
-/* line 171, app/assets/stylesheets/_electronics.scss */
+/* line 189, app/assets/stylesheets/_electronics.scss */
 ul.component p.supplemental {
   font-size: 13pt;
   color: #705c5c;
 }
 
-/* line 174, app/assets/stylesheets/_electronics.scss */
+/* line 192, app/assets/stylesheets/_electronics.scss */
 ul.component p.supplemental span.vlog-subtitle {
   font-style: italic;
 }
 
-/* line 179, app/assets/stylesheets/_electronics.scss */
+/* line 197, app/assets/stylesheets/_electronics.scss */
 ul.component p.purchased {
   font-size: 10pt;
   color: #705c5c;
 }
 
-/* line 184, app/assets/stylesheets/_electronics.scss */
+/* line 202, app/assets/stylesheets/_electronics.scss */
 ul.component p.recent {
   font-weight: bold;
   color: #14b881;
 }
 
-/* line 189, app/assets/stylesheets/_electronics.scss */
+/* line 207, app/assets/stylesheets/_electronics.scss */
 ul.component span.device_name {
   font-weight: 700;
 }
 
-/* line 192, app/assets/stylesheets/_electronics.scss */
+/* line 210, app/assets/stylesheets/_electronics.scss */
 ul.component span.unpictured {
   font-style: italic;
 }
