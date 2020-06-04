@@ -46,7 +46,7 @@ class Computer < ApplicationRecord
 
   # Returns an ElectronicsTimeline SVG, grouped by category.
   def timeline
-    return self.parts.timeline(category_order: CATEGORY_ORDER)
+    return self.parts.timeline(category_order: CATEGORY_ORDER, computer: self)
   end
 
   

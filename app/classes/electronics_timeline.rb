@@ -15,7 +15,11 @@ class ElectronicsTimeline
   #   in the array will be placed after the specified category and sorted
   #   alphabetically by name. If sort_order is not provided, all categories
   #   will be sorted alphabetically by name. Only used with a parts_association.
-  def initialize(parts_association: nil, grouped_categories: nil, category_order: nil)
+  # @param computer [Computer] specifies that this is a timeline for the
+  #   provided computer. Used to decorate PartUsePeriod timeline bars for this
+  #   Computer versus other Computers for Parts used in more than one Computer.
+  def initialize(parts_association: nil, grouped_categories: nil,
+                 category_order: nil, computer: nil)
     return nil unless parts_association || grouped_categories
     if parts_association
       parts_association = parts_association.includes(:part_use_periods)
@@ -30,6 +34,8 @@ class ElectronicsTimeline
       @parts_by_category = grouped_categories
     end
     @today = Date.today
+    @common_computer = computer
+    
     calculate_initial_settings
   end
  
@@ -40,11 +46,10 @@ class ElectronicsTimeline
     output = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
       svg_options = {
         xmlns: "http://www.w3.org/2000/svg",
-        # width: @settings[:canvas][:width],
-        # height: @settings[:canvas][:height]
         viewBox: "0 0 #{@settings[:canvas][:width]} #{@settings[:canvas][:height]}"
       }
       xml.svg(**svg_options) do
+        append_defs(xml)
         append_styles(xml)
 
         canvas_attr = {
@@ -75,6 +80,31 @@ class ElectronicsTimeline
   end
 
   private
+
+  # Adds an SVG <defs> tag to the XML document.
+  def append_defs(xml)
+    xml.defs do
+      %w(used-other-computer used-other-computer-current).each do |pattern|
+        pattern_attr = {
+          id: pattern,
+          width: 4,
+          height: 4,
+          patternTransform: "rotate(45 0 0)",
+          patternUnits: "userSpaceOnUse"
+        }
+        xml.pattern(**pattern_attr) do
+          line_attr = {
+            x1: 2,
+            y1: 0,
+            x2: 2,
+            y2: 4,
+            class: pattern
+          }
+          xml.line(**line_attr)
+        end
+      end
+    end
+  end
 
   # Adds an SVG <style> tag to the XML document.
   def append_styles(xml)
@@ -165,8 +195,12 @@ class ElectronicsTimeline
       use_periods.each_with_index do |use, use_index|
         use_x = date_x_pos(use.start_date)
         use_width = (date_x_pos(end_date(use.end_date)) - use_x)
-        if @computer_key && @computer_key != use[:computer]
-          use_class = "used-other-computer"
+        if @common_computer && @common_computer != use.computer
+          if use.end_date.nil?
+            use_class = "used-other-computer-current"
+          else
+            use_class = "used-other-computer"
+          end
         elsif use.end_date.nil?
           use_class = "used-current"
         else
@@ -178,7 +212,8 @@ class ElectronicsTimeline
           y: y,
           width: use_width,
           height: @settings[:bar][:height],
-          class: use_class
+          class: use_class,
+          # fill: "url(#diagonal-hatch)"
         }
         xml.rect(**rect_use_attr)
       end
@@ -265,6 +300,18 @@ class ElectronicsTimeline
   # Takes a date or nil. Returns the provided date, or returns today's date if nil.
   def end_date(date)
     return date || @today
+  end
+
+  # Determine if a parts association is filtered by a single computer (all parts
+  # have exactly one Computer in common amongst all their use periods) and
+  # return that computer if so. Returns nil otherwise.
+  def find_common_computer(parts_association)
+    common_computers = parts_association.map{|p| p.part_use_periods.map(&:computer)}.inject(:&)
+    if common_computers.size == 1
+      return common_computers.first
+    else
+      return nil
+    end
   end
 
   def part_id(part)

@@ -13,10 +13,21 @@ rect.used {
   fill: #42454a;
 }
 rect.used-current {
-  fill: #00358c;
+  fill: #00358c;  
 }
 rect.used-other-computer {
-  fill: #50ac5f;
+  fill: url(#used-other-computer);
+}
+rect.used-other-computer-current {
+  fill: url(#used-other-computer-current);
+}
+line.used-other-computer {
+  stroke: #42454a;
+  stroke-width: 2;
+}
+line.used-other-computer-current {
+  stroke: #00358c;
+  stroke-width: 2;
 }
 
 text {
