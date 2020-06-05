@@ -42,6 +42,12 @@ class PartCategory < ApplicationRecord
     return categories.reject{|c| c == self}.sort_by(&:name)
   end
 
+  # Returns an ElectronicsTimeline for Parts in this PartCategory.
+  def timeline
+    cpc = CategorizedPartCollection.new(self.parts, single_category: true)
+    return cpc.timeline
+  end
+
   private
 
   # Generate a unique slug.

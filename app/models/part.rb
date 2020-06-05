@@ -21,50 +21,18 @@ class Part < ApplicationRecord
     return self.specs.lines.map(&:squish)
   end
 
-  # Returns a hash with keys of PartCategories, and values of arrays of Parts
-  # which have a PartUsePeriod with no end date not associated with any
-  # Computer.
-  def self.in_use_no_computer_by_category
+  # Returns a CategorizedPartCollection of Parts which have a PartUsePeriod with
+  # no end date not associated with any Computer.
+  def self.current_no_computer
     parts = Part.joins(:part_use_periods).where(part_use_periods: {end_date: nil, computer: nil})
-    return parts.group_by_category
-  end
-
-  # Groups an ActiveRecord Association of Parts into PartCategories. If a part
-  # has multiple categories, it will be placed into all categories it matches.
-  #
-  # @param sort_order [Array, nil] an array of PartCategory slug strings
-  #   specifying the order in which to sort the categories. PartCategories not
-  #   in the array will be placed after the specified category and sorted
-  #   alphabetically by name. If sort_order is not provided, all categories
-  #   will be sorted alphabetically by name.
-  # @return [Hash] a hash with PartCategories as keys and arrays of Parts as
-  #   values
-  def self.group_by_category(sort_order: nil)
-    parts = self.includes(:part_categories)
-    category_ids = parts.joins(:part_categories).map{|p| p.part_categories.pluck(:id)}.flatten.uniq
-    categories = Array(PartCategory.where(id: category_ids))
-
-    if sort_order
-      lookup = sort_order.to_enum.with_index.to_h
-      categories.sort_by!{|c| [lookup[c.slug] || lookup.size, c.name]}
-    else
-      categories.sort_by!{|c| c.name}
-    end
-
-    return categories.map{|c| [
-      c,
-      Array(parts).uniq.select{|p|
-        p.part_categories.include?(c)
-      }
-    ]}.to_h
+    return CategorizedPartCollection.new(parts)
   end
 
   # Creates an SVG timeline for an ActiveRecord association of Parts.
   def self.timeline(category_order: nil, computer: nil)
     parts = self.all
     return nil unless parts.any?
-    et =  ElectronicsTimeline.new(parts_association: parts, category_order: category_order, computer: computer)
-    return et.svg_xml.html_safe
+    return CategorizedPartCollection.new(parts).timeline
   end
 
   private

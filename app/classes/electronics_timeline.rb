@@ -3,45 +3,23 @@ class ElectronicsTimeline
   CONFIG_FILE = "app/data/electronics/timeline_config.yml"
   STYLES_FILE = "app/data/electronics/timeline.style_tag.css"
 
-  # Accepts an ActiveRecord CollectionProxy of Parts, or hash of Part arrays
-  # grouped by PartCategories, and initializes an ElectronicsTimeline.
+  # Accepts a CategorizedPartCollection, and initializes an ElectronicsTimeline.
   # 
-  # @param parts_association [Part::ActiveRecord_Associations_CollectionProxy]
-  #   a collection of Parts
-  # @param grouped_categories [Hash] a hash with keys of PartCategories and
-  #   values of Arrays of Parts
-  # @param category_order [Array] an array of PartCategory slug strings
-  #   specifying the order in which to sort the categories. PartCategories not
-  #   in the array will be placed after the specified category and sorted
-  #   alphabetically by name. If sort_order is not provided, all categories
-  #   will be sorted alphabetically by name. Only used with a parts_association.
-  # @param computer [Computer] specifies that this is a timeline for the
-  #   provided computer. Used to decorate PartUsePeriod timeline bars for this
-  #   Computer versus other Computers for Parts used in more than one Computer.
-  def initialize(parts_association: nil, grouped_categories: nil,
-                 category_order: nil, computer: nil)
-    return nil unless parts_association || grouped_categories
-    if parts_association
-      parts_association = parts_association.includes(:part_use_periods)
-      @parts = Array(parts_association)
-      if category_order
-        @parts_by_category = parts_association.group_by_category(sort_order: category_order)
-      else
-        @parts_by_category = {nil: @parts}
-      end
-    elsif grouped_categories
-      @parts = grouped_categories.values.flatten.uniq
-      @parts_by_category = grouped_categories
-    end
+  # @param cat_part_collection [CategorizedPartCollection] the categorized
+  #   parts to draw a timeline for.
+  def initialize(cat_part_collection)
+    @groupings = cat_part_collection.groupings
+    @computer = cat_part_collection.comparison_computer
+    @date_range = cat_part_collection.date_range
+    @any_parts = cat_part_collection.any_parts?
     @today = Date.today
-    @common_computer = computer
-    
+        
     calculate_initial_settings
   end
  
   # Creates XML for a timeline SVG graphic.
   def svg_xml
-    return nil unless @parts.any?
+    return "" unless @any_parts
     calculate_settings
     output = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
       svg_options = {
@@ -60,8 +38,8 @@ class ElectronicsTimeline
         xml.rect(**canvas_attr)
 
         anchor_y = @settings[:canvas][:padding][:v]
-        @parts_by_category.each do |category, parts|
-          if @parts_by_category.size > 1
+        @groupings.each do |category, parts|
+          if @groupings.size > 1
             draw_category_heading(xml, anchor_y, category)
             anchor_y += @settings[:category][:height]  
           end
@@ -70,7 +48,7 @@ class ElectronicsTimeline
         end
       end
     end
-    return output.to_xml.html_safe
+    return output.to_xml
   end
 
   # Draw a timeline to the provided SVG file.
@@ -117,10 +95,10 @@ class ElectronicsTimeline
   def calculate_canvas_height
     height = Hash.new
     height[:margin] = 2 * @settings[:canvas][:padding][:v]
-    height[:timeline_blocks] = @parts_by_category.map{|c,p| timeline_block_height(p)}.sum
+    height[:timeline_blocks] = @groupings.map{|c,p| timeline_block_height(p)}.sum
 
-    if @parts_by_category.size > 1
-      category_count = @parts_by_category.keys.size
+    if @groupings.size > 1
+      category_count = @groupings.keys.size
       height[:category_headings] = category_count * @settings[:category][:height]
       height[:timeline_margins] = (category_count - 1) * @settings[:timeline_block][:margin][:b]
     end
@@ -147,8 +125,8 @@ class ElectronicsTimeline
     calculate_canvas_height
 
     @settings[:date_range] = {
-      min: Date.new(@parts.min_by{|p| p.purchase_date}.purchase_date.year),
-      max: Date.new(disposal_date(@parts.max_by{|p| disposal_date(p)}).year,-1,-1)
+      min: Date.new(@date_range.begin.year),
+      max: Date.new(end_date(@date_range.end).year,-1,-1)
     }
 
     day_count = @settings[:date_range][:max] - @settings[:date_range][:min]
@@ -195,7 +173,7 @@ class ElectronicsTimeline
       use_periods.each_with_index do |use, use_index|
         use_x = date_x_pos(use.start_date)
         use_width = (date_x_pos(end_date(use.end_date)) - use_x)
-        if @common_computer && @common_computer != use.computer
+        if @computer && @computer != use.computer
           if use.end_date.nil?
             use_class = "used-other-computer-current"
           else

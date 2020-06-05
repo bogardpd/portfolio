@@ -5,7 +5,7 @@
 <h1>Device History &ndash; <%= @category.name %></h1>
 
 <div class="electronics-timeline">
-  <%= @parts.timeline %>
+  <%= @category.timeline %>
 </div>
 
 <% if @category.shared_categories.any? %>
