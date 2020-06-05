@@ -88,5 +88,3 @@ class CategorizedPartCollection
   end
 
 end
-
-# -- computercollection inherit from this class?
