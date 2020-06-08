@@ -29,23 +29,28 @@ class ElectronicsTimeline
       xml.svg(**svg_options) do
         append_defs(xml)
         append_styles(xml)
-
+        
         canvas_attr = {
           id: "canvas",
           width: @settings[:canvas][:width],
           height: @settings[:canvas][:height]
         }
         xml.rect(**canvas_attr)
+        
+        cursor_y = @settings[:canvas][:padding][:v]
 
-        anchor_y = @settings[:canvas][:padding][:v]
+        draw_legend(xml, cursor_y)
+        cursor_y += @settings[:legend][:height]
+        
         @groupings.each do |category, parts|
           if @groupings.size > 1
-            draw_category_heading(xml, anchor_y, category)
-            anchor_y += @settings[:category][:height]  
+            draw_category_heading(xml, cursor_y, category)
+            cursor_y += @settings[:category][:height]  
           end
-          draw_timeline_block(xml, anchor_y, parts)
-          anchor_y += timeline_block_height(parts) + @settings[:timeline_block][:margin][:b]
+          draw_timeline_block(xml, cursor_y, parts)
+          cursor_y += timeline_block_height(parts) + @settings[:timeline_block][:margin][:b]
         end
+
       end
     end
     return output.to_xml
@@ -95,6 +100,7 @@ class ElectronicsTimeline
   def calculate_canvas_height
     height = Hash.new
     height[:margin] = 2 * @settings[:canvas][:padding][:v]
+    height[:legend] = @settings[:legend][:height]
     height[:timeline_blocks] = @groupings.map{|c,p| timeline_block_height(p)}.sum
 
     if @groupings.size > 1
@@ -124,6 +130,9 @@ class ElectronicsTimeline
   def calculate_settings
     calculate_canvas_height
 
+    # Calculate y-positions of chart elements:
+    @settings[:legend][:top] = @settings[:canvas][:padding][:v]
+
     @settings[:date_range] = {
       min: Date.new(@date_range.begin.year),
       max: Date.new(end_date(@date_range.end).year,-1,-1)
@@ -142,12 +151,57 @@ class ElectronicsTimeline
     else
       category_name = "Uncategorized"
     end
-    text_attrs = {
+    text_attr = {
       x: @settings[:bar][:min_x] + @settings[:category][:padding][:l],
       y: anchor_y + @settings[:category][:height] - @settings[:category][:padding][:b],
       class: "category"
     }
-    xml.text_(**text_attrs) {xml.text(category_name)}
+    xml.text_(**text_attr) {xml.text(category_name)}
+  end
+
+  def draw_legend(xml, top_y)
+    legend = @settings[:legend]
+    used_classes = @groupings.map{|category, parts|
+      parts.map{|part|
+        part.part_use_periods.map{|use| use_period_class(use)}
+      }
+    }.flatten.uniq
+        
+    labels = {
+      "owned" => {text: "Owned", width: 65},
+      "used" => {text: "In Use", width: 60},
+      "used-current" => {text: "Currently In Use", width: 115},
+      "used-other-computer" => {text: "Used in Other Computer", width: 165},
+      "used-other-computer-current" => {text: "Currently Used in Other Computer", width: 220}
+    }
+    labels = labels.select{|k,v| ["owned", *used_classes].include?(k)}
+    labels_width = legend[:box][:size] * labels.size + labels.inject(0){|s,(k,v)| s + v[:width]}
+    
+    xml.g(id: "legend") do
+      bottom_y = top_y + legend[:height]
+
+      box_x = @settings[:canvas][:width] - @settings[:canvas][:padding][:h] - labels_width
+      box_y = bottom_y - legend[:box][:margin][:b] - legend[:box][:size]
+      text_y = bottom_y - legend[:text][:margin][:b]
+      labels.each do |css_class, label|
+        text_x = box_x + legend[:box][:size] + legend[:text][:margin][:h]
+        box_attr = {
+          x: box_x,
+          y: box_y,
+          width: legend[:box][:size],
+          height: legend[:box][:size],
+          class: css_class
+        }
+        xml.rect(**box_attr)
+        text_attr = {
+          x: text_x,
+          y: text_y,
+          class: "legend"
+        }
+        xml.text_(**text_attr) {xml.text(label[:text])}
+        box_x += legend[:box][:size] + label[:width]
+      end
+    end
   end
 
   def draw_part(xml, anchor_y, index, part)
@@ -173,17 +227,7 @@ class ElectronicsTimeline
       use_periods.each_with_index do |use, use_index|
         use_x = date_x_pos(use.start_date)
         use_width = (date_x_pos(end_date(use.end_date)) - use_x)
-        if @computer && @computer != use.computer
-          if use.end_date.nil?
-            use_class = "used-other-computer-current"
-          else
-            use_class = "used-other-computer"
-          end
-        elsif use.end_date.nil?
-          use_class = "used-current"
-        else
-          use_class = "used"
-        end
+        use_class = use_period_class(use)
         rect_use_attr = {
           id: "part-#{part_id(part)}-use-#{use_index}",
           x: use_x,
@@ -248,7 +292,7 @@ class ElectronicsTimeline
       y2: bottom_y,
       class: "gridline"
     }
-    xml.g do
+    xml.g(id: "year-gridlines") do
       @settings[:date_range][:years].each do |year, x|
         next_x = @settings[:date_range][:years][year+1] || @settings[:bar][:max_x]
         xml.line(x1: x, x2: x, **line_y_attr)
@@ -298,6 +342,19 @@ class ElectronicsTimeline
 
   def timeline_block_height(parts)
     return @settings[:year][:height] + parts.size * @settings[:bar][:row_height] + @settings[:timeline_block][:padding][:b]
+  end
+
+  # Determines which class of timeline bar to use, based on whether the part is 
+  # current and whether it's used in another computer.
+  def use_period_class(use_period)
+    use_class = "used"
+    if @computer && @computer != use_period.computer
+      use_class += "-other-computer"
+    end
+    if use_period.end_date.nil?
+      use_class += "-current"
+    end
+    return use_class
   end
 
 end

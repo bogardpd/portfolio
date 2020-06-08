@@ -36,6 +36,9 @@ text {
 text.category {
   font-size: 16pt;
 }
+text.legend {
+  font-size: 11pt;
+}
 text.part-bar {
   font-size: 12pt;
 }
