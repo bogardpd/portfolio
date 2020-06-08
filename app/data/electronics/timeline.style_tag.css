@@ -10,10 +10,10 @@ rect.owned {
   fill: #a5a8af;
 }
 rect.used {
-  fill: #42454a;
+  fill: #55595f;
 }
 rect.used-current {
-  fill: #00358c;  
+  fill: #002d78;
 }
 rect.used-other-computer {
   fill: url(#used-other-computer);
@@ -22,11 +22,11 @@ rect.used-other-computer-current {
   fill: url(#used-other-computer-current);
 }
 line.used-other-computer {
-  stroke: #42454a;
+  stroke: #55595f;
   stroke-width: 2;
 }
 line.used-other-computer-current {
-  stroke: #00358c;
+  stroke: #002d78;
   stroke-width: 2;
 }
 
