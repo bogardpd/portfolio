@@ -1,7 +1,17 @@
-module FormattedDate
+# Provides utilities for formatting dates.
+module DateFormat
   
   def self.text(input_date)
     input_date.strftime("%e %b %Y").strip
+  end
+
+  def self.electronics_owned_range_text(purchase_date, disposal_date)
+    format = "%b %Y"
+    if disposal_date.present?
+      return [purchase_date, disposal_date].map{|d| d.strftime(format)}.join(" – ")
+    else
+      return "Since #{purchase_date.strftime(format)}"
+    end
   end
 
   def self.range_text(input_date_range)

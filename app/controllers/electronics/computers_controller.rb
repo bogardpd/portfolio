@@ -4,6 +4,8 @@ class Electronics::ComputersController < ApplicationController
   
   def index
     @computers = Computer.all
+    @laptops, @desktops = @computers.order(purchase_date: :desc)
+      .partition{|c| c.form_factor == "laptop"}
     add_computer_breadcrumbs
   end
 

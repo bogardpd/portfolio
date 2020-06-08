@@ -17,6 +17,8 @@ div.electronics-timeline {
 	svg {
 		max-width: 900px;
 	}
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 div.computers {
@@ -112,6 +114,11 @@ div.computer-equipment {
 	}
 }
 
+img.electronics-thumbnail {
+	width: 200px;
+	height: 200px;
+}
+
 p.computer-description {
 	margin-top: 0;
 }
@@ -143,6 +150,28 @@ table.computer-parts-summary {
 		}
 		li:last-child {
 			margin-bottom: 0;
+		}
+	}
+}
+
+table.electronics-computer-index {
+	td.electronics-row-icon {
+		width: 150px;
+	}
+	td.electronics-row-computer {
+		text-align: center;
+		div.electronics-computer-name {
+			font-size: $font-size-large;
+			margin-bottom: 0.2em;
+		}
+		div.electronics-computer-model {
+			line-height: $line-height-small;
+			font-weight: 300;
+			margin-bottom: 0.4em;
+		}
+		div.electronics-computer-date {
+			font-size: $font-size-small;
+			color: $color-text-light;
 		}
 	}
 }

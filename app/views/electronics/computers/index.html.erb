@@ -10,11 +10,17 @@
     <%= Computer.all_computers_timeline %>
   </div>
 
-  <ul>
-    <% @computers.each do |computer| %>
-      <li><%= link_to(computer.name, electronics_computer_path(computer)) %></li>
-    <% end %>
-  </ul>
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>Desktops</h2>
+      <%= render(partial: "index_table", locals: {computers: @desktops}) %>
+    </div>
+    <div class="col-lg-6">
+      <h2>Laptops</h2>
+      <%= render(partial: "index_table", locals: {computers: @laptops}) %>
+    </div>
+  </div>
+
 <% else %>
   <div class="alert alert-info">No computers have been added yet.</div>
 <% end %>

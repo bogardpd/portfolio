@@ -115,7 +115,7 @@ class StaticPagesController < ApplicationController
   def gallery_starmen
     add_breadcrumb "Starmen.Net Conventions", starmen_conventions_path
     @convention = YAML.load_file("app/data/starmen_conventions.yml")[params[:gallery]].symbolize_keys
-    @meta_description = "Photos from #{@convention[:name]} (#{FormattedDate.range_text(@convention[:start]..@convention[:end])})"
+    @meta_description = "Photos from #{@convention[:name]} (#{DateFormat.range_text(@convention[:start]..@convention[:end])})"
     gallery_template(title: @convention[:name], path: starmen_con_gallery_path(gallery: params[:gallery]))
   end
 
