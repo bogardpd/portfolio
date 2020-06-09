@@ -2,6 +2,8 @@
 /* Uses moment.js */
 /* Uses jQuery */
 
+import moment from 'moment';
+
 var timeZoneList = [["&minus;12:00", -12], ["&minus;11:00", -11], ["&minus;10:00", -10], ["&minus;09:30", -9.5], ["&minus;09:00", -9], ["&minus;08:00", -8], ["&minus;07:00", -7], ["&minus;06:00", -6], ["&minus;05:00", -5], ["&minus;04:00", -4], ["&minus;03:30", -3.5], ["&minus;03:00", -3], ["&minus;02:30", -2.5], ["&minus;02:00", -2], ["&minus;01:00", -1], ["", 0], ["+01:00", 1], ["+01:30", 1.5], ["+02:00", 2], ["+03:00", 3], ["+03:30", 3.5], ["+04:00", 4], ["+04:30", 4.5], ["+05:00", 5], ["+05:30", 5.5], ["+05:45", 5.75], ["+06:00", 6], ["+06:30", 6.5], ["+07:00", 7], ["+08:00", 8], ["+08:30", 8.5], ["+09:00", 9], ["+09:30", 9.5], ["+10:00", 10], ["+10:30", 10.5], ["+11:00", 11], ["+12:00", 12], ["+12:45", 12.75], ["+13:00", 13], ["+13:45", 13.75], ["+14:00", 14]].reverse();
 var msPerDay = 1000*60*60*24;
 var msPerHour = 1000*60*60;
@@ -649,7 +651,7 @@ function createInsertButton() {
 function createDateTime(fieldName) {
   var html = '<div class="form-group"><div class="input-group date dtpicker">';
   html += '<input type="text" class="form-control field-' + fieldName + '" />';
-  html += '<div class="input-group-append"><span class="input-group-text"><span class="custom-icon">&#128197;</span></span></div>';
+  // html += '<div class="input-group-append"><span class="input-group-text"><span class="custom-icon">&#128197;</span></span></div>';
   html += '</div></div>';
   return html;
 }
@@ -871,7 +873,7 @@ function setEventTriggers() {
   var selectedSize;
   $("#component-chart g.location-block").off().on("click", function() {toggleHover($(this));} ).on("mouseenter", function() {showHover($(this));} ).on("mouseleave", function() {hideHover();} );
  
-  $("#component-data .dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
+  // $("#component-data .dtpicker").datetimepicker({format: "yyyy-mm-dd hh:ii", pickerPosition: "top-left"});
   $("input.field-title, input.field-location, select.field-offset").off().on("change", function() {
     chart.update();
     updatePageLinks();
