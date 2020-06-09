@@ -1,4 +1,8 @@
 {
+  "//": [
+    "moment - used in timezones",
+    "popper.js - needed for bootstrap"
+  ],
   "dependencies": {
     "@rails/ujs": "^6.0.3-1",
     "@rails/webpacker": "5.1.1",
@@ -6,7 +10,9 @@
     "jquery": "^3.5.1",
     "jquery-ui": "^1.12.1",
     "jquery-ujs": "^1.2.2",
-    "moment": "^2.26.0"
+    "moment": "^2.26.0",
+    "popper.js": "^1.16.1",
+    "webpack": "^4.43.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"

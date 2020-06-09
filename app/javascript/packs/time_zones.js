@@ -650,7 +650,7 @@ function createInsertButton() {
  */
 function createDateTime(fieldName) {
   var html = '<div class="form-group"><div class="input-group date dtpicker">';
-  html += '<input type="text" class="form-control field-' + fieldName + '" />';
+  html += '<input type="datetime-local" class="form-control field-' + fieldName + '" />';
   // html += '<div class="input-group-append"><span class="input-group-text"><span class="custom-icon">&#128197;</span></span></div>';
   html += '</div></div>';
   return html;
@@ -717,7 +717,7 @@ function createSVG(type, attr) {
  * @param {Object} timeZoneLocations - The location array.
  */
 function populateTable(timeZoneLocations) {
-  var dateFormat = "Y-MM-DD HH:mm";
+  var dateFormat = "Y-MM-DDTHH:mm";
   timeZoneLocations.map(function(element, index) {
     var $row = $(".row-location").eq(index);
     $row.find(".field-start").val(element.start > 0 ? moment(element.start).utc().format(dateFormat) : "");
