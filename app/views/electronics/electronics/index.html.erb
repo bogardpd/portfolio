@@ -8,6 +8,8 @@
   <%= image_tag ExternalImage.new("computers/Desk 2016-12-20 - 800.jpg").url, class: "img-fluid photo" %>
 </div>
 
+<%= link_buttons(*@link_buttons) %>
+
 <% @computers.each do |computer| %>
   <%= link_header(computer.name, 2) %>
 
@@ -43,7 +45,7 @@
   </div>
 <% end %>
 
-<p><%= link_to "Computer History", electronics_computers_path %></p>
+<%= link_buttons(*@link_buttons) %>
 
 <%= link_header("Devices", 2) %>
 
@@ -64,4 +66,4 @@
   </tbody>
 </table>
 
-<p><%= link_to "Device History by Part Category", electronics_part_categories_path %></p>
+<%= link_buttons(*@link_buttons) %>

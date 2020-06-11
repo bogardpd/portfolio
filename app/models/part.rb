@@ -9,6 +9,7 @@ class Part < ApplicationRecord
   NEWLINE_ATTRS = %w(specs note)
   before_save :normalize_newlines
 
+  # Returns a short name for the Part for use in timelines and tooltips.
   def chart_label
     if self.name.present?
       return "#{self.name} (#{self.model})"
@@ -17,18 +18,16 @@ class Part < ApplicationRecord
     end
   end
 
-  def name_and_model(parentheses: :name)
+  # Returns the model and name (if present) of the Part.
+  def name_and_model
     if self.name.present?
-      if parentheses = :name
-        return "#{self.model} (“#{self.name}”)"
-      else
-        return "#{self.name} (“#{self.model}”)"
-      end
+      return "#{self.model} (“#{self.name}”)"
     else
       return self.model
     end
   end
 
+  # Return an array of part specs.
   def specs_array
     return self.specs.lines.map(&:squish)
   end

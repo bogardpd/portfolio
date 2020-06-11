@@ -63,7 +63,6 @@ class ElectronicsTimeline
     output = Nokogiri::HTML::DocumentFragment.parse("")
     Nokogiri::HTML::Builder.with(output) do |html|
       html.div(style: "display: none;") do
-      # html.div() do
         @parts.each do |part|
           dates = DateFormat.electronics_owned_range_text(part.purchase_date, part.disposal_date)
           html.div(id: tooltip_id(part), class: "electronics-tooltip") do
