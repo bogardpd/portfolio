@@ -20,4 +20,12 @@ class ExternalImage
     return [AWS_S3_ROOT, @path.split("/").map{|p| ERB::Util.url_encode(p)}.join("/")].join()
   end
 
+  def credit
+    # return nil unless self.exists?
+    return @credit if defined?(@credit)
+    # photo.credit.txt
+    @credit = @path.gsub(/.jpg$/, ".credit.txt")
+    return @credit
+  end
+
 end

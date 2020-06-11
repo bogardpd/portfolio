@@ -27,6 +27,12 @@ class Part < ApplicationRecord
     end
   end
 
+  def photo
+    return nil unless self.part_number
+    @photo ||= ExternalImage.new("electronics/parts/#{self.part_number.parameterize}.jpg")
+    return @photo
+  end
+
   # Return an array of part specs.
   def specs_array
     return self.specs.lines.map(&:squish)
