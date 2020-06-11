@@ -66,12 +66,9 @@ class Computer < ApplicationRecord
     return cpc.timeline
   end
 
-  
-
-  # Returns an ElectronicsTimeline SVG for all computers.
-  def self.all_computers_timeline
-    ccc = CategorizedComputerCollection.new
-    return ccc.timeline
+  # Returns a unique ID for use in tooltip divs
+  def tooltip_id
+    return "part-#{self.id}-tooltip-content"
   end
 
   private
@@ -85,7 +82,5 @@ class Computer < ApplicationRecord
   def normalize_newlines
     NEWLINE_ATTRS.each{|attr| self[attr] = self[attr]&.encode(universal_newline: true)}
   end
-
-  
 
 end

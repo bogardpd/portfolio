@@ -18,7 +18,7 @@
     </p>
   <% end %>
 
-  <%= render(partial: "electronics/tippy_js") %>
+  <%= render(partial: "electronics/tippy_js", locals: {parts: @parts}) %>
 
 <% else %>
   <div class="alert alert-info">No parts have been added to <%= @category.name %> yet.</div>

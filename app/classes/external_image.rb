@@ -26,11 +26,10 @@ class ExternalImage
     return @credit if defined?(@credit)
     credit_path = AWS_S3_ROOT + @path.gsub(/.jpg$/, ".credit.txt")
     begin
-      @credit = open(credit_path).read.strip
+      @credit = URI.open(credit_path).read.strip
     rescue OpenURI::HTTPError
       @credit = nil
     end
-    # @credit = credit_path
     return @credit
   end
 

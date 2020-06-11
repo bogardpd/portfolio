@@ -7,7 +7,7 @@
 <% if @computers.any? %>
 
   <div class="electronics-timeline">
-    <%= Computer.all_computers_timeline %>
+    <%= @categorized_computer_collection.timeline %>
   </div>
 
   <div class="row">
@@ -25,4 +25,4 @@
   <div class="alert alert-info">No computers have been added yet.</div>
 <% end %>
 
-<%= render(partial: "electronics/tippy_js") %>
+<%= render(partial: "electronics/tippy_js", locals: {parts: @categorized_computer_collection.all_parts}) %>

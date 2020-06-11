@@ -32,8 +32,6 @@ class Part < ApplicationRecord
     path = "electronics/parts/"
     path += "#{self.manufacturer.parameterize}/" if self.manufacturer.present?
     path += "#{self.part_number.parameterize}.jpg" 
-    puts "============================"
-    puts path
     @photo ||= ExternalImage.new(path)
     return @photo
   end
@@ -41,6 +39,11 @@ class Part < ApplicationRecord
   # Return an array of part specs.
   def specs_array
     return self.specs.lines.map(&:squish)
+  end
+
+  # Returns a unique ID for use in tooltip divs
+  def tooltip_id
+    return "part-#{self.id}-tooltip-content"
   end
 
   # Returns a CategorizedPartCollection of Parts which have a PartUsePeriod with

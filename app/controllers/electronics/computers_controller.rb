@@ -4,6 +4,7 @@ class Electronics::ComputersController < ApplicationController
   
   def index
     @computers = Computer.all
+    @categorized_computer_collection = CategorizedComputerCollection.new
     @laptops, @desktops = @computers.order(purchase_date: :desc)
       .partition{|c| c.form_factor == "laptop"}
     add_computer_breadcrumbs
@@ -11,6 +12,7 @@ class Electronics::ComputersController < ApplicationController
 
   def show
     @computer = Computer.find_by!(slug: params[:slug])
+    @parts = @computer.parts
     add_computer_breadcrumbs
     add_breadcrumb @computer.name, electronics_computer_path(@computer)
   rescue ActiveRecord::RecordNotFound

@@ -3,6 +3,9 @@ class Electronics::ElectronicsController < ApplicationController
   def index
     add_breadcrumb "Electronics", electronics_root_path
     @computers = Computer.where(slug: ["pancake", "quesadilla"])
+    @device_groupings = Part.current_no_computer.groupings
+    @parts = @computers.map{|c| c.in_use_by_category.values}.flatten.uniq
+    @parts = @parts | @device_groupings.values.flatten.uniq
     @link_buttons = [
       LinkButton.new(
         "Computer History",

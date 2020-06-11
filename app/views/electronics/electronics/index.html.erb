@@ -32,7 +32,7 @@
                 <td>
                   <ul>
                     <% parts.each do |part| %>
-                      <li><%= part.name_and_model %></li>
+                      <li><span data-tippy-template="<%= part.tooltip_id %>"><%= part.name_and_model %></span></li>
                     <% end %>
                   </ul>
                 </td>
@@ -51,13 +51,13 @@
 
 <table class="table computer-parts-summary">
   <tbody>
-    <% Part.current_no_computer.groupings.each do |category, parts| %>
+    <% @device_groupings.each do |category, parts| %>
       <tr>
         <th scope="row"><%= category.name_category_heading(parts.size) %></th>
         <td>
           <ul>
             <% parts.each do |part| %>
-              <li><%= part.name_and_model %></li>
+              <li><span data-tippy-template="<%= part.tooltip_id %>"><%= part.name_and_model %></span></li>
             <% end %>
           </ul>
         </td>
@@ -67,3 +67,5 @@
 </table>
 
 <%= link_buttons(*@link_buttons) %>
+
+<%= render(partial: "electronics/tippy_js", locals: {parts: @parts}) %>

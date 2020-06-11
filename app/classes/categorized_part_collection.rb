@@ -65,9 +65,6 @@ class CategorizedPartCollection
   def timeline(include_tooltip_divs: true)
     et = ElectronicsTimeline.new(self)
     output = et.svg_xml
-    if include_tooltip_divs
-      output += et.tooltip_divs
-    end
     return output.html_safe
   end
 

@@ -22,4 +22,4 @@
   <%= @computer.timeline %>
 </div>
 
-<%= render(partial: "electronics/tippy_js") %>
+<%= render(partial: "electronics/tippy_js", locals: {parts: @parts}) %>

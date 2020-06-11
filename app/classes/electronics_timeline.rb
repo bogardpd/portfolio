@@ -57,45 +57,6 @@ class ElectronicsTimeline
     return output.to_xml
   end
 
-  # Returns HTML for tooltip divs for all unique parts.
-  def tooltip_divs
-    return "" unless @any_parts
-    output = Nokogiri::HTML::DocumentFragment.parse("")
-    Nokogiri::HTML::Builder.with(output) do |html|
-      html.div(style: "display: none;") do
-        @parts.each do |part|
-          dates = DateFormat.electronics_owned_range_text(part.purchase_date, part.disposal_date)
-          html.div(id: tooltip_id(part), class: "electronics-tooltip") do
-            if part.photo && part.photo.exists?
-              html.div(style: "float: left; margin-right: 7px;") do
-                html.img(src: part.photo.url, width: 128, height: 128)
-              end
-            end
-            html.div(style: "display: inline-block") do
-              if part.name.present?
-                html.strong.text(part.name)
-                html.br
-              end
-              html.strong.text(part.model)
-              html.br
-              html.em.text(dates)
-              part.specs_array.each do |spec|
-                html.br
-                html.text(spec)
-              end
-              if part.photo && part.photo.credit
-                html.br
-                html.small.text("photo: #{part.photo.credit}")
-              end
-            end
-            html.div(style: "clear: both;")
-          end
-        end
-      end
-    end
-    return output.to_html
-  end
-
   # Draw a timeline to the provided SVG file.
   def export_timeline(output_file)
     File.write(output_file, svg_xml)
@@ -313,7 +274,7 @@ class ElectronicsTimeline
       **(rect_owned_attr.slice(:x, :y, :width, :height)),
       id: "part-#{part.id}-tooltip-zone",
       class: "tooltip-zone",
-      "data-tippy-template": tooltip_id(part)
+      "data-tippy-template": part.tooltip_id
     }
     xml.rect(**rect_tooltip_zone_attr)
     
@@ -387,11 +348,6 @@ class ElectronicsTimeline
 
   def timeline_block_height(parts)
     return @settings[:year][:height] + parts.size * @settings[:bar][:row_height] + @settings[:timeline_block][:padding][:b]
-  end
-
-  # Returns a tooltip id for a given part
-  def tooltip_id(part)
-    return "part-#{part.id}-tooltip-content"
   end
 
   # Determines which class of timeline bar to use, based on whether the part is 
