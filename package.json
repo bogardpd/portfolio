@@ -3,6 +3,9 @@
     "moment - used in time_zones",
     "popper.js - needed for bootstrap"
   ],
+  "engines": {
+    "yarn": "1.22.4"
+  },
   "dependencies": {
     "@rails/ujs": "^6.0.3-1",
     "@rails/webpacker": "5.1.1",
