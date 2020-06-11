@@ -1,0 +1,71 @@
+<% provide(:title, "Electronics and Computers") %>
+<% provide(:meta_description, "Tech specs and history of Paul Bogard’s computers and other electronics.") %>
+<% provide(:admin_actions, format_admin_actions({"Parts List" => electronics_parts_path})) %>
+
+<h1>Electronics and Computers</h1>
+
+<div class="center">
+  <%= image_tag ExternalImage.new("computers/Desk 2016-12-20 - 800.jpg").url, class: "img-fluid photo" %>
+</div>
+
+<%= link_buttons(*@link_buttons) %>
+
+<% @computers.each do |computer| %>
+  <%= link_header(computer.name, 2) %>
+
+  <%= MarkdownText.parse(computer.description) %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <% if computer.photo.exists? %>
+          <%= link_to(image_tag(computer.photo.url, class: %w(img-fluid photo)), computer.photo.url, target: :_blank) %>
+        <% end %>
+      </div>
+      <div class="col-lg-8">
+        <p class="computer-history-model"><%= computer.model %> &middot; <%= computer.form_factor %></p>
+        <table class="table computer-parts-summary">
+          <tbody>
+            <% computer.in_use_by_category.each do |category, parts| %>
+              <tr>
+                <th scope="row"><%= category.name_category_heading(parts.size) %></th>
+                <td>
+                  <ul>
+                    <% parts.each do |part| %>
+                      <li><span data-tippy-template="<%= part.tooltip_id %>"><%= part.name_and_model %></span></li>
+                    <% end %>
+                  </ul>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= link_buttons(*@link_buttons) %>
+
+<%= link_header("Devices", 2) %>
+
+<table class="table computer-parts-summary">
+  <tbody>
+    <% @device_groupings.each do |category, parts| %>
+      <tr>
+        <th scope="row"><%= category.name_category_heading(parts.size) %></th>
+        <td>
+          <ul>
+            <% parts.each do |part| %>
+              <li><span data-tippy-template="<%= part.tooltip_id %>"><%= part.name_and_model %></span></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_buttons(*@link_buttons) %>
+
+<%= render(partial: "electronics/tippy_js", locals: {parts: @parts}) %>

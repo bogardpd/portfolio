@@ -15,6 +15,16 @@ Rails.application.routes.draw do
   get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
   get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
   get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
+
+  
+  namespace :electronics do
+    root to: "electronics#index"
+    resources :computers, param: :slug
+    resources :part_categories, path: "part-categories", param: :slug
+    resources :parts do
+      resources :part_use_periods, except: [:index, :show], path: "use-periods"
+    end
+  end
   
   # Projects
   get "projects(/tags/:tag)" => "static_pages#projects", as: :projects
@@ -39,6 +49,10 @@ Rails.application.routes.draw do
   get "projects/visor-cam"              => "static_pages#visor_cam",              as: :visor_cam
   
   # Aliases and redirects
+
+  # get "computers" => redirect("electronics"), status: 301
+  # get "computers/old" => redirect("electronics"), status: 301
+
   get "boarding-pass-parser"   => redirect("projects/boarding-pass-parser",   status: 301)
   get "cad-models"             => redirect("projects/cad-models",             status: 301)
   get "earthbound-database"    => redirect("projects/earthbound-database",    status: 301)
@@ -73,13 +87,18 @@ Rails.application.routes.draw do
   get "about"  => "static_pages#about"
   get "resume" => "static_pages#resume"
   
+  # Computers
+  get "computers"                       => "static_pages#computers"
+  get "computers/old"                   => "static_pages#old_computers",            as: :old_computers
+  # get "computers/history/parts(/:part)" => "static_pages#part_history_details",     as: :part_history_details
+  # get "computers/history/:computer"     => "static_pages#computer_history_details", as: :computer_history_details
+  # get "computers/history"               => "static_pages#computer_history",         as: :computer_history
+
   # Other Pages
   get "airport-code-puns" => "static_pages#airport_code_puns"
   get "books"           => "static_pages#books"
-  get "computers"       => "static_pages#computers"
-  get "computers/old"   => "static_pages#old_computers", :as => :old_computers
   get "ingress-mosaics" => "static_pages#ingress_mosaics"
-  get "ingress-murals", :to => redirect("/ingress-mosaics", :status => 301)
+  get "ingress-murals", to: redirect("/ingress-mosaics", status: 301)
   get "history"         => "static_pages#history"
   get "rhit"            => "static_pages#rhit"
   get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", :as => :fast_track_calculus
@@ -103,7 +122,7 @@ Rails.application.routes.draw do
   # Certbot
   get "/.well-known/acme-challenge/:id" => "static_pages#letsencrypt"
   
-   # Permanently redirect legacy flight log routes to Flight Historian:
+  # Permanently redirect legacy flight log routes to Flight Historian:
 
   get "/flightlog",       :to => redirect("https://www.flighthistorian.com/", :status => 301)
   get "/flightlog/*all",  :to => redirect("https://www.flighthistorian.com/", :status => 301)

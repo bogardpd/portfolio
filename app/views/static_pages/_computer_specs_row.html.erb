@@ -30,7 +30,7 @@
             <% if component[:supplemental] || component[:not_pictured] %>
               <% np = component[:not_pictured] ? content_tag(:span, "Not Pictured", class: "unpictured") : nil %>
               <p class="supplemental">
-                <%= parse_markdown([np,component[:supplemental]].compact.join(" · ")) %>
+                <%= MarkdownText.parse([np,component[:supplemental]].compact.join(" · "), format: :computer_supplemental) %>
               </p>
             <% end %>
 

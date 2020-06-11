@@ -1,0 +1,22 @@
+<table class="table electronics-computer-index">
+  <% computers.each do |computer| %>
+    <tr>
+      <td class="electronics-row-icon">
+        <% if computer.photo.exists? %>
+            <%= link_to(image_tag(computer.photo.url, class: %w(img-fluid photo)), electronics_computer_path(computer)) %>
+        <% end %>
+      </td>
+      <td class="electronics-row-computer">
+        <div class="electronics-computer-name">
+          <%= link_to(computer.name, electronics_computer_path(computer)) %>
+        </div>
+        <div class="electronics-computer-model">
+          <%= computer.model %>
+        </div>
+        <div class="electronics-computer-date">
+          <%= DateFormat.electronics_owned_range_text(computer.purchase_date, computer.disposal_date) %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>

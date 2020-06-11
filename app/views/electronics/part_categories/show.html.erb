@@ -1,0 +1,25 @@
+<% provide(:title, "#{@category.name} - Electronics History") %>
+<% provide(:meta_description, "Paul Bogard’s device history for #{@category.name_lowercase_plural}.") %>
+<% provide(:admin_actions, format_admin_actions({"Edit" => edit_electronics_part_category_path(@category)})) %>
+
+<h1>Device History &ndash; <%= @category.name %></h1>
+
+<% if @category.parts.any? %>
+
+  <div class="electronics-timeline">
+    <%= @category.timeline %>
+  </div>
+
+  <% if @category.shared_categories.any? %>
+    <p class="electronics-shared-categories">See also:
+    <% @category.shared_categories.each do |category| %>
+      <%= link_to(category.name, electronics_part_category_path(category), class: %w(badge badge-pill)) %>
+    <% end %>
+    </p>
+  <% end %>
+
+  <%= render(partial: "electronics/tippy_js", locals: {parts: @parts}) %>
+
+<% else %>
+  <div class="alert alert-info">No parts have been added to <%= @category.name %> yet.</div>
+<% end %>

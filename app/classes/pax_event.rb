@@ -10,7 +10,7 @@ class PAXEvent
 
   # Returns the event date range as a string, shortened to remove years and duplicate months
   def dates
-    return FormattedDate::range_text_without_year(@start_date..@end_date)
+    return DateFormat::range_text_without_year(@start_date..@end_date)
   end
 
   # Returns the event name

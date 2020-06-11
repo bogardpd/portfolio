@@ -1,0 +1,2 @@
+module Electronics::PartUsePeriodsHelper
+end

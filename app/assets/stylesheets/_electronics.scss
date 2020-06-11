@@ -1,0 +1,243 @@
+/******************************************************************************
+* COMPUTERS                                                                   *
+* Styles for computer description pages.                                      *
+******************************************************************************/
+
+img.computer-thumbnail {
+	max-width: 200px;
+	max-height: 200px;
+}
+
+div.electronics-categories {
+	text-align: center;
+}
+
+div.electronics-timeline {
+	text-align: center;
+	svg {
+		max-width: 900px;
+	}
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+div.computers {
+	div {
+		border: 1px solid $color-background-main;
+		background-color: $color-background-light;
+		padding: 0.5rem;
+	}
+	div.label {
+		font-weight: bold;
+		background-color: $color-background-medium;
+	}
+	div.computer-photos {
+		border: none;
+		padding: 0;
+		width: 100%;
+		text-align: center;
+		img {
+			margin: 0.5rem;
+		}
+	}
+	p {
+		text-align: left;
+	}
+}
+
+div.computer-equipment {
+	margin: 0.5em 0;
+
+	div.computer-name {
+		padding: 1rem;
+		border: 1px solid $color-background-main;
+		border-radius: $border-radius $border-radius 0 0;
+		background-color: $color-background-medium;
+
+		h3 {
+			margin: 0;
+			text-transform: uppercase;
+			text-align: center;
+		}
+
+		div.computer-type {
+			text-align: center;
+			font-size: $font-size-small;
+			font-weight: 300;
+		}
+	}
+
+	div.computer-body {
+		padding: 1rem;
+		border: 1px solid $color-background-main;
+		border-radius: 0 0 $border-radius $border-radius;
+		background-color: $color-background-light;
+
+		div, p, li {
+			margin-bottom: 0.5em;
+		}
+
+		div.computer-dates {
+			font-size: $font-size-large;
+			font-weight: 300;
+
+			p {
+				margin: 0;
+				color: $color-text-light;
+			}
+		}
+
+		div.computer-model {
+			font-weight: bold;
+		}
+
+		div.computer-thumbnail {
+			margin: 0;
+		}
+
+		figure {
+			margin: 0;
+		}
+
+		ul.computer-specs {
+			list-style-type: none;
+			
+			li {
+				margin-top: 0;
+				margin-left: 0.5em;
+				line-height: $line-height-small;
+			}
+			li:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+img.electronics-thumbnail {
+	width: 200px;
+	height: 200px;
+}
+
+p.computer-description {
+	margin-top: 0;
+}
+
+p.computer-history-model {
+	text-align: center;
+	font-size: $font-size-large;
+	font-weight: 300;
+}
+
+p.electronics-shared-categories {
+	text-align: center;
+}
+
+span.electronics-name {
+	font-style: italic;
+}
+
+table.computer-parts-summary {
+	span.model {
+		font-weight: 300;
+	}
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding-left: 0;
+		li {
+			margin-bottom: 0.8em;
+		}
+		li:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+table.electronics-computer-index {
+	td.electronics-row-icon {
+		width: 150px;
+	}
+	td.electronics-row-computer {
+		text-align: center;
+		div.electronics-computer-name {
+			font-size: $font-size-large;
+			margin-bottom: 0.2em;
+		}
+		div.electronics-computer-model {
+			line-height: $line-height-small;
+			font-weight: 300;
+			margin-bottom: 0.4em;
+		}
+		div.electronics-computer-date {
+			font-size: $font-size-small;
+			font-weight: bold;
+			color: $color-text-light;
+		}
+	}
+}
+
+ul.computer-parts-summary {
+	list-style-type: none;
+	padding-left: 0;
+	
+	li {
+		font-weight: bold;
+
+		ul {
+			list-style-type: none;
+			padding-left: 1em;
+
+			li {
+				font-weight: normal;
+			}
+		}
+	}
+}
+
+ul.component {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	
+	li {
+		margin-bottom: 1em;
+	}
+	li:last-child {
+		margin-bottom: 0;
+	}
+	p {
+		margin: 0;
+		font-weight: normal;
+		line-height: $line-height-small;
+	}
+
+	p.supplemental, p.purchased {
+		margin-top: 0.4rem;
+	}
+
+	p.supplemental {
+		font-size: $font-size-small;
+		color: $color-text-light;
+		span.vlog-subtitle {
+			font-style: italic;
+		}
+	}
+
+	p.purchased {
+		font-size: $font-size-extra-small;
+		color: $color-text-light;
+	}
+
+	p.recent {
+		font-weight: bold;
+		color: $color-text-light-good;
+	}
+
+	span.device_name {
+		font-weight: 700;
+	}
+	span.unpictured {
+		font-style: italic;
+	}
+}

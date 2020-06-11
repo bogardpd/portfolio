@@ -11,7 +11,7 @@ class VlogVideo < ApplicationRecord
     # Returns a formatted string of vlog day and date, if present.
     details = Array.new
     details.push("Day #{self.vlog_day}") if self.vlog_day.present?
-    details.push(FormattedDate::text(self.video_date).to_s) if self.video_date.present?
+    details.push(DateFormat::text(self.video_date).to_s) if self.video_date.present?
     return details
   end
 

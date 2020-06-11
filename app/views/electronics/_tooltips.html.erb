@@ -1,0 +1,28 @@
+<!-- Invisible divs for filling part tooltips -->
+<div style="display: none">
+  <% parts.each do |part| %>
+    <div id="<%= part.tooltip_id %>" class="electronics-tooltip">
+      <% if part.photo && part.photo.exists? %>
+        <div style="float: left; margin-right: 7px;">
+          <%= image_tag(part.photo.url, {width: 128, height: 128}) %>
+        </div>
+      <% end %>
+      <div style="display: inline-block;">
+        <% if part.name.present? %>
+          <strong><%= part.name %></strong><br>
+        <% end %>
+        <strong><%= part.model %></strong><br>
+        <em><%= DateFormat.electronics_owned_range_text(part.purchase_date, part.disposal_date) %></em>
+        <% part.specs_array.each do |spec| %>
+          <br>
+          <%= spec %>
+        <% end %>
+        <% if part.photo && part.photo.credit %>
+          <br>
+          <small>photo: <%= part.photo.credit %></small>
+        <% end %>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+  <% end %>
+</div>

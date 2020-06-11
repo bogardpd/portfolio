@@ -1,0 +1,66 @@
+<% provide(:title, "#{@part.name_and_model} - Electronics History") %>
+<% provide(:meta_description, "Paul Bogard’s part history for #{@part.name_and_model}.") %>
+<% provide(:admin_actions, format_admin_actions({"Edit" => edit_electronics_part_path(@part)})) %>
+
+<% if @part.name.present? %>
+  <h1><span class="electronics-name">“<%= @part.name %>”</span><br><small><%= @part.model %></small></h1>
+<% else %>
+  <h1><%= @part.model %></h1>
+<% end %>
+
+<% if @part.part_categories.any? %>
+  <div class="electronics-categories"><%= safe_join(@part.part_categories.map{|category| link_to(category.name, electronics_part_category_path(category))}, sanitize("&ensp;&bull;&ensp;")) %></div>
+<% end %>
+
+<%= MarkdownText.parse(@part.note) %>
+
+<% if @part.disposal_date.present? %>
+  <p>Owned from <%= format_date(@part.purchase_date) %> &ndash; <%= format_date(@part.disposal_date) %>.</p>
+<% else %>
+  <p>Owned since <%= format_date(@part.purchase_date) %>.</p>
+<% end %>
+
+<%= link_header("Use Periods", 2) %>
+
+<% if @part.part_use_periods.any? %>
+  <table class="table">
+    <thead>
+      <th>Start Use Date</th>
+      <th>End Use Date</th>
+      <th>Computer</th>
+      <% if logged_in? %>
+        <th>Edit</th>
+      <% end %>
+    </thead>
+    <tbody>
+      <% @part.part_use_periods.each do |use| %>
+        <tr>
+          <td><%= use.start_date %></td>
+          <td><%= use.end_date %></td>
+          <td>
+            <% if use.computer %>
+              <%= link_to use.computer.name, electronics_computer_path(use.computer) %>
+            <% end %>
+          </td>
+          <% if logged_in? %>
+            <td><%= link_to "Edit", edit_electronics_part_part_use_period_path(@part, use) %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if logged_in? %>
+  <%= link_to "Add a use period", new_electronics_part_part_use_period_path(@part) %>
+<% end %>
+
+<%= link_header("Specs", 2) %>
+
+<% if @part.specs_array.any? %>
+  <ul>
+    <% @part.specs_array.each do |spec| %>
+      <li><%= spec %></li>
+    <% end %>
+  </ul>
+<% end %>

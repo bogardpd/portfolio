@@ -15,4 +15,12 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+require("@rails/ujs").start();
+require("jquery");
+
+// import 'core-js/stable';
+
+// import Popper from 'popper.js'
+// import tippy from 'tippy.js';
+// import 'tippy.js/dist/tippy.css';
+// console.log('loaded tippy');

@@ -10,6 +10,11 @@ module ApplicationHelper
     end
   end
   
+  # Takes a hash with text as keys and paths as values, and creates admin links.
+  def format_admin_actions(link_hash)
+    return safe_join(link_hash.map{|text, link| link_to(text, link)}, sanitize("&emsp;&emsp;"))
+  end
+
   # Returns a formatted date.
   def format_date(input_date)
     input_date.strftime("%e %b %Y").strip
@@ -35,7 +40,7 @@ module ApplicationHelper
       header << " "
       header << content_tag(:small, subtext)
     end
-    return content_tag("h#{level}".to_sym, link_to(header, params.permit(:anchor, :gallery, :map, :page, :version).merge(anchor: anchorize(text)), class: "link-header"), id: anchorize(text))
+    return content_tag("h#{level}".to_sym, link_to(header, params.permit!.merge(anchor: anchorize(text)), class: "link-header"), id: anchorize(text))
   end
   
   # Returns the meta description on a per-page basis.
@@ -57,14 +62,6 @@ module ApplicationHelper
   # Formats text for use in anchor/id attributes.
   def anchorize(text)
     return ParameterString::format(text)
-  end
-
-  # Parses markdown and returns a sanitized HTML string without <p> tags.
-  def parse_markdown(text)
-    whitelist = {tags: %w(a span), attributes: %w(class href target)}
-    renderer = Redcarpet::Render::HTML.new(link_attributes: {target: :_blank})
-    markdown = Redcarpet::Markdown.new(renderer)
-    return sanitize(markdown.render(text), **whitelist)
   end
   
 end

@@ -1,5 +1,5 @@
 <% provide(:title, "Computers")%>
-<% provide(:meta_description, "Tech specs of Paul Bogard’s computers and other electronics.")%>
+<% provide(:meta_description, "Tech specs of Paul Bogard’s computers and other electronics.") %>
 
 <h1>Computers</h1>
 
@@ -10,8 +10,8 @@
 <%= link_header "Home Computers", 2 %>
 
 <div class="row computers">
-	<div class="offset-lg-2 col-6 col-lg-5 label center" id="pancake"><%= link_to("PANCAKE", params.permit(:anchor).merge(anchor: "pancake"), class: "link-header") %></div>
-	<div class="col-6 col-lg-5 label center" id="quesadilla"><%= link_to("QUESADILLA", params.permit(:anchor).merge(anchor: "quesadilla"), class: "link-header") %></div>
+	<div class="offset-lg-2 col-6 col-lg-5 label center" id="pancake"><%= link_to("PANCAKE", params.permit!.merge(anchor: "pancake"), class: "link-header") %></div>
+	<div class="col-6 col-lg-5 label center" id="quesadilla"><%= link_to("QUESADILLA", params.permit!.merge(anchor: "quesadilla"), class: "link-header") %></div>
 </div>
 
 <%= render partial: "computer_specs_row", collection: @computer_specs %>

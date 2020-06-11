@@ -1,0 +1,25 @@
+<% provide(:title, "#{@computer.name} - Computer History") %>
+<% provide(:meta_description, "Paul Bogard’s history of parts in his computer #{@computer.name}.") %>
+<% provide(:admin_actions, format_admin_actions({"Edit" => edit_electronics_computer_path(@computer)})) %>
+
+<h1>Computer History &ndash; <%= @computer.name %></h1>
+
+<div class="row">
+<% if @computer.photo.exists? %>
+  <div class="col col-md-3">
+    <%= link_to(image_tag(@computer.photo.url, class: %w(img-fluid photo electronics-Spart)), @computer.photo.url, target: :_blank) %>
+  </div>
+<% end %>
+  <div class="col">
+<p class="computer-history-model mt-0"><%= @computer.model %> &middot; <%= @computer.form_factor %></p>
+
+<%= MarkdownText.parse(@computer.description) %>
+
+  </div>
+</div>
+
+<div class="electronics-timeline">
+  <%= @computer.timeline %>
+</div>
+
+<%= render(partial: "electronics/tippy_js", locals: {parts: @parts}) %>

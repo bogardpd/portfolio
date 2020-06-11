@@ -21,11 +21,17 @@ nav.navbar {
 	
 }
 
-nav.breadcrumb {
-	font-weight: 400;
-	padding: 0;
-	background-color: $color-background-main;
+div.breadcrumbs-admin {
 	border-bottom: 1px solid $color-background-light;
+	margin-bottom: 1rem;
+	padding-bottom: 0.25rem;
+}
+
+nav.breadcrumb {
+	padding: 0;
+	margin: 0;
+	font-weight: 400;
+	background-color: $color-background-main;
 
 	ol.breadcrumb {
 		padding: 0;

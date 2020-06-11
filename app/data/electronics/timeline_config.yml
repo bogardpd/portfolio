@@ -1,0 +1,44 @@
+# Configuration for ElectronicsTimeline charts
+
+bar:
+  height: 25
+  margin:
+    h: 5 # horizontal
+    v: 3 # vertical
+  padding:
+    b: 7 # bottom
+    h: 5 # horizontal
+
+canvas:
+  width: 900
+  padding:
+    v: 20
+    h: 20
+
+category:
+  height: 45
+  padding:
+    b: 20 # bottom
+    l: 0  # left
+
+legend:
+  height: 30
+  box:
+    size: 15
+    margin:
+      b: 13 # bottom
+  text:
+    margin:
+      b: 15 # bottom
+      h: 5 # horizontal
+
+timeline_block:
+  margin:
+    b: 20
+  padding:
+    b: 10
+
+year:
+  height: 25
+  padding:
+    b: 7 # bottom

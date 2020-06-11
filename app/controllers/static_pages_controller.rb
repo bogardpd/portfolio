@@ -40,6 +40,35 @@ class StaticPagesController < ApplicationController
     @computer_specs = YAML.load_file("app/data/computers/computer_specs.yml").each(&:deep_symbolize_keys!)
     @devices = YAML.load_file("app/data/computers/devices.yml").deep_symbolize_keys
   end
+
+  def computer_history
+    parts = ComputerPartsData.new()
+    @computers = parts.all_computers
+    @part_types = parts.standalone_types
+
+    add_breadcrumb "Computers", electronics_computers_path
+    add_breadcrumb "History", computer_history_path
+  end
+
+  def computer_history_details
+    @parts = ComputerPartsData.new(computer: params[:computer])
+    unless @parts.computer_exists?(params[:computer])
+      redirect_to computer_history_path
+    end
+    add_breadcrumb("Computers", electronics_computers_path)
+    add_breadcrumb("History", computer_history_path)
+    add_breadcrumb(@parts.computer_name, computer_history_details_path(computer: params[:computer]))
+  end
+
+  def part_history_details
+    @parts = ComputerPartsData.new(type: params[:part])
+    unless @parts.type_exists?(params[:part])
+      redirect_to computer_history_path
+    end
+    add_breadcrumb("Computers", electronics_computers_path)
+    add_breadcrumb("History", computer_history_path)
+    add_breadcrumb(@parts.type_name, part_history_details_path(part: params[:part]))
+  end
   
   def earthbound_database
     add_breadcrumb "EBDB", earthbound_database_path
@@ -86,7 +115,7 @@ class StaticPagesController < ApplicationController
   def gallery_starmen
     add_breadcrumb "Starmen.Net Conventions", starmen_conventions_path
     @convention = YAML.load_file("app/data/starmen_conventions.yml")[params[:gallery]].symbolize_keys
-    @meta_description = "Photos from #{@convention[:name]} (#{FormattedDate.range_text(@convention[:start]..@convention[:end])})"
+    @meta_description = "Photos from #{@convention[:name]} (#{DateFormat.range_text(@convention[:start]..@convention[:end])})"
     gallery_template(title: @convention[:name], path: starmen_con_gallery_path(gallery: params[:gallery]))
   end
 

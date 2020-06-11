@@ -1,0 +1,28 @@
+<% provide(:title, "Computers") %>
+<% provide(:meta_description, "Tech specs and history of Paul Bogard’s computers.") %>
+<% provide(:admin_actions, format_admin_actions({"Add Computer" => new_electronics_computer_path})) %>
+
+<h1>Computers</h1>
+
+<% if @computers.any? %>
+
+  <div class="electronics-timeline">
+    <%= @categorized_computer_collection.timeline %>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>Desktops</h2>
+      <%= render(partial: "index_table", locals: {computers: @desktops}) %>
+    </div>
+    <div class="col-lg-6">
+      <h2>Laptops</h2>
+      <%= render(partial: "index_table", locals: {computers: @laptops}) %>
+    </div>
+  </div>
+
+<% else %>
+  <div class="alert alert-info">No computers have been added yet.</div>
+<% end %>
+
+<%= render(partial: "electronics/tippy_js", locals: {parts: @categorized_computer_collection.all_parts}) %>

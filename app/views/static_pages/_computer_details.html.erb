@@ -1,0 +1,33 @@
+<% computer.description.each do |paragraph| %>
+  <p><%= paragraph %></p>
+<% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4">
+			<% if computer.photo %>
+        <%= project_image(computer.photo, type: :large) %>
+      <% end %>
+		</div>
+		<div class="col-lg-8">
+			<p class="computer-history-model"><%= computer.model %> &middot; <%= computer.form_factor %></p>
+			<table class="table computer-parts-summary">
+				<tbody>
+					<% computer.current_parts.each do |k, v| %>
+						<tr>
+							<th scope="row"><%= computer.part_category_name(k, v.size) %></th>
+							<td>
+								<ul>
+									<% v.each do |part| %>
+										<li><%= part[:model] %></li>
+									<% end %>
+								</ul>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
+</div>

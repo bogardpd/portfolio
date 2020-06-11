@@ -10,7 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_021418) do
+ActiveRecord::Schema.define(version: 2020_06_11_163544) do
+
+  create_table "computers", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "model"
+    t.text "description"
+    t.string "form_factor"
+    t.date "purchase_date"
+    t.date "disposal_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_computers_on_slug"
+  end
+
+  create_table "part_categories", force: :cascade do |t|
+    t.string "name"
+    t.string "name_singular"
+    t.string "name_lowercase_plural"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_part_categories_on_slug"
+  end
+
+  create_table "part_categories_parts", id: false, force: :cascade do |t|
+    t.integer "part_category_id", null: false
+    t.integer "part_id", null: false
+    t.index ["part_category_id"], name: "index_part_categories_parts_on_part_category_id"
+    t.index ["part_id"], name: "index_part_categories_parts_on_part_id"
+  end
+
+  create_table "part_use_periods", force: :cascade do |t|
+    t.integer "part_id"
+    t.integer "computer_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["computer_id"], name: "index_part_use_periods_on_computer_id"
+    t.index ["part_id"], name: "index_part_use_periods_on_part_id"
+  end
+
+  create_table "parts", force: :cascade do |t|
+    t.string "model"
+    t.string "name"
+    t.string "part_number"
+    t.text "specs"
+    t.date "purchase_date"
+    t.date "disposal_date"
+    t.text "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "manufacturer"
+  end
 
   create_table "terminal_silhouettes", force: :cascade do |t|
     t.string "iata_code"
@@ -54,4 +109,6 @@ ActiveRecord::Schema.define(version: 2019_10_08_021418) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "part_use_periods", "computers"
+  add_foreign_key "part_use_periods", "parts"
 end

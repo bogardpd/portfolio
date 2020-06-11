@@ -8,4 +8,4 @@
   end
 %>
 
-<%= Tile.new(path: polymorphic_url(gallery_parent, gallery: key), img: "#{PortfolioImage::ROOT_PATH}photos/covers/#{key.to_s}.jpg", title: name, caption: location, date_string: FormattedDate.range_text(start_date..end_date)).show %>
+<%= Tile.new(path: polymorphic_url(gallery_parent, gallery: key), img: "#{PortfolioImage::ROOT_PATH}photos/covers/#{key.to_s}.jpg", title: name, caption: location, date_string: DateFormat.range_text(start_date..end_date)).show %>
