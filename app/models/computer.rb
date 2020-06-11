@@ -39,9 +39,23 @@ class Computer < ApplicationRecord
     return cpc.groupings
   end
 
+  def chart_label
+    if self.model.present?
+      return "#{self.name} (#{self.model})"
+    else
+      return self.name
+    end
+  end
+
   def photo
     @photo ||= ExternalImage.new("electronics/computers/#{self.slug}.jpg")
     return @photo
+  end
+
+  # Returns an empty array. Used when we're pretending a computer is a Part
+  # in an ElectronicsTimeline.
+  def specs_array
+    return Array.new
   end
 
   # Returns an ElectronicsTimeline SVG, grouped by category.

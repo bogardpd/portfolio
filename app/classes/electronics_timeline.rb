@@ -9,6 +9,7 @@ class ElectronicsTimeline
   #   parts to draw a timeline for.
   def initialize(cat_part_collection)
     @groupings = cat_part_collection.groupings
+    @parts = cat_part_collection.all_parts
     @computer = cat_part_collection.comparison_computer
     @date_range = cat_part_collection.date_range
     @any_parts = cat_part_collection.any_parts?
@@ -54,6 +55,30 @@ class ElectronicsTimeline
       end
     end
     return output.to_xml
+  end
+
+  # Returns HTML for tooltip divs for all unique parts.
+  def tooltip_divs
+    return "" unless @any_parts
+    output = Nokogiri::HTML::DocumentFragment.parse("")
+    Nokogiri::HTML::Builder.with(output) do |html|
+      html.div(style: "display: none;") do
+      # html.div() do
+        @parts.each do |part|
+          dates = DateFormat.electronics_owned_range_text(part.purchase_date, part.disposal_date)
+          html.div(id: tooltip_id(part), class: "electronics-tooltip") do
+            html.strong.text(part.chart_label)
+            html.br
+            html.em.text(dates)
+            part.specs_array.each do |spec|
+              html.br
+              html.text(spec)
+            end
+          end
+        end
+      end
+    end
+    return output.to_html
   end
 
   # Draw a timeline to the provided SVG file.
@@ -209,10 +234,11 @@ class ElectronicsTimeline
     left_x = date_x_pos(part[:purchase_date])
     right_x = date_x_pos(disposal_date(part))
     width = right_x - left_x
-
+    label = part.chart_label
+    
     # Draw owned timelines.
     rect_owned_attr = {
-      id: "part-#{part_id(part)}-owned",
+      id: "part-#{part.id}-owned",
       x: left_x,
       y: y,
       width: width,
@@ -229,13 +255,12 @@ class ElectronicsTimeline
         use_width = (date_x_pos(end_date(use.end_date)) - use_x)
         use_class = use_period_class(use)
         rect_use_attr = {
-          id: "part-#{part_id(part)}-use-#{use_index}",
+          id: "part-#{part.id}-use-#{use_index}",
           x: use_x,
           y: y,
           width: use_width,
           height: @settings[:bar][:height],
-          class: use_class,
-          # fill: "url(#diagonal-hatch)"
+          class: use_class
         }
         xml.rect(**rect_use_attr)
       end
@@ -259,15 +284,24 @@ class ElectronicsTimeline
       text_anchor = "start"
       text_class.push("part-bar-side")
     end
-    label = part[:name] ? "#{part[:name]} (#{part[:model]})" : part[:model]
     label_attr = {
-      id: "part-#{part_id(part)}-label",
+      id: "part-#{part.id}-label",
       x: text_x,
       y: y + @settings[:bar][:height] - @settings[:bar][:padding][:b],
       class: text_class.join(" "),
       "text-anchor": text_anchor
     }
     xml.text_(**label_attr) {xml.text(label)}
+
+    # Draw invisible rectangles over owned for allowing tooltip hovers.
+    rect_tooltip_zone_attr = {
+      **(rect_owned_attr.slice(:x, :y, :width, :height)),
+      id: "part-#{part.id}-tooltip-zone",
+      class: "tooltip-zone",
+      "data-tippy-template": tooltip_id(part)
+    }
+    xml.rect(**rect_tooltip_zone_attr)
+    
   end
 
   # Draws timelines for a collection of parts.
@@ -277,7 +311,7 @@ class ElectronicsTimeline
     anchor_y += @settings[:year][:height]
     parts.sort_by!{|p| [p.purchase_date, disposal_date(p), p.model]}
     parts.each_with_index do |part, index|
-      xml.g(id: "part-#{part_id(part)}-timelines") do
+      xml.g(id: "part-#{part.id}-timelines") do
         draw_part(xml, anchor_y, index, part)
       end
     end
@@ -336,12 +370,13 @@ class ElectronicsTimeline
     end
   end
 
-  def part_id(part)
-    return part.id || part.name&.parameterize
-  end
-
   def timeline_block_height(parts)
     return @settings[:year][:height] + parts.size * @settings[:bar][:row_height] + @settings[:timeline_block][:padding][:b]
+  end
+
+  # Returns a tooltip id for a given part
+  def tooltip_id(part)
+    return "part-#{part.id}-tooltip-content"
   end
 
   # Determines which class of timeline bar to use, based on whether the part is 

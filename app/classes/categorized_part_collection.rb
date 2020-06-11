@@ -28,6 +28,11 @@ class CategorizedPartCollection
     @groupings = group_by_category
   end
 
+  # Returns an array of all parts
+  def all_parts
+    return @parts
+  end
+
   # Returns false if there are zero parts in the collection.
   def any_parts?
     return @parts.any?
@@ -57,8 +62,13 @@ class CategorizedPartCollection
   end
 
   # Returns an ElectronicsTimeline for this instance's data.
-  def timeline
-    return ElectronicsTimeline.new(self).svg_xml.html_safe
+  def timeline(include_tooltip_divs: true)
+    et = ElectronicsTimeline.new(self)
+    output = et.svg_xml
+    if include_tooltip_divs
+      output += et.tooltip_divs
+    end
+    return output.html_safe
   end
 
   private

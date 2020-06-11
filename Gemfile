@@ -9,8 +9,6 @@ gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 # Use redcarpet for Markdown parsing.
 gem 'redcarpet', '~> 3.5'
 gem 'webpacker', '~> 5.1', '>= 5.1.1'
-# gem 'jquery-rails'
-# gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1' 
 
 gem 'jbuilder', '~> 2.10'
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1'

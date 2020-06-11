@@ -1,6 +1,6 @@
 {
   "//": [
-    "moment - used in timezones",
+    "moment - used in time_zones",
     "popper.js - needed for bootstrap"
   ],
   "dependencies": {

@@ -9,9 +9,21 @@ class Part < ApplicationRecord
   NEWLINE_ATTRS = %w(specs note)
   before_save :normalize_newlines
 
-  def name_and_model
+  def chart_label
     if self.name.present?
-      return "#{self.model} (“#{self.name}”)"
+      return "#{self.name} (#{self.model})"
+    else
+      return self.model
+    end
+  end
+
+  def name_and_model(parentheses: :name)
+    if self.name.present?
+      if parentheses = :name
+        return "#{self.model} (“#{self.name}”)"
+      else
+        return "#{self.name} (“#{self.model}”)"
+      end
     else
       return self.model
     end

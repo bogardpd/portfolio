@@ -24,6 +24,7 @@ class CategorizedComputerCollection < CategorizedPartCollection
       if computers && computers.any?
         computers = computers.map do |c|
           part_attr = {
+            id: c.id,
             model: c.model,
             name: c.name,
             purchase_date: c.purchase_date,

@@ -9,6 +9,11 @@ rect#canvas {
 rect.owned {
   fill: #a5a8af;
 }
+rect.tooltip-zone {
+  fill: #ffffff;
+  fill-opacity: 0;
+  stroke: 1;
+}
 rect.used {
   fill: #55595f;
 }
