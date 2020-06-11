@@ -67,12 +67,16 @@ class ElectronicsTimeline
           dates = DateFormat.electronics_owned_range_text(part.purchase_date, part.disposal_date)
           html.div(id: tooltip_id(part), class: "electronics-tooltip") do
             if part.photo && part.photo.exists?
-              html.div(style: "float: left") do
-                html.img(src: "https://pbogardcom-images.s3.us-east-2.amazonaws.com/electronics/computers/frites-liberte.jpg", width: 100, height: 100)
+              html.div(style: "float: left; margin-right: 7px;") do
+                html.img(src: part.photo.url, width: 128, height: 128)
               end
             end
             html.div(style: "display: inline-block") do
-              html.strong.text(part.chart_label)
+              if part.name.present?
+                html.strong.text(part.name)
+                html.br
+              end
+              html.strong.text(part.model)
               html.br
               html.em.text(dates)
               part.specs_array.each do |spec|
@@ -81,7 +85,7 @@ class ElectronicsTimeline
               end
               if part.photo && part.photo.credit
                 html.br
-                html.small.text("image credit: #{part.photo.credit}")
+                html.small.text("photo: #{part.photo.credit}")
               end
             end
             html.div(style: "clear: both;")

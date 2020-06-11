@@ -21,10 +21,16 @@ class ExternalImage
   end
 
   def credit
-    # return nil unless self.exists?
+    require "open-uri"
+    return nil unless self.exists?
     return @credit if defined?(@credit)
-    # photo.credit.txt
-    @credit = @path.gsub(/.jpg$/, ".credit.txt")
+    credit_path = AWS_S3_ROOT + @path.gsub(/.jpg$/, ".credit.txt")
+    begin
+      @credit = open(credit_path).read.strip
+    rescue OpenURI::HTTPError
+      @credit = nil
+    end
+    # @credit = credit_path
     return @credit
   end
 

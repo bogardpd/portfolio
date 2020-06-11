@@ -39,6 +39,7 @@ class Computer < ApplicationRecord
     return cpc.groupings
   end
 
+  # Returns a short name for the Computer for use in timelines.
   def chart_label
     if self.model.present?
       return "#{self.name} (#{self.model})"

@@ -9,7 +9,7 @@ class Part < ApplicationRecord
   NEWLINE_ATTRS = %w(specs note)
   before_save :normalize_newlines
 
-  # Returns a short name for the Part for use in timelines and tooltips.
+  # Returns a short name for the Part for use in timelines.
   def chart_label
     if self.name.present?
       return "#{self.name} (#{self.model})"
@@ -29,7 +29,12 @@ class Part < ApplicationRecord
 
   def photo
     return nil unless self.part_number
-    @photo ||= ExternalImage.new("electronics/parts/#{self.part_number.parameterize}.jpg")
+    path = "electronics/parts/"
+    path += "#{self.manufacturer.parameterize}/" if self.manufacturer.present?
+    path += "#{self.part_number.parameterize}.jpg" 
+    puts "============================"
+    puts path
+    @photo ||= ExternalImage.new(path)
     return @photo
   end
 

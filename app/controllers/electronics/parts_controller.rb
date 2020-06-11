@@ -65,7 +65,7 @@ class Electronics::PartsController < ApplicationController
   end
 
   def part_params
-    params.require(:part).permit(:disposal_date, :model, :name, :note, :part_number, :purchase_date, :specs, part_category_ids: [])
+    params.require(:part).permit(:disposal_date, :manufacturer, :model, :name, :note, :part_number, :purchase_date, :specs, part_category_ids: [])
   end
 
 end

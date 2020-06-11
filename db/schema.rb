@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_182214) do
+ActiveRecord::Schema.define(version: 2020_06_11_163544) do
 
   create_table "computers", force: :cascade do |t|
     t.string "name"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_182214) do
     t.text "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "manufacturer"
   end
 
   create_table "terminal_silhouettes", force: :cascade do |t|
