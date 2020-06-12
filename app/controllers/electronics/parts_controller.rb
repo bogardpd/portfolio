@@ -3,7 +3,7 @@ class Electronics::PartsController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @parts = Part.all
+    @parts = Part.all.order(:model)
     add_part_breadcrumbs
   end
 
