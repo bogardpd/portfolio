@@ -19,6 +19,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore assets directory so github will compile assets.
+/public/assets
+
 /public/packs
 /public/packs-test
 /node_modules
