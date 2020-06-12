@@ -8,6 +8,10 @@
   <h1><%= @part.model %></h1>
 <% end %>
 
+<% if @part.photo %>
+  <div class="center"><%= image_tag(@part.photo.url) %></div>
+<% end %>
+
 <% if @part.part_categories.any? %>
   <div class="electronics-categories"><%= safe_join(@part.part_categories.map{|category| link_to(category.name, electronics_part_category_path(category))}, sanitize("&ensp;&bull;&ensp;")) %></div>
 <% end %>
