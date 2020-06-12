@@ -177,6 +177,43 @@ table.electronics-computer-index {
 	}
 }
 
+table.electronics-tooltip {
+	td {
+		line-height: $line-height-small;
+		img {
+			margin-right: 10px;
+		}
+		div {
+			margin-top: 3px;
+			margin-bottom: 3px;
+		}
+		div.electronics-tooltip-name {
+			font-weight: bold;
+			font-size: 125%;
+		}
+		div.electronics-tooltip-model {
+			font-weight: bold;
+		}
+		div.electronics-tooltip-dates {
+			font-style: italic;
+		}
+		div.electronics-tooltip-photo-credit {
+			margin-top: 10px;
+			font-size: 85%;
+			color: $color-text-light;
+		}
+		ul {
+			margin: 6px 0 3px 0;
+			padding: 3px 0 0 0;
+			list-style-type: none;
+			border-top: 1px solid $color-border;
+			li {
+				margin-top: 3px;
+			}
+		}
+	}
+}
+
 ul.computer-parts-summary {
 	list-style-type: none;
 	padding-left: 0;

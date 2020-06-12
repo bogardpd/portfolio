@@ -2,28 +2,33 @@
 
 <div style="display: none">
   <% parts.each do |part| %>
-    <div id="<%= part.tooltip_id %>" class="electronics-tooltip">
-      <% if part.photo && part.photo.exists? %>
-        <div style="float: left; margin-right: 7px;">
-          <%= image_tag(part.photo.url, {width: 128, height: 128}) %>
-        </div>
-      <% end %>
-      <div style="display: inline-block;">
-        <% if part.name.present? %>
-          <strong><%= part.name %></strong><br>
-        <% end %>
-        <strong><%= part.model %></strong><br>
-        <em><%= DateFormat.electronics_owned_range_text(part.purchase_date, part.disposal_date) %></em>
-        <% part.specs_array.each do |spec| %>
-          <br>
-          <%= spec %>
-        <% end %>
-        <% if part.photo && part.photo.credit %>
-          <br>
-          <small>photo: <%= part.photo.credit %></small>
-        <% end %>
-      </div>
-      <div style="clear: both;"></div>
+    <div id="<%= part.tooltip_id %>">
+      <table class="electronics-tooltip">
+        <tr>
+          <% if part.photo && part.photo.exists? %>
+            <td><%= image_tag(part.photo.url, {width: 128, height: 128}) %></td>
+          <% end %>
+          <td>
+            <% if part.name.present? %>
+              <div class="electronics-tooltip-name"><%= part.name %></div>
+            <% end %>
+            <div class="electronics-tooltip-model"><%= part.model %></div>
+            <div class="electronics-tooltip-dates">
+              <%= DateFormat.electronics_owned_range_text(part.purchase_date, part.disposal_date) %>
+            </div>
+            <% if part.specs_array.any? %>
+              <ul class="electronics-tooltip-specs">
+                <% part.specs_array.each do |spec| %>
+                  <li><%= spec %></li>
+                <% end %>
+              </ul>
+            <% end %>
+            <% if part.photo && part.photo.credit %>
+              <div class="electronics-tooltip-photo-credit">photo: <%= part.photo.credit %></div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
   <% end %>
 </div>
