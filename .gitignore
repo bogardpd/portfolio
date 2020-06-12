@@ -20,7 +20,7 @@
 /config/master.key
 
 # Ignore assets directory so github will compile assets.
-/public/assets
+# /public/assets
 
 /public/packs
 /public/packs-test
