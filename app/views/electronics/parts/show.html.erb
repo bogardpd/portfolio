@@ -8,7 +8,7 @@
   <h1><%= @part.model %></h1>
 <% end %>
 
-<% if @part.photo %>
+<% if @part.photo.present? %>
   <div class="center"><%= image_tag(@part.photo.url) %></div>
 <% end %>
 
