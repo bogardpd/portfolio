@@ -1,5 +1,5 @@
 <footer>
-	<p>Portfolio created by and &copy; 2012&ndash;<%= Time.current.year %> <%= link_to("Paul Bogard", about_path) %>. Embedded media may have other copyrights. Portfolio source code is availble in a <%= link_to("GitHub repository", "https://github.com/bogardpd/portfolio", target: :_blank) %> under the MIT license.</p>
+	<p>Portfolio created by <%= link_to("Paul Bogard", about_path) %>. Portfolio source code is availble in a <%= link_to("GitHub repository", "https://github.com/bogardpd/portfolio", target: :_blank) %> under the MIT license.</p>
   
   <% if logged_in? %>
     <p>Logged in as <span class="username"><%= current_user.username %></span>  (<%= link_to "log out", logout_path, method: "delete" %>)</p>
