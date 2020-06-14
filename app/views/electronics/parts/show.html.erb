@@ -9,7 +9,10 @@
 <% end %>
 
 <% if @part.photo && @part.photo.exists? %>
-  <div class="center"><%= image_tag(@part.photo.url) %></div>
+  <div class="center"><%= image_tag(@part.photo.url, class: "photo") %></div>
+  <% if @part.photo.credit %>
+    <div class="center small"><%= @part.photo.credit %></div>
+  <% end %>
 <% end %>
 
 <% if @part.part_categories.any? %>
