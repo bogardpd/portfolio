@@ -9,21 +9,17 @@ class Part < ApplicationRecord
   NEWLINE_ATTRS = %w(specs note)
   before_save :normalize_newlines
 
-  # Returns a short name for the Part for use in timelines.
-  def chart_label
-    if self.name.present?
-      return "#{self.name} (#{self.model})"
-    else
-      return self.model
-    end
-  end
-
   # Returns the model and name (if present) of the Part.
   def name_and_model
-    if self.name.present?
-      return "#{self.model} (“#{self.name}”)"
+    return Part.name_and_model(self.name, self.model)
+  end
+
+  # Returns the model and name of an arbitrary part.
+  def self.name_and_model(name, model)
+    if name.present?
+      return "#{model} (“#{name}”)"
     else
-      return self.model
+      return model
     end
   end
 
@@ -41,23 +37,18 @@ class Part < ApplicationRecord
     return self.specs.lines.map(&:squish)
   end
 
-  # Returns a unique ID for use in tooltip divs
-  def tooltip_id
-    return "part-#{self.id}-tooltip-content"
-  end
-
   # Returns a CategorizedPartCollection of Parts which have a PartUsePeriod with
   # no end date not associated with any Computer.
   def self.current_no_computer
     parts = Part.joins(:part_use_periods).where(part_use_periods: {end_date: nil, computer: nil})
-    return CategorizedPartCollection.new(parts)
+    return CategorizedPartCollection.new(parts: parts)
   end
 
   # Creates an SVG timeline for an ActiveRecord association of Parts.
   def self.timeline(category_order: nil, computer: nil)
     parts = self.all
     return nil unless parts.any?
-    return CategorizedPartCollection.new(parts).timeline
+    return CategorizedPartCollection.new(parts: parts).timeline
   end
 
   private

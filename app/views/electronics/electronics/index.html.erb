@@ -26,13 +26,13 @@
         <p class="computer-history-model"><%= computer.model %> &middot; <%= computer.form_factor %></p>
         <table class="table computer-parts-summary">
           <tbody>
-            <% computer.in_use_by_category.each do |category, parts| %>
+            <% computer.in_use_by_category.groupings.each do |category| %>
               <tr>
-                <th scope="row"><%= category.name_category_heading(parts.size) %></th>
+                <th scope="row"><%= category[:category] %></th>
                 <td>
                   <ul>
-                    <% parts.each do |part| %>
-                      <li><span data-tippy-template="<%= part.tooltip_id %>"><%= part.name_and_model %></span></li>
+                    <% category[:items].each do |part| %>
+                      <li><span data-tippy-template="<%= CategorizedPartCollection.tooltip_id(part[:id]) %>"><%= Part.name_and_model(part[:name], part[:model]) %></span></li>
                     <% end %>
                   </ul>
                 </td>
@@ -51,13 +51,13 @@
 
 <table class="table computer-parts-summary">
   <tbody>
-    <% @device_groupings.each do |category, parts| %>
+    <% @device_groupings.each do |category| %>
       <tr>
-        <th scope="row"><%= category.name_category_heading(parts.size) %></th>
+        <th scope="row"><%= category[:category] %></th>
         <td>
           <ul>
-            <% parts.each do |part| %>
-              <li><span data-tippy-template="<%= part.tooltip_id %>"><%= part.name_and_model %></span></li>
+            <% category[:items].each do |part| %>
+              <li><span data-tippy-template="<%= CategorizedPartCollection.tooltip_id(part[:id]) %>"><%= Part.name_and_model(part[:name], part[:model]) %></span></li>
             <% end %>
           </ul>
         </td>

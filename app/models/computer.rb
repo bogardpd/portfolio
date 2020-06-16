@@ -31,21 +31,18 @@ class Computer < ApplicationRecord
     return self.slug
   end
 
-  # Returns a hash with keys of PartCategories, and values of arrays of Parts
-  # which have a PartUsePeriod with no end date associated with this Computer.
-  def in_use_by_category
-    parts = Part.joins(:part_use_periods).where(part_use_periods: {end_date: nil, computer: self})
-    cpc = CategorizedPartCollection.new(parts, category_order: CATEGORY_ORDER)
-    return cpc.groupings
+  # Returns a CategorizedPartCollection of this computer's Parts.
+  def categorized_part_collection
+    cpc = CategorizedPartCollection.new(parts: self.parts, category_order: CATEGORY_ORDER)
+    return cpc
   end
 
-  # Returns a short name for the Computer for use in timelines.
-  def chart_label
-    if self.model.present?
-      return "#{self.name} (#{self.model})"
-    else
-      return self.name
-    end
+  # Returns a CategorizedPartCollection of this computer's currently in use
+  # Parts.
+  def in_use_by_category
+    parts = Part.joins(:part_use_periods).where(part_use_periods: {end_date: nil, computer: self})
+    cpc = CategorizedPartCollection.new(parts: parts, category_order: CATEGORY_ORDER)
+    return cpc
   end
 
   def photo
@@ -61,14 +58,9 @@ class Computer < ApplicationRecord
 
   # Returns an ElectronicsTimeline SVG, grouped by category.
   def timeline
-    cpc = CategorizedPartCollection.new(self.parts,
-      category_order: CATEGORY_ORDER, computer: self)
+    cpc = CategorizedPartCollection.new(parts: self.parts,
+      category_order: CATEGORY_ORDER, comparison_computer: self)
     return cpc.timeline
-  end
-
-  # Returns a unique ID for use in tooltip divs
-  def tooltip_id
-    return "part-#{self.id}-tooltip-content"
   end
 
   private

@@ -42,10 +42,15 @@ class PartCategory < ApplicationRecord
     return categories.reject{|c| c == self}.sort_by(&:name)
   end
 
+  # Returns a CategorizedPartCollection for Parts in thie PartCategory.
+  def categorized_part_collection
+    cpc = CategorizedPartCollection.new(parts: self.parts, single_category: true)
+    return cpc
+  end
+
   # Returns an ElectronicsTimeline for Parts in this PartCategory.
   def timeline
-    cpc = CategorizedPartCollection.new(self.parts, single_category: true)
-    return cpc.timeline
+    return categorized_part_collection.timeline
   end
 
   private

@@ -9,10 +9,8 @@ class ElectronicsTimeline
   #   parts to draw a timeline for.
   def initialize(cat_part_collection)
     @groupings = cat_part_collection.groupings
-    @parts = cat_part_collection.all_parts
-    @computer = cat_part_collection.comparison_computer
+    @parts = cat_part_collection.parts
     @date_range = cat_part_collection.date_range
-    @any_parts = cat_part_collection.any_parts?
     @today = Date.today
         
     calculate_initial_settings
@@ -20,7 +18,7 @@ class ElectronicsTimeline
  
   # Creates XML for a timeline SVG graphic.
   def svg_xml
-    return "" unless @any_parts
+    return "" unless @parts.any?
     calculate_settings
     output = Nokogiri::XML::Builder.new(encoding: "UTF-8") do |xml|
       svg_options = {
@@ -43,13 +41,13 @@ class ElectronicsTimeline
         draw_legend(xml, cursor_y)
         cursor_y += @settings[:legend][:height]
         
-        @groupings.each do |category, parts|
+        @groupings.each do |category|
           if @groupings.size > 1
             draw_category_heading(xml, cursor_y, category)
             cursor_y += @settings[:category][:height]  
           end
-          draw_timeline_block(xml, cursor_y, parts)
-          cursor_y += timeline_block_height(parts) + @settings[:timeline_block][:margin][:b]
+          draw_timeline_block(xml, cursor_y, category[:items])
+          cursor_y += timeline_block_height(category[:items]) + @settings[:timeline_block][:margin][:b]
         end
 
       end
@@ -102,10 +100,10 @@ class ElectronicsTimeline
     height = Hash.new
     height[:margin] = 2 * @settings[:canvas][:padding][:v]
     height[:legend] = @settings[:legend][:height]
-    height[:timeline_blocks] = @groupings.map{|c,p| timeline_block_height(p)}.sum
+    height[:timeline_blocks] = @groupings.map{|c| timeline_block_height(c[:items])}.sum
 
     if @groupings.size > 1
-      category_count = @groupings.keys.size
+      category_count = @groupings.size
       height[:category_headings] = category_count * @settings[:category][:height]
       height[:timeline_margins] = (category_count - 1) * @settings[:timeline_block][:margin][:b]
     end
@@ -146,9 +144,22 @@ class ElectronicsTimeline
     @settings[:date_range][:years] = year_range.map{|y| [y, date_x_pos(Date.new(y))]}.to_h
   end
 
+  # Returns a short name for an item.
+  def chart_label(item)
+    if item[:model].present?
+      if item[:name].present?
+        return "#{item[:name]} (#{item[:model]})"
+      else
+        return item[:model]
+      end
+    else
+      return item[:name]
+    end
+  end
+
   def draw_category_heading(xml, anchor_y, category)
-    if category && category.name
-      category_name = category.name
+    if category[:category]
+      category_name = category[:category]
     else
       category_name = "Uncategorized"
     end
@@ -162,9 +173,9 @@ class ElectronicsTimeline
 
   def draw_legend(xml, top_y)
     legend = @settings[:legend]
-    used_classes = @groupings.map{|category, parts|
-      parts.map{|part|
-        part.part_use_periods.map{|use| use_period_class(use)}
+    used_classes = @groupings.map{|category|
+      category[:items].map{|part|
+        part[:uses].map{|dates, use_attr| use_period_class(dates, use_attr)}
       }
     }.flatten.uniq
         
@@ -207,14 +218,14 @@ class ElectronicsTimeline
 
   def draw_part(xml, anchor_y, index, part)
     y = anchor_y + (index * @settings[:bar][:row_height]) + @settings[:bar][:margin][:v]
-    left_x = date_x_pos(part[:purchase_date])
+    left_x = date_x_pos(part[:owned].begin)
     right_x = date_x_pos(disposal_date(part))
     width = right_x - left_x
-    label = part.chart_label
+    label = chart_label(part)
     
     # Draw owned timelines.
     rect_owned_attr = {
-      id: "part-#{part.id}-owned",
+      id: "#{part[:id]}-owned",
       x: left_x,
       y: y,
       width: width,
@@ -224,14 +235,14 @@ class ElectronicsTimeline
     xml.rect(**rect_owned_attr)
 
     # Draw used timelines.
-    use_periods = part.part_use_periods
+    use_periods = part[:uses]
     if use_periods.any?
-      use_periods.each_with_index do |use, use_index|
-        use_x = date_x_pos(use.start_date)
-        use_width = (date_x_pos(end_date(use.end_date)) - use_x)
-        use_class = use_period_class(use)
+      use_periods.each_with_index do |(dates, use_attr), use_index|
+        use_x = date_x_pos(dates.begin)
+        use_width = (date_x_pos(end_date(dates.end)) - use_x)
+        use_class = use_period_class(dates, use_attr)
         rect_use_attr = {
-          id: "part-#{part.id}-use-#{use_index}",
+          id: "#{part[:id]}-use-#{use_index}",
           x: use_x,
           y: y,
           width: use_width,
@@ -261,7 +272,7 @@ class ElectronicsTimeline
       text_class.push("part-bar-side")
     end
     label_attr = {
-      id: "part-#{part.id}-label",
+      id: "#{part[:id]}-label",
       x: text_x,
       y: y + @settings[:bar][:height] - @settings[:bar][:padding][:b],
       class: text_class.join(" "),
@@ -272,9 +283,9 @@ class ElectronicsTimeline
     # Draw invisible rectangles over owned for allowing tooltip hovers.
     rect_tooltip_zone_attr = {
       **(rect_owned_attr.slice(:x, :y, :width, :height)),
-      id: "part-#{part.id}-tooltip-zone",
+      id: "#{part[:id]}-tooltip-zone",
       class: "tooltip-zone",
-      "data-tippy-template": part.tooltip_id
+      "data-tippy-template": CategorizedPartCollection.tooltip_id(part[:id])
     }
     xml.rect(**rect_tooltip_zone_attr)
     
@@ -285,9 +296,9 @@ class ElectronicsTimeline
     draw_year_gridlines(xml, anchor_y, timeline_block_height(parts))
 
     anchor_y += @settings[:year][:height]
-    parts.sort_by!{|p| [p.purchase_date, disposal_date(p), p.model]}
+    parts.sort_by!{|p| [p[:owned].begin, disposal_date(p), p[:model]]}
     parts.each_with_index do |part, index|
-      xml.g(id: "part-#{part.id}-timelines") do
+      xml.g(id: "#{part[:id]}-timelines") do
         draw_part(xml, anchor_y, index, part)
       end
     end
@@ -326,7 +337,7 @@ class ElectronicsTimeline
 
   # Returns the disposal date of a part. Returns today's date if nil.
   def disposal_date(part)
-    return end_date(part[:disposal_date])
+    return end_date(part[:owned].end)
   end
 
   # Takes a date or nil. Returns the provided date, or returns today's date if nil.
@@ -352,12 +363,12 @@ class ElectronicsTimeline
 
   # Determines which class of timeline bar to use, based on whether the part is 
   # current and whether it's used in another computer.
-  def use_period_class(use_period)
+  def use_period_class(date_range, use_attr)
     use_class = "used"
-    if @computer && @computer != use_period.computer
+    if use_attr[:other_computer]
       use_class += "-other-computer"
     end
-    if use_period.end_date.nil?
+    if date_range.end.nil?
       use_class += "-current"
     end
     return use_class

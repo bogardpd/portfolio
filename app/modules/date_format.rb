@@ -5,12 +5,12 @@ module DateFormat
     input_date.strftime("%e %b %Y").strip
   end
 
-  def self.electronics_owned_range_text(purchase_date, disposal_date)
+  def self.electronics_owned_range_text(date_range)
     format = "%b %Y"
-    if disposal_date.present?
-      return [purchase_date, disposal_date].map{|d| d.strftime(format)}.join(" – ")
+    if date_range.end.present?
+      return [date_range.begin, date_range.end].map{|d| d.strftime(format)}.join(" – ")
     else
-      return "Since #{purchase_date.strftime(format)}"
+      return "Since #{date_range.begin.strftime(format)}"
     end
   end
 

@@ -12,7 +12,7 @@ class Electronics::PartCategoriesController < ApplicationController
 
   def show
     @category = PartCategory.find_by!(slug: params[:slug])
-    @parts = @category.parts
+    @cat_part_collection = @category.categorized_part_collection
     add_part_category_breadcrumbs
     add_breadcrumb @category.name, electronics_part_category_path(@category)
   rescue ActiveRecord::RecordNotFound

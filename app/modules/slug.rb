@@ -7,7 +7,6 @@ module Slug
     slug = name.parameterize
     if name_was&.parameterize != slug
       existing = model.where("slug LIKE :prefix", prefix: "#{slug}%").pluck(:slug) | RESERVED_SLUGS
-      puts "existing: #{existing}"
       if existing.include?(slug)
         numbered_matching_slugs = existing.select{|e| e[/^#{slug}-\d+/]}
         if numbered_matching_slugs.any?

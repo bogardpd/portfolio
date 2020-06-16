@@ -4,10 +4,10 @@
 
 <h1>Device History &ndash; <%= @category.name %></h1>
 
-<% if @category.parts.any? %>
+<% if @cat_part_collection.parts.any? %>
 
   <div class="electronics-timeline">
-    <%= @category.timeline %>
+    <%= @cat_part_collection.timeline %>
   </div>
 
   <% if @category.shared_categories.any? %>
@@ -18,7 +18,7 @@
     </p>
   <% end %>
 
-  <%= render(partial: "electronics/tippy_js", locals: {parts: @parts}) %>
+  <%= render(partial: "electronics/tippy_js", locals: {parts: @cat_part_collection.parts}) %>
 
 <% else %>
   <div class="alert alert-info">No parts have been added to <%= @category.name %> yet.</div>

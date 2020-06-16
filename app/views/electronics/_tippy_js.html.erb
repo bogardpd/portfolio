@@ -2,29 +2,29 @@
 
 <div style="display: none">
   <% parts.each do |part| %>
-    <div id="<%= part.tooltip_id %>">
+    <div id="<%= CategorizedPartCollection.tooltip_id(part[:id]) %>">
       <table class="electronics-tooltip">
         <tr>
-          <% if part.photo && part.photo.exists? %>
-            <td><%= image_tag(part.photo.url, {width: 128, height: 128}) %></td>
+          <% if part[:photo] && part[:photo].exists? %>
+            <td><%= image_tag(part[:photo].url, {width: 128, height: 128}) %></td>
           <% end %>
           <td>
-            <% if part.name.present? %>
-              <div class="electronics-tooltip-name"><%= part.name %></div>
+            <% if part[:name].present? %>
+              <div class="electronics-tooltip-name"><%= part[:name] %></div>
             <% end %>
-            <div class="electronics-tooltip-model"><%= part.model %></div>
+            <div class="electronics-tooltip-model"><%= part[:model] %></div>
             <div class="electronics-tooltip-dates">
-              <%= DateFormat.electronics_owned_range_text(part.purchase_date, part.disposal_date) %>
+              <%= DateFormat.electronics_owned_range_text(part[:owned]) %>
             </div>
-            <% if part.specs_array.any? %>
+            <% if part[:specs].any? %>
               <ul class="electronics-tooltip-specs">
-                <% part.specs_array.each do |spec| %>
+                <% part[:specs].each do |spec| %>
                   <li><%= spec %></li>
                 <% end %>
               </ul>
             <% end %>
-            <% if part.photo && part.photo.credit %>
-              <div class="electronics-tooltip-photo-credit">photo: <%= part.photo.credit %></div>
+            <% if part[:photo] && part[:photo].credit %>
+              <div class="electronics-tooltip-photo-credit">photo: <%= part[:photo].credit %></div>
             <% end %>
           </td>
         </tr>
