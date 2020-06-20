@@ -29,7 +29,11 @@ class PartCategory < ApplicationRecord
   # Returns a singular name if count == 1, plural name otherwise
   def name_category_heading(count)
     if count == 1
-      return self.name_singular || self.name.singularize
+      if self.name_singular.present?
+        return self.name_singular
+      else
+        return self.name.singularize
+      end
     else
       return self.name
     end
