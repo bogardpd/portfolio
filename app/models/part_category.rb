@@ -18,7 +18,7 @@ class PartCategory < ApplicationRecord
   end
 
   # Returns the category name in lowercase plural format.
-  def name_lowercase_plural
+  def name_meta_description
     if read_attribute(:name_lowercase_plural).present?
       return read_attribute(:name_lowercase_plural)
     else
