@@ -30,7 +30,7 @@ class Electronics::PartCategoriesController < ApplicationController
     @category = PartCategory.new(part_category_params)
     if @category.save
       flash[:success] = "Successfully added #{@category.name}!"
-      redirect_to electronics_part_categories_path
+      redirect_to electronics_part_category_path(@category)
     else
       render "new"
     end

@@ -26,7 +26,7 @@ class Electronics::PartsController < ApplicationController
     @part = Part.new(part_params)
     if @part.save
       flash[:success] = "Successfully added #{@part.model}!"
-      redirect_to electronics_parts_path
+      redirect_to electronics_part_path(@part)
     else
       render "new"
     end

@@ -30,7 +30,7 @@ class Electronics::ComputersController < ApplicationController
     @computer = Computer.new(computer_params)
     if @computer.save
       flash[:success] = "Successfully added #{@computer.name}!"
-      redirect_to electronics_computers_path
+      redirect_to electronics_computer_path(@computer)
     else
       render "new"
     end

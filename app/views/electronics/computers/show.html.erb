@@ -11,7 +11,7 @@
   </div>
 <% end %>
   <div class="col">
-<p class="computer-history-model mt-0"><%= @computer.model %> &middot; <%= @computer.form_factor %></p>
+<p class="computer-history-model mt-0"><% if @computer.model.present? %><%= @computer.model %> &middot; <% end %><%= @computer.form_factor %></p>
 
 <%= MarkdownText.parse(@computer.description) %>
 
