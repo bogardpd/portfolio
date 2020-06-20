@@ -19,6 +19,7 @@ class Computer < ApplicationRecord
     motherboards
     displays
     optical-drives
+    floppy-drives
     power-supplies
     cases
     wi-fi-adapters
@@ -33,7 +34,7 @@ class Computer < ApplicationRecord
 
   # Returns a CategorizedPartCollection of this computer's Parts.
   def categorized_part_collection
-    cpc = CategorizedPartCollection.new(parts: self.parts, category_order: CATEGORY_ORDER)
+    cpc = CategorizedPartCollection.new(parts: self.parts, category_order: CATEGORY_ORDER, comparison_computer: self)
     return cpc
   end
 
@@ -58,9 +59,7 @@ class Computer < ApplicationRecord
 
   # Returns an ElectronicsTimeline SVG, grouped by category.
   def timeline
-    cpc = CategorizedPartCollection.new(parts: self.parts,
-      category_order: CATEGORY_ORDER, comparison_computer: self)
-    return cpc.timeline
+    return categorized_part_collection.timeline
   end
 
   private

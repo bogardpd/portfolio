@@ -127,7 +127,7 @@ class CategorizedPartCollection
   def part_details(parts)
     part_details = parts.map do |part|
       uses = part.part_use_periods.map do |u|
-        other_computer = @computer && u.computer != @computer
+        other_computer = @comparison_computer && u.computer != @comparison_computer
         next [u.start_date...u.end_date, {other_computer: other_computer}]
       end.to_h
       next {
