@@ -90,9 +90,6 @@ Rails.application.routes.draw do
   # Computers
   get "computers"                       => "static_pages#computers"
   get "computers/old"                   => "static_pages#old_computers",            as: :old_computers
-  # get "computers/history/parts(/:part)" => "static_pages#part_history_details",     as: :part_history_details
-  # get "computers/history/:computer"     => "static_pages#computer_history_details", as: :computer_history_details
-  # get "computers/history"               => "static_pages#computer_history",         as: :computer_history
 
   # Other Pages
   get "airport-code-puns" => "static_pages#airport_code_puns"
@@ -101,8 +98,8 @@ Rails.application.routes.draw do
   get "ingress-murals", to: redirect("/ingress-mosaics", status: 301)
   get "history"         => "static_pages#history"
   get "rhit"            => "static_pages#rhit"
-  get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", :as => :fast_track_calculus
-  get "rhit/fast-track-calculus/fred-and-harry" => "static_pages#fred_and_harry", :as => :fred_and_harry
+  get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", as: :fast_track_calculus
+  get "rhit/fast-track-calculus/fred-and-harry" => "static_pages#fred_and_harry", as: :fred_and_harry
   
   # Projects hosted on Portfolio
   get "timezones" => "time_zones#index"

@@ -13,7 +13,7 @@
         <tr>
           <td class="icon"><%= image_tag "icons/games/discord.svg", class: "icon-games", alt: "Discord" %>
           <td class="service">Discord</td>
-          <td class="screen-name"><%= link_to "Fishsticks#6215", "https://discordapp.com/users/210087365975343104/", target: :_blank %></td>
+          <td class="screen-name">Fishsticks#6215</td>
         </tr>
       </tbody>
     </table>
@@ -65,6 +65,6 @@
 </div>
 
 <p class="center">
-  Paul’s <%= link_to "computers", electronics_computers_path %> and <%= link_to "consoles", electronics_computers_path(anchor: "game-systems") %><br>
+  Paul’s <%= link_to "computers", electronics_computers_path %> and <%= link_to "consoles", electronics_part_category_path(slug: "game-consoles") %><br>
   Paul’s <%= link_to "PAX attendance", pax_path %>
 </p>
