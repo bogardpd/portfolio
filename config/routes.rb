@@ -50,8 +50,8 @@ Rails.application.routes.draw do
   
   # Aliases and redirects
 
-  # get "computers" => redirect("electronics"), status: 301
-  # get "computers/old" => redirect("electronics"), status: 301
+  get "computers" => redirect("electronics"), status: 301
+  get "computers/old" => redirect("electronics"), status: 301
 
   get "boarding-pass-parser"   => redirect("projects/boarding-pass-parser",   status: 301)
   get "cad-models"             => redirect("projects/cad-models",             status: 301)
@@ -87,10 +87,6 @@ Rails.application.routes.draw do
   get "about"  => "static_pages#about"
   get "resume" => "static_pages#resume"
   
-  # Computers
-  get "computers"                       => "static_pages#computers"
-  get "computers/old"                   => "static_pages#old_computers",            as: :old_computers
-
   # Other Pages
   get "airport-code-puns" => "static_pages#airport_code_puns"
   get "books"           => "static_pages#books"
