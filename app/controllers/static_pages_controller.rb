@@ -35,12 +35,6 @@ class StaticPagesController < ApplicationController
     add_breadcrumb "CAD Models", cad_models_path
   end
   
-  def computers
-    add_breadcrumb "Computers", computers_path
-    @computer_specs = YAML.load_file("app/data/computers/computer_specs.yml").each(&:deep_symbolize_keys!)
-    @devices = YAML.load_file("app/data/computers/devices.yml").deep_symbolize_keys
-  end
-  
   def earthbound_database
     add_breadcrumb "EBDB", earthbound_database_path
   end
@@ -157,12 +151,6 @@ class StaticPagesController < ApplicationController
 
   def nights_away_and_home
     add_breadcrumb "Nights Away and Home", nights_away_and_home_path
-  end
-  
-  def old_computers
-    add_breadcrumb "Computers", computers_path
-    add_breadcrumb "Old Computers", old_computers_path
-    @old_computers = YAML.load_file("app/data/computers/old_devices.yml").deep_symbolize_keys
   end
   
   def oreo
