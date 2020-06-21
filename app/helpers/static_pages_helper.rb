@@ -15,8 +15,7 @@ module StaticPagesHelper
       osx_screenshot:      %w(osx-screenshot),
       screenshot:          %w(screenshot),
       large:               %w(large),
-      photo:               %w(photo),
-      computer_thumbnail:  %w(computer-thumbnail)
+      photo:               %w(photo)
     }
     allowed_tags = %w(abbr a br i)
     allowed_attributes = %w(href target)
