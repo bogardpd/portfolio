@@ -3,10 +3,7 @@ require "test_helper"
 class StaticPageFlowsTest < ActionDispatch::IntegrationTest
 
   def setup
-    @gps_logging_params = {
-      source: %w(garmin ios),
-      map: %w(google-earth osm)
-    }
+   
   end
   
   test "should get home" do
@@ -95,13 +92,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
   test "should get GPS logging" do
     get(gps_logging_path)
     assert_response(:success)
-
-    @gps_logging_params[:source].each do |source|
-      @gps_logging_params[:map].each do |map|
-        get(gps_logging_path(source: source, map: map))
-        assert_response(:success)
-      end
-    end
   end
 
   test "should get hotel internet quality" do
@@ -297,14 +287,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     get("/gps-logging")
     assert_response(301)
     assert_redirected_to(gps_logging_path)
-
-    @gps_logging_params[:source].each do |source|
-      @gps_logging_params[:map].each do |map|
-        get("/gps-logging/#{source}-#{map}")
-        assert_response(301)
-        assert_redirected_to(gps_logging_path(source: source, map: map))
-      end
-    end
   end
 
   test "should redirect hotel internet quality" do

@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get "projects/flight-directed-graphs" => "static_pages#flight_directed_graphs", as: :flight_directed_graphs
   get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian", as: :flight_historian
   get "projects/gate-13"                => "static_pages#gate_13",                as: :gate_13
-  get "projects/gps-logging(/:source/:map)" => "static_pages#gps_logging",        as: :gps_logging
+  get "projects/gps-logging"            => "static_pages#gps_logging",            as: :gps_logging
   get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
   get "projects/interstate-grid"        => "static_pages#interstate_grid",        as: :interstate_grid
   get "projects/nashville-hex"          => "static_pages#nashville_hex",          as: :nashville_hex

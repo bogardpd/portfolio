@@ -7,24 +7,9 @@
 
 <p><%= link_to("Flights", flight_historian_path) %> aren’t the only things I like to map. I also often record GPS data while driving, bicycling, or walking, and create maps of the routes.</p>
 
-<div class="row button-row">
-	<div class="col-md-6">
-		<%= link_to("How to create route maps with<br/><strong>Garmin</strong> and <strong>Google Earth</strong>".html_safe, gps_logging_path(source: "garmin", map: "google-earth"), class: "btn btn-outline-dark btn-block icon-button", role: "button") %>
-	</div>
-	<div class="col-md-6">
-		<%= link_to("How to create route maps with<br/><strong>iOS</strong> and <strong>Google Earth</strong>".html_safe, gps_logging_path(source: "ios", map: "google-earth"), class: "btn btn-outline-dark btn-block icon-button", role: "button") %>
-	</div>
-	<div class="col-md-6">
-		<%= link_to("How to create route maps with<br/><strong>Garmin</strong> and <strong>OpenStreetMap</strong>".html_safe, gps_logging_path(source: "garmin", map: "osm"), class: "btn btn-outline-dark btn-block icon-button", role: "button") %>
-	</div>
-	<div class="col-md-6">
-		<%= link_to("How to create route maps with<br/><strong>iOS</strong> and <strong>OpenStreetMap</strong>".html_safe, gps_logging_path(source: "ios", map: "osm"), class: "btn btn-outline-dark btn-block icon-button", role: "button") %>
-	</div>
-</div>
+<%= link_buttons(LinkButton.new("Visit my <strong>GPS Mapping Tutorials</strong>", "one-hundred-airports", "https://onehundredairports.com/gps-mapping-tutorials/", target: :_blank)) %>
 
-
-
-<h2>Driving</h2>
+<%= link_header("Driving", 2) %>
 
 <p>From July 2010 to December 2011, I recorded a log of everywhere I drove, and imported it into <%= link_to("Google Earth", "http://www.google.com/earth/index.html", target: :_blank) %>.</p>
 
@@ -40,11 +25,7 @@
 
 <%= project_image("projects/gps-logging/30-Driving.png", alt: "Google Earth map of driving tracks") %>
 
-<p>Learn how to create Google Earth route maps with a Garmin GPS in my <%= link_to "Garmin/Google Earth GPS Logging tutorial", gps_logging_garmin_google_earth_path %>.</p>
-
-
-
-<h2>Walking and Biking</h2>
+<%= link_header("Walking and Biking", 2) %>
 
 <p>If I want to create a map while I’m not driving, I use my iPhone to record the location data.</p>
 
@@ -54,9 +35,7 @@
 
 <p>In this case, I used <%= link_to "uMap", "https://umap.openstreetmap.fr/en", target: :_blank %> with <%= link_to "OpenStreetMap", "https://www.openstreetmap.org/", target: :_blank %> data. However, it would have been trivial to use the bicycling data in Google Earth instead.
 
-<p>Learn how to create route maps with an iOS device in my <%= link_to "iOS GPS Logging tutorial", gps_logging_ios_osm_path %>.</p>
-
-<h2>Ingress Mapping</h2>
+<%= link_header("Ingress Mapping", 2) %>
 
 <p>I occasionally play a geocaching game called <%= link_to("Ingress", "https://www.ingress.com/", target: :_blank) %>, which encourages walking around between different waypoints on a map. Sometimes these waypoints are arranged into “missions” which require visiting waypoints in a certain order, and reward a digital “badge” with a picture related to the mission.</p>
 

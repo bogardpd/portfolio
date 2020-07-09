@@ -94,14 +94,6 @@ class StaticPagesController < ApplicationController
   
   def gps_logging
     add_breadcrumb "GPS Logging", gps_logging_path
-    @sources = {"garmin" => "Garmin", "ios" => "iOS"}
-    @maps = {"google-earth" => "Google Earth", "osm" => "OpenStreetMap"}
-    if @sources.keys.include?(params[:source]) && @maps.keys.include?(params[:map])
-      add_breadcrumb "#{@sources[params[:source]]} and #{@maps[params[:map]]}", gps_logging_path(source: params[:source], map: params[:map])
-      render "static_pages/gps_logging/tutorial"
-    else
-      render "static_pages/gps_logging/gps_logging"
-    end
   end
   
   def history
