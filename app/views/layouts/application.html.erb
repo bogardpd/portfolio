@@ -8,6 +8,11 @@
   <%= stylesheet_link_tag "application", media: "all" %>
 	<%= javascript_include_tag "application" %>
 
+	<% if @head_include %>
+		<% @head_include.each do |layout| %>
+			<%= render "layouts/#{layout.to_s}" %>
+		<% end %>
+	<% end %>
 
   <%= csrf_meta_tags %>
 

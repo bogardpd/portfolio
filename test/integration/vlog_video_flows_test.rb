@@ -21,6 +21,11 @@ class VlogVideoFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
+  test "should get stephenvlog location project" do
+    get(stephenvlog_location_project_path)
+    assert_response(:success)
+  end
+
   # RESOURCE PAGES
 
   test "should get index" do

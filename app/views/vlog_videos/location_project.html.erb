@@ -1,0 +1,39 @@
+<% provide(:title, "Astronocats Discord Location Project") %>
+<% provide(:meta_description, "Locations of members on the Astronocats Discord") %>
+<% provide(:theme, "stephenvlog") %>
+
+<h1>Astronocats Discord Location Project</h1>
+
+<div id="map" style="height: 600px;"></div>
+<div class="text-center small">Updated <span id="last-updated"></span> (UTC)</div>
+
+<p>This map shows the locations of members of the <%= link_to("Stephen Georg", "https://www.patreon.com/stephengeorg", target: :_blank) %> and <%= link_to("MalMakes", "https://www.patreon.com/MalMakes", target: :_blank) %> Patreon Discord server. If you are a member of the server and would like your location added, please <%= link_to("fill out this Google Form", "https://forms.gle/9kJZ3qXoEapFCD9g8", target: :_blank) %> and Paul will add you to the map.</p>
+
+<script>
+  var vlog_map = L.map('map').setView([22.5, 0], 2);
+  
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    maxZoom: 8,
+    tileSize: 256,
+  }).addTo(vlog_map);
+
+  $.getJSON('https://pbogardcom-files.s3.us-east-2.amazonaws.com/stephenvlog/location-project/locations.json', function(data) {
+    var coords = data['locations'];
+    var updated = new Date(data['updated']);
+    console.log(updated);
+    var markers = [];
+    var cluster = L.markerClusterGroup({
+      maxClusterRadius: 40,
+    });
+    for (var i = 0; i < coords.length; i++) {
+      markers[i] = L.marker(coords[i]['coords'], {
+        alt: coords[i]['city']
+      });
+      markers[i].bindPopup(coords[i]['city']);
+      cluster.addLayer(markers[i]);
+    }
+    vlog_map.addLayer(cluster);
+    $("#last-updated").text($.datepicker.formatDate("dd M yy", updated));
+  });
+</script>

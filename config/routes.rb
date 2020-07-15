@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
   get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
   get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
+  get  "stephenvlog/location-project"  => "vlog_videos#location_project",  as: :stephenvlog_location_project
 
   
   namespace :electronics do
