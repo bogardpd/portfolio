@@ -24,7 +24,7 @@
     console.log(updated);
     var markers = [];
     var cluster = L.markerClusterGroup({
-      maxClusterRadius: 40,
+      maxClusterRadius: 25,
     });
     for (var i = 0; i < coords.length; i++) {
       markers[i] = L.marker(coords[i]['coords'], {
