@@ -5,7 +5,7 @@
 <h1>Astronocats Discord Location Project</h1>
 
 <div id="map" style="height: 600px;"></div>
-<div class="text-center small">Updated <span id="last-updated"></span> (UTC)</div>
+<div class="text-center small"><span id="member-count"></span> total people &middot; Updated <span id="last-updated"></span></div>
 
 <p>This map shows the locations of members of the <%= link_to("Stephen Georg", "https://www.patreon.com/stephengeorg", target: :_blank) %> and <%= link_to("MalMakes", "https://www.patreon.com/MalMakes", target: :_blank) %> Patreon Discord server. If you are a member of the server and would like your location added, please <%= link_to("fill out this Google Form", "https://forms.gle/9kJZ3qXoEapFCD9g8", target: :_blank) %> and Paul will add you to the map.</p>
 
@@ -20,8 +20,6 @@
 
   $.getJSON('https://pbogardcom-files.s3.us-east-2.amazonaws.com/stephenvlog/location-project/locations.json', function(data) {
     var coords = data['locations'];
-    var updated = new Date(data['updated']);
-    console.log(updated);
     var markers = [];
     var cluster = L.markerClusterGroup({
       maxClusterRadius: 25,
@@ -34,6 +32,7 @@
       cluster.addLayer(markers[i]);
     }
     vlog_map.addLayer(cluster);
-    $("#last-updated").text($.datepicker.formatDate("dd M yy", updated));
+    $("#last-updated").text(data['updated']);
+    $("#member-count").text(coords.length);
   });
 </script>
