@@ -110,7 +110,7 @@ class StaticPagesController < ApplicationController
 
   def idea_guy
     add_breadcrumb "Games", games_path
-    add_breadcrumb "Game Idea Generator", idea_guy_path
+    add_breadcrumb "Idea Guy Game Generator", idea_guy_path
     @ideas = YAML.load_file("app/data/idea_guy.yml").shuffle
   end
   
