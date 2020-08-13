@@ -109,6 +109,11 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
+  test "should get idea guy" do
+    get(idea_guy_path)
+    assert_response(:success)
+  end
+
   test "should get ingress mosaics" do
     get(ingress_mosaics_path)
     assert_response(:success)

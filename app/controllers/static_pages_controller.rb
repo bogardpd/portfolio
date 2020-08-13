@@ -85,7 +85,7 @@ class StaticPagesController < ApplicationController
   end
 
   def games
-    add_breadcrumb "Game Screen Names", games_path
+    add_breadcrumb "Games", games_path
   end
 
   def gate_13
@@ -106,6 +106,12 @@ class StaticPagesController < ApplicationController
   
   def hotel_pillow_fort
     add_breadcrumb "Hotel Pillow Fort", hotel_pillow_fort_path
+  end
+
+  def idea_guy
+    add_breadcrumb "Games", games_path
+    add_breadcrumb "Game Idea Generator", idea_guy_path
+    @ideas = YAML.load_file("app/data/idea_guy.yml").shuffle
   end
   
   def ingress_mosaics

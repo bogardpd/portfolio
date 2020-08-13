@@ -103,12 +103,13 @@ Rails.application.routes.draw do
   
   # Non-linked Pages
   get "games"             => "static_pages#games"
+  get "games/idea-guy"    => "static_pages#idea_guy", as: :idea_guy
   get "hotel-pillow-fort" => "static_pages#hotel_pillow_fort"
   get "mco-lobby"         => "static_pages#mco_lobby"
   get "oreo"              => "static_pages#oreo"
   
   get "starmen-conventions" => "static_pages#starmen_conventions"
-  get "starmen-conventions/:gallery(/:page)" => "static_pages#gallery_starmen", :as => :starmen_con_gallery
+  get "starmen-conventions/:gallery(/:page)" => "static_pages#gallery_starmen", as: :starmen_con_gallery
   
   get "pax" => "static_pages#pax"
   get "pax/:gallery(/:page)" => "static_pages#gallery_pax", :as => :pax_gallery

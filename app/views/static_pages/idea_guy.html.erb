@@ -1,0 +1,8 @@
+<h1>Ideas Guy Generator</h1>
+
+<div class="jumbotron text-center">
+  <p class="display-4 font-weight-light font-italic text-info">I’ve got an idea for a game…</p>
+  <p>It’s like <strong><%= @ideas[0] %></strong> meets <strong><%= @ideas[1] %></strong>, but as <strong><%= @ideas[2] %></strong>!</p>
+</div>
+
+<p class="small text-secondary text-center">Game ideas from PAX Online BINGO card. <%= link_to("Refresh", idea_guy_path) %> for another idea.</p>
