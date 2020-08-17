@@ -119,8 +119,8 @@
 		<% @all_versions.reject{|k, v| k == nil}.each do |version, summary| %>
 			<tr>
 				<td><%= format_date(summary[:release_date]) %></td>
-				<td><%= version.to_s %></td>
-				<td><%= link_to(summary[:title], flight_historian_path(version: version.to_s.parameterize)) %></td>
+				<td><%= summary[:version] %></td>
+				<td><%= link_to(summary[:name], flight_historian_path(version: version.to_s.parameterize)) %></td>
 			</tr>
 		<% end %>
 	</thead>
