@@ -2,7 +2,7 @@ class Electronics::ElectronicsController < ApplicationController
 
   def index
     add_breadcrumb "Electronics", electronics_root_path
-    @computers = Computer.where(slug: ["pancake", "quesadilla"])
+    @computers = Computer.where(slug: ["pancake", "stroopwafel"])
     device_cat_collection = Part.current_no_computer
     @device_groupings = device_cat_collection.groupings
     device_parts = device_cat_collection.parts
