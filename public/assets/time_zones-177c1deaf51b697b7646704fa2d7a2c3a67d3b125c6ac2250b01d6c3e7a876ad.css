@@ -1,0 +1,80 @@
+/* line 6, app/assets/stylesheets/time_zones.css.scss */
+body, text {
+  font-family: "Lato", sans-serif;
+  color: #666666;
+  font-size: 13pt;
+}
+
+/* line 12, app/assets/stylesheets/time_zones.css.scss */
+#chart {
+  cursor: crosshair;
+}
+
+/* line 16, app/assets/stylesheets/time_zones.css.scss */
+#component-title {
+  height: 55px;
+}
+
+/* line 18, app/assets/stylesheets/time_zones.css.scss */
+#component-title h1, #component-title input {
+  padding-top: 6px;
+  cursor: pointer;
+}
+
+/* line 22, app/assets/stylesheets/time_zones.css.scss */
+#component-title input {
+  height: 50px;
+  cursor: text;
+}
+
+/* line 29, app/assets/stylesheets/time_zones.css.scss */
+.hidden-by-default {
+  display: none;
+}
+
+/* line 33, app/assets/stylesheets/time_zones.css.scss */
+div.chart {
+  text-align: center;
+}
+
+/* line 37, app/assets/stylesheets/time_zones.css.scss */
+div.form-group {
+  margin: 0;
+}
+
+/* line 41, app/assets/stylesheets/time_zones.css.scss */
+div.share-buttons {
+  float: right;
+  padding-top: 7px;
+}
+
+/* line 46, app/assets/stylesheets/time_zones.css.scss */
+h1, #component-title input {
+  text-align: center;
+}
+
+/* line 50, app/assets/stylesheets/time_zones.css.scss */
+table {
+  margin-top: 10px;
+}
+
+/* line 54, app/assets/stylesheets/time_zones.css.scss */
+.link-unstyled {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* line 59, app/assets/stylesheets/time_zones.css.scss */
+.navbar-brand {
+  font-weight: 600;
+}
+
+/* line 61, app/assets/stylesheets/time_zones.css.scss */
+.navbar-brand small {
+  font-weight: 400;
+}
+
+/* line 66, app/assets/stylesheets/time_zones.css.scss */
+select.field-offset {
+  width: 8em;
+}
