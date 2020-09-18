@@ -4,9 +4,6 @@ ruby '2.7.1'
 
 gem 'rails', '~> 6.0', '>= 6.0.2.1'
 
-gem 'bootstrap', '~> 4.5', '>= 4.5.2'
-gem 'jquery-rails'
-gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1' 
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
 # Use redcarpet for Markdown parsing.
@@ -34,5 +31,3 @@ group :production do
   gem 'rails_12factor', '0.0.3'
   gem 'puma', '4.3.5'
 end
-
-
