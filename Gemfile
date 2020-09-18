@@ -9,7 +9,6 @@ gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 # Use redcarpet for Markdown parsing.
 gem 'redcarpet', '~> 3.5'
 
-gem 'jbuilder', '~> 2.10'
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
 gem 'bcrypt'
 
@@ -18,7 +17,6 @@ end
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
-  gem 'byebug'
   gem 'spring'
 end
 
