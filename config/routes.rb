@@ -44,7 +44,6 @@ Rails.application.routes.draw do
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
   get "projects/song-lyrics-graph"      => "static_pages#song_lyrics_graph",      as: :song_lyrics_graph
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
-  get "projects/travel-heatmap "        => "static_pages#travel_heatmap",         as: :travel_heatmap
   get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter
   
   # Aliases and redirects
@@ -61,7 +60,6 @@ Rails.application.routes.draw do
   get "projects/maps/interstate-grid" => redirect("projects/interstate-grid", status: 301)
   get "projects/maps/nashville-hex" => redirect("projects/nashville-hex",     status: 301)
   get "projects/maps/pax-west-area-map" => redirect("projects/pax-west-area-map", status: 301)
-  get "projects/maps/travel-heatmap" => redirect("projects/travel-heatmap",   status: 301)
   get "shared-itinerary"       => redirect("projects/shared-itinerary",       status: 301)
   get "turn-signal-counter"    => redirect("projects/turn-signal-counter",    status: 301)
 

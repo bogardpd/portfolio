@@ -181,10 +181,6 @@ class StaticPagesController < ApplicationController
     add_breadcrumb "Time Zone Chart", time_zone_chart_path
   end
   
-  def travel_heatmap
-    add_breadcrumb "Travel Heatmap", travel_heatmap_path
-  end
-  
   def turn_signal_counter
     add_breadcrumb "Turn Signal Counter", turn_signal_counter_path
   end

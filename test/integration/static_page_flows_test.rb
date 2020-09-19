@@ -230,11 +230,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
-  test "should get travel heatmap" do
-    get(travel_heatmap_path)
-    assert_response(:success)
-  end
-
   test "should get turn signal counter" do
     get(turn_signal_counter_path)
     assert_response(:success)
@@ -291,6 +286,8 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect maps" do
+    # Several map images link to pbogard.com/maps, so we need to make sure it
+    # redirects appropriately.
     get("/maps")
     assert_response(301)
     assert_redirected_to(projects_path(tag: :maps))
