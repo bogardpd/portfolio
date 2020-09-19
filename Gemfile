@@ -9,7 +9,9 @@ gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 # Use redcarpet for Markdown parsing.
 gem 'redcarpet', '~> 3.5'
 
-gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
+# Use AWS S3 for images and downloadable files.
+gem 'aws-sdk-s3', '~> 1.81'
+
 gem 'bcrypt'
 
 group :development do
