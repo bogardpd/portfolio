@@ -109,11 +109,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
-  test "should get ingress mosaics" do
-    get(ingress_mosaics_path)
-    assert_response(:success)
-  end
-
   test "should get interstate grid" do
     get(interstate_grid_path)
     assert_response(:success)
@@ -278,13 +273,7 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(301)
     assert_redirected_to(gps_logging_path)
   end
-
-  test "should redirect ingress mosaics" do
-    get("/ingress-murals")
-    assert_response(301)
-    assert_redirected_to(ingress_mosaics_path)
-  end
-
+  
   test "should redirect maps" do
     # Several map images link to pbogard.com/maps, so we need to make sure it
     # redirects appropriately.

@@ -84,8 +84,6 @@ Rails.application.routes.draw do
   
   # Other Pages
   get "airport-code-puns" => "static_pages#airport_code_puns"
-  get "ingress-mosaics" => "static_pages#ingress_mosaics"
-  get "ingress-murals", to: redirect("/ingress-mosaics", status: 301)
   get "history"         => "static_pages#history"
   get "rhit"            => "static_pages#rhit"
   get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", as: :fast_track_calculus

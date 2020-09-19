@@ -106,10 +106,6 @@ class StaticPagesController < ApplicationController
     @ideas = YAML.load_file("app/data/idea_guy.yml").shuffle
   end
   
-  def ingress_mosaics
-    add_breadcrumb "Ingress Mosaic Maps", ingress_mosaics_path
-  end
-
   def interstate_grid
     add_breadcrumb "Interstate Grid", interstate_grid_path
   end
