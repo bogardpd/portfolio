@@ -330,24 +330,4 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_redirected_to(visor_cam_path)
   end
 
-  test "should redirect legacy flightlog pages to flight historian" do
-    redirects = {
-      "flightlog" => "",
-      "flights"   => "flights",
-      "trips"     => "trips",
-      "aircraft"  => "aircraft",
-      "airlines"  => "airlines",
-      "airports"  => "airports",
-      "classes"   => "classes",
-      "tails"     => "tails",
-      "routes"    => "routes",
-    }
-
-    redirects.each do |local_path, flight_historian_path|
-      get("/#{local_path}")
-      assert_response(301)
-      assert_redirected_to("https://www.flighthistorian.com/#{flight_historian_path}")
-    end
-  end
-
 end
