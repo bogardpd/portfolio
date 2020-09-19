@@ -134,12 +134,6 @@ earthbound-database:
     - php
     - programming
 
-visor-cam:
-  name: "Visor Cam"
-  caption: "Road trip time lapse videos"
-  tags:
-    - video
-
 hotel-internet-quality:
   name: "Hotel Internet Quality"
   caption: "Plots of hotel bandwidth by time of day"

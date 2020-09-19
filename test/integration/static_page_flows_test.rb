@@ -245,11 +245,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
-  test "should get visor cam" do
-    get(visor_cam_path)
-    assert_response(:success)
-  end
-
   # REDIRECTS
 
   test "should redirect boarding pass parser" do
@@ -322,12 +317,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     get("/turn-signal-counter")
     assert_response(301)
     assert_redirected_to(turn_signal_counter_path)
-  end
-
-  test "should redirect visor cam" do
-    get("/visor-cam")
-    assert_response(301)
-    assert_redirected_to(visor_cam_path)
   end
 
 end

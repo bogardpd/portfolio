@@ -78,8 +78,3 @@ svg:
   name: "SVG"
   adjective: "SVG"
   description: "projects using Scalable Vector Graphics images"
-
-video:
-  name: "Video"
-  adjective: "Video"
-  description: "video projects"

@@ -47,7 +47,6 @@ Rails.application.routes.draw do
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
   get "projects/travel-heatmap "        => "static_pages#travel_heatmap",         as: :travel_heatmap
   get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter
-  get "projects/visor-cam"              => "static_pages#visor_cam",              as: :visor_cam
   
   # Aliases and redirects
 
@@ -67,7 +66,6 @@ Rails.application.routes.draw do
   get "projects/maps/travel-heatmap" => redirect("projects/travel-heatmap",   status: 301)
   get "shared-itinerary"       => redirect("projects/shared-itinerary",       status: 301)
   get "turn-signal-counter"    => redirect("projects/turn-signal-counter",    status: 301)
-  get "visor-cam"              => redirect("projects/visor-cam",              status: 301)
 
   get "terminal-silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
   get "terminal_silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
