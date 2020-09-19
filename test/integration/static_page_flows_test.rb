@@ -94,11 +94,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
-  test "should get hotel internet quality" do
-    get(hotel_internet_quality_path)
-    assert_response(:success)
-  end
-
   test "should get hotel pillow fort" do
     get(hotel_pillow_fort_path)
     assert_response(:success)
@@ -287,12 +282,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     get("/gps-logging")
     assert_response(301)
     assert_redirected_to(gps_logging_path)
-  end
-
-  test "should redirect hotel internet quality" do
-    get("/hotel-internet-quality")
-    assert_response(301)
-    assert_redirected_to(hotel_internet_quality_path)
   end
 
   test "should redirect ingress mosaics" do

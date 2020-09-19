@@ -133,9 +133,3 @@ earthbound-database:
     - databases
     - php
     - programming
-
-hotel-internet-quality:
-  name: "Hotel Internet Quality"
-  caption: "Plots of hotel bandwidth by time of day"
-  tags:
-    - charts

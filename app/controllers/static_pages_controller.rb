@@ -95,11 +95,7 @@ class StaticPagesController < ApplicationController
   def history
     add_breadcrumb "Website History", history_path
   end
-  
-  def hotel_internet_quality
-    add_breadcrumb "Hotel Internet Quality", hotel_internet_quality_path
-  end
-  
+    
   def hotel_pillow_fort
     add_breadcrumb "Hotel Pillow Fort", hotel_pillow_fort_path
   end
@@ -191,10 +187,6 @@ class StaticPagesController < ApplicationController
   
   def turn_signal_counter
     add_breadcrumb "Turn Signal Counter", turn_signal_counter_path
-  end
-  
-  def visor_cam
-    add_breadcrumb "Visor Cam", visor_cam_path
   end
   
   private

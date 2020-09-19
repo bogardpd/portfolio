@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian", as: :flight_historian
   get "projects/gate-13"                => "static_pages#gate_13",                as: :gate_13
   get "projects/gps-logging"            => "static_pages#gps_logging",            as: :gps_logging
-  get "projects/hotel-internet-quality" => "static_pages#hotel_internet_quality", as: :hotel_internet_quality
   get "projects/interstate-grid"        => "static_pages#interstate_grid",        as: :interstate_grid
   get "projects/nashville-hex"          => "static_pages#nashville_hex",          as: :nashville_hex
   get "projects/nights-away-and-home"   => "static_pages#nights_away_and_home",   as: :nights_away_and_home
@@ -57,7 +56,6 @@ Rails.application.routes.draw do
   get "cad-models"             => redirect("projects/cad-models",             status: 301)
   get "earthbound-database"    => redirect("projects/earthbound-database",    status: 301)
   get "flight-historian"       => redirect("projects/flight-historian",       status: 301)
-  get "hotel-internet-quality" => redirect("projects/hotel-internet-quality", status: 301)
   get "maps"                   => redirect("projects/tags/maps",              status: 301)
   get "projects/maps/gate-13"  => redirect("projects/gate-13",                status: 301)
   get "projects/maps/interstate-grid" => redirect("projects/interstate-grid", status: 301)
