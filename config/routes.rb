@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   get "projects/cad-models"             => "static_pages#cad_models",             as: :cad_models
   get "projects/earthbound-database"    => "static_pages#earthbound_database",    as: :earthbound_database
   get "projects/flight-directed-graphs" => "static_pages#flight_directed_graphs", as: :flight_directed_graphs
-  get "projects/flight-historian(/version/:version)" => "static_pages#flight_historian", as: :flight_historian
+  get "projects/flight-historian"       => "static_pages#flight_historian",       as: :flight_historian
   get "projects/gate-13"                => "static_pages#gate_13",                as: :gate_13
   get "projects/gps-logging"            => "static_pages#gps_logging",            as: :gps_logging
   get "projects/interstate-grid"        => "static_pages#interstate_grid",        as: :interstate_grid
@@ -103,7 +103,7 @@ Rails.application.routes.draw do
   get "starmen-conventions/:gallery(/:page)" => "static_pages#gallery_starmen", as: :starmen_con_gallery
   
   get "pax" => "static_pages#pax"
-  get "pax/:gallery(/:page)" => "static_pages#gallery_pax", :as => :pax_gallery
+  get "pax/:gallery(/:page)" => "static_pages#gallery_pax", as: :pax_gallery
   
   # Certbot
   get "/.well-known/acme-challenge/:id" => "static_pages#letsencrypt"

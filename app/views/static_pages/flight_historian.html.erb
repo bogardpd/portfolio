@@ -1,14 +1,17 @@
 <% provide(:title, "Flight Historian")%>
 <% provide(:meta_description, "How Paul Bogard created his Flight Historian web application.")%>
 
-<%= render(partial: "static_pages/flight_historian/version_h1", locals: @version) %>
-<%= render(partial: "static_pages/flight_historian/version_picker") %>
+<h1>Flight Historian</h1>
+
 <%= render(partial: "project_tags", locals: {project: :"flight-historian"}) %>
 
 <%= link_buttons(
-  LinkButton.new("Visit <strong>Flight Historian</strong>", "flight-historian", "https://www.flighthistorian.com/", target: :_blank),
-  LinkButton.new("<strong>GitHub</strong> repository", "github", "https://github.com/bogardpd/flight_log", target: :_blank),
-  LinkButton.new("<strong>RubyDoc</strong> documentation", "rubydoc", "https://rubydoc.info/github/bogardpd/flight_log/master", target: :_blank)
+  LinkButton.new("Visit <strong>Flight Historian</strong>", "flight-historian", "https://www.flighthistorian.com/"),
+	LinkButton.new("<strong>GitHub</strong> repository", "github", "https://github.com/bogardpd/flight_log"))
+%>
+<%= link_buttons(
+  LinkButton.new("<strong>RubyDoc</strong> documentation", "rubydoc", "https://rubydoc.info/github/bogardpd/flight_log/master"),
+  LinkButton.new("<strong>Blog Posts</strong>", "one-hundred-airports", "https://onehundredairports.com/category/flight-historian/")
   ) %>
 
 <p>Flight Historian is a personal flight tracking website, allowing me to map and analyze all flights I’ve taken. Flights can be viewed all together, or analyzed by airline, aircraft, airport, route, class, or tail number.</p>
@@ -26,7 +29,7 @@
 	<li>Exports maps into GPX or KML format</li>
   <li>Stores and <%= link_to "parses", boarding_pass_parser_path %> boarding pass barcode data for each flight</li>
   <ul>
-    <li>Automatically creates new flights in the database from emailed digital boarding pass data or scanned paper boarding pass barcode (<abbr title="Bar Coded Boarding Pass">BCBP</abbr>) data, supplemented by FlightAware <%= link_to "FlightXML", "https://flightaware.com/commercial/flightxml/", target: "_blank" %> lookups</li>
+    <li>Automatically creates new flights in the database from emailed digital boarding pass data or scanned paper boarding pass barcode (<abbr title="Bar Coded Boarding Pass">BCBP</abbr>) data, supplemented by FlightAware <%= link_to "FlightXML", "https://flightaware.com/commercial/flightxml/" %> lookups</li>
   </ul>
 </ul>
 
@@ -52,26 +55,26 @@
     <tr>
       <th scope="row">APIs</th>
       <td><ul>
-        <li><%= link_to "Great Circle Mapper", "http://www.gcmap.com/", target: "_blank" %></li>
-        <li><%= link_to "FlightXML", "https://flightaware.com/commercial/flightxml/", target: "_blank" %></li>
+        <li><%= link_to "Great Circle Mapper", "http://www.gcmap.com/" %></li>
+        <li><%= link_to "FlightXML", "https://flightaware.com/commercial/flightxml/" %></li>
       </ul></td>
     </tr>
 		<tr>
 			<th scope="row">Version Control</th>
 			<td><ul>
-        <li><%= link_to("Git", "https://git-scm.com", target: "_blank") %>
+        <li><%= link_to("Git", "https://git-scm.com") %>
       </ul></td>
 		</tr>
 		<tr>
 			<th scope="row">Hosting</th>
 			<td><ul>
-        <li><%= link_to("Heroku", "https://www.heroku.com/", target: "_blank") %></li>
+        <li><%= link_to("Heroku", "https://www.heroku.com/") %></li>
       </ul></td>
 		</tr>
 		<tr>
 			<th scope="row">Project Management</th>
 			<td><ul>
-        <li><%= link_to("Trello", "https://trello.com/", target: "_blank") %></li>
+        <li><%= link_to("Trello", "https://trello.com/") %></li>
       </ul></td>
 		</tr>
 	</tbody>
@@ -87,17 +90,17 @@
 
 <p>I kept track of the date of the most recent visit to each state in an Excel spreadsheet, and wrote a function to give me an RGB color based on today’s date and the date of the last visit. I would then manually recolor the states using an image editor. This worked, but it was labor intensive &ndash; every time I took a trip, I would have to recolor dozens of states.<p>
 	
-<p>I began to search for software that would generate a colored map of the states from an array of state colors. Before I found any, though, I discovered the <%= link_to "Great Circle Mapper", "http://gcmap.com/", target: "_blank" %>.</p>
+<p>I began to search for software that would generate a colored map of the states from an array of state colors. Before I found any, though, I discovered the <%= link_to "Great Circle Mapper", "http://gcmap.com/" %>.</p>
 
 <%= project_image("projects/flight-historian/map.gif") %>
 
-<p>The Great Circle mapper allows the user to put in a string of airport pairs, and generates a map of <%= link_to "great circle", "https://en.wikipedia.org/wiki/Great_circle", target: "_blank" %> routes. (For example, <code>DAY-DFW-PHX,PHX-ORD-DAY</code> generates <%= link_to "this map", "http://www.gcmap.com/mapui?P=DAY-DFW-PHX,PHX-ORD-DAY", target: "_blank" %>.) Tracking flights was more interesting to me than tracking states, so I went back through my travel receipts, wrote up a string of all of my flights, and saved it in a text file. Updating was relatively simple; I just had to type some more text at the end of my text file and copy and paste it into the Great Circle Mapper.</p>
+<p>The Great Circle mapper allows the user to put in a string of airport pairs, and generates a map of <%= link_to "great circle", "https://en.wikipedia.org/wiki/Great_circle" %> routes. (For example, <code>DAY-DFW-PHX,PHX-ORD-DAY</code> generates <%= link_to "this map", "http://www.gcmap.com/mapui?P=DAY-DFW-PHX,PHX-ORD-DAY" %>.) Tracking flights was more interesting to me than tracking states, so I went back through my travel receipts, wrote up a string of all of my flights, and saved it in a text file. Updating was relatively simple; I just had to type some more text at the end of my text file and copy and paste it into the Great Circle Mapper.</p>
 
-<p>It worked for a while, but things gradually got more complicated. The Great Circle Mapper normally automatically zooms the map to include all of the airports in the user’s flight string. Most of my flights were in the <%= link_to "contiguous United States", "https://en.wikipedia.org/wiki/Contiguous_United_States", target: "_blank" %>, but a few flights to Europe forced the map to be zoomed out, which made the US map difficult to see as I filled in more of the map with flights.  Fortunately, the Great Circle Mapper allows the user to designate that the map should ignore a particular flight when figuring out its zoom by prepending it with <code>o:noext</code>. (For example, <code>CMH-ORD,o:noext,ORD-FRA,o:noext,FRA-EWR,EWR-CMH</code> generates <%= link_to "this map", "http://www.gcmap.com/mapui?P=CMH-ORD,o:noext,ORD-FRA,o:noext,FRA-EWR,EWR-CMH", target: "_blank" %>.) This let me flag all flights that left the continental US so that the map would remain focused on the US, and I could see the details of all those routes. But I also wanted to be able to see my world flights, so I ended up having to maintain two text files &ndash; one for within the continental US, and one for the world.</p>
+<p>It worked for a while, but things gradually got more complicated. The Great Circle Mapper normally automatically zooms the map to include all of the airports in the user’s flight string. Most of my flights were in the <%= link_to "contiguous United States", "https://en.wikipedia.org/wiki/Contiguous_United_States" %>, but a few flights to Europe forced the map to be zoomed out, which made the US map difficult to see as I filled in more of the map with flights.  Fortunately, the Great Circle Mapper allows the user to designate that the map should ignore a particular flight when figuring out its zoom by prepending it with <code>o:noext</code>. (For example, <code>CMH-ORD,o:noext,ORD-FRA,o:noext,FRA-EWR,EWR-CMH</code> generates <%= link_to "this map", "http://www.gcmap.com/mapui?P=CMH-ORD,o:noext,ORD-FRA,o:noext,FRA-EWR,EWR-CMH" %>.) This let me flag all flights that left the continental US so that the map would remain focused on the US, and I could see the details of all those routes. But I also wanted to be able to see my world flights, so I ended up having to maintain two text files &ndash; one for within the continental US, and one for the world.</p>
 
 <%= project_image("projects/flight-historian/Routes-Text.png", alt: "Screenshot of text file containing flight routes") %>
 
-<p>Then, in 2012, I started tracking the aircraft family, <%= link_to "tail number", "https://en.wikipedia.org/wiki/Aircraft_registration", target: :_blank %>, and what class I sat in for all of my flights, and the data got more complicated. Now, a simple pair of text files was no longer good enough; I also had to keep a spreadsheet of all of the extra information about my flights. For good measure, I went back through my travel receipts again to get the past three years of aircraft family data.</p>
+<p>Then, in 2012, I started tracking the aircraft family, <%= link_to "tail number", "https://en.wikipedia.org/wiki/Aircraft_registration" %>, and what class I sat in for all of my flights, and the data got more complicated. Now, a simple pair of text files was no longer good enough; I also had to keep a spreadsheet of all of the extra information about my flights. For good measure, I went back through my travel receipts again to get the past three years of aircraft family data.</p>
 
 <%= project_image("projects/flight-historian/Flight-Log-Excel.png", alt: "Screenshot of Excel spreadsheet containing flight data") %>
 
@@ -120,7 +123,7 @@
 			<tr>
 				<td><%= format_date(summary[:release_date]) %></td>
 				<td><%= summary[:version] %></td>
-				<td><%= link_to(summary[:name], flight_historian_path(version: version.to_s.parameterize)) %></td>
+				<td><%= summary[:name] %></td>
 			</tr>
 		<% end %>
 	</thead>
@@ -132,7 +135,7 @@
 
 <%= link_header "Documentation", 2 %>
 
-<%= link_buttons(LinkButton.new("<strong>RubyDoc</strong> documentation", "rubydoc", "https://rubydoc.info/github/bogardpd/flight_log/master", target: :_blank)) %>
+<%= link_buttons(LinkButton.new("<strong>RubyDoc</strong> documentation", "rubydoc", "https://rubydoc.info/github/bogardpd/flight_log/master")) %>
 
 <%= link_header "Credits", 2 %>
 

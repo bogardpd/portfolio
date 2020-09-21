@@ -47,18 +47,6 @@ class StaticPagesController < ApplicationController
   def flight_historian
     add_breadcrumb "Flight Historian", flight_historian_path
     @all_versions = YAML.load_file("app/data/flight_historian_versions.yml").deep_symbolize_keys
-    version_key = params[:version]&.to_sym
-    unless @all_versions[version_key]
-      redirect_to flight_historian_path
-      return
-    end
-    @version = @all_versions[version_key]
-    if params[:version]
-      add_breadcrumb "Version #{@version[:version]}", flight_historian_path(version: version_key)
-      render "static_pages/flight_historian/v#{version_key}"
-    else
-      render "static_pages/flight_historian/flight_historian"
-    end
   end
   
   def fred_and_harry

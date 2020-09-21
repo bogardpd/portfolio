@@ -64,14 +64,8 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test "should get flight historian" do
-    versions = %w(1-0 1-1 1-2 1-3 2-0 2-1 2-2 2-3)
     get(flight_historian_path)
     assert_response(:success)
-
-    versions.each do |version|
-      get(flight_historian_path(version: version))
-      assert_response(:success)
-    end
   end
 
   test "should get fred and harry" do
