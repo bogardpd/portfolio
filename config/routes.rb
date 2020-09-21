@@ -40,7 +40,6 @@ Rails.application.routes.draw do
   get "projects/interstate-grid"        => "static_pages#interstate_grid",        as: :interstate_grid
   get "projects/nashville-hex"          => "static_pages#nashville_hex",          as: :nashville_hex
   get "projects/nights-away-and-home"   => "static_pages#nights_away_and_home",   as: :nights_away_and_home
-  get "projects/pax-west-area-map"      => "static_pages#pax_west_area_map",      as: :pax_west_area_map
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
   get "projects/song-lyrics-graph"      => "static_pages#song_lyrics_graph",      as: :song_lyrics_graph
   get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
@@ -59,7 +58,6 @@ Rails.application.routes.draw do
   get "projects/maps/gate-13"  => redirect("projects/gate-13",                status: 301)
   get "projects/maps/interstate-grid" => redirect("projects/interstate-grid", status: 301)
   get "projects/maps/nashville-hex" => redirect("projects/nashville-hex",     status: 301)
-  get "projects/maps/pax-west-area-map" => redirect("projects/pax-west-area-map", status: 301)
   get "shared-itinerary"       => redirect("projects/shared-itinerary",       status: 301)
   get "turn-signal-counter"    => redirect("projects/turn-signal-counter",    status: 301)
 

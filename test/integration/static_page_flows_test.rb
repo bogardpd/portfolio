@@ -158,11 +158,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "should get pax west area map" do
-    get(pax_west_area_map_path)
-    assert_response(:success)
-  end
-
   test "should get resume" do
     get(resume_path)
     assert_response(:success)

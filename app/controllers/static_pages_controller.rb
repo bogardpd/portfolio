@@ -135,10 +135,6 @@ class StaticPagesController < ApplicationController
     add_breadcrumb "PAX", pax_path
     @paxen = YAML.load_file("app/data/paxen.yml").values.map{|pax| PAXEvent.new(*pax.values)}
   end
-
-  def pax_west_area_map
-    add_breadcrumb "PAX West Area Map", pax_west_area_map_path
-  end
   
   def resume
     add_breadcrumb "Résumé", resume_path

@@ -66,14 +66,6 @@ nights-away-and-home:
     - python
     - svg
 
-pax-west-area-map:
-  name: "PAX West Area Map"
-  caption: "Map of convention venues and hotels"
-  tags:
-    - maps
-    - qgis
-    - svg
-
 song-lyrics-graph:
   name: "Song Lyrics Graph"
   caption: "Word frequencies and relationships"
