@@ -74,14 +74,6 @@ song-lyrics-graph:
     - programming
     - python
 
-interstate-grid:
-  name: "Interstate Grid"
-  caption: "Intersections of major US interstates"
-  tags: 
-    - illustrations
-    - maps
-    - svg
-
 nashville-hex:
   name: "Nashville Hex"
   caption: "Nashville’s freeways on a hex grid"

@@ -103,11 +103,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
-  test "should get interstate grid" do
-    get(interstate_grid_path)
-    assert_response(:success)
-  end
-
   test "should get MCO lobby" do
     get(mco_lobby_path)
     assert_response(:success)
