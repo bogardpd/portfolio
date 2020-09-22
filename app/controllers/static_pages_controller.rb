@@ -93,11 +93,7 @@ class StaticPagesController < ApplicationController
     add_breadcrumb "Idea Guy Game Generator", idea_guy_path
     @ideas = YAML.load_file("app/data/idea_guy.yml").shuffle
   end
-  
-  def interstate_grid
-    add_breadcrumb "Interstate Grid", interstate_grid_path
-  end
-  
+    
   def letsencrypt
     render plain: ENV["LETS_ENCRYPT_KEY"]
   end
@@ -117,10 +113,6 @@ class StaticPagesController < ApplicationController
     rescue
       @photos = Array.new
     end
-  end
-
-  def nashville_hex
-    add_breadcrumb "Nashville Hex", nashville_hex_path
   end
 
   def nights_away_and_home

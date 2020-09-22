@@ -37,7 +37,6 @@ Rails.application.routes.draw do
   get "projects/flight-historian"       => "static_pages#flight_historian",       as: :flight_historian
   get "projects/gate-13"                => "static_pages#gate_13",                as: :gate_13
   get "projects/gps-logging"            => "static_pages#gps_logging",            as: :gps_logging
-  get "projects/nashville-hex"          => "static_pages#nashville_hex",          as: :nashville_hex
   get "projects/nights-away-and-home"   => "static_pages#nights_away_and_home",   as: :nights_away_and_home
   get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
   get "projects/song-lyrics-graph"      => "static_pages#song_lyrics_graph",      as: :song_lyrics_graph
@@ -56,7 +55,6 @@ Rails.application.routes.draw do
   get "gps-logging"            => redirect("projects/gps-logging",            status: 301)
   get "maps"                   => redirect("projects/tags/maps",              status: 301)
   get "projects/maps/gate-13"  => redirect("projects/gate-13",                status: 301)
-  get "projects/maps/nashville-hex" => redirect("projects/nashville-hex",     status: 301)
   get "shared-itinerary"       => redirect("projects/shared-itinerary",       status: 301)
   get "turn-signal-counter"    => redirect("projects/turn-signal-counter",    status: 301)
 

@@ -108,11 +108,6 @@ class StaticPageFlowsTest < ActionDispatch::IntegrationTest
     assert_response(:success)
   end
 
-  test "should get nashville hex" do
-    get(nashville_hex_path)
-    assert_response(:success)
-  end
-
   test "should get nights away and home" do
     get(nights_away_and_home_path)
     assert_response(:success)
