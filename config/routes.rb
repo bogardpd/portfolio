@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   get "cad-models"             => redirect("projects/cad-models",             status: 301)
   get "earthbound-database"    => redirect("projects/earthbound-database",    status: 301)
   get "flight-historian"       => redirect("projects/flight-historian",       status: 301)
+  get "gps-logging"            => redirect("projects/gps-logging",            status: 301)
   get "maps"                   => redirect("projects/tags/maps",              status: 301)
   get "projects/maps/gate-13"  => redirect("projects/gate-13",                status: 301)
   get "projects/maps/interstate-grid" => redirect("projects/interstate-grid", status: 301)
@@ -66,12 +67,6 @@ Rails.application.routes.draw do
   get "terminalsilhouettes"    => redirect("projects/terminal-silhouettes",   status: 301)
   get "terminals"              => redirect("projects/terminal-silhouettes",   status: 301)
 
-  get "gps-logging"                     => redirect("projects/gps-logging",                     status: 301)
-  get "gps-logging/garmin-google-earth" => redirect("projects/gps-logging/garmin/google-earth", status: 301)
-  get "gps-logging/garmin-osm"          => redirect("projects/gps-logging/garmin/osm",          status: 301)
-  get "gps-logging/ios-google-earth"    => redirect("projects/gps-logging/ios/google-earth",    status: 301)
-  get "gps-logging/ios-osm"             => redirect("projects/gps-logging/ios/osm",             status: 301)
-
   get "files/one-hundred-airports/:path.png" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-images/one-hundred-airports/%{path}.png")
   get "files/terminal-silhouettes/png/:path.png" => redirect(PortfolioImage::ROOT_PATH + "projects/terminal-silhouettes/png/%{path}.png")
   get "files/terminal-silhouettes/svg/:path.svg" => redirect(PortfolioImage::ROOT_PATH + "projects/terminal-silhouettes/svg/%{path}.svg")
@@ -82,8 +77,10 @@ Rails.application.routes.draw do
   
   # Other Pages
   get "airport-code-puns" => "static_pages#airport_code_puns"
-  get "history"         => "static_pages#history"
-  get "rhit"            => "static_pages#rhit"
+  get "history"           => "static_pages#history"
+
+  # RHIT
+  get "rhit" => "static_pages#rhit"
   get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", as: :fast_track_calculus
   get "rhit/fast-track-calculus/fred-and-harry" => "static_pages#fred_and_harry", as: :fred_and_harry
   
