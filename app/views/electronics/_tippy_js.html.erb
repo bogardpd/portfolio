@@ -34,10 +34,11 @@
 </div>
 
 <%# Javascript to make tippy.js tooltips work %>
-<script src="https://unpkg.com/popper.js@1"></script>
-<script src="https://unpkg.com/tippy.js@5"></script>
+<%# Popper is already included with  %>
+<%# <script src="https://unpkg.com/popper.js@1"></script> %>
+<script src="https://unpkg.com/tippy.js@5/dist/tippy-bundle.iife.js"></script>
 <script>
-  $('head').append('<link href="https://unpkg.com/tippy.js@5/themes/light-border.css" rel="stylesheet">');
+  $('head').append('<link href="https://unpkg.com/tippy.js@5/themes/light-border.css" type="text/css" rel="stylesheet">');
   tippy('[data-tippy-template]', {
     theme: 'light-border',
     content(reference) {
