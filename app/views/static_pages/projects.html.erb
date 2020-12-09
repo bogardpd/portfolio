@@ -7,24 +7,14 @@
   end
 %>
 
-<%= link_buttons(
-  LinkButton.new("Paul’s <strong>Résumé</strong>", "resume", resume_path),
-  LinkButton.new("Paul’s <strong>GitHub</strong> repositories", "github", "https://github.com/bogardpd/", target: :_blank)
-  ) %>
+<h2>Paul Bogard’s Portfolio has been moved to <a href="https://paulbogard.net/">paulbogard.net</a>.</h2>
 
-<h1><% if @tag %><%= @tag[:adjective] %> <% end %>Projects</h1>
+<p>For a while, I’ve run this portfolio and a separate blog. Over the years, they started to overlap enough that a lot of content was duplicated. I’ve now merged the two into a single site, hosted at <a href="https://paulbogard.net/">paulbogard.net</a>.</p>
 
-<div class="project-tags">
-  <%= project_tag_badges(@tags) %>
-</div>
+<h3>Quick Links</h3>
 
-<% if @projects.any? %>
-  <div class="row cover-row">
-    <%= render partial: "project_tile", collection: @projects, as: :project %>
-  </div>
-<% elsif params[:tag] %>
-  <p>No projects have the tag <code><%= params[:tag] %></code>!</p>
-  <p><%= link_to("All projects", projects_path) %></p>
-<% else %>
-  <p>Could not load projects!</p>
-<% end %>
+<ul>
+  <li><a href="https://paulbogard.net/projects/">Projects</a></li>
+  <li><a href="https://paulbogard.net/">About</a></li>
+  <li><a href="https://paulbogard.net/blog/">Blog</a></li>
+</ul>
