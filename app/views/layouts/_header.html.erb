@@ -10,30 +10,15 @@
 				<ul class="navbar-nav ml-auto">
 
 					<li class="nav-item">
-						<%= link_to "Projects", projects_path, class: "nav-link" %>
+						<%= link_to "Projects", "https://paulbogard.net/projects/", class: "nav-link" %>
+					</li>
+					<li class="nav-item">
+						<%= link_to "About", "https://paulbogard.net/", class: "nav-link" %>
+					</li>
+					<li class="nav-item">
+						<%= link_to "Blog", "https://paulbogard.net/blog/", class: "nav-link" %>
 					</li>
 					
-					<li class="nav-item dropdown">
-						<%= link_to "About Paul", "#", id: "aboutDropdown", class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" %>
-						<div class="dropdown-menu" aria-labelledby="aboutDropdown">
-							<%= nav_link "About Paul", about_path %>
-							<%= nav_link "Résumé", resume_path %>
-						</div>
-					</li>
-
-					<li class="nav-item dropdown">
-						<%= link_to "Other", "#", id: "aboutDropdown", class: "nav-link dropdown-toggle", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" %>
-						<div class="dropdown-menu" aria-labelledby="aboutDropdown">
-							<%= nav_link "Airport Code Puns", airport_code_puns_path %>
-							<%= nav_link "Electronics and Computers", electronics_root_path %>
-							<%= nav_link "RHIT", rhit_path %>
-							<%= nav_link "Website History", history_path %>
-						</div>
-					</li>
-
-					<li class="nav-item">
-						<%= link_to "Blog", "https://onehundredairports.com/", target: :_blank, class: "nav-link" %>
-					</li>
 
 				</ul>
 			</div>
