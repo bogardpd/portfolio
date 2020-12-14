@@ -51,7 +51,7 @@ Rails.application.routes.draw do
   get "/pax(/:gallery(/:page))" =>
     redirect("https://paulbogard.net/pax/", status: 301)
   get "/projects(/tags/:tag)" =>
-    redirect("https://paulbogard.net/projects/", status: 301), as: :projects
+    redirect("https://paulbogard.net/projects/", status: 301)
   get "/resume" =>
     redirect("https://paulbogard.net/resume/", status: 301)
   get "/rhit" =>
