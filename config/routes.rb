@@ -1,102 +1,84 @@
 Rails.application.routes.draw do
   
-  root "static_pages#projects"
+  root "static_pages#home"
     
   # Authentication
   get    "login"  => "sessions#new"
   post   "login"  => "sessions#create"
   delete "logout" => "sessions#destroy"
-
-  # Resources
-  
-  resources :terminal_silhouettes, except: [:show], path: "projects/terminal-silhouettes"
-  resources :vlog_videos, except: [:show], path: "stephenvlog"
-  resources :vlog_video_tags, except: [:index, :show], path: "stephenvlog/tags"
-  get  "stephenvlog/tags/:tag"         => "vlog_video_tags#show",          as: :show_vlog_video_tag
-  get  "stephenvlog/days(/:year)"      => "vlog_videos#show_days",         as: :show_vlog_days
-  get  "stephenvlog/cheffcon-japan-2019" => "vlog_videos#cheffcon_japan_2019", as: :cheffcon_japan_2019
-  get  "stephenvlog/location-project"  => "vlog_videos#location_project",  as: :stephenvlog_location_project
-
-  
-  namespace :electronics do
-    root to: "electronics#index"
-    resources :computers, param: :slug
-    resources :part_categories, path: "part-categories", param: :slug
-    resources :parts do
-      resources :part_use_periods, except: [:index, :show], path: "use-periods"
-    end
-  end
-  
-  # Projects
-  get "projects(/tags/:tag)" => "static_pages#projects", as: :projects
-  
-  get "projects/boarding-pass-parser"   => "static_pages#boarding_pass_parser",   as: :boarding_pass_parser
-  get "projects/cad-models"             => "static_pages#cad_models",             as: :cad_models
-  get "projects/earthbound-database"    => "static_pages#earthbound_database",    as: :earthbound_database
-  get "projects/flight-directed-graphs" => "static_pages#flight_directed_graphs", as: :flight_directed_graphs
-  get "projects/flight-historian"       => "static_pages#flight_historian",       as: :flight_historian
-  get "projects/gate-13"                => "static_pages#gate_13",                as: :gate_13
-  get "projects/gps-logging"            => "static_pages#gps_logging",            as: :gps_logging
-  get "projects/nights-away-and-home"   => "static_pages#nights_away_and_home",   as: :nights_away_and_home
-  get "projects/shared-itinerary"       => "static_pages#shared_itinerary",       as: :shared_itinerary
-  get "projects/song-lyrics-graph"      => "static_pages#song_lyrics_graph",      as: :song_lyrics_graph
-  get "projects/time-zone-chart"        => "static_pages#time_zone_chart",        as: :time_zone_chart
-  get "projects/turn-signal-counter"    => "static_pages#turn_signal_counter",    as: :turn_signal_counter
-  
-  # Aliases and redirects
-
-  get "computers" => redirect("electronics"), status: 301
-  get "computers/old" => redirect("electronics"), status: 301
-
-  get "boarding-pass-parser"   => redirect("projects/boarding-pass-parser",   status: 301)
-  get "cad-models"             => redirect("projects/cad-models",             status: 301)
-  get "earthbound-database"    => redirect("projects/earthbound-database",    status: 301)
-  get "flight-historian"       => redirect("projects/flight-historian",       status: 301)
-  get "gps-logging"            => redirect("projects/gps-logging",            status: 301)
-  get "maps"                   => redirect("projects/tags/maps",              status: 301)
-  get "projects/maps/gate-13"  => redirect("projects/gate-13",                status: 301)
-  get "shared-itinerary"       => redirect("projects/shared-itinerary",       status: 301)
-  get "turn-signal-counter"    => redirect("projects/turn-signal-counter",    status: 301)
-
-  get "terminal-silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
-  get "terminal_silhouettes"   => redirect("projects/terminal-silhouettes",   status: 301)
-  get "terminalsilhouettes"    => redirect("projects/terminal-silhouettes",   status: 301)
-  get "terminals"              => redirect("projects/terminal-silhouettes",   status: 301)
-
-  get "files/one-hundred-airports/:path.png" => redirect("https://s3.us-east-2.amazonaws.com/pbogardcom-images/one-hundred-airports/%{path}.png")
-  get "files/terminal-silhouettes/png/:path.png" => redirect(PortfolioImage::ROOT_PATH + "projects/terminal-silhouettes/png/%{path}.png")
-  get "files/terminal-silhouettes/svg/:path.svg" => redirect(PortfolioImage::ROOT_PATH + "projects/terminal-silhouettes/svg/%{path}.svg")
-  
-  # About Pages
-  get "about"  => "static_pages#about"
-  get "resume" => "static_pages#resume"
-  
-  # Other Pages
-  get "airport-code-puns" => "static_pages#airport_code_puns"
-  get "history"           => "static_pages#history"
-
-  # RHIT
-  get "rhit" => "static_pages#rhit"
-  get "rhit/fast-track-calculus" => "static_pages#fast_track_calculus", as: :fast_track_calculus
-  get "rhit/fast-track-calculus/fred-and-harry" => "static_pages#fred_and_harry", as: :fred_and_harry
-  
-  # Projects hosted on Portfolio
-  get "timezones" => "time_zones#index"
-  
-  # Non-linked Pages
-  get "games"             => "static_pages#games"
-  get "games/idea-guy"    => "static_pages#idea_guy", as: :idea_guy
-  get "hotel-pillow-fort" => "static_pages#hotel_pillow_fort"
-  get "mco-lobby"         => "static_pages#mco_lobby"
-  get "oreo"              => "static_pages#oreo"
-  
-  get "starmen-conventions" => "static_pages#starmen_conventions"
-  get "starmen-conventions/:gallery(/:page)" => "static_pages#gallery_starmen", as: :starmen_con_gallery
-  
-  get "pax" => "static_pages#pax"
-  get "pax/:gallery(/:page)" => "static_pages#gallery_pax", as: :pax_gallery
-  
+    
   # Certbot
   get "/.well-known/acme-challenge/:id" => "static_pages#letsencrypt"
   
- end
+  # Redirects to paulbogard.net
+
+  get "/about" =>
+    redirect("https://paulbogard.net/", status: 301)
+  get "/airport-code-puns" =>
+    redirect("https://paulbogard.net/airport-code-puns/", status: 301)
+  get "(/projects)/boarding-pass-parser" =>
+    redirect("https://paulbogard.net/boarding-pass-parser/", status: 301)
+  get "(/projects)/cad-models" =>
+    redirect("https://paulbogard.net/cad-models/", status: 301)
+  get "/computers(/old)" =>
+    redirect("https://paulbogard.net/computers/", status: 301)
+  get "/electronics(/*all)" =>
+    redirect("https://paulbogard.net/computers/", status: 301)
+  get "(/projects)/earthbound-database" =>
+    redirect("https://paulbogard.net/earthbound-database/", status: 301)
+  get "(/projects)/flight-directed-graphs" =>
+    redirect("https://paulbogard.net/flight-graphs/", status: 301)
+  get "(/projects)/flight-historian" =>
+    redirect("https://paulbogard.net/flight-historian/", status: 301)
+  get "/games" =>
+    redirect("https://paulbogard.net/games/", status: 301)
+  get "(/projects(/maps))/gate-13" =>
+    redirect("https://paulbogard.net/blog/20200118-unlucky-gate-13/", status: 301)
+  get "(/projects)/gps-logging" =>
+    redirect("https://paulbogard.net/gps-logging/", status: 301)
+  get "/hotel-pillow-fort" =>
+    redirect("https://paulbogard.net/hotel-pillow-fort/", status: 301)
+  get "/history" =>
+    redirect("https://paulbogard.net/personal-website-history/", status: 301)
+  get "/maps" =>
+    redirect("https://paulbogard.net/maps/", status: 301)
+  get "/mco-lobby" =>
+    redirect("https://paulbogard.net/mco-lobby/", status: 301)
+  get "(/projects)/nights-away-and-home" =>
+    redirect("https://paulbogard.net/blog/20200419-time-at-home-during-covid-19/", status: 301)
+  get "/oreo" =>
+    redirect("https://paulbogard.net/oreo/", status: 301)
+  get "/pax(/:gallery(/:page))" =>
+    redirect("https://paulbogard.net/pax/", status: 301)
+  get "/projects(/tags/:tag)" =>
+    redirect("https://paulbogard.net/projects/", status: 301), as: :projects
+  get "/resume" =>
+    redirect("https://paulbogard.net/resume/", status: 301)
+  get "/rhit" =>
+    redirect("https://paulbogard.net/rhit/", status: 301)
+  get "/rhit/fast-track-calculus" =>
+    redirect("https://paulbogard.net/rhit/fast-track-calculus/", status: 301)
+  get "/rhit/fast-track-calculus/fred-and-harry" =>
+    redirect("https://paulbogard.net/rhit/fred-and-harry/", status: 301)
+  get "(/projects)/shared-itinerary" =>
+    redirect("https://paulbogard.net/shared-itinerary/", status: 301)
+  get "(/projects)/song-lyrics-graph" =>
+    redirect("https://paulbogard.net/blog/20200613-song-lyrics-graph/", status: 301)
+  get "/stephenvlog(/tags/:tag)" =>
+    redirect("https://paulbogard.net/stephenvlog/", status: 301)
+  get "/stephenvlog/days(/:year)" =>
+    redirect("https://paulbogard.net/stephenvlog/days/", status: 301)
+  get  "/stephenvlog/cheffcon-japan-2019" =>
+    redirect("https://paulbogard.net/stephenvlog/cheffcon-japan-2019/", status: 301)
+  get  "/stephenvlog/location-project" =>
+    redirect("https://paulbogard.net/stephenvlog/location-project/", status: 301)
+  get "(/projects)/terminal-silhouettes" =>
+    redirect("https://paulbogard.net/terminal-silhouettes/", status: 301)
+  get "(/projects)/time-zone-chart" =>
+    redirect("https://paulbogard.net/time-zone-chart/", status: 301)
+  get "/timezones" =>
+    redirect("https://paulbogard.net/time-zones/", status: 301)
+  get "(/projects)/turn-signal-counter" =>
+    redirect("https://paulbogard.net/turn-signal-counter/", status: 301)
+  
+end

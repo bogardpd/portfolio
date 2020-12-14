@@ -1,6 +1,0 @@
-processors:
-  name: "Processors"
-  name_singular: 
-  name_lowercase_plural: 
-  description: "Central Processing Units"
-  slug: "processors"

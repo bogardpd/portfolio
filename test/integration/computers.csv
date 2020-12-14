@@ -1,0 +1,9 @@
+id,name,slug,model,description,form_factor,purchase_date,disposal_date,created_at,updated_at
+1,Chili Dog,chili-dog,MacBook Pro 15″ (early 2009),,laptop,2009-04-15,2015-06-27,2020-06-12 01:46:57 UTC,2020-06-12 01:46:57 UTC
+2,Fishsticks,fishsticks,Compaq Evo N800c,,laptop,2002-07-21,2009-11-01,2020-06-12 01:46:57 UTC,2020-06-12 01:46:57 UTC
+3,Frites Liberté,frites-liberte,MacBook Pro 15″ (mid 2012),,laptop,2015-06-27,2016-04-26,2020-06-12 01:46:57 UTC,2020-06-12 01:46:57 UTC
+4,Pancake,pancake,Home-built PC,Pancake is my home PC, built to be able to handle games. I also use it for doing image editing for my maps, terminal silhouettes, and other projects.,desktop,2008-05-02,,2020-06-12 01:46:57 UTC,2020-06-12 01:46:57 UTC
+7,Reuben,reuben,Lenovo Thinkpad T60p,,laptop,2007-03-24,2009-11-01,2020-06-12 01:46:57 UTC,2020-06-12 01:46:57 UTC
+6,Quesadilla,quesadilla,MacBook (2016),Quesadilla was my laptop for travel, so I traded off raw computing power to get a 2 lb (0.9 kg) computer with USB-C charging. (Thus, it could charge off my multi-USB charger, saving me the weight of its own power cord and allowing me to charge all my devices from a single hotel outlet.);;Quesadilla also functioned as the development environment for my web projects.,laptop,2016-04-23,2020-08-07,2020-06-12 01:46:57 UTC,2020-09-06 21:54:29 UTC
+8,Stroopwafel,stroopwafel,MacBook Air (Retina, 13-inch, 2020),Stroopwafel is my travel laptop. I value portability more than power when traveling, so it prioritizes low weight, small size, and the ability to charge via USB-C from my multi-USB charger.,laptop,2020-09-05,,2020-09-06 21:52:33 UTC,2020-09-06 21:57:27 UTC
+5,Peanut Butter,peanut-butter,Home-built PC,,desktop,2004-01-07,2008-05-02,2020-06-12 01:46:57 UTC,2020-12-10 02:20:02 UTC

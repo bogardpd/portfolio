@@ -1,9 +1,0 @@
-breakfast_stream:
-  name: "Breakfast Stream"
-  description: "A Biweekly Twitch stream"
-  parameterized_name: "breakfast-stream"
-
-cheffcon:
-  name: "Cheffcon"
-  description: "Gatherings of friends"
-  parameterized_name: "cheffcon"

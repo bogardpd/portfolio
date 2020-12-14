@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-ord:
-  iata_code: "ORD"
-  city: "Chicago (O’Hare)"
-
-atl:
-  iata_code: "ATL"
-  city: "Atlanta"
