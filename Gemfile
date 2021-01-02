@@ -6,13 +6,10 @@ gem 'rails', '~> 6.0', '>= 6.0.2.1'
 
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
-# Use redcarpet for Markdown parsing.
-gem 'redcarpet', '~> 3.5'
-
-# Use AWS S3 for images and downloadable files.
-gem 'aws-sdk-s3', '~> 1.81'
-
 gem 'bcrypt'
+
+# Force nokogiri update for https://github.com/advisories/GHSA-vr8q-g5c7-m54m
+gem 'nokogiri', '>= 1.11.0.rc4'
 
 group :development do
 end
