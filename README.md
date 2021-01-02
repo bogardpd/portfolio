@@ -1,1 +1,1 @@
-This application acts as a portfolio to document Paul Bogard's projects.
+This application used to act as a portfolio to document Paul Bogard's projects. Paul’s portfolio has since been migrated to [paulbogard.net](https://paulbogard.net) (GitHub repository: [bogardpd/paulbogard-net](https://github.com/bogardpd/paulbogard-net)).
