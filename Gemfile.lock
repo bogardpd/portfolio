@@ -108,7 +108,7 @@ GEM
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     pg (1.2.3)
-    puma (4.3.8)
+    puma (4.3.9)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -178,7 +178,7 @@ DEPENDENCIES
   minitest-reporters
   nokogiri (>= 1.11.0.rc4)
   pg (~> 1.2, >= 1.2.2)
-  puma (= 4.3.8)
+  puma (= 4.3.9)
   rails (~> 6.0, >= 6.0.2.1)
   redcarpet (~> 3.5)
   sassc-rails (~> 2.1, >= 2.1.2)
