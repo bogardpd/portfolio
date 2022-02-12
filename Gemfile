@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.7.1'
 
-gem 'rails', '~> 6.0', '>= 6.0.2.1'
+gem 'rails', '~> 6.0', '>= 6.0.4.6'
 
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 
