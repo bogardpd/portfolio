@@ -12,7 +12,6 @@ gem 'redcarpet', '~> 3.5'
 # Use AWS S3 for images and downloadable files.
 gem 'aws-sdk-s3', '~> 1.81'
 
-# Force nokogiri update for https://github.com/advisories/GHSA-vr8q-g5c7-m54m
 gem 'nokogiri', '>= 1.11.0.rc4'
 
 gem 'bcrypt'
